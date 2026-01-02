@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Attorney Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="main-wrapper">
+        <div id="game-container">
+            <div id="background" class="layer"></div>
+            <div id="character" class="layer"></div>
+            <div id="flash-overlay" class="layer"></div>
+            <div id="evidence-popup" class="hidden">
+                <div id="popup-icon-container">
+                    <img id="popup-icon" src="" alt="Evidence Icon">
+                </div>
+                <div id="popup-info">
+                    <div id="popup-name"></div>
+                    <div id="popup-desc"></div>
+                </div>
+            </div>
+            <div id="textbox-container">
+                <div id="name-tag">Name</div>
+                <div id="text-content">Text</div>
+            </div>
+        </div>
+        <div id="bottom-screen">
+            <div id="bottom-top-bar">
+                <button id="court-record-btn">Court Record</button>
+            </div>
+            <div id="bottom-main-window">
+                <button id="advance-btn">▶</button>
+                <div id="topic-menu" class="hidden"></div>
+                <div id="evidence-container" class="hidden">
+                    <div id="evidence-name-display"></div>
+                    <div id="evidence-grid"></div>
+                    <div id="evidence-details" class="hidden">
+                        <h3 id="evidence-title"></h3>
+                        <p id="evidence-description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/globals.js"></script>
+    <script src="js/media.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

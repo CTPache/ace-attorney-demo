@@ -1,0 +1,150 @@
+{
+    "characters": {
+        "Oldbag": {
+            "Normal": {
+                "default": "assets/characters/Locked Room/Oldbag/Normal-1.webp",
+                "talking": "assets/characters/Locked Room/Oldbag/Normal-2.webp"
+            },
+            "Embarrassed": {
+                "default": "assets/characters/Locked Room/Oldbag/Embarrassed-1.webp",
+                "talking": "assets/characters/Locked Room/Oldbag/Embarrassed-2.webp"
+            },
+            "Shocked": {
+                "default": "assets/characters/Locked Room/Oldbag/Shocked.webp",
+                "time": 500
+            },
+            "Angry": {
+                "default": "assets/characters/Locked Room/Oldbag/Angry-1.webp",
+                "talking": "assets/characters/Locked Room/Oldbag/Angry-2.webp"
+            },
+            "Smirking": {
+                "default": "assets/characters/Locked Room/Oldbag/Smirking-1.webp",
+                "talking": "assets/characters/Locked Room/Oldbag/Smirking-2.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "JoyPolis": "assets/backgrounds/FlyHigh_JoyPolis.png",
+        "Don1": "assets/backgrounds/Don_1.png"
+    },
+    "evidence": {
+        "badge": {
+            "name": "Attorney's Badge",
+            "description": "Without this no one would belive I'm a lawyer.",
+            "image": "assets/evidence/badge.png"
+        },
+        "charm": {
+            "name": "Blue Badger's Charm",
+            "description": "A small charm of the Blue Badger's head.",
+            "image": "assets/evidence/charm.png"
+        }
+    },
+
+    "Topics": {
+        "showcase": {
+            "text": "Showcase Demo Features",
+            "label":"Demo_showcase"
+        }
+    },
+    "gameScript": {
+        "Demo_Main_01": [
+            {
+                "text": "{bg:Don1}{addEvidence:badge,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
+            },
+            {
+                "text": "{blip:2}Testing, testing...{p:500} One, two, three...{p:500} Is this thing on?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:4}{color:lightblue}(Hello? Is anyone there?)"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{addEvidence:badge}{blip:1}{flash}{showCharacter}{sprite:Oldbag[\"Embarrassed\"]}Welcome to the Ace Attorney Engine demo!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}I'm Oldbag, your guide for today."
+            },
+            {
+                "name": "Oldbag",
+                "text": "In this demo, I'll be showing you some of the features of the Ace Attorney Engine."
+            },
+            {
+                "text": "{topicUnlock:showcase}{showTopics}"
+            }
+        ],
+        "Demo_showcase": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}We can change text colors like {color:red}red{color:white}, {color:lime}green{color:white}, or {color:lightblue}blue{color:white}."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}We can also add pauses... {p:500} for dramatic effect."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Embarrassed\"]}And we can trigger animations! {sprite:Oldbag[\"Shocked\"]}{flash} WHAM! {p:1000}{sprite:Oldbag[\"Smirking\"]} Did you see that?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "Now, watch me disappear... {fadeOutCharacter}"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{fadeInCharacter}And I'm back! Magic!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "You can also add evidence to your inventory during dialogue."
+            },
+            {
+                "text": "{addEvidence:charm,true}{color:lightblue}{blip:4}Blue Badger's Charm added to the court record.{color:white}{p:1000}"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{textSpeed:20}{sprite:Oldbag[\"Angry\"]}Are you even listening to me? Today's youth doesn't care about anything.{skip:0}"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{textSpeed:20}You only want the instant gratification, without patience and perseverance.{skip:0}"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{textSpeed:20}{sprite:Oldbag[\"Angry\"]}Back in my day...{skip:0}"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}...{p:100}Anyway, let's move on to the next part of the demo."
+            },
+            {
+                "text": "{jump:Demo_Main_2}"
+            }
+        ],
+        "Demo_Main_2": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}This is the second section! We jumped here."
+            },
+            {
+                "text": "{jumpIf:hasMetOldbag,Section_AlreadyMet,Section_FirstMeeting}"
+            }
+        ],
+        "Section_FirstMeeting": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Embarrassed\"]}Nice to meet you for the first time!{setState:hasMetOldbag,true}"
+            },
+            {
+                "text": "{jump:Demo_Main_2}"
+            }
+        ],
+        "Section_AlreadyMet": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Embarrassed\"]}Welcome back, friend!{showTopics}"
+            }
+        ]
+    }
+}
