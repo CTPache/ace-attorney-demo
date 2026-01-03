@@ -443,7 +443,12 @@ body {
         padding: 2vh 3vh;
     }
 
-    .topic-button {
+    #bottom-screen #court-record-btn {
+        font-size: 2vh;
+        padding: 1vh 2vh;
+    }
+
+    #bottom-screen .topic-button {
         width: 95%;
         font-size: 3vh;
         padding: 2vh;

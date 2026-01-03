@@ -13,7 +13,9 @@ const popupIcon = document.getElementById('popup-icon');
 const popupName = document.getElementById('popup-name');
 const popupDesc = document.getElementById('popup-desc');
 
+const topicMenu = document.getElementById('topic-menu');
 let isCourtRecordOpen = false;
+let wasTopicMenuOpen = false;
 
 // Listen for evidence added event
 document.addEventListener('evidenceAdded', (e) => {
@@ -47,13 +49,26 @@ courtRecordBtn.addEventListener('click', (e) => {
     isCourtRecordOpen = !isCourtRecordOpen;
     
     if (isCourtRecordOpen) {
+        // Check if topic menu is currently open
+        if (!topicMenu.classList.contains('hidden')) {
+            wasTopicMenuOpen = true;
+            topicMenu.classList.add('hidden');
+        } else {
+            wasTopicMenuOpen = false;
+        }
+
         advanceBtn.classList.add('hidden');
         evidenceContainer.classList.remove('hidden');
         renderEvidence();
     } else {
-        advanceBtn.classList.remove('hidden');
         evidenceContainer.classList.add('hidden');
         evidenceDetails.classList.add('hidden'); // Hide details if open
+
+        if (wasTopicMenuOpen) {
+            topicMenu.classList.remove('hidden');
+        } else {
+            advanceBtn.classList.remove('hidden');
+        }
     }
 });
 
@@ -155,7 +170,7 @@ advanceBtn.addEventListener('touchstart', (e) => {
 advanceBtn.addEventListener('touchend', stopFastForward);
 
 // Topic Menu Logic
-const topicMenu = document.getElementById('topic-menu');
+// const topicMenu = document.getElementById('topic-menu'); // Moved to top
 
 document.addEventListener('showTopicMenu', () => {
     renderTopics();
