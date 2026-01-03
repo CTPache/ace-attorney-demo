@@ -18,6 +18,58 @@ function playBlip() {
     }
 }
 
+function playSound(soundName) {
+    const soundPath = soundsDB[soundName];
+    if (soundPath) {
+        const audio = new Audio(soundPath);
+        audio.play().catch(e => console.warn("SFX play failed:", e));
+    } else {
+        console.warn(`Sound not found: ${soundName}`);
+    }
+}
+
+function playBGM(musicName) {
+    const musicPath = musicDB[musicName];
+    if (musicPath) {
+        // Stop current BGM if playing
+        stopBGM(false);
+
+        currentBGM = new Audio(musicPath);
+        currentBGM.loop = true;
+        currentBGM.play().catch(e => console.warn("BGM play failed:", e));
+    } else {
+        console.warn(`Music not found: ${musicName}`);
+    }
+}
+
+function stopBGM(fadeOut = true) {
+    if (currentBGM) {
+        if (fadeOut) {
+            const audio = currentBGM; // Capture reference
+            const fadeInterval = setInterval(() => {
+                if (audio.volume > 0.05) {
+                    audio.volume -= 0.05;
+                } else {
+                    clearInterval(fadeInterval);
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio.volume = 1; // Reset for next use if reused
+                }
+            }, 100);
+            
+            // If we start a new BGM immediately, we don't want to overwrite the fading one's reference
+            // But since currentBGM is global, we set it to null so the engine knows "active" music is gone
+            if (currentBGM === audio) {
+                currentBGM = null;
+            }
+        } else {
+            currentBGM.pause();
+            currentBGM.currentTime = 0;
+            currentBGM = null;
+        }
+    }
+}
+
 function triggerFlash() {
     flashOverlay.classList.remove('flashing');
     void flashOverlay.offsetWidth; // Trigger reflow

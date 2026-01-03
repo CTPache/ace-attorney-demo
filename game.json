@@ -46,6 +46,12 @@
             "label":"Demo_showcase"
         }
     },
+    "sounds": {
+        "wham": "assets/audio/wham.ogg"
+    },
+    "music": {
+        "investigation": "assets/audio/demo/bgm001.ogg"
+    },
     "gameScript": {
         "Demo_Main_01": [
             {
@@ -85,7 +91,11 @@
             },
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Embarrassed\"]}And we can trigger animations! {sprite:Oldbag[\"Shocked\"]}{flash} WHAM! {p:1000}{sprite:Oldbag[\"Smirking\"]} Did you see that?"
+                "text": "{sprite:Oldbag[\"Embarrassed\"]}And we can trigger animations! {sprite:Oldbag[\"Shocked\"]}{flash}{playSound:wham} WHAM! {p:1000}{sprite:Oldbag[\"Smirking\"]} Did you see that?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{startBGM:investigation}Now playing some investigation music... {p:2000} And stopping it.{stopBGM}"
             },
             {
                 "name": "Oldbag",
@@ -100,7 +110,7 @@
                 "text": "You can also add evidence to your inventory during dialogue."
             },
             {
-                "text": "{addEvidence:charm,true}{color:lightblue}{blip:4}Blue Badger's Charm added to the court record.{color:white}{p:1000}"
+                "text": "{addEvidence:charm,true}{color:lightblue}{blip:4}Blue Badger's Charm added to the court record.{color:white}{p:1000}{blip:1}"
             },
             {
                 "name": "Oldbag",

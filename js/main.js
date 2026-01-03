@@ -16,6 +16,12 @@ fetch('game.json')
         if (data.Topics) {
             topicsDB = data.Topics;
         }
+        if (data.sounds) {
+            soundsDB = data.sounds;
+        }
+        if (data.music) {
+            musicDB = data.music;
+        }
         
         await preloadAssets();
 

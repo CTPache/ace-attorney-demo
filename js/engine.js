@@ -54,7 +54,10 @@ function typeWriter(text) {
         /\{textSpeed:(\d+)\}/,                              // 14: TextSpeed
         /\{addEvidence:([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/, // 15,16: AddEvidence (Key, ShowPopup)
         /\{topicUnlock:([a-zA-Z0-9_]+)\}/,                  // 17: TopicUnlock
-        /\{showTopics\}/                                    // 0: ShowTopics
+        /\{showTopics\}/,                                   // 0: ShowTopics
+        /\{playSound:([a-zA-Z0-9_]+)\}/,                    // 18: PlaySound
+        /\{startBGM:([a-zA-Z0-9_]+)\}/,                     // 19: StartBGM
+        /\{stopBGM(?::(true|false))?\}/                     // 20: StopBGM (FadeOut)
     ];
     const regex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
     let lastIndex = 0;
@@ -82,6 +85,9 @@ function typeWriter(text) {
             segments.push({ type: 'center' });
         } else if (match[0] === '{nl}') { // New Line {nl}
             segments.push({ type: 'nl' });
+        } else if (match[0].startsWith('{stopBGM')) { // Stop BGM {stopBGM} or {stopBGM:false}
+            const fadeOut = match[20] !== 'false'; // Default to true
+            segments.push({ type: 'stopBGM', fadeOut: fadeOut });
         } else if (match[1]) { // Pause {p:123}
             segments.push({ type: 'pause', duration: parseInt(match[1]) });
         } else if (match[2]) { // Color {color:red}
@@ -107,6 +113,10 @@ function typeWriter(text) {
             segments.push({ type: 'addEvidence', key: match[15], showPopup: showPopup });
         } else if (match[17]) { // TopicUnlock {topicUnlock:ID}
             segments.push({ type: 'topicUnlock', topicId: match[17] });
+        } else if (match[18]) { // PlaySound {playSound:Name}
+            segments.push({ type: 'playSound', soundName: match[18] });
+        } else if (match[19]) { // StartBGM {startBGM:Name}
+            segments.push({ type: 'startBGM', musicName: match[19] });
         }
 
         lastIndex = regex.lastIndex;
@@ -268,6 +278,18 @@ function processNextChar() {
         showTopicsOnEnd = true;
         segmentIndex++;
         processNextChar();
+    } else if (segment.type === 'playSound') {
+        playSound(segment.soundName);
+        segmentIndex++;
+        processNextChar();
+    } else if (segment.type === 'startBGM') {
+        playBGM(segment.musicName);
+        segmentIndex++;
+        processNextChar();
+    } else if (segment.type === 'stopBGM') {
+        stopBGM(segment.fadeOut);
+        segmentIndex++;
+        processNextChar();
     }
 }
 
@@ -347,6 +369,12 @@ function finishTyping() {
             }
         } else if (segment.type === 'showTopics') {
             showTopicsOnEnd = true;
+        } else if (segment.type === 'playSound') {
+            playSound(segment.soundName);
+        } else if (segment.type === 'startBGM') {
+            playBGM(segment.musicName);
+        } else if (segment.type === 'stopBGM') {
+            stopBGM(segment.fadeOut);
         }
         segmentIndex++;
     }

@@ -16,6 +16,8 @@ let evidenceDB = {};
 let evidenceInventory = [];
 let topicsDB = {};
 let unlockedTopics = [];
+let soundsDB = {};
+let musicDB = {};
 const gameState = {};
 let gameScript = {};
 
@@ -34,6 +36,8 @@ let isWaitingForAutoSkip = false;
 let isFastForwarding = false;
 let fastForwardInterval = null;
 let fastForwardTimeout = null;
+let currentBGM = null; // Track current background music
+
 
 // Config
 const defaultTextSpeed = 30;
