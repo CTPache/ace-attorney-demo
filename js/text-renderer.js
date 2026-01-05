@@ -152,6 +152,19 @@ function processNextChar() {
         }
         segmentIndex++;
         processNextChar();
+    } else if (segment.type === 'addProfile') {
+        if (profilesDB[segment.key] && !profilesInventory.includes(segment.key)) {
+            profilesInventory.push(segment.key);
+            console.log(`Added profile: ${segment.key}`);
+            
+            // Dispatch event for UI updates if showPopup is true
+            if (segment.showPopup) {
+                const event = new CustomEvent('profileAdded', { detail: { key: segment.key } });
+                document.dispatchEvent(event);
+            }
+        }
+        segmentIndex++;
+        processNextChar();
     } else if (segment.type === 'topicUnlock') {
         if (!unlockedTopics.includes(segment.topicId)) {
             unlockedTopics.push(segment.topicId);
@@ -247,6 +260,11 @@ function finishTyping() {
             if (evidenceDB[segment.key] && !evidenceInventory.includes(segment.key)) {
                 evidenceInventory.push(segment.key);
                 console.log(`Added evidence: ${segment.key}`);
+            }
+        } else if (segment.type === 'addProfile') {
+            if (profilesDB[segment.key] && !profilesInventory.includes(segment.key)) {
+                profilesInventory.push(segment.key);
+                console.log(`Added profile: ${segment.key}`);
             }
         } else if (segment.type === 'topicUnlock') {
             if (!unlockedTopics.includes(segment.topicId)) {

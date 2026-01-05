@@ -13,6 +13,9 @@ fetch('game.json')
         if (data.evidence) {
             evidenceDB = data.evidence;
         }
+        if (data.profiles) {
+            profilesDB = data.profiles;
+        }
         if (data.Topics) {
             topicsDB = data.Topics;
         }

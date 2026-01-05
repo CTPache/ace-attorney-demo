@@ -2,48 +2,51 @@
     "characters": {
         "Oldbag": {
             "Normal": {
-                "default": "assets/characters/Locked Room/Oldbag/Normal-1.webp",
-                "talking": "assets/characters/Locked Room/Oldbag/Normal-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Normal-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Normal-2.webp"
             },
             "Embarrassed": {
-                "default": "assets/characters/Locked Room/Oldbag/Embarrassed-1.webp",
-                "talking": "assets/characters/Locked Room/Oldbag/Embarrassed-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Embarrassed-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Embarrassed-2.webp"
             },
             "Shocked": {
-                "default": "assets/characters/Locked Room/Oldbag/Shocked.webp",
+                "default": "assets/img/characters/Locked Room/Oldbag/Shocked.webp",
                 "time": 500
             },
             "Angry": {
-                "default": "assets/characters/Locked Room/Oldbag/Angry-1.webp",
-                "talking": "assets/characters/Locked Room/Oldbag/Angry-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Angry-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Angry-2.webp"
             },
             "Smirking": {
-                "default": "assets/characters/Locked Room/Oldbag/Smirking-1.webp",
-                "talking": "assets/characters/Locked Room/Oldbag/Smirking-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Smirking-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Smirking-2.webp"
             }
         }
     },
     "backgrounds": {
-        "JoyPolis": "assets/backgrounds/FlyHigh_JoyPolis.png",
-        "Don1": "assets/backgrounds/Don_1.png"
+        "JoyPolis": "assets/img/backgrounds/FlyHigh_JoyPolis.png",
+        "Don1": "assets/img/backgrounds/Don_1.png"
     },
     "evidence": {
         "badge": {
             "name": "Attorney's Badge",
-            "description": "Without this no one would belive I'm a lawyer.",
-            "image": "assets/evidence/badge.png"
+            "data": "Type: Evidence\nOne of my possessions.",
+            "description": "Without this no one would believe I'm a lawyer.",
+            "image": "assets/img/evidence/badge.png"
         },
         "charm": {
             "name": "Blue Badger's Charm",
+            "data": "Type: Evidence\nA charm of the Blue Badger.",
             "description": "A small charm of the Blue Badger's head.",
-            "image": "assets/evidence/charm.png"
+            "image": "assets/img/evidence/charm.png"
         }
     },
-
-    "Topics": {
-        "showcase": {
-            "text": "Showcase Demo Features",
-            "label":"Demo_showcase"
+    "profiles": {
+        "Phoenix": {
+            "name": "Phoenix Wright",
+            "data": "Age: 24\nGender: Male",
+            "description": "That's me. I'm a defense attorney.",
+            "image": "assets/img/profiles/phoenix.png"
         }
     },
     "sounds": {
@@ -52,10 +55,16 @@
     "music": {
         "investigation": "assets/audio/demo/bgm001.ogg"
     },
+    "Topics": {
+        "showcase": {
+            "text": "Showcase Demo Features",
+            "label":"Demo_showcase"
+        }
+    },
     "gameScript": {
         "Demo_Main_01": [
             {
-                "text": "{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
+                "text": "{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
             },
             {
                 "text": "{blip:2}Testing, testing...{p:500} One, two, three...{p:500} Is this thing on?"
@@ -159,19 +168,13 @@
         "Demo_evidence_badge": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Shocked\"]}My badge! {p:500}{sprite:Oldbag[\"Angry\"]}Wait, why do you have that? Are you impersonating an officer?"
-            },
-            {
-                "text": "{showTopics}"
+                "text": "{playSound:wham}{flash}{sprite:Oldbag[\"Shocked\"]}My badge! {p:500}{sprite:Oldbag[\"Angry\"]}Wait, why do you have that? Are you impersonating an officer?{showTopics}"
             }
         ],
         "Demo_evidence_default": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Normal\"]}I don't know what that is, and I don't care."
-            },
-            {
-                "text": "{showTopics}"
+                "text": "{sprite:Oldbag[\"Normal\"]}I don't know what that is, and I don't care.{showTopics}"
             }
         ]
     }

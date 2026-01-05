@@ -23,11 +23,12 @@ function parseText(text) {
         /\{nl\}/,                                           // 0: NewLine
         /\{textSpeed:(\d+)\}/,                              // 14: TextSpeed
         /\{addEvidence:([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/, // 15,16: AddEvidence (Key, ShowPopup)
-        /\{topicUnlock:([a-zA-Z0-9_]+)\}/,                  // 17: TopicUnlock
+        /\{addProfile:([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/,  // 17,18: AddProfile (Key, ShowPopup)
+        /\{topicUnlock:([a-zA-Z0-9_]+)\}/,                  // 19: TopicUnlock
         /\{showTopics\}/,                                   // 0: ShowTopics
-        /\{playSound:([a-zA-Z0-9_]+)\}/,                    // 18: PlaySound
-        /\{startBGM:([a-zA-Z0-9_]+)\}/,                     // 19: StartBGM
-        /\{stopBGM(?::(true|false))?\}/                     // 20: StopBGM (FadeOut)
+        /\{playSound:([a-zA-Z0-9_]+)\}/,                    // 20: PlaySound
+        /\{startBGM:([a-zA-Z0-9_]+)\}/,                     // 21: StartBGM
+        /\{stopBGM(?::(true|false))?\}/                     // 22: StopBGM (FadeOut)
     ];
     const regex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
     let lastIndex = 0;
@@ -56,7 +57,7 @@ function parseText(text) {
         } else if (match[0] === '{nl}') { // New Line {nl}
             parsedSegments.push({ type: 'nl' });
         } else if (match[0].startsWith('{stopBGM')) { // Stop BGM {stopBGM} or {stopBGM:false}
-            const fadeOut = match[20] !== 'false'; // Default to true
+            const fadeOut = match[22] !== 'false'; // Default to true
             parsedSegments.push({ type: 'stopBGM', fadeOut: fadeOut });
         } else if (match[1]) { // Pause {p:123}
             parsedSegments.push({ type: 'pause', duration: parseInt(match[1]) });
@@ -81,12 +82,15 @@ function parseText(text) {
         } else if (match[15]) { // Add Evidence {addEvidence:Key,ShowPopup}
             const showPopup = match[16] !== 'false'; // Default to true
             parsedSegments.push({ type: 'addEvidence', key: match[15], showPopup: showPopup });
-        } else if (match[17]) { // TopicUnlock {topicUnlock:ID}
-            parsedSegments.push({ type: 'topicUnlock', topicId: match[17] });
-        } else if (match[18]) { // PlaySound {playSound:Name}
-            parsedSegments.push({ type: 'playSound', soundName: match[18] });
-        } else if (match[19]) { // StartBGM {startBGM:Name}
-            parsedSegments.push({ type: 'startBGM', musicName: match[19] });
+        } else if (match[17]) { // Add Profile {addProfile:Key,ShowPopup}
+            const showPopup = match[18] !== 'false'; // Default to true
+            parsedSegments.push({ type: 'addProfile', key: match[17], showPopup: showPopup });
+        } else if (match[19]) { // TopicUnlock {topicUnlock:ID}
+            parsedSegments.push({ type: 'topicUnlock', topicId: match[19] });
+        } else if (match[20]) { // PlaySound {playSound:Name}
+            parsedSegments.push({ type: 'playSound', soundName: match[20] });
+        } else if (match[21]) { // StartBGM {startBGM:Name}
+            parsedSegments.push({ type: 'startBGM', musicName: match[21] });
         }
 
         lastIndex = regex.lastIndex;

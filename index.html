@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ace Attorney Demo</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/investigation.css">
 </head>
 <body>
     <div id="main-wrapper">
@@ -32,13 +33,38 @@
             </div>
             <div id="bottom-main-window">
                 <button id="advance-btn">▶</button>
-                <div id="topic-menu" class="hidden"></div>
+                <div id="investigation-menu" class="hidden">
+                    <button id="btn-examine" class="inv-btn">Examine</button>
+                    <button id="btn-move" class="inv-btn">Move</button>
+                    <button id="btn-talk" class="inv-btn">Talk</button>
+                    <button id="btn-present" class="inv-btn">Present</button>
+                </div>
+                <div id="topic-menu" class="hidden">
+                    <button id="btn-topic-back" class="back-btn">Back</button>
+                </div>
                 <div id="evidence-container" class="hidden">
+                    <div id="cr-tabs">
+                        <div class="cr-tab active">Evidence</div>
+                        <div class="cr-tab">Profiles</div>
+                    </div>
                     <div id="evidence-name-display"></div>
                     <div id="evidence-grid"></div>
+                    <button id="btn-evidence-back" class="back-btn">Back</button>
                     <div id="evidence-details" class="hidden">
-                        <h3 id="evidence-title">dummy</h3>
-                        <p id="evidence-description">dummy</p>
+                        <div id="evidence-details-top">
+                            <button id="evidence-prev-btn" class="detail-nav-btn">◀</button>
+                            <div id="evidence-icon-container">
+                                <img id="evidence-icon-large" src="none" alt="Evidence Icon">
+                            </div>
+                            <div id="evidence-info-right">
+                                <h3 id="evidence-title">dummy</h3>
+                                <div id="evidence-data-box">dummy data</div>
+                            </div>
+                            <button id="evidence-next-btn" class="detail-nav-btn">▶</button>
+                        </div>
+                        <div id="evidence-description-box">
+                            <p id="evidence-description">dummy description</p>
+                        </div>
                     </div>
                 </div>
             </div>
