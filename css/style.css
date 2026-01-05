@@ -430,6 +430,7 @@ body {
     padding: 2cqh;
     border: 0.4cqh solid #555;
     white-space: pre-wrap;
+    font-size: 5cqh;
     /* Handle newlines */
     overflow-y: auto;
 }
@@ -437,6 +438,7 @@ body {
 #evidence-description-box {
     width: 90%;
     height: 35%;
+    font-size: 5cqh;
     background-color: #8d6e43;
     /* Brown box */
     border: 0.6cqh solid #5e4020;

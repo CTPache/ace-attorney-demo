@@ -1,15 +1,5 @@
 console.log("Globals Loaded");
 
-const nameTag = document.getElementById('name-tag');
-const textContent = document.getElementById('text-content');
-const textboxContainer = document.getElementById('textbox-container');
-const gameContainer = document.getElementById('game-container');
-const character = document.getElementById('character');
-const backgroundElement = document.getElementById('background');
-const flashOverlay = document.getElementById('flash-overlay');
-const advanceBtn = document.getElementById('advance-btn');
-const courtRecordBtn = document.getElementById('court-record-btn');
-
 // Data Containers
 let characters = {};
 let backgrounds = {};
@@ -50,3 +40,8 @@ const defaultTextSpeed = 30;
 let currentTextSpeed = defaultTextSpeed;
 let currentBlipType = 1;
 let debugShowInvestigationBounds = false;
+
+// UI State
+let isCourtRecordOpen = false;
+let isPresentingMode = false;
+let isExamining = false;
