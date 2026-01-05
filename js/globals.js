@@ -2,6 +2,7 @@ console.log("Globals Loaded");
 
 const nameTag = document.getElementById('name-tag');
 const textContent = document.getElementById('text-content');
+const textboxContainer = document.getElementById('textbox-container');
 const gameContainer = document.getElementById('game-container');
 const character = document.getElementById('character');
 const backgroundElement = document.getElementById('background');
@@ -24,6 +25,7 @@ let gameScript = {};
 // State Variables
 let currentSectionName = "Demo_Main_01";
 let currentLineIndex = 0;
+let isScenePlaying = true;
 let isTyping = false;
 let typingInterval;
 let segments = [];

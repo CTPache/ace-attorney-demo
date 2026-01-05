@@ -17,6 +17,16 @@ const topicMenu = document.getElementById('topic-menu');
 let isCourtRecordOpen = false;
 let wasTopicMenuOpen = false;
 
+// Listen for scene state changes
+document.addEventListener('sceneStateChanged', (e) => {
+    const isPlaying = e.detail.isPlaying;
+    if (isPlaying) {
+        textboxContainer.classList.remove('hidden');
+    } else {
+        textboxContainer.classList.add('hidden');
+    }
+});
+
 // Listen for evidence added event
 document.addEventListener('evidenceAdded', (e) => {
     const key = e.detail.key;
@@ -103,7 +113,7 @@ function renderEvidence() {
                 
                 // Click: Show details
                 slot.addEventListener('click', () => {
-                    showEvidenceDetails(item);
+                    showEvidenceDetails(item, key);
                 });
             }
         }
@@ -112,15 +122,56 @@ function renderEvidence() {
     }
 }
 
-function showEvidenceDetails(item) {
+function showEvidenceDetails(item, key) {
     evidenceTitle.textContent = item.name;
     evidenceDescription.textContent = item.description;
+    
+    // Check/Create Present Button
+    let presentBtn = document.getElementById('evidence-present-btn');
+    if (!presentBtn) {
+        presentBtn = document.createElement('button');
+        presentBtn.id = 'evidence-present-btn';
+        presentBtn.textContent = "Present";
+        presentBtn.className = "topic-button"; // Reuse topic button style
+        presentBtn.style.marginTop = "15px";
+        presentBtn.style.width = "auto";
+        presentBtn.style.padding = "10px 20px";
+        evidenceDetails.appendChild(presentBtn);
+    }
+
+    // Only show Present button if NOT in a scene (i.e., in menu mode)
+    if (!isScenePlaying) {
+        presentBtn.classList.remove('hidden');
+        
+        // Update Present Handler
+        presentBtn.onclick = (e) => {
+            e.stopPropagation(); // Prevent closing details
+            
+            // Close Court Record
+            isCourtRecordOpen = false;
+            evidenceContainer.classList.add('hidden');
+            evidenceDetails.classList.add('hidden');
+            advanceBtn.classList.remove('hidden'); // Show advance button again (or let engine handle it)
+            
+            // Trigger Engine Logic
+            if (window.handlePresentEvidence) {
+                window.handlePresentEvidence(key);
+            } else {
+                console.error("handlePresentEvidence not defined");
+            }
+        };
+    } else {
+        presentBtn.classList.add('hidden');
+    }
+
     evidenceDetails.classList.remove('hidden');
     
     // Click anywhere on details to close
-    const closeHandler = () => {
-        evidenceDetails.classList.add('hidden');
-        evidenceDetails.removeEventListener('click', closeHandler);
+    const closeHandler = (e) => {
+        if (e.target !== presentBtn) {
+            evidenceDetails.classList.add('hidden');
+            evidenceDetails.removeEventListener('click', closeHandler);
+        }
     };
     evidenceDetails.addEventListener('click', closeHandler);
 }

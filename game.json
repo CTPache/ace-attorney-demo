@@ -55,7 +55,7 @@
     "gameScript": {
         "Demo_Main_01": [
             {
-                "text": "{bg:Don1}{addEvidence:badge,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
+                "text": "{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
             },
             {
                 "text": "{blip:2}Testing, testing...{p:500} One, two, three...{p:500} Is this thing on?"
@@ -129,10 +129,10 @@
                 "text": "{sprite:Oldbag[\"Normal\"]}...{p:100}Anyway, let's move on to the next part of the demo."
             },
             {
-                "text": "{jump:Demo_Main_2}"
+                "text": "{jump:Demo_showcase_2}"
             }
         ],
-        "Demo_Main_2": [
+        "Demo_showcase_2": [
             {
                 "name": "Oldbag",
                 "text": "{sprite:Oldbag[\"Normal\"]}This is the second section! We jumped here."
@@ -147,13 +147,31 @@
                 "text": "{sprite:Oldbag[\"Embarrassed\"]}Nice to meet you for the first time!{setState:hasMetOldbag,true}"
             },
             {
-                "text": "{jump:Demo_Main_2}"
+                "text": "{jump:Demo_showcase_2}"
             }
         ],
         "Section_AlreadyMet": [
             {
                 "name": "Oldbag",
                 "text": "{sprite:Oldbag[\"Embarrassed\"]}Welcome back, friend!{showTopics}"
+            }
+        ],
+        "Demo_evidence_badge": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Shocked\"]}My badge! {p:500}{sprite:Oldbag[\"Angry\"]}Wait, why do you have that? Are you impersonating an officer?"
+            },
+            {
+                "text": "{showTopics}"
+            }
+        ],
+        "Demo_evidence_default": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}I don't know what that is, and I don't care."
+            },
+            {
+                "text": "{showTopics}"
             }
         ]
     }
