@@ -12,7 +12,9 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
   - `js/loader.js`: Asset preloading.
   - `js/main.js`: Initialization and entry point.
 - **Game Data**: `game.json` contains dialogue scripts, scene flow, asset definitions, and in-text commands.
-- **Styling**: `css/style.css` manages the 16:9 responsive layout, layering, and mobile responsiveness.
+- **Styling**: 
+  - `css/style.css`: Main layout, layering, and core UI styles. Uses Container Query Units (`cqh`) for aspect-ratio independent scaling.
+  - `css/investigation.css`: Specific styles for the investigation menu and buttons.
 - **Assets**: Stored in `assets/` and referenced via relative paths in `game.json`.
 
 ## Critical Workflows
@@ -31,6 +33,8 @@ The JSON file acts as the central database.
   "characters": { ... },
   "backgrounds": { ... },
   "evidence": { ... },
+  "profiles": { ... },
+  "investigations": { ... },
   "Topics": { ... },
   "sounds": { ... },
   "music": { ... },
@@ -77,16 +81,19 @@ The engine parses commands enclosed in `{}` within the `text` string.
 **Gameplay Features:**
 - `{addEvidence:Key,ShowPopup}`: Add item to Court Record. `ShowPopup` is optional (default true).
 - `{topicUnlock:Key}`: Unlock a conversation topic.
-- `{showTopics}`: Trigger the topic selection menu at the end of the current section.
+- `{sectionEnd}`: Trigger the topic selection menu at the end of the current section.
 
 ### Asset Configuration (`game.json`)
 - **Characters**: Nested object structure: `CharacterName -> Emotion -> State (default/talking)`.
 - **Backgrounds**: Key-value mapping to file paths.
-- **Evidence**: Objects with `name`, `description`, and `image`.
+- **Evidence/Profiles**: Objects with `name`, `description`, and `image`.
 - **Topics**: Objects with `text` (display name) and `label` (target section).
+- **Investigations**: Keyed by background name. Contains an array of objects with `bounds` (polygon coordinates array) and `label` (target section).
 - **Sounds/Music**: Key-value mapping to file paths.
 
 ## Common Patterns
 - **State Management**: Use `gameState` object in `js/globals.js` for flags.
 - **Typing Effect**: `typeWriter` in `js/engine.js` handles rendering.
 - **Sprite States**: Characters automatically switch between `default` and `talking` states during text rendering.
+- **Responsive Design**: The UI relies on Container Queries (`cqh`) to maintain a 16:9 aspect ratio.
+- **UI Theme**: Primary interaction buttons use a consistent "Wood" theme.

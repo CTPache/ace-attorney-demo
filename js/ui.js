@@ -28,9 +28,21 @@ const btnEvidenceBack = document.getElementById('btn-evidence-back');
 const bottomTopBar = document.getElementById('bottom-top-bar');
 const crTabs = document.querySelectorAll('.cr-tab');
 
+// Investigation Panel Elements
+const investigationPanel = document.getElementById('investigation-panel');
+const investigationBg = document.getElementById('investigation-bg');
+const investigationOverlay = document.getElementById('investigation-overlay');
+const btnInvestigationBack = document.getElementById('btn-investigation-back');
+
+// Cursor Elements
+const cursorH = document.getElementById('investigation-cursor-h');
+const cursorV = document.getElementById('investigation-cursor-v');
+const cursorBox = document.getElementById('investigation-cursor-box');
+
 let isCourtRecordOpen = false;
 let wasTopicMenuOpen = false;
 let isPresentingMode = false;
+let isExamining = false;
 let currentRecordTab = 'evidence'; // 'evidence' or 'profiles'
 
 // Tab Handlers
@@ -54,18 +66,123 @@ document.addEventListener('sceneStateChanged', (e) => {
         investigationMenu.classList.add('hidden');
         topicMenu.classList.add('hidden');
         advanceBtn.classList.remove('hidden');
+        investigationPanel.classList.add('hidden');
+        bottomTopBar.classList.remove('hidden'); // Ensure top bar is visible during dialogue
     } else {
         textboxContainer.classList.add('hidden');
         advanceBtn.classList.add('hidden');
-        // Show Main Menu by default when entering investigation mode
-        investigationMenu.classList.remove('hidden');
-        topicMenu.classList.add('hidden');
+        
+        if (isExamining) {
+            // Return to examine mode
+            investigationMenu.classList.add('hidden');
+            investigationPanel.classList.remove('hidden');
+            topicMenu.classList.add('hidden');
+            bottomTopBar.classList.add('hidden'); // Hide top bar in examine mode
+            renderInvestigation(); // Refresh background and points
+        } else {
+            // Show Main Menu by default
+            investigationMenu.classList.remove('hidden');
+            topicMenu.classList.add('hidden');
+            investigationPanel.classList.add('hidden');
+            bottomTopBar.classList.remove('hidden'); // Ensure top bar is visible in menu
+        }
     }
 });
 
 // Investigation Menu Handlers
 btnExamine.addEventListener('click', () => {
-    console.log("Examine clicked - Not implemented");
+    investigationMenu.classList.add('hidden');
+    investigationPanel.classList.remove('hidden');
+    bottomTopBar.classList.add('hidden'); // Hide top bar
+    isExamining = true;
+    renderInvestigation();
+});
+
+btnInvestigationBack.addEventListener('click', () => {
+    isExamining = false;
+    investigationPanel.classList.add('hidden');
+    investigationMenu.classList.remove('hidden');
+    bottomTopBar.classList.remove('hidden'); // Show top bar
+});
+
+function renderInvestigation() {
+    // Set image
+    const bgUrl = backgrounds[currentBackgroundKey];
+    if (bgUrl) {
+        investigationBg.src = bgUrl;
+    }
+    
+    // Clear overlay
+    investigationOverlay.innerHTML = '';
+    
+    // Get points
+    const points = investigations[currentBackgroundKey] || [];
+    
+    points.forEach(point => {
+        const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        
+        // Convert bounds array to string "x,y x,y"
+        let pointsStr = "";
+        if (point.bounds && Array.isArray(point.bounds)) {
+            for (let i = 0; i < point.bounds.length; i += 2) {
+                pointsStr += `${point.bounds[i]},${point.bounds[i+1]} `;
+            }
+        }
+        
+        polygon.setAttribute("points", pointsStr.trim());
+        polygon.setAttribute("class", "investigation-polygon");
+        
+        if (typeof debugShowInvestigationBounds !== 'undefined' && debugShowInvestigationBounds) {
+            polygon.classList.add('debug');
+        }
+
+        // Check if visited
+        const isVisited = gameState[point.label + "_visited"];
+        if (isVisited) {
+            polygon.classList.add('visited');
+        }
+        
+        // Hover effects for cursor
+        polygon.addEventListener('mouseenter', () => {
+            cursorBox.classList.add('active');
+            if (gameState[point.label + "_visited"]) {
+                cursorBox.classList.add('visited');
+            }
+        });
+        
+        polygon.addEventListener('mouseleave', () => {
+            cursorBox.classList.remove('active');
+            cursorBox.classList.remove('visited');
+        });
+
+        polygon.addEventListener('click', () => {
+            // Mark visited
+            gameState[point.label + "_visited"] = true;
+            polygon.classList.add('visited');
+            
+            // Jump to label
+            if (window.jumpToSection) {
+                window.jumpToSection(point.label);
+            }
+        });
+        
+        investigationOverlay.appendChild(polygon);
+    });
+}
+
+// Cursor Movement
+investigationPanel.addEventListener('mousemove', (e) => {
+    const rect = investigationPanel.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Update Box Position
+    cursorBox.style.left = `${x}px`;
+    cursorBox.style.top = `${y}px`;
+    
+    // Update Lines
+    cursorH.style.top = `${y}px`;
+    cursorV.style.left = `${x}px`;
 });
 
 btnMove.addEventListener('click', () => {

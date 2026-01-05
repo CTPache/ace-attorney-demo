@@ -25,7 +25,7 @@ function parseText(text) {
         /\{addEvidence:([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/, // 15,16: AddEvidence (Key, ShowPopup)
         /\{addProfile:([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/,  // 17,18: AddProfile (Key, ShowPopup)
         /\{topicUnlock:([a-zA-Z0-9_]+)\}/,                  // 19: TopicUnlock
-        /\{showTopics\}/,                                   // 0: ShowTopics
+        /\{sectionEnd\}/,                                   // 0: SectionEnd
         /\{playSound:([a-zA-Z0-9_]+)\}/,                    // 20: PlaySound
         /\{startBGM:([a-zA-Z0-9_]+)\}/,                     // 21: StartBGM
         /\{stopBGM(?::(true|false))?\}/                     // 22: StopBGM (FadeOut)
@@ -50,8 +50,8 @@ function parseText(text) {
             parsedSegments.push({ type: 'showCharacter' });
         } else if (match[0] === '{hideCharacter}') { // Hide (Instant)
             parsedSegments.push({ type: 'hideCharacter' });
-        } else if (match[0] === '{showTopics}') { // Show Topics
-            parsedSegments.push({ type: 'showTopics' });
+        } else if (match[0] === '{sectionEnd}') { // Section End
+            parsedSegments.push({ type: 'sectionEnd' });
         } else if (match[0] === '{center}') { // Center Text {center}
             parsedSegments.push({ type: 'center' });
         } else if (match[0] === '{nl}') { // New Line {nl}

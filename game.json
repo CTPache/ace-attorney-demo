@@ -55,6 +55,18 @@
     "music": {
         "investigation": "assets/audio/demo/bgm001.ogg"
     },
+    "investigations": {
+        "Don1": [
+            {
+                "bounds": [24, 5, 38, 5, 38, 32, 24, 32],
+                "label": "Demo_Examine_Sign"
+            },
+            {
+                "bounds": [20, 55, 35, 55, 35, 70, 20, 70],
+                "label": "Demo_Examine_Ladder"
+            }
+        ]
+    },
     "Topics": {
         "showcase": {
             "text": "Showcase Demo Features",
@@ -83,10 +95,7 @@
             },
             {
                 "name": "Oldbag",
-                "text": "In this demo, I'll be showing you some of the features of the Ace Attorney Engine."
-            },
-            {
-                "text": "{topicUnlock:showcase}{showTopics}"
+                "text": "In this demo, I'll be showing you some of the features of the Ace Attorney Engine.{topicUnlock:showcase}{sectionEnd}"
             }
         ],
         "Demo_showcase": [
@@ -162,19 +171,55 @@
         "Section_AlreadyMet": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Embarrassed\"]}Welcome back, friend!{showTopics}"
+                "text": "{sprite:Oldbag[\"Embarrassed\"]}Welcome back, friend!{sectionEnd}"
             }
         ],
         "Demo_evidence_badge": [
             {
                 "name": "Oldbag",
-                "text": "{playSound:wham}{flash}{sprite:Oldbag[\"Shocked\"]}My badge! {p:500}{sprite:Oldbag[\"Angry\"]}Wait, why do you have that? Are you impersonating an officer?{showTopics}"
+                "text": "{playSound:wham}{flash}{sprite:Oldbag[\"Shocked\"]}My badge! {p:500}{sprite:Oldbag[\"Angry\"]}Wait, why do you have that? Are you impersonating an officer?{sectionEnd}"
             }
         ],
         "Demo_evidence_default": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Normal\"]}I don't know what that is, and I don't care.{showTopics}"
+                "text": "{sprite:Oldbag[\"Normal\"]}I don't know what that is, and I don't care.{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Sign": [
+            {
+            "name": "Phoenix",
+            "text": "There's a sign here with some kanji on it. 'Seiri'... something?"
+            },
+            {
+            "name": "Oldbag",
+            "text": "{sprite:Oldbag[\"Smirking\"]}It says 'Seiri Seiton', you uncultured cactus! It means 'keeping things tidy and in order'."
+            },
+            {
+            "name": "Phoenix",
+            "text": "(I guess my desk doesn't exactly fit that description...)"
+            },
+             {
+            "name": "Oldbag",
+            "text": "{sprite:Oldbag[\"Angry\"]}Look at this place! It's a mess! The youth today have no respect for order!{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Ladder": [
+            {
+            "name": "Phoenix",
+            "text": "Look at that ladder over there."
+            },
+            {
+            "name": "Oldbag",
+            "text": "{sprite:Oldbag[\"Angry\"]}Hold your horses! That is NOT a ladder! It's a \"step-ladder\"!"
+            },
+            {
+            "name": "Phoenix",
+            "text": "So? What's the difference? You need to stop judging things based on narrow-minded cultural assumptions."
+            },
+            {
+            "name": "Oldbag",
+            "text": "{sprite:Oldbag[\"Smirking\"]}Hmph. Young people these days... A step-ladder stands on its own, unlike a ladder which needs support!{sectionEnd}"
             }
         ]
     }

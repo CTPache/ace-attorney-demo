@@ -19,6 +19,7 @@ let profilesDB = {};
 let profilesInventory = [];
 let topicsDB = {};
 let unlockedTopics = [];
+let investigations = {};
 let soundsDB = {};
 let musicDB = {};
 const gameState = {};
@@ -27,6 +28,7 @@ let gameScript = {};
 // State Variables
 let currentSectionName = "Demo_Main_01";
 let currentLineIndex = 0;
+let currentBackgroundKey = "";
 let isScenePlaying = true;
 let isTyping = false;
 let typingInterval;
@@ -47,3 +49,4 @@ let currentBGM = null; // Track current background music
 const defaultTextSpeed = 30;
 let currentTextSpeed = defaultTextSpeed;
 let currentBlipType = 1;
+let debugShowInvestigationBounds = false;

@@ -103,6 +103,7 @@ function changeBackground(bgName) {
     const bgUrl = backgrounds[bgName];
     if (bgUrl) {
         backgroundElement.style.backgroundImage = `url('${bgUrl}')`;
+        currentBackgroundKey = bgName;
     }
 }
 

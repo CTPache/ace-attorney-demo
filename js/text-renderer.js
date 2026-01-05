@@ -74,6 +74,10 @@ function processNextChar() {
         character.style.transition = ""; // Restore transition
         segmentIndex++;
         processNextChar();
+    } else if (segment.type === 'sectionEnd') {
+        showTopicsOnEnd = true;
+        segmentIndex++;
+        processNextChar();
     } else if (segment.type === 'bg') {
         changeBackground(segment.bgName);
         segmentIndex++;
@@ -270,7 +274,7 @@ function finishTyping() {
             if (!unlockedTopics.includes(segment.topicId)) {
                 unlockedTopics.push(segment.topicId);
             }
-        } else if (segment.type === 'showTopics') {
+        } else if (segment.type === 'sectionEnd') {
             showTopicsOnEnd = true;
         } else if (segment.type === 'playSound') {
             playSound(segment.soundName);
