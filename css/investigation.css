@@ -35,6 +35,9 @@
     align-items: center;
     transition: all 0.1s;
     position: relative;
+    width: 80%;
+    height: 50%;
+    margin: auto;
 }
 
 .inv-btn:hover {
