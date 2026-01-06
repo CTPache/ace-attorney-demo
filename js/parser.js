@@ -13,7 +13,7 @@ const patterns = [
     /\{hideCharacter\}/,                                // 0: Hide
     /\{bg:([a-zA-Z0-9_]+)\}/,                           // 6: Bg
     /\{jump:([a-zA-Z0-9_]+)\}/,                         // 7: Jump
-    /\{jumpIf:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/, // 8,9,10: JumpIf
+    /\{jumpIf:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/, // 8,9,10: JumpIf
     /\{setState:([a-zA-Z0-9_]+),([^}]+)\}/,             // 11,12: SetState
     /\{blip:(\d+)(?:,(true|false))?\}/,                 // 13,14: Blip (Type, ShouldSpeak)
     /\{center\}/,                                       // 0: Center
@@ -31,6 +31,8 @@ const patterns = [
     /\{showLifeBar(?::(\d+))?\}/,                       // 26: ShowLifeBar
     /\{hideLifeBar\}/,                                  // 0: HideLifeBar (Match[0] check)
     /\{setGameOver:([a-zA-Z0-9_]+)\}/,                  // 27: SetGameOver
+    /\{removeEvidence:([a-zA-Z0-9_]+)\}/,               // 28: RemoveEvidence
+    /\{updateEvidence:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)(?:,(true|false))?\}/, // 29,30,31: UpdateEvidence (OldKey, NewKey, ShowPopup)
     /\{endGame\}/                                       // 0: EndGame (Match[0] check)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
@@ -83,7 +85,7 @@ function parseText(text) {
             parsedSegments.push({ type: 'bg', bgName: match[6] });
         } else if (match[7]) { // Jump {jump:Label}
             parsedSegments.push({ type: 'jump', label: match[7] });
-        } else if (match[8] && match[9] && match[10]) { // JumpIf {jumpIf:Cond,True,False}
+        } else if (match[8] && match[9]) { // JumpIf {jumpIf:Cond,True,False(Optional)}
             parsedSegments.push({ type: 'jumpIf', condition: match[8], labelTrue: match[9], labelFalse: match[10] });
         } else if (match[11] && match[12]) { // SetState {setState:Key,Value}
             parsedSegments.push({ type: 'setState', key: match[11], value: match[12] });
@@ -176,6 +178,11 @@ function parseText(text) {
             parsedSegments.push({ type: 'showLifeBar', penalty: penalty });
         } else if (match[27]) { // SetGameOver {setGameOver:Label}
             parsedSegments.push({ type: 'setGameOver', label: match[27] });
+        } else if (match[28]) { // RemoveEvidence {removeEvidence:Key}
+            parsedSegments.push({ type: 'removeEvidence', key: match[28] });
+        } else if (match[29] && match[30]) { // UpdateEvidence {updateEvidence:Old,New,Popup}
+            const showPopup = match[31] !== 'false';
+            parsedSegments.push({ type: 'updateEvidence', oldKey: match[29], newKey: match[30], showPopup: showPopup });
         }
         
         // I also need to update the `stopBGM` check because it relies on index 22 in valid code (was 22). Now it is 23.

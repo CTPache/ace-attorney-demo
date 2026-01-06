@@ -72,9 +72,36 @@ function processCommonSegment(segment) {
         case 'addEvidence':
             if (evidenceDB[segment.key] && !evidenceInventory.includes(segment.key)) {
                 evidenceInventory.push(segment.key);
+                gameState['evidence_' + segment.key] = true;
                 console.log(`Added evidence: ${segment.key}`);
                 if (segment.showPopup) {
                     const event = new CustomEvent('evidenceAdded', { detail: { key: segment.key } });
+                    document.dispatchEvent(event);
+                }
+            }
+            return 'CONTINUE';
+        case 'removeEvidence':
+            const removeIndex = evidenceInventory.indexOf(segment.key);
+            if (removeIndex > -1) {
+                evidenceInventory.splice(removeIndex, 1);
+                delete gameState['evidence_' + segment.key];
+                console.log(`Removed evidence: ${segment.key}`);
+            }
+            return 'CONTINUE';
+        case 'updateEvidence':
+            // Remove old
+            const updateIndex = evidenceInventory.indexOf(segment.oldKey);
+            if (updateIndex > -1) {
+                evidenceInventory.splice(updateIndex, 1);
+                delete gameState['evidence_' + segment.oldKey];
+            }
+            // Add new
+            if (evidenceDB[segment.newKey] && !evidenceInventory.includes(segment.newKey)) {
+                evidenceInventory.push(segment.newKey);
+                gameState['evidence_' + segment.newKey] = true;
+                console.log(`Updated evidence ${segment.oldKey} to ${segment.newKey}`);
+                if (segment.showPopup) {
+                    const event = new CustomEvent('evidenceAdded', { detail: { key: segment.newKey } });
                     document.dispatchEvent(event);
                 }
             }
@@ -147,10 +174,14 @@ function handleFlowControl(segment) {
     } else if (segment.type === 'jumpIf') {
         if (gameState[segment.condition]) {
             jumpToSection(segment.labelTrue);
-        } else {
+            return true;
+        } else if (segment.labelFalse) {
             jumpToSection(segment.labelFalse);
+            return true;
+        } else {
+             // Condition false and no false-label -> Continue to next segment
+             return false;
         }
-        return true;
     } else if (segment.type === 'option') {
         // Stop typing, don't advance segment or char
         isTyping = false; 
