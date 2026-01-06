@@ -66,7 +66,7 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{flash}`: Trigger a white flash effect.
 
 **Audio:**
-- `{blip:Type}`: Change text blip sound (1: Male, 2: Female, 3: Typewriter, 4: Silence).
+- `{blip:Type,Speak}`: Change text blip. `Speak` is (opt) boolean. If false, mouth doesn't move. Types: 1: Male, 2: Female, 3: Typewriter, 4: Silence.
 - `{playSound:Key}`: Play a sound effect once.
 - `{startBGM:Key}`: Start looping background music.
 - `{stopBGM}` / `{stopBGM:false}`: Stop BGM (default fades out, pass `false` for instant cut).
@@ -75,7 +75,7 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{p:Milliseconds}`: Pause typing for X ms.
 - `{skip:Milliseconds}`: Auto-advance after X ms.
 - `{jump:SectionName}`: Jump to a new section.
-- `{jumpIf:VarName,TrueSection,FalseSection}`: Conditional jump based on `gameState`.
+- `{jumpIf:VarName,TrueSection,FalseSection}`: Conditional jump based on `gameState`. `FalseSection` is (opt); if omitted, continues to next line on false.
 - `{setState:VarName,Value}`: Update a variable in `gameState`.
 - `{option:Key}`: Display a list of choices defined in `options` db.
 - `{setGameOver:Label}`: Sets the section to jump to if a Game Over occurs.
@@ -88,7 +88,9 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{textSpeed:Milliseconds}`: Change typing speed for the current line.
 
 **Gameplay Features:**
-- `{addEvidence:Key,ShowPopup}`: Add item to Court Record. `ShowPopup` is optional (default true).
+- `{addEvidence:Key,ShowPopup}`: Add item to Court Record. Auto-sets `gameState['evidence_Key']=true`.
+- `{removeEvidence:Key}`: Remove item from Court Record and clear its game state.
+- `{updateEvidence:OldKey,NewKey,ShowPopup}`: Replace an evidence item with another.
 - `{topicUnlock:Key}`: Unlock a conversation topic.
 - `{sectionEnd}`: Trigger the topic selection menu at the end of the current section.
 - `{lifeMod:Amount}`: Add/Subtract from the life bar (e.g., `{lifeMod:-2}`).
