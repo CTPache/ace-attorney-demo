@@ -208,7 +208,7 @@
                 "text": "{blip:0}{addEvidence:charm,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm added to Court Record.{color:white}"
             },
             {
-                "text": "{jump:Demo_Charm_obtained}{sectionEnd}"
+                "text": "{setState:Demo_Examine_Sign_visited,false}{jump:Demo_Charm_obtained}{sectionEnd}"
             }
         ],
         "Demo_Charm_obtained": [
@@ -296,7 +296,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}{sectionEnd}"
+                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}"
             },
             {
                 "text": "{jumpIf:evidence_charm,Demo_Examine_Sign_Charm_obtained}{sectionEnd}"
