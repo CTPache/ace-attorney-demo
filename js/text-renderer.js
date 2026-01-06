@@ -259,6 +259,12 @@ function processNextChar() {
         segmentIndex++;
         processNextChar();
     } else if (segment.type === 'sprite') {
+        // Explicitly show character (mimic {showCharacter})
+        character.style.transition = "none";
+        character.style.opacity = 1;
+        void character.offsetWidth;
+        character.style.transition = "";
+
         changeSprite(segment.charName, segment.spriteKey);
         const charData = characters[segment.charName];
         const animData = charData ? charData[segment.spriteKey] : null;
@@ -359,7 +365,12 @@ function finishTyping() {
             triggerFlash();
             segmentIndex++;
         } else if (segment.type === 'sprite') {
-             // Instant sprite change
+             // Instant sprite change + Show Character
+            character.style.transition = "none";
+            character.style.opacity = 1;
+            void character.offsetWidth;
+            character.style.transition = "";
+            
             changeSprite(segment.charName, segment.spriteKey);
             segmentIndex++; 
         } else if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {

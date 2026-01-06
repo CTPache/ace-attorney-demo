@@ -7,6 +7,7 @@ btnExamine.addEventListener('click', () => {
     investigationMenu.classList.add('hidden');
     investigationPanel.classList.remove('hidden');
     bottomTopBar.classList.add('hidden'); // Hide top bar
+    gameContainer.classList.add('investigating');
     isExamining = true;
     renderInvestigation();
 });
@@ -17,6 +18,7 @@ btnInvestigationBack.addEventListener('click', (e) => {
     investigationPanel.classList.add('hidden');
     investigationMenu.classList.remove('hidden');
     bottomTopBar.classList.remove('hidden'); // Show top bar
+    gameContainer.classList.remove('investigating');
 });
 
 btnMove.addEventListener('click', () => {

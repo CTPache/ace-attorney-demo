@@ -55,6 +55,14 @@ body {
     opacity: 0;
 }
 
+#game-container.investigating #character {
+    display: none !important;
+}
+
+#game-container.investigating #background {
+    filter: brightness(0.5);
+}
+
 #flash-overlay {
     background-color: white;
     opacity: 0;

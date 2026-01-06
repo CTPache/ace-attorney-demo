@@ -68,6 +68,7 @@ document.addEventListener('sceneStateChanged', (e) => {
         advanceBtn.classList.remove('hidden');
         investigationPanel.classList.add('hidden');
         bottomTopBar.classList.remove('hidden'); // Ensure top bar is visible during dialogue
+        gameContainer.classList.remove('investigating');
     } else {
         textboxContainer.classList.add('hidden');
         advanceBtn.classList.add('hidden');
@@ -82,6 +83,7 @@ document.addEventListener('sceneStateChanged', (e) => {
             investigationPanel.classList.remove('hidden');
             topicMenu.classList.add('hidden');
             bottomTopBar.classList.add('hidden'); // Hide top bar in examine mode
+            gameContainer.classList.add('investigating');
             renderInvestigation(); // Refresh background and points
         } else {
             // Show Main Menu by default

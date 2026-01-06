@@ -338,7 +338,7 @@
         "Demo_Examine_Default": [
             {
                 "name": "Phoenix",
-                "text": "There's nothing particularly interesting here."
+                "text": "{hideCharacter}There's nothing particularly interesting here."
             }
         ]
     }
