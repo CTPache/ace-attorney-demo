@@ -1,5 +1,7 @@
 console.log("Investigation Loaded");
 
+let currentInvestigationDefault = null;
+
 // Investigation Menu Handlers
 btnExamine.addEventListener('click', () => {
     investigationMenu.classList.add('hidden');
@@ -9,7 +11,8 @@ btnExamine.addEventListener('click', () => {
     renderInvestigation();
 });
 
-btnInvestigationBack.addEventListener('click', () => {
+btnInvestigationBack.addEventListener('click', (e) => {
+    e.stopPropagation();
     isExamining = false;
     investigationPanel.classList.add('hidden');
     investigationMenu.classList.remove('hidden');
@@ -18,6 +21,14 @@ btnInvestigationBack.addEventListener('click', () => {
 
 btnMove.addEventListener('click', () => {
     console.log("Move clicked - Not implemented");
+});
+
+investigationPanel.addEventListener('click', (e) => {
+    if (isExamining) {
+        if (window.jumpToSection && currentInvestigationDefault) {
+             window.jumpToSection(currentInvestigationDefault);
+        }
+    }
 });
 
 function renderInvestigation() {
@@ -30,8 +41,17 @@ function renderInvestigation() {
     // Clear overlay
     investigationOverlay.innerHTML = '';
     
-    // Get points
-    const points = investigations[currentBackgroundKey] || [];
+    // Get points and default
+    let points = [];
+    currentInvestigationDefault = null;
+
+    const data = investigations[currentBackgroundKey];
+    if (Array.isArray(data)) {
+        points = data;
+    } else if (data && typeof data === 'object') {
+        points = data.points || [];
+        currentInvestigationDefault = data.default;
+    }
     
     points.forEach(point => {
         const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
@@ -70,7 +90,8 @@ function renderInvestigation() {
             cursorBox.classList.remove('visited');
         });
 
-        polygon.addEventListener('click', () => {
+        polygon.addEventListener('click', (e) => {
+            e.stopPropagation();
             // Mark visited
             gameState[point.label + "_visited"] = true;
             polygon.classList.add('visited');

@@ -59,6 +59,9 @@ function advanceDialogue(force = false) {
     // If waiting for auto-skip and not forced, block user input
     if (isWaitingForAutoSkip && force !== true) return;
 
+    // If forced (e.g., from {skip}), stop waiting
+    if (force === true) isWaitingForAutoSkip = false;
+
     if (isTyping) {
         // If currently typing, finish immediately
         finishTyping();
@@ -88,6 +91,9 @@ function advanceDialogue(force = false) {
                 updateSceneState();
                 // Dispatch event to show topic menu
                 document.dispatchEvent(new Event('showTopicMenu'));
+            } else {
+                isScenePlaying = false;
+                updateSceneState();
             }
         }
     }

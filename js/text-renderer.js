@@ -273,12 +273,15 @@ function processNextChar() {
         isWaitingForAutoSkip = true;
         setSpriteState('default');
         isTyping = false;
+        clearTimeout(typingInterval); // Stop any pending typing
         setTimeout(() => {
-            isWaitingForAutoSkip = false;
             advanceDialogue(true);
         }, segment.duration);
     } else if (segment.type === 'jump' || segment.type === 'jumpIf' || segment.type === 'option') {
-        handleFlowControl(segment);
+        if (!handleFlowControl(segment)) {
+            segmentIndex++;
+            processNextChar();
+        }
     }
 }
 

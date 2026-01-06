@@ -12,7 +12,8 @@
             "Shocked": {
                 "default": "assets/img/characters/Locked Room/Oldbag/Shocked.webp",
                 "time": 680
-            },"ShockedHold": {
+            },
+            "ShockedHold": {
                 "default": "assets/img/characters/Locked Room/Oldbag/Shocked2.webp"
             },
             "Angry": {
@@ -65,34 +66,37 @@
         "investigation": "assets/audio/demo/bgm001.ogg"
     },
     "investigations": {
-        "Don1": [
-            {
-                "bounds": [
-                    24,
-                    5,
-                    38,
-                    5,
-                    38,
-                    32,
-                    24,
-                    32
-                ],
-                "label": "Demo_Examine_Sign"
-            },
-            {
-                "bounds": [
-                    20,
-                    55,
-                    35,
-                    55,
-                    35,
-                    70,
-                    20,
-                    70
-                ],
-                "label": "Demo_Examine_Ladder"
-            }
-        ]
+        "Don1": {
+            "default": "Demo_Examine_Default",
+            "points": [
+                {
+                    "bounds": [
+                        24,
+                        5,
+                        38,
+                        5,
+                        38,
+                        32,
+                        24,
+                        32
+                    ],
+                    "label": "Demo_Examine_Sign"
+                },
+                {
+                    "bounds": [
+                        20,
+                        55,
+                        35,
+                        55,
+                        35,
+                        70,
+                        20,
+                        70
+                    ],
+                    "label": "Demo_Examine_Ladder"
+                }
+            ]
+        }
     },
     "Topics": {
         "showcase": {
@@ -301,13 +305,13 @@
                 "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}"
             },
             {
-                "text": "{jumpIf:evidence_charm,Demo_Examine_Sign_Charm_obtained}{sectionEnd}"
+                "text": "{jumpIf:evidence_charm,Demo_Examine_Sign_Charm_obtained}{jumpIf:evidence_charm2,Demo_Examine_Sign_Charm_obtained}{sectionEnd}{skip:0}"
             }
         ],
         "Demo_Examine_Sign_Charm_obtained": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Smirking\"]}That's where I found that charm I gave you.{sectionEnd}"
+                "text": "{sprite:Oldbag[\"Smirking\"]}That's where I found that charm I gave you."
             },
             {
                 "text": "{blip:0}{updateEvidence:charm,charm2,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm updated to Court Record.{color:white}{sectionEnd}"
@@ -329,6 +333,12 @@
             {
                 "name": "Oldbag",
                 "text": "{sprite:Oldbag[\"Angry\"]}Cultural myopia! You need to broaden your mind!{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "There's nothing particularly interesting here."
             }
         ]
     }
