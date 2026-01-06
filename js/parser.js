@@ -28,7 +28,8 @@ function parseText(text) {
         /\{sectionEnd\}/,                                   // 0: SectionEnd
         /\{playSound:([a-zA-Z0-9_]+)\}/,                    // 20: PlaySound
         /\{startBGM:([a-zA-Z0-9_]+)\}/,                     // 21: StartBGM
-        /\{stopBGM(?::(true|false))?\}/                     // 22: StopBGM (FadeOut)
+        /\{stopBGM(?::(true|false))?\}/,                    // 22: StopBGM (FadeOut)
+        /\{option:([a-zA-Z0-9_]+)\}/                        // 23: Option
     ];
     const regex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
     let lastIndex = 0;
@@ -91,6 +92,8 @@ function parseText(text) {
             parsedSegments.push({ type: 'playSound', soundName: match[20] });
         } else if (match[21]) { // StartBGM {startBGM:Name}
             parsedSegments.push({ type: 'startBGM', musicName: match[21] });
+        } else if (match[23]) { // Option {option:Key}
+            parsedSegments.push({ type: 'option', optionKey: match[23] });
         }
 
         lastIndex = regex.lastIndex;

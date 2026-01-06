@@ -78,6 +78,18 @@ function processNextChar() {
         showTopicsOnEnd = true;
         segmentIndex++;
         processNextChar();
+    } else if (segment.type === 'option') {
+        // Stop typing, don't advance segment or char
+        isTyping = false; 
+        setSpriteState('default');
+        
+        // Render the options menu
+        if (window.renderOptionsMenu) {
+            window.renderOptionsMenu(segment.optionKey);
+        }
+        
+        // We do strictly NOTHING else. The button click will trigger jumpToSection.
+        return; 
     } else if (segment.type === 'bg') {
         changeBackground(segment.bgName);
         segmentIndex++;

@@ -3,7 +3,61 @@ console.log("UI Loaded");
 // Locals moved to other files
 // Shared logic for scene state only
 
+// Function to handle Option Selection Menu
+window.renderOptionsMenu = function(optionKey) {
+    const optionData = optionsDB[optionKey];
+    if (!optionData) {
+        console.error("Option data not found for key: " + optionKey);
+        isTyping = false; 
+        return;
+    }
 
+    // Reuse topicMenu as the container for options
+    topicMenu.classList.remove('hidden');
+    // Hide other overlapping menus if any
+    investigationMenu.classList.add('hidden');
+    investigationPanel.classList.add('hidden');
+    
+    // Hide Advance Button
+    advanceBtn.classList.add('hidden');
+    
+    // Block interaction
+    isInputBlocked = true;
+
+    topicMenu.innerHTML = ''; // Clear previous content
+
+    // Create a Header
+    if (optionData.text) {
+        const header = document.createElement('div');
+        header.className = 'options-header';
+        header.textContent = optionData.text;
+        topicMenu.appendChild(header);
+    }
+
+    // Render Buttons
+    if (optionData.options && Array.isArray(optionData.options)) {
+        optionData.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'topic-button'; // Reuse existing button class
+            btn.textContent = opt.text;
+            
+            btn.addEventListener('click', () => {
+                // Unblock interaction
+                isInputBlocked = false;
+
+                // Hide menu
+                topicMenu.classList.add('hidden');
+                
+                // Jump to the selected label
+                if (window.jumpToSection) {
+                    jumpToSection(opt.label);
+                }
+            });
+
+            topicMenu.appendChild(btn);
+        });
+    }
+}
 
 // Listen for scene state changes
 document.addEventListener('sceneStateChanged', (e) => {

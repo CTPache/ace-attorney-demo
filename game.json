@@ -58,11 +58,21 @@
     "investigations": {
         "Don1": [
             {
-                "bounds": [24, 5, 38, 5, 38, 32, 24, 32],
+                "bounds": [
+                    24,5,
+                    38,5,
+                    38,32,
+                    24,32
+                ],
                 "label": "Demo_Examine_Sign"
             },
             {
-                "bounds": [20, 55, 35, 55, 35, 70, 20, 70],
+                "bounds": [
+                    20,55,
+                    35,55,
+                    35,70,
+                    20,70
+                ],
                 "label": "Demo_Examine_Ladder"
             }
         ]
@@ -70,7 +80,22 @@
     "Topics": {
         "showcase": {
             "text": "Showcase Demo Features",
-            "label":"Demo_showcase"
+            "label": "Demo_showcase"
+        }
+    },
+    "options": {
+        "DemoOptions": {
+            "text": "Select your answer:",
+            "options": [
+                {
+                    "text": "First Demo Option",
+                    "label": "Demo_option_1"
+                },
+                {
+                    "text": "Second Demo Option",
+                    "label": "Demo_option_2"
+                }
+            ]
         }
     },
     "gameScript": {
@@ -156,6 +181,10 @@
                 "text": "{sprite:Oldbag[\"Normal\"]}This is the second section! We jumped here."
             },
             {
+                "name": "Oldbag",
+                "text": "Now, let's demonstrate conditional jumps based on game state."
+            },
+            {
                 "text": "{jumpIf:hasMetOldbag,Section_AlreadyMet,Section_FirstMeeting}"
             }
         ],
@@ -172,6 +201,9 @@
             {
                 "name": "Oldbag",
                 "text": "{sprite:Oldbag[\"Embarrassed\"]}Welcome back, friend!{sectionEnd}"
+            },
+            {
+                "text": "{option:DemoOptions}"
             }
         ],
         "Demo_evidence_badge": [
@@ -188,38 +220,50 @@
         ],
         "Demo_Examine_Sign": [
             {
-            "name": "Phoenix",
-            "text": "There's a sign here with some kanji on it. 'Seiri'... something?"
+                "name": "Phoenix",
+                "text": "There's a sign here with some kanji on it. 'Seiri'... something?"
             },
             {
-            "name": "Oldbag",
-            "text": "{sprite:Oldbag[\"Smirking\"]}It says 'Seiri Seiton', you uncultured cactus! It means 'keeping things tidy and in order'."
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}It says 'Seiri Seiton', you uncultured cactus! It means 'keeping things tidy and in order'."
             },
             {
-            "name": "Phoenix",
-            "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}"
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}"
             },
-             {
-            "name": "Oldbag",
-            "text": "{sprite:Oldbag[\"Angry\"]}Look at this place! It's a mess! The youth today have no respect for order!{sectionEnd}"
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Angry\"]}Look at this place! It's a mess! The youth today have no respect for order!{sectionEnd}"
             }
         ],
         "Demo_Examine_Ladder": [
             {
-            "name": "Phoenix",
-            "text": "Look at that ladder over there."
+                "name": "Phoenix",
+                "text": "Look at that ladder over there."
             },
             {
-            "name": "Oldbag",
-            "text": "{sprite:Oldbag[\"Angry\"]}Hold your horses! That is NOT a ladder! It's a \"step-ladder\"!"
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Angry\"]}Hold your horses! That is NOT a ladder! It's a \"step-ladder\"!"
             },
             {
-            "name": "Phoenix",
-            "text": "So? What's the difference? You need to stop judging things based on narrow-minded cultural assumptions."
+                "name": "Phoenix",
+                "text": "So? What's the difference? You need to stop judging things based on narrow-minded cultural assumptions."
             },
             {
-            "name": "Oldbag",
-            "text": "{sprite:Oldbag[\"Smirking\"]}Hmph. Young people these days... A step-ladder stands on its own, unlike a ladder which needs support!{sectionEnd}"
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}Hmph. Young people these days... A step-ladder stands on its own, unlike a ladder which needs support!{sectionEnd}"
+            }
+        ],
+        "Demo_option_1": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}You picked the first option! Good choice, I suppose.{sectionEnd}"
+            }
+        ],
+        "Demo_option_2": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Angry\"]}You picked the second option! What were you thinking?!{sectionEnd}"
             }
         ]
     }

@@ -22,6 +22,9 @@ fetch('game.json')
         if (data.investigations) {
             investigations = data.investigations;
         }
+        if (data.options) {
+            optionsDB = data.options;
+        }
         if (data.sounds) {
             soundsDB = data.sounds;
         }

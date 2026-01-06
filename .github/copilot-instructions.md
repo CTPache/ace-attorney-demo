@@ -5,9 +5,13 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
 
 ## Architecture
 - **Engine Core**: Split into modules:
-  - `js/globals.js`: Global state and data containers.
+  - `js/DOMGlobals.js`: Centralized DOM element references.
+  - `js/globals.js`: Global state variables and data containers.
   - `js/engine.js`: Game loop, text parsing, and script execution.
-  - `js/ui.js`: UI interaction (buttons, menus, court record).
+  - `js/ui.js`: High-level UI state management and transition logic.
+  - `js/court-record.js`: Evidence/Profiles inventory and presenting logic.
+  - `js/investigation.js`: Investigation mode (examining, moving) logic.
+  - `js/topics.js`: Topic selection menu logic.
   - `js/media.js`: Audio playback and visual effects.
   - `js/loader.js`: Asset preloading.
   - `js/main.js`: Initialization and entry point.

@@ -13,9 +13,16 @@ btnTopicBack.addEventListener('click', () => {
 
 function renderTopics() {
     // Clear existing buttons except the Back button
-    const backBtn = document.getElementById('btn-topic-back');
     topicMenu.innerHTML = '';
-    topicMenu.appendChild(backBtn);
+    
+    // Check if the back button is still in the DOM or use the global reference
+    // Since using innerHTML='' removes it, we rely on the global variable btnTopicBack
+    // which should hold the reference to the element with the event listeners attached.
+    if (btnTopicBack) {
+        topicMenu.appendChild(btnTopicBack);
+    } else {
+        console.error("btnTopicBack global not found!");
+    }
     
     unlockedTopics.forEach(topicId => {
         const topic = topicsDB[topicId];

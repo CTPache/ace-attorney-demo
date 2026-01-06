@@ -582,6 +582,21 @@ body {
     color: #aaa;
 }
 
+.options-header {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: 'Seurat', sans-serif;
+    font-size: 5cqh;
+    background: linear-gradient(180deg, #8B4513 0%, #5D2906 100%);
+    border: 0.4cqh solid #CD853F;
+    border-radius: 1cqh;
+    padding: 1cqh;
+    margin-bottom: 2cqh;
+    box-shadow: 0 0.4cqh 0.8cqh rgba(0, 0, 0, 0.5);
+    text-shadow: 0.2cqh 0.2cqh 0 rgba(0, 0, 0, 0.5);
+}
+
 .back-btn {
     position: absolute !important;
     bottom: 1cqh;

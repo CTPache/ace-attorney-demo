@@ -50,6 +50,9 @@ function setGameState(key, value) {
 }
 
 function advanceDialogue(force = false) {
+    // Check if input is blocked (e.g., options menu open)
+    if (isInputBlocked) return;
+
     // Dispatch event to notify UI (e.g., hide popups)
     document.dispatchEvent(new Event('dialogueAdvanced'));
 
