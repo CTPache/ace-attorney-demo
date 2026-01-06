@@ -36,8 +36,14 @@
         },
         "charm": {
             "name": "Blue Badger's Charm",
-            "data": "Type: Evidence\nA charm of the Blue Badger.",
-            "description": "A small charm of the Blue Badger's head.",
+            "data": "Type: Evidence\nGiven to me by Wendy Oldbag.",
+            "description": "A small charm of the Blue Badger's head. Given to me by Wendy Oldbag.",
+            "image": "assets/img/evidence/charm.png"
+        },
+        "charm2": {
+            "name": "Blue Badger's Charm",
+            "data": "Type: Evidence\nGiven to me by Wendy Oldbag.",
+            "description": "A small charm of the Blue Badger's head. Found on the ground of the demo room.",
             "image": "assets/img/evidence/charm.png"
         }
     },
@@ -50,7 +56,8 @@
         }
     },
     "sounds": {
-        "wham": "assets/audio/wham.ogg"
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "damage": "assets/audio/se/damage.ogg"
     },
     "music": {
         "investigation": "assets/audio/demo/bgm001.ogg"
@@ -100,15 +107,15 @@
             "text": "Select your answer:",
             "options": [
                 {
-                    "text": "This is a safe choice",
+                    "text": "Edgeworth",
                     "label": "Demo_option_1"
                 },
                 {
-                    "text": "This triggers a game over penalty",
+                    "text": "Phoenix Wright",
                     "label": "Demo_option_2"
                 },
                 {
-                    "text": "This triggers a smaller penalty",
+                    "text": "The Paynes",
                     "label": "Demo_option_3"
                 }
             ]
@@ -117,160 +124,111 @@
     "gameScript": {
         "Demo_Main_01": [
             {
-                "text": "{setGameOver:BadEnding_01}{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
-            },
-            {
-                "text": "{blip:2}Testing, testing...{p:500} One, two, three...{p:500} Is this thing on?"
+                "text": "{setGameOver:BadEnding_01}{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{textSpeed:40}{center}{color:lime}October 14, 10:00 AM{nl}{p:500}Police Department{nl}{p:500}Demo Web Engine Tutorial Room{color:white}{sectionEnd}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:4}{color:lightblue}(Hello? Is anyone there?)"
+                "text": "{blip:1,false}{color:lightblue}(Another day, another trial. And I have no idea how this engine works...){color:white}"
+            },
+            {
+                "text": "{blip:2}Hrngh... Hrrrmph!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Hello? Is someone there?"
             },
             {
                 "name": "Oldbag",
-                "text": "{addEvidence:badge}{blip:1}{flash}{showCharacter}{sprite:Oldbag[\"Embarrassed\"]}Welcome to the Ace Attorney Engine demo!"
+                "text": "{blip:1}{flash}{playSound:damage}{showCharacter}{sprite:Oldbag[\"Angry\"]}Don't ignore me, you spiky-haired whippersnapper!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{sprite:Oldbag[\"Shocked\"]}W-Wendy Oldbag?! What are you doing here?"
             },
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Normal\"]}I'm Oldbag, your guide for today."
+                "text": "{sprite:Oldbag[\"Normal\"]}I was hired as the security guard/tutorial master for this shiny new web engine!"
             },
             {
                 "name": "Oldbag",
-                "text": "In this demo, I'll be showing you some of the features of the Ace Attorney Engine.{topicUnlock:showcase}{topicUnlock:gameOverTest}{sectionEnd}"
+                "text": "{sprite:Oldbag[\"Smirking\"]}It's high-tech stuff. Unlike your suit. So pay attention!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{topicUnlock:showcase}{topicUnlock:gameOverTest}{sectionEnd}"
             }
         ],
         "Demo_showcase": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Normal\"]}We can change text colors like {color:red}red{color:white}, {color:lime}green{color:white}, or {color:lightblue}blue{color:white}."
+                "text": "{blip:1}{sprite:Oldbag[\"Normal\"]}Alright, listen fast! {textSpeed:10}I can talk really quickly when I'm excited about security protocols!"
             },
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Smirking\"]}We can also add pauses... {p:500} for dramatic effect."
-            },
-            {
-                "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Embarrassed\"]}And we can trigger animations! {sprite:Oldbag[\"Shocked\"]}{flash}{playSound:wham} WHAM! {p:1000}{sprite:Oldbag[\"Smirking\"]} Did you see that?"
-            },
-            {
-                "name": "Oldbag",
-                "text": "{startBGM:investigation}Now playing some investigation music... {p:2000} And stopping it.{stopBGM}"
-            },
-            {
-                "name": "Oldbag",
-                "text": "Now, watch me disappear... {fadeOutCharacter}"
-            },
-            {
-                "name": "Oldbag",
-                "text": "{fadeInCharacter}And I'm back! Magic!"
-            },
-            {
-                "name": "Oldbag",
-                "text": "You can also add evidence to your inventory during dialogue."
-            },
-            {
-                "text": "{addEvidence:charm,true}{color:lightblue}{blip:4}Blue Badger's Charm added to the court record.{color:white}{p:1000}{blip:1}"
-            },
-            {
-                "name": "Oldbag",
-                "text": "{textSpeed:20}{sprite:Oldbag[\"Angry\"]}Are you even listening to me? Today's youth doesn't care about anything.{skip:0}"
-            },
-            {
-                "name": "Oldbag",
-                "text": "{textSpeed:20}You only want the instant gratification, without patience and perseverance.{skip:0}"
-            },
-            {
-                "name": "Oldbag",
-                "text": "{textSpeed:20}{sprite:Oldbag[\"Angry\"]}Back in my day...{skip:0}"
-            },
-            {
-                "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Normal\"]}...{p:100}Anyway, let's move on to the next part of the demo."
-            },
-            {
-                "text": "{jump:Demo_showcase_2}"
-            }
-        ],
-        "Demo_showcase_2": [
-            {
-                "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Normal\"]}This is the second section! We jumped here."
-            },
-            {
-                "name": "Oldbag",
-                "text": "Now, let's demonstrate conditional jumps based on game state."
-            },
-            {
-                "text": "{jumpIf:hasMetOldbag,Section_AlreadyMet,Section_FirstMeeting}"
-            }
-        ],
-        "Section_FirstMeeting": [
-            {
-                "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Embarrassed\"]}Nice to meet you for the first time!{setState:hasMetOldbag,true}"
-            },
-            {
-                "text": "{jump:Demo_showcase_2}"
-            }
-        ],
-        "Section_AlreadyMet": [
-            {
-                "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Embarrassed\"]}Welcome back, friend!{sectionEnd}"
-            }
-        ],
-        "Demo_evidence_badge": [
-            {
-                "name": "Oldbag",
-                "text": "{playSound:wham}{flash}{sprite:Oldbag[\"Shocked\"]}My badge! {p:500}{sprite:Oldbag[\"Angry\"]}Wait, why do you have that? Are you impersonating an officer?{sectionEnd}"
-            }
-        ],
-        "Demo_evidence_default": [
-            {
-                "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Normal\"]}I don't know what that is, and I don't care.{sectionEnd}"
-            }
-        ],
-        "Demo_Examine_Sign": [
-            {
-                "name": "Phoenix",
-                "text": "There's a sign here with some kanji on it. 'Seiri'... something?"
-            },
-            {
-                "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Smirking\"]}It says 'Seiri Seiton', you uncultured cactus! It means 'keeping things tidy and in order'."
+                "text": "{sprite:Oldbag[\"Smirking\"]}{textSpeed:40}Or... {p:200}{textSpeed:80}I can... {p:200}take... {textSpeed:150}my... {textSpeed:200}time."
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}"
+                "text": "{textSpeed:40}{blip:1,false}{color:lightblue}(Please don't.){color:white}"
             },
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Angry\"]}Look at this place! It's a mess! The youth today have no respect for order!{sectionEnd}"
+                "text": "{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh! And look at this! {flash}{playSound:damage}{p:100}{sprite:Oldbag[\"Shocked\"]} I can emote!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}I can also master the art of stealth... {fadeOutCharacter}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "Wait, where did she go?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{fadeInCharacter}Right behind you! {blip:2,false}{sprite:Oldbag[\"Normal\"]}{color:lightblue}(Telepathic communication enabled!){color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "How are you doing that without moving your mouth?!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}Trade secret, dearie."
+            },
+            {
+                "text": "{jumpIf:evidence_charm,Demo_Charm_obtained,Demo_Charm_notObtained}{sectionEnd}"
             }
         ],
-        "Demo_Examine_Ladder": [
-            {
-                "name": "Phoenix",
-                "text": "Look at that ladder over there."
-            },
+        "Demo_Charm_notObtained": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Angry\"]}Hold your horses! That is NOT a ladder! It's a \"step-ladder\"!"
+                "text": "{blip:1}Here, have a souvenir."
             },
             {
-                "name": "Phoenix",
-                "text": "So? What's the difference? You need to stop judging things based on narrow-minded cultural assumptions."
+                "text": "{blip:0}{addEvidence:charm,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm added to Court Record.{color:white}"
             },
+            {
+                "text": "{jump:Demo_Charm_obtained}{sectionEnd}"
+            }
+        ],
+        "Demo_Charm_obtained": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Smirking\"]}Hmph. Young people these days... A step-ladder stands on its own, unlike a ladder which needs support!{sectionEnd}"
+                "text": "{blip:1}Anyway, that's it for the basics. {sectionEnd}"
             }
         ],
         "Demo_gameOverTest": [
             {
                 "name": "Oldbag",
-                "text": "{showLifeBar:5}{sprite:Oldbag[\"Angry\"]}This is a test of the game over feature. Choosing the wrong option will reduce your life points!{p:1000}{hideLifeBar}{sectionEnd}"
+                "text": "{blip:1}{sprite:Oldbag[\"Angry\"]}Let's test your survival instincts! I'm going to ask you a very important question."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{showLifeBar:0}See that life bar? If you upset me, it goes down. Simple as that."
+            },
+            {
+                "name": "Oldbag",
+                "text": "Who is the most handsome, talented prosecutor in the world?"
             },
             {
                 "text": "{option:DemoOptions}"
@@ -279,33 +237,96 @@
         "Demo_option_1": [
             {
                 "name": "Oldbag",
-                "text": "{showLifeBar}{sprite:Oldbag[\"Smirking\"]}You picked the first option! Good choice. No penalty for you.{p:1000}{hideLifeBar}{sectionEnd}"
+                "text": "{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh, you know it! My dear Edgey-poo! {p:500}{sprite:Oldbag[\"Normal\"]}You have good taste.{hideLifeBar}{sectionEnd}"
             }
         ],
         "Demo_option_2": [
             {
                 "name": "Oldbag",
-                "text": "{showLifeBar:10}{sprite:Oldbag[\"Angry\"]}You picked the second option! What were you thinking?!{playSound:wham}{flash}{lifeMod:-10}"
+                "text": "{blip:1}{showLifeBar:5}{sprite:Oldbag[\"Angry\"]}You?! Don't make me laugh! {playSound:damage}{flash}{lifeMod:-5}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Ouch... that spiritual damage is real.)"
             },
             {
                 "name": "Oldbag",
-                "text": "That's what you get for being foolish!{p:1000}{hideLifeBar}{sectionEnd}"
+                "text": "Watch your mouth!{hideLifeBar}{sectionEnd}"
             }
         ],
         "Demo_option_3": [
             {
                 "name": "Oldbag",
-                "text": "{showLifeBar:2}{sprite:Oldbag[\"Embarrassed\"]}You picked the third option! This triggers a smaller penalty.{playSound:wham}{flash}{lifeMod:-2}"
-            },
-            {
-                "name": "Oldbag",
-                "text": "Be careful next time!{p:1000}{hideLifeBar}{sectionEnd}"
+                "text": "{blip:1}{showLifeBar:0}{sprite:Oldbag[\"Angry\"]}WHAT?! The Paynes?! {playSound:damage}{flash}{lifeMod:-10}"
             }
         ],
         "BadEnding_01": [
             {
-                "name": "System",
-                "text": "You have listed your last valid argument...{endGame}"
+                "name": "Oldbag",
+                "text": "{blip:1}Get out of my sight! You're banned from the demo!"
+            },
+            {
+                "text": "{blip:3}{center}{color:red}GUILTY{color:white}{nl}{p:1000}The defense has lost the will to live.{endGame}"
+            }
+        ],
+        "Demo_evidence_badge": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Smirking\"]}A badge? Looks like a toy. Are you sure you're a lawyer?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}(Everyone says that...){sectionEnd}"
+            }
+        ],
+        "Demo_evidence_default": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Normal\"]}What is this junk? Keep your trash to yourself.{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Sign": [
+            {
+                "name": "Phoenix",
+                "text": "A sign on the wall. 'Seiri Seiton'?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Angry\"]}It means 'Organization'! Something you clearly lack!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}{sectionEnd}"
+            },
+            {
+                "text": "{jumpIf:evidence_charm,Demo_Examine_Sign_Charm_obtained}{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Sign_Charm_obtained": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}That's where I found that charm I gave you.{sectionEnd}"
+            },
+            {
+                "text": "{blip:0}{updateEvidence:charm,charm2,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm updated to Court Record.{color:white}{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Ladder": [
+            {
+                "name": "Phoenix",
+                "text": "It's a ladder."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Shocked\"]}Hold it! That is a STEP-ladder!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "What's the difference? You climb them both."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Angry\"]}Cultural myopia! You need to broaden your mind!{sectionEnd}"
             }
         ]
     }
