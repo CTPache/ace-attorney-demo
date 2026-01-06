@@ -57,3 +57,8 @@ const evidencePopup = document.getElementById('evidence-popup');
 const popupIcon = document.getElementById('popup-icon');
 const popupName = document.getElementById('popup-name');
 const popupDesc = document.getElementById('popup-desc');
+
+// Life Bar
+const lifeBarContainer = document.getElementById('life-bar-container');
+const lifeBarFill = document.getElementById('life-bar-fill');
+const lifeBarPenalty = document.getElementById('life-bar-penalty');

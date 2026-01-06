@@ -1,6 +1,5 @@
 console.log("UI Loaded");
 
-// Locals moved to other files
 // Shared logic for scene state only
 
 // Function to handle Option Selection Menu
@@ -73,7 +72,11 @@ document.addEventListener('sceneStateChanged', (e) => {
         textboxContainer.classList.add('hidden');
         advanceBtn.classList.add('hidden');
         
+        // Hide Life Bar on scene end
+        if (typeof hideLifeBar === 'function') hideLifeBar();
+        
         if (isExamining) {
+
             // Return to examine mode
             investigationMenu.classList.add('hidden');
             investigationPanel.classList.remove('hidden');
@@ -89,13 +92,6 @@ document.addEventListener('sceneStateChanged', (e) => {
         }
     }
 });
-
-// Investigation logic moved to investigation.js
-
-
-
-// Evidence logic moved to court-record.js
-
 
 // Advance Button Logic
 function startFastForward() {

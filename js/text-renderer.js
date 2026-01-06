@@ -17,6 +17,154 @@ function typeWriter(text) {
     processNextChar();
 }
 
+/**
+ * Handles segments that have identical logic in both "typing" and "instant/skip" modes.
+ * Returns 'CONTINUE' if handled and execution should proceed.
+ * Returns 'STOP' if execution should stop (game end).
+ * Returns 'UNHANDLED' if the segment requires specific timing/flow logic.
+ */
+function processCommonSegment(segment) {
+    switch (segment.type) {
+        case 'color':
+            currentSpan = document.createElement('span');
+            currentSpan.style.color = segment.value;
+            textContent.appendChild(currentSpan);
+            return 'CONTINUE';
+        case 'bg':
+            changeBackground(segment.bgName);
+            return 'CONTINUE';
+        case 'setState':
+            setGameState(segment.key, segment.value);
+            return 'CONTINUE';
+        case 'blip':
+            currentBlipType = segment.value;
+            if (segment.shouldSpeak !== undefined) {
+                currentTalkingAnimationEnabled = segment.shouldSpeak;
+            } else {
+                currentTalkingAnimationEnabled = true; // Default to true if not specified? 
+                // Or retain state? 
+                // The request implies it's a parameter of the command.
+                // Usually {blip} changes the *sound*.
+                // Should {blip:1} reset silent mode?
+                // Probably yes. "reuse the blip control code".
+                // So {blip:1} -> sound 1, talking ON.
+                // {blip:1,false} -> sound 1, talking OFF.
+                currentTalkingAnimationEnabled = true;
+            }
+            if (segment.shouldSpeak === false) currentTalkingAnimationEnabled = false;
+
+            return 'CONTINUE';
+        case 'center':
+            textContent.style.textAlign = 'center';
+            return 'CONTINUE';
+        case 'nl':
+            textContent.appendChild(document.createElement('br'));
+            const newSpan = document.createElement('span');
+            if (currentSpan) {
+                newSpan.style.cssText = currentSpan.style.cssText;
+            }
+            currentSpan = newSpan;
+            textContent.appendChild(currentSpan);
+            return 'CONTINUE';
+        case 'textSpeed':
+            currentTextSpeed = segment.value;
+            return 'CONTINUE';
+        case 'addEvidence':
+            if (evidenceDB[segment.key] && !evidenceInventory.includes(segment.key)) {
+                evidenceInventory.push(segment.key);
+                console.log(`Added evidence: ${segment.key}`);
+                if (segment.showPopup) {
+                    const event = new CustomEvent('evidenceAdded', { detail: { key: segment.key } });
+                    document.dispatchEvent(event);
+                }
+            }
+            return 'CONTINUE';
+        case 'addProfile':
+            if (profilesDB[segment.key] && !profilesInventory.includes(segment.key)) {
+                profilesInventory.push(segment.key);
+                console.log(`Added profile: ${segment.key}`);
+                if (segment.showPopup) {
+                    const event = new CustomEvent('profileAdded', { detail: { key: segment.key } });
+                    document.dispatchEvent(event);
+                }
+            }
+            return 'CONTINUE';
+        case 'topicUnlock':
+            if (!unlockedTopics.includes(segment.topicId)) {
+                unlockedTopics.push(segment.topicId);
+                console.log(`Unlocked topic: ${segment.topicId}`);
+            }
+            return 'CONTINUE';
+        case 'sectionEnd':
+            showTopicsOnEnd = true;
+            return 'CONTINUE';
+        case 'playSound':
+            playSound(segment.soundName);
+            return 'CONTINUE';
+        case 'startBGM':
+            playBGM(segment.musicName);
+            return 'CONTINUE';
+        case 'stopBGM':
+            stopBGM(segment.fadeOut);
+            return 'CONTINUE';
+        case 'lifeMod':
+            if (window.modifyLife) window.modifyLife(segment.amount);
+            return 'CONTINUE';
+        case 'showLifeBar':
+            if (window.showLifeBar) window.showLifeBar(segment.penalty);
+            return 'CONTINUE';
+        case 'hideLifeBar':
+            if (window.hideLifeBar) window.hideLifeBar();
+            return 'CONTINUE';
+        case 'setGameOver':
+            gameOverLabel = segment.label;
+            return 'CONTINUE';
+        case 'endGame':
+            showEndGameOverlay();
+            isTyping = false;
+            setSpriteState('default');
+            return 'STOP';
+        default:
+            return 'UNHANDLED';
+    }
+}
+
+function handleFlowControl(segment) {
+    // Only intercept flow control segments
+    const flowTypes = ['jump', 'jumpIf', 'option'];
+    if (!flowTypes.includes(segment.type)) {
+        return false;
+    }
+
+    if (window.isGameOverPending) {
+         jumpToSection(gameOverLabel);
+         return true; // Flow interrupted
+    }
+
+    if (segment.type === 'jump') {
+        jumpToSection(segment.label);
+        return true;
+    } else if (segment.type === 'jumpIf') {
+        if (gameState[segment.condition]) {
+            jumpToSection(segment.labelTrue);
+        } else {
+            jumpToSection(segment.labelFalse);
+        }
+        return true;
+    } else if (segment.type === 'option') {
+        // Stop typing, don't advance segment or char
+        isTyping = false; 
+        setSpriteState('default');
+        
+        // Render the options menu
+        if (window.renderOptionsMenu) {
+            window.renderOptionsMenu(segment.optionKey);
+        }
+        return true;
+    }
+    return false;
+}
+
 function processNextChar() {
     if (segmentIndex >= segments.length) {
         isTyping = false;
@@ -25,9 +173,21 @@ function processNextChar() {
     }
 
     const segment = segments[segmentIndex];
+    const commonResult = processCommonSegment(segment);
 
+    if (commonResult === 'STOP') return;
+    if (commonResult === 'CONTINUE') {
+        segmentIndex++;
+        // Use timeout to allow UI updates / break stack
+        typingInterval = setTimeout(processNextChar, 0); 
+        return;
+    }
+
+    // Handle Timed/Animated/Flow Segments
     if (segment.type === 'text') {
-        setSpriteState('talking'); // Start talking
+        if (currentTalkingAnimationEnabled) {
+             setSpriteState('talking');
+        }
         if (charIndex < segment.content.length) {
             currentSpan.textContent += segment.content.charAt(charIndex);
             playBlip();
@@ -39,15 +199,9 @@ function processNextChar() {
             processNextChar();
         }
     } else if (segment.type === 'pause') {
-        setSpriteState('default'); // Pause talking
+        setSpriteState('default');
         segmentIndex++;
         typingInterval = setTimeout(processNextChar, segment.duration);
-    } else if (segment.type === 'color') {
-        currentSpan = document.createElement('span');
-        currentSpan.style.color = segment.value;
-        textContent.appendChild(currentSpan);
-        segmentIndex++;
-        processNextChar();
     } else if (segment.type === 'flash') {
         setSpriteState('default');
         triggerFlash();
@@ -55,11 +209,10 @@ function processNextChar() {
         typingInterval = setTimeout(processNextChar, 200);
     } else if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
         if (segment.type === 'fadeIn') {
-            // Check if next segment is a sprite change and apply it immediately
             if (segmentIndex + 1 < segments.length && segments[segmentIndex + 1].type === 'sprite') {
                 const nextSeg = segments[segmentIndex + 1];
                 changeSprite(nextSeg.charName, nextSeg.spriteKey);
-                segmentIndex++; // Skip the sprite segment so it's not processed again
+                segmentIndex++; 
             }
             character.style.opacity = 1;
         } else {
@@ -70,141 +223,78 @@ function processNextChar() {
     } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
         character.style.transition = "none";
         character.style.opacity = (segment.type === 'showCharacter') ? 1 : 0;
-        void character.offsetWidth; // Trigger reflow
-        character.style.transition = ""; // Restore transition
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'sectionEnd') {
-        showTopicsOnEnd = true;
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'option') {
-        // Stop typing, don't advance segment or char
-        isTyping = false; 
-        setSpriteState('default');
-        
-        // Render the options menu
-        if (window.renderOptionsMenu) {
-            window.renderOptionsMenu(segment.optionKey);
-        }
-        
-        // We do strictly NOTHING else. The button click will trigger jumpToSection.
-        return; 
-    } else if (segment.type === 'bg') {
-        changeBackground(segment.bgName);
+        void character.offsetWidth;
+        character.style.transition = "";
         segmentIndex++;
         processNextChar();
     } else if (segment.type === 'sprite') {
         changeSprite(segment.charName, segment.spriteKey);
-
-        // Check if this animation has a duration (time)
         const charData = characters[segment.charName];
         const animData = charData ? charData[segment.spriteKey] : null;
-
         if (animData && animData.time) {
-            // Treat as a pause
-            segmentIndex++;
-            typingInterval = setTimeout(processNextChar, animData.time);
+             segmentIndex++;
+             typingInterval = setTimeout(processNextChar, animData.time);
         } else {
-            // Continue immediately
-            segmentIndex++;
-            processNextChar();
+             segmentIndex++;
+             processNextChar();
         }
     } else if (segment.type === 'skip') {
         isWaitingForAutoSkip = true;
         setSpriteState('default');
-        isTyping = false; // Stop typing indicator
+        isTyping = false;
         setTimeout(() => {
             isWaitingForAutoSkip = false;
-            advanceDialogue(true); // Force advance
+            advanceDialogue(true);
         }, segment.duration);
-    } else if (segment.type === 'jump') {
-        jumpToSection(segment.label);
-        return; // Stop processing current line
-    } else if (segment.type === 'jumpIf') {
-        if (gameState[segment.condition]) {
-            jumpToSection(segment.labelTrue);
-        } else {
-            jumpToSection(segment.labelFalse);
-        }
-        return; // Stop processing current line
-    } else if (segment.type === 'setState') {
-        setGameState(segment.key, segment.value);
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'blip') {
-        currentBlipType = segment.value;
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'center') {
-        textContent.style.textAlign = 'center';
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'nl') {
-        textContent.appendChild(document.createElement('br'));
-        // Create a new span to continue text, preserving style if possible
-        const newSpan = document.createElement('span');
-        if (currentSpan) {
-            newSpan.style.cssText = currentSpan.style.cssText;
-        }
-        currentSpan = newSpan;
-        textContent.appendChild(currentSpan);
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'textSpeed') {
-        currentTextSpeed = segment.value;
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'addEvidence') {
-        if (evidenceDB[segment.key] && !evidenceInventory.includes(segment.key)) {
-            evidenceInventory.push(segment.key);
-            console.log(`Added evidence: ${segment.key}`);
-            
-            // Dispatch event for UI updates if showPopup is true
-            if (segment.showPopup) {
-                const event = new CustomEvent('evidenceAdded', { detail: { key: segment.key } });
-                document.dispatchEvent(event);
-            }
-        }
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'addProfile') {
-        if (profilesDB[segment.key] && !profilesInventory.includes(segment.key)) {
-            profilesInventory.push(segment.key);
-            console.log(`Added profile: ${segment.key}`);
-            
-            // Dispatch event for UI updates if showPopup is true
-            if (segment.showPopup) {
-                const event = new CustomEvent('profileAdded', { detail: { key: segment.key } });
-                document.dispatchEvent(event);
-            }
-        }
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'topicUnlock') {
-        if (!unlockedTopics.includes(segment.topicId)) {
-            unlockedTopics.push(segment.topicId);
-            console.log(`Unlocked topic: ${segment.topicId}`);
-        }
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'showTopics') {
-        showTopicsOnEnd = true;
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'playSound') {
-        playSound(segment.soundName);
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'startBGM') {
-        playBGM(segment.musicName);
-        segmentIndex++;
-        processNextChar();
-    } else if (segment.type === 'stopBGM') {
-        stopBGM(segment.fadeOut);
-        segmentIndex++;
-        processNextChar();
+    } else if (segment.type === 'jump' || segment.type === 'jumpIf' || segment.type === 'option') {
+        handleFlowControl(segment);
     }
+}
+
+function showEndGameOverlay() {
+    if (document.getElementById('end-game-overlay')) return;
+
+    // Stop fast forwarding if it's active
+    if (typeof isFastForwarding !== 'undefined') {
+        isFastForwarding = false;
+    }
+    if (typeof fastForwardInterval !== 'undefined' && fastForwardInterval) {
+        clearInterval(fastForwardInterval);
+    }
+    // Block further inputs properly
+    if (typeof isInputBlocked !== 'undefined') {
+        isInputBlocked = true;
+    }
+
+    const overlay = document.createElement('div');
+    overlay.id = 'end-game-overlay';
+    overlay.style.position = 'absolute';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.color = 'white';
+    overlay.style.flexDirection = 'column';
+    overlay.style.zIndex = '2000';
+
+    const msg = document.createElement('h1');
+    msg.textContent = "THE END";
+    overlay.appendChild(msg);
+
+    const restartBtn = document.createElement('button');
+    restartBtn.textContent = "Restart";
+    restartBtn.style.padding = '10px 20px';
+    restartBtn.style.fontSize = '24px';
+    restartBtn.style.marginTop = '20px';
+    restartBtn.style.cursor = 'pointer';
+    restartBtn.onclick = () => location.reload();
+    overlay.appendChild(restartBtn);
+
+    document.body.appendChild(overlay);
 }
 
 function finishTyping() {
@@ -213,29 +303,45 @@ function finishTyping() {
     while (segmentIndex < segments.length) {
         const segment = segments[segmentIndex];
 
+        // 1. Try Common Segment
+        const commonResult = processCommonSegment(segment);
+        if (commonResult === 'STOP') return;
+        if (commonResult === 'CONTINUE') {
+            segmentIndex++;
+            continue;
+        }
+
+        // 2. Try Flow Control
+        if (handleFlowControl(segment)) {
+            return; // Stopped by flow control (jump/option)
+        }
+
+        // 3. Handle specific Instant/Skip Logic
         if (segment.type === 'text') {
             currentSpan.textContent += segment.content.substring(charIndex);
             charIndex = 0;
-        } else if (segment.type === 'color') {
-            currentSpan = document.createElement('span');
-            currentSpan.style.color = segment.value;
-            textContent.appendChild(currentSpan);
+            segmentIndex++;
         } else if (segment.type === 'flash') {
             triggerFlash();
+            segmentIndex++;
         } else if (segment.type === 'sprite') {
+             // Instant sprite change
             changeSprite(segment.charName, segment.spriteKey);
-        } else if (segment.type === 'bg') {
-            changeBackground(segment.bgName);
+            segmentIndex++; 
         } else if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
+            // Instant fade
             character.style.transition = "none";
             character.style.opacity = (segment.type === 'fadeIn') ? 1 : 0;
             void character.offsetWidth;
             character.style.transition = "";
+            segmentIndex++;
         } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
+            // Instant toggle
             character.style.transition = "none";
             character.style.opacity = (segment.type === 'showCharacter') ? 1 : 0;
             void character.offsetWidth;
             character.style.transition = "";
+            segmentIndex++;
         } else if (segment.type === 'skip') {
             // Found a skip tag during fast-forward
             isWaitingForAutoSkip = true;
@@ -246,59 +352,17 @@ function finishTyping() {
                 advanceDialogue(true); // Force advance
             }, segment.duration);
             return; // Stop processing further segments
-        } else if (segment.type === 'jump') {
-            jumpToSection(segment.label);
-            return;
-        } else if (segment.type === 'jumpIf') {
-            if (gameState[segment.condition]) {
-                jumpToSection(segment.labelTrue);
-            } else {
-                jumpToSection(segment.labelFalse);
-            }
-            return;
-        } else if (segment.type === 'setState') {
-            setGameState(segment.key, segment.value);
-        } else if (segment.type === 'blip') {
-            currentBlipType = segment.value;
-        } else if (segment.type === 'center') {
-            textContent.style.textAlign = 'center';
-        } else if (segment.type === 'nl') {
-            textContent.appendChild(document.createElement('br'));
-            const newSpan = document.createElement('span');
-            if (currentSpan) {
-                newSpan.style.cssText = currentSpan.style.cssText;
-            }
-            currentSpan = newSpan;
-            textContent.appendChild(currentSpan);
-        } else if (segment.type === 'textSpeed') {
-            currentTextSpeed = segment.value;
-        } else if (segment.type === 'addEvidence') {
-            if (evidenceDB[segment.key] && !evidenceInventory.includes(segment.key)) {
-                evidenceInventory.push(segment.key);
-                console.log(`Added evidence: ${segment.key}`);
-            }
-        } else if (segment.type === 'addProfile') {
-            if (profilesDB[segment.key] && !profilesInventory.includes(segment.key)) {
-                profilesInventory.push(segment.key);
-                console.log(`Added profile: ${segment.key}`);
-            }
-        } else if (segment.type === 'topicUnlock') {
-            if (!unlockedTopics.includes(segment.topicId)) {
-                unlockedTopics.push(segment.topicId);
-            }
-        } else if (segment.type === 'sectionEnd') {
-            showTopicsOnEnd = true;
-        } else if (segment.type === 'playSound') {
-            playSound(segment.soundName);
-        } else if (segment.type === 'startBGM') {
-            playBGM(segment.musicName);
-        } else if (segment.type === 'stopBGM') {
-            stopBGM(segment.fadeOut);
+        } else if (segment.type === 'pause') {
+            // Ignore pauses in skip mode
+            segmentIndex++;
+        } else {
+             // Any unhandled keys (should be none significant)
+             segmentIndex++;
         }
-        segmentIndex++;
     }
+
     isTyping = false;
-    setSpriteState('default'); // Ensure default when finished
+    setSpriteState('default'); // End of all text
 }
 
 function updateDialogue(line) {

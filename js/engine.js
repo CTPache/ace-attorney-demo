@@ -72,6 +72,17 @@ function advanceDialogue(force = false) {
             updateDialogue(line);
         } else {
             console.log("End of section");
+            
+            // Check if game end is already visible (prevent restart loop)
+            if (document.getElementById('end-game-overlay')) {
+                return;
+            }
+
+            if (window.isGameOverPending) {
+                jumpToSection(gameOverLabel);
+                return;
+            }
+
             if (showTopicsOnEnd) {
                 isScenePlaying = false;
                 updateSceneState();

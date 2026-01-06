@@ -40,7 +40,12 @@ let currentBGM = null; // Track current background music
 const defaultTextSpeed = 30;
 let currentTextSpeed = defaultTextSpeed;
 let currentBlipType = 1;
+let currentTalkingAnimationEnabled = true;
 let debugShowInvestigationBounds = false;
+let currentLife = 10;
+let maxLife = 10;
+let gameOverLabel = "Demo_GameOver"; // Default
+window.isGameOverPending = false;
 
 // UI State
 let isCourtRecordOpen = false;

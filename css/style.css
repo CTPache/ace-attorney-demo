@@ -487,6 +487,67 @@ body {
     }
 }
 
+/* Life Bar */
+#life-bar-container {
+    position: absolute;
+    top: 2cqh;
+    right: 2cqh;
+    width: 40%;
+    height: 5cqh;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#life-bar-body {
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    border: 0.3cqh solid #ccc;
+    border-radius: 0.5cqh;
+    position: relative;
+    box-shadow: 0 0 0.5cqh rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+#life-bar-fill {
+    height: 100%;
+    background: linear-gradient(180deg, #00ff00 0%, #00cc00 50%, #00ff00 100%);
+    width: 100%; 
+    box-shadow: 0 0 0.5cqh #00ff00;
+    transition: width 0.3s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+#life-bar-penalty {
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #ffdd00,
+        #ffdd00 1cqh,
+        #ffaa00 1cqh,
+        #ffaa00 2cqh
+    );
+    width: 0%;
+    position: absolute;
+    top: 0;
+    left: 0; /* Will be adjusted by JS */
+    z-index: 3;
+    animation: flashPenalty 0.5s infinite alternate;
+}
+
+@keyframes flashPenalty {
+    from { opacity: 1; }
+    to { opacity: 0.3; }
+}
+
+#life-bar-container.hidden {
+    display: none;
+}
+
 #popup-icon-container {
     width: 25%;
     aspect-ratio: 1 / 1;

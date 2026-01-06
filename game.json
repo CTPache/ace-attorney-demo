@@ -59,19 +59,27 @@
         "Don1": [
             {
                 "bounds": [
-                    24,5,
-                    38,5,
-                    38,32,
-                    24,32
+                    24,
+                    5,
+                    38,
+                    5,
+                    38,
+                    32,
+                    24,
+                    32
                 ],
                 "label": "Demo_Examine_Sign"
             },
             {
                 "bounds": [
-                    20,55,
-                    35,55,
-                    35,70,
-                    20,70
+                    20,
+                    55,
+                    35,
+                    55,
+                    35,
+                    70,
+                    20,
+                    70
                 ],
                 "label": "Demo_Examine_Ladder"
             }
@@ -81,6 +89,10 @@
         "showcase": {
             "text": "Showcase Demo Features",
             "label": "Demo_showcase"
+        },
+        "gameOverTest": {
+            "text": "Test Game Over Feature",
+            "label": "Demo_gameOverTest"
         }
     },
     "options": {
@@ -88,12 +100,16 @@
             "text": "Select your answer:",
             "options": [
                 {
-                    "text": "First Demo Option",
+                    "text": "This is a safe choice",
                     "label": "Demo_option_1"
                 },
                 {
-                    "text": "Second Demo Option",
+                    "text": "This triggers a game over penalty",
                     "label": "Demo_option_2"
+                },
+                {
+                    "text": "This triggers a smaller penalty",
+                    "label": "Demo_option_3"
                 }
             ]
         }
@@ -101,7 +117,7 @@
     "gameScript": {
         "Demo_Main_01": [
             {
-                "text": "{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
+                "text": "{setGameOver:BadEnding_01}{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{color:lime}{textSpeed:50}{center}August 3rd, 9:47 AM{nl}{p:500}Police Department{nl}{p:500}Demo room"
             },
             {
                 "text": "{blip:2}Testing, testing...{p:500} One, two, three...{p:500} Is this thing on?"
@@ -120,7 +136,7 @@
             },
             {
                 "name": "Oldbag",
-                "text": "In this demo, I'll be showing you some of the features of the Ace Attorney Engine.{topicUnlock:showcase}{sectionEnd}"
+                "text": "In this demo, I'll be showing you some of the features of the Ace Attorney Engine.{topicUnlock:showcase}{topicUnlock:gameOverTest}{sectionEnd}"
             }
         ],
         "Demo_showcase": [
@@ -201,9 +217,6 @@
             {
                 "name": "Oldbag",
                 "text": "{sprite:Oldbag[\"Embarrassed\"]}Welcome back, friend!{sectionEnd}"
-            },
-            {
-                "text": "{option:DemoOptions}"
             }
         ],
         "Demo_evidence_badge": [
@@ -254,16 +267,45 @@
                 "text": "{sprite:Oldbag[\"Smirking\"]}Hmph. Young people these days... A step-ladder stands on its own, unlike a ladder which needs support!{sectionEnd}"
             }
         ],
+        "Demo_gameOverTest": [
+            {
+                "name": "Oldbag",
+                "text": "{showLifeBar:5}{sprite:Oldbag[\"Angry\"]}This is a test of the game over feature. Choosing the wrong option will reduce your life points!{p:1000}{hideLifeBar}{sectionEnd}"
+            },
+            {
+                "text": "{option:DemoOptions}"
+            }
+        ],
         "Demo_option_1": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Smirking\"]}You picked the first option! Good choice, I suppose.{sectionEnd}"
+                "text": "{showLifeBar}{sprite:Oldbag[\"Smirking\"]}You picked the first option! Good choice. No penalty for you.{p:1000}{hideLifeBar}{sectionEnd}"
             }
         ],
         "Demo_option_2": [
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Angry\"]}You picked the second option! What were you thinking?!{sectionEnd}"
+                "text": "{showLifeBar:10}{sprite:Oldbag[\"Angry\"]}You picked the second option! What were you thinking?!{playSound:wham}{flash}{lifeMod:-10}"
+            },
+            {
+                "name": "Oldbag",
+                "text": "That's what you get for being foolish!{p:1000}{hideLifeBar}{sectionEnd}"
+            }
+        ],
+        "Demo_option_3": [
+            {
+                "name": "Oldbag",
+                "text": "{showLifeBar:2}{sprite:Oldbag[\"Embarrassed\"]}You picked the third option! This triggers a smaller penalty.{playSound:wham}{flash}{lifeMod:-2}"
+            },
+            {
+                "name": "Oldbag",
+                "text": "Be careful next time!{p:1000}{hideLifeBar}{sectionEnd}"
+            }
+        ],
+        "BadEnding_01": [
+            {
+                "name": "System",
+                "text": "You have listed your last valid argument...{endGame}"
             }
         ]
     }

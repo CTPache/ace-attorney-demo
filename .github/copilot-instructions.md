@@ -7,7 +7,9 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
 - **Engine Core**: Split into modules:
   - `js/DOMGlobals.js`: Centralized DOM element references.
   - `js/globals.js`: Global state variables and data containers.
-  - `js/engine.js`: Game loop, text parsing, and script execution.
+  - `js/engine.js`: Game loop and high-level script execution.
+  - `js/parser.js`: Optimized Regex-based text parsing.
+  - `js/text-renderer.js`: Handles text typing, skipping logic, and command execution.
   - `js/ui.js`: High-level UI state management and transition logic.
   - `js/court-record.js`: Evidence/Profiles inventory and presenting logic.
   - `js/investigation.js`: Investigation mode (examining, moving) logic.
@@ -75,6 +77,9 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{jump:SectionName}`: Jump to a new section.
 - `{jumpIf:VarName,TrueSection,FalseSection}`: Conditional jump based on `gameState`.
 - `{setState:VarName,Value}`: Update a variable in `gameState`.
+- `{option:Key}`: Display a list of choices defined in `options` db.
+- `{setGameOver:Label}`: Sets the section to jump to if a Game Over occurs.
+- `{endGame}`: Triggers the "THE END" overlay and stops execution.
 
 **Text Styling & Formatting:**
 - `{color:ColorName}`: Change text color (e.g., `{color:#ff5555}`).
@@ -86,6 +91,9 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{addEvidence:Key,ShowPopup}`: Add item to Court Record. `ShowPopup` is optional (default true).
 - `{topicUnlock:Key}`: Unlock a conversation topic.
 - `{sectionEnd}`: Trigger the topic selection menu at the end of the current section.
+- `{lifeMod:Amount}`: Add/Subtract from the life bar (e.g., `{lifeMod:-2}`).
+- `{showLifeBar:Penalty}`: Show the life bar (optional penalty preview).
+- `{hideLifeBar}`: Hide the life bar.
 
 ### Asset Configuration (`game.json`)
 - **Characters**: Nested object structure: `CharacterName -> Emotion -> State (default/talking)`.
