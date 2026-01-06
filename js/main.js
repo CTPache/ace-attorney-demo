@@ -1,7 +1,7 @@
 console.log("Main Loaded");
 
 // Load the game script
-fetch('game.json')
+fetch('demo.json')
     .then(response => response.json())
     .then(async data => {
         if (data.characters) {

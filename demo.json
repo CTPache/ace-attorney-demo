@@ -11,7 +11,9 @@
             },
             "Shocked": {
                 "default": "assets/img/characters/Locked Room/Oldbag/Shocked.webp",
-                "time": 500
+                "time": 680
+            },"ShockedHold": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Shocked2.webp"
             },
             "Angry": {
                 "default": "assets/img/characters/Locked Room/Oldbag/Angry-1.webp",
@@ -143,7 +145,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{sprite:Oldbag[\"Shocked\"]}W-Wendy Oldbag?! What are you doing here?"
+                "text": "{blip:1}W-Wendy Oldbag?!{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} What are you doing here?"
             },
             {
                 "name": "Oldbag",
@@ -173,7 +175,7 @@
             },
             {
                 "name": "Oldbag",
-                "text": "{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh! And look at this! {flash}{playSound:damage}{p:100}{sprite:Oldbag[\"Shocked\"]} I can emote!"
+                "text": "{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh! And look at this! {flash}{playSound:damage}{p:100}{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} I can emote!"
             },
             {
                 "name": "Oldbag",
@@ -318,7 +320,7 @@
             },
             {
                 "name": "Oldbag",
-                "text": "{sprite:Oldbag[\"Shocked\"]}Hold it! That is a STEP-ladder!"
+                "text": "{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]}Hold it! That is a STEP-ladder!"
             },
             {
                 "name": "Phoenix",
