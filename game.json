@@ -247,7 +247,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "(Ouch... that spiritual damage is real.)"
+                "text": "{color:lightblue}(Ouch... that spiritual damage is real.){color:white}"
             },
             {
                 "name": "Oldbag",
@@ -276,7 +276,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}(Everyone says that...){sectionEnd}"
+                "text": "{blip:0}{color:lightblue}(Everyone says that...){color:white}{sectionEnd}"
             }
         ],
         "Demo_evidence_default": [
