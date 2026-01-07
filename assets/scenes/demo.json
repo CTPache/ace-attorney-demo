@@ -333,7 +333,7 @@
         "Demo_Examine_Sign": [
             {
                 "name": "Phoenix",
-                "text": "A sign on the wall. 'Seiri Seiton'?"
+                "text": "{blip:1}A sign on the wall. 'Seiri Seiton'?"
             },
             {
                 "name": "Oldbag",
@@ -359,7 +359,7 @@
         "Demo_Examine_Ladder": [
             {
                 "name": "Phoenix",
-                "text": "It's a ladder."
+                "text": "{blip:1}It's a ladder."
             },
             {
                 "name": "Oldbag",
@@ -377,7 +377,7 @@
         "Demo_Examine_Default": [
             {
                 "name": "Phoenix",
-                "text": "{hideCharacter}There's nothing particularly interesting here."
+                "text": "{blip:0}{hideCharacter}There's nothing particularly interesting here."
             }
         ]
     }
