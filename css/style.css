@@ -13,6 +13,22 @@ body {
     height: 100vh;*/
 }
 
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    #main-wrapper {
+        justify-content: flex-start;
+        padding-top: 2vh;
+        gap: 1vh;
+    }
+
+    #game-container, #bottom-screen {
+        width: 100vw;
+        max-width: 100%;
+        border: none;
+        border-bottom: 2px solid #555;
+    }
+}
+
 #game-container {
     width: min(95vw, 80vh);
     aspect-ratio: 16 / 9;

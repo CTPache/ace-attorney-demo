@@ -48,7 +48,7 @@ function renderMoveMenu() {
         btn.className = 'topic-button';
         btn.textContent = loc.label;
         
-        btn.addEventListener('mouseenter', () => {
+        const updatePreview = () => {
             const bgKey = loc.preview || loc.bg; // Use preview key or bg key
             if (bgKey && backgrounds[bgKey]) {
                 movePreviewImage.src = backgrounds[bgKey];
@@ -56,7 +56,10 @@ function renderMoveMenu() {
             } else {
                 movePreviewImage.style.display = 'none';
             }
-        });
+        };
+
+        btn.addEventListener('mouseenter', updatePreview);
+        btn.addEventListener('touchstart', updatePreview, { passive: true });
 
         btn.addEventListener('click', () => {
             if (loc.target) {
@@ -158,6 +161,17 @@ function renderInvestigation() {
             cursorBox.classList.remove('visited');
         });
 
+        // Touch start to simulate hover/click logic
+        polygon.addEventListener('touchstart', (e) => {
+            // e.stopPropagation(); // Don't stop propagation, let move handle it?
+            // On touch start, we highlight it
+            cursorBox.classList.add('active');
+            if (gameState[point.label + "_visited"]) {
+                cursorBox.classList.add('visited');
+            }
+        }, {passive: true});
+
+
         polygon.addEventListener('click', (e) => {
             e.stopPropagation();
             // Mark visited
@@ -175,10 +189,10 @@ function renderInvestigation() {
 }
 
 // Cursor Movement
-investigationPanel.addEventListener('mousemove', (e) => {
+function updateCursor(clientX, clientY) {
     const rect = investigationPanel.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
     
     // Update Box Position
     cursorBox.style.left = `${x}px`;
@@ -187,4 +201,60 @@ investigationPanel.addEventListener('mousemove', (e) => {
     // Update Lines
     cursorH.style.top = `${y}px`;
     cursorV.style.left = `${x}px`;
+}
+
+investigationPanel.addEventListener('mousemove', (e) => {
+    updateCursor(e.clientX, e.clientY);
 });
+
+investigationPanel.addEventListener('touchmove', (e) => {
+    e.preventDefault(); // Prevent scrolling
+    const touch = e.touches[0];
+    updateCursor(touch.clientX, touch.clientY);
+}, { passive: false });
+
+function checkHover(clientX, clientY) {
+    // Hide cursor if it's visible to not block elementFromPoint
+    cursorBox.style.display = 'none';
+    const element = document.elementFromPoint(clientX, clientY);
+    cursorBox.style.display = 'flex'; // Restore cursor
+
+    if (element && element.classList.contains('investigation-polygon')) {
+        // Trigger hover effect manually
+        cursorBox.classList.add('active');
+        
+        // Find which point this polygon belongs to check visited status
+        // We need a way to link polygon to data. 
+        // Best way is to check the 'visited' class on the polygon itself
+        if (element.classList.contains('visited')) {
+            cursorBox.classList.add('visited');
+        } else {
+            cursorBox.classList.remove('visited');
+        }
+    } else {
+        cursorBox.classList.remove('active');
+        cursorBox.classList.remove('visited');
+    }
+}
+
+// Add touch hover support
+investigationPanel.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    checkHover(touch.clientX, touch.clientY);
+}, { passive: false });
+
+investigationPanel.addEventListener('mousemove', (e) => {
+    // Mouse hover is handled by CSS/Events on elements, 
+    // but the cursorBox styling is manually handled in renderInvestigation
+    // so we don't need checkHover here unless we refactor renderInvestigation logic.
+    // The renderInvestigation puts listeners on the polygons directly.
+});
+// Add touch hover support for Move List
+moveList.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (element && element.tagName === 'BUTTON' && moveList.contains(element)) {
+        element.dispatchEvent(new Event('mouseenter'));
+    }
+}, { passive: false });

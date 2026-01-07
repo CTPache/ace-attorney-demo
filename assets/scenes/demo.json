@@ -29,7 +29,7 @@
     },
     "backgrounds": {
         "JoyPolis": "assets/img/backgrounds/FlyHigh_JoyPolis.png",
-        "Don1": "assets/img/backgrounds/Don_1.png"
+        "Demo_room": "assets/img/backgrounds/Don_1.png"
     },
     "evidence": {
         "badge": {
@@ -67,13 +67,19 @@
         "investigation": "assets/audio/demo/bgm001.ogg"
     },
     "investigations": {
-        "Don1": {
+        "Demo_room": {
             "move": [
                 {
                     "label": "Joypolis",
                     "target": "Joypolis_Start",
                     "preview": "JoyPolis",
                     "json": "assets/scenes/joypolis.json"
+                },
+                {
+                    "label": "Demo room",
+                    "target": "Demo_Main_01",
+                    "preview": "Demo_room",
+                    "json": "assets/scenes/demo.json"
                 }
             ],
             "default": "Demo_Examine_Default",
@@ -143,7 +149,7 @@
     "gameScript": {
         "Demo_Main_01": [
             {
-                "text": "{setGameOver:Demo_BadEnding_01}{setState:scenePrefix,Demo}{bg:Don1}{jumpIf:demo_Init,Demo_default,Demo_Intro}{sectionEnd}"
+                "text": "{setGameOver:Demo_BadEnding_01}{setState:scenePrefix,Demo}{bg:Demo_room}{jumpIf:demo_Init,Demo_default,Demo_Intro}{sectionEnd}"
             }
         ],
         "Demo_default": [

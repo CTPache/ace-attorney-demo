@@ -10,7 +10,7 @@
     },
     "backgrounds": {
         "JoyPolis": "assets/img/backgrounds/FlyHigh_JoyPolis.png",
-        "Don1": "assets/img/backgrounds/Don_1.png"
+        "Demo_room": "assets/img/backgrounds/Don_1.png"
     },
     "Topics": {
         "Joypolis_Topic_Welcome": {
@@ -25,7 +25,7 @@
                 {
                     "label": "Demo Room",
                     "target": "Demo_Main_01",
-                    "preview": "Don1",
+                    "preview": "Demo_room",
                     "json": "assets/scenes/demo.json"
                 }
             ],

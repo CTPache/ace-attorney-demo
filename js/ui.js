@@ -97,7 +97,9 @@ document.addEventListener('sceneStateChanged', (e) => {
 });
 
 // Advance Button Logic
-function startFastForward() {
+function startFastForward(e) {
+    if (e.type === 'touchstart') e.preventDefault(); // Prevent ghost clicks
+    
     // Immediate advance on click
     advanceDialogue(true);
 
@@ -134,11 +136,9 @@ advanceBtn.addEventListener('mouseup', stopFastForward);
 advanceBtn.addEventListener('mouseleave', stopFastForward);
 
 // Touch support
-advanceBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    startFastForward();
-});
+advanceBtn.addEventListener('touchstart', startFastForward, { passive: false });
 advanceBtn.addEventListener('touchend', stopFastForward);
+advanceBtn.addEventListener('touchcancel', stopFastForward);
 
 // Topic logic moved to topics.js
 
