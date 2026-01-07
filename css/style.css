@@ -770,6 +770,12 @@ body {
     pointer-events: none;
     z-index: 20;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.1s;
+}
+
+.cursor-line.active {
+    background-color: #FFD700; /* Gold/Yellow */
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
 #investigation-cursor-h {

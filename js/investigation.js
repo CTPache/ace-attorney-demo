@@ -151,6 +151,8 @@ function renderInvestigation() {
         // Hover effects for cursor
         polygon.addEventListener('mouseenter', () => {
             cursorBox.classList.add('active');
+            cursorH.classList.add('active');
+            cursorV.classList.add('active');
             if (gameState[point.label + "_visited"]) {
                 cursorBox.classList.add('visited');
             }
@@ -158,6 +160,8 @@ function renderInvestigation() {
         
         polygon.addEventListener('mouseleave', () => {
             cursorBox.classList.remove('active');
+            cursorH.classList.remove('active');
+            cursorV.classList.remove('active');
             cursorBox.classList.remove('visited');
         });
 
@@ -166,6 +170,8 @@ function renderInvestigation() {
             // e.stopPropagation(); // Don't stop propagation, let move handle it?
             // On touch start, we highlight it
             cursorBox.classList.add('active');
+            cursorH.classList.add('active');
+            cursorV.classList.add('active');
             if (gameState[point.label + "_visited"]) {
                 cursorBox.classList.add('visited');
             }
@@ -222,6 +228,8 @@ function checkHover(clientX, clientY) {
     if (element && element.classList.contains('investigation-polygon')) {
         // Trigger hover effect manually
         cursorBox.classList.add('active');
+        cursorH.classList.add('active');
+        cursorV.classList.add('active');
         
         // Find which point this polygon belongs to check visited status
         // We need a way to link polygon to data. 
@@ -233,6 +241,8 @@ function checkHover(clientX, clientY) {
         }
     } else {
         cursorBox.classList.remove('active');
+        cursorH.classList.remove('active');
+        cursorV.classList.remove('active');
         cursorBox.classList.remove('visited');
     }
 }
