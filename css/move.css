@@ -60,47 +60,10 @@
     font-size: 5cqh;
     border: 0.4cqh solid #3e1f0b !important; /* Dark brown border */
     border-radius: 1cqh;
-    padding: 2cqh 2cqh;
     cursor: pointer;
     position: relative;
     text-align: center;
     box-shadow: 0 1cqh 1cqh rgba(0,0,0,0.5);
     transition: all 0.1s;
-    /* Orange Corners Element */
 }
 
-/* Simulate the orange brackets */
-.move-btn::before, .move-btn::after {
-    content: '';
-    position: absolute;
-    width: 2cqh;
-    height: 100%;
-    border-top: 0.4cqh solid #ff8800;
-    border-bottom: 0.4cqh solid #ff8800;
-    top: 0;
-    box-sizing: border-box;
-    transition: all 0.1s;
-}
-
-.move-btn::before {
-    left: 0;
-    border-left: 0.4cqh solid #ff8800;
-    border-radius: 1cqh 0 0 1cqh;
-}
-
-.move-btn::after {
-    right: 0;
-    border-right: 0.4cqh solid #ff8800;
-    border-radius: 0 1cqh 1cqh 0;
-}
-
-.move-btn:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 2cqh rgba(255, 136, 0, 0.5);
-}
-
-.move-btn:hover::before, .move-btn:hover::after {
-    border-color: #ffaa00;
-    width: 100%; /* Expand to full border on hover? Or just glow */
-    width: 2.5cqh; 
-}

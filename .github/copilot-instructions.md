@@ -9,18 +9,20 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
   - `js/globals.js`: Global state variables and data containers.
   - `js/engine.js`: Game loop and high-level script execution.
   - `js/parser.js`: Optimized Regex-based text parsing.
-  - `js/text-renderer.js`: Handles text typing, skipping logic, and command execution.
+  - `js/text-renderer.js`: Handles text typing, skipping logic. Delegates logic to `script-actions.js`.
+  - `js/script-actions.js`: Executes non-rendering game logic (state, evidence, audio, flow).
   - `js/ui.js`: High-level UI state management and transition logic.
   - `js/court-record.js`: Evidence/Profiles inventory and presenting logic.
   - `js/investigation.js`: Investigation mode (examining, moving) logic.
   - `js/topics.js`: Topic selection menu logic.
   - `js/media.js`: Audio playback and visual effects.
   - `js/loader.js`: Asset preloading.
-  - `js/main.js`: Initialization and entry point.
-- **Game Data**: `game.json` contains dialogue scripts, scene flow, asset definitions, and in-text commands.
+  - `js/main.js`: Initialization, entry point, and Scene Loading.
+- **Game Data**: `game.json` (or split scene files) contains dialogue scripts, scene flow, asset definitions, and in-text commands.
 - **Styling**: 
   - `css/style.css`: Main layout, layering, and core UI styles. Uses Container Query Units (`cqh`) for aspect-ratio independent scaling.
   - `css/investigation.css`: Specific styles for the investigation menu and buttons.
+  - `css/move.css`: Styles for the Move menu grid and 3D perspectives.
 - **Assets**: Stored in `assets/` and referenced via relative paths in `game.json`.
 
 ## Critical Workflows
@@ -32,7 +34,7 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
 
 ## Data Structures & Conventions
 
-### `game.json` Structure
+### `scene.json` Structure
 The JSON file acts as the central database.
 ```json
 {
@@ -98,17 +100,23 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{showLifeBar:Penalty}`: Show the life bar (optional penalty preview).
 - `{hideLifeBar}`: Hide the life bar.
 
-### Asset Configuration (`game.json`)
+### Asset Configuration (`scene.json`)
 - **Characters**: Nested object structure: `CharacterName -> Emotion -> State (default/talking)`.
 - **Backgrounds**: Key-value mapping to file paths.
 - **Evidence/Profiles**: Objects with `name`, `description`, and `image`.
 - **Topics**: Objects with `text` (display name) and `label` (target section).
 - **Investigations**: Keyed by background name. Can be an array (points only) or an object structure:
   - `default`: (opt) Section to jump to when clicking empty space.
+  - `move`: Array of objects defines locations to travel to:
+    - `label`: Button text.
+    - `target`: Section to jump to.
+    - `preview`: Background key for hover preview.
+    - `json`: (Opt) Path to a new JSON file to load (Scene Change).
   - `points`: Array of objects with `bounds` (polygon coordinates) and `label` (target section).
 - **Sounds/Music**: Key-value mapping to file paths.
 
 ## Common Patterns
+- **Scene Management**: Support for multiple JSON/Scene files. Use `window.loadGameData()` or the `json` property in investigation moves. Evidence inventory is preserved (merged) across scenes.
 - **State Management**: Use `gameState` object in `js/globals.js` for flags.
 - **Typing Effect**: `typeWriter` in `js/engine.js` handles rendering.
 - **Sprite States**: Characters automatically switch between `default` and `talking` states during text rendering.

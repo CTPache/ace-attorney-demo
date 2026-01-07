@@ -45,7 +45,7 @@ function renderMoveMenu() {
 
     moveOptions.forEach(loc => {
         const btn = document.createElement('button');
-        btn.className = 'move-btn';
+        btn.className = 'topic-button';
         btn.textContent = loc.label;
         
         btn.addEventListener('mouseenter', () => {

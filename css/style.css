@@ -623,8 +623,7 @@ body {
 }
 
 .topic-button {
-    width: 80%;
-    padding: 3cqh;
+    width: 100%;
     font-size: 5cqh;
     font-family: 'Seurat', sans-serif;
     background-color: white;
