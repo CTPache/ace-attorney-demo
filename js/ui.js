@@ -108,7 +108,7 @@ function startFastForward(e) {
     // Start delay timer for fast forward
     fastForwardTimeout = setTimeout(() => {
         isFastForwarding = true;
-        advanceBtn.textContent = "🞂🞂";
+        advanceBtn.textContent = "▶▶";
         
         // Loop
         fastForwardInterval = setInterval(() => {
