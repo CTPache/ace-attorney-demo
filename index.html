@@ -6,6 +6,7 @@
     <title>Ace Attorney Demo</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/investigation.css">
+    <link rel="stylesheet" href="css/move.css">
 </head>
 <body>
     <div id="main-wrapper">
@@ -44,6 +45,15 @@
                     <button id="btn-move" class="inv-btn">Move</button>
                     <button id="btn-talk" class="inv-btn">Talk</button>
                     <button id="btn-present" class="inv-btn">Present</button>
+                </div>
+                <div id="move-menu" class="hidden">
+                    <div id="move-preview-container">
+                        <img id="move-preview-image" src="" alt="Location Preview">
+                    </div>
+                    <div id="move-list">
+                        <!-- Move buttons will be injected here -->
+                    </div>
+                    <button id="btn-move-back" class="back-btn">Back</button>
                 </div>
                 <div id="investigation-panel" class="hidden">
                     <img id="investigation-bg" src="/" alt="Investigation Background">
@@ -92,6 +102,7 @@
     <script src="js/loader.js"></script>
     <script src="js/parser.js"></script>
     <script src="js/engine.js"></script>
+    <script src="js/script-actions.js"></script>
     <script src="js/text-renderer.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/investigation.js"></script>

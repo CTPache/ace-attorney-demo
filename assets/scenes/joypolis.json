@@ -1,0 +1,63 @@
+{
+    "initialSection": "Joypolis_Start",
+    "characters": {
+        "Oldbag": {
+            "Normal": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Normal-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Normal-2.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "JoyPolis": "assets/img/backgrounds/FlyHigh_JoyPolis.png",
+        "Don1": "assets/img/backgrounds/Don_1.png"
+    },
+    "Topics": {
+        "Joypolis_Topic_Welcome": {
+            "text": "Where am I?",
+            "label": "Joypolis_Talk_Welcome"
+        }
+    },
+    "investigations": {
+        "JoyPolis": {
+            "default": "Joypolis_Examine_Default",
+            "move": [
+                {
+                    "label": "Demo Room",
+                    "target": "Demo_Main_01",
+                    "preview": "Don1",
+                    "json": "assets/scenes/demo.json"
+                }
+            ],
+            "points": []
+        }
+    },
+    "gameScript": {
+        "Joypolis_Start": [
+            {
+                "name": "System",
+                "text": "{setGameOver:Joypolis_GameOver}{setState:scenePrefix,Joypolis}{bg:JoyPolis}{hideCharacter}This is the Joypolis scene (New JSON loaded!).{topicUnlock:Joypolis_Topic_Welcome}{sectionEnd}"
+            }
+        ],
+        "Joypolis_Talk_Welcome": [
+            {
+                "text": "You are at Joypolis!{sectionEnd}"
+            }
+        ],
+        "Joypolis_Examine_Default": [
+            {
+                "text": "Nothing to see here."
+            }
+        ],
+        "Joypolis_evidence_default": [
+            {
+                "text": "I can't show this to anyone here."
+            }
+        ],
+        "Joypolis_GameOver": [
+            {
+                "text": "{center}{color:red}GAME OVER{color:white}{endGame}"
+            }
+        ]
+    }
+}

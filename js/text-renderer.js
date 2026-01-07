@@ -1,5 +1,9 @@
 console.log("Text Renderer Loaded");
 
+window.setTalkingAnimationState = function(state) {
+    currentTalkingAnimationEnabled = state;
+}
+
 function typeWriter(text) {
     isTyping = true;
     textContent.innerHTML = ""; // Clear content
@@ -24,28 +28,17 @@ function typeWriter(text) {
  * Returns 'UNHANDLED' if the segment requires specific timing/flow logic.
  */
 function processCommonSegment(segment) {
+    // Try delegated script actions first
+    const actionResult = executeScriptAction(segment);
+    if (actionResult === 'STOP') return 'STOP';
+    if (actionResult === true) return 'CONTINUE';
+
+    // Handle Renderer-specific segments
     switch (segment.type) {
         case 'color':
             currentSpan = document.createElement('span');
             currentSpan.style.color = segment.value;
             textContent.appendChild(currentSpan);
-            return 'CONTINUE';
-        case 'bg':
-            changeBackground(segment.bgName);
-            return 'CONTINUE';
-        case 'setState':
-            setGameState(segment.key, segment.value);
-            return 'CONTINUE';
-        case 'blip':
-            currentBlipType = segment.value;
-            if (segment.shouldSpeak !== undefined) {
-                currentTalkingAnimationEnabled = segment.shouldSpeak;
-            } else {
-                currentTalkingAnimationEnabled = true; // Default
-            }
-            if (segment.shouldSpeak === false)
-                currentTalkingAnimationEnabled = false;
-
             return 'CONTINUE';
         case 'center':
             textContent.style.textAlign = 'center';
@@ -62,132 +55,11 @@ function processCommonSegment(segment) {
         case 'textSpeed':
             currentTextSpeed = segment.value;
             return 'CONTINUE';
-        case 'addEvidence':
-            if (evidenceDB[segment.key] && !evidenceInventory.includes(segment.key)) {
-                evidenceInventory.push(segment.key);
-                gameState['evidence_' + segment.key] = true;
-                console.log(`Added evidence: ${segment.key}`);
-                if (segment.showPopup) {
-                    const event = new CustomEvent('evidenceAdded', { detail: { key: segment.key } });
-                    document.dispatchEvent(event);
-                }
-            }
-            return 'CONTINUE';
-        case 'removeEvidence':
-            const removeIndex = evidenceInventory.indexOf(segment.key);
-            if (removeIndex > -1) {
-                evidenceInventory.splice(removeIndex, 1);
-                delete gameState['evidence_' + segment.key];
-                console.log(`Removed evidence: ${segment.key}`);
-            }
-            return 'CONTINUE';
-        case 'updateEvidence':
-            // Remove old
-            const updateIndex = evidenceInventory.indexOf(segment.oldKey);
-            if (updateIndex > -1) {
-                evidenceInventory.splice(updateIndex, 1);
-                delete gameState['evidence_' + segment.oldKey];
-            }
-            // Add new
-            if (evidenceDB[segment.newKey] && !evidenceInventory.includes(segment.newKey)) {
-                evidenceInventory.push(segment.newKey);
-                gameState['evidence_' + segment.newKey] = true;
-                console.log(`Updated evidence ${segment.oldKey} to ${segment.newKey}`);
-                if (segment.showPopup) {
-                    const event = new CustomEvent('evidenceAdded', { detail: { key: segment.newKey } });
-                    document.dispatchEvent(event);
-                }
-            }
-            return 'CONTINUE';
-        case 'addProfile':
-            if (profilesDB[segment.key] && !profilesInventory.includes(segment.key)) {
-                profilesInventory.push(segment.key);
-                console.log(`Added profile: ${segment.key}`);
-                if (segment.showPopup) {
-                    const event = new CustomEvent('profileAdded', { detail: { key: segment.key } });
-                    document.dispatchEvent(event);
-                }
-            }
-            return 'CONTINUE';
-        case 'topicUnlock':
-            if (!unlockedTopics.includes(segment.topicId)) {
-                unlockedTopics.push(segment.topicId);
-                console.log(`Unlocked topic: ${segment.topicId}`);
-            }
-            return 'CONTINUE';
-        case 'sectionEnd':
-            showTopicsOnEnd = true;
-            return 'CONTINUE';
-        case 'playSound':
-            playSound(segment.soundName);
-            return 'CONTINUE';
-        case 'startBGM':
-            playBGM(segment.musicName);
-            return 'CONTINUE';
-        case 'stopBGM':
-            stopBGM(segment.fadeOut);
-            return 'CONTINUE';
-        case 'lifeMod':
-            if (window.modifyLife) window.modifyLife(segment.amount);
-            return 'CONTINUE';
-        case 'showLifeBar':
-            if (window.showLifeBar) window.showLifeBar(segment.penalty);
-            return 'CONTINUE';
-        case 'hideLifeBar':
-            if (window.hideLifeBar) window.hideLifeBar();
-            return 'CONTINUE';
-        case 'setGameOver':
-            gameOverLabel = segment.label;
-            return 'CONTINUE';
-        case 'endGame':
-            showEndGameOverlay();
-            isTyping = false;
-            setSpriteState('default');
-            return 'STOP';
         default:
             return 'UNHANDLED';
     }
 }
 
-function handleFlowControl(segment) {
-    // Only intercept flow control segments
-    const flowTypes = ['jump', 'jumpIf', 'option'];
-    if (!flowTypes.includes(segment.type)) {
-        return false;
-    }
-
-    if (window.isGameOverPending) {
-        jumpToSection(gameOverLabel);
-        return true; // Flow interrupted
-    }
-
-    if (segment.type === 'jump') {
-        jumpToSection(segment.label);
-        return true;
-    } else if (segment.type === 'jumpIf') {
-        if (gameState[segment.condition]) {
-            jumpToSection(segment.labelTrue);
-            return true;
-        } else if (segment.labelFalse) {
-            jumpToSection(segment.labelFalse);
-            return true;
-        } else {
-            // Condition false and no false-label -> Continue to next segment
-            return false;
-        }
-    } else if (segment.type === 'option') {
-        // Stop typing, don't advance segment or char
-        isTyping = false;
-        setSpriteState('default');
-
-        // Render the options menu
-        if (window.renderOptionsMenu) {
-            window.renderOptionsMenu(segment.optionKey);
-        }
-        return true;
-    }
-    return false;
-}
 
 function processNextChar() {
     if (segmentIndex >= segments.length) {
@@ -301,30 +173,31 @@ function showEndGameOverlay() {
 
     const overlay = document.createElement('div');
     overlay.id = 'end-game-overlay';
-    overlay.style.position = 'absolute';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-    overlay.style.display = 'flex';
-    overlay.style.justifyContent = 'center';
-    overlay.style.alignItems = 'center';
-    overlay.style.color = 'white';
-    overlay.style.flexDirection = 'column';
-    overlay.style.zIndex = '2000';
 
     const msg = document.createElement('h1');
-    msg.textContent = "THE END";
+    msg.textContent = gameOverMessage || "THE END";
     overlay.appendChild(msg);
 
     const restartBtn = document.createElement('button');
     restartBtn.textContent = "Restart";
-    restartBtn.style.padding = '10px 20px';
-    restartBtn.style.fontSize = '24px';
-    restartBtn.style.marginTop = '20px';
-    restartBtn.style.cursor = 'pointer';
-    restartBtn.onclick = () => location.reload();
+    restartBtn.onclick = () => {
+        // Remove overlay
+        overlay.remove();
+        isInputBlocked = false;
+        isTyping = false;
+
+        // Reset Life
+        if (typeof currentLife !== 'undefined') {
+            currentLife = maxLife;
+        }
+        // Reset isGameOverPending
+        window.isGameOverPending = false;
+
+        // Jump to last checkpoint/section
+        // Use lastCheckpointSection if available, otherwise use initialSectionName
+        const targetSection = lastCheckpointSection || initialSectionName || currentSectionName;
+        jumpToSection(targetSection); 
+    };
     overlay.appendChild(restartBtn);
 
     document.body.appendChild(overlay);

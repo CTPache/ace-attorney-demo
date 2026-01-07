@@ -17,7 +17,9 @@ const gameState = {};
 let gameScript = {};
 
 // State Variables
+let initialSectionName = "";
 let currentSectionName = "";
+let lastCheckpointSection = ""; // Used for Game Over retry
 let currentLineIndex = 0;
 let currentBackgroundKey = "";
 let isScenePlaying = true;
@@ -46,7 +48,7 @@ let currentLife = 10;
 let maxLife = 10;
 let gameOverLabel = "GameOver"; // Default
 window.isGameOverPending = false;
-
+let gameOverMessage = "GAME OVER";
 // UI State
 let isCourtRecordOpen = false;
 let isPresentingMode = false;

@@ -22,8 +22,74 @@ btnInvestigationBack.addEventListener('click', (e) => {
 });
 
 btnMove.addEventListener('click', () => {
-    console.log("Move clicked - Not implemented");
+    investigationMenu.classList.add('hidden');
+    moveMenu.classList.remove('hidden');
+    renderMoveMenu();
 });
+
+btnMoveBack.addEventListener('click', () => {
+    moveMenu.classList.add('hidden');
+    investigationMenu.classList.remove('hidden');
+});
+
+function renderMoveMenu() {
+    moveList.innerHTML = '';
+    
+    const currentLocData = investigations[currentBackgroundKey];
+    const moveOptions = (currentLocData && currentLocData.move) ? currentLocData.move : [];
+
+    if (moveOptions.length === 0) {
+        movePreviewImage.style.display = 'none';
+        return;
+    }
+
+    moveOptions.forEach(loc => {
+        const btn = document.createElement('button');
+        btn.className = 'move-btn';
+        btn.textContent = loc.label;
+        
+        btn.addEventListener('mouseenter', () => {
+            const bgKey = loc.preview || loc.bg; // Use preview key or bg key
+            if (bgKey && backgrounds[bgKey]) {
+                movePreviewImage.src = backgrounds[bgKey];
+                movePreviewImage.style.display = 'block';
+            } else {
+                movePreviewImage.style.display = 'none';
+            }
+        });
+
+        btn.addEventListener('click', () => {
+            if (loc.target) {
+                // Ensure UI is cleaned up (handled by sceneStateChanged, but being safe)
+                moveMenu.classList.add('hidden');
+                
+                if (loc.json) {
+                    if (window.loadGameData) {
+                        window.loadGameData(loc.json, loc.target);
+                    } else {
+                        console.error("loadGameData function is missing!");
+                    }
+                } else {
+                    jumpToSection(loc.target);
+                }
+            }
+        });
+
+        moveList.appendChild(btn);
+    });
+    
+    // Set initial preview
+    if (moveOptions.length > 0) {
+        const first = moveOptions[0];
+        const bgKey = first.preview || first.bg;
+        if (bgKey && backgrounds[bgKey]) {
+            movePreviewImage.src = backgrounds[bgKey];
+            movePreviewImage.style.display = 'block';
+        } else {
+            movePreviewImage.style.display = 'none';
+        }
+    }
+}
 
 investigationPanel.addEventListener('click', (e) => {
     if (isExamining) {

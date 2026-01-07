@@ -1,49 +1,59 @@
 console.log("Main Loaded");
 
-// Load the game script
-fetch('demo.json')
-    .then(response => response.json())
-    .then(async data => {
-        if (data.characters) {
-            characters = data.characters;
-        }
-        if (data.backgrounds) {
-            backgrounds = data.backgrounds;
-        }
-        if (data.evidence) {
-            evidenceDB = data.evidence;
-        }
-        if (data.profiles) {
-            profilesDB = data.profiles;
-        }
-        if (data.Topics) {
-            topicsDB = data.Topics;
-        }
-        if (data.investigations) {
-            investigations = data.investigations;
-        }
-        if (data.options) {
-            optionsDB = data.options;
-        }
-        if (data.sounds) {
-            soundsDB = data.sounds;
-        }
-        if (data.music) {
-            musicDB = data.music;
-        }
+// Function to load game data (exposed globally)
+window.loadGameData = function(jsonPath, startSection = null) {
+    console.log(`Loading game data from: ${jsonPath}`);
+    
+    // Show a loading indicator if you have one, or simple log
+    // Maybe pause the game/input?
+    
+    fetch(jsonPath)
+        .then(response => response.json())
+        .then(async data => {
+            // Reset/Update Data Containers
+            // Always overwrite DBs to ensure strict scene scoping
+            characters = data.characters || {};
+            backgrounds = data.backgrounds || {};
+            
+            // For Evidence and Profiles, MERGE to preserve definitions of items in inventory
+            evidenceDB = { ...evidenceDB, ...(data.evidence || {}) };
+            profilesDB = { ...profilesDB, ...(data.profiles || {}) };
+            
+            topicsDB = data.Topics || {};
+            investigations = data.investigations || {};
+            optionsDB = data.options || {};
+            soundsDB = data.sounds || {};
+            musicDB = data.music || {};
 
-        // Set initial section if provided in JSON
-        if (data.initialSection) {
-            currentSectionName = data.initialSection;
-        }
-        
-        await preloadAssets();
+            // Update Game Script
+            if (data.gameScript) gameScript = data.gameScript;
 
-        // The game script sections are now nested in a gameScript object
-        gameScript = data.gameScript;
-        startGame();
-    })
-    .catch(error => console.error('Error loading game script:', error));
+            // Determine Start Section
+            if (startSection) {
+                currentSectionName = startSection;
+            } else if (data.initialSection) {
+                currentSectionName = data.initialSection;
+            } else {
+                currentSectionName = "Demo_Main_01"; // Fallback
+            }
+            
+            // Set initial globals
+            initialSectionName = currentSectionName;
+            
+            // Re-run preload (this updates the new objects in-place with blob URLs)
+            await preloadAssets();
+
+            // Start the game logic
+            startGame();
+        })
+        .catch(error => {
+            console.error('Error loading game script:', error);
+            alert("Failed to load game data: " + jsonPath);
+        });
+};
+
+// Initial Load
+loadGameData('assets/scenes/demo.json');
 
 // Add click event listener to the game container
 gameContainer.addEventListener('click', advanceDialogue);

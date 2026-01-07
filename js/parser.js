@@ -33,6 +33,7 @@ const patterns = [
     /\{setGameOver:([a-zA-Z0-9_]+)\}/,                  // 27: SetGameOver
     /\{removeEvidence:([a-zA-Z0-9_]+)\}/,               // 28: RemoveEvidence
     /\{updateEvidence:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)(?:,(true|false))?\}/, // 29,30,31: UpdateEvidence (OldKey, NewKey, ShowPopup)
+    /\{checkpoint:([a-zA-Z0-9_]+)\}/,                   // 32: Checkpoint
     /\{endGame\}/                                       // 0: EndGame (Match[0] check)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
@@ -120,6 +121,8 @@ function parseText(text) {
         } else if (match[29] && match[30]) { // UpdateEvidence {updateEvidence:Old,New,Popup}
             const showPopup = match[31] !== 'false';
             parsedSegments.push({ type: 'updateEvidence', oldKey: match[29], newKey: match[30], showPopup: showPopup });
+        } else if (match[32]) { // Checkpoint {checkpoint:SectionName}
+            parsedSegments.push({ type: 'checkpoint', sectionName: match[32] });
         }
 
         lastIndex = masterRegex.lastIndex;

@@ -68,6 +68,14 @@
     },
     "investigations": {
         "Don1": {
+            "move": [
+                {
+                    "label": "Joypolis",
+                    "target": "Joypolis_Start",
+                    "preview": "JoyPolis",
+                    "json": "assets/scenes/joypolis.json"
+                }
+            ],
             "default": "Demo_Examine_Default",
             "points": [
                 {
@@ -100,13 +108,17 @@
         }
     },
     "Topics": {
-        "showcase": {
-            "text": "Showcase Demo Features",
+        "Demo_showcase": {
+            "text": "Showcase demo features",
             "label": "Demo_showcase"
         },
-        "gameOverTest": {
-            "text": "Test Game Over Feature",
+        "Demo_gameOverTest": {
+            "text": "Test game over feature",
             "label": "Demo_gameOverTest"
+        },
+        "Demo_topicUnlockTest": {
+            "text": "Test topic unlock feature",
+            "label": "Demo_topicUnlockTest"
         }
     },
     "options": {
@@ -131,17 +143,17 @@
     "gameScript": {
         "Demo_Main_01": [
             {
-                "text": "{jumpIf:demo_Init,Demo_default,Demo_Intro}{sectionEnd}"
+                "text": "{setGameOver:Demo_BadEnding_01}{setState:scenePrefix,Demo}{bg:Don1}{jumpIf:demo_Init,Demo_default,Demo_Intro}{sectionEnd}"
             }
         ],
         "Demo_default": [
             {
-                "text": "{skip:0}"
+                "text": "{sprite:Oldbag[\"Normal\"]}{skip:0}{sectionEnd}"
             }
         ],
         "Demo_Intro": [
             {
-                "text": "{setGameOver:BadEnding_01}{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{textSpeed:40}{center}{color:lime}October 14, 10:00 AM{nl}{p:500}Police Department{nl}{p:500}Demo Web Engine Tutorial Room{color:white}{sectionEnd}"
+                "text": "{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{textSpeed:40}{center}{color:lime}October 14, 10:00 AM{nl}{p:500}Police Department{nl}{p:500}Demo Web Engine Tutorial Room{color:white}{sectionEnd}"
             },
             {
                 "name": "Phoenix",
@@ -172,7 +184,7 @@
             },
             {
                 "name": "Oldbag",
-                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{stopBGM:true}{topicUnlock:showcase}{topicUnlock:gameOverTest}{setState:demo_Init,true}{sectionEnd}"
+                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{stopBGM:true}{topicUnlock:Demo_showcase}{topicUnlock:Demo_gameOverTest}{setState:demo_Init,true}{sectionEnd}"
             }
         ],
         "Demo_showcase": [
@@ -231,7 +243,7 @@
         "Demo_Charm_obtained": [
             {
                 "name": "Oldbag",
-                "text": "{blip:1}Anyway, that's it for the basics. {sectionEnd}"
+                "text": "{blip:1}Anyway, that's it for the basics.{topicUnlock:Demo_topicUnlockTest}{sectionEnd}"
             }
         ],
         "Demo_gameOverTest": [
@@ -248,7 +260,7 @@
                 "text": "Who is the most handsome, talented prosecutor in the world?"
             },
             {
-                "text": "{option:DemoOptions}"
+                "text": "{checkpoint:Demo_gameOverTest}{option:DemoOptions}"
             }
         ],
         "Demo_option_1": [
@@ -274,16 +286,26 @@
         "Demo_option_3": [
             {
                 "name": "Oldbag",
-                "text": "{blip:1}{showLifeBar:0}{sprite:Oldbag[\"Angry\"]}WHAT?! The Paynes?! {playSound:damage}{flash}{lifeMod:-10}"
+                "text": "{blip:1}{showLifeBar:0}{sprite:Oldbag[\"Angry\"]}WHAT?! The Paynes?! {playSound:damage}{flash}{lifeMod:-10}{p:500}{hideLifeBar}{sectionEnd}"
             }
         ],
-        "BadEnding_01": [
+        "Demo_BadEnding_01": [
             {
                 "name": "Oldbag",
                 "text": "{blip:1}Get out of my sight! You're banned from the demo!"
             },
             {
                 "text": "{blip:3}{center}{color:red}GUILTY{color:white}{nl}{p:1000}The defense has lost the will to live.{endGame}"
+            }
+        ],
+        "Demo_topicUnlockTest": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Smirking\"]}Oh, and one more thing! You can present evidence during conversations!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "Try showing me your {color:yellow}Attorney's Badge{color:white}.{sectionEnd}"
             }
         ],
         "Demo_evidence_badge": [

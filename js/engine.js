@@ -104,6 +104,9 @@ function updateSceneState() {
 }
 
 function startGame() {
+    isScenePlaying = true;
+    updateSceneState();
+    
     const initialSection = gameScript[currentSectionName];
     if (initialSection && initialSection.length > 0) {
         // Check if the first line contains a sprite command but NO fade-in command

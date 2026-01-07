@@ -64,6 +64,7 @@ document.addEventListener('sceneStateChanged', (e) => {
     if (isPlaying) {
         textboxContainer.classList.remove('hidden');
         investigationMenu.classList.add('hidden');
+        moveMenu.classList.add('hidden');
         topicMenu.classList.add('hidden');
         advanceBtn.classList.remove('hidden');
         investigationPanel.classList.add('hidden');

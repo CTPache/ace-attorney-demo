@@ -25,6 +25,12 @@ const btnMove = document.getElementById('btn-move');
 const btnTalk = document.getElementById('btn-talk');
 const btnPresent = document.getElementById('btn-present');
 
+// Move Menu Elements
+const moveMenu = document.getElementById('move-menu');
+const moveList = document.getElementById('move-list');
+const movePreviewImage = document.getElementById('move-preview-image');
+const btnMoveBack = document.getElementById('btn-move-back');
+
 // Investigation Panel Elements
 const investigationBg = document.getElementById('investigation-bg');
 const investigationOverlay = document.getElementById('investigation-overlay');

@@ -60,7 +60,7 @@ The engine parses commands enclosed in `{}` within the `text` string.
 
 **Visuals:**
 - `{bg:Key}`: Change background.
-- `{sprite:CharName["Emotion"]}`: Change character sprite.
+- `{sprite:CharName["Emotion"]}`: Change character sprite. Automatically shows character if hidden.
 - `{fadeInCharacter}` / `{fadeOutCharacter}`: Fade character in or out.
 - `{showCharacter}` / `{hideCharacter}`: Toggle character visibility instantly.
 - `{flash}`: Trigger a white flash effect.
@@ -79,6 +79,7 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{setState:VarName,Value}`: Update a variable in `gameState`.
 - `{option:Key}`: Display a list of choices defined in `options` db.
 - `{setGameOver:Label}`: Sets the section to jump to if a Game Over occurs.
+- `{checkpoint:SectionName}`: Sets the restart point for Game Over screens. If unset, restarts from the beginning.
 - `{endGame}`: Triggers the "THE END" overlay and stops execution.
 
 **Text Styling & Formatting:**
@@ -102,7 +103,9 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - **Backgrounds**: Key-value mapping to file paths.
 - **Evidence/Profiles**: Objects with `name`, `description`, and `image`.
 - **Topics**: Objects with `text` (display name) and `label` (target section).
-- **Investigations**: Keyed by background name. Contains an array of objects with `bounds` (polygon coordinates array) and `label` (target section).
+- **Investigations**: Keyed by background name. Can be an array (points only) or an object structure:
+  - `default`: (opt) Section to jump to when clicking empty space.
+  - `points`: Array of objects with `bounds` (polygon coordinates) and `label` (target section).
 - **Sounds/Music**: Key-value mapping to file paths.
 
 ## Common Patterns
