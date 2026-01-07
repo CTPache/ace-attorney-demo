@@ -1,4 +1,5 @@
 {
+    "initialSection": "Demo_Main_01",
     "characters": {
         "Oldbag": {
             "Normal": {
@@ -130,11 +131,21 @@
     "gameScript": {
         "Demo_Main_01": [
             {
+                "text": "{jumpIf:demo_Init,Demo_default,Demo_Intro}{sectionEnd}"
+            }
+        ],
+        "Demo_default": [
+            {
+                "text": "{skip:0}"
+            }
+        ],
+        "Demo_Intro": [
+            {
                 "text": "{setGameOver:BadEnding_01}{setState:scenePrefix,Demo}{bg:Don1}{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{textSpeed:40}{center}{color:lime}October 14, 10:00 AM{nl}{p:500}Police Department{nl}{p:500}Demo Web Engine Tutorial Room{color:white}{sectionEnd}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}{color:lightblue}(Another day, another trial. And I have no idea how this engine works...){color:white}"
+                "text": "{startBGM:investigation}{blip:1,false}{color:lightblue}(Another day, another trial. And I have no idea how this engine works...){color:white}"
             },
             {
                 "text": "{blip:2}Hrngh... Hrrrmph!"
@@ -161,7 +172,7 @@
             },
             {
                 "name": "Oldbag",
-                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{topicUnlock:showcase}{topicUnlock:gameOverTest}{sectionEnd}"
+                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{stopBGM:true}{topicUnlock:showcase}{topicUnlock:gameOverTest}{setState:demo_Init,true}{sectionEnd}"
             }
         ],
         "Demo_showcase": [

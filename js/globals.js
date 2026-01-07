@@ -17,7 +17,7 @@ const gameState = {};
 let gameScript = {};
 
 // State Variables
-let currentSectionName = "Demo_Main_01";
+let currentSectionName = "";
 let currentLineIndex = 0;
 let currentBackgroundKey = "";
 let isScenePlaying = true;

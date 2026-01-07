@@ -31,6 +31,11 @@ fetch('demo.json')
         if (data.music) {
             musicDB = data.music;
         }
+
+        // Set initial section if provided in JSON
+        if (data.initialSection) {
+            currentSectionName = data.initialSection;
+        }
         
         await preloadAssets();
 

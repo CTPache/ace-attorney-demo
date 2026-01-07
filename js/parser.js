@@ -106,69 +106,6 @@ function parseText(text) {
             parsedSegments.push({ type: 'playSound', soundName: match[21] });
         } else if (match[22]) { // StartBGM {startBGM:Name}
             parsedSegments.push({ type: 'startBGM', musicName: match[22] });
-        } else if (match[23]) { // Option {option:Key} (Note: check index, might be previous stopBGM group)
-             /* Wait, stopBGM is /\{stopBGM(?::(true|false))?\}/ which is group 23.
-                The previous regex list:
-                22: StartBGM
-                23: StopBGM (FadeOut) -> wait, group 23 is inside stopBGM
-             */
-             // Let's re-verify the indices.
-             /*
-                7: Jump
-                8,9,10: JumpIf
-                11,12: SetState
-                13,14: Blip
-                15: Text Speed (was 14)
-                16,17: AddEvidence (was 15,16)
-                18,19: AddProfile (was 17,18)
-                20: TopicUnlock (was 19)
-                21: PlaySound (was 20)
-                22: StartBGM (was 21)
-                23: StopBGM capture group inside (was 22) - wait, match[0].startsWith('{stopBGM') handles it manually usually?
-                Ah, checks `match[0]` for `{stopBGM`.
-                But the regex has a capture group: `(true|false)`.
-                So `match` array will have that group at index 23.
-                
-                Let's look at the regex construction again.
-                /\{stopBGM(?::(true|false))?\}/
-                Yes, it has one capturing group.
-                
-                Wait, I need to check if previous unused groups affect the index.
-                Pattern 22 (index in array, not capture group index) is:
-                /\{stopBGM(?::(true|false))?\}/
-                
-                Previous capturing groups sum:
-                1: Pause (1)
-                2: Color (1)
-                3,4: Sprite (2)
-                5: Skip (1)
-                6: Bg (1)
-                7: Jump (1)
-                8,9,10: JumpIf (3)
-                11,12: SetState (2)
-                13,14: Blip (2)  <-- CHANGED (+1)
-                15: TextSpeed (1)
-                16,17: AddEvidence (2)
-                18,19: AddProfile (2)
-                20: TopicUnlock (1)
-                21: PlaySound (1)
-                22: StartBGM (1)
-                23: StopBGM (1)
-                24: Option (1)
-                25: LifeMod (1)
-                26: ShowLifeBar (1)
-                27: SetGameOver (1)
-
-                So:
-                startBGM is match[22].
-                stopBGM capture is match[23].
-                option is match[24].
-                lifeMod is match[25].
-                showLifeBar capture is match[26].
-                setGameOver is match[27].
-             */
-             
-            // Back to code:
         } else if (match[24]) { // Option {option:Key}
             parsedSegments.push({ type: 'option', optionKey: match[24] });
         } else if (match[25]) { // LifeMod {lifeMod:Amount}
@@ -184,15 +121,13 @@ function parseText(text) {
             const showPopup = match[31] !== 'false';
             parsedSegments.push({ type: 'updateEvidence', oldKey: match[29], newKey: match[30], showPopup: showPopup });
         }
-        
-        // I also need to update the `stopBGM` check because it relies on index 22 in valid code (was 22). Now it is 23.
-        
+
         lastIndex = masterRegex.lastIndex;
     }
     // Add remaining text
     if (lastIndex < text.length) {
         parsedSegments.push({ type: 'text', content: text.substring(lastIndex) });
     }
-    
+
     return parsedSegments;
 }

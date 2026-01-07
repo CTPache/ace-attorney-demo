@@ -41,17 +41,10 @@ function processCommonSegment(segment) {
             if (segment.shouldSpeak !== undefined) {
                 currentTalkingAnimationEnabled = segment.shouldSpeak;
             } else {
-                currentTalkingAnimationEnabled = true; // Default to true if not specified? 
-                // Or retain state? 
-                // The request implies it's a parameter of the command.
-                // Usually {blip} changes the *sound*.
-                // Should {blip:1} reset silent mode?
-                // Probably yes. "reuse the blip control code".
-                // So {blip:1} -> sound 1, talking ON.
-                // {blip:1,false} -> sound 1, talking OFF.
-                currentTalkingAnimationEnabled = true;
+                currentTalkingAnimationEnabled = true; // Default
             }
-            if (segment.shouldSpeak === false) currentTalkingAnimationEnabled = false;
+            if (segment.shouldSpeak === false)
+                currentTalkingAnimationEnabled = false;
 
             return 'CONTINUE';
         case 'center':
@@ -164,8 +157,8 @@ function handleFlowControl(segment) {
     }
 
     if (window.isGameOverPending) {
-         jumpToSection(gameOverLabel);
-         return true; // Flow interrupted
+        jumpToSection(gameOverLabel);
+        return true; // Flow interrupted
     }
 
     if (segment.type === 'jump') {
@@ -179,14 +172,14 @@ function handleFlowControl(segment) {
             jumpToSection(segment.labelFalse);
             return true;
         } else {
-             // Condition false and no false-label -> Continue to next segment
-             return false;
+            // Condition false and no false-label -> Continue to next segment
+            return false;
         }
     } else if (segment.type === 'option') {
         // Stop typing, don't advance segment or char
-        isTyping = false; 
+        isTyping = false;
         setSpriteState('default');
-        
+
         // Render the options menu
         if (window.renderOptionsMenu) {
             window.renderOptionsMenu(segment.optionKey);
@@ -210,14 +203,14 @@ function processNextChar() {
     if (commonResult === 'CONTINUE') {
         segmentIndex++;
         // Use timeout to allow UI updates / break stack
-        typingInterval = setTimeout(processNextChar, 0); 
+        typingInterval = setTimeout(processNextChar, 0);
         return;
     }
 
     // Handle Timed/Animated/Flow Segments
     if (segment.type === 'text') {
         if (currentTalkingAnimationEnabled) {
-             setSpriteState('talking');
+            setSpriteState('talking');
         }
         if (charIndex < segment.content.length) {
             currentSpan.textContent += segment.content.charAt(charIndex);
@@ -243,7 +236,7 @@ function processNextChar() {
             if (segmentIndex + 1 < segments.length && segments[segmentIndex + 1].type === 'sprite') {
                 const nextSeg = segments[segmentIndex + 1];
                 changeSprite(nextSeg.charName, nextSeg.spriteKey);
-                segmentIndex++; 
+                segmentIndex++;
             }
             character.style.opacity = 1;
         } else {
@@ -269,11 +262,11 @@ function processNextChar() {
         const charData = characters[segment.charName];
         const animData = charData ? charData[segment.spriteKey] : null;
         if (animData && animData.time) {
-             segmentIndex++;
-             typingInterval = setTimeout(processNextChar, animData.time);
+            segmentIndex++;
+            typingInterval = setTimeout(processNextChar, animData.time);
         } else {
-             segmentIndex++;
-             processNextChar();
+            segmentIndex++;
+            processNextChar();
         }
     } else if (segment.type === 'skip') {
         isWaitingForAutoSkip = true;
@@ -365,14 +358,14 @@ function finishTyping() {
             triggerFlash();
             segmentIndex++;
         } else if (segment.type === 'sprite') {
-             // Instant sprite change + Show Character
+            // Instant sprite change + Show Character
             character.style.transition = "none";
             character.style.opacity = 1;
             void character.offsetWidth;
             character.style.transition = "";
-            
+
             changeSprite(segment.charName, segment.spriteKey);
-            segmentIndex++; 
+            segmentIndex++;
         } else if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
             // Instant fade
             character.style.transition = "none";
@@ -401,8 +394,8 @@ function finishTyping() {
             // Ignore pauses in skip mode
             segmentIndex++;
         } else {
-             // Any unhandled keys (should be none significant)
-             segmentIndex++;
+            // Any unhandled keys (should be none significant)
+            segmentIndex++;
         }
     }
 
