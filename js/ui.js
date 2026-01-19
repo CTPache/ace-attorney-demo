@@ -142,3 +142,58 @@ advanceBtn.addEventListener('touchcancel', stopFastForward);
 
 // Topic logic moved to topics.js
 
+/* --- Single Screen Mode Logic --- */
+let isSingleScreenMode = false;
+let activeScreen = 'top'; // 'top' or 'bottom'
+
+function updateScreenVisibility() {
+    const topScreen = document.getElementById('game-container');
+    const bottomScreen = document.getElementById('bottom-screen');
+    const wrapper = document.getElementById('main-wrapper');
+
+    if (isSingleScreenMode) {
+        wrapper.classList.add('single-screen-mode');
+        if (activeScreen === 'top') {
+            topScreen.classList.remove('inactive-screen');
+            bottomScreen.classList.add('inactive-screen');
+        } else {
+            topScreen.classList.add('inactive-screen');
+            bottomScreen.classList.remove('inactive-screen');
+        }
+    } else {
+        wrapper.classList.remove('single-screen-mode');
+        topScreen.classList.remove('inactive-screen');
+        bottomScreen.classList.remove('inactive-screen');
+    }
+}
+
+function toggleScreenMode() {
+    isSingleScreenMode = !isSingleScreenMode;
+    // Default to top screen when entering single mode
+    if (isSingleScreenMode) {
+        activeScreen = 'top';
+    }
+    updateScreenVisibility();
+}
+
+function switchScreen() {
+    if (!isSingleScreenMode) return;
+    activeScreen = (activeScreen === 'top') ? 'bottom' : 'top';
+    updateScreenVisibility();
+}
+
+window.toggleScreenMode = toggleScreenMode;
+window.switchScreen = switchScreen;
+
+document.addEventListener('keydown', (e) => {
+    // Only if not typing in an input
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key.toLowerCase() === 'm') {
+        toggleScreenMode();
+    }
+    if (e.key.toLowerCase() === 's') {
+        switchScreen();
+    }
+});
+

@@ -200,7 +200,10 @@
         ],
         "Demo_animationTest": [
             {
-                "text": "{bg:Courtroom}Check this out! {hideTextbox}{playAnimation:Don_break_melon}{showTextbox} Startling, isn't it?"},{"text":"{bg:Demo_room}{sectionEnd}"
+                "text": "{bg:Courtroom}Check this out! {hideTextbox}{playAnimation:Don_break_melon}{showTextbox} Startling, isn't it?"
+            },
+            {
+                "text": "{bg:Demo_room}{sectionEnd}{skip:0}"
             }
         ],
         "Demo_showcase": [

@@ -38,7 +38,7 @@
                 "image": "img/sprites/Don_break_melon_aux.webp",
                 "class": "aux",
                 "targetId": "overlay-img-aux",
-                "duration": 160
+                "duration": 120
             },
             {
                 "image": "img/characters/Don/Don/Don_break_melon.webp",

@@ -869,3 +869,18 @@ body {
     margin-top: 20px;
     cursor: pointer;
 }
+
+/* Single Screen Mode */
+.single-screen-mode .inactive-screen {
+    display: none !important;
+}
+
+.single-screen-mode #game-container:not(.inactive-screen),
+.single-screen-mode #bottom-screen:not(.inactive-screen) {
+    width: min(100vw, 177.78vh);
+    height: min(56.25vw, 100vh);
+    aspect-ratio: 16 / 9;
+    border: none;
+    box-shadow: none;
+}
+

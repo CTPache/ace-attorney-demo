@@ -5,6 +5,7 @@ window.AnimationManager = (function() {
     let currentStyleSheet = null;
     let createdLayers = [];
     let imageBlobs = {};
+    const TRANSPARENT_PIXEL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     function cleanup() {
         // Cleanup active timeouts
@@ -96,7 +97,7 @@ window.AnimationManager = (function() {
                             if (myRunId !== currentRunId) return;
                             if (img.dataset.runId == runId) {
                                 if (img.id !== 'character') {
-                                    img.removeAttribute('src');
+                                    img.src = TRANSPARENT_PIXEL;
                                 }
                                 img.className = 'layer';
                                 img.style.animationDuration = '';
@@ -127,6 +128,7 @@ window.AnimationManager = (function() {
                                 layer = document.createElement('img');
                                 layer.id = layerId;
                                 layer.className = 'layer';
+                                layer.src = TRANSPARENT_PIXEL;
                                 container.appendChild(layer);
                                 createdLayers.push(layer);
                             }
@@ -203,7 +205,6 @@ window.AnimationManager = (function() {
 
                     // Finish
                     const endTimeout = setTimeout(() => {
-                        cleanup(); // Cleanup logic moved here as requested
                         resolve();
                     }, maxDuration + 50);
                     activeTimeouts.push(endTimeout);
