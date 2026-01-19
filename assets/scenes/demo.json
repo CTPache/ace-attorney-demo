@@ -29,7 +29,8 @@
     },
     "backgrounds": {
         "JoyPolis": "assets/img/backgrounds/FlyHigh_JoyPolis.png",
-        "Demo_room": "assets/img/backgrounds/Don_1.png"
+        "Demo_room": "assets/img/backgrounds/Don_1.png",
+        "Courtroom": "assets/img/backgrounds/Courtroom_witness.webp"
     },
     "evidence": {
         "badge": {
@@ -125,6 +126,10 @@
         "Demo_topicUnlockTest": {
             "text": "Test topic unlock feature",
             "label": "Demo_topicUnlockTest"
+        },
+        "Demo_topicAnimationTest": {
+            "text": "Test animation feature",
+            "label": "Demo_animationTest"
         }
     },
     "options": {
@@ -190,7 +195,12 @@
             },
             {
                 "name": "Oldbag",
-                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{stopBGM:true}{topicUnlock:Demo_showcase}{topicUnlock:Demo_gameOverTest}{setState:demo_Init,true}{sectionEnd}"
+                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{stopBGM:true}{topicUnlock:Demo_showcase}{topicUnlock:Demo_topicAnimationTest}{topicUnlock:Demo_gameOverTest}{setState:demo_Init,true}{sectionEnd}"
+            }
+        ],
+        "Demo_animationTest": [
+            {
+                "text": "{bg:Courtroom}Check this out! {hideTextbox}{playAnimation:Don_break_melon}{showTextbox} Startling, isn't it?"},{"text":"{bg:Demo_room}{sectionEnd}"
             }
         ],
         "Demo_showcase": [

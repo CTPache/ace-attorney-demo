@@ -95,7 +95,7 @@ function setSpriteState(state) {
     }
 
     if (spriteUrl) {
-        character.style.backgroundImage = `url('${spriteUrl}')`;
+        character.src = spriteUrl;
     }
 }
 

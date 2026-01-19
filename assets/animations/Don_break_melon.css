@@ -1,0 +1,98 @@
+#character {
+    opacity: 1;
+}
+
+#bunny {
+    z-index: 2;
+}
+
+#overlay-img-aux {
+    z-index: 2;
+}
+
+.walk-in {
+    animation: walk-in-anim linear forwards;
+}
+
+@keyframes walk-in-anim {
+    0% {
+        left: 100%;
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    37% {
+        transform: translateY(20px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    62% {
+        transform: translateY(20px);
+    }
+
+    75% {
+        transform: translateY(0);
+    }
+
+    87% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        left: 15%;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.still {
+    left: 15%;
+    opacity: 1;
+}
+
+.aux {
+    animation: aux-anim linear forwards;
+}
+
+@keyframes aux-anim {
+    0% {
+        opacity: 1;
+    }
+}
+
+.walk-out {
+    animation: walk-out-anim linear forwards;
+}
+
+@keyframes walk-out-anim {
+    0% {
+        opacity: 1;
+        left: 15%;
+        transform: translateY(0);
+    }
+
+    9% {
+        transform: translateY(20px);
+        opacity: 1;
+    }
+
+    18% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    24% {
+        left: 100%;
+        transform: translateY(20px);
+        opacity: 1;
+    }
+
+    100% {
+        left: 150%;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

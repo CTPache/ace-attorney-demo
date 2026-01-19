@@ -1,0 +1,64 @@
+{
+    "layers": [
+        "character",
+        "bunny",
+        "overlay-img-aux"
+    ],
+    "animationCss": "Don_break_melon.css",
+    "images": [
+        "Don_Normal.webp",
+        "Bunny_walk_melon.webp",
+        "Bunny_walk_out.webp",
+        "Bunny.webp",
+        "Bunny-melon.webp",
+        "Don_break_melon.webp",
+        "Don_break_melon_aux.webp"
+    ],
+    "timeline": {
+        "0": [
+            {
+                "image": "img/characters/Don/Don/Don_Normal.webp",
+                "targetId": "character"
+            },
+            {
+                "image": "img/sprites/Bunny_walk_melon.webp",
+                "class": "walk-in",
+                "targetId": "bunny",
+                "duration": 1810
+            }
+        ],
+        "1810": {
+            "image": "img/sprites/Bunny-melon.webp",
+            "class": "still",
+            "targetId": "bunny",
+            "duration": 1890
+        },
+        "3600": [
+            {
+                "image": "img/sprites/Don_break_melon_aux.webp",
+                "class": "aux",
+                "targetId": "overlay-img-aux",
+                "duration": 160
+            },
+            {
+                "image": "img/characters/Don/Don/Don_break_melon.webp",
+                "targetId": "character"
+            },
+            {
+                "image": "img/sprites/Bunny.webp",
+                "class": "still",
+                "targetId": "bunny",
+                "duration": 1260
+            }
+        ],
+        "4960": {
+            "image": "img/sprites/Bunny_walk_out.webp",
+            "class": "walk-out",
+            "targetId": "bunny",
+            "duration": 4040
+        },
+        "6500": {
+            "sound": "audio/se/explosion.ogg"
+        }
+    }
+}

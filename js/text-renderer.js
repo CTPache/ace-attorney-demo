@@ -1,6 +1,8 @@
 console.log("Text Renderer Loaded");
 
-window.setTalkingAnimationState = function(state) {
+let isWaitingForAnimation = false;
+
+window.setTalkingAnimationState = function (state) {
     currentTalkingAnimationEnabled = state;
 }
 
@@ -104,6 +106,7 @@ function processNextChar() {
         segmentIndex++;
         typingInterval = setTimeout(processNextChar, 200);
     } else if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
+        character.style.transition = "opacity 1s ease-in-out";
         if (segment.type === 'fadeIn') {
             if (segmentIndex + 1 < segments.length && segments[segmentIndex + 1].type === 'sprite') {
                 const nextSeg = segments[segmentIndex + 1];
@@ -123,6 +126,10 @@ function processNextChar() {
         character.style.transition = "";
         segmentIndex++;
         processNextChar();
+    } else if (segment.type === 'showTextbox' || segment.type === 'hideTextbox') {
+        textboxContainer.style.opacity = (segment.type === 'showTextbox') ? 1 : 0;
+        segmentIndex++;
+        processNextChar();
     } else if (segment.type === 'sprite') {
         // Explicitly show character (mimic {showCharacter})
         character.style.transition = "none";
@@ -139,6 +146,22 @@ function processNextChar() {
         } else {
             segmentIndex++;
             processNextChar();
+        }
+    } else if (segment.type === 'playAnimation') {
+        setSpriteState('default');
+        isWaitingForAnimation = true;
+        
+        if (window.AnimationManager) {
+            window.AnimationManager.play(segment.name).then(() => {
+                if (isWaitingForAnimation) {
+                    isWaitingForAnimation = false;
+                    segmentIndex++;
+                    processNextChar();
+                }
+            });
+        } else {
+             segmentIndex++;
+             processNextChar();
         }
     } else if (segment.type === 'skip') {
         isWaitingForAutoSkip = true;
@@ -196,7 +219,7 @@ function showEndGameOverlay() {
         // Jump to last checkpoint/section
         // Use lastCheckpointSection if available, otherwise use initialSectionName
         const targetSection = lastCheckpointSection || initialSectionName || currentSectionName;
-        jumpToSection(targetSection); 
+        jumpToSection(targetSection);
     };
     overlay.appendChild(restartBtn);
 
@@ -205,6 +228,7 @@ function showEndGameOverlay() {
 
 function finishTyping() {
     clearTimeout(typingInterval);
+    isWaitingForAnimation = false;
 
     while (segmentIndex < segments.length) {
         const segment = segments[segmentIndex];
@@ -252,6 +276,11 @@ function finishTyping() {
             character.style.opacity = (segment.type === 'showCharacter') ? 1 : 0;
             void character.offsetWidth;
             character.style.transition = "";
+            segmentIndex++;
+        } else if (segment.type === 'showTextbox' || segment.type === 'hideTextbox') {
+            textboxContainer.style.opacity = (segment.type === 'showTextbox') ? 1 : 0;
+            segmentIndex++;
+        } else if (segment.type === 'playAnimation') {
             segmentIndex++;
         } else if (segment.type === 'skip') {
             // Found a skip tag during fast-forward

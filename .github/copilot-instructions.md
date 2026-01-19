@@ -10,6 +10,7 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
   - `js/engine.js`: Game loop and high-level script execution.
   - `js/parser.js`: Optimized Regex-based text parsing.
   - `js/text-renderer.js`: Handles text typing, skipping logic. Delegates logic to `script-actions.js`.
+  - `js/animations.js`: Manages complex CSS/WebP animations defined in JSON timelines.
   - `js/script-actions.js`: Executes non-rendering game logic (state, evidence, audio, flow).
   - `js/ui.js`: High-level UI state management and transition logic.
   - `js/court-record.js`: Evidence/Profiles inventory and presenting logic.
@@ -65,6 +66,8 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{sprite:CharName["Emotion"]}`: Change character sprite. Automatically shows character if hidden.
 - `{fadeInCharacter}` / `{fadeOutCharacter}`: Fade character in or out.
 - `{showCharacter}` / `{hideCharacter}`: Toggle character visibility instantly.
+- `{playAnimation:Name}`: Plays an animation sequence from `assets/animations/Name.json`. Pauses text until done.
+- `{hideTextbox}` / `{showTextbox}`: Toggle the dialogue box visibility.
 - `{flash}`: Trigger a white flash effect.
 
 **Audio:**
