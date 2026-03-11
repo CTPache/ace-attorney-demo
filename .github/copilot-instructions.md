@@ -63,6 +63,7 @@ The engine parses commands enclosed in `{}` within the `text` string.
 
 **Visuals:**
 - `{bg:Key}`: Change background.
+- `{fg:Key}`: Change foreground (e.g., bars, overlays).
 - `{sprite:CharName["Emotion"]}`: Change character sprite. Automatically shows character if hidden.
 - `{fadeInCharacter}` / `{fadeOutCharacter}`: Fade character in or out.
 - `{showCharacter}` / `{hideCharacter}`: Toggle character visibility instantly.

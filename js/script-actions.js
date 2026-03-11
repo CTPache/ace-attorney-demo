@@ -15,6 +15,9 @@ function executeScriptAction(segment) {
         case 'bg':
             changeBackground(segment.bgName);
             return true;
+        case 'fg':
+            changeForeground(segment.fgName);
+            return true;
         case 'setState':
             setGameState(segment.key, segment.value);
             return true;
@@ -117,6 +120,9 @@ function executeScriptAction(segment) {
             lastCheckpointSection = segment.sectionName;
             console.log(`Checkpoint saved: ${lastCheckpointSection}`);
             return true;
+        case 'shake':
+            triggerShake(segment.duration);
+            return true;
         case 'endGame':
             // showEndGameOverlay is in text-renderer.js usually.
             // We should call it.
@@ -179,3 +185,48 @@ function handleFlowControl(segment) {
     }
     return false;
 }
+
+
+/**
+ * Triggers a screen shake effect.
+ * @param {number} ms Duration in milliseconds
+ */
+let activeShakeCount = 0;
+
+function triggerShake(ms) {
+    const duration = ms || 500; // Default to 500ms if no duration provided
+
+    if (window.gameContainer) {
+        activeShakeCount++;
+        window.gameContainer.classList.add('shake');
+        setTimeout(() => {
+            activeShakeCount = Math.max(0, activeShakeCount - 1);
+            if (activeShakeCount === 0) {
+                window.gameContainer.classList.remove('shake');
+            }
+        }, duration);
+    } else if (typeof gameContainer !== 'undefined') {
+         activeShakeCount++;
+         gameContainer.classList.add('shake');
+         setTimeout(() => {
+             activeShakeCount = Math.max(0, activeShakeCount - 1);
+             if (activeShakeCount === 0) {
+                 gameContainer.classList.remove('shake');
+             }
+         }, duration);
+    } else {
+        // Fallback if gameContainer is not found
+        const gc = document.getElementById('game-container');
+        if (gc) {
+            activeShakeCount++;
+            gc.classList.add('shake');
+            setTimeout(() => {
+                activeShakeCount = Math.max(0, activeShakeCount - 1);
+                if (activeShakeCount === 0) {
+                    gc.classList.remove('shake');
+                }
+            }, duration);
+        }
+    }
+}
+

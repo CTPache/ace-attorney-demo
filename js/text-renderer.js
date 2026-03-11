@@ -2,6 +2,73 @@ console.log("Text Renderer Loaded");
 
 let isWaitingForAnimation = false;
 
+/**
+ * Schedules shake events declared on a sprite animation.
+ * Supported formats per event:
+ * - [startMs, durationMs]
+ * - { at: startMs, duration: durationMs }
+ * - { time: startMs, duration: durationMs }
+ */
+function scheduleSpriteShakeEvents(animData) {
+    if (!animData || !Array.isArray(animData.shake)) return;
+    if (typeof triggerShake !== 'function') return;
+
+    animData.shake.forEach((event) => {
+        let startMs;
+        let durationMs;
+
+        if (Array.isArray(event)) {
+            startMs = Number(event[0]);
+            durationMs = Number(event[1]);
+        } else if (event && typeof event === 'object') {
+            startMs = Number(event.at ?? event.time ?? event.start ?? event.frame);
+            durationMs = Number(event.duration ?? event.shake ?? event.length ?? event.ms);
+        }
+
+        if (!Number.isFinite(startMs) || !Number.isFinite(durationMs)) return;
+        if (startMs < 0 || durationMs <= 0) return;
+
+        setTimeout(() => {
+            triggerShake(durationMs);
+        }, startMs);
+    });
+}
+
+/**
+ * Schedules sound events declared on a sprite animation.
+ * Supported formats per event:
+ * - [startMs, soundKey]
+ * - { at: startMs, sound: soundKey }
+ * - { time: startMs, sound: soundKey }
+ */
+function scheduleSpriteSoundEvents(animData) {
+    if (!animData || !Array.isArray(animData.sound)) return;
+
+    animData.sound.forEach((event) => {
+        let startMs;
+        let soundKey;
+
+        if (Array.isArray(event)) {
+            startMs = Number(event[0]);
+            soundKey = event[1];
+        } else if (event && typeof event === 'object') {
+            startMs = Number(event.at ?? event.time ?? event.start ?? event.frame);
+            soundKey = event.sound ?? event.key ?? event.name;
+        }
+
+        if (!Number.isFinite(startMs) || startMs < 0) return;
+        if (typeof soundKey !== 'string' || !soundKey.trim()) return;
+
+        setTimeout(() => {
+            if (typeof window.playSound === 'function') {
+                window.playSound(soundKey);
+            } else if (typeof playSound === 'function') {
+                playSound(soundKey);
+            }
+        }, startMs);
+    });
+}
+
 window.setTalkingAnimationState = function (state) {
     currentTalkingAnimationEnabled = state;
 }
@@ -141,6 +208,8 @@ function processNextChar() {
         const charData = characters[segment.charName];
         const animData = charData ? charData[segment.spriteKey] : null;
         if (animData && animData.time) {
+            scheduleSpriteShakeEvents(animData);
+            scheduleSpriteSoundEvents(animData);
             segmentIndex++;
             typingInterval = setTimeout(processNextChar, animData.time);
         } else {

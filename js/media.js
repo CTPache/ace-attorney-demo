@@ -107,6 +107,21 @@ function changeBackground(bgName) {
     }
 }
 
+function changeForeground(fgName) {
+    if (!fgName) {
+        foregroundElement.style.backgroundImage = 'none';
+        return;
+    }
+    const fgUrl = foregrounds[fgName];
+    if (fgUrl) {
+        foregroundElement.style.backgroundImage = `url('${fgUrl}')`;
+    } else {
+        // Fallback to clear if not found? Or keep previous? 
+        // Best to clear if explicitly asked but not found to avoid ghost images
+        foregroundElement.style.backgroundImage = 'none';
+    }
+}
+
 function changeSprite(charName, spriteKey) {
     currentCharacterName = charName;
     currentAnimationKey = spriteKey;
