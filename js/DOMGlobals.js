@@ -13,6 +13,7 @@ const bottomTopBar = document.getElementById('bottom-top-bar');
 // Scene Layers
 const backgroundElement = document.getElementById('background');
 const character = document.getElementById('character');
+const foregroundElement = document.getElementById('foreground');
 const flashOverlay = document.getElementById('flash-overlay');
 
 // Text Box

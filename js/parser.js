@@ -37,6 +37,8 @@ const patterns = [
     /\{playAnimation:([a-zA-Z0-9_]+)\}/,                // 33: PlayAnimation
     /\{hideTextbox\}/,                                  // 0: HideTextbox
     /\{showTextbox\}/,                                  // 0: ShowTextbox
+    /\{fg:([a-zA-Z0-9_]+)\}/,                           // 34: Foreground
+    /\{shake:(\d+)\}/,                                  // 35: Shake
     /\{endGame\}/                                       // 0: EndGame (Match[0] check)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
@@ -132,6 +134,12 @@ function parseText(text) {
             parsedSegments.push({ type: 'hideTextbox' });
         } else if (match[0] === '{showTextbox}') { // Show Textbox
             parsedSegments.push({ type: 'showTextbox' });
+        } else if (match[34]) { // Foreground {fg:Name}
+            parsedSegments.push({ type: 'fg', fgName: match[34] });
+        } else if (match[35]) { // Shake {shake:frames}
+            parsedSegments.push({ type: 'shake', duration: parseInt(match[35]) });
+        } else if (match[0] === '{endGame}') { // End Game
+            parsedSegments.push({ type: 'endGame' });
         }
 
         lastIndex = masterRegex.lastIndex;

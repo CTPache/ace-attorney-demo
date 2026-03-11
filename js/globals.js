@@ -3,6 +3,7 @@ console.log("Globals Loaded");
 // Data Containers
 let characters = {};
 let backgrounds = {};
+let foregrounds = {};
 let evidenceDB = {};
 let evidenceInventory = [];
 let profilesDB = {};

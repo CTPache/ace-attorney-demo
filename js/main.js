@@ -14,6 +14,7 @@ window.loadGameData = function(jsonPath, startSection = null) {
             // Always overwrite DBs to ensure strict scene scoping
             characters = data.characters || {};
             backgrounds = data.backgrounds || {};
+            foregrounds = data.foregrounds || {};
             
             // For Evidence and Profiles, MERGE to preserve definitions of items in inventory
             evidenceDB = { ...evidenceDB, ...(data.evidence || {}) };
@@ -53,7 +54,7 @@ window.loadGameData = function(jsonPath, startSection = null) {
 };
 
 // Initial Load
-loadGameData('assets/scenes/demo.json');
+loadGameData('assets/scenes/detention_center.json');
 
 // Add click event listener to the game container
 gameContainer.addEventListener('click', advanceDialogue);

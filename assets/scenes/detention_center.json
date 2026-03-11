@@ -1,0 +1,227 @@
+{
+    "initialSection": "Detention_Center_Start",
+    "characters": {
+        "Maggey": {
+            "Normal": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Normal-2-HD.webp"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Sad-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Sad-2-HD.webp"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Determined-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Determined-2-HD.webp"
+            },
+            "Admiring": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-2-HD.webp"
+            },
+            "Saluting": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Saluting-HD.webp",
+                "time": 700,
+                "shake": [
+                    {
+                        "at": 400,
+                        "duration": 300
+                    }
+                ],
+                "sound": [
+                    {
+                        "at": 400,
+                        "sound": "salute"
+                    }
+                ]
+            }
+        }
+    },
+    "backgrounds": {
+        "DetentionCenter": "assets/img/backgrounds/Comon/Detention_Center.png",
+        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png"
+    },
+    "foregrounds": {
+        "Detention_Bars": "assets/img/backgrounds/Comon/Detention_Center_foreground.png"
+    },
+    "music": {
+        "detentionCenter": "assets/audio/demo/bgm000.m4a"
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "damage": "assets/audio/se/damage.ogg",
+        "shake": "assets/audio/se/se026.m4a",
+        "salute": "assets/audio/se/se044.m4a"
+    },
+    "evidence": {
+        "blog_post_charm": {
+            "name": "Blog Post - Glasses Charm",
+            "data": "Type: Evidence\n",
+            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two glasses charms attached.",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "loud_sound": {
+            "name": "Loud Sound",
+            "data": "Type: Evidence\n",
+            "description": "A loud sound heard by Maggey while she was in the shower at around 9:30 PM on the day of the incident.",
+            "image": "assets/img/evidence/Document.png"
+        }
+    },
+    "gameScript": {
+        "Detention_Center_Start": [
+            {
+                "text": "{stopBGM:false}{hideCharacter}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}September 17, unspecified time{nl}{p:500}Detention Center{color:white}"
+            },
+            {
+                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{blip:1}Maggey."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...Actually, I've been remembering more and more since then."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}I might have been the one who pushed Ms. Nakaki, Mr. Wright."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{playSound:shake}{shake:500}What?! What do you mean?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "Start from the beginning and walk me through it."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Right.{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]} That day, when I went up, Ms. Nakaki was on the 4th floor practicing the Steel Samurai Show."
+            },
+            {
+                "name": "Maggey",
+                "text": "She was the kind of person who would always practice the Steel Samurai Show after closing time..."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}Honestly, as a guard, she was a real handful. We argued about it so many times."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}But I didn't actually dislike someone like her. If this weren't my job, I never would've said anything."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}So did you argue with her that day too?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Just a little. But it happened all the time, so I was kind of used to giving up on it..."
+            },
+            {
+                "name": "Maggey",
+                "text": "I had to write the security log, so I pushed through and wrote it. Updating the blog took about 30 minutes."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Blog?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{blip:2}Yeah."
+            },
+            {
+                "name": "Maggey",
+                "text": "If you search for \"Unhappy Fallen Angel Blog - Glasses Charm,\" it should come up."
+            },
+            {
+                "text": "{bg:BlogPost}{fg:none}{hideCharacter}{hideTextbox}{skip:1000}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{blip:0}{color:lightblue}(What a creepy blog title... Oh, so this is the one.){color:white}"
+            },
+            {
+                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}\"Blog Post - Glasses Charm\" added to the Court Record.{color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}I excitedly uploaded the blog post about my favorite glasses charm, but then I remembered Mr. Sahwit had called for me, so I rushed to take a shower."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}What?!"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}After my shower, they were gone for some reason."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Then what about the glasses you're wearing right now?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}I had someone bring the spare pair from my place. I have astigmatism, so not having glasses is really rough."
+            },
+            {
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Blog Post - Glasses Charm\" updated in the Court Record.{color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}So you were walking around without being able to see well...?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{blip:2}Yeah. I nervously made my way to the railing in the dim light."
+            },
+            {
+                "name": "Maggey",
+                "text": "Well, actually I just sort of sensed that someone was leaning against the railing..."
+            },
+            {
+                "name": "Maggey",
+                "text": "I called out but got no response, so I reached out my hand. And then I felt like I touched something... or maybe I didn't..."
+            },
+            {
+                "name": "Maggey",
+                "text": "{playSound:shake}{shake:500}And then I heard the sound of something falling from below..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}I see. Was there anything else that bothered you?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}Something else that bothered me... Oh, there is something! It was about when I started taking my shower."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0}(If she was just starting her shower, that puts it at around 9:30 PM.){color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{blip:2}I could hear it even through the shower, so the sound must have been pretty loud.{flash}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0}(That's curious. I should ask someone about it.){color:white}"
+            },
+            {
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Loud Sound\" added to the Court Record.{color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Mr. Wright... am I in trouble? Will I end up being found guilty?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}It'll be okay. Trust me. I'll expose the truth and get you out of this for sure."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0}(Alright. That should do it here.){color:white}{endGame}"
+            }
+        ]
+    }
+}

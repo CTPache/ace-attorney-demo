@@ -23,6 +23,14 @@ async function preloadAssets() {
         }));
     }
 
+    // Preload Foregrounds
+    for (const key in foregrounds) {
+        const url = foregrounds[key];
+        promises.push(preloadImage(url).then(newUrl => {
+            foregrounds[key] = newUrl;
+        }));
+    }
+
     // Preload Characters
     for (const charName in characters) {
         const charData = characters[charName];
