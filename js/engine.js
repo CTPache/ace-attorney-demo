@@ -2,7 +2,112 @@ console.log("Engine Loaded");
 
 let showTopicsOnEnd = false;
 
+function clearAutoPlayTimer() {
+    if (autoPlayTimeout) {
+        clearTimeout(autoPlayTimeout);
+        autoPlayTimeout = null;
+    }
+}
+
+function getAutoPlayDelayMs() {
+    const renderedLength = (textContent.textContent || '').trim().length;
+    const extra = Math.min(autoPlayMaxExtraDelay, renderedLength * autoPlayPerCharDelay);
+    return autoPlayBaseDelay + extra;
+}
+
+function setAutoPlaySpeedPreset(preset) {
+    if (preset === 'slow') {
+        autoPlaySpeedPreset = 'slow';
+        autoPlayBaseDelay = 2000;
+        autoPlayPerCharDelay = 25;
+        autoPlayMaxExtraDelay = 3000;
+    } else if (preset === 'fast') {
+        autoPlaySpeedPreset = 'fast';
+        autoPlayBaseDelay = 200;
+        autoPlayPerCharDelay = 5;
+        autoPlayMaxExtraDelay = 1000;
+    } else {
+        autoPlaySpeedPreset = 'normal';
+        autoPlayBaseDelay = 1000;
+        autoPlayPerCharDelay = 10;
+        autoPlayMaxExtraDelay = 2000;
+    }
+}
+
+function extractPrintableDialogueText(rawText) {
+    if (typeof rawText !== 'string' || !rawText.length) return '';
+
+    const parsed = parseText(rawText);
+    let plainText = '';
+
+    parsed.forEach((segment) => {
+        if (segment.type === 'text') {
+            plainText += segment.content;
+        } else if (segment.type === 'nl') {
+            plainText += '\n';
+        }
+    });
+
+    return plainText.replace(/\r/g, '').trim();
+}
+
+function logDialogueHistory(line) {
+    if (!line || typeof line !== 'object') return;
+
+    const printableText = extractPrintableDialogueText(line.text || '');
+    if (!printableText || !printableText.replace(/\s/g, '').length) return;
+
+    const entry = {
+        name: (typeof line.name === 'string' && line.name.trim()) ? line.name.trim() : ' ',
+        text: printableText
+    };
+
+    dialogueHistory.push(entry);
+    if (dialogueHistory.length > maxDialogueHistoryEntries) {
+        dialogueHistory.shift();
+    }
+
+    document.dispatchEvent(new Event('historyUpdated'));
+}
+
+function scheduleAutoPlayAdvance() {
+    clearAutoPlayTimer();
+
+    if (!isAutoPlayEnabled) return;
+    if (!isScenePlaying) return;
+    if (isInputBlocked) return;
+    if (isTyping) return;
+    if (isWaitingForAutoSkip) return;
+
+    autoPlayTimeout = setTimeout(() => {
+        autoPlayTimeout = null;
+
+        if (!isAutoPlayEnabled) return;
+        if (!isScenePlaying) return;
+        if (isInputBlocked) return;
+        if (isTyping) return;
+        if (isWaitingForAutoSkip) return;
+
+        advanceDialogue(true);
+    }, getAutoPlayDelayMs());
+}
+
+window.scheduleAutoPlayAdvance = scheduleAutoPlayAdvance;
+window.clearAutoPlayTimer = clearAutoPlayTimer;
+window.setAutoPlaySpeedPreset = setAutoPlaySpeedPreset;
+window.getDialogueHistory = () => dialogueHistory.slice();
+window.clearDialogueHistory = () => {
+    dialogueHistory = [];
+    document.dispatchEvent(new Event('historyUpdated'));
+};
+
+document.addEventListener('lineTypingCompleted', () => {
+    scheduleAutoPlayAdvance();
+});
+
 function jumpToSection(sectionName) {
+    clearAutoPlayTimer();
+
     if (gameScript[sectionName]) {
         currentSectionName = sectionName;
         currentLineIndex = 0;
@@ -50,6 +155,8 @@ function setGameState(key, value) {
 }
 
 function advanceDialogue(force = false) {
+    clearAutoPlayTimer();
+
     // Check if input is blocked (e.g., options menu open)
     if (isInputBlocked) return;
 
@@ -75,6 +182,7 @@ function advanceDialogue(force = false) {
             updateDialogue(line);
         } else {
             console.log("End of section");
+            clearAutoPlayTimer();
             
             // Check if game end is already visible (prevent restart loop)
             if (document.getElementById('end-game-overlay')) {
@@ -104,6 +212,8 @@ function updateSceneState() {
 }
 
 function startGame() {
+    clearAutoPlayTimer();
+
     isScenePlaying = true;
     updateSceneState();
     

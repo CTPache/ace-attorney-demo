@@ -134,6 +134,7 @@ function processNextChar() {
     if (segmentIndex >= segments.length) {
         isTyping = false;
         setSpriteState('default'); // Finished typing
+        document.dispatchEvent(new Event('lineTypingCompleted'));
         return;
     }
 
@@ -372,9 +373,14 @@ function finishTyping() {
 
     isTyping = false;
     setSpriteState('default'); // End of all text
+    document.dispatchEvent(new Event('lineTypingCompleted'));
 }
 
 function updateDialogue(line) {
+    if (typeof logDialogueHistory === 'function') {
+        logDialogueHistory(line);
+    }
+
     if (line.name) {
         nameTag.textContent = line.name;
         nameTag.style.opacity = "1";

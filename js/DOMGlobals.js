@@ -47,6 +47,7 @@ const btnTopicBack = document.getElementById('btn-topic-back');
 
 // Evidence & Court Record
 const courtRecordBtn = document.getElementById('court-record-btn');
+const configBtn = document.getElementById('config-btn');
 const advanceBtn = document.getElementById('advance-btn');
 const evidenceGrid = document.getElementById('evidence-grid');
 const evidenceNameDisplay = document.getElementById('evidence-name-display');
@@ -69,3 +70,16 @@ const popupDesc = document.getElementById('popup-desc');
 const lifeBarContainer = document.getElementById('life-bar-container');
 const lifeBarFill = document.getElementById('life-bar-fill');
 const lifeBarPenalty = document.getElementById('life-bar-penalty');
+
+// Config Menu
+const configMenu = document.getElementById('config-menu');
+const configCloseBtn = document.getElementById('config-close-btn');
+const configAutoplayEnabled = document.getElementById('config-autoplay-enabled');
+const configAutoSpeedRadios = document.querySelectorAll('input[name="auto-speed"]');
+const configLanguageSelect = document.getElementById('config-language-select');
+const configHistoryBtn = document.getElementById('config-history-btn');
+
+// History Menu
+const historyMenu = document.getElementById('history-menu');
+const historyList = document.getElementById('history-list');
+const historyCloseBtn = document.getElementById('history-close-btn');

@@ -38,9 +38,43 @@
         <div id="bottom-screen">
             <div id="bottom-top-bar">
                 <button id="court-record-btn">Court Record</button>
+                <button id="config-btn">Config</button>
             </div>
             <div id="bottom-main-window">
                 <button id="advance-btn">▶</button>
+                <div id="config-menu" class="hidden">
+                    <div class="config-card">
+                        <h3>Configuration</h3>
+                        <label class="config-row">
+                            <span>Auto Play</span>
+                            <input id="config-autoplay-enabled" type="checkbox">
+                        </label>
+                        <div class="config-row config-speed-row">
+                            <span>Auto Speed</span>
+                            <div class="config-speed-options">
+                                <label><input type="radio" name="auto-speed" value="slow"> Slow</label>
+                                <label><input type="radio" name="auto-speed" value="normal" checked> Normal</label>
+                                <label><input type="radio" name="auto-speed" value="fast"> Fast</label>
+                            </div>
+                        </div>
+                        <label class="config-row">
+                            <span>Language</span>
+                            <select id="config-language-select">
+                                <option value="EN">English</option>
+                                <option value="ES">Español</option>
+                            </select>
+                        </label>
+                        <button id="config-history-btn">View History</button>
+                        <button id="config-close-btn">Close</button>
+                    </div>
+                </div>
+                <div id="history-menu" class="hidden">
+                    <div class="history-card">
+                        <h3>History</h3>
+                        <div id="history-list"></div>
+                        <button id="history-close-btn">Close</button>
+                    </div>
+                </div>
                 <div id="investigation-menu" class="hidden">
                     <button id="btn-examine" class="inv-btn">Examine</button>
                     <button id="btn-move" class="inv-btn">Move</button>

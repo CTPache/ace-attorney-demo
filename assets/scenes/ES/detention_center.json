@@ -50,7 +50,8 @@
         "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
         "damage": "assets/audio/se/damage.ogg",
         "shake": "assets/audio/se/se026.m4a",
-        "salute": "assets/audio/se/se044.m4a"
+        "salute": "assets/audio/se/se044.m4a",
+        "cling": "assets/audio/se/cling.ogg"
     },
     "evidence": {
         "blog_post_charm": {
@@ -69,10 +70,10 @@
     "gameScript": {
         "Detention_Center_Start": [
             {
-                "text": "{stopBGM:false}{hideCharacter}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}September 17, unspecified time{nl}{p:500}Detention Center{color:white}"
+                "text": "{stopBGM:false}{hideCharacter}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}September 17{nl}{p:500}Detention Center{color:white}"
             },
             {
-                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}"
+                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}{skip:1000}"
             },
             {
                 "name": "Phoenix",
@@ -80,35 +81,35 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...Actually, I've been remembering more and more since then."
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...{p:800}{nl}To be honest, I've been turning it over in my head,{p:160} sir.{p:260}"
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}I might have been the one who pushed Ms. Nakaki, Mr. Wright."
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}And I think it's possible{p:180}{nl}that I was the one who pushed Ms. Nakaki over the edge.{p:280}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{playSound:shake}{shake:500}What?! What do you mean?"
+                "text": "{blip:1}{playSound:shake}{shake:500}Wait,{p:140} what do you mean?"
             },
             {
                 "name": "Phoenix",
-                "text": "Start from the beginning and walk me through it."
+                "text": "Could you tell me everything from the beginning?"
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Right.{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]} That day, when I went up, Ms. Nakaki was on the 4th floor practicing the Steel Samurai Show."
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Yes, sir!{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]} That day,{p:140} Ms. Nakaki was on the fourth floor practicing for the Steel Samurai Show.{p:250}"
             },
             {
                 "name": "Maggey",
-                "text": "She was the kind of person who would always practice the Steel Samurai Show after closing time..."
+                "text": "She was the kind of person who'd stay and practice after closing..."
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Determined\"]}Honestly, as a guard, she was a real handful. We argued about it so many times."
+                "text": "{sprite:Maggey[\"Determined\"]}Honestly,{p:120} from a security guard's point of view, she was a handful,{p:160} sir.{p:220} We argued over it again and again because I kept telling her to stop.{p:220}"
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Sad\"]}But I didn't actually dislike someone like her. If this weren't my job, I never would've said anything."
+                "text": "{sprite:Maggey[\"Sad\"]}Even so,{p:120} I didn't dislike her at all.{p:220}{nl}If it weren't my job,{p:140} I probably never would have warned her,{p:140} sir.{p:220}"
             },
             {
                 "name": "Phoenix",
@@ -116,11 +117,11 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Just a little. But it happened all the time, so I was kind of used to giving up on it..."
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}A little,{p:120} yeah.{p:200}{nl}But it happened all the time,{p:150} so I gave up and let it slide...{p:360}"
             },
             {
                 "name": "Maggey",
-                "text": "I had to write the security log, so I pushed through and wrote it. Updating the blog took about 30 minutes."
+                "text": "I had to fill out the security log,{p:140} so I got to work,{p:140} sir.{p:220}{nl}It took about half an hour,{p:140} and then I updated my blog.{p:220}"
             },
             {
                 "name": "Phoenix",
@@ -128,33 +129,33 @@
             },
             {
                 "name": "Maggey",
-                "text": "{blip:2}Yeah."
+                "text": "{blip:2}Yes, sir!"
             },
             {
                 "name": "Maggey",
-                "text": "If you search for \"Unhappy Fallen Angel Blog - Glasses Charm,\" it should come up."
+                "text": "If you search{nl}\"{color:red}The Jinxed Fallen Angel's Blog - Glasses Charm{color:white},\"{p:160}{nl}it should come right up.{p:220}"
             },
             {
                 "text": "{bg:BlogPost}{fg:none}{hideCharacter}{hideTextbox}{skip:1000}"
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{blip:0}{color:lightblue}(What a creepy blog title... Oh, so this is the one.){color:white}"
+                "text": "{showTextbox}{blip:0}{color:lightblue}(What a creepy blog title...{nl} Ah, this must be it.){color:white}"
             },
             {
-                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}\"Blog Post - Glasses Charm\" added to the Court Record.{color:white}"
+                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}Data for \"Blog Post - Glasses Charm\" added to the Court Record.{color:white}"
             },
             {
                 "name": "Maggey",
-                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}I excitedly uploaded the blog post about my favorite glasses charm, but then I remembered Mr. Sahwit had called for me, so I rushed to take a shower."
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}After happily uploading a photo of my favorite glasses charms to my blog,{p:160} I remembered Mr. Sahwit had called for me,{p:170} so I rushed off to take a shower,{p:140} sir.{p:240}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}What?!"
+                "text": "{blip:1}Huh?"
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}After my shower, they were gone for some reason."
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}When I got out of the shower,{p:150} my glasses were gone.{p:260}"
             },
             {
                 "name": "Phoenix",
@@ -162,38 +163,38 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}I had someone bring the spare pair from my place. I have astigmatism, so not having glasses is really rough."
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}I had someone bring the spare pair from my place.{p:220}{nl}I have astigmatism,{p:140} so without glasses I can barely see a thing,{p:140} sir.{p:220}"
             },
             {
-                "text": "{updateEvidence:blog_post_charm,blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Blog Post - Glasses Charm\" updated in the Court Record.{color:white}"
-            },
-            {
-                "name": "Phoenix",
-                "text": "{blip:1}So you were walking around without being able to see well...?"
-            },
-            {
-                "name": "Maggey",
-                "text": "{blip:2}Yeah. I nervously made my way to the railing in the dim light."
-            },
-            {
-                "name": "Maggey",
-                "text": "Well, actually I just sort of sensed that someone was leaning against the railing..."
-            },
-            {
-                "name": "Maggey",
-                "text": "I called out but got no response, so I reached out my hand. And then I felt like I touched something... or maybe I didn't..."
-            },
-            {
-                "name": "Maggey",
-                "text": "{playSound:shake}{shake:500}And then I heard the sound of something falling from below..."
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Blog Post - Glasses Charm\" updated in the Court Record.{color:white}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}I see. Was there anything else that bothered you?"
+                "text": "{blip:1}So you were walking around practically blind...{p:320}"
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}Something else that bothered me... Oh, there is something! It was about when I started taking my shower."
+                "text": "{blip:2}Exactly!{p:140}{nl}I walked toward the railing in the dark, scared out of my mind.{p:220}"
+            },
+            {
+                "name": "Maggey",
+                "text": "Well,{p:120} really, I only made out the shape of someone sitting on the railing...{p:340}"
+            },
+            {
+                "name": "Maggey",
+                "text": "I called out,{p:140} but there was no answer,{p:140} so I reached out my hand,{p:140} sir.{p:220} I felt like I touched something...{p:300}{nl}Or maybe I didn't,{p:150} I can't be sure...{p:300}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{playSound:shake}{shake:500}And then, all of a sudden, I heard something crash down below..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}I see.{p:180} Was there anything else that stood out to you?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Something else that stood out...{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}Oh, yes,{p:100} sir!{p:140} It happened when I got into the shower.{p:220}"
             },
             {
                 "name": "Phoenix",
@@ -201,26 +202,26 @@
             },
             {
                 "name": "Maggey",
-                "text": "{blip:2}I could hear it even through the shower, so the sound must have been pretty loud.{flash}"
+                "text": "{blip:2}I could hear it even over the shower,{p:160}{nl}so it must have been a pretty loud impact,{p:140} sir.{p:220}{playSound:cling}{flash}"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(That's curious. I should ask someone about it.){color:white}"
+                "text": "{color:lightblue}{blip:0}(That's odd. I should ask someone about this.){color:white}"
             },
             {
-                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Loud Sound\" added to the Court Record.{color:white}"
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Loud Sound\" added to the Court Record.{color:white}"
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Mr. Wright... am I in trouble? Will I end up being found guilty?"
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Mr. Wright...{p:260}{nl}I really messed up,{p:140} didn't I?{p:220}{nl}They're going to find me guilty,{p:150} aren't they...?{p:320}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}It'll be okay. Trust me. I'll expose the truth and get you out of this for sure."
+                "text": "{blip:1}It's okay,{p:140} trust me.{p:220}{nl}I'll uncover the truth and get you out of this.{p:220}"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(Alright. That should do it here.){color:white}{endGame}"
+                "text": "{color:lightblue}{blip:0}(All right. I think I'm done here.){color:white}{endGame}"
             }
         ]
     }

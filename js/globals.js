@@ -36,6 +36,17 @@ let isWaitingForAutoSkip = false;
 let isFastForwarding = false;
 let fastForwardInterval = null;
 let fastForwardTimeout = null;
+let isAutoPlayEnabled = false;
+let autoPlaySpeedPreset = 'normal';
+let currentLanguage = 'EN';
+let currentSceneRequestPath = '';
+let currentSceneResolvedPath = '';
+let autoPlayTimeout = null;
+let autoPlayBaseDelay = 2200;
+let autoPlayPerCharDelay = 45;
+let autoPlayMaxExtraDelay = 4500;
+let dialogueHistory = [];
+const maxDialogueHistoryEntries = 300;
 let currentBGM = null; // Track current background music
 
 

@@ -1,0 +1,228 @@
+{
+    "initialSection": "Detention_Center_Start",
+    "characters": {
+        "Maggey": {
+            "Normal": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Normal-2-HD.webp"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Sad-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Sad-2-HD.webp"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Determined-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Determined-2-HD.webp"
+            },
+            "Admiring": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-2-HD.webp"
+            },
+            "Saluting": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Saluting-HD.webp",
+                "time": 700,
+                "shake": [
+                    {
+                        "at": 400,
+                        "duration": 300
+                    }
+                ],
+                "sound": [
+                    {
+                        "at": 400,
+                        "sound": "salute"
+                    }
+                ]
+            }
+        }
+    },
+    "backgrounds": {
+        "DetentionCenter": "assets/img/backgrounds/Comon/Detention_Center.png",
+        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png"
+    },
+    "foregrounds": {
+        "Detention_Bars": "assets/img/backgrounds/Comon/Detention_Center_foreground.png"
+    },
+    "music": {
+        "detentionCenter": "assets/audio/demo/bgm000.m4a"
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "damage": "assets/audio/se/damage.ogg",
+        "shake": "assets/audio/se/se026.m4a",
+        "salute": "assets/audio/se/se044.m4a",
+        "cling": "assets/audio/se/cling.ogg"
+    },
+    "evidence": {
+        "blog_post_charm": {
+            "name": "Post sobre las gafas",
+            "data": "Tipo: Prueba\n",
+            "description": "Publicado el día del incidente a las 21:27. Contiene la foto de unas gafas con dos amuletos colgando.",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "loud_sound": {
+            "name": "Golpe fuerte",
+            "data": "Tipo: Prueba\n",
+            "description": "Un golpe muy fuerte que oyó Maggey desde la ducha el día del incidente, sobre las 21:30.",
+            "image": "assets/img/evidence/Document.png"
+        }
+    },
+    "gameScript": {
+        "Detention_Center_Start": [
+            {
+                "text": "{stopBGM:false}{hideCharacter}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}17 de septiembre{nl}{p:500}Centro de detención{color:white}"
+            },
+            {
+                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}{skip:1000}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{blip:1}Maggey."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...{p:800}{nl}La verdad es que he estado dándole vueltas a la cabeza,{p:160} señor.{p:260}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}Y creo que es muy posible{p:180}{nl}que fuera yo quien empujara al vacío a la señorita Nakagi.{p:280}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{playSound:shake}{shake:500}¿A ver,{p:140} cómo dices?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "¿Te importa contármelo todo desde el principio?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}¡A la orden!{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]} Ese día,{p:140} la señorita Nakagi estaba en el cuarto piso ensayando el espectáculo del Samurái de Acero.{p:250}"
+            },
+            {
+                "name": "Maggey",
+                "text": "Solía quedarse practicando después de que cerráramos."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}La verdad,{p:120} para una guarda de seguridad era un incordio,{p:160} señor.{p:220} Discutimos un montón de veces porque le pedía que lo dejara ya.{p:220}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}Aun así,{p:120} me caía muy bien.{p:220}{nl}Si no fuera por el trabajo,{p:140} ni le habría llamado la atención,{p:140} señor.{p:220}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Y ese día, ¿llegasteis a discutir?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Un poco,{p:120} sí.{p:200}{nl}Pero como era el pan de cada día,{p:150} me di por vencida y lo dejé estar...{p:360}"
+            },
+            {
+                "name": "Maggey",
+                "text": "Tenía que rellenar el parte de seguridad,{p:140} así que me puse a ello,{p:140} señor.{p:220}{nl}Tardé como media hora,{p:140} y luego actualicé mi blog.{p:220}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}¿Tu blog?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{blip:2}¡Sí, señor!"
+            },
+            {
+                "name": "Maggey",
+                "text": "Si busca{nl}\"{color:red}Blog del ángel caído en desgracia - amuleto gafas{color:white}\",{p:160}{nl}supongo que le saldrá enseguida.{p:220}"
+            },
+            {
+                "text": "{bg:BlogPost}{fg:none}{hideCharacter}{hideTextbox}{skip:1000}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{blip:0}{color:lightblue}(Vaya nombrecito más chungo para un blog...{nl} Ah, debe de ser este).{color:white}"
+            },
+            {
+                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Post del blog sobre las gafas\" añadido al Acta del juicio.{color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}Después de subir toda ilusionada la foto de mis amuletos favoritos al blog,{p:160} recordé que el señor Sahwit me había llamado,{p:170} así que me fui corriendo a dar una ducha,{p:140} señor.{p:240}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}¿Eh?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}Al salir de la ducha,{p:150} mis gafas se habían esfumado.{p:260}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Entonces, ¿las que llevas puestas ahora...?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Pedí que me trajeran las de repuesto que tenía en casa.{p:220}{nl} Tengo astigmatismo,{p:140} así que sin gafas no veo tres en un burro,{p:140} señor.{p:220}"
+            },
+            {
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Post del blog sobre las gafas\" actualizado en el Acta del juicio.{color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}O sea que anduviste por ahí casi a ciegas...{p:320}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{blip:2}¡Exacto!{p:140}{nl}Fui caminando muerta de miedo hasta la barandilla en la penumbra.{p:220}"
+            },
+            {
+                "name": "Maggey",
+                "text": "Bueno,{p:120} en realidad solo me pareció ver el bulto de alguien sentado en la barandilla...{p:340}"
+            },
+            {
+                "name": "Maggey",
+                "text": "La llamé,{p:140} pero al no contestar,{p:140} extendí la mano,{p:140} señor.{p:220}{nl} Sentí que tocaba algo...{p:300}{nl} O igual no lo toqué,{p:150} no estoy segura...{p:300}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{playSound:shake}{shake:500}Y de repente, oí cómo algo se estrellaba contra el suelo ahí abajo..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Entiendo.{p:180} ¿Hay algo más que te llamara la atención?"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Algo más que me llamara la atención...{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}¡Ah, sí,{p:100} señor!{p:140} Ocurrió cuando me metí en la ducha.{p:220}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0}(Si acababa de meterse en la ducha, debían de ser las 21:30 más o menos).{color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{blip:2}El ruido se oyó incluso por encima del agua,{p:160}{nl}así que tuvo que ser un golpe bastante fuerte,{p:140} señor.{p:220}{playSound:cling}{flash}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0}(Qué intrigante. Debería preguntarle a alguien sobre esto).{color:white}"
+            },
+            {
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Golpe fuerte\" añadido al Acta del juicio.{color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Señor Wright...{p:260}{nl}La he pifiado a base de bien,{p:140} ¿verdad?{p:220}{nl}Me van a declarar culpable,{p:150} señor...{p:320}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Tranquila,{p:140} confía en mí.{p:220}{nl}Pienso sacar a la luz la verdad y librarte de esta.{p:220}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0}(Bien. Creo que aquí ya he terminado).{color:white}{endGame}"
+            }
+        ]
+    }
+}

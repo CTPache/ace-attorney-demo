@@ -1,5 +1,218 @@
 console.log("UI Loaded");
 
+let returnToConfigAfterHistory = false;
+
+function refreshTopBarButtonDisabledState() {
+    const isConfigVisible = configMenu && !configMenu.classList.contains('hidden');
+    const isHistoryVisible = historyMenu && !historyMenu.classList.contains('hidden');
+    const shouldDisable = !!(isConfigVisible || isHistoryVisible);
+
+    if (courtRecordBtn) courtRecordBtn.disabled = shouldDisable;
+    if (configBtn) configBtn.disabled = shouldDisable;
+}
+
+function closeConfigMenu() {
+    if (!configMenu) return;
+    configMenu.classList.add('hidden');
+    isInputBlocked = false;
+    refreshTopBarButtonDisabledState();
+
+    if (isAutoPlayEnabled && !isTyping && isScenePlaying) {
+        if (typeof window.scheduleAutoPlayAdvance === 'function') {
+            window.scheduleAutoPlayAdvance();
+        }
+    }
+}
+
+function renderHistoryEntries() {
+    if (!historyList) return;
+
+    historyList.innerHTML = '';
+    const entries = (typeof window.getDialogueHistory === 'function') ? window.getDialogueHistory() : [];
+
+    if (!entries.length) {
+        const empty = document.createElement('div');
+        empty.className = 'history-empty';
+        empty.textContent = 'No dialogue history yet.';
+        historyList.appendChild(empty);
+        return;
+    }
+
+    entries.slice().reverse().forEach((entry) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'history-entry';
+
+        const nameEl = document.createElement('div');
+        nameEl.className = 'history-name';
+        nameEl.textContent = entry.name;
+
+        const textEl = document.createElement('div');
+        textEl.className = 'history-text';
+        textEl.textContent = entry.text;
+
+        wrapper.appendChild(nameEl);
+        wrapper.appendChild(textEl);
+        historyList.appendChild(wrapper);
+    });
+}
+
+function openHistoryMenu(fromConfig = false) {
+    if (!historyMenu) return;
+
+    if (typeof window.clearAutoPlayTimer === 'function') {
+        window.clearAutoPlayTimer();
+    }
+
+    returnToConfigAfterHistory = fromConfig;
+
+    if (fromConfig && configMenu) {
+        configMenu.classList.add('hidden');
+    }
+
+    renderHistoryEntries();
+    historyMenu.classList.remove('hidden');
+    isInputBlocked = true;
+    refreshTopBarButtonDisabledState();
+}
+
+function closeHistoryMenu(restoreConfig = true) {
+    if (!historyMenu) return;
+
+    historyMenu.classList.add('hidden');
+
+    if (restoreConfig && returnToConfigAfterHistory && configMenu) {
+        returnToConfigAfterHistory = false;
+        configMenu.classList.remove('hidden');
+        isInputBlocked = true;
+        refreshTopBarButtonDisabledState();
+        return;
+    }
+
+    returnToConfigAfterHistory = false;
+
+    isInputBlocked = false;
+    refreshTopBarButtonDisabledState();
+
+    if (isAutoPlayEnabled && !isTyping && isScenePlaying) {
+        if (typeof window.scheduleAutoPlayAdvance === 'function') {
+            window.scheduleAutoPlayAdvance();
+        }
+    }
+}
+
+function syncConfigMenuControls() {
+    if (configAutoplayEnabled) {
+        configAutoplayEnabled.checked = isAutoPlayEnabled;
+    }
+
+    if (configLanguageSelect && typeof window.getGameLanguage === 'function') {
+        configLanguageSelect.value = window.getGameLanguage();
+    }
+
+    if (configAutoSpeedRadios && configAutoSpeedRadios.length > 0) {
+        configAutoSpeedRadios.forEach((radio) => {
+            radio.checked = radio.value === autoPlaySpeedPreset;
+        });
+    }
+}
+
+function openConfigMenu() {
+    if (!configMenu) return;
+
+    if (typeof window.clearAutoPlayTimer === 'function') {
+        window.clearAutoPlayTimer();
+    }
+
+    syncConfigMenuControls();
+    configMenu.classList.remove('hidden');
+    isInputBlocked = true;
+    refreshTopBarButtonDisabledState();
+}
+
+if (configBtn) {
+    configBtn.addEventListener('click', () => {
+        if (configMenu && !configMenu.classList.contains('hidden')) {
+            closeConfigMenu();
+        } else {
+            openConfigMenu();
+        }
+    });
+}
+
+if (configCloseBtn) {
+    configCloseBtn.addEventListener('click', () => {
+        closeConfigMenu();
+    });
+}
+
+if (configHistoryBtn) {
+    configHistoryBtn.addEventListener('click', () => {
+        openHistoryMenu(true);
+    });
+}
+
+if (historyCloseBtn) {
+    historyCloseBtn.addEventListener('click', () => {
+        closeHistoryMenu();
+    });
+}
+
+document.addEventListener('historyUpdated', () => {
+    if (historyMenu && !historyMenu.classList.contains('hidden')) {
+        renderHistoryEntries();
+    }
+});
+
+if (configAutoplayEnabled) {
+    configAutoplayEnabled.addEventListener('change', () => {
+        isAutoPlayEnabled = configAutoplayEnabled.checked;
+
+        if (typeof window.clearAutoPlayTimer === 'function') {
+            window.clearAutoPlayTimer();
+        }
+
+        if (isAutoPlayEnabled && !isTyping && isScenePlaying && !isInputBlocked) {
+            if (typeof window.scheduleAutoPlayAdvance === 'function') {
+                window.scheduleAutoPlayAdvance();
+            }
+        }
+    });
+}
+
+if (configLanguageSelect) {
+    configLanguageSelect.addEventListener('change', async () => {
+        const selectedLanguage = configLanguageSelect.value;
+
+        closeHistoryMenu(false);
+        closeConfigMenu();
+
+        if (typeof window.setGameLanguage === 'function') {
+            await window.setGameLanguage(selectedLanguage);
+        }
+    });
+}
+
+if (configAutoSpeedRadios && configAutoSpeedRadios.length > 0) {
+    configAutoSpeedRadios.forEach((radio) => {
+        radio.addEventListener('change', () => {
+            if (!radio.checked) return;
+            if (typeof window.setAutoPlaySpeedPreset === 'function') {
+                window.setAutoPlaySpeedPreset(radio.value);
+            }
+
+            if (typeof window.clearAutoPlayTimer === 'function') {
+                window.clearAutoPlayTimer();
+            }
+
+            if (isAutoPlayEnabled && !isTyping && isScenePlaying && !isInputBlocked) {
+                if (typeof window.scheduleAutoPlayAdvance === 'function') {
+                    window.scheduleAutoPlayAdvance();
+                }
+            }
+        });
+    });
+}
+
 // Shared logic for scene state only
 
 // Function to handle Option Selection Menu
@@ -61,6 +274,17 @@ window.renderOptionsMenu = function(optionKey) {
 // Listen for scene state changes
 document.addEventListener('sceneStateChanged', (e) => {
     const isPlaying = e.detail.isPlaying;
+    if (!isPlaying && typeof window.clearAutoPlayTimer === 'function') {
+        window.clearAutoPlayTimer();
+    }
+
+    if (!isPlaying) {
+        closeConfigMenu();
+        closeHistoryMenu(false);
+    }
+
+    refreshTopBarButtonDisabledState();
+
     if (isPlaying) {
         textboxContainer.classList.remove('hidden');
         investigationMenu.classList.add('hidden');
@@ -95,6 +319,8 @@ document.addEventListener('sceneStateChanged', (e) => {
         }
     }
 });
+
+refreshTopBarButtonDisabledState();
 
 // Advance Button Logic
 function startFastForward(e) {
@@ -188,6 +414,16 @@ window.switchScreen = switchScreen;
 document.addEventListener('keydown', (e) => {
     // Only if not typing in an input
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key === 'Escape' && configMenu && !configMenu.classList.contains('hidden')) {
+        closeConfigMenu();
+        return;
+    }
+
+    if (e.key === 'Escape' && historyMenu && !historyMenu.classList.contains('hidden')) {
+        closeHistoryMenu();
+        return;
+    }
 
     if (e.key.toLowerCase() === 'm') {
         toggleScreenMode();
