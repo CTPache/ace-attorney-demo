@@ -1,6 +1,6 @@
 console.log("Main Loaded");
 
-const SCENE_LANGUAGES = ['EN', 'ES'];
+const SCENE_LANGUAGES = document.getElementById('config-language-select') && document.getElementById('config-language-select').options ? Array.from(document.getElementById('config-language-select').options).map(opt => opt.value.toUpperCase()) : ['EN'];
 
 function normalizeScenePath(path) {
     return String(path || '').replace(/\\/g, '/');
