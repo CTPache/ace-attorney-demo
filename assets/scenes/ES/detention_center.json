@@ -133,7 +133,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "Si busca{nl}\"{color:red}Blog del ángel caído en desgracia - amuleto gafas{color:white}\",{p:160}{nl}supongo que le saldrá enseguida.{p:220}"
+                "text": "Si busca:{nl}\"{color:red}Blog del ángel caído en desgracia - amuleto gafas{color:white}\",{p:160}{nl}supongo que le saldrá enseguida.{p:220}"
             },
             {
                 "text": "{bg:BlogPost}{fg:none}{hideCharacter}{hideTextbox}{skip:1000}"

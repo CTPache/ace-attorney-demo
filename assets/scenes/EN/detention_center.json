@@ -133,7 +133,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "If you search{nl}\"{color:red}The Jinxed Fallen Angel's Blog - Glasses Charm{color:white},\"{p:160}{nl}it should come right up.{p:220}"
+                "text": "If you search:{nl}\"{color:red}The Jinxed Fallen Angel's Blog - Glasses Charm{color:white},\"{p:160}{nl}it should come right up.{p:220}"
             },
             {
                 "text": "{bg:BlogPost}{fg:none}{hideCharacter}{hideTextbox}{skip:1000}"

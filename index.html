@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/investigation.css">
     <link rel="stylesheet" href="css/move.css">
 </head>
+
 <body>
     <div id="main-wrapper">
         <div id="game-container">
@@ -15,8 +17,10 @@
             <img id="character" class="layer" alt="" src="/">
             <div id="foreground" class="layer"></div>
             <div id="flash-overlay" class="layer"></div>
+            <button id="autoplay-indicator" type="button" aria-label="Toggle Auto Play"
+                title="Toggle Auto Play (A)">Auto</button>
             <div id="life-bar-container" class="hidden">
-                 <div id="life-bar-body">
+                <div id="life-bar-body">
                     <div id="life-bar-fill"></div>
                     <div id="life-bar-penalty"></div>
                 </div>
@@ -45,10 +49,6 @@
                 <div id="config-menu" class="hidden">
                     <div class="config-card">
                         <h3>Configuration</h3>
-                        <label class="config-row">
-                            <span>Auto Play</span>
-                            <input id="config-autoplay-enabled" type="checkbox">
-                        </label>
                         <div class="config-row config-speed-row">
                             <span>Auto Speed</span>
                             <div class="config-speed-options">
@@ -148,4 +148,5 @@
     <script src="js/lifebar.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

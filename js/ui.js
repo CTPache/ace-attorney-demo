@@ -2,6 +2,34 @@ console.log("UI Loaded");
 
 let returnToConfigAfterHistory = false;
 
+function updateAutoplayIndicator() {
+    if (!autoplayIndicator) return;
+
+    autoplayIndicator.classList.toggle('active', isAutoPlayEnabled);
+    autoplayIndicator.setAttribute('aria-pressed', isAutoPlayEnabled ? 'true' : 'false');
+    autoplayIndicator.title = isAutoPlayEnabled ? 'Auto Play On (A)' : 'Auto Play Off (A)';
+}
+
+function setAutoplayEnabled(nextEnabled) {
+    isAutoPlayEnabled = !!nextEnabled;
+
+    updateAutoplayIndicator();
+
+    if (typeof window.clearAutoPlayTimer === 'function') {
+        window.clearAutoPlayTimer();
+    }
+
+    if (isAutoPlayEnabled && !isTyping && isScenePlaying && !isInputBlocked) {
+        if (typeof window.scheduleAutoPlayAdvance === 'function') {
+            window.scheduleAutoPlayAdvance();
+        }
+    }
+}
+
+function toggleAutoplay() {
+    setAutoplayEnabled(!isAutoPlayEnabled);
+}
+
 function refreshTopBarButtonDisabledState() {
     const isConfigVisible = configMenu && !configMenu.classList.contains('hidden');
     const isHistoryVisible = historyMenu && !historyMenu.classList.contains('hidden');
@@ -101,9 +129,8 @@ function closeHistoryMenu(restoreConfig = true) {
 }
 
 function syncConfigMenuControls() {
-    if (configAutoplayEnabled) {
-        configAutoplayEnabled.checked = isAutoPlayEnabled;
-    }
+
+    updateAutoplayIndicator();
 
     if (configLanguageSelect && typeof window.getGameLanguage === 'function') {
         configLanguageSelect.value = window.getGameLanguage();
@@ -163,19 +190,10 @@ document.addEventListener('historyUpdated', () => {
     }
 });
 
-if (configAutoplayEnabled) {
-    configAutoplayEnabled.addEventListener('change', () => {
-        isAutoPlayEnabled = configAutoplayEnabled.checked;
-
-        if (typeof window.clearAutoPlayTimer === 'function') {
-            window.clearAutoPlayTimer();
-        }
-
-        if (isAutoPlayEnabled && !isTyping && isScenePlaying && !isInputBlocked) {
-            if (typeof window.scheduleAutoPlayAdvance === 'function') {
-                window.scheduleAutoPlayAdvance();
-            }
-        }
+if (autoplayIndicator) {
+    autoplayIndicator.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleAutoplay();
     });
 }
 
@@ -321,6 +339,7 @@ document.addEventListener('sceneStateChanged', (e) => {
 });
 
 refreshTopBarButtonDisabledState();
+updateAutoplayIndicator();
 
 // Advance Button Logic
 function startFastForward(e) {
@@ -427,9 +446,16 @@ document.addEventListener('keydown', (e) => {
 
     if (e.key.toLowerCase() === 'm') {
         toggleScreenMode();
+        return;
     }
+
     if (e.key.toLowerCase() === 's') {
         switchScreen();
+        return;
+    }
+
+    if (e.key.toLowerCase() === 'a') {
+        toggleAutoplay();
     }
 });
 

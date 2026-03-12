@@ -108,6 +108,39 @@ body {
     pointer-events: none;
 }
 
+#autoplay-indicator {
+    position: absolute;
+    top: 2cqh;
+    right: 2cqh;
+    z-index: 25;
+    font-family: 'Seurat', sans-serif;
+    font-size: 2.2cqh;
+    letter-spacing: 0.15cqh;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(15, 15, 15, 0.65);
+    border: 0.25cqh solid rgba(255, 255, 255, 0.45);
+    border-radius: 0.8cqh;
+    padding: 0.3cqh 1cqh;
+    min-width: 8cqh;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: opacity 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    opacity: 0.85;
+}
+
+#autoplay-indicator:hover {
+    opacity: 1;
+    transform: translateY(-0.1cqh);
+}
+
+#autoplay-indicator.active {
+    color: #fff6dc;
+    border-color: #ffd58a;
+    background: linear-gradient(180deg, rgba(195, 117, 31, 0.9) 0%, rgba(133, 70, 13, 0.9) 100%);
+    box-shadow: 0 0 1.2cqh rgba(255, 178, 80, 0.7);
+}
+
 .flashing {
     animation: flash-animation 0.2s ease-out;
 }

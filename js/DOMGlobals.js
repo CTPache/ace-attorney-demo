@@ -15,6 +15,7 @@ const backgroundElement = document.getElementById('background');
 const character = document.getElementById('character');
 const foregroundElement = document.getElementById('foreground');
 const flashOverlay = document.getElementById('flash-overlay');
+const autoplayIndicator = document.getElementById('autoplay-indicator');
 
 // Text Box
 const nameTag = document.getElementById('name-tag');
@@ -74,7 +75,6 @@ const lifeBarPenalty = document.getElementById('life-bar-penalty');
 // Config Menu
 const configMenu = document.getElementById('config-menu');
 const configCloseBtn = document.getElementById('config-close-btn');
-const configAutoplayEnabled = document.getElementById('config-autoplay-enabled');
 const configAutoSpeedRadios = document.querySelectorAll('input[name="auto-speed"]');
 const configLanguageSelect = document.getElementById('config-language-select');
 const configHistoryBtn = document.getElementById('config-history-btn');
