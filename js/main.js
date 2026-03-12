@@ -61,6 +61,17 @@ function getSceneLoadCandidates(scenePath, languageCode) {
     return uniqueCandidates;
 }
 
+function getLanguageFromUrl() {
+    try {
+        const urlParams = new URLSearchParams(window.location.search || '');
+        const requestedLanguage = String(urlParams.get('lang') || '').toUpperCase();
+        return SCENE_LANGUAGES.includes(requestedLanguage) ? requestedLanguage : null;
+    } catch (error) {
+        console.warn('Unable to parse URL language parameter:', error);
+        return null;
+    }
+}
+
 async function fetchSceneDataWithFallback(scenePath, languageCode) {
     const candidates = getSceneLoadCandidates(scenePath, languageCode);
     let lastError = null;
@@ -158,6 +169,11 @@ window.setGameLanguage = async function(languageCode) {
 window.getGameLanguage = function() {
     return currentLanguage;
 };
+
+const languageFromUrl = getLanguageFromUrl();
+if (languageFromUrl) {
+    currentLanguage = languageFromUrl;
+}
 
 // Initial Load
 loadGameData('assets/scenes/detention_center.json');
