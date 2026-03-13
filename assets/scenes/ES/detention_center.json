@@ -109,7 +109,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Sad\"]}Aun así,{p:120} me caía muy bien.{p:220}{nl}Si no fuera por el trabajo,{p:140} ni le habría llamado la atención,{p:140} señor.{p:220}"
+                "text": "{sprite:Maggey[\"Sad\"]}Aun así,{p:120} me caía muy bien.{p:220}{nl}Si no fuera mi trabajo,{p:140} ni le habría llamado la atención,{p:140} señor.{p:220}"
             },
             {
                 "name": "Phoenix",
@@ -221,7 +221,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(Bien. Creo que aquí ya he terminado).{color:white}{endGame}"
+                "text": "{color:lightblue}{blip:0}(Bien. Creo que aquí ya he terminado).{color:white}{sectionEnd}"
             }
         ]
     }

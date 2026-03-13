@@ -76,6 +76,175 @@ function triggerFlash() {
     flashOverlay.classList.add('flashing');
 }
 
+let activeVideoScriptTimeouts = [];
+let activeVideoCompleteCallback = null;
+
+function clearActiveVideoScriptTimeouts() {
+    activeVideoScriptTimeouts.forEach(clearTimeout);
+    activeVideoScriptTimeouts = [];
+}
+
+function extractVideoScriptEntries(videoData) {
+    if (!videoData) return [];
+
+    if (Array.isArray(videoData.script)) {
+        return videoData.script;
+    }
+
+    if (videoData.script && Array.isArray(videoData.script.lines)) {
+        return videoData.script.lines;
+    }
+
+    if (videoData.script && Array.isArray(videoData.script.entries)) {
+        return videoData.script.entries;
+    }
+
+    return [];
+}
+
+function renderVideoScriptLine(line) {
+    if (!line || typeof line !== 'object') return;
+
+    // Show textbox for this caption and run through full typewriter pipeline
+    textboxContainer.style.opacity = '1';
+    updateDialogue(line);
+
+    // Hide textbox after 'duration' ms if specified
+    if (Number.isFinite(line.duration) && line.duration > 0) {
+        const hideId = setTimeout(() => {
+            textboxContainer.style.opacity = '0';
+        }, line.duration);
+        activeVideoScriptTimeouts.push(hideId);
+    }
+}
+
+function toggleVideoControlButtons(show) {
+    if (!skipVideoBtn || !autoplayIndicator) return;
+    if (show) {
+        autoplayIndicator.classList.add('hidden');
+        skipVideoBtn.classList.remove('hidden');
+    } else {
+        skipVideoBtn.classList.add('hidden');
+        autoplayIndicator.classList.remove('hidden');
+    }
+}
+
+function finishVideoSequence() {
+    clearActiveVideoScriptTimeouts();
+
+    if (topVideo) {
+        topVideo.pause();
+        topVideo.removeAttribute('src');
+        topVideo.load();
+        topVideo.classList.add('hidden');
+    }
+
+    // Restore textbox so the next dialogue line is visible
+    textboxContainer.style.opacity = '1';
+    isVideoPlaying = false;
+    toggleVideoControlButtons(false);
+    isInputBlocked = false;
+
+    if (typeof activeVideoCompleteCallback === 'function') {
+        const callback = activeVideoCompleteCallback;
+        activeVideoCompleteCallback = null;
+        callback();
+    }
+}
+
+function stopTopVideoSequence(callCallback = false) {
+    if (!topVideo) return;
+
+    clearActiveVideoScriptTimeouts();
+    topVideo.pause();
+    topVideo.classList.add('hidden');
+
+    isVideoPlaying = false;
+    toggleVideoControlButtons(false);
+
+    if (callCallback && typeof activeVideoCompleteCallback === 'function') {
+        const callback = activeVideoCompleteCallback;
+        activeVideoCompleteCallback = null;
+        callback();
+    } else {
+        activeVideoCompleteCallback = null;
+    }
+
+    isInputBlocked = false;
+}
+
+function playTopVideoSequence(videoKey, onComplete) {
+    if (!topVideo) {
+        console.warn('Top video element not found.');
+        if (typeof onComplete === 'function') onComplete();
+        return;
+    }
+
+    const videoData = videosDB[videoKey];
+    if (!videoData || !videoData.file) {
+        console.warn(`Video not found: ${videoKey}`);
+        if (typeof onComplete === 'function') onComplete();
+        return;
+    }
+
+    stopTopVideoSequence(false);
+    activeVideoCompleteCallback = (typeof onComplete === 'function') ? onComplete : null;
+    isVideoPlaying = true;
+    toggleVideoControlButtons(true);
+    isInputBlocked = true;
+
+    const onEnded = () => {
+        topVideo.removeEventListener('ended', onEnded);
+        topVideo.removeEventListener('error', onEnded);
+        finishVideoSequence();
+    };
+
+    topVideo.addEventListener('ended', onEnded, { once: true });
+    topVideo.addEventListener('error', onEnded, { once: true });
+
+    topVideo.src = videoData.file;
+    topVideo.currentTime = 0;
+    topVideo.classList.remove('hidden');
+
+    // Hide textbox until the first caption fires
+    textboxContainer.style.opacity = '0';
+    nameTag.style.opacity = '0';
+
+    const scriptEntries = extractVideoScriptEntries(videoData)
+        .map((entry) => {
+            if (!entry) return null;
+            const parsedTimestamp = Number(entry.timestamp);
+            if (!Number.isFinite(parsedTimestamp)) return null;
+            return { ...entry, timestamp: parsedTimestamp };
+        })
+        .filter(Boolean)
+        .sort((a, b) => a.timestamp - b.timestamp);
+
+    scriptEntries.forEach((entry) => {
+        const timeoutId = setTimeout(() => {
+            renderVideoScriptLine(entry);
+        }, Math.max(0, entry.timestamp));
+        activeVideoScriptTimeouts.push(timeoutId);
+    });
+
+    topVideo.play().catch((error) => {
+        console.warn('Video play failed:', error);
+        onEnded();
+    });
+}
+
+window.playTopVideoSequence = playTopVideoSequence;
+window.stopTopVideoSequence = stopTopVideoSequence;
+
+// Skip video button event listener
+if (skipVideoBtn) {
+    skipVideoBtn.addEventListener('click', () => {
+        if (isVideoPlaying) {
+            stopTopVideoSequence(true);
+        }
+    });
+}
+
 function setSpriteState(state) {
     if (!currentCharacterName || !currentAnimationKey) return;
 

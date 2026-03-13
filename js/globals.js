@@ -14,6 +14,7 @@ let investigations = {};
 let optionsDB = {};
 let soundsDB = {};
 let musicDB = {};
+let videosDB = {};
 const gameState = {};
 let gameScript = {};
 
@@ -38,6 +39,7 @@ let fastForwardInterval = null;
 let fastForwardTimeout = null;
 let isAutoPlayEnabled = false;
 let autoPlaySpeedPreset = 'normal';
+let isVideoPlaying = false;
 let currentLanguage = 'EN';
 let currentSceneRequestPath = '';
 let currentSceneResolvedPath = '';

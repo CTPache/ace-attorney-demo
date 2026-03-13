@@ -233,6 +233,18 @@ function processNextChar() {
              segmentIndex++;
              processNextChar();
         }
+    } else if (segment.type === 'playVideo') {
+        if (window.playTopVideoSequence) {
+            setSpriteState('default');
+            isTyping = false;
+            window.playTopVideoSequence(segment.videoKey, () => {
+                segmentIndex++;
+                processNextChar();
+            });
+        } else {
+            segmentIndex++;
+            processNextChar();
+        }
     } else if (segment.type === 'skip') {
         isWaitingForAutoSkip = true;
         setSpriteState('default');
@@ -351,6 +363,15 @@ function finishTyping() {
             textboxContainer.style.opacity = (segment.type === 'showTextbox') ? 1 : 0;
             segmentIndex++;
         } else if (segment.type === 'playAnimation') {
+            segmentIndex++;
+        } else if (segment.type === 'playVideo') {
+            if (window.playTopVideoSequence) {
+                isTyping = false;
+                window.playTopVideoSequence(segment.videoKey, () => {
+                    advanceDialogue(true);
+                });
+                return;
+            }
             segmentIndex++;
         } else if (segment.type === 'skip') {
             // Found a skip tag during fast-forward

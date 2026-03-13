@@ -221,7 +221,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(All right. I think I'm done here.){color:white}{endGame}"
+                "text": "{color:lightblue}{blip:0}(All right. I think I'm done here.){color:white}"
             }
         ]
     }

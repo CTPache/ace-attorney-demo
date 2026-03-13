@@ -39,6 +39,8 @@ const patterns = [
     /\{showTextbox\}/,                                  // 0: ShowTextbox
     /\{fg:([a-zA-Z0-9_]+)\}/,                           // 34: Foreground
     /\{shake:(\d+)\}/,                                  // 35: Shake
+    /\{playVideo:([a-zA-Z0-9_]+)\}/,                    // 36: PlayVideo
+    /\{stopVideo\}/,                                    // 0: StopVideo
     /\{endGame\}/                                       // 0: EndGame (Match[0] check)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
@@ -60,6 +62,8 @@ function parseText(text) {
             parsedSegments.push({ type: 'flash' });
         } else if (match[0] === '{hideLifeBar}') { // Hide Life Bar
             parsedSegments.push({ type: 'hideLifeBar' });
+        } else if (match[0] === '{stopVideo}') { // Stop Video
+            parsedSegments.push({ type: 'stopVideo' });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });
         } else if (match[0] === '{fadeInCharacter}') { // Fade In
@@ -138,6 +142,8 @@ function parseText(text) {
             parsedSegments.push({ type: 'fg', fgName: match[34] });
         } else if (match[35]) { // Shake {shake:frames}
             parsedSegments.push({ type: 'shake', duration: parseInt(match[35]) });
+        } else if (match[36]) { // Play Video {playVideo:Key}
+            parsedSegments.push({ type: 'playVideo', videoKey: match[36] });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });
         }

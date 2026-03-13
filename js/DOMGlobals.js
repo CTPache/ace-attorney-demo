@@ -14,8 +14,10 @@ const bottomTopBar = document.getElementById('bottom-top-bar');
 const backgroundElement = document.getElementById('background');
 const character = document.getElementById('character');
 const foregroundElement = document.getElementById('foreground');
+const topVideo = document.getElementById('top-video');
 const flashOverlay = document.getElementById('flash-overlay');
 const autoplayIndicator = document.getElementById('autoplay-indicator');
+const skipVideoBtn = document.getElementById('skip-video-btn');
 
 // Text Box
 const nameTag = document.getElementById('name-tag');

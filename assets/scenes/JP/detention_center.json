@@ -221,7 +221,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（よし。ここはこんなところか）{color:white}{endGame}"
+                "text": "{color:lightblue}{blip:0}（よし。ここはこんなところか）{color:white}{sectionEnd}"
             }
         ]
     }

@@ -1,0 +1,112 @@
+{
+    "initialSection": "Intro_Start",
+    "evidence": {
+        "badge": {
+            "name": "Distintivo de letrado",
+            "data": "Tipo: Evidencia\nUna de mis pertenencias.",
+            "description": "Sin esto, nadie creeria que soy abogado.",
+            "image": "assets/img/evidence/badge.png"
+        }
+    },
+    "backgrounds": {
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
+    },
+    "music": {
+        "investigation": "assets/audio/demo/bgm001.ogg"
+    },
+    "investigations": {
+        "JoyPolis": {
+            "move": [
+                {
+                    "label": "Joypolis",
+                    "target": "Joypolis_Start",
+                    "preview": "JoyPolis",
+                    "json": "assets/scenes/joypolis.json"
+                },
+                {
+                    "label": "Centro de detencion",
+                    "target": "Detention_Center_Start",
+                    "preview": "Detention_Center",
+                    "json": "assets/scenes/detention_center.json"
+                },
+                {
+                    "label": "Sala de demo",
+                    "target": "Demo_Main_01",
+                    "preview": "Demo_room",
+                    "json": "assets/scenes/demo.json"
+                }
+            ]
+        }
+    },
+    "videos": {
+        "intro": {
+            "file": "assets/video/FlyHighIntro.mp4",
+            "script": [
+                {
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 1:17 PM{nl}Joypolis, Salon de eventos del atrio",
+                    "timestamp": 2000,
+                    "duration": 7000
+                },
+                {
+                    "name": "Samurái",
+                    "text": "{blip:1}¡Allá voy, Magistrado Malvado!{nl}¡Esto termina hoy!",
+                    "timestamp": 22500
+                },
+                {
+                    "name": "Samurái",
+                    "text": "¡Prepárate!",
+                    "timestamp": 25000,
+                    "duration": 1800
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 9:01 PM{nl}Joypolis, Salon de eventos del atrio, 4º piso",
+                    "timestamp": 36000,
+                    "duration": 8000
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "{blip:2}No me moví muy bien.",
+                    "timestamp": 44500
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "Tengo que hacerlo mucho, mucho mejor.{nl}Lo único que puedo hacer es practicar.",
+                    "timestamp": 48000
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "¡Allá voy, Magistrado Malvado!{nl}¡Esto termina hoy!",
+                    "timestamp": 52500
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "¡Prepárate!",
+                    "timestamp": 55000,
+                    "duration": 3000
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 10:05 PM{nl}Joypolis, Salon de eventos del atrio",
+                    "timestamp": 64500,
+                    "duration": 8000
+                },
+                {
+                    "name": "Sahwit",
+                    "text": "{blip:1}¡A-Alguien! ¡Ayuda!",
+                    "timestamp": 91500,
+                    "duration": 3000
+                }
+            ]
+        }
+    },
+    "gameScript": {
+        "Intro_Start": [
+            {
+                "text": "{hideCharacter}{bg:none}{fg:none}{playVideo:intro}{bg:JoyPolis}{skip}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{addEvidence:badge,false}{bg:JoyPolis}{showTextbox}{blip:1}TODO: Completar este diálogo."
+            }
+        ]
+    }
+}

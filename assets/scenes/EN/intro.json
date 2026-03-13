@@ -1,0 +1,112 @@
+{
+    "initialSection": "Intro_Start",
+    "evidence": {
+        "badge": {
+            "name": "Attorney's Badge",
+            "data": "Type: Evidence\nOne of my possessions.",
+            "description": "Without this no one would believe I'm a lawyer.",
+            "image": "assets/img/evidence/badge.png"
+        }
+    },
+    "backgrounds": {
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
+    },
+    "music": {
+        "investigation": "assets/audio/demo/bgm001.ogg"
+    },
+    "investigations": {
+        "JoyPolis": {
+            "move": [
+                {
+                    "label": "Joypolis",
+                    "target": "Joypolis_Start",
+                    "preview": "JoyPolis",
+                    "json": "assets/scenes/joypolis.json"
+                },
+                {
+                    "label": "Detention Center",
+                    "target": "Detention_Center_Start",
+                    "preview": "Detention_Center",
+                    "json": "assets/scenes/detention_center.json"
+                },
+                {
+                    "label": "Demo room",
+                    "target": "Demo_Main_01",
+                    "preview": "Demo_room",
+                    "json": "assets/scenes/demo.json"
+                }
+            ]
+        }
+    },
+    "videos": {
+        "intro": {
+            "file": "assets/video/FlyHighIntro.mp4",
+            "script": [
+                {
+                    "text": "{center}{color:lime}{blip:3}September 17, 1:17 PM{nl}Joypolis, Atrium Event Hall",
+                    "timestamp": 2000,
+                    "duration": 7000
+                },
+                {
+                    "name": "Samurai",
+                    "text": "{blip:1}Here we go, Evil Magistrate!{nl}We settle this today!",
+                    "timestamp": 22500
+                },
+                {
+                    "name": "Samurai",
+                    "text": "Get ready!",
+                    "timestamp": 25000,
+                    "duration": 1800
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}September 17, 9:01 PM{nl}Joypolis, Atrium Event Hall 4th Floor",
+                    "timestamp": 36000,
+                    "duration": 8000
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "{blip:2}My moves weren't very good.",
+                    "timestamp": 44500
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "I have to do much, much better.{nl}All I can do is practice.",
+                    "timestamp": 48000
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "Here we go, Evil Magistrate!{nl}We settle this today!",
+                    "timestamp": 52500
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "Get ready!",
+                    "timestamp": 55000,
+                    "duration": 3000
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}September 17, 10:05 PM{nl}Joypolis, Atrium Event Hall",
+                    "timestamp": 64500,
+                    "duration": 8000
+                },
+                {
+                    "name": "Sahwit",
+                    "text": "{blip:1}S-Someone! Help!",
+                    "timestamp": 91500,
+                    "duration": 3000
+                }
+            ]
+        }
+    },
+    "gameScript": {
+        "Intro_Start": [
+            {
+                "text": "{hideCharacter}{bg:none}{fg:none}{playVideo:intro}{bg:JoyPolis}{skip}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{addEvidence:badge,false}{bg:JoyPolis}{showTextbox}{blip:1}TODO: Finish this dialogue."
+            }
+        ]
+    }
+}

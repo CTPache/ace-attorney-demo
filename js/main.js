@@ -124,6 +124,7 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         optionsDB = data.options || {};
         soundsDB = data.sounds || {};
         musicDB = data.music || {};
+        videosDB = data.videos || {};
 
         // Update Game Script
         if (data.gameScript) gameScript = data.gameScript;
@@ -176,7 +177,7 @@ if (languageFromUrl) {
 }
 
 // Initial Load
-loadGameData('assets/scenes/detention_center.json');
+loadGameData(`assets/scenes/${currentLanguage}/intro.json`);
 
 // Add click event listener to the game container
 gameContainer.addEventListener('click', advanceDialogue);

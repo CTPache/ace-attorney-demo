@@ -18,9 +18,9 @@ function getAutoPlayDelayMs() {
 function setAutoPlaySpeedPreset(preset) {
     if (preset === 'slow') {
         autoPlaySpeedPreset = 'slow';
-        autoPlayBaseDelay = 2000;
-        autoPlayPerCharDelay = 25;
-        autoPlayMaxExtraDelay = 3000;
+        autoPlayBaseDelay = 1000;
+        autoPlayPerCharDelay = 15;
+        autoPlayMaxExtraDelay = 2000;
     } else if (preset === 'fast') {
         autoPlaySpeedPreset = 'fast';
         autoPlayBaseDelay = 200;
@@ -28,9 +28,9 @@ function setAutoPlaySpeedPreset(preset) {
         autoPlayMaxExtraDelay = 1000;
     } else {
         autoPlaySpeedPreset = 'normal';
-        autoPlayBaseDelay = 1000;
+        autoPlayBaseDelay = 800;
         autoPlayPerCharDelay = 10;
-        autoPlayMaxExtraDelay = 2000;
+        autoPlayMaxExtraDelay = 1500;
     }
 }
 

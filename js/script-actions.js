@@ -120,6 +120,9 @@ function executeScriptAction(segment) {
             lastCheckpointSection = segment.sectionName;
             console.log(`Checkpoint saved: ${lastCheckpointSection}`);
             return true;
+        case 'stopVideo':
+            if (window.stopTopVideoSequence) window.stopTopVideoSequence(true);
+            return true;
         case 'shake':
             triggerShake(segment.duration);
             return true;

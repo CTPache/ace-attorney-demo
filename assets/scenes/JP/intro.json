@@ -1,0 +1,112 @@
+{
+    "initialSection": "Intro_Start",
+    "evidence": {
+        "badge": {
+            "name": "弁護士バッジ",
+            "data": "種類: 証拠品\nオレの持ち物のひとつ。",
+            "description": "これがなければ、誰もオレを弁護士だとは信じてくれない。",
+            "image": "assets/img/evidence/badge.png"
+        }
+    },
+    "backgrounds": {
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
+    },
+    "music": {
+        "investigation": "assets/audio/demo/bgm001.ogg"
+    },
+    "investigations": {
+        "JoyPolis": {
+            "move": [
+                {
+                    "label": "ジョイポリス",
+                    "target": "Joypolis_Start",
+                    "preview": "JoyPolis",
+                    "json": "assets/scenes/joypolis.json"
+                },
+                {
+                    "label": "留置所",
+                    "target": "Detention_Center_Start",
+                    "preview": "Detention_Center",
+                    "json": "assets/scenes/JP/detention_center.json"
+                },
+                {
+                    "label": "デモルーム",
+                    "target": "Demo_Main_01",
+                    "preview": "Demo_room",
+                    "json": "assets/scenes/demo.json"
+                }
+            ]
+        }
+    },
+    "videos": {
+        "intro": {
+            "file": "assets/video/FlyHighIntro.mp4",
+            "script": [
+                {
+                    "text": "{center}{color:lime}{blip:3}9月17日 午後1時17分{nl}ジョイポリス 吹き抜けイベントホール",
+                    "timestamp": 2000,
+                    "duration": 7000
+                },
+                {
+                    "name": "トノサマン",
+                    "text": "{blip:1}行くぞ、アクダイカーン！{nl}今日こそ決着を！",
+                    "timestamp": 22500
+                },
+                {
+                    "name": "トノサマン",
+                    "text": "カクゴせいッ！",
+                    "timestamp": 25000,
+                    "duration": 1800
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}9月17日 午後9時1分{nl}ジョイポリス 吹き抜けイベントホール4階",
+                    "timestamp": 36000,
+                    "duration": 8000
+                },
+                {
+                    "name": "クルミ",
+                    "text": "{blip:2}あんまりいい動きじゃなかったわ。",
+                    "timestamp": 44500
+                },
+                {
+                    "name": "クルミ",
+                    "text": "もっともっとうまくやらないと。{nl}練習あるのみね。",
+                    "timestamp": 48000
+                },
+                {
+                    "name": "クルミ",
+                    "text": "行くぞ、アクダイカーン！{nl}今日こそ決着を！",
+                    "timestamp": 52500
+                },
+                {
+                    "name": "クルミ",
+                    "text": "カクゴせいッ！",
+                    "timestamp": 55000,
+                    "duration": 3000
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}9月17日 午後10時5分{nl}ジョイポリス 吹き抜けイベントホール",
+                    "timestamp": 64500,
+                    "duration": 8000
+                },
+                {
+                    "name": "ヤマノ",
+                    "text": "{blip:1}ダ、ダレかー！",
+                    "timestamp": 91500,
+                    "duration": 3000
+                }
+            ]
+        }
+    },
+    "gameScript": {
+        "Intro_Start": [
+            {
+                "text": "{hideCharacter}{bg:none}{fg:none}{playVideo:intro}{bg:JoyPolis}{skip}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{addEvidence:badge,false}{bg:JoyPolis}{showTextbox}{blip:1}TODO: この会話を完成させる。"
+            }
+        ]
+    }
+}
