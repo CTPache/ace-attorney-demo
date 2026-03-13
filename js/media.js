@@ -220,17 +220,40 @@ function playTopVideoSequence(videoKey, onComplete) {
         .filter(Boolean)
         .sort((a, b) => a.timestamp - b.timestamp);
 
-    scriptEntries.forEach((entry) => {
-        const timeoutId = setTimeout(() => {
-            renderVideoScriptLine(entry);
-        }, Math.max(0, entry.timestamp));
-        activeVideoScriptTimeouts.push(timeoutId);
-    });
+    let scriptScheduled = false;
+    const scheduleVideoScript = () => {
+        if (scriptScheduled) return;
+        scriptScheduled = true;
 
-    topVideo.play().catch((error) => {
-        console.warn('Video play failed:', error);
-        onEnded();
-    });
+        scriptEntries.forEach((entry) => {
+            const timeoutId = setTimeout(() => {
+                renderVideoScriptLine(entry);
+            }, Math.max(0, entry.timestamp));
+            activeVideoScriptTimeouts.push(timeoutId);
+        });
+    };
+
+    const onPlaying = () => {
+        scheduleVideoScript();
+    };
+
+    topVideo.addEventListener('playing', onPlaying, { once: true });
+
+    const startPlayback = () => {
+        topVideo.play().catch((error) => {
+            console.warn('Video play failed:', error);
+            topVideo.removeEventListener('playing', onPlaying);
+            onEnded();
+        });
+    };
+
+    // Wait until the video is ready before attempting playback
+    if (topVideo.readyState >= 3) {
+        startPlayback();
+    } else {
+        topVideo.addEventListener('canplay', startPlayback, { once: true });
+        topVideo.load();
+    }
 }
 
 window.playTopVideoSequence = playTopVideoSequence;
