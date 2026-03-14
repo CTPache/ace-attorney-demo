@@ -78,6 +78,8 @@ function triggerFlash() {
 
 let activeVideoScriptTimeouts = [];
 let activeVideoCompleteCallback = null;
+let isVideoAwaitingGesture = false;
+let pendingVideoPlayback = null;
 
 function clearActiveVideoScriptTimeouts() {
     activeVideoScriptTimeouts.forEach(clearTimeout);
@@ -129,6 +131,21 @@ function toggleVideoControlButtons(show) {
     }
 }
 
+function setSkipButtonMode(mode) {
+    if (!skipVideoBtn) return;
+
+    if (mode === 'play') {
+        skipVideoBtn.textContent = 'Play';
+        skipVideoBtn.title = 'Play Video';
+        skipVideoBtn.setAttribute('aria-label', 'Play Video');
+        return;
+    }
+
+    skipVideoBtn.textContent = 'Skip';
+    skipVideoBtn.title = 'Skip Video (V)';
+    skipVideoBtn.setAttribute('aria-label', 'Skip Video');
+}
+
 function finishVideoSequence() {
     clearActiveVideoScriptTimeouts();
 
@@ -141,7 +158,10 @@ function finishVideoSequence() {
 
     // Restore textbox so the next dialogue line is visible
     textboxContainer.style.opacity = '1';
+    isVideoAwaitingGesture = false;
+    pendingVideoPlayback = null;
     isVideoPlaying = false;
+    setSkipButtonMode('skip');
     toggleVideoControlButtons(false);
     isInputBlocked = false;
 
@@ -159,7 +179,10 @@ function stopTopVideoSequence(callCallback = false) {
     topVideo.pause();
     topVideo.classList.add('hidden');
 
+    isVideoAwaitingGesture = false;
+    pendingVideoPlayback = null;
     isVideoPlaying = false;
+    setSkipButtonMode('skip');
     toggleVideoControlButtons(false);
 
     if (callCallback && typeof activeVideoCompleteCallback === 'function') {
@@ -189,7 +212,10 @@ function playTopVideoSequence(videoKey, onComplete) {
 
     stopTopVideoSequence(false);
     activeVideoCompleteCallback = (typeof onComplete === 'function') ? onComplete : null;
+    isVideoAwaitingGesture = false;
+    pendingVideoPlayback = null;
     isVideoPlaying = true;
+    setSkipButtonMode('skip');
     toggleVideoControlButtons(true);
     isInputBlocked = true;
 
@@ -242,8 +268,12 @@ function playTopVideoSequence(videoKey, onComplete) {
     const startPlayback = () => {
         topVideo.play().catch((error) => {
             console.warn('Video play failed:', error);
-            topVideo.removeEventListener('playing', onPlaying);
-            onEnded();
+
+            // Mobile browsers can block autoplay with audio until a user gesture.
+            // Keep the sequence paused and let the user tap Play to resume.
+            isVideoAwaitingGesture = true;
+            pendingVideoPlayback = startPlayback;
+            setSkipButtonMode('play');
         });
     };
 
@@ -262,6 +292,15 @@ window.stopTopVideoSequence = stopTopVideoSequence;
 // Skip video button event listener
 if (skipVideoBtn) {
     skipVideoBtn.addEventListener('click', () => {
+        if (isVideoAwaitingGesture && typeof pendingVideoPlayback === 'function') {
+            isVideoAwaitingGesture = false;
+            setSkipButtonMode('skip');
+            const resumePlayback = pendingVideoPlayback;
+            pendingVideoPlayback = null;
+            resumePlayback();
+            return;
+        }
+
         if (isVideoPlaying) {
             stopTopVideoSequence(true);
         }
