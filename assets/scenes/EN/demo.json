@@ -28,10 +28,10 @@
         }
     },
     "backgrounds": {
-        "JoyPolis": "assets/img/backgrounds/FlyHigh_JoyPolis.png",
-        "Demo_room": "assets/img/backgrounds/Don_1.png",
-        "Courtroom": "assets/img/backgrounds/Courtroom_witness.webp",
-        "Detention_Center": "assets/img/backgrounds/Comon/Detention_Center.png"
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "Demo_room": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "Courtroom": "assets/img/backgrounds/Common/Courtroom_witness.webp",
+        "Detention_Center": "assets/img/backgrounds/Common/Detention_Center.png"
     },
     "evidence": {
         "badge": {

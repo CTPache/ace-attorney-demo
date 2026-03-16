@@ -206,9 +206,9 @@ function showEvidenceDetails(item, key) {
     if (!presentBtn) {
         presentBtn = document.createElement('button');
         presentBtn.id = 'evidence-present-btn';
-        presentBtn.textContent = "Present";
         evidenceDetails.appendChild(presentBtn);
     }
+    presentBtn.textContent = window.t('ui.present', 'Present');
 
     // Only show Present button if NOT in a scene (i.e., in menu mode) AND in presenting mode
     if (!isScenePlaying && isPresentingMode) {

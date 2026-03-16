@@ -1,3 +1,4 @@
+
 console.log("Main Loaded");
 
 const SCENE_LANGUAGES = document.getElementById('config-language-select') && document.getElementById('config-language-select').options ? Array.from(document.getElementById('config-language-select').options).map(opt => opt.value.toUpperCase()) : ['EN'];
@@ -46,6 +47,12 @@ function buildScenePathForLanguage(scenePath, languageCode) {
     return `${parts.prefix}${lang}/${parts.baseRelativePath}`;
 }
 
+function getSceneTranslationKeyFromPath(scenePath) {
+    const parts = getScenePathParts(scenePath);
+    if (!parts || !parts.baseRelativePath) return '';
+    return parts.baseRelativePath.replace(/\.json$/i, '');
+}
+
 function getSceneLoadCandidates(scenePath, languageCode) {
     const normalized = normalizeScenePath(scenePath);
     const selectedLanguagePath = buildScenePathForLanguage(normalized, languageCode);
@@ -70,6 +77,46 @@ function getLanguageFromUrl() {
         console.warn('Unable to parse URL language parameter:', error);
         return null;
     }
+}
+
+function sanitizeSceneKey(sceneKey) {
+    const normalized = String(sceneKey || '')
+        .replace(/\\/g, '/')
+        .replace(/\.json$/i, '')
+        .replace(/^\/+|\/+$/g, '');
+
+    if (!normalized) return '';
+
+    // Allow nested folders and common filename characters only.
+    if (!/^[A-Za-z0-9_\-/]+$/.test(normalized)) {
+        return '';
+    }
+
+    return normalized;
+}
+
+function getInitialSceneKeyFromUrl() {
+    try {
+        const urlParams = new URLSearchParams(window.location.search || '');
+        return sanitizeSceneKey(urlParams.get('scene'));
+    } catch (error) {
+        console.warn('Unable to parse URL scene parameter:', error);
+        return '';
+    }
+}
+
+function getInitialScenePath(languageCode) {
+    const fallbackSceneKey = sanitizeSceneKey(
+        (typeof defaultInitialSceneKey === 'string' && defaultInitialSceneKey)
+            ? defaultInitialSceneKey
+            : 'intro'
+    ) || 'intro';
+
+    const sceneKeyFromUrl = getInitialSceneKeyFromUrl();
+    const sceneKey = sceneKeyFromUrl || fallbackSceneKey;
+    const lang = String(languageCode || 'EN').toUpperCase();
+
+    return `assets/scenes/${lang}/${sceneKey}.json`;
 }
 
 async function fetchSceneDataWithFallback(scenePath, languageCode) {
@@ -108,6 +155,10 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         const { data, resolvedPath } = await fetchSceneDataWithFallback(requestedPath, currentLanguage);
         currentSceneResolvedPath = resolvedPath;
         console.log(`Scene resolved to: ${resolvedPath}`);
+
+        if (typeof window.setCurrentSceneTranslationKey === 'function') {
+            window.setCurrentSceneTranslationKey(getSceneTranslationKeyFromPath(resolvedPath));
+        }
 
         // Reset/Update Data Containers
         // Always overwrite DBs to ensure strict scene scoping
@@ -148,7 +199,10 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         startGame();
     } catch (error) {
         console.error('Error loading game script:', error);
-        alert("Failed to load game data: " + requestedPath);
+        const message = (typeof window.t === 'function')
+            ? window.t('ui.loadGameDataFailed', 'Failed to load game data: {path}', { path: requestedPath })
+            : `Failed to load game data: ${requestedPath}`;
+        alert(message);
     }
 };
 
@@ -158,6 +212,10 @@ window.setGameLanguage = async function(languageCode) {
 
     const hasChanged = currentLanguage !== nextLanguage;
     currentLanguage = nextLanguage;
+
+    if (typeof window.loadUIText === 'function') {
+        await window.loadUIText();
+    }
 
     if (!hasChanged) return;
 
@@ -176,10 +234,21 @@ if (languageFromUrl) {
     currentLanguage = languageFromUrl;
 }
 
+async function initializeGame() {
+    if (typeof window.loadUIText === 'function') {
+        await window.loadUIText();
+    }
+
+    await loadGameData(getInitialScenePath(currentLanguage));
+}
+
 // Initial Load
-loadGameData(`assets/scenes/${currentLanguage}/intro.json`);
+initializeGame();
 
 // Add click event listener to the game container
-gameContainer.addEventListener('click', advanceDialogue);
+gameContainer.addEventListener('click', () => {
+    if (isCourtRecordOpen) return;
+    advanceDialogue();
+});
 
 

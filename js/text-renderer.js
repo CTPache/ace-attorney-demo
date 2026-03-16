@@ -280,11 +280,12 @@ function showEndGameOverlay() {
     overlay.id = 'end-game-overlay';
 
     const msg = document.createElement('h1');
-    msg.textContent = gameOverMessage || "THE END";
+    const hasCustomMessage = typeof gameOverMessage === 'string' && gameOverMessage.trim().length > 0 && gameOverMessage !== 'GAME OVER';
+    msg.textContent = hasCustomMessage ? gameOverMessage : window.t('ui.theEnd', 'THE END');
     overlay.appendChild(msg);
 
     const restartBtn = document.createElement('button');
-    restartBtn.textContent = "Restart";
+    restartBtn.textContent = window.t('ui.restart', 'Restart');
     restartBtn.onclick = () => {
         // Remove overlay
         overlay.remove();

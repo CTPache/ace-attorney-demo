@@ -2,12 +2,38 @@ console.log("UI Loaded");
 
 let returnToConfigAfterHistory = false;
 
+function setBottomScreenButtonsDisabled(disabled) {
+    const buttons = document.querySelectorAll('#bottom-screen button');
+    buttons.forEach((button) => {
+        if (disabled) {
+            if (button.dataset.videoDisabled === 'true') return;
+            button.dataset.videoDisabled = 'true';
+            button.dataset.prevDisabled = button.disabled ? '1' : '0';
+            button.disabled = true;
+            return;
+        }
+
+        if (button.dataset.videoDisabled !== 'true') return;
+        button.disabled = button.dataset.prevDisabled === '1';
+        delete button.dataset.videoDisabled;
+        delete button.dataset.prevDisabled;
+    });
+
+    if (!disabled) {
+        refreshTopBarButtonDisabledState();
+    }
+}
+
+window.setBottomScreenButtonsDisabled = setBottomScreenButtonsDisabled;
+
 function updateAutoplayIndicator() {
     if (!autoplayIndicator) return;
 
     autoplayIndicator.classList.toggle('active', isAutoPlayEnabled);
     autoplayIndicator.setAttribute('aria-pressed', isAutoPlayEnabled ? 'true' : 'false');
-    autoplayIndicator.title = isAutoPlayEnabled ? 'Auto Play On (A)' : 'Auto Play Off (A)';
+    autoplayIndicator.title = isAutoPlayEnabled
+        ? window.t('ui.autoplayOn', 'Auto Play On (A)')
+        : window.t('ui.autoplayOff', 'Auto Play Off (A)');
 }
 
 function setAutoplayEnabled(nextEnabled) {
@@ -61,7 +87,7 @@ function renderHistoryEntries() {
     if (!entries.length) {
         const empty = document.createElement('div');
         empty.className = 'history-empty';
-        empty.textContent = 'No dialogue history yet.';
+        empty.textContent = window.t('ui.noHistory', 'No dialogue history yet.');
         historyList.appendChild(empty);
         return;
     }
@@ -185,6 +211,13 @@ if (historyCloseBtn) {
 }
 
 document.addEventListener('historyUpdated', () => {
+    if (historyMenu && !historyMenu.classList.contains('hidden')) {
+        renderHistoryEntries();
+    }
+});
+
+document.addEventListener('uiTextUpdated', () => {
+    updateAutoplayIndicator();
     if (historyMenu && !historyMenu.classList.contains('hidden')) {
         renderHistoryEntries();
     }
@@ -429,33 +462,3 @@ function switchScreen() {
 
 window.toggleScreenMode = toggleScreenMode;
 window.switchScreen = switchScreen;
-
-document.addEventListener('keydown', (e) => {
-    // Only if not typing in an input
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-
-    if (e.key === 'Escape' && configMenu && !configMenu.classList.contains('hidden')) {
-        closeConfigMenu();
-        return;
-    }
-
-    if (e.key === 'Escape' && historyMenu && !historyMenu.classList.contains('hidden')) {
-        closeHistoryMenu();
-        return;
-    }
-
-    if (e.key.toLowerCase() === 'm') {
-        toggleScreenMode();
-        return;
-    }
-
-    if (e.key.toLowerCase() === 's') {
-        switchScreen();
-        return;
-    }
-
-    if (e.key.toLowerCase() === 'a') {
-        toggleAutoplay();
-    }
-});
-

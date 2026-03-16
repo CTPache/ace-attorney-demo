@@ -19,9 +19,11 @@
             <video id="top-video" class="layer hidden" preload="metadata" playsinline></video>
             <div id="flash-overlay" class="layer"></div>
             <button id="autoplay-indicator" type="button" aria-label="Toggle Auto Play"
-                title="Toggle Auto Play (A)">Auto</button>
+                title="Toggle Auto Play (A)" data-i18n="ui.auto" data-i18n-title="ui.autoplayOff"
+                data-i18n-aria-label="ui.autoplayToggle">Auto</button>
             <button id="skip-video-btn" class="hidden" type="button" aria-label="Skip Video"
-                title="Skip Video (V)">Skip</button>
+                title="Skip Video (V)" data-i18n="ui.skip" data-i18n-title="ui.skipVideo"
+                data-i18n-aria-label="ui.skipVideoAria">Skip</button>
             <div id="life-bar-container" class="hidden">
                 <div id="life-bar-body">
                     <div id="life-bar-fill"></div>
@@ -44,46 +46,46 @@
         </div>
         <div id="bottom-screen">
             <div id="bottom-top-bar">
-                <button id="court-record-btn">Court Record</button>
-                <button id="config-btn">Config</button>
+                <button id="court-record-btn" data-i18n="ui.courtRecord">Court Record</button>
             </div>
             <div id="bottom-main-window">
                 <button id="advance-btn">▶</button>
+                <button id="config-btn" class="small-config-btn" data-i18n="ui.config" title="Config (G)">Config</button>
                 <div id="config-menu" class="hidden">
                     <div class="config-card">
-                        <h3>Configuration</h3>
+                        <h3 data-i18n="ui.configuration">Configuration</h3>
                         <div class="config-row config-speed-row">
-                            <span>Auto Speed</span>
+                            <span data-i18n="ui.autoSpeed">Auto Speed</span>
                             <div class="config-speed-options">
-                                <label><input type="radio" name="auto-speed" value="slow"> Slow</label>
-                                <label><input type="radio" name="auto-speed" value="normal" checked> Normal</label>
-                                <label><input type="radio" name="auto-speed" value="fast"> Fast</label>
+                                <label><input type="radio" name="auto-speed" value="slow"> <span data-i18n="ui.slow">Slow</span></label>
+                                <label><input type="radio" name="auto-speed" value="normal" checked> <span data-i18n="ui.normal">Normal</span></label>
+                                <label><input type="radio" name="auto-speed" value="fast"> <span data-i18n="ui.fast">Fast</span></label>
                             </div>
                         </div>
                         <label class="config-row">
-                            <span>Language</span>
+                            <span data-i18n="ui.language">Language</span>
                             <select id="config-language-select">
                                 <option value="EN">English</option>
                                 <option value="ES">Español</option>
                                 <option value="JP">日本語</option>
                             </select>
                         </label>
-                        <button id="config-history-btn">View History</button>
-                        <button id="config-close-btn">Close</button>
+                        <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
+                        <button id="config-close-btn" data-i18n="ui.close">Close</button>
                     </div>
                 </div>
                 <div id="history-menu" class="hidden">
                     <div class="history-card">
-                        <h3>History</h3>
+                        <h3 data-i18n="ui.history">History</h3>
                         <div id="history-list"></div>
-                        <button id="history-close-btn">Close</button>
+                        <button id="history-close-btn" data-i18n="ui.close">Close</button>
                     </div>
                 </div>
                 <div id="investigation-menu" class="hidden">
-                    <button id="btn-examine" class="inv-btn">Examine</button>
-                    <button id="btn-move" class="inv-btn">Move</button>
-                    <button id="btn-talk" class="inv-btn">Talk</button>
-                    <button id="btn-present" class="inv-btn">Present</button>
+                    <button id="btn-examine" class="inv-btn" data-i18n="ui.examine">Examine</button>
+                    <button id="btn-move" class="inv-btn" data-i18n="ui.move">Move</button>
+                    <button id="btn-talk" class="inv-btn" data-i18n="ui.talk">Talk</button>
+                    <button id="btn-present" class="inv-btn" data-i18n="ui.present">Present</button>
                 </div>
                 <div id="move-menu" class="hidden">
                     <div id="move-preview-container">
@@ -92,7 +94,7 @@
                     <div id="move-list">
                         <!-- Move buttons will be injected here -->
                     </div>
-                    <button id="btn-move-back" class="back-btn">Back</button>
+                    <button id="btn-move-back" class="back-btn" data-i18n="ui.back">Back</button>
                 </div>
                 <div id="investigation-panel" class="hidden">
                     <img id="investigation-bg" src="/" alt="Investigation Background">
@@ -102,19 +104,19 @@
                     <div id="investigation-cursor-box">
                         <div id="cursor-check">✓</div>
                     </div>
-                    <button id="btn-investigation-back" class="back-btn">Back</button>
+                    <button id="btn-investigation-back" class="back-btn" data-i18n="ui.back">Back</button>
                 </div>
                 <div id="topic-menu" class="hidden">
-                    <button id="btn-topic-back" class="back-btn">Back</button>
+                    <button id="btn-topic-back" class="back-btn" data-i18n="ui.back">Back</button>
                 </div>
                 <div id="evidence-container" class="hidden">
                     <div id="cr-tabs">
-                        <div class="cr-tab active">Evidence</div>
-                        <div class="cr-tab">Profiles</div>
+                        <div class="cr-tab active" data-i18n="ui.evidence">Evidence</div>
+                        <div class="cr-tab" data-i18n="ui.profiles">Profiles</div>
                     </div>
                     <div id="evidence-name-display"></div>
                     <div id="evidence-grid"></div>
-                    <button id="btn-evidence-back" class="back-btn">Back</button>
+                    <button id="btn-evidence-back" class="back-btn" data-i18n="ui.back">Back</button>
                     <div id="evidence-details" class="hidden">
                         <div id="evidence-details-top">
                             <button id="evidence-prev-btn" class="detail-nav-btn">◀</button>
@@ -137,6 +139,7 @@
     </div>
     <script src="js/DOMGlobals.js"></script>
     <script src="js/globals.js"></script>
+    <script src="js/localization.js"></script>
     <script src="js/media.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/loader.js"></script>
@@ -150,6 +153,7 @@
     <script src="js/topics.js"></script>
     <script src="js/lifebar.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/key-events.js"></script>
 </body>
 
 </html>

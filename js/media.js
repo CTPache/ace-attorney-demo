@@ -135,15 +135,15 @@ function setSkipButtonMode(mode) {
     if (!skipVideoBtn) return;
 
     if (mode === 'play') {
-        skipVideoBtn.textContent = 'Play';
-        skipVideoBtn.title = 'Play Video';
-        skipVideoBtn.setAttribute('aria-label', 'Play Video');
+        skipVideoBtn.textContent = window.t('ui.play', 'Play');
+        skipVideoBtn.title = window.t('ui.playVideo', 'Play Video');
+        skipVideoBtn.setAttribute('aria-label', window.t('ui.playVideoAria', 'Play Video'));
         return;
     }
 
-    skipVideoBtn.textContent = 'Skip';
-    skipVideoBtn.title = 'Skip Video (V)';
-    skipVideoBtn.setAttribute('aria-label', 'Skip Video');
+    skipVideoBtn.textContent = window.t('ui.skip', 'Skip');
+    skipVideoBtn.title = window.t('ui.skipVideo', 'Skip Video (V)');
+    skipVideoBtn.setAttribute('aria-label', window.t('ui.skipVideoAria', 'Skip Video'));
 }
 
 function finishVideoSequence() {
@@ -165,6 +165,10 @@ function finishVideoSequence() {
     toggleVideoControlButtons(false);
     isInputBlocked = false;
 
+    if (typeof window.setBottomScreenButtonsDisabled === 'function') {
+        window.setBottomScreenButtonsDisabled(false);
+    }
+
     if (typeof activeVideoCompleteCallback === 'function') {
         const callback = activeVideoCompleteCallback;
         activeVideoCompleteCallback = null;
@@ -184,6 +188,10 @@ function stopTopVideoSequence(callCallback = false) {
     isVideoPlaying = false;
     setSkipButtonMode('skip');
     toggleVideoControlButtons(false);
+
+    if (typeof window.setBottomScreenButtonsDisabled === 'function') {
+        window.setBottomScreenButtonsDisabled(false);
+    }
 
     if (callCallback && typeof activeVideoCompleteCallback === 'function') {
         const callback = activeVideoCompleteCallback;
@@ -218,6 +226,10 @@ function playTopVideoSequence(videoKey, onComplete) {
     setSkipButtonMode('skip');
     toggleVideoControlButtons(true);
     isInputBlocked = true;
+
+    if (typeof window.setBottomScreenButtonsDisabled === 'function') {
+        window.setBottomScreenButtonsDisabled(true);
+    }
 
     const onEnded = () => {
         topVideo.removeEventListener('ended', onEnded);

@@ -286,6 +286,17 @@ body {
     user-select: none;
 }
 
+.small-config-btn {
+    position: absolute;
+    bottom: 1cqh;
+    right: 1cqh;
+    padding: 0% !important;
+    font-size: 4cqh !important;
+    min-width: 1cqh !important;
+    opacity: 0.85 !important;
+    aspect-ratio: 1 / 1;
+}
+
 /* Common Wood Button Style */
 #court-record-btn,
 #config-btn,
@@ -329,6 +340,7 @@ body {
     min-width: 20cqh;
 }
 
+#advance-btn:disabled,
 #court-record-btn:disabled,
 #config-btn:disabled {
     cursor: not-allowed;
@@ -553,6 +565,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    background-color: grey;
 }
 
 
@@ -634,7 +647,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(128, 128, 128);
+    background-color: rgb(88,88,88);
     color: white;
     display: flex;
     flex-direction: column;
@@ -670,7 +683,7 @@ body {
 #evidence-icon-container {
     height: 100%;
     aspect-ratio: 1 / 1;
-    background-color: #555;
+    background-color: gray;
     border: 0.6cqh solid white;
     display: flex;
     justify-content: center;

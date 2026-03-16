@@ -54,6 +54,7 @@ let currentBGM = null; // Track current background music
 
 // Config
 const defaultTextSpeed = 30;
+const defaultInitialSceneKey = 'intro';
 let currentTextSpeed = defaultTextSpeed;
 let currentBlipType = 1;
 let currentTalkingAnimationEnabled = true;
