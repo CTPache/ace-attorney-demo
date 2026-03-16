@@ -191,6 +191,7 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         
         // Set initial globals
         initialSectionName = currentSectionName;
+        currentLineIndex = 0;
         
         // Re-run preload (this updates the new objects in-place with blob URLs)
         await preloadAssets();
@@ -218,6 +219,10 @@ window.setGameLanguage = async function(languageCode) {
     }
 
     if (!hasChanged) return;
+
+    if (typeof window.clearDialogueHistory === 'function') {
+        window.clearDialogueHistory();
+    }
 
     const sceneToReload = currentSceneRequestPath || currentSceneResolvedPath;
     if (sceneToReload) {

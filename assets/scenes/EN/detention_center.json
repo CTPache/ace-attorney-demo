@@ -37,11 +37,11 @@
         }
     },
     "backgrounds": {
-        "DetentionCenter": "assets/img/backgrounds/Comon/Detention_Center.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "BlogPost": "assets/img/CG/Fly High/Blog_Post.png"
     },
     "foregrounds": {
-        "Detention_Bars": "assets/img/backgrounds/Comon/Detention_Center_foreground.png"
+        "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
     },
     "music": {
         "detentionCenter": "assets/audio/demo/bgm000.m4a"
