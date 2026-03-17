@@ -23,6 +23,7 @@
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "Samurai2": "assets/img/CG/Fly High/Samurai_2.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
         "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
         "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png",
         "Crime_Scene": {
@@ -64,6 +65,12 @@
                     "target": "Detention_Center_Init",
                     "preview": "DetentionCenter",
                     "json": "assets/scenes/detention_center.json"
+                },
+                {
+                    "label": "4th Floor",
+                    "target": "Floor4_Init",
+                    "preview": "Floor4",
+                    "json": "assets/scenes/4th_floor.json"
                 }
             ],
             "points": []

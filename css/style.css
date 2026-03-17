@@ -651,7 +651,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(88,88,88);
+    background-color: rgb(88, 88, 88);
     color: white;
     display: flex;
     flex-direction: column;
@@ -696,8 +696,8 @@ body {
 }
 
 #evidence-icon-large {
-    width: 90%;
-    height: 90%;
+    width: 99%;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
 }
 
@@ -780,7 +780,7 @@ body {
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
+    width: 85%;
     height: 30%;
     border: 1cqh solid white;
     background-color: #8d6e43;
@@ -872,9 +872,8 @@ body {
 }
 
 #popup-icon-container {
-    width: 25%;
+    width: 20%;
     aspect-ratio: 1 / 1;
-    height: 100%;
     background-color: #555;
     border: 1cqh solid white;
     border-radius: inherit;
@@ -886,8 +885,7 @@ body {
 }
 
 #popup-icon {
-    width: 90%;
-    height: 90%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -904,17 +902,16 @@ body {
     background-color: #333;
     color: orange;
     font-family: 'Seurat', sans-serif;
-    font-size: 2.5cqw;
+    font-size: 2cqw;
     text-align: center;
     border-bottom: 0.4cqh solid #555;
-    padding-bottom: 1cqh;
 }
 
 #popup-desc {
     background-color: #8fbc8f;
     color: #222;
     font-family: 'Seurat', sans-serif;
-    font-size: 1.5cqw;
+    font-size: 1.8cqw;
     padding: 1cqh;
     flex-grow: 1;
     overflow: hidden;

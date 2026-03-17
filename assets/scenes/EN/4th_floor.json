@@ -1,0 +1,225 @@
+{
+    "initialSection": "Floor4_Init",
+    "characters": {
+        "Gumshoe": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "LookingAway": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "ScratchingHead": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
+                "time": 600
+            },
+            "ScratchingHead2": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
+            }
+        }
+    },
+    "backgrounds": {
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png",
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png"
+    },
+    "music": {
+        "investigation": "assets/audio/demo/bgm001.ogg"
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "cling": "assets/audio/se/cling.ogg",
+        "shake": "assets/audio/se/se026.m4a"
+    },
+    "evidence": {
+        "mask_photo": {
+            "name": "Mask Evidence Photo",
+            "data": "Type: Evidence\n",
+            "description": "The Steel Samurai mask the victim was wearing at the time of the incident. The eyebrow area is slightly dented. There is no other damage. The topknot is also intact.",
+            "image": "assets/img/evidence/Samurai.png"
+        }
+    },
+    "investigations": {
+        "Floor4": {
+            "default": "Floor4_Examine_Default",
+            "move": [
+                {
+                    "label": "Office",
+                    "target": "Office_Init",
+                    "preview": "Office",
+                    "json": "assets/scenes/office.json"
+                },
+                {
+                    "label": "Detention Center",
+                    "target": "Detention_Center_Init",
+                    "preview": "DetentionCenter",
+                    "json": "assets/scenes/detention_center.json"
+                }
+            ],
+            "points": []
+        }
+    },
+    "gameScript": {
+        "Floor4_Init": [
+            {
+                "text": "{setState:scenePrefix,Floor4}{bg:Floor4}{jumpIf:floor4_done,Floor4_Default,Floor4_Start}{skip:0}"
+            }
+        ],
+        "Floor4_Default": [
+            {
+                "text": "{sprite:Gumshoe[\"Normal\"]}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Floor4_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Nothing to see here."
+            }
+        ],
+        "Floor4_Start": [
+            {
+                "text": "{center}{color:lime}{blip:3}September 17{nl}Joypolis, Event Hall 4th Floor{color:white}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation}Maggey is a poor kid, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}They say if a dog walks, it gets hit by a stick..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "And when Maggey walks around, she gets swept up in trouble, like nothing but unfair things ever happen to her..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{shake:500}I'm sure this time is some kind of mistake, too!{nl}There's no way she could've killed anyone!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}I hear you."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...Oh, right.{nl}There's something I wanted to tell you, just between us."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}This is top secret.{nl}You can't tell anybody."
+            },
+            {
+                "name": "Phoenix",
+                "text": "What is it?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The victim, Ms. Nakaki...{nl}She was a suit actress, right?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Truth is... back in the day...{nl}{sprite:Gumshoe[\"Determined\"]}{playSound:shake}{flash}{shake:500}I also wanted to be a suit actor!{p:400}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}(...I-I really don't care!){color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation}T-That's it?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}Anyway, {nl} Take a look at this."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "It's the Steel Samurai mask the victim,{nl}Ms. Nakaki, was wearing at the time of the incident."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}I get that, but...{nl}what's your point?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The eyebrow area is dented a little,{nl}but other than that, not a single scratch."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Only the eyebrow area is dented...){color:white}"
+            },
+            {
+                "text": "{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record.{color:white}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}I can tell because I wanted to be a suit actor myself."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{flash}{shake:500}The topknot is the Steel Samurai's lifeline."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "So she must've...{playSound:shake}{flash}{shake:500}{nl}even while falling, protected the topknot with her life."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... I don't think that's right.){color:white}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}There's no way Maggey would kill{nl}someone that admirable."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "No, no matter who it is,{nl}there's no way Maggey would ever commit murder!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "On that, we agree. I swear,{nl}I'll prove her innocence."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(All right. I think that's everything here.){color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Once I've got all the information, I'll head to court.{nl}That's where I'll make everything clear!){color:white}{setState:floor4_done,true}{stopBGM:true}{sectionEnd}"
+            }
+        ],
+        "Floor4_evidence_default": [
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}{color:white}{showCharacter}{sprite:Gumshoe[\"Thinking\"]}Hm?{nl}What is that?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(He doesn't seem to have any idea.){sectionEnd}"
+            }
+        ]
+    }
+}

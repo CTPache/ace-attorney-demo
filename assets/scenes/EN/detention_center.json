@@ -39,7 +39,8 @@
     "backgrounds": {
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
-        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png"
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png"
     },
     "foregrounds": {
         "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
@@ -51,6 +52,12 @@
         "DetentionCenter": {
             "default": "Detention_Center_Examine_Default",
             "move": [
+                {
+                    "label": "4th Floor",
+                    "target": "Floor4_Init",
+                    "preview": "Floor4",
+                    "json": "assets/scenes/4th_floor.json"
+                },
                 {
                     "label": "Office",
                     "target": "Office_Init",
@@ -71,7 +78,13 @@
         "blog_post_charm": {
             "name": "Blog Post - Glasses Charm",
             "data": "Type: Evidence\n",
-            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two glasses charms attached.",
+            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two charms attached.",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "blog_post_charm_updated": {
+            "name": "Blog Post - Glasses Charm",
+            "data": "Type: Evidence\n",
+            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two charms attached. Stolen approximately 30 minutes after posting.",
             "image": "assets/img/evidence/Screen.png"
         },
         "loud_sound": {
@@ -103,7 +116,7 @@
                 "text": "{center}{color:lime}{blip:3}September 17{nl}{p:500}Detention Center{color:white}"
             },
             {
-                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}{skip:1000}"
+                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:500}{startBGM:detentionCenter}{skip:1000}"
             },
             {
                 "name": "Phoenix",
@@ -177,7 +190,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}After happily uploading a photo of my favorite glasses charms to my blog,{p:160} I remembered Mr. Sahwit had called for me,{p:170} so I rushed off to take a shower,{p:140} sir.{p:240}"
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{fadeInCharacter:500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}After happily uploading a photo of my favorite glasses charms to my blog,{p:160} I remembered Mr. Sahwit had called for me,{p:170} so I rushed off to take a shower,{p:140} sir.{p:240}"
             },
             {
                 "name": "Phoenix",
@@ -196,7 +209,7 @@
                 "text": "{sprite:Maggey[\"Determined\"]}{blip:2}I had someone bring the spare pair from my place.{p:220}{nl}I have astigmatism,{p:140} so without glasses I can barely see a thing,{p:140} sir.{p:220}"
             },
             {
-                "text": "{updateEvidence:blog_post_charm,blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Blog Post - Glasses Charm\" updated in the Court Record.{color:white}"
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Blog Post - Glasses Charm\" updated in the Court Record.{color:white}"
             },
             {
                 "name": "Phoenix",
