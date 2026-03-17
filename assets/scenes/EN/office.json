@@ -192,7 +192,7 @@
         "Office_Examine_Default": [
             {
                 "name": "Phoenix",
-                "text": "{blip:0}Nothing to see here."
+                "text": "{blip:1}Nothing to see here."
             }
         ],
         "Office_evidence_loud_sound": [
@@ -222,7 +222,7 @@
                 "text": "{color:lightblue}(That means the time is completely different{nl}from the sound Maggey said she heard...)"
             },
             {
-                "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Evidence item \"Loud Sound\" has been updated."
+                "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Loud Sound\" updated in the Court Record."
             },
             {
                 "name": "Sahwit",

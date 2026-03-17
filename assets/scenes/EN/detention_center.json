@@ -95,7 +95,7 @@
         "Detention_Center_Examine_Default": [
             {
                 "name": "Phoenix",
-                "text": "{blip:0}Nothing to see here."
+                "text": "{blip:1}Nothing to see here."
             }
         ],
         "Detention_Center_Start": [
