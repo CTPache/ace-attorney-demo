@@ -15,6 +15,11 @@ function executeScriptAction(segment) {
         case 'bg':
             changeBackground(segment.bgName);
             return true;
+        case 'bgMove':
+            if (window.moveBackgroundByName) {
+                window.moveBackgroundByName(currentBackgroundKey, segment.position, segment.duration);
+            }
+            return true;
         case 'fg':
             changeForeground(segment.fgName);
             return true;

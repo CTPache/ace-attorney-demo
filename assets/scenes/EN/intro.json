@@ -9,7 +9,9 @@
         }
     },
     "backgrounds": {
-        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png"
     },
     "music": {
         "investigation": "assets/audio/demo/bgm001.ogg"
@@ -18,22 +20,16 @@
         "JoyPolis": {
             "move": [
                 {
-                    "label": "Joypolis",
-                    "target": "Joypolis_Start",
-                    "preview": "JoyPolis",
-                    "json": "assets/scenes/joypolis.json"
+                    "label": "Office",
+                    "target": "Office_Init",
+                    "preview": "Office",
+                    "json": "assets/scenes/office.json"
                 },
                 {
                     "label": "Detention Center",
-                    "target": "Detention_Center_Start",
-                    "preview": "Detention_Center",
+                    "target": "Detention_Center_Init",
+                    "preview": "DetentionCenter",
                     "json": "assets/scenes/detention_center.json"
-                },
-                {
-                    "label": "Demo room",
-                    "target": "Demo_Main_01",
-                    "preview": "Demo_room",
-                    "json": "assets/scenes/demo.json"
                 }
             ]
         }
@@ -101,7 +97,7 @@
     "gameScript": {
         "Intro_Start": [
             {
-                "text": "{hideCharacter}{bg:none}{fg:none}{playVideo:intro}{bg:JoyPolis}{skip}"
+                "text": "{playVideo:intro}"
             },
             {
                 "name": "Gumshoe",

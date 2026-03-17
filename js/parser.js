@@ -41,7 +41,16 @@ const patterns = [
     /\{shake:(\d+)\}/,                                  // 35: Shake
     /\{playVideo:([a-zA-Z0-9_]+)\}/,                    // 36: PlayVideo
     /\{stopVideo\}/,                                    // 0: StopVideo
-    /\{endGame\}/                                       // 0: EndGame (Match[0] check)
+    /\{endGame\}/,                                      // 0: EndGame (Match[0] check)
+    /\{fadeBg:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,           // 37,38: Fade Bg (Name, Duration)
+    /\{fadeOutBg(?::(\d+))?\}/,                        // 39: Fade Out Bg Duration
+    /\{fadeInBg(?::(\d+))?\}/,                         // 40: Fade In Bg Duration
+    /\{fadeFg:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,           // 41,42: Fade Fg (Name, Duration)
+    /\{fadeOutFg(?::(\d+))?\}/,                        // 43: Fade Out Fg Duration
+    /\{fadeInFg(?::(\d+))?\}/,                         // 44: Fade In Fg Duration
+    /\{fadeInCharacter:(\d+)\}/,                       // 45: Fade In Character Duration
+    /\{fadeOutCharacter:(\d+)\}/,                      // 46: Fade Out Character Duration
+    /\{bgMove:([a-zA-Z0-9_]+)(?:,(\d+))?\}/          // 47,48: Background Move (Position, Duration)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
@@ -144,6 +153,24 @@ function parseText(text) {
             parsedSegments.push({ type: 'shake', duration: parseInt(match[35]) });
         } else if (match[36]) { // Play Video {playVideo:Key}
             parsedSegments.push({ type: 'playVideo', videoKey: match[36] });
+        } else if (match[37]) { // Fade Background {fadeBg:Name,Duration}
+            parsedSegments.push({ type: 'fadeBg', bgName: match[37], duration: match[38] ? parseInt(match[38]) : 400 });
+        } else if (match[0].startsWith('{fadeOutBg')) { // Fade Out Background {fadeOutBg:Duration}
+            parsedSegments.push({ type: 'fadeOutBg', duration: match[39] ? parseInt(match[39]) : 400 });
+        } else if (match[0].startsWith('{fadeInBg')) { // Fade In Background {fadeInBg:Duration}
+            parsedSegments.push({ type: 'fadeInBg', duration: match[40] ? parseInt(match[40]) : 400 });
+        } else if (match[41]) { // Fade Foreground {fadeFg:Name,Duration}
+            parsedSegments.push({ type: 'fadeFg', fgName: match[41], duration: match[42] ? parseInt(match[42]) : 400 });
+        } else if (match[0].startsWith('{fadeOutFg')) { // Fade Out Foreground {fadeOutFg:Duration}
+            parsedSegments.push({ type: 'fadeOutFg', duration: match[43] ? parseInt(match[43]) : 400 });
+        } else if (match[0].startsWith('{fadeInFg')) { // Fade In Foreground {fadeInFg:Duration}
+            parsedSegments.push({ type: 'fadeInFg', duration: match[44] ? parseInt(match[44]) : 400 });
+        } else if (match[45]) { // Fade In Character {fadeInCharacter:Duration}
+            parsedSegments.push({ type: 'fadeIn', duration: parseInt(match[45]) });
+        } else if (match[46]) { // Fade Out Character {fadeOutCharacter:Duration}
+            parsedSegments.push({ type: 'fadeOut', duration: parseInt(match[46]) });
+        } else if (match[47]) { // Background Move {bgMove:position,duration}
+            parsedSegments.push({ type: 'bgMove', position: match[47], duration: match[48] ? parseInt(match[48]) : 400 });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });
         }

@@ -1,5 +1,5 @@
 {
-    "initialSection": "Detention_Center_Start",
+    "initialSection": "Detention_Center_Init",
     "characters": {
         "Maggey": {
             "Normal": {
@@ -38,13 +38,27 @@
     },
     "backgrounds": {
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
-        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png"
+        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png"
     },
     "foregrounds": {
         "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
     },
     "music": {
         "detentionCenter": "assets/audio/demo/bgm000.m4a"
+    },
+    "investigations": {
+        "DetentionCenter": {
+            "default": "Detention_Center_Examine_Default",
+            "move": [
+                {
+                    "label": "Office",
+                    "target": "Office_Init",
+                    "preview": "Office",
+                    "json": "assets/scenes/office.json"
+                }
+            ]
+        }
     },
     "sounds": {
         "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
@@ -68,9 +82,25 @@
         }
     },
     "gameScript": {
+        "Detention_Center_Init": [
+            {
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{jumpIf:detention_center_done,Detention_Center_Default,Detention_Center_Start}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Default": [
+            {
+                "text": "{skip:0}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}Nothing to see here."
+            }
+        ],
         "Detention_Center_Start": [
             {
-                "text": "{stopBGM:false}{hideCharacter}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}September 17{nl}{p:500}Detention Center{color:white}"
+                "text": "{center}{color:lime}{blip:3}September 17{nl}{p:500}Detention Center{color:white}"
             },
             {
                 "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}{skip:1000}"
@@ -136,7 +166,7 @@
                 "text": "If you search:{nl}\"{color:red}The Jinxed Fallen Angel's Blog - Glasses Charm{color:white},\"{p:160}{nl}it should come right up.{p:220}"
             },
             {
-                "text": "{bg:BlogPost}{fg:none}{hideCharacter}{hideTextbox}{skip:1000}"
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{fadeOutFg}{p:100}{fadeBg:BlogPost,500}{showTextbox}{skip:1000}"
             },
             {
                 "name": "Phoenix",
@@ -147,7 +177,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}After happily uploading a photo of my favorite glasses charms to my blog,{p:160} I remembered Mr. Sahwit had called for me,{p:170} so I rushed off to take a shower,{p:140} sir.{p:240}"
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}After happily uploading a photo of my favorite glasses charms to my blog,{p:160} I remembered Mr. Sahwit had called for me,{p:170} so I rushed off to take a shower,{p:140} sir.{p:240}"
             },
             {
                 "name": "Phoenix",
@@ -221,7 +251,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(All right. I think I'm done here.){color:white}"
+                "text": "{color:lightblue}{blip:0}(All right. I think I'm done here.){setState:detention_center_done,true}{color:white}{sectionEnd}"
             }
         ]
     }

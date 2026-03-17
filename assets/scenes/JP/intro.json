@@ -9,7 +9,8 @@
         }
     },
     "backgrounds": {
-        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png"
     },
     "music": {
         "investigation": "assets/audio/demo/bgm001.ogg"
@@ -26,14 +27,8 @@
                 {
                     "label": "留置所",
                     "target": "Detention_Center_Start",
-                    "preview": "Detention_Center",
+                    "preview": "DetentionCenter",
                     "json": "assets/scenes/JP/detention_center.json"
-                },
-                {
-                    "label": "デモルーム",
-                    "target": "Demo_Main_01",
-                    "preview": "Demo_room",
-                    "json": "assets/scenes/demo.json"
                 }
             ]
         }
@@ -101,7 +96,7 @@
     "gameScript": {
         "Intro_Start": [
             {
-                "text": "{hideCharacter}{bg:none}{fg:none}{playVideo:intro}{bg:JoyPolis}{skip}"
+                "text": "{bg:JoyPolis}"
             },
             {
                 "name": "Gumshoe",

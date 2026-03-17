@@ -6,6 +6,7 @@ const blipSounds = {
     2: new Audio('assets/audio/blip_2.ogg'),
     3: new Audio('assets/audio/typewriter.ogg')
 };
+const activeSFX = new Set();
 
 function playBlip() {
     if (currentBlipType === 4) return; // Silence
@@ -22,6 +23,10 @@ function playSound(soundName) {
     const soundPath = soundsDB[soundName];
     if (soundPath) {
         const audio = new Audio(soundPath);
+        activeSFX.add(audio);
+        const cleanup = () => activeSFX.delete(audio);
+        audio.addEventListener('ended', cleanup, { once: true });
+        audio.addEventListener('error', cleanup, { once: true });
         audio.play().catch(e => console.warn("SFX play failed:", e));
     } else {
         console.warn(`Sound not found: ${soundName}`);
@@ -68,6 +73,31 @@ function stopBGM(fadeOut = true) {
             currentBGM = null;
         }
     }
+}
+
+function stopAllSceneAudio() {
+    stopBGM(false);
+
+    activeSFX.forEach((audio) => {
+        try {
+            audio.pause();
+            audio.currentTime = 0;
+        } catch (e) {
+            console.warn('Failed to stop SFX:', e);
+        }
+    });
+    activeSFX.clear();
+
+    Object.values(blipSounds).forEach((audio) => {
+        try {
+            audio.pause();
+            audio.currentTime = 0;
+        } catch (e) {
+            console.warn('Failed to stop blip audio:', e);
+        }
+    });
+
+    stopTopVideoSequence(false);
 }
 
 function triggerFlash() {
@@ -158,6 +188,7 @@ function finishVideoSequence() {
 
     // Restore textbox so the next dialogue line is visible
     textboxContainer.style.opacity = '1';
+    nameTag.style.opacity = '';
     isVideoAwaitingGesture = false;
     pendingVideoPlayback = null;
     isVideoPlaying = false;
@@ -300,10 +331,14 @@ function playTopVideoSequence(videoKey, onComplete) {
 
 window.playTopVideoSequence = playTopVideoSequence;
 window.stopTopVideoSequence = stopTopVideoSequence;
+window.stopAllSceneAudio = stopAllSceneAudio;
 
 // Skip video button event listener
 if (skipVideoBtn) {
-    skipVideoBtn.addEventListener('click', () => {
+    skipVideoBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
         if (isVideoAwaitingGesture && typeof pendingVideoPlayback === 'function') {
             isVideoAwaitingGesture = false;
             setSkipButtonMode('skip');
@@ -343,13 +378,70 @@ function setSpriteState(state) {
 }
 
 function changeBackground(bgName) {
-    const bgUrl = backgrounds[bgName];
-    if (bgUrl) {
-        backgroundElement.style.backgroundImage = `url('${bgUrl}')`;
+    const bgData = backgrounds[bgName];
+    console.log(`changeBackground called with: ${bgName}`, bgData);
+    if (!bgData) {
+        console.warn(`Background not found: ${bgName}`);
+        return;
+    }
+    
+    // Check if background is a positioned background (object with path and positions)
+    if (typeof bgData === 'object' && bgData.path) {
+        console.log(`Setting positioned background: ${bgData.path}`);
+        backgroundElement.style.backgroundImage = `url('${bgData.path}')`;
         currentBackgroundKey = bgName;
+        
+        // Apply default position if available
+        if (bgData.positions && bgData.positions.default) {
+            const defaultPos = bgData.positions.default;
+            const position = bgData.positions[defaultPos];
+            if (position && Array.isArray(position)) {
+                moveBackgroundToPosition(position[0], position[1]);
+            }
+        } else {
+            // Reset position if no default
+            resetBackgroundPosition();
+        }
+    } else if (typeof bgData === 'string') {
+        // Simple string background path
+        console.log(`Setting string background: ${bgData}`);
+        backgroundElement.style.backgroundImage = `url('${bgData}')`;
+        currentBackgroundKey = bgName;
+        resetBackgroundPosition();
     }
 }
 
+function resetBackgroundPosition() {
+    if (backgroundElement) {
+        backgroundElement.style.backgroundPosition = '0 0';
+    }
+}
+
+function moveBackgroundToPosition(x, y, duration = 400) {
+    if (backgroundElement) {
+        // Enable smooth transition
+        backgroundElement.style.transition = `background-position ${duration}ms ease-in-out`;
+        backgroundElement.style.backgroundPosition = `${x}px ${y}px`;
+        
+        // Remove transition after animation completes to allow instant changes
+        setTimeout(() => {
+            backgroundElement.style.transition = '';
+        }, duration);
+    }
+}
+
+function moveBackgroundByName(bgName, positionName, duration = 400) {
+    const bgData = backgrounds[bgName];
+    if (!bgData || typeof bgData !== 'object' || !bgData.positions) return;
+    
+    const position = bgData.positions[positionName];
+    if (position && Array.isArray(position)) {
+        moveBackgroundToPosition(position[0], position[1], duration);
+    }
+}
+
+window.moveBackgroundToPosition = moveBackgroundToPosition;
+window.moveBackgroundByName = moveBackgroundByName;
 function changeForeground(fgName) {
     if (!fgName) {
         foregroundElement.style.backgroundImage = 'none';
@@ -364,6 +456,46 @@ function changeForeground(fgName) {
         foregroundElement.style.backgroundImage = 'none';
     }
 }
+
+function fadeOutElement(element, duration = 400) {
+    if (!element) return;
+    const ms = Number.isFinite(duration) ? duration : 400;
+    element.style.transition = `opacity ${ms}ms ease-in-out`;
+    element.style.opacity = '0';
+}
+
+function fadeInElement(element, duration = 400) {
+    if (!element) return;
+    const ms = Number.isFinite(duration) ? duration : 400;
+    element.style.transition = `opacity ${ms}ms ease-in-out`;
+    element.style.opacity = '1';
+}
+
+function fadeBackground(bgName, duration = 400) {
+    const ms = Number.isFinite(duration) ? duration : 400;
+    fadeOutElement(backgroundElement, ms);
+    setTimeout(() => {
+        changeBackground(bgName);
+        fadeInElement(backgroundElement, ms);
+    }, ms);
+}
+
+function fadeForeground(fgName, duration = 400) {
+    const ms = Number.isFinite(duration) ? duration : 400;
+    fadeOutElement(foregroundElement, ms);
+    setTimeout(() => {
+        changeForeground(fgName);
+        fadeInElement(foregroundElement, ms);
+    }, ms);
+}
+
+window.fadeOutBackground = (duration = 400) => fadeOutElement(backgroundElement, duration);
+window.fadeInBackground = (duration = 400) => fadeInElement(backgroundElement, duration);
+window.fadeBackground = fadeBackground;
+
+window.fadeOutForeground = (duration = 400) => fadeOutElement(foregroundElement, duration);
+window.fadeInForeground = (duration = 400) => fadeInElement(foregroundElement, duration);
+window.fadeForeground = fadeForeground;
 
 function changeSprite(charName, spriteKey) {
     currentCharacterName = charName;

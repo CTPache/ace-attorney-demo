@@ -38,13 +38,26 @@
     },
     "backgrounds": {
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
-        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png"
+        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
     },
     "foregrounds": {
         "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
     },
     "music": {
         "detentionCenter": "assets/audio/demo/bgm000.m4a"
+    },
+    "investigations": {
+        "DetentionCenter": {
+            "move": [
+                {
+                    "label": "ジョイポリス",
+                    "target": "Joypolis_Start",
+                    "preview": "JoyPolis",
+                    "json": "assets/scenes/joypolis.json"
+                }
+            ]
+        }
     },
     "sounds": {
         "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
@@ -70,7 +83,7 @@
     "gameScript": {
         "Detention_Center_Start": [
             {
-                "text": "{stopBGM:false}{hideCharacter}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}9月17日 某時刻{nl}{p:500}留置所{color:white}"
+                "text": "{stopBGM:false}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}9月17日 某時刻{nl}{p:500}留置所{color:white}"
             },
             {
                 "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}{skip:1000}"

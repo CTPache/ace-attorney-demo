@@ -9,7 +9,8 @@
         }
     },
     "backgrounds": {
-        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png"
     },
     "music": {
         "investigation": "assets/audio/demo/bgm001.ogg"
@@ -24,16 +25,10 @@
                     "json": "assets/scenes/joypolis.json"
                 },
                 {
-                    "label": "Centro de detencion",
+                    "label": "Centro de detención",
                     "target": "Detention_Center_Start",
-                    "preview": "Detention_Center",
+                    "preview": "DetentionCenter",
                     "json": "assets/scenes/detention_center.json"
-                },
-                {
-                    "label": "Sala de demo",
-                    "target": "Demo_Main_01",
-                    "preview": "Demo_room",
-                    "json": "assets/scenes/demo.json"
                 }
             ]
         }
@@ -43,7 +38,7 @@
             "file": "assets/video/FlyHighIntro.mp4",
             "script": [
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 1:17 PM{nl}Joypolis, Salon de eventos del atrio",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 1:17 PM{nl}Joypolis, Salón de actos del atrio",
                     "timestamp": 2000,
                     "duration": 7000
                 },
@@ -59,7 +54,7 @@
                     "duration": 1800
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 9:01 PM{nl}Joypolis, Salon de eventos del atrio, 4º piso",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 9:01 PM{nl}Joypolis, Salón de actos del atrio, 4º piso",
                     "timestamp": 36000,
                     "duration": 8000
                 },
@@ -85,13 +80,13 @@
                     "duration": 3000
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 10:05 PM{nl}Joypolis, Salon de eventos del atrio",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 10:05 PM{nl}Joypolis, Salón de actos del atrio",
                     "timestamp": 64500,
                     "duration": 8000
                 },
                 {
                     "name": "Sahwit",
-                    "text": "{blip:1}¡A-Alguien! ¡Ayuda!",
+                    "text": "{blip:1}¡A-Alguien! ¡Ayuda!{skip:0}",
                     "timestamp": 91500,
                     "duration": 3000
                 }
@@ -101,7 +96,7 @@
     "gameScript": {
         "Intro_Start": [
             {
-                "text": "{hideCharacter}{bg:none}{fg:none}{playVideo:intro}{bg:JoyPolis}{skip}"
+                "text": "{playVideo:intro}"
             },
             {
                 "name": "Gumshoe",

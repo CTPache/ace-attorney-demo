@@ -147,6 +147,10 @@ window.loadGameData = async function(jsonPath, startSection = null) {
     currentSceneRequestPath = requestedPath;
 
     console.log(`Loading game data from: ${requestedPath} (lang: ${currentLanguage})`);
+
+    if (typeof window.stopAllSceneAudio === 'function') {
+        window.stopAllSceneAudio();
+    }
     
     // Show a loading indicator if you have one, or simple log
     // Maybe pause the game/input?
@@ -195,6 +199,9 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         
         // Re-run preload (this updates the new objects in-place with blob URLs)
         await preloadAssets();
+
+        // Clear top screen layers before starting the new scene
+        if (typeof clearTopScreen === 'function') clearTopScreen();
 
         // Start the game logic
         startGame();

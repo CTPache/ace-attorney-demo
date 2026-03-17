@@ -1,6 +1,7 @@
 console.log("Text Renderer Loaded");
 
 let isWaitingForAnimation = false;
+let activeCharacterFadeTarget = null;
 
 /**
  * Schedules shake events declared on a sprite animation.
@@ -129,6 +130,168 @@ function processCommonSegment(segment) {
     }
 }
 
+function isFadeSegment(segment) {
+    if (!segment) return false;
+    return [
+        'fadeIn',
+        'fadeOut',
+        'fadeBg',
+        'fadeOutBg',
+        'fadeInBg',
+        'fadeFg',
+        'fadeOutFg',
+        'fadeInFg'
+    ].includes(segment.type);
+}
+
+function processFadeBatch() {
+    let i = segmentIndex;
+    let maxWait = 0;
+
+    while (i < segments.length && isFadeSegment(segments[i])) {
+        const segment = segments[i];
+
+        if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
+            const charFadeDuration = segment.duration || 1000;
+            character.style.transition = `opacity ${charFadeDuration}ms ease-in-out`;
+            if (segment.type === 'fadeIn') {
+                if (i + 1 < segments.length && segments[i + 1].type === 'sprite') {
+                    const nextSeg = segments[i + 1];
+                    changeSprite(nextSeg.charName, nextSeg.spriteKey);
+                    i++;
+                }
+                character.style.opacity = 1;
+                activeCharacterFadeTarget = '1';
+            } else {
+                character.style.opacity = 0;
+                activeCharacterFadeTarget = '0';
+            }
+            maxWait = Math.max(maxWait, charFadeDuration);
+        } else if (segment.type === 'fadeBg') {
+            if (window.fadeBackground) {
+                window.fadeBackground(segment.bgName, segment.duration);
+                maxWait = Math.max(maxWait, (segment.duration || 400) * 2);
+            } else {
+                changeBackground(segment.bgName);
+            }
+        } else if (segment.type === 'fadeOutBg') {
+            if (window.fadeOutBackground) {
+                window.fadeOutBackground(segment.duration);
+                maxWait = Math.max(maxWait, segment.duration || 400);
+            } else if (typeof backgroundElement !== 'undefined' && backgroundElement) {
+                backgroundElement.style.opacity = '0';
+            }
+        } else if (segment.type === 'fadeInBg') {
+            if (window.fadeInBackground) {
+                window.fadeInBackground(segment.duration);
+                maxWait = Math.max(maxWait, segment.duration || 400);
+            } else if (typeof backgroundElement !== 'undefined' && backgroundElement) {
+                backgroundElement.style.opacity = '1';
+            }
+        } else if (segment.type === 'fadeFg') {
+            if (window.fadeForeground) {
+                window.fadeForeground(segment.fgName, segment.duration);
+                maxWait = Math.max(maxWait, (segment.duration || 400) * 2);
+            } else {
+                changeForeground(segment.fgName);
+            }
+        } else if (segment.type === 'fadeOutFg') {
+            if (window.fadeOutForeground) {
+                window.fadeOutForeground(segment.duration);
+                maxWait = Math.max(maxWait, segment.duration || 400);
+            } else if (typeof foregroundElement !== 'undefined' && foregroundElement) {
+                foregroundElement.style.opacity = '0';
+            }
+        } else if (segment.type === 'fadeInFg') {
+            if (window.fadeInForeground) {
+                window.fadeInForeground(segment.duration);
+                maxWait = Math.max(maxWait, segment.duration || 400);
+            } else if (typeof foregroundElement !== 'undefined' && foregroundElement) {
+                foregroundElement.style.opacity = '1';
+            }
+        }
+
+        i++;
+    }
+
+    segmentIndex = i;
+
+    if (maxWait > 0) {
+        typingInterval = setTimeout(processNextChar, maxWait);
+    } else {
+        processNextChar();
+    }
+}
+
+function completeActiveCharacterFadeInstant() {
+    if (activeCharacterFadeTarget === null) return;
+    character.style.transition = 'none';
+    character.style.opacity = activeCharacterFadeTarget;
+    void character.offsetWidth;
+    character.style.transition = '';
+    activeCharacterFadeTarget = null;
+}
+
+function finishFadeBatchInstant() {
+    let i = segmentIndex;
+
+    while (i < segments.length && isFadeSegment(segments[i])) {
+        const segment = segments[i];
+
+        if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
+            character.style.transition = 'none';
+            if (segment.type === 'fadeIn') {
+                if (i + 1 < segments.length && segments[i + 1].type === 'sprite') {
+                    const nextSeg = segments[i + 1];
+                    changeSprite(nextSeg.charName, nextSeg.spriteKey);
+                    i++;
+                }
+                character.style.opacity = 1;
+            } else {
+                character.style.opacity = 0;
+            }
+            void character.offsetWidth;
+            character.style.transition = '';
+        } else if (segment.type === 'fadeBg') {
+            changeBackground(segment.bgName);
+            if (typeof backgroundElement !== 'undefined' && backgroundElement) {
+                backgroundElement.style.transition = 'none';
+                backgroundElement.style.opacity = '1';
+            }
+        } else if (segment.type === 'fadeOutBg') {
+            if (typeof backgroundElement !== 'undefined' && backgroundElement) {
+                backgroundElement.style.transition = 'none';
+                backgroundElement.style.opacity = '0';
+            }
+        } else if (segment.type === 'fadeInBg') {
+            if (typeof backgroundElement !== 'undefined' && backgroundElement) {
+                backgroundElement.style.transition = 'none';
+                backgroundElement.style.opacity = '1';
+            }
+        } else if (segment.type === 'fadeFg') {
+            changeForeground(segment.fgName);
+            if (typeof foregroundElement !== 'undefined' && foregroundElement) {
+                foregroundElement.style.transition = 'none';
+                foregroundElement.style.opacity = '1';
+            }
+        } else if (segment.type === 'fadeOutFg') {
+            if (typeof foregroundElement !== 'undefined' && foregroundElement) {
+                foregroundElement.style.transition = 'none';
+                foregroundElement.style.opacity = '0';
+            }
+        } else if (segment.type === 'fadeInFg') {
+            if (typeof foregroundElement !== 'undefined' && foregroundElement) {
+                foregroundElement.style.transition = 'none';
+                foregroundElement.style.opacity = '1';
+            }
+        }
+
+        i++;
+    }
+
+    segmentIndex = i;
+}
+
 
 function processNextChar() {
     if (segmentIndex >= segments.length) {
@@ -146,6 +309,11 @@ function processNextChar() {
         segmentIndex++;
         // Use timeout to allow UI updates / break stack
         typingInterval = setTimeout(processNextChar, 0);
+        return;
+    }
+
+    if (isFadeSegment(segment)) {
+        processFadeBatch();
         return;
     }
 
@@ -173,20 +341,6 @@ function processNextChar() {
         triggerFlash();
         segmentIndex++;
         typingInterval = setTimeout(processNextChar, 200);
-    } else if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
-        character.style.transition = "opacity 1s ease-in-out";
-        if (segment.type === 'fadeIn') {
-            if (segmentIndex + 1 < segments.length && segments[segmentIndex + 1].type === 'sprite') {
-                const nextSeg = segments[segmentIndex + 1];
-                changeSprite(nextSeg.charName, nextSeg.spriteKey);
-                segmentIndex++;
-            }
-            character.style.opacity = 1;
-        } else {
-            character.style.opacity = 0;
-        }
-        segmentIndex++;
-        typingInterval = setTimeout(processNextChar, 1000);
     } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
         character.style.transition = "none";
         character.style.opacity = (segment.type === 'showCharacter') ? 1 : 0;
@@ -240,6 +394,12 @@ function processNextChar() {
             window.playTopVideoSequence(segment.videoKey, () => {
                 segmentIndex++;
                 processNextChar();
+
+                // If the video segment completed the line, auto-advance immediately
+                // so natural video end behaves the same as skipping.
+                if (segmentIndex >= segments.length && !isTyping) {
+                    advanceDialogue(true);
+                }
             });
         } else {
             segmentIndex++;
@@ -312,6 +472,7 @@ function showEndGameOverlay() {
 function finishTyping() {
     clearTimeout(typingInterval);
     isWaitingForAnimation = false;
+    completeActiveCharacterFadeInstant();
 
     while (segmentIndex < segments.length) {
         const segment = segments[segmentIndex];
@@ -321,6 +482,11 @@ function finishTyping() {
         if (commonResult === 'STOP') return;
         if (commonResult === 'CONTINUE') {
             segmentIndex++;
+            continue;
+        }
+
+        if (isFadeSegment(segment)) {
+            finishFadeBatchInstant();
             continue;
         }
 
@@ -346,19 +512,13 @@ function finishTyping() {
 
             changeSprite(segment.charName, segment.spriteKey);
             segmentIndex++;
-        } else if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
-            // Instant fade
-            character.style.transition = "none";
-            character.style.opacity = (segment.type === 'fadeIn') ? 1 : 0;
-            void character.offsetWidth;
-            character.style.transition = "";
-            segmentIndex++;
         } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
             // Instant toggle
             character.style.transition = "none";
             character.style.opacity = (segment.type === 'showCharacter') ? 1 : 0;
             void character.offsetWidth;
             character.style.transition = "";
+            activeCharacterFadeTarget = null;
             segmentIndex++;
         } else if (segment.type === 'showTextbox' || segment.type === 'hideTextbox') {
             textboxContainer.style.opacity = (segment.type === 'showTextbox') ? 1 : 0;
@@ -405,10 +565,14 @@ function updateDialogue(line) {
 
     if (line.name) {
         nameTag.textContent = line.name;
-        nameTag.style.opacity = "1";
+        nameTag.style.display = '';
+        nameTag.style.opacity = '1';
+        textboxContainer.classList.remove('no-name');
         currentCharacterName = line.name; // Track current character
     } else {
-        nameTag.style.opacity = "0";
+        nameTag.style.display = 'none';
+        nameTag.style.opacity = '';
+        textboxContainer.classList.add('no-name');
         currentCharacterName = null;
     }
     // Reset Text Color to default

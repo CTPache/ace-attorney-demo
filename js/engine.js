@@ -211,6 +211,48 @@ function updateSceneState() {
     document.dispatchEvent(new CustomEvent('sceneStateChanged', { detail: { isPlaying: isScenePlaying } }));
 }
 
+function clearTopScreen() {
+    // Background
+    if (backgroundElement) {
+        backgroundElement.style.backgroundImage = 'none';
+        backgroundElement.style.backgroundColor = '';
+    }
+    // Foreground
+    if (foregroundElement) {
+        foregroundElement.style.backgroundImage = 'none';
+    }
+    // Character sprite
+    if (character) {
+        character.style.transition = 'none';
+        character.style.opacity = '0';
+        character.src = '/';
+        void character.offsetWidth;
+        character.style.transition = '';
+    }
+    // Stop and hide any playing video
+    if (typeof window.stopTopVideoSequence === 'function') {
+        window.stopTopVideoSequence(false);
+    }
+    if (topVideo) {
+        topVideo.classList.add('hidden');
+    }
+    // Clear flash overlay
+    if (flashOverlay) {
+        flashOverlay.classList.remove('flashing');
+        flashOverlay.style.opacity = '0';
+    }
+    // Reset text box content
+    if (nameTag) { nameTag.textContent = ''; nameTag.style.display = 'none'; nameTag.style.opacity = ''; }
+    if (textboxContainer) textboxContainer.classList.add('no-name');
+    if (textContent) textContent.innerHTML = '';
+    // Reset internal tracking state
+    currentCharacterName = '';
+    currentAnimationKey = '';
+    currentBackgroundKey = '';
+}
+
+window.clearTopScreen = clearTopScreen;
+
 function startGame() {
     clearAutoPlayTimer();
 

@@ -17,10 +17,18 @@ async function preloadAssets() {
 
     // Preload Backgrounds
     for (const key in backgrounds) {
-        const url = backgrounds[key];
-        promises.push(preloadImage(url).then(newUrl => {
-            backgrounds[key] = newUrl;
-        }));
+        const bgData = backgrounds[key];
+        if (typeof bgData === 'string') {
+            // Simple string background
+            promises.push(preloadImage(bgData).then(newUrl => {
+                backgrounds[key] = newUrl;
+            }));
+        } else if (typeof bgData === 'object' && bgData.path) {
+            // Positioned background with path property
+            promises.push(preloadImage(bgData.path).then(newUrl => {
+                bgData.path = newUrl;
+            }));
+        }
     }
 
     // Preload Foregrounds
