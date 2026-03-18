@@ -1,5 +1,11 @@
 {
     "initialSection": "Office_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": true
+    },
     "characters": {
         "Sahwit": {
             "Stand": {
@@ -241,7 +247,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Once I have enough information, I'll head to court.{nl}I'll bring the truth to light there!)"
+                "text": "{color:lightblue}(Once I have enough information, I'll head to court.{nl}I'll bring the truth to light there!){setAction:present,false}{setState:office_done,true}{sectionEnd}"
             }
         ],
         "Office_evidence_default": [

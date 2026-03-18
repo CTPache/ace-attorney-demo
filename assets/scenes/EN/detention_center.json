@@ -1,5 +1,11 @@
 {
     "initialSection": "Detention_Center_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
     "characters": {
         "Maggey": {
             "Normal": {
@@ -113,10 +119,10 @@
         ],
         "Detention_Center_Start": [
             {
-                "text": "{center}{color:lime}{blip:3}September 17{nl}{p:500}Detention Center{color:white}"
+                "text": "{center}{color:lime}{blip:3}September 17{nl}{p:500}Detention Center"
             },
             {
-                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:500}{startBGM:detentionCenter}{skip:1000}"
+                "text": "{color:white}{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:500}{startBGM:detentionCenter}{skip:1000}"
             },
             {
                 "name": "Phoenix",
@@ -183,14 +189,14 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{blip:0}{color:lightblue}(What a creepy blog title...{nl} Ah, this must be it.){color:white}"
+                "text": "{showTextbox}{blip:0}{color:lightblue}(What a creepy blog title...{nl} Ah, this must be it.)"
             },
             {
-                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}Data for \"Blog Post - Glasses Charm\" added to the Court Record.{color:white}"
+                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}Data for \"Blog Post - Glasses Charm\" added to the Court Record."
             },
             {
                 "name": "Maggey",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{fadeInCharacter:500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}After happily uploading a photo of my favorite glasses charms to my blog,{p:160} I remembered Mr. Sahwit had called for me,{p:170} so I rushed off to take a shower,{p:140} sir.{p:240}"
+                "text": "{color:white}{hideTextbox}{fadeOutBg}{p:100}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{fadeInCharacter:500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}After happily uploading a photo of my favorite glasses charms to my blog,{p:160} I remembered Mr. Sahwit had called for me,{p:170} so I rushed off to take a shower,{p:140} sir.{p:240}"
             },
             {
                 "name": "Phoenix",
@@ -209,11 +215,11 @@
                 "text": "{sprite:Maggey[\"Determined\"]}{blip:2}I had someone bring the spare pair from my place.{p:220}{nl}I have astigmatism,{p:140} so without glasses I can barely see a thing,{p:140} sir.{p:220}"
             },
             {
-                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Blog Post - Glasses Charm\" updated in the Court Record.{color:white}"
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Blog Post - Glasses Charm\" updated in the Court Record."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}So you were walking around practically blind...{p:320}"
+                "text": "{color:white}{blip:1}So you were walking around practically blind...{p:320}"
             },
             {
                 "name": "Maggey",
@@ -241,22 +247,22 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(If she was just starting her shower, that puts it at around 9:30 PM.){color:white}"
+                "text": "{color:lightblue}{blip:0}(If she was just starting her shower, that puts it at around 9:30 PM.)"
             },
             {
                 "name": "Maggey",
-                "text": "{blip:2}I could hear it even over the shower,{p:160}{nl}so it must have been a pretty loud impact,{p:140} sir.{p:220}{playSound:cling}{flash}"
+                "text": "{color:white}{blip:2}I could hear it even over the shower,{p:160}{nl}so it must have been a pretty loud impact,{p:140} sir.{p:220}{playSound:cling}{flash}"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(That's odd. I should ask someone about this.){color:white}"
+                "text": "{color:lightblue}{blip:0}(That's odd. I should ask someone about this.)"
             },
             {
-                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Loud Sound\" added to the Court Record.{color:white}"
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Loud Sound\" added to the Court Record."
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}Mr. Wright...{p:260}{nl}I really messed up,{p:140} didn't I?{p:220}{nl}They're going to find me guilty,{p:150} aren't they...?{p:320}"
+                "text": "{color:white}{sprite:Maggey[\"Determined\"]}{blip:2}Mr. Wright...{p:260}{nl}I really messed up,{p:140} didn't I?{p:220}{nl}They're going to find me guilty,{p:150} aren't they...?{p:320}"
             },
             {
                 "name": "Phoenix",

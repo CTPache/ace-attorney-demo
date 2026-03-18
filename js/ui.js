@@ -25,7 +25,21 @@ function setBottomScreenButtonsDisabled(disabled) {
 }
 
 window.setBottomScreenButtonsDisabled = setBottomScreenButtonsDisabled;
-
+function updateActionButtons() {
+    if (btnExamine) {
+        btnExamine.disabled = !actionStates.examine;
+    }
+    if (btnMove) {
+        btnMove.disabled = !actionStates.move;
+    }
+    if (btnTalk) {
+        btnTalk.disabled = !actionStates.talk;
+    }
+    if (btnPresent) {
+        btnPresent.disabled = !actionStates.present;
+    }
+}
+window.updateActionButtons = updateActionButtons;
 function updateAutoplayIndicator() {
     if (!autoplayIndicator) return;
 

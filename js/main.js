@@ -180,6 +180,29 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         soundsDB = data.sounds || {};
         musicDB = data.music || {};
         videosDB = data.videos || {};
+        
+        // Setup initial action states based on scene data or reset to default
+        if (data.actions) {
+            actionStates = {
+                examine: data.actions.examine !== false,
+                move: data.actions.move !== false,
+                talk: data.actions.talk !== false,
+                present: data.actions.present !== false
+            };
+        } else {
+            // Default to all true if not provided
+            actionStates = {
+                examine: true,
+                move: true,
+                talk: true,
+                present: true
+            };
+        }
+        
+        // Apply action states visually
+        if (typeof window.updateActionButtons === 'function') {
+            window.updateActionButtons();
+        }
 
         // Update Game Script
         if (data.gameScript) gameScript = data.gameScript;

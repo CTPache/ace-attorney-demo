@@ -1,0 +1,104 @@
+/* Investigation Panel */
+#investigation-panel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    cursor: none;
+}
+
+#investigation-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#investigation-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.investigation-polygon {
+    fill: transparent;
+    stroke: transparent;
+    pointer-events: all;
+    transition: all 0.2s;
+}
+
+.investigation-polygon.debug {
+    stroke: rgba(255, 0, 0, 0.8);
+    stroke-width: 0.5cqh;
+    fill: rgba(255, 0, 0, 0.2);
+}
+
+/* Investigation Cursor */
+.cursor-line {
+    position: absolute;
+    background-color: #4a90e2;
+    pointer-events: none;
+    z-index: 20;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.1s;
+}
+
+.cursor-line.active {
+    background-color: #FFD700;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+#investigation-cursor-h {
+    width: 100%;
+    height: 2px;
+    left: 0;
+    top: 50%;
+}
+
+#investigation-cursor-v {
+    height: 100%;
+    width: 2px;
+    top: 0;
+    left: 50%;
+}
+
+#investigation-cursor-box {
+    position: absolute;
+    width: 6cqh;
+    height: 6cqh;
+    border: 3px solid #4a90e2;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 21;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.1s, background-color 0.1s;
+}
+
+#investigation-cursor-box.active {
+    border-color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.2);
+}
+
+#cursor-check {
+    color: #ff3333;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 4cqh;
+    display: none;
+    position: absolute;
+    top: -3cqh;
+    right: -3cqh;
+    text-shadow: 2px 2px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+#investigation-cursor-box.visited #cursor-check {
+    display: block;
+}

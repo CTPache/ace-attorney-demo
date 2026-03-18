@@ -18,6 +18,14 @@ let videosDB = {};
 const gameState = {};
 let gameScript = {};
 
+// Action States
+let actionStates = {
+    examine: true,
+    move: true,
+    talk: true,
+    present: true
+};
+
 // State Variables
 let initialSectionName = "";
 let currentSectionName = "";

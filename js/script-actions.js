@@ -23,6 +23,14 @@ function executeScriptAction(segment) {
         case 'fg':
             changeForeground(segment.fgName);
             return true;
+        case 'setAction':
+            if (actionStates.hasOwnProperty(segment.actionName.toLowerCase())) {
+                actionStates[segment.actionName.toLowerCase()] = segment.isEnabled;
+                if (typeof window.updateActionButtons === 'function') {
+                    window.updateActionButtons();
+                }
+            }
+            return true;
         case 'setState':
             setGameState(segment.key, segment.value);
             return true;

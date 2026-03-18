@@ -5,9 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ace Attorney Demo</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/investigation.css">
+    <link rel="stylesheet" href="css/investigation-panel.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/game-screen.css">
+    <link rel="stylesheet" href="css/ui-controls.css">
+    <link rel="stylesheet" href="css/textbox.css">
+    <link rel="stylesheet" href="css/bottom-screen.css">
+    <link rel="stylesheet" href="css/menus.css">
     <link rel="stylesheet" href="css/move.css">
+    <link rel="stylesheet" href="css/evidence.css">
+    <link rel="stylesheet" href="css/topics.css">
+    <link rel="stylesheet" href="css/lifebar.css">
+
 </head>
 
 <body>
@@ -18,12 +28,11 @@
             <div id="foreground" class="layer"></div>
             <video id="top-video" class="layer hidden" preload="metadata" playsinline></video>
             <div id="flash-overlay" class="layer"></div>
-            <button id="autoplay-indicator" type="button" aria-label="Toggle Auto Play"
-                title="Toggle Auto Play (A)" data-i18n="ui.auto" data-i18n-title="ui.autoplayOff"
+            <button id="autoplay-indicator" type="button" aria-label="Toggle Auto Play" title="Toggle Auto Play (A)"
+                data-i18n="ui.auto" data-i18n-title="ui.autoplayOff"
                 data-i18n-aria-label="ui.autoplayToggle">Auto</button>
-            <button id="skip-video-btn" class="hidden" type="button" aria-label="Skip Video"
-                title="Skip Video (V)" data-i18n="ui.skip" data-i18n-title="ui.skipVideo"
-                data-i18n-aria-label="ui.skipVideoAria">Skip</button>
+            <button id="skip-video-btn" class="hidden" type="button" aria-label="Skip Video" title="Skip Video (V)"
+                data-i18n="ui.skip" data-i18n-title="ui.skipVideo" data-i18n-aria-label="ui.skipVideoAria">Skip</button>
             <div id="life-bar-container" class="hidden">
                 <div id="life-bar-body">
                     <div id="life-bar-fill"></div>
@@ -50,16 +59,20 @@
             </div>
             <div id="bottom-main-window">
                 <button id="advance-btn">▶</button>
-                <button id="config-btn" class="small-config-btn" data-i18n="ui.config" title="Config (G)">Config</button>
+                <button id="config-btn" class="small-config-btn" data-i18n="ui.config"
+                    title="Config (G)">Config</button>
                 <div id="config-menu" class="hidden">
                     <div class="config-card">
                         <h3 data-i18n="ui.configuration">Configuration</h3>
                         <div class="config-row config-speed-row">
                             <span data-i18n="ui.autoSpeed">Auto Speed</span>
                             <div class="config-speed-options">
-                                <label><input type="radio" name="auto-speed" value="slow"> <span data-i18n="ui.slow">Slow</span></label>
-                                <label><input type="radio" name="auto-speed" value="normal" checked> <span data-i18n="ui.normal">Normal</span></label>
-                                <label><input type="radio" name="auto-speed" value="fast"> <span data-i18n="ui.fast">Fast</span></label>
+                                <label><input type="radio" name="auto-speed" value="slow"> <span
+                                        data-i18n="ui.slow">Slow</span></label>
+                                <label><input type="radio" name="auto-speed" value="normal" checked> <span
+                                        data-i18n="ui.normal">Normal</span></label>
+                                <label><input type="radio" name="auto-speed" value="fast"> <span
+                                        data-i18n="ui.fast">Fast</span></label>
                             </div>
                         </div>
                         <label class="config-row">

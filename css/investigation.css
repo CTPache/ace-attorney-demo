@@ -40,7 +40,7 @@
     margin: auto;
 }
 
-.inv-btn:hover {
+.inv-btn:hover:not(:disabled) {
     border-color: #FFA500; /* Orange highlight */
     box-shadow: 
         0 0 0 0.6cqh #3E1F0B,
@@ -48,11 +48,20 @@
     filter: brightness(1.1);
 }
 
-.inv-btn:active {
+.inv-btn:active:not(:disabled) {
     transform: translateY(0.6cqh);
     box-shadow: 
         0 0 0 0.6cqh #3E1F0B,
         0 0.4cqh 1cqh rgba(0,0,0,0.5);
+}
+
+.inv-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    filter: grayscale(0.35);
+    box-shadow:
+        0 0 0 0.6cqh #3E1F0B,
+        0 0.3cqh 0.8cqh rgba(0, 0, 0, 0.45);
 }
 
 

@@ -1,5 +1,11 @@
 {
     "initialSection": "Floor4_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
     "characters": {
         "Gumshoe": {
             "Normal": {
@@ -101,11 +107,11 @@
         ],
         "Floor4_Start": [
             {
-                "text": "{center}{color:lime}{blip:3}September 17{nl}Joypolis, Event Hall 4th Floor{color:white}"
+                "text": "{center}{color:lime}{blip:3}September 17{nl}Joypolis, Event Hall 4th Floor"
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation}Maggey is a poor kid, pal."
+                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation}Maggey is a poor kid, pal."
             },
             {
                 "name": "Gumshoe",
@@ -145,11 +151,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}(...I-I really don't care!){color:white}"
+                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}(...I-I really don't care!)"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation}T-That's it?"
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation}T-That's it?"
             },
             {
                 "name": "Gumshoe",
@@ -169,14 +175,14 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(Only the eyebrow area is dented...){color:white}"
+                "text": "{blip:0}{color:lightblue}(Only the eyebrow area is dented...)"
             },
             {
-                "text": "{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record.{color:white}"
+                "text": "{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record."
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}I can tell because I wanted to be a suit actor myself."
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}I can tell because I wanted to be a suit actor myself."
             },
             {
                 "name": "Gumshoe",
@@ -188,11 +194,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... I don't think that's right.){color:white}"
+                "text": "{blip:0}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... I don't think that's right.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1}There's no way Maggey would kill{nl}someone that admirable."
+                "text": "{color:white}{blip:1}There's no way Maggey would kill{nl}someone that admirable."
             },
             {
                 "name": "Gumshoe",
@@ -204,7 +210,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(All right. I think that's everything here.){color:white}"
+                "text": "{blip:0}{color:lightblue}(All right. I think that's everything here.)"
             },
             {
                 "name": "Phoenix",

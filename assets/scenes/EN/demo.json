@@ -175,10 +175,10 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{startBGM:investigation}{blip:1,false}{color:lightblue}(Another day, another trial. And I have no idea how this engine works...){color:white}"
+                "text": "{startBGM:investigation}{blip:1,false}{color:lightblue}(Another day, another trial. And I have no idea how this engine works...)"
             },
             {
-                "text": "{blip:2}Hrngh... Hrrrmph!"
+                "text": "{color:white}{blip:2}Hrngh... Hrrrmph!"
             },
             {
                 "name": "Phoenix",
@@ -224,11 +224,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{textSpeed:40}{blip:1,false}{color:lightblue}(Please don't.){color:white}"
+                "text": "{textSpeed:40}{blip:1,false}{color:lightblue}(Please don't.)"
             },
             {
                 "name": "Oldbag",
-                "text": "{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh! And look at this! {flash}{playSound:damage}{p:100}{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} I can emote!"
+                "text": "{color:white}{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh! And look at this! {flash}{playSound:damage}{p:100}{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} I can emote!"
             },
             {
                 "name": "Oldbag",
@@ -240,11 +240,11 @@
             },
             {
                 "name": "Oldbag",
-                "text": "{fadeInCharacter}Right behind you! {blip:2,false}{sprite:Oldbag[\"Normal\"]}{color:lightblue}(Telepathic communication enabled!){color:white}"
+                "text": "{fadeInCharacter}Right behind you! {blip:2,false}{sprite:Oldbag[\"Normal\"]}{color:lightblue}(Telepathic communication enabled!)"
             },
             {
                 "name": "Phoenix",
-                "text": "How are you doing that without moving your mouth?!"
+                "text": "{color:white}How are you doing that without moving your mouth?!"
             },
             {
                 "name": "Oldbag",
@@ -260,10 +260,10 @@
                 "text": "{blip:1}Here, have a souvenir."
             },
             {
-                "text": "{blip:0}{addEvidence:charm,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm added to Court Record.{color:white}"
+                "text": "{blip:0}{addEvidence:charm,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm added to Court Record."
             },
             {
-                "text": "{setState:Demo_Examine_Sign_visited,false}{jump:Demo_Charm_obtained}{sectionEnd}"
+                "text": "{color:white}{setState:Demo_Examine_Sign_visited,false}{jump:Demo_Charm_obtained}{sectionEnd}"
             }
         ],
         "Demo_Charm_obtained": [
@@ -302,11 +302,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Ouch... that spiritual damage is real.){color:white}"
+                "text": "{color:lightblue}(Ouch... that spiritual damage is real.)"
             },
             {
                 "name": "Oldbag",
-                "text": "Watch your mouth!{hideLifeBar}{sectionEnd}"
+                "text": "{color:white}Watch your mouth!{hideLifeBar}{sectionEnd}"
             }
         ],
         "Demo_option_3": [
@@ -361,10 +361,10 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...){color:white}"
+                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...)"
             },
             {
-                "text": "{jumpIf:evidence_charm,Demo_Examine_Sign_Charm_obtained}{jumpIf:evidence_charm2,Demo_Examine_Sign_Charm_obtained}{sectionEnd}{skip:0}"
+                "text": "{color:white}{jumpIf:evidence_charm,Demo_Examine_Sign_Charm_obtained}{jumpIf:evidence_charm2,Demo_Examine_Sign_Charm_obtained}{sectionEnd}{skip:0}"
             }
         ],
         "Demo_Examine_Sign_Charm_obtained": [

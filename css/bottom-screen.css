@@ -1,0 +1,138 @@
+#bottom-screen {
+    width: min(70vh);
+    aspect-ratio: 3 / 2;
+    background-color: #222;
+    border: 2px solid #555;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    container-type: size;
+}
+
+#bottom-top-bar {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2cqh;
+    padding: 0 4cqh;
+    box-sizing: border-box;
+    background-color: #2a2a2a;
+    border-bottom: 2px solid #444;
+}
+
+#bottom-main-window {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#bottom-screen button {
+    font-family: 'Seurat', sans-serif;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.small-config-btn {
+    position: absolute;
+    bottom: 1cqh;
+    right: 1cqh;
+    padding: 0% !important;
+    font-size: 4cqh !important;
+    min-width: 1cqh !important;
+    opacity: 0.85 !important;
+    aspect-ratio: 1 / 1;
+}
+
+/* Common Wood Button Style */
+#court-record-btn,
+#config-btn,
+#advance-btn,
+.back-btn,
+.detail-nav-btn,
+#evidence-present-btn {
+    padding: 1cqh 4cqh;
+    font-size: 4cqh;
+    background: linear-gradient(180deg, #8B4513 0%, #5D2906 100%);
+    border: 0.6cqh solid #CD853F;
+    border-radius: 2cqh;
+    box-shadow:
+        0 0 0 0.4cqh #3E1F0B,
+        0 0.6cqh 1cqh rgba(0, 0, 0, 0.5);
+    text-shadow: 0.2cqh 0.2cqh 0 rgba(0, 0, 0, 0.8);
+}
+
+#court-record-btn:hover,
+#config-btn:hover,
+#advance-btn:hover,
+.back-btn:hover,
+.detail-nav-btn:hover,
+#evidence-present-btn:hover {
+    border-color: #FFA500;
+    box-shadow:
+        0 0 0 0.4cqh #3E1F0B,
+        0 0 2cqh rgba(255, 165, 0, 0.6);
+    filter: brightness(1.1);
+}
+
+#court-record-btn:active,
+#config-btn:active,
+#advance-btn:active,
+.back-btn:active,
+.detail-nav-btn:active {
+    transform: translateY(0.4cqh);
+}
+
+#config-btn {
+    min-width: 20cqh;
+}
+
+#advance-btn {
+    width: 80%;
+    height: 80%;
+    font-size: 20cqw;
+}
+
+#advance-btn:disabled,
+#court-record-btn:disabled,
+#config-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    filter: grayscale(0.35);
+    box-shadow:
+        0 0 0 0.4cqh #3E1F0B,
+        0 0.3cqh 0.8cqh rgba(0, 0, 0, 0.45);
+}
+
+.back-btn {
+    position: absolute !important;
+    bottom: 1cqh;
+    left: 1cqh;
+    right: auto;
+    width: auto !important;
+    height: auto;
+    font-size: 4cqh;
+    z-index: 21;
+}
+
+#evidence-present-btn {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4cqh !important;
+    z-index: 100;
+}
+
+#evidence-present-btn:active {
+    transform: translate(-50%, -50%) translateY(0.4cqh) !important;
+}
