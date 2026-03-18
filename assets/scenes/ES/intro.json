@@ -1,34 +1,184 @@
 {
     "initialSection": "Intro_Start",
-    "evidence": {
-        "badge": {
-            "name": "Distintivo de letrado",
-            "data": "Tipo: Evidencia\nUna de mis pertenencias.",
-            "description": "Sin esto, nadie creeria que soy abogado.",
-            "image": "assets/img/evidence/badge.png"
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "characters": {
+        "Maggey": {
+            "Officer": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde_Officer_HD.gif"
+            },
+            "Salute_Officer": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde_Officer_Saluting_HD.gif",
+                "time": 700
+            }
+        },
+        "Gumshoe": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "LookingAway": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "ScratchingHead": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
+                "time": 600
+            },
+            "ScratchingHead2": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
+            }
+        },
+        "Edgeworth": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal_talking.gif"
+            },
+            "Normal2": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal_2.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal_talking_2.gif"
+            },
+            "Smug": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_DD_HD_-_Smug.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_DD_HD_-_Smug_talking.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Angry.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Angry_talking.gif"
+            },
+            "Annoyed": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Annoyed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Annoyed_talking.gif"
+            },
+            "Brooding": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Brooding.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Brooding_talking.gif"
+            },
+            "CloseUp": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Close-up.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Close-up_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Confident_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Determined_talking.gif"
+            },
+            "Dismayed": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Dismayed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Dismayed_talking.gif"
+            },
+            "HoldingDocument": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Holding_document_talking.gif"
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Pointing_talking.gif"
+            },
+            "SidewaysLook": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Sideways_look.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Sideways_look_talking.gif"
+            },
+            "Smiling": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Smiling.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Smiling_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Thinking_talking.gif"
+            },
+            "Worried": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Worried.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Worried_talking.gif"
+            },
+            "Bowing": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Bowing.gif"
+            },
+            "ConfidentShrugging": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Confident_shrugging.gif"
+            },
+            "SlammingDesk": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Slamming_desk.gif"
+            },
+            "Smirking": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Smirking.gif"
+            },
+            "Unknown": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Unknown.gif"
+            },
+            "WaggingFinger": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Wagging_his_finger.gif"
+            },
+            "ObjectingLeft": {
+                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Objecting_left.gif"
+            }
         }
     },
     "backgrounds": {
         "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
-        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png"
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png"
     },
     "music": {
-        "investigation": "assets/audio/demo/bgm001.ogg"
+        "investigation": [
+            "assets/audio/bgm/bgm001.m4a",
+            "assets/audio/bgm/bgm001lp.m4a"
+        ]
+    },
+    "sounds": {
+        "damage": "assets/audio/se/damage.ogg",
+        "shake": "assets/audio/se/se026.m4a",
+        "salute": "assets/audio/se/se044.m4a"
     },
     "investigations": {
         "JoyPolis": {
+            "default": "Intro_Examine_Default",
             "move": [
                 {
-                    "label": "Joypolis",
-                    "target": "Joypolis_Start",
-                    "preview": "JoyPolis",
-                    "json": "assets/scenes/joypolis.json"
+                    "label": "Oficina",
+                    "target": "Office_Init",
+                    "preview": "Office",
+                    "json": "assets/scenes/office.json"
                 },
                 {
                     "label": "Centro de detención",
-                    "target": "Detention_Center_Start",
+                    "target": "Detention_Center_Init",
                     "preview": "DetentionCenter",
                     "json": "assets/scenes/detention_center.json"
+                },
+                {
+                    "label": "4.ª planta",
+                    "target": "Floor4_Init",
+                    "preview": "Floor4",
+                    "json": "assets/scenes/4th_floor.json"
                 }
             ]
         }
@@ -38,29 +188,29 @@
             "file": "assets/video/FlyHighIntro.mp4",
             "script": [
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 1:17 PM{nl}Joypolis, Salón de actos del atrio",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 1:17 p. m.{nl}Joypolis, Salón de eventos del atrio",
                     "timestamp": 2000,
                     "duration": 7000
                 },
                 {
-                    "name": "Samurái",
-                    "text": "{blip:1}¡Allá voy, Magistrado Malvado!{nl}¡Esto termina hoy!",
+                    "name": "Samurai",
+                    "text": "{blip:1}¡Aquí vamos, Magistrado Malvado!{nl}¡Hoy se decide todo!",
                     "timestamp": 22500
                 },
                 {
-                    "name": "Samurái",
+                    "name": "Samurai",
                     "text": "¡Prepárate!",
                     "timestamp": 25000,
                     "duration": 1800
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 9:01 PM{nl}Joypolis, Salón de actos del atrio, 4º piso",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 9:01 p. m.{nl}Joypolis, Salón de eventos del atrio, 4.ª planta",
                     "timestamp": 36000,
                     "duration": 8000
                 },
                 {
                     "name": "Kurumi",
-                    "text": "{blip:2}No me moví muy bien.",
+                    "text": "{blip:2}Mis movimientos no estuvieron muy bien.",
                     "timestamp": 44500
                 },
                 {
@@ -70,7 +220,7 @@
                 },
                 {
                     "name": "Kurumi",
-                    "text": "¡Allá voy, Magistrado Malvado!{nl}¡Esto termina hoy!",
+                    "text": "¡Aquí vamos, Magistrado Malvado!{nl}¡Hoy se decide todo!",
                     "timestamp": 52500
                 },
                 {
@@ -80,13 +230,13 @@
                     "duration": 3000
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 10:05 PM{nl}Joypolis, Salón de actos del atrio",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 10:05 p. m.{nl}Joypolis, Salón de eventos del atrio",
                     "timestamp": 64500,
                     "duration": 8000
                 },
                 {
                     "name": "Sahwit",
-                    "text": "{blip:1}¡A-Alguien! ¡Ayuda!{skip:0}",
+                    "text": "{blip:1}¡A-Alguien! ¡Ayuda!",
                     "timestamp": 91500,
                     "duration": 3000
                 }
@@ -96,11 +246,140 @@
     "gameScript": {
         "Intro_Start": [
             {
-                "text": "{playVideo:intro}"
+                "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
+            },
+            {
+                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}17 de septiembre, 10:34 p. m.{nl}Joypolis"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{color:lightblue}(Mi nombre es Phoenix Wright.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Soy abogado defensor en el Bufete Wright & Co.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Recibí una solicitud de Maggey Byrde,{nl}{p:300}sospechosa de asesinato...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Y vine aquí, a Joypolis.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Maggey no es el tipo de persona que cometería un asesinato.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Tengo que encontrar la verdad y limpiar su nombre, pase lo que pase.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Para lograrlo, no puedo pasar por alto ni el más mínimo detalle.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Anotaré toda la {color:red}[Información]{color:lightblue}{nl}que encuentre en el {color:red}[Registro del Tribunal]{color:lightblue}.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{addEvidence:badge,false}{bg:JoyPolis}{showTextbox}{blip:1}TODO: Completar este diálogo."
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{showTextbox}{startBGM:investigation,true}*suspiro*..."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}Detective Gumshoe. Entréguenos de inmediato su resumen del caso."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{fadeOutBg}(Ese es Miles Edgeworth. Un fiscal de la oficina del fiscal del distrito.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{color:white}S-Sí, señor..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{fadeOutBg}(Y ese es el detective Dick Gumshoe. Un detective de la comisaría local.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}La víctima es Kurumi Nakaki."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Trabajaba aquí en Joypolis como actriz de traje en el espectáculo del Samurái de Acero, señor."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "El cuerpo fue descubierto a las 10:05 p. m."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "La hora estimada de la muerte es entre las 9:30 p. m. y las 10:30 p. m."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}Y...{p:500} la sospechosa es..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Sad\"]}...Maggey Byrde,{p:300} que trabajaba aquí a tiempo parcial como guardia de seguridad,{p:200} señor..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{fadeOutBg}{fadeOutCharacter:300}{sprite:Maggey[\"Officer\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Maggey[\"Salute_Officer\"]}{sprite:Maggey[\"Officer\"]}{color:lightblue}(Maggey era policía antes y fue subordinada del detective Gumshoe.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(El detective Gumshoe siempre cuidó de ella. Esto debe de estar siendo muy duro para él.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeOutCharacter:300}{p:10}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInBg}{fadeInCharacter:300}{color:white}Parece que Maggey empujó a la víctima desde la 4.ª planta del salón de eventos..."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}¿Quién fue la primera persona en encontrar el cuerpo?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}El gerente del salón de eventos de este parque, Frank Sahwit, señor."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Edgeworth[\"Smug\"]}Este es un caso realmente sencillo."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{sprite:Edgeworth[\"Angry\"]}Porque ya se encontró una prueba decisiva que apunta a la culpabilidad de la acusada."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{flash}{playSound:damage}¡¿Qué!?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(No, no puedo dejar que eso me afecte.{nl}{p:300}No importa qué pruebas tengan,{p:200} no puedo perder.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Tengo que descubrir la verdad cueste lo que cueste{nl}{p:300}y demostrar la inocencia de Maggey.)"
+            },
+            {
+                "text": "{hideCharacter}{stopBGM:true}{setState:intro_done,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Intro_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}No hay nada interesante aquí."
+            }
+        ],
+        "Intro_evidence_default": [
+            {
+                "text": "{skip:0}{sectionEnd}"
             }
         ]
     }

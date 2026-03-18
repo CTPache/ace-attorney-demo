@@ -1,5 +1,11 @@
 {
-    "initialSection": "Detention_Center_Start",
+    "initialSection": "Detention_Center_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
     "characters": {
         "Maggey": {
             "Normal": {
@@ -39,22 +45,30 @@
     "backgrounds": {
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
-        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png"
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png"
     },
     "foregrounds": {
         "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
     },
     "music": {
-        "detentionCenter": "assets/audio/demo/bgm000.m4a"
+        "detentionCenter": "assets/audio/bgm/bgm000.m4a"
     },
     "investigations": {
         "DetentionCenter": {
+            "default": "Detention_Center_Examine_Default",
             "move": [
                 {
-                    "label": "ジョイポリス",
-                    "target": "Joypolis_Start",
-                    "preview": "JoyPolis",
-                    "json": "assets/scenes/joypolis.json"
+                    "label": "4階",
+                    "target": "Floor4_Init",
+                    "preview": "Floor4",
+                    "json": "assets/scenes/4th_floor.json"
+                },
+                {
+                    "label": "事務所",
+                    "target": "Office_Init",
+                    "preview": "Office",
+                    "json": "assets/scenes/office.json"
                 }
             ]
         }
@@ -73,6 +87,12 @@
             "description": "事件当日の午後9時27分に投稿された。眼鏡チャームが2つ付いた眼鏡の画像がある。",
             "image": "assets/img/evidence/Screen.png"
         },
+        "blog_post_charm_updated": {
+            "name": "眼鏡のブログ記事",
+            "data": "種類: 証拠品\n",
+            "description": "事件当日の午後9時27分に投稿された。眼鏡チャームが2つ付いた眼鏡の画像がある。投稿から約30分後に盗まれた。",
+            "image": "assets/img/evidence/Screen.png"
+        },
         "loud_sound": {
             "name": "大きな音",
             "data": "種類: 証拠品\n",
@@ -81,12 +101,28 @@
         }
     },
     "gameScript": {
+        "Detention_Center_Init": [
+            {
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{jumpIf:detention_center_done,Detention_Center_Default,Detention_Center_Start}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Default": [
+            {
+                "text": "{skip:0}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Examine_Default": [
+            {
+                "name": "ナルホド",
+                "text": "{blip:1}ここには特に何もない。"
+            }
+        ],
         "Detention_Center_Start": [
             {
-                "text": "{stopBGM:false}{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}9月17日 某時刻{nl}{p:500}留置所{color:white}"
+                "text": "{center}{color:lime}{blip:3}9月17日 某時刻{nl}{p:500}留置所"
             },
             {
-                "text": "{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter}{startBGM:detentionCenter}{skip:1000}"
+                "text": "{color:white}{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:500}{startBGM:detentionCenter,true}{skip:1000}"
             },
             {
                 "name": "ナルホド",
@@ -94,7 +130,7 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}‥‥{p:800}{nl}実はあれから、いろいろ思い出してきて。{p:260}"
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}‥‥{p:800}{nl}実はあれから、いろいろ思い出してきて。{p:160}{p:260}"
             },
             {
                 "name": "マコ",
@@ -110,7 +146,7 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}はい。{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あの日、{p:140}{nl}4階に中木さんがいて、トノサマンショーの練習をしてたッス。{p:250}"
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}はい。{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あの日、{p:140}4階に中木さんがいて、トノサマンショーの練習をしてたッス。{p:250}"
             },
             {
                 "name": "マコ",
@@ -118,11 +154,11 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Determined\"]}正直、{p:120}警備員としてはヤッカイだったッス。{p:220}{nl}やめてって何度も言い合いになったッス。{p:220}"
+                "text": "{sprite:Maggey[\"Determined\"]}正直、{p:120}警備員としてはヤッカイだったッス。{p:160}やめてって何度も言い合いになったッス。{p:220}{p:220}"
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Sad\"]}でも、{p:120}アタシ、ああいう子は嫌いじゃないッス。{p:220}{nl}仕事じゃなかったら、{p:140}注意してないハズッス。{p:220}"
+                "text": "{sprite:Maggey[\"Sad\"]}でも、{p:120}アタシ、ああいう子は嫌いじゃないッス。{p:220}{nl}仕事じゃなかったら、{p:140}注意してないハズッス。{p:140}{p:220}"
             },
             {
                 "name": "ナルホド",
@@ -130,11 +166,11 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}軽くッスね。{p:200}{nl}でもいつものコトだから、{p:150}半ばあきらめて‥‥。{p:360}"
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}軽くッスね。{p:120}{p:200}{nl}でもいつものコトだから、{p:150}半ばあきらめて‥‥。{p:360}"
             },
             {
                 "name": "マコ",
-                "text": "警備日誌を書かなきゃいけないので、{p:140}がんばって書いたッス。{p:220}{nl}30分くらいかかって、{p:140}ブログを更新したッス。{p:220}"
+                "text": "警備日誌を書かなきゃいけないので、{p:140}がんばって書いたッス。{p:140}{p:220}{nl}30分くらいかかって、{p:140}ブログを更新したッス。{p:220}"
             },
             {
                 "name": "ナルホド",
@@ -146,21 +182,21 @@
             },
             {
                 "name": "マコ",
-                "text": "「{color:red}不幸な堕天使ブログ　眼鏡チャーム{color:white}」で検索してもらえれば{p:160}{nl}出てくると思うッス。{p:220}"
+                "text": "{nl}「{color:red}不幸な堕天使ブログ　眼鏡チャーム{color:white}」で検索してもらえれば{p:160}{nl}出てくると思うッス。{p:220}"
             },
             {
-                "text": "{bg:BlogPost}{fg:none}{hideCharacter}{hideTextbox}{skip:1000}"
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{fadeOutFg}{p:100}{fadeBg:BlogPost,500}{showTextbox}{skip:1000}"
             },
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{blip:0}{color:lightblue}（不気味なタイトルのブログだなぁ‥‥{nl}ああ、これがそうか）{color:white}"
+                "text": "{showTextbox}{blip:0}{color:lightblue}（不気味なタイトルのブログだなぁ‥‥{nl}ああ、これがそうか）"
             },
             {
-                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}証拠品《眼鏡のブログ記事》のデータを法廷記録に書き込んだ。{color:white}"
+                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}証拠品《眼鏡のブログ記事》のデータを法廷記録に書き込んだ。"
             },
             {
                 "name": "マコ",
-                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}お気に入りの眼鏡チャームのブログをウキウキでアップしたあと、{p:160}{nl}山野さんに呼ばれていたコトを思い出して、{p:170}{nl}急いでシャワーを浴びたッス。{p:240}"
+                "text": "{color:white}{hideTextbox}{fadeOutBg}{p:100}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{fadeInCharacter:500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}お気に入りの眼鏡チャームのブログをウキウキでアップしたあと、{p:160}山野さんに呼ばれていたコトを思い出して、{p:170}急いでシャワーを浴びたッス。{p:140}{p:240}"
             },
             {
                 "name": "ナルホド",
@@ -176,14 +212,14 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}家にあった予備の眼鏡を頼んで持ってきてもらったッス。{p:220}{nl}乱視だから、{p:140}眼鏡がないとホントきついッス。{p:220}"
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}家にあった予備の眼鏡を頼んで持ってきてもらったッス。{p:220}{nl}乱視だから、{p:140}眼鏡がないとホントきついッス。{p:140}{p:220}"
             },
             {
-                "text": "{updateEvidence:blog_post_charm,blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《眼鏡のブログ記事》のデータを更新した。{color:white}"
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《眼鏡のブログ記事》のデータを更新した。"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}それで、よく目が見えないまま‥‥？{p:320}"
+                "text": "{color:white}{blip:1}それで、よく目が見えないまま‥‥？{p:320}"
             },
             {
                 "name": "マコ",
@@ -195,7 +231,7 @@
             },
             {
                 "name": "マコ",
-                "text": "声をかけても返事がなかったから、{p:140}手を伸ばしてみたッス。{p:220}{nl}そしたら何かに触れたような‥‥{p:300}{nl}触れてないような‥‥。{p:300}"
+                "text": "声をかけても返事がなかったから、{p:140}手を伸ばしてみたッス。{p:140}{p:140}{p:220}そしたら何かに触れたような‥‥{p:300}{nl}触れてないような‥‥。{p:150}{p:300}"
             },
             {
                 "name": "マコ",
@@ -207,26 +243,26 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}他に何か気になったコト‥‥。{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あ、あるッス！{p:140}シャワーを浴び始めたころッスかね。{p:220}"
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}他に何か気になったコト‥‥。{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あ、あるッス！{p:100}{p:140}シャワーを浴び始めたころッスかね。{p:220}"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（シャワーを浴び始めたところというコトは午後9時30分ごろか）{color:white}"
+                "text": "{color:lightblue}{blip:0}（シャワーを浴び始めたところというコトは午後9時30分ごろか）"
             },
             {
                 "name": "マコ",
-                "text": "{blip:2}シャワー中でも聞こえたから、{p:160}{nl}けっこう大きな音だったと思うッス。{p:220}{playSound:cling}{flash}"
+                "text": "{color:white}{blip:2}シャワー中でも聞こえたから、{p:160}{nl}けっこう大きな音だったと思うッス。{p:140}{p:220}{playSound:cling}{flash}"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（気になるな。誰かに聞いてみよう）{color:white}"
+                "text": "{color:lightblue}{blip:0}（気になるな。誰かに聞いてみよう）"
             },
             {
-                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《大きな音》のデータを法廷記録に書き込んだ。{color:white}"
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《大きな音》のデータを法廷記録に書き込んだ。"
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}成歩堂さん‥‥{p:260}{nl}アタシ、やばいッスかね。{p:220}{nl}有罪になってしまうッスかね。{p:320}"
+                "text": "{color:white}{sprite:Maggey[\"Determined\"]}{blip:2}成歩堂さん‥‥{p:260}{nl}アタシ、やばいッスかね。{p:140}{p:220}{nl}有罪になってしまうッスかね。{p:150}{p:320}"
             },
             {
                 "name": "ナルホド",
@@ -234,7 +270,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（よし。ここはこんなところか）{color:white}{sectionEnd}"
+                "text": "{color:lightblue}{blip:0}（よし。ここはこんなところか）{setState:detention_center_done,true}{color:white}{sectionEnd}"
             }
         ]
     }

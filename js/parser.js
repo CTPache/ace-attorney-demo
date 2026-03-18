@@ -51,7 +51,8 @@ const patterns = [
     /\{fadeInCharacter:(\d+)\}/,                       // 45: Fade In Character Duration
     /\{fadeOutCharacter:(\d+)\}/,                      // 46: Fade Out Character Duration
     /\{bgMove:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,         // 47,48: Background Move (Position, Duration)
-    /\{setAction:([a-zA-Z]+),(true|false)\}/           // 49,50: SetAction (Name, Visibility)
+    /\{setAction:([a-zA-Z]+),(true|false)\}/,          // 49,50: SetAction (Name, Visibility)
+    /\{startBGM:([a-zA-Z0-9_]+),(true|false)\}/        // 51,52: StartBGM with FadeIn
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
@@ -174,6 +175,8 @@ function parseText(text) {
             parsedSegments.push({ type: 'bgMove', position: match[47], duration: match[48] ? parseInt(match[48]) : 400 });
         } else if (match[49]) { // Set Action {setAction:Name,Bool}
             parsedSegments.push({ type: 'setAction', actionName: match[49], isEnabled: match[50] === 'true' });
+        } else if (match[51]) { // StartBGM with FadeIn {startBGM:Name,true|false}
+            parsedSegments.push({ type: 'startBGM', musicName: match[51], fadeIn: match[52] === 'true' });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });
         }

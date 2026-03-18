@@ -52,7 +52,7 @@
         "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
     },
     "music": {
-        "detentionCenter": "assets/audio/demo/bgm000.m4a"
+        "detentionCenter": "assets/audio/bgm/bgm000.m4a"
     },
     "investigations": {
         "DetentionCenter": {
@@ -122,7 +122,7 @@
                 "text": "{center}{color:lime}{blip:3}September 17{nl}{p:500}Detention Center"
             },
             {
-                "text": "{color:white}{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:500}{startBGM:detentionCenter}{skip:1000}"
+                "text": "{color:white}{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:500}{startBGM:detentionCenter,true}{skip:1000}"
             },
             {
                 "name": "Phoenix",

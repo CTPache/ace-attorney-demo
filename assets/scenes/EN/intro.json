@@ -141,14 +141,6 @@
             }
         }
     },
-    "evidence": {
-        "badge": {
-            "name": "Attorney's Badge",
-            "data": "Type: Evidence\nOne of my possessions.",
-            "description": "Without this no one would believe I'm a lawyer.",
-            "image": "assets/img/evidence/badge.png"
-        }
-    },
     "backgrounds": {
         "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
@@ -156,7 +148,10 @@
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png"
     },
     "music": {
-        "investigation": "assets/audio/demo/bgm001.ogg"
+        "investigation": [
+            "assets/audio/bgm/bgm001.m4a",
+            "assets/audio/bgm/bgm001lp.m4a"
+        ]
     },
     "sounds": {
         "damage": "assets/audio/se/damage.ogg",
@@ -254,7 +249,7 @@
                 "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
             },
             {
-                "text": "{addEvidence:badge,false}{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}September 17, 10:34 PM{nl}Joypolis"
+                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}September 17, 10:34 PM{nl}Joypolis"
             },
             {
                 "name": "Phoenix",
@@ -290,7 +285,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{showTextbox}*sigh*..."
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{showTextbox}{startBGM:investigation,true}*sigh*..."
             },
             {
                 "name": "Edgeworth",
@@ -373,7 +368,7 @@
                 "text": "{color:lightblue}(I have to uncover the truth no matter what{nl}{p:300}and prove Maggey's innocence!)"
             },
             {
-                "text": "{hideCharacter}{setState:intro_done,true}{skip:0}{sectionEnd}"
+                "text": "{hideCharacter}{stopBGM:true}{setState:intro_done,true}{skip:0}{sectionEnd}"
             }
         ],
         "Intro_Examine_Default": [

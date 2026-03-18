@@ -110,7 +110,7 @@ function executeScriptAction(segment) {
             if (window.playSound) window.playSound(segment.soundName);
             return true;
         case 'startBGM':
-            if (window.playBGM) window.playBGM(segment.musicName);
+            if (window.playBGM) window.playBGM(segment.musicName, segment.fadeIn);
             return true;
         case 'stopBGM':
             if (window.stopBGM) window.stopBGM(segment.fadeOut);

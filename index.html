@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="css/evidence.css">
     <link rel="stylesheet" href="css/topics.css">
     <link rel="stylesheet" href="css/lifebar.css">
-
+    <link rel="stylesheet" href="css/title-screen.css">
+    <link rel="stylesheet" href="css/case-select.css">
 </head>
 
 <body>
@@ -51,6 +52,22 @@
             <div id="textbox-container">
                 <div id="name-tag">Name</div>
                 <div id="text-content"></div>
+            </div>
+            <div id="title-screen-top" class="title-screen-layer">
+                <div class="title-bg-scroller"></div>
+                <div class="title-top-bar"></div>
+                <img id="title-logo" src="assets/img/sprites/TitleScreen_Logo_EN.png" alt="Logo">
+                <div class="title-bottom-bar">
+                    <span class="title-credits-left">Special Thanks : FONTWORKS Inc.</span>
+                    <span class="title-credits-right">© CAPCOM CO., LTD / © SEGA</span>
+                </div>
+            </div>
+
+            <div id="case-select-top" class="menu-overlay hidden">
+                <img id="case-select-cover" src="/assets/img/sprites/TitleScreen_Logo_EN.png" alt="Case Cover">
+                <div id="case-select-top-ui">
+                    <h2 id="case-select-title">Case Name</h2>
+                </div>
             </div>
         </div>
         <div id="bottom-screen">
@@ -148,6 +165,25 @@
                     </div>
                 </div>
             </div>
+            <div id="title-screen-bottom" class="title-screen-layer">
+                <div class="title-bg-scroller"></div>
+                <div id="title-buttons">
+                    <button id="btn-case-select" class="title-btn" data-i18n="ui.caseSelect">Case Select</button>
+                    <button id="btn-gallery" class="title-btn" data-i18n="ui.gallery">Gallery</button>
+                    <button id="btn-title-config" class="title-btn" data-i18n="ui.settings">Settings</button>
+                </div>
+            </div>
+
+            <div id="case-select-bottom" class="menu-overlay hidden">
+                <div id="case-list-view">
+                    <button id="btn-case-select-back" class="cs-back-btn">Back</button>
+                    <div id="cases-container" class="cs-scroll-container"></div>
+                </div>
+                <div id="chapter-list-view" class="hidden">
+                    <button id="btn-chapter-back" class="cs-back-btn">Back to Cases</button>
+                    <div id="chapters-container" class="cs-scroll-container"></div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/DOMGlobals.js"></script>
@@ -165,6 +201,8 @@
     <script src="js/court-record.js"></script>
     <script src="js/topics.js"></script>
     <script src="js/lifebar.js"></script>
+    <script src="js/title-screen.js"></script>
+    <script src="js/case-select.js"></script>
     <script src="js/main.js"></script>
     <script src="js/key-events.js"></script>
 </body>

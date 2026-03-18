@@ -1,0 +1,71 @@
+{
+    "cases": {
+        "FlyHigh": {
+            "name": "Turnabout Fly High",
+            "cover": "assets/img/case_covers/FlyHigh_Cover.png",
+            "entry": "investigation1",
+            "Chapters": {
+                "demo": {
+                    "name": "Demo Scene",
+                    "scene": "assets/scenes/demo.json",
+                    "courtRecord": {
+                        "evidence": {},
+                        "profiles": {}
+                    }
+                },
+                "investigation1": {
+                    "name": "Investigation",
+                    "scene": "assets/scenes/intro.json",
+                    "courtRecord": {
+                        "evidence": {
+                            "badge": {
+                                "name": "Attorney's Badge",
+                                "data": "Type: Evidence\nOne of my possessions.",
+                                "description": "Without this no one would believe I'm a lawyer.",
+                                "image": "assets/img/evidence/badge.png"
+                            }
+                        },
+                        "profiles": {
+                            "Phoenix": {
+                                "name": "Phoenix Wright",
+                                "data": "Age: 24\nGender: Male",
+                                "description": "That's me. I'm a defense attorney.",
+                                "image": "assets/img/profiles/phoenix.png"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Don": {
+            "name": "Turnabout Don",
+            "cover": "assets/img/case_covers/Don_Cover.png",
+            "entry": "demo",
+            "Chapters": {
+                "demo": {
+                    "name": "Coming Soon",
+                    "scene": "assets/scenes/demo.json",
+                    "courtRecord": {
+                        "evidence": {},
+                        "profiles": {}
+                    }
+                }
+            }
+        },
+        "LockedRoom": {
+            "name": "Turnabout Locked Room",
+            "cover": "assets/img/case_covers/Locked_Room_Cover.png",
+            "entry": "demo",
+            "Chapters": {
+                "demo": {
+                    "name": "Coming Soon",
+                    "scene": "assets/scenes/demo.json",
+                    "courtRecord": {
+                        "evidence": {},
+                        "profiles": {}
+                    }
+                }
+            }
+        }
+    }
+}

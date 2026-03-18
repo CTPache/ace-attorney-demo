@@ -476,3 +476,5 @@ function switchScreen() {
 
 window.toggleScreenMode = toggleScreenMode;
 window.switchScreen = switchScreen;
+window.openConfigMenu = openConfigMenu;
+window.closeConfigMenu = closeConfigMenu;

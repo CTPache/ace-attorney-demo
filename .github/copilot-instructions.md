@@ -86,7 +86,7 @@ The engine parses commands enclosed in `{}` within the `text` string.
 **Audio:**
 - `{blip:Type,Speak}`: Change text blip. `Speak` is (opt) boolean. If false, mouth doesn't move. Types: 1: Male, 2: Female, 3: Typewriter, 4: Silence.
 - `{playSound:Key}`: Play a sound effect once.
-- `{startBGM:Key}`: Start looping background music.
+- `{startBGM:Key}` / `{startBGM:Key,true}`: Start looping background music. Optional `true` to fade in.
 - `{stopBGM}` / `{stopBGM:false}`: Stop BGM (default fades out, pass `false` for instant cut).
 
 **Fade Effects:**
@@ -156,7 +156,7 @@ The engine parses commands enclosed in `{}` within the `text` string.
     - `preview`: Background key for hover preview.
     - `json`: (Opt) Path to a new JSON file to load (Scene Change).
   - `points`: Array of objects with `bounds` (polygon coordinates) and `label` (target section).
-- **Sounds/Music**: Key-value mapping to file paths.
+- **Sounds/Music**: Key-value mapping to file paths. For music that requires an intro section followed by a seamless loop, use an array instead of a string: `["path/to/intro.m4a", "path/to/loop.m4a"]`.
 - **Videos**: Key-value object where each key maps to a video definition containing at least a `file` path and optional caption/script entries.
 - **Options**: Dialogue choice definitions used by `{option:Key}`.
 

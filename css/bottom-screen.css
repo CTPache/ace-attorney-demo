@@ -1,4 +1,5 @@
 #bottom-screen {
+    position: relative;
     width: min(70vh);
     aspect-ratio: 3 / 2;
     background-color: #222;

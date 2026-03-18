@@ -1,0 +1,106 @@
+
+/* Case Select Styles */
+.menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+#case-select-top {
+    justify-content: center;
+    align-items: center;
+}
+
+#case-select-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+}
+
+#case-select-top-ui {
+    z-index: 2;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2cqh;
+    border-radius: 2cqh;
+    border: 2px solid #555;
+    width: 80%;
+    margin-top: 52cqw;
+}
+
+#case-select-title {
+    font-family: 'Seurat', 'Arial', sans-serif;
+    font-size: 4cqh;
+    margin: 0;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px #000;
+}
+
+#case-select-bottom {
+    background-color: #222;
+}
+
+#case-list-view, #chapter-list-view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2cqh;
+    box-sizing: border-box;
+}
+
+.cs-back-btn {
+    align-self: flex-start;
+    padding: 1cqh 3cqh;
+    font-size: 4cqh;
+    background: #662222;
+    color: white;
+    border: 2px solid #ff5555;
+    border-radius: 1cqh;
+    cursor: pointer;
+    margin-bottom: 2cqh;
+}
+
+.cs-back-btn:hover {
+    background: #883333;
+}
+
+.cs-scroll-container {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2cqh;
+}
+
+.cs-item-btn {
+    width: 100%;
+    padding: 3cqh;
+    font-size: 5cqh;
+    background: #333;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 1cqh;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.cs-item-btn:hover {
+    background: #444;
+    border-color: #888;
+}
+
+.cs-item-btn.selected {
+    background: #1a4a1a;
+    border-color: #2a8a2a;
+}
+

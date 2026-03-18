@@ -257,6 +257,11 @@ window.setGameLanguage = async function(languageCode) {
     const sceneToReload = currentSceneRequestPath || currentSceneResolvedPath;
     if (sceneToReload) {
         await window.loadGameData(sceneToReload);
+    } else {
+        // Update Title Screen instead of loading game
+        if (typeof window.initTitleScreen === 'function') {
+            window.initTitleScreen();
+        }
     }
 };
 
@@ -274,7 +279,22 @@ async function initializeGame() {
         await window.loadUIText();
     }
 
-    await loadGameData(getInitialScenePath(currentLanguage));
+    const sceneKeyFromUrl = getInitialSceneKeyFromUrl();
+    if (sceneKeyFromUrl) {
+        // Direct scene load via URL bypasses Title Screen
+        if (typeof window.hideTitleScreen === 'function') {
+            window.hideTitleScreen();
+        }
+        await loadGameData(getInitialScenePath(currentLanguage));
+    } else {
+        // Normal startup: Show Title Screen
+        if (typeof window.initTitleScreen === 'function') {
+            window.initTitleScreen();
+        } else {
+            // Fallback if title screen logic isn't loaded
+            await loadGameData(getInitialScenePath(currentLanguage));
+        }
+    }
 }
 
 // Initial Load

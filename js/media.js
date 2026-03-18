@@ -33,15 +33,62 @@ function playSound(soundName) {
     }
 }
 
-function playBGM(musicName) {
+function playBGM(musicName, fadeIn = false) {
     const musicPath = musicDB[musicName];
     if (musicPath) {
         // Stop current BGM if playing
         stopBGM(false);
 
-        currentBGM = new Audio(musicPath);
-        currentBGM.loop = true;
-        currentBGM.play().catch(e => console.warn("BGM play failed:", e));
+        if (Array.isArray(musicPath)) {
+            const introPath = musicPath[0];
+            const loopPath = musicPath[1];
+            
+            currentBGM = new Audio(introPath);
+            currentBGM.loop = false;
+            if (fadeIn) currentBGM.volume = 0;
+            
+            // Preload loop portion to minimize gap
+            const loopAudio = new Audio(loopPath);
+            loopAudio.loop = true;
+            loopAudio.preload = 'auto';
+
+            currentBGM.addEventListener('ended', function() {
+                // If BGM was stopped or changed before intro could finish, abort
+                if (currentBGM !== this) return;
+                
+                currentBGM = loopAudio;
+                currentBGM.play().catch(e => console.warn("BGM loop play failed:", e));
+            });
+
+            currentBGM.play().then(() => {
+                if (fadeIn) {
+                    const fadeInterval = setInterval(() => {
+                        if (currentBGM && currentBGM.volume < 0.95) {
+                            currentBGM.volume += 0.05;
+                        } else {
+                            if (currentBGM) currentBGM.volume = 1;
+                            clearInterval(fadeInterval);
+                        }
+                    }, 100);
+                }
+            }).catch(e => console.warn("BGM play failed:", e));
+        } else {
+            currentBGM = new Audio(musicPath);
+            currentBGM.loop = true;
+            if (fadeIn) currentBGM.volume = 0;
+            currentBGM.play().then(() => {
+                if (fadeIn) {
+                    const fadeInterval = setInterval(() => {
+                        if (currentBGM && currentBGM.volume < 0.95) {
+                            currentBGM.volume += 0.05;
+                        } else {
+                            if (currentBGM) currentBGM.volume = 1;
+                            clearInterval(fadeInterval);
+                        }
+                    }, 100);
+                }
+            }).catch(e => console.warn("BGM play failed:", e));
+        }
     } else {
         console.warn(`Music not found: ${musicName}`);
     }

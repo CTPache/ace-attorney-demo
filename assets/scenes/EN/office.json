@@ -48,7 +48,7 @@
         }
     },
     "music": {
-        "investigation": "assets/audio/demo/bgm001.ogg"
+        "grossberg": "assets/audio/bgm/bgm026.m4a"
     },
     "sounds": {
         "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
@@ -90,7 +90,7 @@
         ],
         "Office_Intro": [
             {
-                "text": "{center}{color:lime}{blip:3}September 17{nl}Joypolis Office{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter}"
+                "text": "{center}{color:lime}{blip:3}September 17{nl}Joypolis Office{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
             },
             {
                 "name": "Phoenix",
@@ -199,7 +199,7 @@
         ],
         "Office_Default": [
             {
-                "text": "{sprite:Sahwit[\"Stand\"]}{skip:0}"
+                "text": "{sprite:Sahwit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}"
             }
         ],
         "Office_Examine_Default": [

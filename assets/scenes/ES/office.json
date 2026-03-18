@@ -1,0 +1,276 @@
+{
+    "initialSection": "Office_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": true
+    },
+    "characters": {
+        "Sahwit": {
+            "Stand": {
+                "default": "assets/img/characters/Fly High/Shawit/Stand.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Stand_Talk.webp"
+            },
+            "Nervous": {
+                "default": "assets/img/characters/Fly High/Shawit/Nervous.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Nervous_Talk.webp"
+            },
+            "Cornered": {
+                "default": "assets/img/characters/Fly High/Shawit/Cornered.gif",
+                "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
+            },
+            "Damage": {
+                "default": "assets/img/characters/Fly High/Shawit/Damage.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
+        "Samurai2": "assets/img/CG/Fly High/Samurai_2.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
+        "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
+        "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
+    },
+    "music": {
+        "grossberg": "assets/audio/bgm/bgm026.m4a"
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "cling": "assets/audio/se/cling.ogg"
+    },
+    "evidence": {
+        "loud_sound_updated": {
+            "name": "Ruido fuerte",
+            "data": "Tipo: Prueba\n",
+            "description": "Sahwit dice que el ruido fuerte fue la caída de la señorita Nakagi, por lo que habría ocurrido alrededor de las 10:05 p. m.",
+            "image": "assets/img/evidence/Document.png"
+        }
+    },
+    "investigations": {
+        "Office": {
+            "default": "Office_Examine_Default",
+            "move": [
+                {
+                    "label": "Centro de detención",
+                    "target": "Detention_Center_Init",
+                    "preview": "DetentionCenter",
+                    "json": "assets/scenes/detention_center.json"
+                },
+                {
+                    "label": "4.ª planta",
+                    "target": "Floor4_Init",
+                    "preview": "Floor4",
+                    "json": "assets/scenes/4th_floor.json"
+                }
+            ],
+            "points": []
+        }
+    },
+    "gameScript": {
+        "Office_Init": [
+            {
+                "text": "{setState:scenePrefix,Office}{bg:Office}{jumpIf:office_intro_done,Office_Default,Office_Intro}{sectionEnd}"
+            }
+        ],
+        "Office_Intro": [
+            {
+                "text": "{center}{color:lime}{blip:3}17 de septiembre{nl}Oficina de Joypolis{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{color:white}Señor Sahwit.{nl}¿Puedo hacerle unas preguntas?"
+            },
+            {
+                "name": "Sahwit",
+                "text": "Por supuesto. Como la primera persona en descubrir el cuerpo,{nl}cooperaré con mucho gusto."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Antes que nada...{nl}¿qué tipo de relación tenía con la víctima,{nl}la señorita Nakagi?"
+            },
+            {
+                "name": "Sahwit",
+                "text": "Soy el encargado principal de este salón de eventos.{nl}La señorita Nakagi era una de nuestras empleadas."
+            },
+            {
+                "name": "Sahwit",
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Samurai2}{showTextbox}Era la actriz del traje del espectáculo del Samurái de Acero,{nl}y estaba totalmente entregada a ello..."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Decía que quería mejorar aún más el show,{nl}y practicaba dentro del edificio hasta tarde cada noche."
+            },
+            {
+                "name": "Sahwit",
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}Nunca imaginé...{nl}que su pasión terminaría enfureciendo a la guardia de seguridad, la señorita Maggey Byrde."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}¿Podría contarme más sobre eso?"
+            },
+            {
+                "name": "Sahwit",
+                "text": "Bueno, desde la perspectiva de una guardia de seguridad, tener a alguien practicando dentro del recinto fuera de horario resulta una gran molestia."
+            },
+            {
+                "name": "Sahwit",
+                "text": "A menudo discutía con la señorita Nakagi,{nl}diciéndole cosas como: \"Por favor, váyase a casa temprano.\""
+            },
+            {
+                "name": "Sahwit",
+                "text": "Una vez que empezaban a discutir,{nl}las dos se acaloraban muchísimo..."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Así que lo pensé bien y decidí{nl}hacer que ambas se sentaran a hablar."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Sin embargo, justo antes de que pudiera darse esa conversación,{nl}ocurrió aquel terrible incidente..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Por favor, cuénteme en detalle lo que vio{nl}ese día como primer testigo."
+            },
+            {
+                "name": "Sahwit",
+                "text": "El día del incidente, les dije a ambas que vinieran{nl}a la 4.ª planta del salón de eventos a las 10:00 p. m."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:cling}{flash}¿Por qué a las 10:00 p. m.?{nl}Eso es una hora completa después del cierre."
+            },
+            {
+                "name": "Sahwit",
+                "text": "La señorita Byrde dijo que ese horario era mejor porque quería completar el registro de seguridad y ducharse primero."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Entonces la señorita Nakagi intervino, diciendo que quería{nl}aprovechar ese tiempo para practicar el espectáculo..."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Yo, como encargado, estaba ocupándome de diversas tareas administrativas..."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Serían unos quince minutos después del cierre, supongo.{nl}Bajé al escenario del primer piso y esperé a que llegara la hora."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Ya veo..."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Entonces escuché a las dos{nl}discutiendo desde el piso de arriba."
+            },
+            {
+                "name": "Sahwit",
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}Cuando miré hacia arriba, vi a la señorita Byrde{nl}empujar a la señorita Nakagi desde la 4.ª planta."
+            },
+            {
+                "name": "Sahwit",
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Crime_Scene}{showTextbox}Y entonces la señorita Nakagi cayó justo ante mis ojos.{p:500}La escena se desplazó hacia abajo para revelar más del lugar del crimen...{nl}Nunca volvió a despertar..."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Ugh..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}{color:lightblue}(¿Hay algo más que deba preguntarle?){setState:office_intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Office_Default": [
+            {
+                "text": "{sprite:Sahwit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}"
+            }
+        ],
+        "Office_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}No hay nada interesante aquí."
+            }
+        ],
+        "Office_evidence_loud_sound": [
+            {
+                "text": "{jumpIf:detention_center_done,Office_LoudSound_A,Office_LoudSound_B}{sectionEnd}"
+            }
+        ],
+        "Office_LoudSound_A": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{color:white}Correcto. El día del incidente,{nl}¿escuchó algún sonido sospechoso?"
+            },
+            {
+                "name": "Sahwit",
+                "text": "{sprite:Sahwit[\"Nervous\"]}...Ah.{nl}Si se refiere a eso..."
+            },
+            {
+                "name": "Sahwit",
+                "text": "Fue un sonido que ni siquiera quiero recordar...{nl}algo increíblemente fuerte."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Si ese fue el sonido de la caída de la señorita Nakagi,{nl}entonces debió de ser alrededor de las 10:05 p. m...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Eso significa que la hora es completamente distinta{nl}del sonido que dijo haber oído Maggey...)"
+            },
+            {
+                "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}\"Ruido fuerte\" actualizado al acta del juicio."
+            },
+            {
+                "name": "Sahwit",
+                "text": "{blip:1}{color:white}{sprite:Sahwit[\"Stand\"]}...Sí.{nl}Eso es todo."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Muy bien. Creo que eso es todo por aquí.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Cuando tenga suficiente información, iré al tribunal.{nl}¡Allí sacaré la verdad a la luz!){setAction:present,false}{setState:office_done,true}{sectionEnd}"
+            }
+        ],
+        "Office_evidence_default": [
+            {
+                "name": "Sahwit",
+                "text": "{blip:1}{color:white}{showCharacter}{sprite:Sahwit[\"Stand\"]}¿Eh?{nl}¿De qué está hablando?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(No parece tener ni idea.)"
+            },
+            {
+                "text": "{jumpIf:evidence_loud_sound_updated,Office_evidence_default_2}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Siento que aún hay cosas que debo preguntarle.{nl}Debería investigar en otro lugar y volver más tarde.){sectionEnd}"
+            }
+        ],
+        "Office_evidence_default_2": [
+            {
+                "text": "{skip:0}{sectionEnd}"
+            }
+        ]
+    }
+}
