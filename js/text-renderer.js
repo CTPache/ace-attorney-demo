@@ -161,9 +161,11 @@ function processFadeBatch() {
                 }
                 character.style.opacity = 1;
                 activeCharacterFadeTarget = '1';
+                characterIsVisible = true;
             } else {
                 character.style.opacity = 0;
                 activeCharacterFadeTarget = '0';
+                characterIsVisible = false;
             }
             maxWait = Math.max(maxWait, charFadeDuration);
         } else if (segment.type === 'fadeBg') {
@@ -246,8 +248,10 @@ function finishFadeBatchInstant() {
                     i++;
                 }
                 character.style.opacity = 1;
+                characterIsVisible = true;
             } else {
                 character.style.opacity = 0;
+                characterIsVisible = false;
             }
             void character.offsetWidth;
             character.style.transition = '';
@@ -342,7 +346,9 @@ function processNextChar() {
         typingInterval = setTimeout(processNextChar, 200);
     } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
         character.style.transition = "none";
-        character.style.opacity = (segment.type === 'showCharacter') ? 1 : 0;
+        const isVisible = (segment.type === 'showCharacter');
+        character.style.opacity = isVisible ? 1 : 0;
+        characterIsVisible = isVisible;
         void character.offsetWidth;
         character.style.transition = "";
         segmentIndex++;
@@ -355,6 +361,7 @@ function processNextChar() {
         // Explicitly show character (mimic {showCharacter})
         character.style.transition = "none";
         character.style.opacity = 1;
+        characterIsVisible = true;
         void character.offsetWidth;
         character.style.transition = "";
 
@@ -506,6 +513,7 @@ function finishTyping() {
             // Instant sprite change + Show Character
             character.style.transition = "none";
             character.style.opacity = 1;
+            characterIsVisible = true;
             void character.offsetWidth;
             character.style.transition = "";
 
@@ -514,7 +522,9 @@ function finishTyping() {
         } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
             // Instant toggle
             character.style.transition = "none";
-            character.style.opacity = (segment.type === 'showCharacter') ? 1 : 0;
+            const isVisible = (segment.type === 'showCharacter');
+            character.style.opacity = isVisible ? 1 : 0;
+            characterIsVisible = isVisible;
             void character.offsetWidth;
             character.style.transition = "";
             activeCharacterFadeTarget = null;

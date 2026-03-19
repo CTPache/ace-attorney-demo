@@ -478,3 +478,6 @@ window.toggleScreenMode = toggleScreenMode;
 window.switchScreen = switchScreen;
 window.openConfigMenu = openConfigMenu;
 window.closeConfigMenu = closeConfigMenu;
+
+if (document.getElementById('config-save-btn')) document.getElementById('config-save-btn').addEventListener('click', () => { window.saveGame(1); });
+if (document.getElementById('config-load-btn')) document.getElementById('config-load-btn').addEventListener('click', () => { window.loadGame(1); });

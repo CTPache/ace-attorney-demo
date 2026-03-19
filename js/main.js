@@ -226,9 +226,12 @@ async function fetchSceneDataWithFallback(scenePath, languageCode) {
 }
 
 // Function to load game data (exposed globally)
-window.loadGameData = async function(jsonPath, startSection = null) {
+window.loadGameData = async function(jsonPath, startSection = null, isLoadingSave = false) {
     const requestedPath = normalizeScenePath(jsonPath);
-    currentSceneRequestPath = requestedPath;
+    // Don't overwrite the global if this is just a pre-load or restore step where we handle it.
+    if (!isLoadingSave) {
+        currentSceneRequestPath = requestedPath;
+    }
 
     console.log(`Loading game data from: ${requestedPath} (lang: ${currentLanguage})`);
 
@@ -301,17 +304,21 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         }
         
         // Set initial globals
-        initialSectionName = currentSectionName;
-        currentLineIndex = 0;
-        
+        if (!isLoadingSave) {
+            initialSectionName = currentSectionName;
+            currentLineIndex = 0;
+        }
+
         // Re-run preload (this updates the new objects in-place with blob URLs)
         await preloadAssets();
 
         // Clear top screen layers before starting the new scene
         if (typeof clearTopScreen === 'function') clearTopScreen();
 
-        // Start the game logic
-        startGame();
+        if (!isLoadingSave) {
+            // Start the game logic normally
+            startGame();
+        }
     } catch (error) {
         console.error('Error loading game script:', error);
         const message = (typeof window.t === 'function')

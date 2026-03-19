@@ -98,9 +98,13 @@
                                 <option value="EN">English</option>
                                 <option value="ES">Español</option>
                                 <option value="JP">日本語</option>
-                            </select>
-                        </label>
-                        <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
+</select>
+                          </label>
+                          <div class="config-row save-load-row" style="display: flex; gap: 10cqh; margin-top: 2cqh; margin-bottom: 2cqh;">
+                              <button id="config-save-btn" data-i18n="ui.save" style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Save</button>
+                              <button id="config-load-btn" data-i18n="ui.load" style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Load</button>
+                          </div>
+                          <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
                         <button id="config-close-btn" data-i18n="ui.close">Close</button>
                     </div>
                 </div>
@@ -201,6 +205,7 @@
     <script src="js/court-record.js"></script>
     <script src="js/topics.js"></script>
     <script src="js/lifebar.js"></script>
+    <script src="js/save-load.js"></script>
     <script src="js/title-screen.js"></script>
     <script src="js/case-select.js"></script>
     <script src="js/main.js"></script>
@@ -208,3 +213,4 @@
 </body>
 
 </html>
+

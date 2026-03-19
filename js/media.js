@@ -37,6 +37,7 @@ function playBGM(musicName, fadeIn = false) {
     if (musicPath) {
         // Stop current BGM if playing
         stopBGM(false);
+        currentBGMKey = musicName;
 
         if (Array.isArray(musicPath)) {
             const introPath = musicPath[0];
@@ -112,11 +113,13 @@ function stopBGM(fadeOut = true) {
             // But since currentBGM is global, we set it to null so the engine knows "active" music is gone
             if (currentBGM === audio) {
                 currentBGM = null;
+                currentBGMKey = null;
             }
         } else {
             currentBGM.pause();
             currentBGM.currentTime = 0;
             currentBGM = null;
+            currentBGMKey = null;
         }
     }
 }
@@ -490,16 +493,19 @@ window.moveBackgroundByName = moveBackgroundByName;
 function changeForeground(fgName) {
     if (!fgName) {
         foregroundElement.style.backgroundImage = 'none';
+        currentForegroundKey = "";
         return;
     }
     const fgUrl = foregrounds[fgName];
     if (fgUrl) {
         foregroundElement.style.backgroundImage = `url('${fgUrl}')`;
         foregroundElement.style.opacity = '1';
+        currentForegroundKey = fgName;
     } else {
         // Fallback to clear if not found? Or keep previous?
         // Best to clear if explicitly asked but not found to avoid ghost images
         foregroundElement.style.backgroundImage = 'none';
+        currentForegroundKey = "";
     }
 }
 

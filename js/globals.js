@@ -59,6 +59,9 @@ let autoPlayMaxExtraDelay = 4500;
 let dialogueHistory = [];
 const maxDialogueHistoryEntries = 300;
 let currentBGM = null; // Track current background music
+let currentBGMKey = null; // String key of current playing BGM
+let currentForegroundKey = ""; // Track current foreground
+let characterIsVisible = true; // Track if character is shown or hidden
 
 
 // Config
