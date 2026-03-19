@@ -35,8 +35,7 @@ btnMoveBack.addEventListener('click', () => {
 function renderMoveMenu() {
     moveList.innerHTML = '';
     
-    const currentLocData = investigations[currentBackgroundKey];
-    const moveOptions = (currentLocData && currentLocData.move) ? currentLocData.move : [];
+    const moveOptions = typeof sceneMoveLocations !== 'undefined' ? sceneMoveLocations : [];
 
     if (moveOptions.length === 0) {
         movePreviewImage.style.display = 'none';

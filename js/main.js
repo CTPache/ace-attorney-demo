@@ -24,9 +24,23 @@ function getScenePathParts(scenePath) {
         return null;
     }
 
+    // For case-based structure: assets/scenes/[CaseName]/[Language]/[SceneName].json
+    // We want baseRelativePath to be the path without the language code for reconstruction
+    let caseFolder = '';
     let baseSegments = segments;
-    if (SCENE_LANGUAGES.includes(segments[0].toUpperCase())) {
-        baseSegments = segments.slice(1);
+    
+    // If there are multiple segments, first is likely the case folder
+    if (segments.length > 1) {
+        caseFolder = segments[0];
+        baseSegments = segments;
+        
+        // Check if second segment is a language code and remove it
+        if (SCENE_LANGUAGES.includes(segments[1].toUpperCase())) {
+            baseSegments = [segments[0], ...segments.slice(2)];
+        }
+    } else if (SCENE_LANGUAGES.includes(segments[0].toUpperCase())) {
+        // Single segment that is a language - keep it (legacy compatibility)
+        baseSegments = segments;
     }
 
     if (baseSegments.length === 0) {
@@ -35,16 +49,58 @@ function getScenePathParts(scenePath) {
 
     return {
         prefix,
-        baseRelativePath: baseSegments.join('/')
+        baseRelativePath: baseSegments.join('/'),
+        caseFolder
     };
 }
 
 function buildScenePathForLanguage(scenePath, languageCode) {
-    const parts = getScenePathParts(scenePath);
-    if (!parts) return normalizeScenePath(scenePath);
+    const normalized = normalizeScenePath(scenePath);
+    const marker = 'assets/scenes/';
+    const idx = normalized.indexOf(marker);
+
+    if (idx === -1) {
+        // Path doesn't contain marker, return as-is
+        return normalized;
+    }
 
     const lang = String(languageCode || 'EN').toUpperCase();
-    return `${parts.prefix}${lang}/${parts.baseRelativePath}`;
+    const prefix = normalized.substring(0, idx + marker.length);
+    const relativePath = normalized.substring(idx + marker.length);
+    const segments = relativePath.split('/').filter(Boolean);
+
+    if (segments.length === 0) {
+        return normalized;
+    }
+
+    // Detect if path already contains a language code
+    // Check first segment or second segment (in case of FlyHigh/EN/scene.json)
+    let langIndex = -1;
+    for (let i = 0; i < Math.min(2, segments.length); i++) {
+        if (SCENE_LANGUAGES.includes(segments[i].toUpperCase())) {
+            langIndex = i;
+            break;
+        }
+    }
+
+    if (langIndex !== -1) {
+        // Language found - replace it
+        segments[langIndex] = lang;
+        return prefix + segments.join('/');
+    } else {
+        // No language found - need to insert it
+        // For paths like "FlyHigh/scene.json", insert after first segment (case folder)
+        // For paths like "scene.json" (bare scene name), prepend current case
+        if (segments.length === 1) {
+            // Bare scene name - use current case if available
+            const caseFolder = String(currentCase || defaultCase || 'FlyHigh');
+            return `${prefix}${caseFolder}/${lang}/${segments[0]}`;
+        } else {
+            // Multi-segment path like "FlyHigh/scene.json" - insert language after first segment
+            segments.splice(1, 0, lang);
+            return prefix + segments.join('/');
+        }
+    }
 }
 
 function getSceneTranslationKeyFromPath(scenePath) {
@@ -66,6 +122,33 @@ function getSceneLoadCandidates(scenePath, languageCode) {
     });
 
     return uniqueCandidates;
+}
+
+function getSanitizedCase(caseValue) {
+    const normalized = String(caseValue || '')
+        .replace(/\\/g, '/')
+        .replace(/\.json$/i, '')
+        .replace(/^\/+|\/+$/g, '');
+
+    if (!normalized) return '';
+
+    // Allow alphanumeric, underscores, hyphens (typical case folder names)
+    if (!/^[A-Za-z0-9_\-]+$/.test(normalized)) {
+        return '';
+    }
+
+    return normalized;
+}
+
+function getCaseFromUrl() {
+    try {
+        const urlParams = new URLSearchParams(window.location.search || '');
+        const caseParam = urlParams.get('case');
+        return getSanitizedCase(caseParam);
+    } catch (error) {
+        console.warn('Unable to parse URL case parameter:', error);
+        return '';
+    }
 }
 
 function getLanguageFromUrl() {
@@ -115,8 +198,10 @@ function getInitialScenePath(languageCode) {
     const sceneKeyFromUrl = getInitialSceneKeyFromUrl();
     const sceneKey = sceneKeyFromUrl || fallbackSceneKey;
     const lang = String(languageCode || 'EN').toUpperCase();
+    const caseFolder = String(currentCase || defaultCase || 'FlyHigh');
 
-    return `assets/scenes/${lang}/${sceneKey}.json`;
+    // Return path in the structure: assets/scenes/[CaseName]/[Language]/[SceneName].json
+    return `assets/scenes/${caseFolder}/${lang}/${sceneKey}.json`;
 }
 
 async function fetchSceneDataWithFallback(scenePath, languageCode) {
@@ -176,6 +261,7 @@ window.loadGameData = async function(jsonPath, startSection = null) {
         
         topicsDB = data.Topics || {};
         investigations = data.investigations || {};
+        sceneMoveLocations = data.move || [];
         optionsDB = data.options || {};
         soundsDB = data.sounds || {};
         musicDB = data.music || {};
@@ -269,9 +355,25 @@ window.getGameLanguage = function() {
     return currentLanguage;
 };
 
+window.setGameCase = function(caseValue) {
+    const newCase = getSanitizedCase(caseValue);
+    if (newCase) {
+        currentCase = newCase;
+    }
+};
+
+window.getGameCase = function() {
+    return currentCase;
+};
+
 const languageFromUrl = getLanguageFromUrl();
 if (languageFromUrl) {
     currentLanguage = languageFromUrl;
+}
+
+const caseFromUrl = getCaseFromUrl();
+if (caseFromUrl) {
+    currentCase = caseFromUrl;
 }
 
 async function initializeGame() {

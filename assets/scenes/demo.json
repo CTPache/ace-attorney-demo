@@ -1,0 +1,404 @@
+{
+    "initialSection": "Demo_Main_01",
+    "characters": {
+        "Oldbag": {
+            "Normal": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Normal-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Normal-2.webp"
+            },
+            "Embarrassed": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Embarrassed-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Embarrassed-2.webp"
+            },
+            "Shocked": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Shocked.webp",
+                "time": 680
+            },
+            "ShockedHold": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Shocked2.webp"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Angry-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Angry-2.webp"
+            },
+            "Smirking": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Smirking-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Smirking-2.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "Demo_room": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "Courtroom": "assets/img/backgrounds/Common/Courtroom_witness.webp",
+        "Detention_Center": "assets/img/backgrounds/Common/Detention_Center.png"
+    },
+    "evidence": {
+        "badge": {
+            "name": "Attorney's Badge",
+            "data": "Type: Evidence\nOne of my possessions.",
+            "description": "Without this no one would believe I'm a lawyer.",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "charm": {
+            "name": "Blue Badger's Charm",
+            "data": "Type: Evidence\nGiven to me by Wendy Oldbag.",
+            "description": "A small charm of the Blue Badger's head. Given to me by Wendy Oldbag.",
+            "image": "assets/img/evidence/charm.png"
+        },
+        "charm2": {
+            "name": "Blue Badger's Charm",
+            "data": "Type: Evidence\nGiven to me by Wendy Oldbag.",
+            "description": "A small charm of the Blue Badger's head. Found on the ground of the demo room.",
+            "image": "assets/img/evidence/charm.png"
+        }
+    },
+    "profiles": {
+        "Phoenix": {
+            "name": "Phoenix Wright",
+            "data": "Age: 24\nGender: Male",
+            "description": "That's me. I'm a defense attorney.",
+            "image": "assets/img/profiles/phoenix.png"
+        }
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "damage": "assets/audio/se/damage.ogg"
+    },
+    "music": {
+        "investigation": "assets/audio/bgm/bgm001.ogg"
+    },
+    "investigations": {
+        "Demo_room": {
+            "default": "Demo_Examine_Default",
+            "points": [
+                {
+                    "bounds": [
+                        24,
+                        5,
+                        38,
+                        5,
+                        38,
+                        32,
+                        24,
+                        32
+                    ],
+                    "label": "Demo_Examine_Sign"
+                },
+                {
+                    "bounds": [
+                        20,
+                        55,
+                        35,
+                        55,
+                        35,
+                        70,
+                        20,
+                        70
+                    ],
+                    "label": "Demo_Examine_Ladder"
+                }
+            ]
+        }
+    },
+    "Topics": {
+        "Demo_showcase": {
+            "text": "Showcase demo features",
+            "label": "Demo_showcase"
+        },
+        "Demo_gameOverTest": {
+            "text": "Test game over feature",
+            "label": "Demo_gameOverTest"
+        },
+        "Demo_topicUnlockTest": {
+            "text": "Test topic unlock feature",
+            "label": "Demo_topicUnlockTest"
+        },
+        "Demo_topicAnimationTest": {
+            "text": "Test animation feature",
+            "label": "Demo_animationTest"
+        }
+    },
+    "options": {
+        "DemoOptions": {
+            "text": "Select your answer:",
+            "options": [
+                {
+                    "text": "Edgeworth",
+                    "label": "Demo_option_1"
+                },
+                {
+                    "text": "Phoenix Wright",
+                    "label": "Demo_option_2"
+                },
+                {
+                    "text": "The Paynes",
+                    "label": "Demo_option_3"
+                }
+            ]
+        }
+    },
+    "move": [
+        {
+            "label": "Joypolis",
+            "target": "Joypolis_Start",
+            "preview": "JoyPolis",
+            "json": "assets/scenes/FlyHigh/joypolis.json"
+        },
+        {
+            "label": "Detention Center",
+            "target": "Detention_Center_Start",
+            "preview": "Detention_Center",
+            "json": "assets/scenes/FlyHigh/detention_center.json"
+        },
+        {
+            "label": "Demo room",
+            "target": "Demo_Main_01",
+            "preview": "Demo_room",
+            "json": "assets/scenes/demo.json"
+        }
+    ],
+    "gameScript": {
+        "Demo_Main_01": [
+            {
+                "text": "{setGameOver:Demo_BadEnding_01}{setState:scenePrefix,Demo}{bg:Demo_room}{jumpIf:demo_Init,Demo_default,Demo_Intro}{sectionEnd}"
+            }
+        ],
+        "Demo_default": [
+            {
+                "text": "{sprite:Oldbag[\"Normal\"]}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Demo_Intro": [
+            {
+                "text": "{addEvidence:badge,false}{addProfile:Phoenix,false}{blip:3}{textSpeed:40}{center}{color:lime}October 14, 10:00 AM{nl}{p:500}Police Department{nl}{p:500}Demo Web Engine Tutorial Room{color:white}{sectionEnd}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{startBGM:investigation,true}{blip:1,false}{color:lightblue}(Another day, another trial. And I have no idea how this engine works...)"
+            },
+            {
+                "text": "{color:white}{blip:2}Hrngh... Hrrrmph!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Hello? Is someone there?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{flash}{playSound:damage}{showCharacter}{sprite:Oldbag[\"Angry\"]}Don't ignore me, you spiky-haired whippersnapper!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}W-Wendy Oldbag?!{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} What are you doing here?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}I was hired as the security guard/tutorial master for this shiny new web engine!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}It's high-tech stuff. Unlike your suit. So pay attention!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "You can {color:red}Examine{color:white} the area or {color:lime}Talk{color:white} to me to learn the ropes.{stopBGM:true}{topicUnlock:Demo_showcase}{topicUnlock:Demo_topicAnimationTest}{topicUnlock:Demo_gameOverTest}{setState:demo_Init,true}{sectionEnd}"
+            }
+        ],
+        "Demo_animationTest": [
+            {
+                "text": "{bg:Courtroom}Check this out! {hideTextbox}{playAnimation:Don_break_melon}{showTextbox} Startling, isn't it?"
+            },
+            {
+                "text": "{bg:Demo_room}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Demo_showcase": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Normal\"]}Alright, listen fast! {textSpeed:10}I can talk really quickly when I'm excited about security protocols!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}{textSpeed:40}Or... {p:200}{textSpeed:80}I can... {p:200}take... {textSpeed:150}my... {textSpeed:200}time."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{textSpeed:40}{blip:1,false}{color:lightblue}(Please don't.)"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{color:white}{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh! And look at this! {flash}{playSound:damage}{p:100}{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} I can emote!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Normal\"]}I can also master the art of stealth... {fadeOutCharacter}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "Wait, where did she go?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{fadeInCharacter}Right behind you! {blip:2,false}{sprite:Oldbag[\"Normal\"]}{color:lightblue}(Telepathic communication enabled!)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:white}How are you doing that without moving your mouth?!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}Trade secret, dearie."
+            },
+            {
+                "text": "{jumpIf:evidence_charm,Demo_Charm_obtained,Demo_Charm_notObtained}{sectionEnd}"
+            }
+        ],
+        "Demo_Charm_notObtained": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}Here, have a souvenir."
+            },
+            {
+                "text": "{blip:0}{addEvidence:charm,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm added to Court Record."
+            },
+            {
+                "text": "{color:white}{setState:Demo_Examine_Sign_visited,false}{jump:Demo_Charm_obtained}{sectionEnd}"
+            }
+        ],
+        "Demo_Charm_obtained": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}Anyway, that's it for the basics.{topicUnlock:Demo_topicUnlockTest}{sectionEnd}"
+            }
+        ],
+        "Demo_gameOverTest": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Angry\"]}Let's test your survival instincts! I'm going to ask you a very important question."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{showLifeBar:0}See that life bar? If you upset me, it goes down. Simple as that."
+            },
+            {
+                "name": "Oldbag",
+                "text": "Who is the most handsome, talented prosecutor in the world?"
+            },
+            {
+                "text": "{checkpoint:Demo_gameOverTest}{option:DemoOptions}"
+            }
+        ],
+        "Demo_option_1": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Embarrassed\"]}Oh, you know it! My dear Edgey-poo! {p:500}{sprite:Oldbag[\"Normal\"]}You have good taste.{hideLifeBar}{sectionEnd}"
+            }
+        ],
+        "Demo_option_2": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{showLifeBar:5}{sprite:Oldbag[\"Angry\"]}You?! Don't make me laugh! {playSound:damage}{flash}{lifeMod:-5}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Ouch... that spiritual damage is real.)"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{color:white}Watch your mouth!{hideLifeBar}{sectionEnd}"
+            }
+        ],
+        "Demo_option_3": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{showLifeBar:0}{sprite:Oldbag[\"Angry\"]}WHAT?! The Paynes?! {playSound:damage}{flash}{lifeMod:-10}{p:500}{hideLifeBar}{sectionEnd}"
+            }
+        ],
+        "Demo_BadEnding_01": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}Get out of my sight! You're banned from the demo!"
+            },
+            {
+                "text": "{blip:3}{center}{color:red}GUILTY{color:white}{nl}{p:1000}The defense has lost the will to live.{endGame}"
+            }
+        ],
+        "Demo_topicUnlockTest": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Smirking\"]}Oh, and one more thing! You can present evidence during conversations!"
+            },
+            {
+                "name": "Oldbag",
+                "text": "Try showing me your {color:yellow}Attorney's Badge{color:white}.{sectionEnd}"
+            }
+        ],
+        "Demo_evidence_badge": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Smirking\"]}A badge? Looks like a toy. Are you sure you're a lawyer?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Everyone says that...){color:white}{sectionEnd}"
+            }
+        ],
+        "Demo_evidence_default": [
+            {
+                "name": "Oldbag",
+                "text": "{blip:1}{sprite:Oldbag[\"Normal\"]}What is this junk? Keep your trash to yourself.{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Sign": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}A sign on the wall. 'Seiri Seiton'?"
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Angry\"]}It means 'Organization'! Something you clearly lack!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I guess my desk doesn't exactly fit that description...)"
+            },
+            {
+                "text": "{color:white}{jumpIf:evidence_charm,Demo_Examine_Sign_Charm_obtained}{jumpIf:evidence_charm2,Demo_Examine_Sign_Charm_obtained}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Demo_Examine_Sign_Charm_obtained": [
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Smirking\"]}That's where I found that charm I gave you."
+            },
+            {
+                "text": "{blip:0}{updateEvidence:charm,charm2,true}{playSound:evidenceUnlock}{color:lightblue}Blue Badger Charm updated to Court Record.{color:white}{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Ladder": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}It's a ladder."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]}Hold it! That is a STEP-ladder!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "What's the difference? You climb them both."
+            },
+            {
+                "name": "Oldbag",
+                "text": "{sprite:Oldbag[\"Angry\"]}Cultural myopia! You need to broaden your mind!{sectionEnd}"
+            }
+        ],
+        "Demo_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{hideCharacter}There's nothing particularly interesting here."
+            }
+        ]
+    }
+}

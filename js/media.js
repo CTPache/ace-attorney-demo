@@ -436,6 +436,7 @@ function changeBackground(bgName) {
     if (typeof bgData === 'object' && bgData.path) {
         console.log(`Setting positioned background: ${bgData.path}`);
         backgroundElement.style.backgroundImage = `url('${bgData.path}')`;
+        backgroundElement.style.opacity = '1';
         currentBackgroundKey = bgName;
         
         // Apply default position if available
@@ -453,6 +454,7 @@ function changeBackground(bgName) {
         // Simple string background path
         console.log(`Setting string background: ${bgData}`);
         backgroundElement.style.backgroundImage = `url('${bgData}')`;
+        backgroundElement.style.opacity = '1';
         currentBackgroundKey = bgName;
         resetBackgroundPosition();
     }
@@ -497,8 +499,9 @@ function changeForeground(fgName) {
     const fgUrl = foregrounds[fgName];
     if (fgUrl) {
         foregroundElement.style.backgroundImage = `url('${fgUrl}')`;
+        foregroundElement.style.opacity = '1';
     } else {
-        // Fallback to clear if not found? Or keep previous? 
+        // Fallback to clear if not found? Or keep previous?
         // Best to clear if explicitly asked but not found to avoid ghost images
         foregroundElement.style.backgroundImage = 'none';
     }

@@ -15,6 +15,7 @@ let optionsDB = {};
 let soundsDB = {};
 let musicDB = {};
 let videosDB = {};
+let sceneMoveLocations = [];
 const gameState = {};
 let gameScript = {};
 
@@ -63,6 +64,8 @@ let currentBGM = null; // Track current background music
 // Config
 const defaultTextSpeed = 30;
 const defaultInitialSceneKey = 'intro';
+const defaultCase = 'FlyHigh';
+let currentCase = defaultCase;
 let currentTextSpeed = defaultTextSpeed;
 let currentBlipType = 1;
 let currentTalkingAnimationEnabled = true;

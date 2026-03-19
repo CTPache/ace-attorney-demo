@@ -5,17 +5,9 @@
             "cover": "assets/img/case_covers/FlyHigh_Cover.png",
             "entry": "investigation1",
             "Chapters": {
-                "demo": {
-                    "name": "Demo Scene",
-                    "scene": "assets/scenes/demo.json",
-                    "courtRecord": {
-                        "evidence": {},
-                        "profiles": {}
-                    }
-                },
                 "investigation1": {
                     "name": "Investigation",
-                    "scene": "assets/scenes/intro.json",
+                    "scene": "assets/scenes/FlyHigh/intro.json",
                     "courtRecord": {
                         "evidence": {
                             "badge": {
@@ -33,6 +25,14 @@
                                 "image": "assets/img/profiles/phoenix.png"
                             }
                         }
+                    }
+                },
+                "courtroom1": {
+                    "name": "Courtroom",
+                    "scene": "assets/scenes/FlyHigh/courtroom.json",
+                    "courtRecord": {
+                        "evidence": {},
+                        "profiles": {}
                     }
                 }
             }

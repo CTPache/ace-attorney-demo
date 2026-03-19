@@ -1,0 +1,236 @@
+{
+    "initialSection": "Floor4_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "characters": {
+        "Gumshoe": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "LookingAway": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "ScratchingHead": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
+                "time": 600
+            },
+            "ScratchingHead2": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
+            }
+        }
+    },
+    "backgrounds": {
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png",
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png"
+    },
+    "music": {
+        "investigation": [
+            "assets/audio/bgm/bgm001.m4a",
+            "assets/audio/bgm/bgm001lp.m4a"
+        ]
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "cling": "assets/audio/se/cling.ogg",
+        "shake": "assets/audio/se/se026.m4a",
+        "jingle": "assets/audio/bgm/bgm016.m4a"
+    },
+    "evidence": {
+        "mask_photo": {
+            "name": "Foto de la máscara",
+            "data": "Tipo: Prueba\n",
+            "description": "La máscara de Steel Samurai que llevaba la víctima en el momento del incidente. La zona de la ceja está ligeramente abollada. No hay otros daños. El moño superior también está intacto.",
+            "image": "assets/img/evidence/Samurai.png"
+        }
+    },
+    "investigations": {
+        "Floor4": {
+            "default": "Floor4_Examine_Default",
+            "points": []
+        }
+    },
+    "move": [
+        {
+            "label": "Oficina",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/FlyHigh/office.json"
+        },
+        {
+            "label": "Centro de detención",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/FlyHigh/detention_center.json"
+        }
+    ],
+    "gameScript": {
+        "Floor4_Init": [
+            {
+                "text": "{setState:scenePrefix,Floor4}{jumpIf:floor4_done,Floor4_Default,Floor4_Start}{skip:0}"
+            }
+        ],
+        "Floor4_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Floor4_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}No hay nada interesante aquí."
+            }
+        ],
+        "Floor4_Start": [
+            {
+                "text": "{bg:Floor4}{center}{color:lime}{blip:3}{showTextbox}17 de septiembre{nl}Joypolis, Salón de eventos 4.ª planta"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation,true}Maggey es una pobre chica, amigo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}Dicen que si un perro sale a caminar, le cae un palo encima..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Y Maggey no deja de llevarse palos; como si solo le pasaran perrerías..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{shake:500}¡Seguro que esta vez también es un error!{nl}¡No es posible que ella haya matado a nadie!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}Te entiendo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...{nl}Ah, cierto.{nl}Hay algo que quería decirte, entre nosotros."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}Esto es alto secreto.{nl}No puedes decírselo a nadie."
+            },
+            {
+                "name": "Phoenix",
+                "text": "¿El qué?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "La víctima, la señorita Nakaki...{nl}Ella era especialista, ¿no?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "La verdad es que...{p:300} antes...{nl}{sprite:Gumshoe[\"Determined\"]}{playSound:shake}{flash}{shake:500}¡yo también quería ser especialista!{p:400}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}(...¡¿Y-y a mi qué me cuentas?!)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation,true}¿E-Eso es todo?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}En fin, {nl} mira esto."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Es la máscara del Samurái de Acero que llevaba la víctima,{nl}la señorita Nakaki, en el momento del incidente."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Ya la veo, pero...{nl}¿qué le pasa?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "La zona de la ceja está un poco abollada,{nl}pero aparte de eso no tiene ni un rasguño."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Solo está abollada la zona de la ceja...)"
+            },
+            {
+                "text": "{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}\"Foto de la máscara\" añadido al acta del juicio."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}Lo sé porque yo mismo quería ser especialista."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{flash}{shake:500}¡El moño es la esencia del Samurái de Acero, amigo!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Así que ella debió de...{playSound:shake}{flash}{shake:500}{nl}incluso al caer, ¡protegió ese moño con su vida!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... dudo mucho que eso sea cierto.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{color:white}{blip:1}No hay forma de que Maggey matase{nl}a alguien tan admirable."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "No, sin importar de quién se trate,{nl}¡Maggey jamás cometería un asesinato!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "En eso estamos de acuerdo.{nl}Demostraré su inocencia, lo prometo."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Muy bien. Creo que aquí ya está todo.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Cuando reúna toda la información, iré al tribunal.{nl}¡Allí descubriré la verdad!){color:white}{setState:floor4_done,true}{jump:Floor4_Default}{sectionEnd}"
+            }
+        ],
+        "Floor4_evidence_default": [
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}{color:white}{showCharacter}{sprite:Gumshoe[\"Thinking\"]}¿Eh?{nl}¿Qué es eso?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(No parece saber nada al respecto.){sectionEnd}"
+            }
+        ]
+    }
+}
