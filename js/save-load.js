@@ -1,6 +1,15 @@
 console.log("Save/Load module loaded");
 
 window.saveGame = function(slot = 1) {
+    if (!currentSceneRequestPath || currentSceneRequestPath === "") {
+        console.warn("Attempted to save from a non-game state.");
+        const message = (typeof window.t === 'function') 
+            ? window.t('ui.saveError', 'Cannot save from this menu!') 
+            : 'Cannot save right now!';
+        alert(message);
+        return;
+    }
+
     const saveData = {
         gameState: gameState || {},
         evidenceInventory: evidenceInventory || [],
@@ -13,6 +22,7 @@ window.saveGame = function(slot = 1) {
         currentLanguage: typeof currentLanguage !== 'undefined' ? currentLanguage : "EN",
         currentSceneRequestPath: typeof currentSceneRequestPath !== 'undefined' ? currentSceneRequestPath : "",
         currentSectionName: typeof currentSectionName !== 'undefined' ? currentSectionName : "",
+        isScenePlaying: typeof isScenePlaying !== 'undefined' ? isScenePlaying : true,
         currentLineIndex: typeof currentLineIndex !== 'undefined' ? currentLineIndex : 0,
         dialogueHistory: typeof dialogueHistory !== 'undefined' ? dialogueHistory : [],
         currentBackgroundKey: typeof currentBackgroundKey !== 'undefined' ? currentBackgroundKey : "",
@@ -47,13 +57,23 @@ window.loadGame = async function(slot = 1) {
     try {
         const saveData = JSON.parse(saveString);
         
+        if (!saveData.currentSceneRequestPath || saveData.currentSceneRequestPath === "") {
+            console.warn("Save file missing valid scene path.");
+            alert("This save file appears to be empty or corrupted.");
+            return;
+        }
+
         // 1. Close menus if open
-        if (typeof hideConfigMenu === 'function' && !configMenu.classList.contains('hidden')) {
+        if (typeof hideConfigMenu === 'function' && typeof configMenu !== 'undefined' && !configMenu.classList.contains('hidden')) {
             hideConfigMenu();
         }
         if (typeof toggleCourtRecord === 'function' && typeof isCourtRecordOpen !== 'undefined' && isCourtRecordOpen) {
             toggleCourtRecord(); // Close it
         }
+
+        // Fix visibility of game screens when loading from Title Screen
+        if (typeof window.hideTitleScreen === 'function') window.hideTitleScreen();
+        if (typeof window.hideCaseSelect === 'function') window.hideCaseSelect();
 
         // 2. Clear auto-play + timers
         if (typeof clearAutoPlayTimer === 'function') clearAutoPlayTimer();
@@ -61,7 +81,10 @@ window.loadGame = async function(slot = 1) {
         if (typeof fastForwardTimeout !== 'undefined' && fastForwardTimeout) clearTimeout(fastForwardTimeout);
         if (typeof isFastForwarding !== 'undefined') isFastForwarding = false;
         
-        // 3. Check if scene changed
+        // 3. Clear Active Screens BEFORE restoring globals so our vars aren't overridden
+        if (typeof clearTopScreen === 'function') clearTopScreen();
+
+        // 4. Check if scene changed
         const sceneChanged = currentSceneRequestPath !== saveData.currentSceneRequestPath;
         const langChanged = currentLanguage !== saveData.currentLanguage;
 
@@ -78,8 +101,7 @@ window.loadGame = async function(slot = 1) {
             await window.loadGameData(saveData.currentSceneRequestPath, null, true);
         }
 
-        // 4. Restore Globals (Direct assignment, not window.*)
-        // For const objects like gameState, we mutate it
+        // 5. Restore Globals (Direct assignment, not window.*)
         for (const key in gameState) delete gameState[key];
         Object.assign(gameState, saveData.gameState);
         
@@ -101,9 +123,7 @@ window.loadGame = async function(slot = 1) {
         currentBGMKey = saveData.currentBGMKey;
         lastCheckpointSection = saveData.lastCheckpointSection;
 
-        // 5. Restore Visuals & Audio
-        if (typeof clearTopScreen === 'function') clearTopScreen();
-
+        // 6. Restore Visuals & Audio mappings
         if (currentBackgroundKey) {
             changeBackground(currentBackgroundKey);
         }
@@ -111,19 +131,23 @@ window.loadGame = async function(slot = 1) {
             changeForeground(currentForegroundKey);
         }
         
+        const charEl = document.getElementById('character');
         if (currentCharacterName && currentAnimationKey) {
             changeSprite(currentCharacterName, currentAnimationKey);
-            if (characterIsVisible) {
-                character.style.opacity = '1';
-            } else {
-                character.style.opacity = '0';
+            if (charEl) {
+                charEl.classList.remove('fade-out');
+                charEl.style.transition = 'none';
+                charEl.style.opacity = characterIsVisible ? '1' : '0';
+                void charEl.offsetWidth;
+                charEl.style.transition = '';
             }
         } else {
-            character.style.opacity = '0'; // Hide fallback
+             if (charEl) charEl.style.opacity = '0';
         }
 
         if (currentBGMKey) {
-            playBGM(currentBGMKey, false); // No fade in, restore immediately
+            // Replay properly instead of skipping fade
+            playBGM(currentBGMKey, false);
         } else {
             if (typeof stopBGM === 'function') stopBGM(false); // Stop if there shouldn't be
         }
@@ -131,15 +155,28 @@ window.loadGame = async function(slot = 1) {
         if (typeof updateHealthUI === 'function') updateHealthUI(0, false);
         if (typeof updateActionButtons === 'function') updateActionButtons();
         
-        // 6. Resume execution at the requested line
+        // 7. Resume execution at the requested line
         if (typeof isWaitingForAutoSkip !== 'undefined') isWaitingForAutoSkip = false;
-        const initialSection = gameScript[currentSectionName];
-        if (initialSection && initialSection[currentLineIndex]) {
-            isScenePlaying = true;
+        
+        isScenePlaying = saveData.isScenePlaying !== undefined ? saveData.isScenePlaying : true;
+
+const savedSection = gameScript[currentSectionName];
+
+        if (!isScenePlaying) {
+            // Not mid-dialogue: re-run the scene's initialSection so the
+            // background, character, and BGM are set up, then it will land
+            // on the investigation menu via {sectionEnd}.
+            if (typeof jumpToSection === 'function' && initialSectionName && gameScript[initialSectionName]) {
+                jumpToSection(initialSectionName);
+            } else if (typeof updateSceneState === 'function') {
+                updateSceneState();
+            }
+        } else if (savedSection && savedSection[currentLineIndex]) {
             if (typeof updateSceneState === 'function') updateSceneState();
-            updateDialogue(initialSection[currentLineIndex]);
+            updateDialogue(savedSection[currentLineIndex]);
         } else {
             console.error("Save state line not found in loaded script.");
+            alert("Warning: Could not resolve saved script line.");
         }
 
     } catch (e) {

@@ -81,6 +81,13 @@
                 <div id="config-menu" class="hidden">
                     <div class="config-card">
                         <h3 data-i18n="ui.configuration">Configuration</h3>
+                        <div class="config-row save-load-row"
+                            style="display: flex; gap: 10cqh; margin-top: 2cqh; margin-bottom: 2cqh;">
+                            <button id="config-save-btn" data-i18n="ui.save"
+                                style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Save</button>
+                            <button id="config-load-btn" data-i18n="ui.load"
+                                style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Load</button>
+                        </div>
                         <div class="config-row config-speed-row">
                             <span data-i18n="ui.autoSpeed">Auto Speed</span>
                             <div class="config-speed-options">
@@ -98,13 +105,9 @@
                                 <option value="EN">English</option>
                                 <option value="ES">Español</option>
                                 <option value="JP">日本語</option>
-</select>
-                          </label>
-                          <div class="config-row save-load-row" style="display: flex; gap: 10cqh; margin-top: 2cqh; margin-bottom: 2cqh;">
-                              <button id="config-save-btn" data-i18n="ui.save" style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Save</button>
-                              <button id="config-load-btn" data-i18n="ui.load" style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Load</button>
-                          </div>
-                          <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
+                            </select>
+                        </label>
+                        <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
                         <button id="config-close-btn" data-i18n="ui.close">Close</button>
                     </div>
                 </div>
@@ -213,4 +216,3 @@
 </body>
 
 </html>
-

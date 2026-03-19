@@ -302,10 +302,12 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
         } else {
             currentSectionName = "Demo_Main_01"; // Fallback
         }
-        
+
+        // Always track the scene's initial section so save-load can replay it
+        initialSectionName = currentSectionName;
+
         // Set initial globals
         if (!isLoadingSave) {
-            initialSectionName = currentSectionName;
             currentLineIndex = 0;
         }
 
