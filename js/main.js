@@ -1,5 +1,4 @@
 
-console.log("Main Loaded");
 
 const SCENE_LANGUAGES = document.getElementById('config-language-select') && document.getElementById('config-language-select').options ? Array.from(document.getElementById('config-language-select').options).map(opt => opt.value.toUpperCase()) : ['EN'];
 
@@ -243,7 +242,6 @@ window.loadGameData = async function(jsonPath, startSection = null) {
     try {
         const { data, resolvedPath } = await fetchSceneDataWithFallback(requestedPath, currentLanguage);
         currentSceneResolvedPath = resolvedPath;
-        console.log(`Scene resolved to: ${resolvedPath}`);
 
         if (typeof window.setCurrentSceneTranslationKey === 'function') {
             window.setCurrentSceneTranslationKey(getSceneTranslationKeyFromPath(resolvedPath));

@@ -1,4 +1,3 @@
-console.log("Script Actions Loaded");
 
 /**
  * Handles non-rendering logic commands (game state, evidence, audio, etc.)
@@ -54,7 +53,6 @@ function executeScriptAction(segment) {
             if (evidenceDB[segment.key] && !evidenceInventory.includes(segment.key)) {
                 evidenceInventory.push(segment.key);
                 gameState['evidence_' + segment.key] = true;
-                console.log(`Added evidence: ${segment.key}`);
                 if (segment.showPopup) {
                     const event = new CustomEvent('evidenceAdded', { detail: { key: segment.key } });
                     document.dispatchEvent(event);
@@ -66,7 +64,6 @@ function executeScriptAction(segment) {
             if (removeIndex > -1) {
                 evidenceInventory.splice(removeIndex, 1);
                 delete gameState['evidence_' + segment.key];
-                console.log(`Removed evidence: ${segment.key}`);
             }
             return true;
         case 'updateEvidence':
@@ -80,7 +77,6 @@ function executeScriptAction(segment) {
             if (evidenceDB[segment.newKey] && !evidenceInventory.includes(segment.newKey)) {
                 evidenceInventory.push(segment.newKey);
                 gameState['evidence_' + segment.newKey] = true;
-                console.log(`Updated evidence ${segment.oldKey} to ${segment.newKey}`);
                 if (segment.showPopup) {
                     const event = new CustomEvent('evidenceAdded', { detail: { key: segment.newKey } });
                     document.dispatchEvent(event);
@@ -90,7 +86,6 @@ function executeScriptAction(segment) {
         case 'addProfile':
             if (profilesDB[segment.key] && !profilesInventory.includes(segment.key)) {
                 profilesInventory.push(segment.key);
-                console.log(`Added profile: ${segment.key}`);
                 if (segment.showPopup) {
                     const event = new CustomEvent('profileAdded', { detail: { key: segment.key } });
                     document.dispatchEvent(event);
@@ -100,7 +95,6 @@ function executeScriptAction(segment) {
         case 'topicUnlock':
             if (!unlockedTopics.includes(segment.topicId)) {
                 unlockedTopics.push(segment.topicId);
-                console.log(`Unlocked topic: ${segment.topicId}`);
             }
             return true;
         case 'sectionEnd':
@@ -131,7 +125,6 @@ function executeScriptAction(segment) {
             return true;
         case 'checkpoint':
             lastCheckpointSection = segment.sectionName;
-            console.log(`Checkpoint saved: ${lastCheckpointSection}`);
             return true;
         case 'stopVideo':
             if (window.stopTopVideoSequence) window.stopTopVideoSequence(true);
@@ -232,7 +225,7 @@ function triggerShake(ms) {
          }, duration);
     } else {
         // Fallback if gameContainer is not found
-        const gc = document.getElementById('game-container');
+        const gc = gameContainer;
         if (gc) {
             activeShakeCount++;
             gc.classList.add('shake');

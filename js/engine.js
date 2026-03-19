@@ -1,4 +1,3 @@
-console.log("Engine Loaded");
 
 let showTopicsOnEnd = false;
 
@@ -123,7 +122,6 @@ function jumpToSection(sectionName) {
 }
 
 function handlePresentEvidence(evidenceId) {
-    console.log(`Presenting evidence: ${evidenceId}`);
     
     // Determine the scene prefix (e.g., "Demo" or "Case1_Part1")
     // This allows for context-sensitive responses.
@@ -151,7 +149,6 @@ function setGameState(key, value) {
     else if (!isNaN(value)) value = parseFloat(value);
     
     gameState[key] = value;
-    console.log(`State updated: ${key} = ${value}`);
 }
 
 function advanceDialogue(force = false) {
@@ -181,7 +178,6 @@ function advanceDialogue(force = false) {
             const line = currentSection[currentLineIndex];
             updateDialogue(line);
         } else {
-            console.log("End of section");
             clearAutoPlayTimer();
             
             // Check if game end is already visible (prevent restart loop)

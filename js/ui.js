@@ -439,7 +439,7 @@ let isSingleScreenMode = false;
 let activeScreen = 'top'; // 'top' or 'bottom'
 
 function updateScreenVisibility() {
-    const topScreen = document.getElementById('game-container');
+    const topScreen = gameContainer;
     const bottomScreen = document.getElementById('bottom-screen');
     const wrapper = document.getElementById('main-wrapper');
 

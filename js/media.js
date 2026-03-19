@@ -1,4 +1,3 @@
-console.log("Media Loaded");
 
 // Audio
 const blipSounds = {
@@ -426,7 +425,6 @@ function setSpriteState(state) {
 
 function changeBackground(bgName) {
     const bgData = backgrounds[bgName];
-    console.log(`changeBackground called with: ${bgName}`, bgData);
     if (!bgData) {
         console.warn(`Background not found: ${bgName}`);
         return;
@@ -434,7 +432,6 @@ function changeBackground(bgName) {
     
     // Check if background is a positioned background (object with path and positions)
     if (typeof bgData === 'object' && bgData.path) {
-        console.log(`Setting positioned background: ${bgData.path}`);
         backgroundElement.style.backgroundImage = `url('${bgData.path}')`;
         backgroundElement.style.opacity = '1';
         currentBackgroundKey = bgName;
@@ -452,7 +449,6 @@ function changeBackground(bgName) {
         }
     } else if (typeof bgData === 'string') {
         // Simple string background path
-        console.log(`Setting string background: ${bgData}`);
         backgroundElement.style.backgroundImage = `url('${bgData}')`;
         backgroundElement.style.opacity = '1';
         currentBackgroundKey = bgName;

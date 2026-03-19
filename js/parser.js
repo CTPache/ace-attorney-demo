@@ -1,4 +1,3 @@
-console.log("Parser Loaded");
 
 // Define patterns globally to avoid recompilation
 const patterns = [

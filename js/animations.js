@@ -22,9 +22,7 @@ window.AnimationManager = (function() {
         createdLayers.forEach(layer => layer.remove());
         createdLayers = [];
         
-        // Reset Character Element
-        const character = document.getElementById('character');
-        if (character) {
+        // Reset Character Element        if (character) {
             character.style.animation = '';
             character.className = 'layer'; 
             character.style.animationDuration = '';
@@ -47,7 +45,7 @@ window.AnimationManager = (function() {
             currentRunId++;
             const myRunId = currentRunId;
 
-            const container = document.getElementById('game-container');
+            const container = gameContainer;
             if (!container) {
                 console.error("Game container not found");
                 resolve();

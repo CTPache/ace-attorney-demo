@@ -1,4 +1,3 @@
-console.log("Text Renderer Loaded");
 
 let isWaitingForAnimation = false;
 let activeCharacterFadeTarget = null;
