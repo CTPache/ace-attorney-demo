@@ -49,6 +49,7 @@ The JSON file acts as the central database.
   "evidence": { ... },
   "profiles": { ... },
   "investigations": { ... },
+  "move": [ ... ],
   "Topics": { ... },
   "sounds": { ... },
   "music": { ... },
@@ -148,13 +149,13 @@ The engine parses commands enclosed in `{}` within the `text` string.
     The `positions` object maps position names to `[x, y]` pixel offsets. The `default` key specifies which position loads initially. Use `{bgMove:positionName}` to move to different positions.
 - **Evidence/Profiles**: Objects with `name`, `description`, and `image`.
 - **Topics**: Objects with `text` (display name) and `label` (target section).
+- **Move**: Array of objects defining locations to travel to for the scene. Included at the top level of the JSON:
+  - `label`: Button text.
+  - `target`: Section to jump to.
+  - `preview`: Background key for hover preview.
+  - `json`: (Opt) Path to a new JSON file to load (Scene Change).
 - **Investigations**: Keyed by background name. Can be an array (points only) or an object structure:
   - `default`: (opt) Section to jump to when clicking empty space.
-  - `move`: Array of objects defines locations to travel to:
-    - `label`: Button text.
-    - `target`: Section to jump to.
-    - `preview`: Background key for hover preview.
-    - `json`: (Opt) Path to a new JSON file to load (Scene Change).
   - `points`: Array of objects with `bounds` (polygon coordinates) and `label` (target section).
 - **Sounds/Music**: Key-value mapping to file paths. For music that requires an intro section followed by a seamless loop, use an array instead of a string: `["path/to/intro.m4a", "path/to/loop.m4a"]`.
 - **Videos**: Key-value object where each key maps to a video definition containing at least a `file` path and optional caption/script entries.
