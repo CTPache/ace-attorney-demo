@@ -2,33 +2,32 @@ console.log("Save/Load module loaded");
 
 window.saveGame = function(slot = 1) {
     const saveData = {
-        gameState: window.gameState || {},
-        evidenceInventory: window.evidenceInventory || [],
-        profilesInventory: window.profilesInventory || [],
-        unlockedTopics: window.unlockedTopics || [],
-        actionStates: window.actionStates || { examine: true, move: true, talk: true, present: true },
-        currentLife: window.currentLife || 10,
-        maxLife: window.maxLife || 10,
-        currentCase: window.currentCase || "FlyHigh",
-        currentLanguage: window.currentLanguage || "EN",
-        currentSceneRequestPath: window.currentSceneRequestPath || "",
-        currentSectionName: window.currentSectionName || "",
-        currentLineIndex: window.currentLineIndex || 0,
-        dialogueHistory: window.dialogueHistory || [],
-        currentBackgroundKey: window.currentBackgroundKey || "",
-        currentForegroundKey: typeof window.currentForegroundKey !== 'undefined' ? window.currentForegroundKey : "",
-        currentCharacterName: window.currentCharacterName || "",
-        currentAnimationKey: window.currentAnimationKey || "",
-        characterIsVisible: typeof window.characterIsVisible !== 'undefined' ? window.characterIsVisible : true,
-        currentBGMKey: typeof window.currentBGMKey !== 'undefined' ? window.currentBGMKey : null,
-        lastCheckpointSection: window.lastCheckpointSection || "",
-        isCourtRecordOpen: window.isCourtRecordOpen || false,
+        gameState: gameState || {},
+        evidenceInventory: evidenceInventory || [],
+        profilesInventory: profilesInventory || [],
+        unlockedTopics: unlockedTopics || [],
+        actionStates: actionStates || { examine: true, move: true, talk: true, present: true },
+        currentLife: typeof currentLife !== 'undefined' ? currentLife : 10,
+        maxLife: typeof maxLife !== 'undefined' ? maxLife : 10,
+        currentCase: typeof currentCase !== 'undefined' ? currentCase : "FlyHigh",
+        currentLanguage: typeof currentLanguage !== 'undefined' ? currentLanguage : "EN",
+        currentSceneRequestPath: typeof currentSceneRequestPath !== 'undefined' ? currentSceneRequestPath : "",
+        currentSectionName: typeof currentSectionName !== 'undefined' ? currentSectionName : "",
+        currentLineIndex: typeof currentLineIndex !== 'undefined' ? currentLineIndex : 0,
+        dialogueHistory: typeof dialogueHistory !== 'undefined' ? dialogueHistory : [],
+        currentBackgroundKey: typeof currentBackgroundKey !== 'undefined' ? currentBackgroundKey : "",
+        currentForegroundKey: typeof currentForegroundKey !== 'undefined' ? currentForegroundKey : "",
+        currentCharacterName: typeof currentCharacterName !== 'undefined' ? currentCharacterName : "",
+        currentAnimationKey: typeof currentAnimationKey !== 'undefined' ? currentAnimationKey : "",
+        characterIsVisible: typeof characterIsVisible !== 'undefined' ? characterIsVisible : true,
+        currentBGMKey: typeof currentBGMKey !== 'undefined' ? currentBGMKey : null,
+        lastCheckpointSection: typeof lastCheckpointSection !== 'undefined' ? lastCheckpointSection : "",
+        isCourtRecordOpen: typeof isCourtRecordOpen !== 'undefined' ? isCourtRecordOpen : false,
         timestamp: new Date().toISOString()
     };
 
     localStorage.setItem(`ace_attorney_save_${slot}`, JSON.stringify(saveData));
     
-    // Maybe show a quick visual alert
     const message = (typeof window.t === 'function') 
         ? window.t('ui.saveSuccess', 'Game Saved!') 
         : 'Game Saved!';
@@ -52,66 +51,69 @@ window.loadGame = async function(slot = 1) {
         if (typeof hideConfigMenu === 'function' && !configMenu.classList.contains('hidden')) {
             hideConfigMenu();
         }
-        if (typeof toggleCourtRecord === 'function' && isCourtRecordOpen) {
+        if (typeof toggleCourtRecord === 'function' && typeof isCourtRecordOpen !== 'undefined' && isCourtRecordOpen) {
             toggleCourtRecord(); // Close it
         }
 
         // 2. Clear auto-play + timers
         if (typeof clearAutoPlayTimer === 'function') clearAutoPlayTimer();
-        if (window.fastForwardInterval) clearInterval(window.fastForwardInterval);
-        if (window.fastForwardTimeout) clearTimeout(window.fastForwardTimeout);
-        isFastForwarding = false;
+        if (typeof fastForwardInterval !== 'undefined' && fastForwardInterval) clearInterval(fastForwardInterval);
+        if (typeof fastForwardTimeout !== 'undefined' && fastForwardTimeout) clearTimeout(fastForwardTimeout);
+        if (typeof isFastForwarding !== 'undefined') isFastForwarding = false;
         
         // 3. Check if scene changed
-        const sceneChanged = window.currentSceneRequestPath !== saveData.currentSceneRequestPath;
-        const langChanged = window.currentLanguage !== saveData.currentLanguage;
+        const sceneChanged = currentSceneRequestPath !== saveData.currentSceneRequestPath;
+        const langChanged = currentLanguage !== saveData.currentLanguage;
 
         // Restore language config visually if it changed
         if (langChanged) {
-            window.currentLanguage = saveData.currentLanguage;
-            if (configLanguageSelect) configLanguageSelect.value = saveData.currentLanguage;
+            currentLanguage = saveData.currentLanguage;
+            if (typeof configLanguageSelect !== 'undefined' && configLanguageSelect) configLanguageSelect.value = saveData.currentLanguage;
             if (typeof applyTranslationToUI === 'function') applyTranslationToUI();
         }
 
-        if (sceneChanged || langChanged || !window.gameScript || Object.keys(window.gameScript).length === 0) {
-            window.currentSceneRequestPath = saveData.currentSceneRequestPath;
+        if (sceneChanged || langChanged || !gameScript || Object.keys(gameScript).length === 0) {
+            currentSceneRequestPath = saveData.currentSceneRequestPath;
             // Pass isLoadingSave = true
             await window.loadGameData(saveData.currentSceneRequestPath, null, true);
         }
 
-        // 4. Restore Globals
-        Object.assign(window.gameState, saveData.gameState);
-        window.evidenceInventory = saveData.evidenceInventory;
-        window.profilesInventory = saveData.profilesInventory;
-        window.unlockedTopics = saveData.unlockedTopics;
-        window.actionStates = saveData.actionStates;
-        window.currentLife = saveData.currentLife;
-        window.maxLife = saveData.maxLife;
-        window.currentCase = saveData.currentCase;
-        window.currentSectionName = saveData.currentSectionName;
-        window.currentLineIndex = saveData.currentLineIndex;
-        window.dialogueHistory = saveData.dialogueHistory;
-        window.currentBackgroundKey = saveData.currentBackgroundKey;
-        window.currentForegroundKey = saveData.currentForegroundKey;
-        window.currentCharacterName = saveData.currentCharacterName;
-        window.currentAnimationKey = saveData.currentAnimationKey;
-        window.characterIsVisible = saveData.characterIsVisible;
-        window.currentBGMKey = saveData.currentBGMKey;
-        window.lastCheckpointSection = saveData.lastCheckpointSection;
+        // 4. Restore Globals (Direct assignment, not window.*)
+        // For const objects like gameState, we mutate it
+        for (const key in gameState) delete gameState[key];
+        Object.assign(gameState, saveData.gameState);
+        
+        evidenceInventory = saveData.evidenceInventory;
+        profilesInventory = saveData.profilesInventory;
+        unlockedTopics = saveData.unlockedTopics;
+        actionStates = saveData.actionStates;
+        currentLife = saveData.currentLife;
+        maxLife = saveData.maxLife;
+        currentCase = saveData.currentCase;
+        currentSectionName = saveData.currentSectionName;
+        currentLineIndex = saveData.currentLineIndex;
+        dialogueHistory = saveData.dialogueHistory;
+        currentBackgroundKey = saveData.currentBackgroundKey;
+        currentForegroundKey = saveData.currentForegroundKey;
+        currentCharacterName = saveData.currentCharacterName;
+        currentAnimationKey = saveData.currentAnimationKey;
+        characterIsVisible = saveData.characterIsVisible;
+        currentBGMKey = saveData.currentBGMKey;
+        lastCheckpointSection = saveData.lastCheckpointSection;
 
         // 5. Restore Visuals & Audio
         if (typeof clearTopScreen === 'function') clearTopScreen();
 
-        if (window.currentBackgroundKey) {
-            changeBackground(window.currentBackgroundKey);
+        if (currentBackgroundKey) {
+            changeBackground(currentBackgroundKey);
         }
-        if (window.currentForegroundKey) {
-            changeForeground(window.currentForegroundKey);
+        if (currentForegroundKey) {
+            changeForeground(currentForegroundKey);
         }
         
-        if (window.currentCharacterName && window.currentAnimationKey) {
-            changeSprite(window.currentCharacterName, window.currentAnimationKey);
-            if (window.characterIsVisible) {
+        if (currentCharacterName && currentAnimationKey) {
+            changeSprite(currentCharacterName, currentAnimationKey);
+            if (characterIsVisible) {
                 character.style.opacity = '1';
             } else {
                 character.style.opacity = '0';
@@ -120,17 +122,17 @@ window.loadGame = async function(slot = 1) {
             character.style.opacity = '0'; // Hide fallback
         }
 
-        if (window.currentBGMKey) {
-            playBGM(window.currentBGMKey, false); // No fade in, restore immediately
+        if (currentBGMKey) {
+            playBGM(currentBGMKey, false); // No fade in, restore immediately
         } else {
             if (typeof stopBGM === 'function') stopBGM(false); // Stop if there shouldn't be
         }
 
         if (typeof updateHealthUI === 'function') updateHealthUI(0, false);
-        if (typeof window.updateActionButtons === 'function') window.updateActionButtons();
+        if (typeof updateActionButtons === 'function') updateActionButtons();
         
         // 6. Resume execution at the requested line
-        isWaitingForAutoSkip = false;
+        if (typeof isWaitingForAutoSkip !== 'undefined') isWaitingForAutoSkip = false;
         const initialSection = gameScript[currentSectionName];
         if (initialSection && initialSection[currentLineIndex]) {
             isScenePlaying = true;
