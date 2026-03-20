@@ -25,6 +25,9 @@ function executeScriptAction(segment) {
         case 'setAction':
             if (actionStates.hasOwnProperty(segment.actionName.toLowerCase())) {
                 actionStates[segment.actionName.toLowerCase()] = segment.isEnabled;
+                if (typeof window.hideActionMenus === 'function') {
+                    window.hideActionMenus();
+                }
                 if (typeof window.updateActionButtons === 'function') {
                     window.updateActionButtons();
                 }

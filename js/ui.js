@@ -25,6 +25,24 @@ function setBottomScreenButtonsDisabled(disabled) {
 }
 
 window.setBottomScreenButtonsDisabled = setBottomScreenButtonsDisabled;
+
+function hideActionMenus() {
+    if (investigationMenu) investigationMenu.classList.add('hidden');
+    if (moveMenu) moveMenu.classList.add('hidden');
+    if (topicMenu) topicMenu.classList.add('hidden');
+    if (investigationPanel) investigationPanel.classList.add('hidden');
+    if (evidenceContainer) evidenceContainer.classList.add('hidden');
+    if (evidenceDetails) evidenceDetails.classList.add('hidden');
+    if (bottomTopBar) bottomTopBar.classList.remove('hidden');
+    if (gameContainer) gameContainer.classList.remove('investigating');
+
+    isExamining = false;
+    isCourtRecordOpen = false;
+    isPresentingMode = false;
+}
+
+window.hideActionMenus = hideActionMenus;
+
 function updateActionButtons() {
     if (btnExamine) {
         btnExamine.disabled = !actionStates.examine;

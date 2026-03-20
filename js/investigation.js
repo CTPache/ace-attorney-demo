@@ -2,6 +2,70 @@ console.log("Investigation Loaded");
 
 let currentInvestigationDefault = null;
 
+function getBackgroundAsset(bgKey) {
+    const bgData = backgrounds[bgKey];
+    if (!bgData) {
+        return null;
+    }
+
+    if (typeof bgData === 'string') {
+        return {
+            src: bgData,
+            positionName: null
+        };
+    }
+
+    if (typeof bgData === 'object' && bgData.path) {
+        return {
+            src: bgData.path,
+            positionName: bgData.positions?.default || null
+        };
+    }
+
+    return null;
+}
+
+function getInvestigationObjectPosition(positionName) {
+    switch (positionName) {
+        case 'top':
+            return 'center top';
+        case 'bottom':
+            return 'center bottom';
+        case 'left':
+            return 'left center';
+        case 'right':
+            return 'right center';
+        case 'middle':
+        case 'center':
+        default:
+            return 'center center';
+    }
+}
+
+function setPreviewBackgroundImage(imageElement, bgKey) {
+    const asset = getBackgroundAsset(bgKey);
+    if (asset?.src) {
+        imageElement.src = asset.src;
+        imageElement.style.display = 'block';
+        return;
+    }
+
+    imageElement.removeAttribute('src');
+    imageElement.style.display = 'none';
+}
+
+function setInvestigationBackground(bgKey) {
+    const asset = getBackgroundAsset(bgKey);
+    if (!asset?.src) {
+        investigationBg.removeAttribute('src');
+        investigationBg.style.objectPosition = 'center center';
+        return;
+    }
+
+    investigationBg.src = asset.src;
+    investigationBg.style.objectPosition = getInvestigationObjectPosition(asset.positionName);
+}
+
 // Investigation Menu Handlers
 btnExamine.addEventListener('click', () => {
     investigationMenu.classList.add('hidden');
@@ -49,12 +113,7 @@ function renderMoveMenu() {
         
         const updatePreview = () => {
             const bgKey = loc.preview || loc.bg; // Use preview key or bg key
-            if (bgKey && backgrounds[bgKey]) {
-                movePreviewImage.src = backgrounds[bgKey];
-                movePreviewImage.style.display = 'block';
-            } else {
-                movePreviewImage.style.display = 'none';
-            }
+            setPreviewBackgroundImage(movePreviewImage, bgKey);
         };
 
         btn.addEventListener('mouseenter', updatePreview);
@@ -84,12 +143,7 @@ function renderMoveMenu() {
     if (moveOptions.length > 0) {
         const first = moveOptions[0];
         const bgKey = first.preview || first.bg;
-        if (bgKey && backgrounds[bgKey]) {
-            movePreviewImage.src = backgrounds[bgKey];
-            movePreviewImage.style.display = 'block';
-        } else {
-            movePreviewImage.style.display = 'none';
-        }
+        setPreviewBackgroundImage(movePreviewImage, bgKey);
     }
 }
 
@@ -102,11 +156,7 @@ investigationPanel.addEventListener('click', (e) => {
 });
 
 function renderInvestigation() {
-    // Set image
-    const bgUrl = backgrounds[currentBackgroundKey];
-    if (bgUrl) {
-        investigationBg.src = bgUrl;
-    }
+    setInvestigationBackground(currentBackgroundKey);
     
     // Clear overlay
     investigationOverlay.innerHTML = '';

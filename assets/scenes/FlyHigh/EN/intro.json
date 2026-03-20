@@ -1,5 +1,5 @@
 ﻿{
-    "initialSection": "Intro_Start",
+    "initialSection": "Intro_Init",
     "actions": {
         "move": true,
         "examine": false,
@@ -146,7 +146,21 @@
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
-        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png"
+        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
     },
     "music": {
         "investigation": [
@@ -217,7 +231,7 @@
                     "duration": 8000
                 },
                 {
-                    "name": "Sahwit",
+                    "name": "Shawit",
                     "text": "{blip:1}S-Someone! Help!",
                     "timestamp": 91500,
                     "duration": 3000
@@ -243,9 +257,25 @@
             "target": "Floor4_Init",
             "preview": "Floor4",
             "json": "assets/scenes/FlyHigh/4th_floor.json"
+        },
+        {
+            "label": "Event Hall",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/crime_scene.json"
         }
     ],
     "gameScript": {
+        "Intro_Init": [
+            {
+                "text": "{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
+            }
+        ],
+        "Intro_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:phoenixMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
         "Intro_Start": [
             {
                 "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
@@ -299,7 +329,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{color:white}Y-Yessir..."
+                "text": "{fadeInBg}{fadeOutCharacter:300}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{color:white}Y-Yessir..."
             },
             {
                 "name": "Phoenix",
@@ -327,7 +357,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} who was working here part-time as a security guard,{p:200} sir..."
+                "text": "{fadeOutCharacter:300}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} who was working here part-time as a security guard,{p:200} sir..."
             },
             {
                 "name": "Phoenix",
@@ -347,7 +377,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}The event hall manager for this amusement park,{nl}Frank Sahwit, sir."
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}The event hall manager for this amusement park,{nl}Frank Shawit, sir."
             },
             {
                 "name": "Edgeworth",

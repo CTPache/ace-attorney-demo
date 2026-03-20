@@ -7,7 +7,7 @@
         "present": true
     },
     "characters": {
-        "Sahwit": {
+        "Shawit": {
             "Stand": {
                 "default": "assets/img/characters/Fly High/Shawit/Stand.webp",
                 "talking": "assets/img/characters/Fly High/Shawit/Stand_Talk.webp"
@@ -60,7 +60,7 @@
         "loud_sound_updated": {
             "name": "Ruido fuerte",
             "data": "Tipo: Prueba\n",
-            "description": "Sahwit dice que el ruido fuerte fue la caída de la señorita Nakaki, por lo que habría ocurrido alrededor de las 10:05 p. m.",
+            "description": "Shawit dice que el ruido fuerte fue la caída de la señorita Nakaki, por lo que habría ocurrido alrededor de las 10:05 p. m.",
             "image": "assets/img/evidence/Document.png"
         }
     },
@@ -92,7 +92,7 @@
         ],
         "Office_Default": [
             {
-                "text": "{jumpIf:office_done,Office_Finish}{bg:Office}{sprite:Sahwit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:office_done,Office_Finish}{bg:Office}{sprite:Shawit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}{sectionEnd}"
             }
         ],
         "Office_Finish": [
@@ -102,14 +102,14 @@
         ],
         "Office_Intro": [
             {
-                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}17 de septiembre{nl}Oficina de Joypolis{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
+                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}17 de septiembre{nl}Oficina de Joypolis{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{color:white}Señor Sahwit.{nl}¿Puedo hacerle unas preguntas?"
+                "text": "{blip:1}{color:white}Señor Shawit.{nl}¿Puedo hacerle unas preguntas?"
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Por supuesto. En calidad de primer testigo,{nl}será un placer prestarle mi colaboración."
             },
             {
@@ -117,19 +117,19 @@
                 "text": "Antes que nada...{nl}¿qué tipo de relación tenía con la víctima,{nl}la señorita Nakaki?"
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Soy el encargado de este salón de actos.{nl}La señorita Nakaki era una de nuestras empleadas."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Samurai2}{showTextbox}Era la especialista del espectáculo del Samurái de Acero,{nl}y estaba totalmente entregada a ello..."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Decía que quería mejorar aún más el espectáculo,{nl}y practicaba dentro del edificio hasta muy tarde por las noches."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}Nunca imaginé...{nl}que su pasión terminaría enfureciendo a la guardia de seguridad, la señorita Maggey Byrde."
             },
             {
@@ -137,23 +137,23 @@
                 "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}¿Podría contarme más sobre eso?"
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Bueno, desde la perspectiva de una guardia de seguridad, tener a alguien practicando dentro del recinto fuera de horario resulta una gran molestia."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "A menudo discutía con la señorita Nakaki,{nl}diciéndole cosas como:{nl}\"Por favor, váyase a casa ya.\""
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Una vez que empezaban a discutir,{nl}las dos se acaloraban muchísimo..."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Y, después de pensarlo bien,{nl}decidí hacer que ambas se sentaran a hablar."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Sin embargo, justo antes de que pudieran tener esa conversación,{nl}ocurrió aquel terrible incidente..."
             },
             {
@@ -161,7 +161,7 @@
                 "text": "Por favor, cuénteme en detalle lo que vio{nl}ese día como primer testigo."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "El día del incidente, les dije a ambas que vinieran{nl}a la 4.ª planta del salón de actos a las 10:00 p. m."
             },
             {
@@ -169,19 +169,19 @@
                 "text": "{playSound:cling}{flash}¿Por qué a las 10:00 p. m.?{nl}Eso es una hora después del cierre."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "La señorita Byrde dijo que ese horario era mejor, porque antes quería cubrir el registro de seguridad y ducharse."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Entonces la señorita Nakaki intervino,{nl}diciendo que quería aprovechar ese tiempo para practicar el espectáculo..."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Yo, como encargado, estaba ocupándome de diversas tareas administrativas..."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Serían unos quince minutos después del cierre, supongo.{nl}Bajé al escenario del primer piso y esperé a que llegara la hora."
             },
             {
@@ -189,19 +189,19 @@
                 "text": "Ya veo..."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Entonces escuché a las dos{nl}discutiendo desde el piso de arriba."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}Cuando miré hacia arriba, vi a la señorita Byrde{nl}empujar a la señorita Nakaki desde la 4.ª planta."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Crime_Scene}{showTextbox}Y entonces la señorita Nakaki cayó justo ante mis ojos.{p:500}{nl}Y no se volvió a mover..."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Ugh..."
             },
             {
@@ -216,19 +216,19 @@
         ],
         "Office_LoudSound_A": [
             {
-                "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Stand\"]}{blip:1}{color:white}{showTextbox}¿Un sonido, dice?"
+                "name": "Shawit",
+                "text": "{sprite:Shawit[\"Stand\"]}{blip:1}{color:white}{showTextbox}¿Un sonido, dice?"
             },
             {
                 "name": "Phoenix",
                 "text": "{blip:1}{color:white}Es verdad. El día del incidente,{nl}¿escuchó algún sonido sospechoso?"
             },
             {
-                "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Nervous\"]}...Ah.{p:500}{nl}Si se refiere a eso, escuché claramente el sonido de la señorita Nakaki cayendo."
+                "name": "Shawit",
+                "text": "{sprite:Shawit[\"Nervous\"]}...Ah.{p:500}{nl}Si se refiere a eso, escuché claramente el sonido de la señorita Nakaki cayendo."
             },
             {
-                "name": "Sahwit",
+                "name": "Shawit",
                 "text": "Fue un sonido que no quisiera volver a recordar...{nl}fue increíblemente fuerte."
             },
             {
@@ -243,8 +243,8 @@
                 "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}\"Ruido fuerte\" actualizado al acta del juicio."
             },
             {
-                "name": "Sahwit",
-                "text": "{blip:1}{color:white}{sprite:Sahwit[\"Stand\"]}...Sí.{nl}Eso es todo."
+                "name": "Shawit",
+                "text": "{blip:1}{color:white}{sprite:Shawit[\"Stand\"]}...Sí.{nl}Eso es todo."
             },
             {
                 "name": "Phoenix",
@@ -257,8 +257,8 @@
         ],
         "Office_evidence_default": [
             {
-                "name": "Sahwit",
-                "text": "{blip:1}{color:white}{showCharacter}{sprite:Sahwit[\"Stand\"]}{showTextbox}¿Eh?{nl}¿De qué está hablando?"
+                "name": "Shawit",
+                "text": "{blip:1}{color:white}{showCharacter}{sprite:Shawit[\"Stand\"]}{showTextbox}¿Eh?{nl}¿De qué está hablando?"
             },
             {
                 "name": "Phoenix",

@@ -198,7 +198,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{color:white}{hideTextbox}{fadeOutBg}{p:100}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{fadeInCharacter:500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}Después de subir feliz una foto de mis colgantes de gafas favoritos al blog,{p:160} recordé que el señor Sahwit me había llamado,{p:170} así que corrí a ducharme,{p:140} señor.{p:240}"
+                "text": "{color:white}{hideTextbox}{fadeOutBg}{p:100}{fadeBg:DetentionCenter,500}{fadeFg:Detention_Bars,500}{fadeInCharacter:500}{p:100}{showTextbox}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{blip:2}Después de subir feliz una foto de mis colgantes de gafas favoritos al blog,{p:160} recordé que el señor Shawit me había llamado,{p:170} así que corrí a ducharme,{p:140} señor.{p:240}"
             },
             {
                 "name": "Phoenix",

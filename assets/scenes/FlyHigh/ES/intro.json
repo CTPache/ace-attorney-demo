@@ -217,7 +217,7 @@
                     "duration": 8000
                 },
                 {
-                    "name": "Sahwit",
+                    "name": "Shawit",
                     "text": "{blip:1}¡A-Alguien! ¡Socorro!",
                     "timestamp": 91500,
                     "duration": 3000
@@ -347,7 +347,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}El gerente del salón de actos de este parque,{nl}Frank Sahwit, señor."
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}El gerente del salón de actos de este parque,{nl}Frank Shawit, señor."
             },
             {
                 "name": "Edgeworth",
