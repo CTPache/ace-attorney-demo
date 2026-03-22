@@ -190,7 +190,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}W-Wendy Oldbag?!{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} What are you doing here?"
+                "text": "{blip:1,false}W-Wendy Oldbag?!{sprite:Oldbag[\"Shocked\"]}{sprite:Oldbag[\"ShockedHold\"]} What are you doing here?"
             },
             {
                 "name": "Oldbag",

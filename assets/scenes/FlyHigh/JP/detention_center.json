@@ -47,7 +47,21 @@
         "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
-        "mayaMove": "assets/img/CG/Maya_Move_JP.png"
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
     },
     "foregrounds": {
         "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"

@@ -47,7 +47,21 @@
         "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
-        "mayaMove": "assets/img/CG/Maya_Move_EN.png"
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
     },
     "foregrounds": {
         "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
@@ -100,6 +114,12 @@
             "target": "Office_Init",
             "preview": "Office",
             "json": "assets/scenes/FlyHigh/office.json"
+        },
+        {
+            "label": "Salón de actos",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/crime_scene.json"
         }
     ],
     "gameScript": {
@@ -272,7 +292,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(Muy bien. Creo que aquí ya está todo.){setState:detention_center_done,true}{color:white}{jump:Detention_Center_Default}{sectionEnd}"
+                "text": "{color:lightblue}{blip:0}(Muy bien. Creo que aquí ya está todo.){setState:detention_center_done,true}{color:white}{jump:Detention_Center_Default}{sectionEnd}"
             }
         ]
     }

@@ -31,6 +31,7 @@ window.saveGame = function(slot = 1) {
         currentAnimationKey: typeof currentAnimationKey !== 'undefined' ? currentAnimationKey : "",
         characterIsVisible: typeof characterIsVisible !== 'undefined' ? characterIsVisible : true,
         currentBGMKey: typeof currentBGMKey !== 'undefined' ? currentBGMKey : null,
+        currentBlipType: typeof currentBlipType !== 'undefined' ? currentBlipType : 1,
         lastCheckpointSection: typeof lastCheckpointSection !== 'undefined' ? lastCheckpointSection : "",
         isCourtRecordOpen: typeof isCourtRecordOpen !== 'undefined' ? isCourtRecordOpen : false,
         timestamp: new Date().toISOString()
@@ -121,6 +122,7 @@ window.loadGame = async function(slot = 1) {
         currentAnimationKey = saveData.currentAnimationKey;
         characterIsVisible = saveData.characterIsVisible;
         currentBGMKey = saveData.currentBGMKey;
+        currentBlipType = saveData.currentBlipType !== undefined ? saveData.currentBlipType : 1;
         lastCheckpointSection = saveData.lastCheckpointSection;
 
         // 6. Restore Visuals & Audio mappings

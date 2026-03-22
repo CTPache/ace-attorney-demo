@@ -51,7 +51,21 @@
         "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png",
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
-        "mayaMove": "assets/img/CG/Maya_Move_EN.png"
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
     },
     "music": {
         "investigation": [
@@ -80,6 +94,12 @@
         }
     },
     "move": [
+        {
+            "label": "Salón de actos",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/crime_scene.json"
+        },
         {
             "label": "Oficina",
             "target": "Office_Init",
@@ -132,7 +152,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}Te entiendo."
+                "text": "{blip:1,false}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}Te entiendo."
             },
             {
                 "name": "Gumshoe",
@@ -160,7 +180,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation,true}¿E-Eso es todo?"
+                "text": "{color:white}{blip:1,false}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation,true}¿E-Eso es todo?"
             },
             {
                 "name": "Gumshoe",

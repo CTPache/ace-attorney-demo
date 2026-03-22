@@ -34,7 +34,8 @@
     "ui.loadGameDataFailed": "Failed to load game data: {path}",
     "ui.caseSelect": "Case Select",
     "ui.gallery": "Gallery",
-    "ui.settings": "Settings"
+    "ui.settings": "Settings",
+    "ui.optionsHeader": "Select an option"
   },
   "ES": {
     "ui.auto": "Auto",
@@ -71,7 +72,8 @@
     "ui.loadGameDataFailed": "No se pudo cargar el juego: {path}",
     "ui.caseSelect": "Selección de Caso",
     "ui.gallery": "Galería",
-    "ui.settings": "Ajustes"
+    "ui.settings": "Ajustes",
+    "ui.optionsHeader": "Selecciona una opción"
   },
   "JP": {
     "ui.auto": "オート",
@@ -108,7 +110,8 @@
     "ui.loadGameDataFailed": "ゲームデータの読み込みに失敗しました: {path}",
     "ui.caseSelect": "ケース選択",
     "ui.gallery": "ギャラリー",
-    "ui.settings": "設定"
+    "ui.settings": "設定",
+    "ui.optionsHeader": "選択してください"
   },
   "scene": {
     "EN": {

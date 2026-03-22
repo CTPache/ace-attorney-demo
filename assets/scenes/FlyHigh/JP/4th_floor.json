@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Floor4_Init",
     "actions": {
         "move": true,
@@ -51,7 +51,21 @@
         "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png",
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
-        "mayaMove": "assets/img/CG/Maya_Move_JP.png"
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
     },
     "music": {
         "investigation": [

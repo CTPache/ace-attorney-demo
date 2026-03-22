@@ -58,7 +58,20 @@
                 "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
             },
             "Damage": {
-                "default": "assets/img/characters/Fly High/Shawit/Damage.webp"
+                "default": "assets/img/characters/Fly High/Shawit/Damage.webp",
+                "time": 700,
+                "shake": [
+                    {
+                        "at": 0,
+                        "duration": 300
+                    }
+                ],
+                "sound": [
+                    {
+                        "at": 0,
+                        "sound": "damage2"
+                    }
+                ]
             }
         }
     },
@@ -87,13 +100,16 @@
         "investigation": [
             "assets/audio/bgm/bgm001.m4a",
             "assets/audio/bgm/bgm001lp.m4a"
-        ]
+        ],
+        "grossberg": "assets/audio/bgm/bgm026.m4a"
     },
     "sounds": {
         "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
         "cling": "assets/audio/se/cling.ogg",
         "shake": "assets/audio/se/se026.m4a",
-        "jingle": "assets/audio/bgm/bgm016.m4a"
+        "jingle": "assets/audio/bgm/bgm016.m4a",
+        "question1": "assets/audio/se/question1.ogg",
+        "damage2": "assets/audio/se/damage2.ogg"
     },
     "evidence": {
         "accessory": {
@@ -236,11 +252,11 @@
         ],
         "Crime_Scene_Intro": [
             {
-                "text": "{bg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}September 17, Time Unknown{nl}Joypolis Atrium Event Hall{color:white}{p:1000}"
+                "text": "{fadeBg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}September 17{nl}Joypolis Atrium Event Hall{color:white}{p:1000}"
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeInCharacter}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}This is the murder scene, pal.{nl}It's dark because we're past closing."
+                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}This is the murder scene, pal.{nl}It's dark because we're past closing."
             },
             {
                 "name": "Gumshoe",
@@ -248,7 +264,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "Take a look up, pal."
+                "text": "{sprite:Gumshoe[\"Normal\"]}Take a look up, pal."
             },
             {
                 "name": "Gumshoe",
@@ -280,7 +296,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "Cause of death was blunt-force trauma to the back of the head from the fall...{nl}A fatal contusion. Looks like death was instant, right here, pal."
+                "text": "Cause of death was blunt-force trauma to the back of the head from the fall, A fatal contusion...{nl}Looks like death was instant, right here, pal."
             },
             {
                 "name": "Phoenix",
@@ -296,19 +312,19 @@
         "Examine_Body": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1}She died still wearing the Steel Samurai suit and mask..."
+                "text": "{hideCharacter}{blip:1}She died still wearing the Steel Samurai suit and mask..."
             },
             {
                 "name": "Phoenix",
-                "text": "Huh...? The victim died from a severe blow to the back of the head, right?"
+                "text": "Huh...?{flash}{playSound:question1} The victim died from a severe blow to the back of the head, right?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Normal\"]}That's right, pal.{nl}Is something wrong?"
+                "text": "{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}That's right, pal.{nl}Is something wrong?"
             },
             {
                 "name": "Phoenix",
-                "text": "Right now, the body is lying face down."
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Right now, the body is lying face down."
             },
             {
                 "name": "Phoenix",
@@ -323,69 +339,81 @@
         "Body_Lying_Face_Down": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0}{color:lightblue}(No... that doesn't line up if the back of her head took the blow.){color:white}{jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... that doesn't line up if the back of her head took the blow.){color:white}{jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_On_Side": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0}{color:lightblue}(No... that doesn't fit either.){color:white}{jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... that doesn't fit either.){color:white}{jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_Face_Up": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1}Then she should be lying face-up, shouldn't she?"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Then she should be lying face-up, shouldn't she?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Normal\"]}Ah...{nl}Now that you mention it, that's true, pal."
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{showTextbox}Ah...{nl}Now that you mention it, that's true, pal."
             },
             {
                 "name": "Gumshoe",
-                "text": "But weirdly enough, she's got cuts and bruises on her face too, not just the back of her head, pal."
+                "text": "{sprite:Gumshoe[\"Thinking\"]}But weirdly enough, she's got cuts and bruises on her face too, not just the back of her head, pal."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(So she has injuries on both the back of the head and the face...){color:white}"
+                "text": "{blip:0}{color:lightblue}{playSound:question1}(So she has injuries on both the back of the head and the face...){color:white}"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}That blood on the floor's seeping out through the gaps in the mask, pal.{setState:body_investigated,true}{jump:Body_Examined}{sectionEnd}"
+                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}That blood on the floor's seeping out through the gaps in the mask, pal."
+            },
+            {
+                "text": "{setState:body_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
             }
         ],
         "Examine_Background": [
             {
                 "name": "Gumshoe",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1}We checked every floor and even the ceiling, pal.{nl}No traps. No gimmicks."
+                "text": "{hideCharacter}{blip:1}We checked every floor and even the ceiling, pal.{nl}No traps. No gimmicks."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(So... she really was just pushed.){setState:background_investigated,true}{jump:Body_Examined}{sectionEnd}"
+                "text": "{blip:0}{color:lightblue}(So... she really was just pushed.){color:white}"
+            },
+            {
+                "text": "{setState:background_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
             }
         ],
         "Examine_Out": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1}Were there any regular guests around at the time?"
+                "text": "{hideCharacter}{blip:1}Were there any regular guests around at the time?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Normal\"]}There weren't any, pal.{nl}This place closes at 9 PM."
+                "text": "{blip:1}There weren't any, pal.{nl}This place closes at 9 PM."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(Then there are no outside witnesses to question...){setState:out_investigated,true}{jump:Body_Examined}{sectionEnd}"
+                "text": "{blip:0}{color:lightblue}(Then there are no outside witnesses to question...){color:white}"
+            },
+            {
+                "text": "{setState:out_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
             }
         ],
         "Examine_Floor": [
             {
                 "name": "Gumshoe",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1}She died still wearing the Steel Samurai suit and mask..."
+                "text": "{hideCharacter}{blip:1}She died still wearing the Steel Samurai suit and mask..."
             },
             {
                 "name": "Gumshoe",
-                "text": "We've confirmed nothing else fell down with the body, pal.{setState:floor_investigated,true}{jump:Body_Examined}{sectionEnd}"
+                "text": "We've confirmed nothing else fell down with the body, pal."
+            },
+            {
+                "text": "{setState:floor_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
             }
         ],
         "Body_Examined": [
@@ -411,19 +439,19 @@
         "Shawit_Appears": [
             {
                 "name": "Shawit",
-                "text": "{blip:1}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}Oh, conducting your crime scene investigation?{nl}Thank you for your hard work."
+                "text": "{hideTextbox}{blip:1}{fadeOutCharacter:300}{stopBGM}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}Oh,{flash}{playSound:cling} conducting your crime scene investigation?{nl}Thank you for your hard work."
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}Mr. Shawit."
+                "text": "{hideTextbox}{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Shawit."
             },
             {
                 "name": "Shawit",
-                "text": "{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}Coming back here still hurts...{nl}As the chief, this is truly heartbreaking."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Coming back here still hurts...{nl}As the chief, this is truly heartbreaking."
             },
             {
                 "name": "Shawit",
-                "text": "How can I put this...{nl}Just remembering that moment makes my hair stand on end."
+                "text": "{sprite:Shawit[\"Nervous\"]}How can I put this...{nl}Just remembering that moment makes my hair stand on end."
             },
             {
                 "name": "Shawit",
@@ -431,11 +459,11 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}Mr. Shawit...{nl}Your hair isn't standing up at all, pal."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Shawit...{nl}Your hair isn't standing up at all, pal."
             },
             {
                 "name": "Shawit",
-                "text": "{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}W-well....{nl}Standing on end is just a figure of speech."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{sprite:Shawit[\"Nervous\"]}{showTextbox}W-well....{nl}Standing on end is just a figure of speech."
             },
             {
                 "name": "Phoenix",
@@ -451,11 +479,11 @@
             },
             {
                 "name": "Shawit",
-                "text": "I pray for the victim's soul...{nl}Well then.{fadeOutCharacter:300}"
+                "text": "I pray for the victim's soul...{nl}Well then."
             },
             {
                 "name": "Phoenix",
-                "text": "Huh...?{nl}There's something on the floor."
+                "text": "{fadeOutCharacter:300}{stopBGM}{p:400}{playSound:question1}Huh...?{nl}There's something on the floor."
             },
             {
                 "name": "Phoenix",
@@ -463,22 +491,25 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}You're right, pal.{nl}That wasn't there a minute ago..."
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}You're right, pal.{nl}That wasn't there a minute ago..."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(I'll hold onto this as evidence for now.)"
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(I'll hold onto this as evidence for now.)"
             },
             {
                 "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Accessory\" updated in the Court Record."
             },
             {
                 "name": "Phoenix",
-                "text": "(All right, I think that's everything here.)"
+                "text": "{color:lightblue}(All right, I think that's everything here.)"
             },
             {
                 "name": "Phoenix",
-                "text": "(Once I've gathered everything I can, it's time for court.{nl}That's where I'll bring the truth to light!){setState:crime_scene_done,true}{jump:Crime_Scene_Finish}{sectionEnd}"
+                "text": "{color:lightblue}(Once I've gathered everything I can, it's time for court.{nl}That's where I'll bring the truth to light!)"
+            },
+            {
+                "text": "{setState:crime_scene_done,true}{jump:Crime_Scene_Finish}{skip:0}{sectionEnd}"
             }
         ]
     }

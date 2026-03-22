@@ -32,6 +32,7 @@
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
         "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
         "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png",
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
         "Crime_Scene": {
             "path": "assets/img/backgrounds/Fly High/Scene_body.png",
             "positions": {
@@ -45,8 +46,7 @@
                     -380
                 ]
             }
-        },
-        "mayaMove": "assets/img/CG/Maya_Move_EN.png"
+        }
     },
     "music": {
         "grossberg": "assets/audio/bgm/bgm026.m4a"
@@ -71,6 +71,12 @@
         }
     },
     "move": [
+        {
+            "label": "Salón de actos",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/crime_scene.json"
+        },
         {
             "label": "Centro de detención",
             "target": "Detention_Center_Init",
@@ -97,7 +103,7 @@
         ],
         "Office_Finish": [
             {
-                "text": " {hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+                "text": " {setAction:present,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
             }
         ],
         "Office_Intro": [
@@ -252,7 +258,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Cuando reúna toda la información, iré al tribunal.{nl}¡Allí descubriré la verdad!){setAction:present,false}{setState:office_done,true}{jump:Office_Default}{sectionEnd}"
+                "text": "{color:lightblue}(Cuando reúna toda la información, iré al tribunal.{nl}¡Allí descubriré la verdad!){setState:office_done,true}{jump:Office_Default}{sectionEnd}"
             }
         ],
         "Office_evidence_default": [

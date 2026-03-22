@@ -321,12 +321,16 @@ window.renderOptionsMenu = function(optionKey) {
 
     topicMenu.innerHTML = ''; // Clear previous content
 
-    // Create a Header
+    // Create a Header (using a localized string instead of option text)
+    const headerText = typeof window.t === 'function' ? window.t('ui.optionsHeader', 'Select an option') : 'Select an option';
+    const header = document.createElement('div');
+    header.className = 'options-header';
+    header.textContent = headerText;
+    topicMenu.appendChild(header);
+
+    // Render the option text in the main dialogue textbox
     if (optionData.text) {
-        const header = document.createElement('div');
-        header.className = 'options-header';
-        header.textContent = optionData.text;
-        topicMenu.appendChild(header);
+        textContent.textContent = optionData.text;
     }
 
     // Render Buttons

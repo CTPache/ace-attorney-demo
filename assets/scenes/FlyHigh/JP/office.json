@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Office_Init",
     "actions": {
         "move": true,
@@ -32,6 +32,7 @@
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
         "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
         "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png",
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png",
         "Crime_Scene": {
             "path": "assets/img/backgrounds/Fly High/Scene_body.png",
             "positions": {
@@ -45,8 +46,7 @@
                     -380
                 ]
             }
-        },
-        "mayaMove": "assets/img/CG/Maya_Move_JP.png"
+        }
     },
     "music": {
         "grossberg": "assets/audio/bgm/bgm026.m4a"

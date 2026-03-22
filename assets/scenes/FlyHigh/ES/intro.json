@@ -146,7 +146,21 @@
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
-        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png"
+        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
     },
     "music": {
         "investigation": [
@@ -243,6 +257,12 @@
             "target": "Floor4_Init",
             "preview": "Floor4",
             "json": "assets/scenes/FlyHigh/4th_floor.json"
+        },
+        {
+            "label": "Salón de actos",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/crime_scene.json"
         }
     ],
     "gameScript": {
@@ -299,7 +319,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{color:white}S-Sí, señor..."
+                "text": "{fadeInBg}{fadeOutCharacter:300}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{color:white}S-Sí, señor..."
             },
             {
                 "name": "Phoenix",
@@ -327,7 +347,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Sad\"]}...Maggey Byrde,{p:300} que trabajaba aquí a tiempo parcial como guardia de seguridad,{p:200} señor..."
+                "text": "{fadeOutCharacter:300}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} que trabajaba aquí a tiempo parcial como guardia de seguridad,{p:200} señor..."
             },
             {
                 "name": "Phoenix",

@@ -15,13 +15,6 @@
             "Nervous": {
                 "default": "assets/img/characters/Fly High/Shawit/Nervous.webp",
                 "talking": "assets/img/characters/Fly High/Shawit/Nervous_Talk.webp"
-            },
-            "Cornered": {
-                "default": "assets/img/characters/Fly High/Shawit/Cornered.gif",
-                "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
-            },
-            "Damage": {
-                "default": "assets/img/characters/Fly High/Shawit/Damage.webp"
             }
         }
     },
@@ -54,7 +47,8 @@
     "sounds": {
         "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
         "cling": "assets/audio/se/cling.ogg",
-        "jingle": "assets/audio/bgm/bgm016.m4a"
+        "jingle": "assets/audio/bgm/bgm016.m4a",
+        "damage2": "assets/audio/se/damage2.ogg"
     },
     "evidence": {
         "loud_sound_updated": {

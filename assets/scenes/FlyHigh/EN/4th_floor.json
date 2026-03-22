@@ -152,7 +152,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}I hear you."
+                "text": "{blip:1,false}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}I hear you."
             },
             {
                 "name": "Gumshoe",
@@ -180,7 +180,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation,true}T-That's it?"
+                "text": "{color:white}{blip:1,false}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation,true}T-That's it?"
             },
             {
                 "name": "Gumshoe",
