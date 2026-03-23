@@ -463,19 +463,76 @@ function resetBackgroundPosition() {
     if (backgroundElement) {
         backgroundElement.style.backgroundPosition = '0 0';
     }
+
+    currentBackgroundPosition = null;
 }
 
-function moveBackgroundToPosition(x, y, duration = 400) {
-    if (backgroundElement) {
-        // Enable smooth transition
+const BACKGROUND_POSITION_BASE_SIZE = {
+    width: 960,
+    height: 640
+};
+
+let currentBackgroundPosition = null;
+
+function getScaledBackgroundOffset(value, axis) {
+    if (!backgroundElement || typeof value !== 'number') {
+        return value;
+    }
+
+    const rect = backgroundElement.getBoundingClientRect();
+    const baseSize = axis === 'x'
+        ? BACKGROUND_POSITION_BASE_SIZE.width
+        : BACKGROUND_POSITION_BASE_SIZE.height;
+    const currentSize = axis === 'x' ? rect.width : rect.height;
+
+    if (!baseSize || !currentSize) {
+        return value;
+    }
+
+    return value * (currentSize / baseSize);
+}
+
+function toCssPositionValue(value, axis) {
+    if (typeof value === 'number') {
+        const scaled = getScaledBackgroundOffset(value, axis);
+        return `${scaled}px`;
+    }
+
+    return `${value}`;
+}
+
+function applyCurrentBackgroundPosition(duration = 0) {
+    if (!backgroundElement || !currentBackgroundPosition) {
+        return;
+    }
+
+    const x = toCssPositionValue(currentBackgroundPosition.x, 'x');
+    const y = toCssPositionValue(currentBackgroundPosition.y, 'y');
+
+    if (duration > 0) {
         backgroundElement.style.transition = `background-position ${duration}ms ease-in-out`;
-        backgroundElement.style.backgroundPosition = `${x}px ${y}px`;
-        
-        // Remove transition after animation completes to allow instant changes
+        backgroundElement.style.backgroundPosition = `${x} ${y}`;
+
         setTimeout(() => {
             backgroundElement.style.transition = '';
         }, duration);
+        return;
     }
+
+    backgroundElement.style.transition = 'none';
+    backgroundElement.style.backgroundPosition = `${x} ${y}`;
+    requestAnimationFrame(() => {
+        backgroundElement.style.transition = '';
+    });
+}
+
+function moveBackgroundToPosition(x, y, duration = 400) {
+    if (!backgroundElement) {
+        return;
+    }
+
+    currentBackgroundPosition = { x, y };
+    applyCurrentBackgroundPosition(duration);
 }
 
 function moveBackgroundByName(bgName, positionName, duration = 400) {
@@ -490,6 +547,11 @@ function moveBackgroundByName(bgName, positionName, duration = 400) {
 
 window.moveBackgroundToPosition = moveBackgroundToPosition;
 window.moveBackgroundByName = moveBackgroundByName;
+
+window.addEventListener('resize', () => {
+    applyCurrentBackgroundPosition(0);
+});
+
 function changeForeground(fgName) {
     if (!fgName) {
         foregroundElement.style.backgroundImage = 'none';
