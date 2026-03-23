@@ -26,14 +26,6 @@
                             }
                         }
                     }
-                },
-                "courtroom1": {
-                    "name": "Courtroom",
-                    "scene": "assets/scenes/FlyHigh/courtroom.json",
-                    "courtRecord": {
-                        "evidence": {},
-                        "profiles": {}
-                    }
                 }
             }
         },
@@ -41,31 +33,13 @@
             "name": "Turnabout Don",
             "cover": "assets/img/case_covers/Don_Cover.png",
             "entry": "demo",
-            "Chapters": {
-                "demo": {
-                    "name": "Coming Soon",
-                    "scene": "assets/scenes/demo.json",
-                    "courtRecord": {
-                        "evidence": {},
-                        "profiles": {}
-                    }
-                }
-            }
+            "Chapters": {}
         },
         "LockedRoom": {
             "name": "Turnabout Locked Room",
             "cover": "assets/img/case_covers/Locked_Room_Cover.png",
             "entry": "demo",
-            "Chapters": {
-                "demo": {
-                    "name": "Coming Soon",
-                    "scene": "assets/scenes/demo.json",
-                    "courtRecord": {
-                        "evidence": {},
-                        "profiles": {}
-                    }
-                }
-            }
+            "Chapters": {}
         }
     }
 }
