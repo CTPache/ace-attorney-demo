@@ -27,7 +27,7 @@
     justify-content: center;
     align-items: center;
     font-weight: normal;
-    font-size: min(2cqw, 2.2vh);
+    font-size: 2cqw;
     width: 10cqw;
     transform: translate(-2.3cqw, -5.2cqw);
     line-height: 1.2;
