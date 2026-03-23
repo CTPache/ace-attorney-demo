@@ -61,6 +61,10 @@ window.updateActionButtons = updateActionButtons;
 function updateAutoplayIndicator() {
     if (!autoplayIndicator) return;
 
+    if (typeof isScenePlaying !== 'undefined') {
+        autoplayIndicator.classList.toggle('hidden', !isScenePlaying);
+    }
+
     autoplayIndicator.classList.toggle('active', isAutoPlayEnabled);
     autoplayIndicator.setAttribute('aria-pressed', isAutoPlayEnabled ? 'true' : 'false');
     autoplayIndicator.title = isAutoPlayEnabled
@@ -299,11 +303,11 @@ if (configAutoSpeedRadios && configAutoSpeedRadios.length > 0) {
 // Shared logic for scene state only
 
 // Function to handle Option Selection Menu
-window.renderOptionsMenu = function(optionKey) {
+window.renderOptionsMenu = function (optionKey) {
     const optionData = optionsDB[optionKey];
     if (!optionData) {
         console.error("Option data not found for key: " + optionKey);
-        isTyping = false; 
+        isTyping = false;
         return;
     }
 
@@ -312,10 +316,10 @@ window.renderOptionsMenu = function(optionKey) {
     // Hide other overlapping menus if any
     investigationMenu.classList.add('hidden');
     investigationPanel.classList.add('hidden');
-    
+
     // Hide Advance Button
     advanceBtn.classList.add('hidden');
-    
+
     // Block interaction
     isInputBlocked = true;
 
@@ -337,13 +341,22 @@ window.renderOptionsMenu = function(optionKey) {
             });
         } else {
             if (optionData.name && window.nameTag) {
-                window.nameTag.textContent = optionData.name;
+                if (typeof window.setNameTagText === 'function') {
+                    window.setNameTagText(optionData.name);
+                } else {
+                    window.nameTag.textContent = optionData.name;
+                }
                 window.nameTag.style.display = '';
                 window.nameTag.style.opacity = '1';
                 window.textboxContainer.classList.remove('no-name');
+                if (typeof window.fitNameTagText === 'function') {
+                    window.fitNameTagText();
+                    requestAnimationFrame(window.fitNameTagText);
+                }
             } else if (window.nameTag && !optionData.name) {
                 window.nameTag.style.display = 'none';
                 window.nameTag.style.opacity = '';
+                window.nameTag.style.setProperty('--name-tag-text-scale-x', '1');
                 window.textboxContainer.classList.add('no-name');
             }
             if (optionData.text !== undefined) {
@@ -358,9 +371,17 @@ window.renderOptionsMenu = function(optionKey) {
             textContent.innerHTML = window.lastLineHTML;
             if (window.lastLineName) {
                 if (window.nameTag) {
-                    window.nameTag.textContent = window.lastLineName;
+                    if (typeof window.setNameTagText === 'function') {
+                        window.setNameTagText(window.lastLineName);
+                    } else {
+                        window.nameTag.textContent = window.lastLineName;
+                    }
                     window.nameTag.style.display = '';
                     window.nameTag.style.opacity = '1';
+                    if (typeof window.fitNameTagText === 'function') {
+                        window.fitNameTagText();
+                        requestAnimationFrame(window.fitNameTagText);
+                    }
                 }
                 window.textboxContainer.classList.remove('no-name');
                 window.currentCharacterName = window.lastLineName;
@@ -368,6 +389,7 @@ window.renderOptionsMenu = function(optionKey) {
                 if (window.nameTag) {
                     window.nameTag.style.display = 'none';
                     window.nameTag.style.opacity = '';
+                    window.nameTag.style.setProperty('--name-tag-text-scale-x', '1');
                 }
                 window.textboxContainer.classList.add('no-name');
                 window.currentCharacterName = null;
@@ -381,14 +403,14 @@ window.renderOptionsMenu = function(optionKey) {
             const btn = document.createElement('button');
             btn.className = 'topic-button'; // Reuse existing button class
             btn.textContent = opt.text;
-            
+
             btn.addEventListener('click', () => {
                 // Unblock interaction
                 isInputBlocked = false;
 
                 // Hide menu
                 topicMenu.classList.add('hidden');
-                
+
                 // Jump to the selected label
                 if (window.jumpToSection) {
                     jumpToSection(opt.label);
@@ -415,6 +437,7 @@ document.addEventListener('sceneStateChanged', (e) => {
     refreshTopBarButtonDisabledState();
 
     if (isPlaying) {
+        if (autoplayIndicator) autoplayIndicator.classList.remove('hidden');
         textboxContainer.classList.remove('hidden');
         investigationMenu.classList.add('hidden');
         moveMenu.classList.add('hidden');
@@ -424,12 +447,13 @@ document.addEventListener('sceneStateChanged', (e) => {
         bottomTopBar.classList.remove('hidden'); // Ensure top bar is visible during dialogue
         gameContainer.classList.remove('investigating');
     } else {
+        if (autoplayIndicator) autoplayIndicator.classList.add('hidden');
         textboxContainer.classList.add('hidden');
         advanceBtn.classList.add('hidden');
-        
+
         // Hide Life Bar on scene end
         if (typeof hideLifeBar === 'function') hideLifeBar();
-        
+
         if (isExamining) {
 
             // Return to examine mode
@@ -455,7 +479,7 @@ updateAutoplayIndicator();
 // Advance Button Logic
 function startFastForward(e) {
     if (e.type === 'touchstart') e.preventDefault(); // Prevent ghost clicks
-    
+
     // Immediate advance on click
     advanceDialogue(true);
 
@@ -465,7 +489,7 @@ function startFastForward(e) {
     fastForwardTimeout = setTimeout(() => {
         isFastForwarding = true;
         advanceBtn.textContent = "▶▶";
-        
+
         // Loop
         fastForwardInterval = setInterval(() => {
             advanceDialogue(true);
@@ -486,62 +510,56 @@ function stopFastForward() {
         fastForwardInterval = null;
     }
 }
-
-advanceBtn.addEventListener('mousedown', startFastForward);
-advanceBtn.addEventListener('mouseup', stopFastForward);
-advanceBtn.addEventListener('mouseleave', stopFastForward);
-
-// Touch support
-advanceBtn.addEventListener('touchstart', startFastForward, { passive: false });
-advanceBtn.addEventListener('touchend', stopFastForward);
-advanceBtn.addEventListener('touchcancel', stopFastForward);
-
-// Topic logic moved to topics.js
-
-/* --- Single Screen Mode Logic --- */
-let isSingleScreenMode = false;
-let activeScreen = 'top'; // 'top' or 'bottom'
-
+if (advanceBtn) {
+    advanceBtn.addEventListener('mousedown', startFastForward);
+    advanceBtn.addEventListener('touchstart', startFastForward, { passive: false });
+    advanceBtn.addEventListener('mouseup', stopFastForward);
+    advanceBtn.addEventListener('mouseleave', stopFastForward);
+    advanceBtn.addEventListener('touchend', stopFastForward);
+}
 function updateScreenVisibility() {
     const topScreen = gameContainer;
-    const bottomScreen = document.getElementById('bottom-screen');
-    const wrapper = document.getElementById('main-wrapper');
+    const bottomScreen = document.getElementById("bottom-screen");
+    const wrapper = document.getElementById("main-wrapper");
 
     if (isSingleScreenMode) {
-        wrapper.classList.add('single-screen-mode');
-        if (activeScreen === 'top') {
-            topScreen.classList.remove('inactive-screen');
-            bottomScreen.classList.add('inactive-screen');
-        } else {
-            topScreen.classList.add('inactive-screen');
-            bottomScreen.classList.remove('inactive-screen');
+        wrapper.classList.add("single-screen-mode");
+        topScreen.classList.remove("inactive-screen");
+        bottomScreen.classList.remove("inactive-screen");
+        if (bottomScreen && topScreen && !topScreen.contains(bottomScreen)) {
+            topScreen.appendChild(bottomScreen);
         }
     } else {
-        wrapper.classList.remove('single-screen-mode');
-        topScreen.classList.remove('inactive-screen');
-        bottomScreen.classList.remove('inactive-screen');
+        wrapper.classList.remove("single-screen-mode");
+        topScreen.classList.remove("inactive-screen");
+        bottomScreen.classList.remove("inactive-screen");
+        if (bottomScreen && wrapper && topScreen.contains(bottomScreen)) {
+            wrapper.appendChild(bottomScreen);
+        }
     }
 }
 
 function toggleScreenMode() {
     isSingleScreenMode = !isSingleScreenMode;
-    // Default to top screen when entering single mode
-    if (isSingleScreenMode) {
-        activeScreen = 'top';
-    }
     updateScreenVisibility();
+    if (typeof window.rearrangeTitleButtons === "function") {
+        window.rearrangeTitleButtons();
+    }
+
+    // Re-apply the current background position after the layout has settled,
+    // because the game container resizes when entering/leaving single-screen mode.
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            if (typeof window.applyCurrentBackgroundPosition === 'function') {
+                window.applyCurrentBackgroundPosition(0);
+            }
+        });
+    });
 }
 
 function switchScreen() {
-    if (!isSingleScreenMode) return;
-    activeScreen = (activeScreen === 'top') ? 'bottom' : 'top';
-    updateScreenVisibility();
+    return;
 }
 
-window.toggleScreenMode = toggleScreenMode;
-window.switchScreen = switchScreen;
-window.openConfigMenu = openConfigMenu;
-window.closeConfigMenu = closeConfigMenu;
-
-if (document.getElementById('config-save-btn')) document.getElementById('config-save-btn').addEventListener('click', () => { window.saveGame(1); });
-if (document.getElementById('config-load-btn')) document.getElementById('config-load-btn').addEventListener('click', () => { window.loadGame(1); });
+if (document.getElementById("config-save-btn")) document.getElementById("config-save-btn").addEventListener("click", () => { window.saveGame(1); });
+if (document.getElementById("config-load-btn")) document.getElementById("config-load-btn").addEventListener("click", () => { window.loadGame(1); });

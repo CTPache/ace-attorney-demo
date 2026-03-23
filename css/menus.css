@@ -24,7 +24,7 @@
     flex-direction: column;
     gap: 2.4cqh;
     color: #f3e5cf;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
 }
 
 .config-card h3 {
@@ -56,7 +56,7 @@
 #config-language-select {
     min-width: 20cqh;
     padding: 0.8cqh 1.2cqh;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 2.6cqh;
     color: #f3e5cf;
     background: #2a2a2a;
@@ -119,7 +119,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.8cqh;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
 }
 
 .history-card h3 {

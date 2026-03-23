@@ -67,7 +67,7 @@
 
 .cr-tab {
     padding: 1cqh 4cqh;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 4cqh;
     color: #aaa;
     background-color: #444;
@@ -92,7 +92,7 @@
     width: 90%;
     height: 15%;
     color: orange;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 5cqh;
     display: flex;
     justify-content: center;
@@ -183,7 +183,7 @@
 }
 
 #evidence-title {
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 4cqh;
     color: orange;
     background-color: black;
@@ -197,7 +197,7 @@
     flex-grow: 1;
     background-color: #8fbc8f;
     color: #222;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     padding: 2cqh;
     border: 0.4cqh solid #555;
     white-space: pre-wrap;
@@ -218,7 +218,7 @@
 }
 
 #evidence-description {
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     line-height: 1.4;
     margin: 0;
     color: white;
@@ -285,7 +285,7 @@
 #popup-name {
     background-color: #333;
     color: orange;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 2cqw;
     text-align: center;
     border-bottom: 0.4cqh solid #555;
@@ -294,7 +294,7 @@
 #popup-desc {
     background-color: #8fbc8f;
     color: #222;
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 1.8cqw;
     padding: 1cqh;
     flex-grow: 1;

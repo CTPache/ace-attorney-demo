@@ -1,0 +1,340 @@
+/* Single-screen integrated layout
+   Keeps top screen visible and overlays bottom-screen controls/menus on top. */
+
+.single-screen-mode {
+    justify-content: flex-start;
+    padding: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.single-screen-mode #main-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 2vh 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.single-screen-mode #game-container {
+    width: min(96vw, calc((100vh - 4vh) * 1.5));
+    width: min(96vw, calc((100dvh - 4vh) * 1.5));
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+.single-screen-mode #bottom-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    max-width: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    z-index: 200;
+    pointer-events: none;
+}
+
+.single-screen-mode #bottom-main-window {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    pointer-events: none;
+}
+
+.single-screen-mode #bottom-top-bar {
+    position: absolute;
+    right: 2.2cqh;
+    top: 2.2cqh;
+    left: auto;
+    bottom: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    z-index: 130;
+    pointer-events: auto;
+}
+
+.single-screen-mode #court-record-btn,
+.single-screen-mode #config-btn {
+    font-size: 1.8cqh !important;
+    padding: 1cqh 1cqh !important;
+}
+
+.single-screen-mode #advance-btn {
+    display: none !important;
+}
+
+.single-screen-mode #config-btn {
+    position: absolute;
+    left: 2.2cqh;
+    top: 2.2cqh;
+    right: auto;
+    bottom: auto;
+    z-index: 130;
+    pointer-events: auto;
+}
+
+.single-screen-mode #config-menu,
+.single-screen-mode #history-menu,
+.single-screen-mode #investigation-menu,
+.single-screen-mode #move-menu,
+.single-screen-mode #topic-menu,
+.single-screen-mode #evidence-container,
+.single-screen-mode #investigation-panel,
+.single-screen-mode #case-select-bottom {
+    position: absolute;
+    inset: 0;
+    z-index: 120;
+    pointer-events: auto;
+}
+
+.single-screen-mode #config-menu,
+.single-screen-mode #history-menu,
+.single-screen-mode #topic-menu,
+.single-screen-mode #investigation-menu,
+.single-screen-mode #move-menu,
+.single-screen-mode #evidence-container {
+    background-color: rgba(20, 16, 12, 0.82);
+    backdrop-filter: blur(1.5px);
+}
+
+.single-screen-mode #config-menu,
+.single-screen-mode #history-menu {
+    top: 0;
+}
+
+.single-screen-mode #topic-menu,
+.single-screen-mode #investigation-menu,
+.single-screen-mode #move-menu,
+.single-screen-mode #evidence-container {
+    padding-bottom: 14cqh;
+}
+
+.single-screen-mode #evidence-container {
+    border-width: 0.7cqh;
+}
+
+.single-screen-mode #investigation-panel {
+    aspect-ratio: auto;
+}
+
+.single-screen-mode #investigation-menu {
+    inset: auto;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 3cqh;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5cqh;
+    padding: 1.5cqh 2cqh;
+    background-color: rgba(20, 16, 12, 0);
+}
+
+.single-screen-mode #investigation-menu .inv-btn {
+    flex: 1;
+    width: auto;
+    height: 9cqh;
+    font-size: 3.5cqh;
+    margin: 0;
+}
+
+.single-screen-mode #investigation-panel .back-btn,
+.single-screen-mode #move-menu .back-btn,
+.single-screen-mode #topic-menu .back-btn,
+.single-screen-mode #evidence-container .back-btn {
+    bottom: 2.2cqh !important;
+}
+
+.single-screen-mode #move-preview-container {
+    width: 100%;
+    margin-top: 20cqh;
+    aspect-ratio: 4/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Transformation to look like the reference */
+    transform: perspective(80cqh) rotateY(10deg);
+    border: 0.6cqh solid #FFF;
+    background-color: #000;
+    overflow: hidden;
+    box-shadow: 2cqh 2cqh 2cqh rgba(0, 0, 0, 0.5);
+}
+
+.single-screen-mode #textbox-container {
+    z-index: 90;
+}
+
+.single-screen-mode #autoplay-indicator,
+.single-screen-mode #skip-video-btn,
+.single-screen-mode #life-bar-container,
+.single-screen-mode #evidence-popup {
+    z-index: 95;
+}
+
+.single-screen-mode #title-logo {
+    height: 62%;
+    top: 42%;
+}
+
+.single-screen-mode #title-screen-top {
+    z-index: 1200;
+}
+
+.single-screen-mode #title-screen-bottom {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* Elevate bottom screen when a fullscreen menu is open so it covers the title screen */
+.single-screen-mode:has(#config-menu:not(.hidden)) #bottom-screen,
+.single-screen-mode:has(#history-menu:not(.hidden)) #bottom-screen,
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #bottom-screen {
+    z-index: 1300 !important;
+}
+
+/* Hide game corner buttons when full-screen menus are open */
+.single-screen-mode:has(#config-menu:not(.hidden)) #bottom-top-bar,
+.single-screen-mode:has(#config-menu:not(.hidden)) #config-btn,
+.single-screen-mode:has(#history-menu:not(.hidden)) #bottom-top-bar,
+.single-screen-mode:has(#history-menu:not(.hidden)) #config-btn,
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #bottom-top-bar,
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #config-btn {
+    display: none !important;
+}
+
+.single-screen-mode #title-screen-top #title-buttons {
+    top: auto;
+    bottom: 10cqh;
+    height: auto;
+    padding: 0 3cqh;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.8cqh;
+}
+
+.single-screen-mode #title-screen-top .title-btn {
+    flex: 1;
+    max-width: 32%;
+    min-width: 0;
+    width: auto;
+    height: 10cqh;
+    font-size: 3.4cqh;
+}
+
+@media screen and (max-width: 768px) {
+    .single-screen-mode #main-wrapper {
+        padding: 0;
+    }
+
+    .single-screen-mode #game-container,
+    .single-screen-mode #bottom-screen {
+        width: 100vw;
+        margin: 0;
+    }
+
+    .single-screen-mode #topic-menu,
+    .single-screen-mode #investigation-menu,
+    .single-screen-mode #move-menu,
+    .single-screen-mode #evidence-container {
+        padding-bottom: 16cqh;
+    }
+
+    .single-screen-mode #title-logo {
+        height: 56%;
+        top: 40%;
+    }
+
+    .single-screen-mode #title-screen-top #title-buttons {
+        bottom: 12cqh;
+        gap: 1.2cqh;
+        padding: 0 2cqh;
+    }
+
+    .single-screen-mode #title-screen-top .title-btn {
+        height: 8.5cqh;
+        font-size: 2.9cqh;
+    }
+}
+
+.single-screen-mode #case-select-bottom {
+    background-color: transparent !important;
+    justify-content: flex-end;
+}
+
+.single-screen-mode #case-list-view{
+    height: 55%;
+    background: transparent !important;
+    border-top: none !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-screen-mode #chapter-list-view {
+    background: #00000088 !important;
+    border-bottom: none !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-screen-mode #btn-case-select-back {
+    position: absolute;
+    left: 2.2cqh;
+    top: 2.2cqh;
+    right: auto;
+    bottom: auto;
+    z-index: 130;
+    pointer-events: auto;
+}
+
+.single-screen-mode #move-list {
+    margin-top: 10cqh;
+}
+
+.single-screen-mode #autoplay-indicator,
+.single-screen-mode #skip-video-btn {
+    right: 88cqw !important;
+}
+.single-screen-mode #carousel-case-label,
+.single-screen-mode .cs-carousel-select {
+    display: none !important;
+}
+
+.single-screen-mode #case-select-bottom {
+    pointer-events: none !important;
+}
+
+.single-screen-mode #case-list-view,
+.single-screen-mode #chapter-list-view {
+    pointer-events: auto !important;
+}
+
+.single-screen-mode .cs-carousel-nav {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #investigation-menu,
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #move-menu,
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #topic-menu,
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #evidence-container,
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #advance-btn {
+    display: none !important;
+}

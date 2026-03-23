@@ -48,29 +48,86 @@ window.hideCaseSelect = function() {
     if (csBottom) csBottom.classList.add('hidden');
 };
 
-function renderCaseList() {
-    const container = document.getElementById('cases-container');
-    container.innerHTML = '';
-    
-    for (const [key, caseInfo] of Object.entries(casesData)) {
-        const btn = document.createElement('button');
-        btn.className = 'cs-item-btn';
-        btn.textContent = caseInfo.name;
-        
-        btn.onmouseover = () => {
-            document.getElementById('case-select-title').textContent = caseInfo.name;
-            if (caseInfo.cover) {
-                document.getElementById('case-select-cover').src = caseInfo.cover;
-                document.getElementById('case-select-cover').style.display = 'block';
-            }
-        };
+let currentCaseIndex = 0;
+let caseKeys = [];
 
-        btn.onclick = () => {
-            selectedCaseKey = key;
-            renderChapterList(key);
-        };
-        
-        container.appendChild(btn);
+function renderCaseList() {
+    const container = document.getElementById("cases-container");
+    container.innerHTML = "";
+    
+    caseKeys = Object.keys(casesData);
+    if(caseKeys.length === 0) return;
+    
+    if (selectedCaseKey) {
+        let idx = caseKeys.indexOf(selectedCaseKey);
+        if (idx !== -1) currentCaseIndex = idx;
+    } else {
+        currentCaseIndex = 0;
+    }
+
+    const navDiv = document.createElement("div");
+    navDiv.className = "cs-carousel-nav";
+    
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "cs-arrow-btn";
+    prevBtn.textContent = "◀";
+    prevBtn.onclick = (e) => {
+        e.stopPropagation();
+        currentCaseIndex = (currentCaseIndex - 1 + caseKeys.length) % caseKeys.length;
+        updateCarouselView();
+    };
+
+    const labelDiv = document.createElement("div");
+    labelDiv.className = "cs-carousel-label";
+    labelDiv.id = "carousel-case-label";
+
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "cs-arrow-btn";
+    nextBtn.textContent = "▶";
+    nextBtn.onclick = (e) => {
+        e.stopPropagation();
+        currentCaseIndex = (currentCaseIndex + 1) % caseKeys.length;
+        updateCarouselView();
+    };
+
+    navDiv.appendChild(prevBtn);
+    navDiv.appendChild(labelDiv);
+    navDiv.appendChild(nextBtn);
+    container.appendChild(navDiv);
+
+    const selectBtn = document.createElement("button");
+    selectBtn.className = "cs-item-btn cs-carousel-select";
+    selectBtn.textContent = window.t ? window.t("ui.selectCase", "Select Case") : "Select Case";
+    selectBtn.onclick = (e) => {
+        e.stopPropagation();
+        selectedCaseKey = caseKeys[currentCaseIndex];
+        renderChapterList(selectedCaseKey);
+    };
+    container.appendChild(selectBtn);
+
+    updateCarouselView();
+}
+
+function updateCarouselView() {
+    if (caseKeys.length === 0) return;
+    const key = caseKeys[currentCaseIndex];
+    const caseInfo = casesData[key];
+    
+    const labelEl = document.getElementById("carousel-case-label");
+    if (labelEl) labelEl.textContent = caseInfo.name;
+    
+    const titleEl = document.getElementById("case-select-title");
+    if (titleEl) titleEl.textContent = caseInfo.name;
+    
+    const coverEl = document.getElementById("case-select-cover");
+    if (coverEl) {
+        if (caseInfo.cover) {
+            coverEl.src = caseInfo.cover;
+            coverEl.style.display = "block";
+        } else {
+            coverEl.style.display = "none";
+            coverEl.src = "";
+        }
     }
 }
 
@@ -86,7 +143,8 @@ function renderChapterList(caseKey) {
         const btn = document.createElement('button');
         btn.className = 'cs-item-btn';
         btn.textContent = chapterInfo.name || chapterKey;
-        btn.onclick = () => {
+        btn.onclick = (e) => {
+            e.stopPropagation();
             loadSelectedChapter(caseKey, chapterKey);
         };
 
@@ -147,9 +205,21 @@ async function loadSelectedChapter(caseKey, chapterKey) {
 
 // Bind back buttons
 document.addEventListener('DOMContentLoaded', () => {
+    const coverEl = document.getElementById('case-select-cover');
+    if (coverEl) {
+        coverEl.onclick = (e) => {
+            e.stopPropagation();
+            if (caseKeys.length > 0 && !document.getElementById('case-list-view').classList.contains('hidden')) {
+                selectedCaseKey = caseKeys[currentCaseIndex];
+                renderChapterList(selectedCaseKey);
+            }
+        };
+    }
+
     const backToTitleBtn = document.getElementById('btn-case-select-back');
     if (backToTitleBtn) {
-        backToTitleBtn.onclick = () => {
+        backToTitleBtn.onclick = (e) => {
+            e.stopPropagation();
             window.hideCaseSelect();
             if (typeof window.initTitleScreen === 'function') {
                 window.initTitleScreen();
@@ -159,13 +229,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const backToCasesBtn = document.getElementById('btn-chapter-back');
     if (backToCasesBtn) {
-        backToCasesBtn.onclick = () => {
+        backToCasesBtn.onclick = (e) => {
+            e.stopPropagation();
             document.getElementById('chapter-list-view').classList.add('hidden');
             document.getElementById('case-list-view').classList.remove('hidden');
             
-            // Re-trigger current hover effect for selected case 
-            if (selectedCaseKey && casesData[selectedCaseKey]) {
-               document.getElementById('case-select-title').textContent = casesData[selectedCaseKey].name;
+            // Restore carousel cover view
+            if (typeof updateCarouselView === 'function') {
+                updateCarouselView();
             }
         };
     }

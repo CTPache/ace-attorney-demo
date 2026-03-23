@@ -18,7 +18,6 @@ crTabs.forEach((tab, index) => {
 
 // Menu Button Handler (Open in Present Mode)
 btnPresent.addEventListener('click', () => {
-    investigationMenu.classList.add('hidden');
     evidenceContainer.classList.remove('hidden');
     bottomTopBar.classList.add('hidden'); // Hide top bar
     isCourtRecordOpen = true;
@@ -33,10 +32,8 @@ btnEvidenceBack.addEventListener('click', () => {
     evidenceContainer.classList.add('hidden');
     evidenceDetails.classList.add('hidden');
     bottomTopBar.classList.remove('hidden'); // Show top bar
-    
+
     if (!isScenePlaying) {
-        // Return to investigation menu
-        investigationMenu.classList.remove('hidden');
         isPresentingMode = false; // Reset mode
     } else {
         // Return to scene
@@ -47,14 +44,8 @@ btnEvidenceBack.addEventListener('click', () => {
 // Top Bar Button Handler (Toggle View Mode)
 courtRecordBtn.addEventListener('click', (e) => {
     isCourtRecordOpen = !isCourtRecordOpen;
-    
-    if (isCourtRecordOpen) {
-        // Check if we are in investigation mode
-        if (!isScenePlaying) {
-            investigationMenu.classList.add('hidden');
-            topicMenu.classList.add('hidden');
-        }
 
+    if (isCourtRecordOpen) {
         isPresentingMode = false; // View only
         advanceBtn.classList.add('hidden');
         bottomTopBar.classList.add('hidden'); // Hide top bar
@@ -62,13 +53,10 @@ courtRecordBtn.addEventListener('click', (e) => {
         renderEvidence();
     } else {
         evidenceContainer.classList.add('hidden');
-        evidenceDetails.classList.add('hidden'); // Hide details if open
+        evidenceDetails.classList.add('hidden'); // Hide details if open        
         bottomTopBar.classList.remove('hidden'); // Show top bar
 
-        if (!isScenePlaying) {
-            // Return to investigation menu
-            investigationMenu.classList.remove('hidden');
-        } else {
+        if (isScenePlaying) {
             advanceBtn.classList.remove('hidden');
         }
     }

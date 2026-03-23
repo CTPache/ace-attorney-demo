@@ -37,7 +37,7 @@
 }
 
 #case-select-title {
-    font-family: 'Seurat', 'Arial', sans-serif;
+    font-family: 'FOT-SeuratPro-M', 'Arial', sans-serif;
     font-size: 4cqh;
     margin: 0;
     color: #ffd700;
@@ -74,18 +74,18 @@
 }
 
 .cs-scroll-container {
-    flex: 1;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 2cqh;
+    flex: 1;
 }
 
 .cs-item-btn {
     width: 100%;
     padding: 3cqh;
     font-size: 5cqh;
-    background: #333;
+    background: rgba(51, 51, 51, 0.9);
     color: white;
     border: 2px solid #555;
     border-radius: 1cqh;
@@ -104,3 +104,64 @@
     border-color: #2a8a2a;
 }
 
+
+/* Carousel Additions */
+.cs-carousel-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 2cqh;
+    background: rgba(51, 51, 51, 0.9);
+    border: 2px solid #555;
+    border-radius: 1cqh;
+    padding: 1cqh;
+    box-sizing: border-box;
+}
+
+.cs-arrow-btn {
+    background: #2a2a2a;
+    color: #ffd700;
+    font-size: 5cqh;
+    border: 2px solid #555;
+    border-radius: 1cqh;
+    padding: 1cqh 3cqh;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cs-arrow-btn:hover {
+    background: #444;
+    border-color: #ffd700;
+}
+
+.cs-carousel-label {
+    flex: 1;
+    text-align: center;
+    font-size: 4cqh;
+    color: white;
+    font-family: 'FOT-SeuratPro-B', 'Arial', sans-serif;
+    padding: 0 2cqh;
+}
+
+.cs-carousel-select {
+    margin-top: auto;
+    background: rgba(26, 74, 26, 0.95);
+    border-color: #2a8a2a;
+    text-align: center;
+    margin-bottom: 0;
+}
+.cs-carousel-select:hover {
+    background: #2a6a2a;
+}
+
+#case-select-cover {
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+#case-select-cover:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}

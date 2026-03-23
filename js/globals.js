@@ -83,3 +83,4 @@ let isCourtRecordOpen = false;
 let isPresentingMode = false;
 let isExamining = false;
 let isInputBlocked = false;
+let isSingleScreenMode = false;

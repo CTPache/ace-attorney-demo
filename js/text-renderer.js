@@ -2,6 +2,57 @@
 let isWaitingForAnimation = false;
 let activeCharacterFadeTarget = null;
 
+function setNameTagText(name) {
+    if (!nameTag) return;
+
+    let textEl = nameTag.querySelector('.name-tag-text');
+    if (!textEl) {
+        nameTag.textContent = '';
+        textEl = document.createElement('span');
+        textEl.className = 'name-tag-text';
+        nameTag.appendChild(textEl);
+    }
+
+    textEl.textContent = name || '';
+}
+
+function fitNameTagText() {
+    if (!nameTag) return;
+
+    const textEl = nameTag.querySelector('.name-tag-text');
+    if (!textEl) return;
+
+    nameTag.style.setProperty('--name-tag-text-scale-x', '1');
+    textEl.style.transform = 'none'; // Temporarily kill transform explicitly
+
+    // Force synchronous reflow so scrollWidth is accurately measured at scale = 1
+    void textEl.offsetWidth;
+
+    const style = getComputedStyle(nameTag);
+    const paddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    let availableWidth = nameTag.clientWidth - paddingX;
+    let requiredWidth = textEl.scrollWidth;
+
+    textEl.style.transform = ''; // Restore CSS transform rule
+
+    if (!availableWidth || !requiredWidth) return;
+
+    const ratio = Math.min(1, availableWidth / requiredWidth);
+    nameTag.style.setProperty('--name-tag-text-scale-x', String(ratio));
+}
+
+window.setNameTagText = setNameTagText;
+window.fitNameTagText = fitNameTagText;
+window.addEventListener('resize', fitNameTagText);
+
+if (typeof ResizeObserver !== 'undefined' && typeof gameContainer !== 'undefined') {
+    const layoutObserver = new ResizeObserver(() => {
+        requestAnimationFrame(fitNameTagText);
+    });
+    layoutObserver.observe(gameContainer);
+    if (nameTag) layoutObserver.observe(nameTag);
+}
+
 /**
  * Schedules shake events declared on a sprite animation.
  * Supported formats per event:
@@ -579,14 +630,17 @@ function updateDialogue(line) {
     }
 
     if (line.name) {
-        nameTag.textContent = line.name;
+        setNameTagText(line.name);
         nameTag.style.display = '';
         nameTag.style.opacity = '1';
         textboxContainer.classList.remove('no-name');
         currentCharacterName = line.name; // Track current character
+        fitNameTagText();
+        requestAnimationFrame(fitNameTagText);
     } else {
         nameTag.style.display = 'none';
         nameTag.style.opacity = '';
+        nameTag.style.setProperty('--name-tag-text-scale-x', '1');
         textboxContainer.classList.add('no-name');
         currentCharacterName = null;
     }

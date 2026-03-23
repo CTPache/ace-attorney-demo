@@ -3,6 +3,14 @@
 ## Project Overview
 This is a web-based visual novel engine mimicking the "Ace Attorney" style. It uses a data-driven architecture where the game content is separated from the engine logic.
 
+## Quick Start
+- Serve via HTTP (do not open with `file://`):
+  - XAMPP: `http://localhost/Demo`
+  - Python: `python -m http.server 8000` (from workspace root)
+  - VS Code Live Server: open `index.html` with Live Server
+- There is no npm build/test pipeline in this repository.
+- Existing VS Code tasks in `.vscode/tasks.json` are utility append tasks for CSS, not build/test tasks.
+
 ## Architecture
 - **Engine Core**: Split into modules:
   - `js/DOMGlobals.js`: Centralized DOM element references.
@@ -19,29 +27,31 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
   - `js/media.js`: Audio playback and visual effects.
   - `js/key-events.js`: Centralized global keyboard shortcuts.
   - `js/loader.js`: Asset preloading.
-  - `js/main.js`: Initialization, entry point, and Scene Loading.
-- **Game Data**: `game.json` (or split scene files) contains dialogue scripts, scene flow, asset definitions, and in-text commands.
+  - `js/main.js`: Initialization, entry point, scene loading, and URL parameter handling.
+- **Game Data**: Scene JSON files under `assets/scenes/{Case}/{Language}/` contain dialogue scripts, scene flow, asset definitions, and in-text commands.
 - **Styling**: 
-  - `css/style.css`: Main layout, layering, and core UI styles. Uses Container Query Units (`cqh`) for aspect-ratio independent scaling.
+  - `css/base.css`: Core layout and responsive behavior.
+  - `css/game-screen.css`: Top-screen rendering layers.
   - `css/investigation.css`: Specific styles for the investigation menu and buttons.
   - `css/move.css`: Styles for the Move menu grid and 3D perspectives.
-- **Assets**: Stored in `assets/` and referenced via relative paths in `game.json`.
+- **Assets**: Stored in `assets/` and referenced via relative paths in scene JSON files.
 
 ## Critical Workflows
-- **Running the Game**: Must be served via a local web server (e.g., XAMPP, Python `http.server`, VS Code Live Server) because `game.json` is loaded via `fetch()`.
+- **Running the Game**: Must be served via a local web server because scenes are loaded via `fetch()`.
 - **URL Parameters**:
   - `?lang=EN|ES|JP`: Sets initial UI/scene language.
+  - `?case=FlyHigh|Don|LockedRoom`: Sets active case.
   - `?scene=path_or_key`: Sets initial scene key relative to language scene folder (example: `?scene=detention_center`).
   - Scene loading falls back to English if the selected language file is missing.
 - **Adding Content**:
   1. Add assets to `assets/`.
-  2. Register new assets (characters, backgrounds, audio) in the respective sections of `game.json`.
-  3. Write dialogue in `game.json` under `gameScript`.
+  2. Register new assets (characters, backgrounds, audio) in the target scene JSON file.
+  3. Write dialogue in scene JSON under `gameScript`.
 
 ## Data Structures & Conventions
 
-### `scene.json` Structure
-The JSON file acts as the central database.
+### Scene JSON Structure
+Each scene file acts as the central database for that location/segment.
 ```json
 {
   "characters": { ... },
@@ -169,9 +179,18 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - **Sprite States**: Characters automatically switch between `default` and `talking` states during text rendering.
 - **Responsive Design**: The UI relies on Container Queries (`cqh`) to maintain a 16:9 aspect ratio.
 - **UI Theme**: Primary interaction buttons use a consistent "Wood" theme.
+- **Investigation Coordinates**: Investigation polygon bounds are normalized 0-100 coordinates.
+- **Positioned Backgrounds**: `{bgMove:*}` only works for backgrounds defined as positioned objects (`path` + `positions`), not plain string backgrounds.
 - **Keyboard Shortcuts**:
   - `A`: Toggle Auto Play.
   - `G`: Open/close Config menu.
   - `M`: Toggle single-screen mode.
   - `S`: Switch active screen in single-screen mode.
   - `Escape`: Close Config/History menus.
+
+## Agent Guardrails
+- Prefer modifying engine logic in JS modules over per-scene hardcoded workarounds when fixing cross-scene behavior.
+- Keep scene JSON changes data-only (dialogue/content/positions) and avoid introducing logic duplication in scripts.
+- When adding new script commands, update both `js/parser.js` and the relevant executor (`js/script-actions.js` or `js/text-renderer.js`).
+- If adding case/language scene files, preserve the path structure `assets/scenes/{Case}/{Language}/{scene}.json` to keep loader fallback behavior working.
+- For mobile issues, verify both normal two-screen mode and single-screen mode (`M`/`S` flow).

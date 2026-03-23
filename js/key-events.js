@@ -41,6 +41,15 @@ function handleGlobalKeydown(e) {
         toggleAutoplay();
         return;
     }
+
+    // Advance dialogue (Space) — replaces the advance button in single-screen mode
+    if (e.key === ' ') {
+        if (typeof advanceDialogue === 'function' && !isInputBlocked) {
+            advanceDialogue();
+            e.preventDefault();
+        }
+        return;
+    }
 }
 
 document.addEventListener('keydown', handleGlobalKeydown);

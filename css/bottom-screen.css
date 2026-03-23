@@ -34,7 +34,7 @@
 }
 
 #bottom-screen button {
-    font-family: 'Seurat', sans-serif;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
     color: white;
     cursor: pointer;
     display: flex;
@@ -136,4 +136,29 @@
 
 #evidence-present-btn:active {
     transform: translate(-50%, -50%) translateY(0.4cqh) !important;
+}
+
+/* Hide all gameplay menus underneath when full-screen popups (Court Record, Config) are active inside the bottom screen bounds */
+#bottom-main-window:has(#config-menu:not(.hidden)) #investigation-menu,
+#bottom-main-window:has(#config-menu:not(.hidden)) #move-menu,
+#bottom-main-window:has(#config-menu:not(.hidden)) #topic-menu,
+#bottom-main-window:has(#config-menu:not(.hidden)) #investigation-panel,
+#bottom-main-window:has(#config-menu:not(.hidden)) #evidence-container,
+#bottom-main-window:has(#history-menu:not(.hidden)) #investigation-menu,
+#bottom-main-window:has(#history-menu:not(.hidden)) #move-menu,
+#bottom-main-window:has(#history-menu:not(.hidden)) #topic-menu,
+#bottom-main-window:has(#history-menu:not(.hidden)) #investigation-panel,
+#bottom-main-window:has(#history-menu:not(.hidden)) #evidence-container,
+#bottom-main-window:has(#evidence-container:not(.hidden)) #investigation-menu,
+#bottom-main-window:has(#evidence-container:not(.hidden)) #move-menu,
+#bottom-main-window:has(#evidence-container:not(.hidden)) #topic-menu,
+#bottom-main-window:has(#evidence-container:not(.hidden)) #investigation-panel {
+    display: none !important;
+}
+
+/* Hide Court Record button (and its top bar container) when inside action sub-menus */
+#bottom-screen:has(#move-menu:not(.hidden)) #bottom-top-bar,
+#bottom-screen:has(#topic-menu:not(.hidden)) #bottom-top-bar,
+#bottom-screen:has(#investigation-panel:not(.hidden)) #bottom-top-bar {
+    display: none !important;
 }
