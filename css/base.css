@@ -15,6 +15,10 @@ body {
     display: flex;
     justify-content: center;
     overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 #main-wrapper {
