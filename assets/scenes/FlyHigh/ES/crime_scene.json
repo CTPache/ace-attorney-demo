@@ -1,0 +1,516 @@
+{
+    "initialSection": "Crime_Scene_Init",
+    "actions": {
+        "move": true,
+        "examine": true,
+        "talk": false,
+        "present": false
+    },
+    "characters": {
+        "Gumshoe": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "LookingAway": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "ScratchingHead": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
+                "time": 600
+            },
+            "ScratchingHead2": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
+            }
+        },
+        "Shawit": {
+            "Stand": {
+                "default": "assets/img/characters/Fly High/Shawit/Stand.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Stand_Talk.webp"
+            },
+            "Nervous": {
+                "default": "assets/img/characters/Fly High/Shawit/Nervous.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Nervous_Talk.webp"
+            },
+            "Cornered": {
+                "default": "assets/img/characters/Fly High/Shawit/Cornered.gif",
+                "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
+            },
+            "Damage": {
+                "default": "assets/img/characters/Fly High/Shawit/Damage.webp",
+                "time": 700,
+                "shake": [
+                    {
+                        "at": 0,
+                        "duration": 300
+                    }
+                ],
+                "sound": [
+                    {
+                        "at": 0,
+                        "sound": "damage2"
+                    }
+                ]
+            }
+        }
+    },
+    "backgrounds": {
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
+        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
+    },
+    "music": {
+        "investigation": [
+            "assets/audio/bgm/bgm001.m4a",
+            "assets/audio/bgm/bgm001lp.m4a"
+        ],
+        "grossberg": "assets/audio/bgm/bgm026.m4a"
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "cling": "assets/audio/se/cling.ogg",
+        "shake": "assets/audio/se/se026.m4a",
+        "jingle": "assets/audio/bgm/bgm016.m4a",
+        "question1": "assets/audio/se/question1.ogg",
+        "damage2": "assets/audio/se/damage2.ogg"
+    },
+    "evidence": {
+        "accessory": {
+            "name": "Accesorio",
+            "data": "Tipo: Prueba\n",
+            "description": "Al parecer, se trata de una especie de accesorio que se le cayó a Shawit mientras examinábamos la escena del crimen.",
+            "image": "assets/img/evidence/Blue_Badger.png"
+        }
+    },
+    "profiles": {},
+    "investigations": {
+        "Crime_Scene": {
+            "default": "Examine_Default",
+            "points": [
+                {
+                    "bounds": [
+                        63,
+                        50,
+                        40,
+                        50,
+                        40,
+                        65,
+                        63,
+                        65
+                    ],
+                    "label": "Examine_Body"
+                },
+                {
+                    "bounds": [
+                        25,
+                        15,
+                        75,
+                        15,
+                        100,
+                        40,
+                        70,
+                        40,
+                        70,
+                        20,
+                        30,
+                        20,
+                        30,
+                        40,
+                        0,
+                        40
+                    ],
+                    "label": "Examine_Background"
+                },
+                {
+                    "bounds": [
+                        0,
+                        45,
+                        0,
+                        100,
+                        100,
+                        100,
+                        100,
+                        45,
+                        90,
+                        45,
+                        90,
+                        80,
+                        10,
+                        80,
+                        10,
+                        45
+                    ],
+                    "label": "Examine_Out"
+                },
+                {
+                    "bounds": [
+                        19,
+                        50,
+                        35,
+                        50,
+                        35,
+                        73,
+                        19,
+                        73
+                    ],
+                    "label": "Examine_Floor"
+                }
+            ]
+        }
+    },
+    "options": {
+        "BodyPosition": {
+            "text": "Pero un cuerpo con ese tipo de lesión debería...",
+            "options": [
+                {
+                    "text": "Estar boca arriba",
+                    "label": "Body_Lying_Face_Up"
+                },
+                {
+                    "text": "Estar boca abajo",
+                    "label": "Body_Lying_Face_Down"
+                },
+                {
+                    "text": "Estar de lado",
+                    "label": "Body_Lying_On_Side"
+                }
+            ]
+        }
+    },
+    "move": [
+        {
+            "label": "Oficina",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/FlyHigh/office.json"
+        },
+        {
+            "label": "Centro de detención",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/FlyHigh/detention_center.json"
+        },
+        {
+            "label": "4.ª planta",
+            "target": "Floor4_Init",
+            "preview": "Floor4",
+            "json": "assets/scenes/FlyHigh/4th_floor.json"
+        }
+    ],
+    "gameScript": {
+        "Crime_Scene_Init": [
+            {
+                "text": "{jumpIf:Crime_Scene_Intro_done,Crime_Scene_Default,Crime_Scene_Intro}{sectionEnd}"
+            }
+        ],
+        "Crime_Scene_Default": [
+            {
+                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Crime_Scene_Finish": [
+            {
+                "text": "{setAction:examine,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Crime_Scene_Intro": [
+            {
+                "text": "{fadeBg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}17 de septiembre{nl}Salón de actos de Joypolis{color:white}{p:1000}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}Esta es la escena del crimen, amigo.{nl}Está oscuro porque ya han cerrado."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "El Sr. Shawit, el que encontró el cuerpo, estaba de pie justo aquí.{nl}En el primer piso del salón de actos, amigo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}Echa un vistazo hacia arriba, amigo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}¿Ves ahí arriba? Los pisos superiores forman un atrio."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Al parecer, la víctima, la Srta. Nakaki, estaba ahí arriba, en la barandilla de la 4.ª planta, amigo."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Es una buena caída... pero todavía puedo verlo todo claramente desde aquí.){color:white}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1}La teoría actual es que Maggey la empujó desde ahí arriba...{nl}y cayó justo debajo de esta barandilla, amigo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}Y esto es solo una suposición mía, amigo, pero...{nl}la hora de la muerte y la del descubrimiento podrían ser la misma."
+            },
+            {
+                "name": "Phoenix",
+                "text": "¿Eh?{flash}{playSound:cling}{nl}¿Qué quieres decir?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "La víctima cayó desde la 4.ª planta del salón de actos...{nl}y aterrizó justo delante del hombre que la encontró, amigo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "La causa de la muerte fue un golpe en la cabeza, por la caída. Una contusión letal...{nl}Parece que la muerte fue instantánea, justo aquí, amigo."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Ya veo...{nl}De acuerdo. Es hora de empezar la investigación.{setState:Crime_Scene_Intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{hideCharacter}{blip:1}No hay nada particularmente interesante por aquí.{sectionEnd}"
+            }
+        ],
+        "Examine_Body": [
+            {
+                "name": "Phoenix",
+                "text": "{hideCharacter}{blip:1}Murió todavía con el traje y la máscara del Samurái de Acero puestos..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "¿Eh...?{flash}{playSound:question1} La víctima murió por un fuerte golpe en la parte posterior de la cabeza, ¿verdad?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}Así es, amigo.{nl}¿Qué pasa?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Ahora mismo, el cuerpo está boca abajo."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Pero un cuerpo con ese tipo de lesión debería...{jump:Body_Lying_Question}{sectionEnd}"
+            }
+        ],
+        "Body_Lying_Question": [
+            {
+                "text": "{option:BodyPosition}{sectionEnd}"
+            }
+        ],
+        "Body_Lying_Face_Down": [
+            {
+                "name": "Phoenix",
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... eso no encaja si fue la parte posterior de su cabeza la que recibió el golpe.){color:white}{jump:Body_Lying_Question}"
+            }
+        ],
+        "Body_Lying_On_Side": [
+            {
+                "name": "Phoenix",
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... eso tampoco tiene sentido.){color:white}{jump:Body_Lying_Question}"
+            }
+        ],
+        "Body_Lying_Face_Up": [
+            {
+                "name": "Phoenix",
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Entonces debería estar boca arriba, ¿verdad?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{showTextbox}Ah...{nl}Ahora que lo mencionas, es verdad, amigo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}Pero por raro que parezca, también tiene cortes y magulladuras en la cara, no solo en la parte de atrás de la cabeza, amigo."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}{playSound:question1}(O sea que tiene heridas tanto en la parte trasera de la cabeza como en la cara...){color:white}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}Esa sangre en el suelo se está filtrando por las ranuras de la máscara, amigo."
+            },
+            {
+                "text": "{setState:body_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Examine_Background": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideCharacter}{blip:1}Hemos revisado cada piso e incluso el techo, amigo.{nl}Ni trampas. Ni trucos."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Entonces... realmente fue empujada.){color:white}"
+            },
+            {
+                "text": "{setState:background_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Examine_Out": [
+            {
+                "name": "Phoenix",
+                "text": "{hideCharacter}{blip:1}¿Había algún cliente en ese momento?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}No había ninguno, amigo.{nl}Este lugar cierra a las 9 p.m."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0}{color:lightblue}(Entonces no hay testigos ajenos a quienes interrogar...){color:white}"
+            },
+            {
+                "text": "{setState:out_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Examine_Floor": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideCharacter}{blip:1}Murió todavía con el traje y la máscara del Samurái de Acero puestos..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Hemos confirmado que no cayó nada más con el cuerpo, amigo."
+            },
+            {
+                "text": "{setState:floor_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Body_Examined": [
+            {
+                "text": "{jumpIf:body_investigated,Out_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Out_Examined": [
+            {
+                "text": "{jumpIf:out_investigated,Background_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Background_Examined": [
+            {
+                "text": "{jumpIf:background_investigated,Floor_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Floor_Examined": [
+            {
+                "text": "{jumpIf:floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Shawit_Appears": [
+            {
+                "name": "Shawit",
+                "text": "{hideTextbox}{blip:1}{fadeOutCharacter:300}{stopBGM}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}Vaya,{flash}{playSound:cling} ¿llevando a cabo su investigación de la escena del crimen?{nl}Gracias por su arduo trabajo."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Sr. Shawit."
+            },
+            {
+                "name": "Shawit",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Volver aquí todavía me duele...{nl}Como jefe, esto es verdaderamente desgarrador."
+            },
+            {
+                "name": "Shawit",
+                "text": "{sprite:Shawit[\"Nervous\"]}Cómo decirlo...{nl}Solo recordar ese momento me pone los pelos de punta."
+            },
+            {
+                "name": "Shawit",
+                "text": "Incluso ahora, cada pelo de mi cuerpo está de punta..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Sr. Shawit...{nl}No tiene el pelo de punta para nada, amigo."
+            },
+            {
+                "name": "Shawit",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{sprite:Shawit[\"Nervous\"]}{showTextbox}B-bueno...{nl}Ponerse los pelos de punta es solo una forma de hablar."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(El inspector Gumshoe...{nl}¿Está insinuando que el Sr. Shawit lleva un peluquín?){color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Aunque... un peluquín no podría ponerse de punta, ¿verdad?){color:white}"
+            },
+            {
+                "name": "Shawit",
+                "text": "{sprite:Shawit[\"Stand\"]}Dejando eso a un lado...{nl}Espero que este caso se resuelva rápidamente."
+            },
+            {
+                "name": "Shawit",
+                "text": "Rezo por el alma de la víctima...{nl}En fin."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{fadeOutCharacter:300}{stopBGM}{p:400}{playSound:question1}¿Eh...?{nl}Hay algo en el suelo."
+            },
+            {
+                "name": "Phoenix",
+                "text": "¿Qué es esto?{nl}Parece algún tipo de accesorio."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}Tienes razón, amigo.{nl}Eso no estaba ahí hace un momento..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(De momento me lo guardaré como prueba.)"
+            },
+            {
+                "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}\"Accesorio\" añadido al acta del juicio."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(De acuerdo, creo que esto es todo por aquí.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Una vez que haya reunido todo lo posible, será hora de ir a juicio.{nl}¡Ahí es donde sacaré a la luz la verdad!)"
+            },
+            {
+                "text": "{setState:crime_scene_done,true}{jump:Crime_Scene_Finish}{skip:0}{sectionEnd}"
+            }
+        ]
+    }
+}
