@@ -561,5 +561,42 @@ function switchScreen() {
     return;
 }
 
+function enforceOrientationScreenMode() {
+    // If layout is taller than it is wide, it's portrait (2 screens)
+    // If layout is wider than tall, it's landscape (single screen)
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches || (window.innerHeight >= window.innerWidth);
+    let changed = false;
+
+    if (isPortrait && isSingleScreenMode) {
+        isSingleScreenMode = false;
+        changed = true;
+    } else if (!isPortrait && !isSingleScreenMode) {
+        isSingleScreenMode = true;
+        changed = true;
+    }
+
+    if (changed) {
+        updateScreenVisibility();
+        if (typeof window.rearrangeTitleButtons === "function") {
+            window.rearrangeTitleButtons();
+        }
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                if (typeof window.applyCurrentBackgroundPosition === 'function') {
+                    window.applyCurrentBackgroundPosition(0);
+                }
+            });
+        });
+    }
+}
+
+window.addEventListener('resize', enforceOrientationScreenMode);
+window.addEventListener('orientationchange', enforceOrientationScreenMode);
+document.addEventListener('DOMContentLoaded', enforceOrientationScreenMode);
+
+// Call it initially immediately
+enforceOrientationScreenMode();
+
 if (document.getElementById("config-save-btn")) document.getElementById("config-save-btn").addEventListener("click", () => { window.saveGame(1); });
 if (document.getElementById("config-load-btn")) document.getElementById("config-load-btn").addEventListener("click", () => { window.loadGame(1); });

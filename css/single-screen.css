@@ -140,9 +140,10 @@
     height: auto;
     display: flex;
     flex-direction: row;
-    gap: 1.5cqh;
+    gap: 15cqh;
     padding: 1.5cqh 2cqh;
-    background-color: rgba(20, 16, 12, 0);
+    background-color: transparent;
+    background-image: none;
 }
 
 .single-screen-mode #investigation-menu .inv-btn {
