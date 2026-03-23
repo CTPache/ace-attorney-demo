@@ -74,6 +74,7 @@ window.setTalkingAnimationState = function (state) {
 }
 
 function typeWriter(text) {
+    if (typingInterval) clearTimeout(typingInterval);
     isTyping = true;
     textContent.innerHTML = ""; // Clear content
 
@@ -568,6 +569,11 @@ function finishTyping() {
 }
 
 function updateDialogue(line) {
+    if (textContent.textContent.trim().length > 0) {
+        window.lastLineHTML = textContent.innerHTML;
+        window.lastLineName = currentCharacterName;
+    }
+
     if (typeof logDialogueHistory === 'function') {
         logDialogueHistory(line);
     }

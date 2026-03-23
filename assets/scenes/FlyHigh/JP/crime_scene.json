@@ -1,0 +1,527 @@
+{
+    "initialSection": "Crime_Scene_Init",
+    "actions": {
+        "move": true,
+        "examine": true,
+        "talk": false,
+        "present": false
+    },
+    "characters": {
+        "Gumshoe": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "LookingAway": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "ScratchingHead": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
+                "time": 600
+            },
+            "ScratchingHead2": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
+            }
+        },
+        "Shawit": {
+            "Stand": {
+                "default": "assets/img/characters/Fly High/Shawit/Stand.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Stand_Talk.webp"
+            },
+            "Nervous": {
+                "default": "assets/img/characters/Fly High/Shawit/Nervous.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Nervous_Talk.webp"
+            },
+            "Cornered": {
+                "default": "assets/img/characters/Fly High/Shawit/Cornered.gif",
+                "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
+            },
+            "Damage": {
+                "default": "assets/img/characters/Fly High/Shawit/Damage.webp",
+                "time": 700,
+                "shake": [
+                    {
+                        "at": 0,
+                        "duration": 300
+                    }
+                ],
+                "sound": [
+                    {
+                        "at": 0,
+                        "sound": "damage2"
+                    }
+                ]
+            }
+        }
+    },
+    "backgrounds": {
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
+        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -380
+                ]
+            }
+        }
+    },
+    "music": {
+        "investigation": [
+            "assets/audio/bgm/bgm001.m4a",
+            "assets/audio/bgm/bgm001lp.m4a"
+        ],
+        "grossberg": "assets/audio/bgm/bgm026.m4a"
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "cling": "assets/audio/se/cling.ogg",
+        "shake": "assets/audio/se/se026.m4a",
+        "jingle": "assets/audio/bgm/bgm016.m4a",
+        "question1": "assets/audio/se/question1.ogg",
+        "damage2": "assets/audio/se/damage2.ogg"
+    },
+    "evidence": {
+        "accessory": {
+            "name": "アクセサリーのようなもの",
+            "data": "タイプ：証拠品\n",
+            "description": "被害現場を調査中、山野が落としていった、なんかのアクセサリだろうか。",
+            "image": "assets/img/evidence/Blue_Badger.png"
+        }
+    },
+    "profiles": {},
+    "investigations": {
+        "Crime_Scene": {
+            "default": "Examine_Default",
+            "points": [
+                {
+                    "bounds": [
+                        63,
+                        50,
+                        40,
+                        50,
+                        40,
+                        65,
+                        63,
+                        65
+                    ],
+                    "label": "Examine_Body"
+                },
+                {
+                    "bounds": [
+                        25,
+                        15,
+                        75,
+                        15,
+                        100,
+                        40,
+                        70,
+                        40,
+                        70,
+                        20,
+                        30,
+                        20,
+                        30,
+                        40,
+                        0,
+                        40
+                    ],
+                    "label": "Examine_Background"
+                },
+                {
+                    "bounds": [
+                        0,
+                        45,
+                        0,
+                        100,
+                        100,
+                        100,
+                        100,
+                        45,
+                        90,
+                        45,
+                        90,
+                        80,
+                        10,
+                        80,
+                        10,
+                        45
+                    ],
+                    "label": "Examine_Out"
+                },
+                {
+                    "bounds": [
+                        19,
+                        50,
+                        35,
+                        50,
+                        35,
+                        73,
+                        19,
+                        73
+                    ],
+                    "label": "Examine_Floor"
+                }
+            ]
+        }
+    },
+    "options": {
+        "BodyPosition": {
+            "options": [
+                {
+                    "text": "仰向けで倒れているハズ",
+                    "label": "Body_Lying_Face_Up"
+                },
+                {
+                    "text": "うつぶせで倒れているハズ",
+                    "label": "Body_Lying_Face_Down"
+                },
+                {
+                    "text": "横向きに倒れているハズ",
+                    "label": "Body_Lying_On_Side"
+                }
+            ]
+        }
+    },
+    "move": [
+        {
+            "label": "事務所",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/FlyHigh/office.json"
+        },
+        {
+            "label": "留置所",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/FlyHigh/detention_center.json"
+        },
+        {
+            "label": "４階",
+            "target": "Floor4_Init",
+            "preview": "Floor4",
+            "json": "assets/scenes/FlyHigh/4th_floor.json"
+        }
+    ],
+    "gameScript": {
+        "Crime_Scene_Init": [
+            {
+                "text": "{color:white}{jumpIf:Crime_Scene_Intro_done,Crime_Scene_Default,Crime_Scene_Intro}{sectionEnd}"
+            }
+        ],
+        "Crime_Scene_Default": [
+            {
+                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Crime_Scene_Finish": [
+            {
+                "text": "{setAction:examine,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Crime_Scene_Intro": [
+            {
+                "text": "{fadeBg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}９月１７日　 某時刻{nl}ジョイポリス　イベントホール{p:1000}"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}{color:white}ここが殺害現場ッス。{nl}閉館したあとだから薄暗いッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "当時、第一発見者の山野さんがいた場所が{nl}ちょうどここ。1階のイベントホールッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}見上げてみるッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}上階は吹き抜けになっていて・・・・ 。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "被害者の中木さんがいたとされるのが{nl}あの４階の手すり部分ッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0}{color:lightblue}（薄暗い場所だけど、この辺では{nl}一応、目視できるんだな）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1}あそこからマコくんに突き落とされて、{nl}この手すりの真下まで落下したらしいッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}あと、多分ッスけど・・・{nl}死亡時刻は死体発見時刻と同じッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "ん？{flash}{playSound:cling}{nl}どういうコトですか?"
+            },
+            {
+                "name": "イトノコ",
+                "text": "被害者はイベントホールの4階から落下して、{nl}第１発見者の目の前に落ちたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "死因は落下時に後頭部を強打したコトによる{nl}脳挫傷。つまりそこで即死だったと思うッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "・・・・なるほど。{nl}ではさっそく調べてみることにします。{setState:Crime_Scene_Intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Examine_Default": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:1}特に気になるものはないな。{sectionEnd}"
+            }
+        ],
+        "Examine_Body": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:1}トノサマンのマスクとスーツを着たまま{nl}亡くなっているのか・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "・・・ん？{flash}{playSound:question1}　被害者は後頭部を強打して{nl}亡くなったんですよね？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}そッスけど。{nl}どうかしたッスか？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1,false}今、遺体はうつぶせで倒れています。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "でも普通に考えたら、{nl}後頭部を強打した遺体は・・・・。{jump:Body_Lying_Question}{sectionEnd}"
+            }
+        ],
+        "Body_Lying_Question": [
+            {
+                "text": "{option:BodyPosition}{sectionEnd}"
+            }
+        ],
+        "Body_Lying_Face_Down": [
+            {
+                "name": "ナルホド",
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（いや・・・それは後頭部を強打したのならおかしい。）{jump:Body_Lying_Question}"
+            }
+        ],
+        "Body_Lying_On_Side": [
+            {
+                "name": "ナルホド",
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（いや・・・それもおかしいだろう。）{jump:Body_Lying_Question}"
+            }
+        ],
+        "Body_Lying_Face_Up": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}普通に考えたら、後頭部を強打した遺体は{nl}仰向けで倒れているものじゃないですか？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{showTextbox}・・・・ああ。{nl}言われてみればそッスね。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}・・・・でも不思議なコトに後頭部だけじゃ{nl}なくて、顔面にも傷と打撲があるッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0}{color:lightblue}{playSound:question1}（・・・・後頭部と顔面の両方に傷と打撲{nl}ということなんだろう）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}床ににじみ出ている血は、{nl}マスクの隙間から漏れ出ているものッス。"
+            },
+            {
+                "text": "{setState:body_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Examine_Background": [
+            {
+                "name": "イトノコ",
+                "text": "{color:white}{hideCharacter}{blip:1}各階や天井は全て調査済みッス。{nl}仕掛けのようなものは一切ないッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0}{color:lightblue}（ただタンジュンに突き落とされただけ{nl}ということか・・・・）"
+            },
+            {
+                "text": "{setState:background_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Examine_Out": [
+            {
+                "name": "ナルホド",
+                "text": "{hideCharacter}{color:white}{blip:1}事件当時、一般のお客さんは？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}いなかったッス。{nl}ここは午後９時に閉まるッスから。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "ということは、事件当時は第1発見者と{nl}被害者と容疑者の3人だけだったんですか?"
+            },
+            {
+                "name": "イトノコ",
+                "text": "そういうことッスね。{nl}警備員もマコくん1人だけだったッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0}{color:lightblue}（他の目撃者から話を聞くことは{nl}無理というワケか・・・・）"
+            },
+            {
+                "text": "{setState:out_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Examine_Floor": [
+            {
+                "name": "イトノコ",
+                "text": "{color:white}{hideCharacter}{blip:1}キレイッスよね。{nl}掃除が行き届いているッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "遺体以外には何も落ちていないコトは{nl}確認済みッス。"
+            },
+            {
+                "text": "{setState:floor_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Body_Examined": [
+            {
+                "text": "{color:white}{jumpIf:body_investigated,Out_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Out_Examined": [
+            {
+                "text": "{color:white}{jumpIf:out_investigated,Background_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Background_Examined": [
+            {
+                "text": "{color:white}{jumpIf:background_investigated,Floor_Examined}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Floor_Examined": [
+            {
+                "text": "{color:white}{jumpIf:floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Shawit_Appears": [
+            {
+                "name": "ヤマノ",
+                "text": "{color:white}{hideTextbox}{blip:1}{fadeOutCharacter:300}{stopBGM}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}おや、{flash}{playSound:cling}現場検証でございますか。{nl}ご苦労様でございます。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}山野さん。"
+            },
+            {
+                "name": "ヤマノ",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}・・・ここにくると未だに心が痛みます。{nl}主任として、悲しい限りでございます。"
+            },
+            {
+                "name": "ヤマノ",
+                "text": "{sprite:Shawit[\"Nervous\"]}もう、何というか・・・・当時のことを思い出す{nl}だけで身の毛がよだつのでございます。"
+            },
+            {
+                "name": "ヤマノ",
+                "text": "今も全身の毛という毛が逆立って・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}山野さん。{nl}でも、髪の毛はちっとも逆立ってないッスよ。"
+            },
+            {
+                "name": "ヤマノ",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{showTextbox}・・・・えっ!{skip:100}"
+            },
+            {
+                "name": "ヤマノ",
+                "text": "{sprite:Shawit[\"Nervous\"]}{showTextbox}ま、まあ・・・・{nl}逆立つというのは例えでございますから。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（イトノコ刑事・・・・山野さんがカツラだって{nl}コトを言いたいのかな）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（確かにカツラなら逆立たないもんな・・・・）"
+            },
+            {
+                "name": "ヤマノ",
+                "text": "{color:white}{sprite:Shawit[\"Stand\"]}そんなことはさておき。{nl}一刻も早い解決を望んでおりますよ。"
+            },
+            {
+                "name": "ヤマノ",
+                "text": "そして、被害者の冥福を・・・・。{nl}それでは。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}・・・ん？{nl}何か地面に落ちているぞ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "これは何だろう？{nl}アクセサリーかな。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}ほんとッスね。{p:200}さっきまでは{nl}ナニも落ちていなかったッスけど・・・・"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（とりあず証拠品として持っていよう）"
+            },
+            {
+                "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《アクセサリーのようなもの》の{nl}データを法廷記録に書き込んでください。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（よし、ここはこんなところか）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（情報が揃ったら法廷に向かおう。{nl}そこですべてをアキラカにするんだ！）"
+            },
+            {
+                "text": "{setState:crime_scene_done,true}{jump:Crime_Scene_Finish}{skip:0}{sectionEnd}"
+            }
+        ]
+    }
+}

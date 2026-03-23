@@ -329,8 +329,50 @@ window.renderOptionsMenu = function(optionKey) {
     topicMenu.appendChild(header);
 
     // Render the option text in the main dialogue textbox
-    if (optionData.text) {
-        textContent.textContent = optionData.text;
+    if (optionData.text || optionData.name !== undefined) {
+        if (typeof updateDialogue === 'function') {
+            updateDialogue({
+                name: optionData.name, // undefined naturally clears the nametag, just like regular entries
+                text: optionData.text !== undefined ? optionData.text : ''
+            });
+        } else {
+            if (optionData.name && window.nameTag) {
+                window.nameTag.textContent = optionData.name;
+                window.nameTag.style.display = '';
+                window.nameTag.style.opacity = '1';
+                window.textboxContainer.classList.remove('no-name');
+            } else if (window.nameTag && !optionData.name) {
+                window.nameTag.style.display = 'none';
+                window.nameTag.style.opacity = '';
+                window.textboxContainer.classList.add('no-name');
+            }
+            if (optionData.text !== undefined) {
+                textContent.textContent = optionData.text;
+            }
+        }
+    } else {
+        // If neither text nor name is present, the engine might have cleared the screen
+        // if this choice was forced by a jump to a new section.
+        // Restore the last fully rendered text/name from the caching variable so it "leaves the last line" visible!
+        if (window.lastLineHTML && textContent.textContent.trim() === '') {
+            textContent.innerHTML = window.lastLineHTML;
+            if (window.lastLineName) {
+                if (window.nameTag) {
+                    window.nameTag.textContent = window.lastLineName;
+                    window.nameTag.style.display = '';
+                    window.nameTag.style.opacity = '1';
+                }
+                window.textboxContainer.classList.remove('no-name');
+                window.currentCharacterName = window.lastLineName;
+            } else {
+                if (window.nameTag) {
+                    window.nameTag.style.display = 'none';
+                    window.nameTag.style.opacity = '';
+                }
+                window.textboxContainer.classList.add('no-name');
+                window.currentCharacterName = null;
+            }
+        }
     }
 
     // Render Buttons
