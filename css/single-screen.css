@@ -69,7 +69,7 @@
 
 .single-screen-mode #court-record-btn,
 .single-screen-mode #config-btn {
-    font-size: 1.8cqh !important;
+    font-size: 2.5cqh !important;
     padding: 1cqh 1cqh !important;
 }
 
@@ -310,7 +310,8 @@
 
 .single-screen-mode #autoplay-indicator,
 .single-screen-mode #skip-video-btn {
-    right: 88cqw !important;
+    right: 5cqw !important;
+    top: 69cqh !important;
 }
 .single-screen-mode #carousel-case-label,
 .single-screen-mode .cs-carousel-select {

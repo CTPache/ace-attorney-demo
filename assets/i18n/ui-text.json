@@ -1,6 +1,6 @@
 {
   "EN": {
-    "ui.auto": "Auto",
+    "ui.auto": "Autoplay",
     "ui.autoplayOn": "Auto Play On (A)",
     "ui.autoplayOff": "Auto Play Off (A)",
     "ui.autoplayToggle": "Toggle Auto Play",
@@ -11,7 +11,7 @@
     "ui.skipVideoAria": "Skip Video",
     "ui.playVideoAria": "Play Video",
     "ui.courtRecord": "Court Record",
-    "ui.config": "⚙️",
+    "ui.config": "Options",
     "ui.configuration": "Configuration",
     "ui.autoSpeed": "Auto Speed",
     "ui.slow": "Slow",
@@ -38,7 +38,7 @@
     "ui.optionsHeader": "Select an option"
   },
   "ES": {
-    "ui.auto": "Auto",
+    "ui.auto": "Autoplay",
     "ui.autoplayOn": "Reproducción automática activada (A)",
     "ui.autoplayOff": "Reproducción automática desactivada (A)",
     "ui.autoplayToggle": "Alternar reproducción automática",
@@ -49,7 +49,7 @@
     "ui.skipVideoAria": "Saltar vídeo",
     "ui.playVideoAria": "Reproducir vídeo",
     "ui.courtRecord": "Acta del juicio",
-    "ui.config": "⚙️",
+    "ui.config": "Opciones",
     "ui.configuration": "Configuración",
     "ui.autoSpeed": "Velocidad auto",
     "ui.slow": "Lenta",
