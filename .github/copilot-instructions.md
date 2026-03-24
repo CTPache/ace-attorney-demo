@@ -20,7 +20,12 @@ This is a web-based visual novel engine mimicking the "Ace Attorney" style. It u
   - `js/text-renderer.js`: Handles text typing, skipping logic. Delegates logic to `script-actions.js`.
   - `js/animations.js`: Manages complex CSS/WebP animations defined in JSON timelines.
   - `js/script-actions.js`: Executes non-rendering game logic (state, evidence, audio, flow).
-  - `js/ui.js`: High-level UI state management and transition logic.
+  - `js/ui/action-menus.js`: Core gameplay menu/action visibility helpers.
+  - `js/ui/config-history.js`: Config and history menu state, autoplay UI, and settings interactions.
+  - `js/ui/scene-flow.js`: Option menu rendering and scene state transition UI behavior.
+  - `js/ui/advance-controls.js`: Advance/fast-forward input handling for dialogue.
+  - `js/ui/return-to-title.js`: Return-to-title confirmation and full teardown flow.
+  - `js/ui/screen-mode.js`: Single-screen mode/orientation synchronization logic.
   - `js/court-record.js`: Evidence/Profiles inventory and presenting logic.
   - `js/investigation.js`: Investigation mode (examining, moving) logic.
   - `js/topics.js`: Topic selection menu logic.
@@ -174,19 +179,24 @@ The engine parses commands enclosed in `{}` within the `text` string.
 ## Common Patterns
 - **Scene Management**: Support for multiple JSON/Scene files. Use `window.loadGameData()` or the `json` property in investigation moves. Evidence inventory is preserved (merged) across scenes.
 - **Language Switching**: Changing language from the config menu reloads the current scene in the new language, resets line progression to the beginning, and clears dialogue history.
+- **UI Localization**: Localize visible text, tooltip titles, and accessibility labels with `data-i18n`, `data-i18n-title`, and `data-i18n-aria-label`. Add corresponding keys to `assets/i18n/ui-text.json` for EN/ES/JP.
 - **State Management**: Use `gameState` object in `js/globals.js` for flags.
 - **Typing Effect**: `typeWriter` in `js/engine.js` handles rendering.
 - **Sprite States**: Characters automatically switch between `default` and `talking` states during text rendering.
 - **Responsive Design**: The UI relies on Container Queries (`cqh`) to maintain a 16:9 aspect ratio.
 - **UI Theme**: Primary interaction buttons use a consistent "Wood" theme.
+- **Title Screen**: The title menu includes Load, Case Select, Gallery, and Settings. In single-screen mode, title buttons are moved into the top layer and long localized labels are auto-fitted.
+- **Config Context**: Opening config from the title screen enables title-only mode (hides save/load/history/return-to-title actions).
+- **Return to Title Flow**: Returning to title from config uses a confirmation dialog and then performs a full gameplay teardown (timers, animations, media, overlays, transient state).
 - **Investigation Coordinates**: Investigation polygon bounds are normalized 0-100 coordinates.
 - **Positioned Backgrounds**: `{bgMove:*}` only works for backgrounds defined as positioned objects (`path` + `positions`), not plain string backgrounds.
 - **Keyboard Shortcuts**:
   - `A`: Toggle Auto Play.
+  - `E`: Open/close Court Record.
   - `G`: Open/close Config menu.
   - `M`: Toggle single-screen mode.
   - `S`: Switch active screen in single-screen mode.
-  - `Escape`: Close Config/History menus.
+  - `Escape`: Close the innermost open menu (evidence details, Court Record, investigation/move/topic menus, case select/chapter list, config, history).
 
 ## Agent Guardrails
 - Prefer modifying engine logic in JS modules over per-scene hardcoded workarounds when fixing cross-scene behavior.

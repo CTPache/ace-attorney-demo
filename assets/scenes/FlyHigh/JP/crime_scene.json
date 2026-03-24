@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Crime_Scene_Init",
     "actions": {
         "move": true,
@@ -197,6 +197,7 @@
     },
     "options": {
         "BodyPosition": {
+            "text": "でも普通に考えたら、{nl}後頭部を強打した遺体は・・・・。",
             "options": [
                 {
                     "text": "仰向けで倒れているハズ",
@@ -236,12 +237,12 @@
     "gameScript": {
         "Crime_Scene_Init": [
             {
-                "text": "{color:white}{jumpIf:Crime_Scene_Intro_done,Crime_Scene_Default,Crime_Scene_Intro}{sectionEnd}"
+                "text": "{jumpIf:Crime_Scene_Intro_done,Crime_Scene_Default,Crime_Scene_Intro}{sectionEnd}"
             }
         ],
         "Crime_Scene_Default": [
             {
-                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{startBGM:investigation}{skip:0}{sectionEnd}"
             }
         ],
         "Crime_Scene_Finish": [
@@ -255,7 +256,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}{color:white}ここが殺害現場ッス。{nl}閉館したあとだから薄暗いッス。"
+                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}ここが殺害現場ッス。{nl}閉館したあとだから薄暗いッス。"
             },
             {
                 "name": "イトノコ",

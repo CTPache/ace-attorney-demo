@@ -10,32 +10,34 @@ window.saveGame = function(slot = 1) {
         return;
     }
 
-    const saveData = {
-        gameState: gameState || {},
-        evidenceInventory: evidenceInventory || [],
-        profilesInventory: profilesInventory || [],
-        unlockedTopics: unlockedTopics || [],
-        actionStates: actionStates || { examine: true, move: true, talk: true, present: true },
-        currentLife: typeof currentLife !== 'undefined' ? currentLife : 10,
-        maxLife: typeof maxLife !== 'undefined' ? maxLife : 10,
-        currentCase: typeof currentCase !== 'undefined' ? currentCase : "FlyHigh",
-        currentLanguage: typeof currentLanguage !== 'undefined' ? currentLanguage : "EN",
-        currentSceneRequestPath: typeof currentSceneRequestPath !== 'undefined' ? currentSceneRequestPath : "",
-        currentSectionName: typeof currentSectionName !== 'undefined' ? currentSectionName : "",
-        isScenePlaying: typeof isScenePlaying !== 'undefined' ? isScenePlaying : true,
-        currentLineIndex: typeof currentLineIndex !== 'undefined' ? currentLineIndex : 0,
-        dialogueHistory: typeof dialogueHistory !== 'undefined' ? dialogueHistory : [],
-        currentBackgroundKey: typeof currentBackgroundKey !== 'undefined' ? currentBackgroundKey : "",
-        currentForegroundKey: typeof currentForegroundKey !== 'undefined' ? currentForegroundKey : "",
-        currentCharacterName: typeof currentCharacterName !== 'undefined' ? currentCharacterName : "",
-        currentAnimationKey: typeof currentAnimationKey !== 'undefined' ? currentAnimationKey : "",
-        characterIsVisible: typeof characterIsVisible !== 'undefined' ? characterIsVisible : true,
-        currentBGMKey: typeof currentBGMKey !== 'undefined' ? currentBGMKey : null,
-        currentBlipType: typeof currentBlipType !== 'undefined' ? currentBlipType : 1,
-        lastCheckpointSection: typeof lastCheckpointSection !== 'undefined' ? lastCheckpointSection : "",
-        isCourtRecordOpen: typeof isCourtRecordOpen !== 'undefined' ? isCourtRecordOpen : false,
-        timestamp: new Date().toISOString()
-    };
+    const saveData = typeof window.buildSaveDataSnapshot === 'function'
+        ? window.buildSaveDataSnapshot()
+        : {
+            gameState: gameState || {},
+            evidenceInventory: evidenceInventory || [],
+            profilesInventory: profilesInventory || [],
+            unlockedTopics: unlockedTopics || [],
+            actionStates: actionStates || { examine: true, move: true, talk: true, present: true },
+            currentLife: typeof currentLife !== 'undefined' ? currentLife : 10,
+            maxLife: typeof maxLife !== 'undefined' ? maxLife : 10,
+            currentCase: typeof currentCase !== 'undefined' ? currentCase : "FlyHigh",
+            currentLanguage: typeof currentLanguage !== 'undefined' ? currentLanguage : "EN",
+            currentSceneRequestPath: typeof currentSceneRequestPath !== 'undefined' ? currentSceneRequestPath : "",
+            currentSectionName: typeof currentSectionName !== 'undefined' ? currentSectionName : "",
+            isScenePlaying: typeof isScenePlaying !== 'undefined' ? isScenePlaying : true,
+            currentLineIndex: typeof currentLineIndex !== 'undefined' ? currentLineIndex : 0,
+            dialogueHistory: typeof dialogueHistory !== 'undefined' ? dialogueHistory : [],
+            currentBackgroundKey: typeof currentBackgroundKey !== 'undefined' ? currentBackgroundKey : "",
+            currentForegroundKey: typeof currentForegroundKey !== 'undefined' ? currentForegroundKey : "",
+            currentCharacterName: typeof currentCharacterName !== 'undefined' ? currentCharacterName : "",
+            currentAnimationKey: typeof currentAnimationKey !== 'undefined' ? currentAnimationKey : "",
+            characterIsVisible: typeof characterIsVisible !== 'undefined' ? characterIsVisible : true,
+            currentBGMKey: typeof currentBGMKey !== 'undefined' ? currentBGMKey : null,
+            currentBlipType: typeof currentBlipType !== 'undefined' ? currentBlipType : 1,
+            lastCheckpointSection: typeof lastCheckpointSection !== 'undefined' ? lastCheckpointSection : "",
+            isCourtRecordOpen: typeof isCourtRecordOpen !== 'undefined' ? isCourtRecordOpen : false,
+            timestamp: new Date().toISOString()
+        };
 
     localStorage.setItem(`ace_attorney_save_${slot}`, JSON.stringify(saveData));
     
@@ -64,12 +66,9 @@ window.loadGame = async function(slot = 1) {
             return;
         }
 
-        // 1. Close menus if open
-        if (typeof hideConfigMenu === 'function' && typeof configMenu !== 'undefined' && !configMenu.classList.contains('hidden')) {
-            hideConfigMenu();
-        }
-        if (typeof toggleCourtRecord === 'function' && typeof isCourtRecordOpen !== 'undefined' && isCourtRecordOpen) {
-            toggleCourtRecord(); // Close it
+        // 1. Close menus if open.
+        if (typeof window.closeOpenMenusForLoad === 'function') {
+            window.closeOpenMenusForLoad();
         }
 
         // Fix visibility of game screens when loading from Title Screen
@@ -87,14 +86,9 @@ window.loadGame = async function(slot = 1) {
 
         // 4. Check if scene changed
         const sceneChanged = currentSceneRequestPath !== saveData.currentSceneRequestPath;
-        const langChanged = currentLanguage !== saveData.currentLanguage;
-
-        // Restore language config visually if it changed
-        if (langChanged) {
-            currentLanguage = saveData.currentLanguage;
-            if (typeof configLanguageSelect !== 'undefined' && configLanguageSelect) configLanguageSelect.value = saveData.currentLanguage;
-            if (typeof applyTranslationToUI === 'function') applyTranslationToUI();
-        }
+        const langChanged = (typeof window.restoreLanguageForLoad === 'function')
+            ? window.restoreLanguageForLoad(saveData)
+            : (currentLanguage !== saveData.currentLanguage);
 
         if (sceneChanged || langChanged || !gameScript || Object.keys(gameScript).length === 0) {
             currentSceneRequestPath = saveData.currentSceneRequestPath;
@@ -102,81 +96,21 @@ window.loadGame = async function(slot = 1) {
             await window.loadGameData(saveData.currentSceneRequestPath, null, true);
         }
 
-        // 5. Restore Globals (Direct assignment, not window.*)
-        for (const key in gameState) delete gameState[key];
-        Object.assign(gameState, saveData.gameState);
-        
-        evidenceInventory = saveData.evidenceInventory;
-        profilesInventory = saveData.profilesInventory;
-        unlockedTopics = saveData.unlockedTopics;
-        actionStates = saveData.actionStates;
-        currentLife = saveData.currentLife;
-        maxLife = saveData.maxLife;
-        currentCase = saveData.currentCase;
-        currentSectionName = saveData.currentSectionName;
-        currentLineIndex = saveData.currentLineIndex;
-        dialogueHistory = saveData.dialogueHistory;
-        currentBackgroundKey = saveData.currentBackgroundKey;
-        currentForegroundKey = saveData.currentForegroundKey;
-        currentCharacterName = saveData.currentCharacterName;
-        currentAnimationKey = saveData.currentAnimationKey;
-        characterIsVisible = saveData.characterIsVisible;
-        currentBGMKey = saveData.currentBGMKey;
-        currentBlipType = saveData.currentBlipType !== undefined ? saveData.currentBlipType : 1;
-        lastCheckpointSection = saveData.lastCheckpointSection;
-
-        // 6. Restore Visuals & Audio mappings
-        if (currentBackgroundKey) {
-            changeBackground(currentBackgroundKey);
-        }
-        if (currentForegroundKey) {
-            changeForeground(currentForegroundKey);
-        }
-        
-        const charEl = document.getElementById('character');
-        if (currentCharacterName && currentAnimationKey) {
-            changeSprite(currentCharacterName, currentAnimationKey);
-            if (charEl) {
-                charEl.classList.remove('fade-out');
-                charEl.style.transition = 'none';
-                charEl.style.opacity = characterIsVisible ? '1' : '0';
-                void charEl.offsetWidth;
-                charEl.style.transition = '';
-            }
-        } else {
-             if (charEl) charEl.style.opacity = '0';
+        // 5. Restore globals + visuals
+        if (typeof window.restoreCoreStateForLoad === 'function') {
+            window.restoreCoreStateForLoad(saveData);
         }
 
-        if (currentBGMKey) {
-            // Replay properly instead of skipping fade
-            playBGM(currentBGMKey, false);
-        } else {
-            if (typeof stopBGM === 'function') stopBGM(false); // Stop if there shouldn't be
+        if (typeof window.restoreVisualStateForLoad === 'function') {
+            window.restoreVisualStateForLoad();
         }
-
-        if (typeof updateHealthUI === 'function') updateHealthUI(0, false);
-        if (typeof updateActionButtons === 'function') updateActionButtons();
         
-        // 7. Resume execution at the requested line
-        if (typeof isWaitingForAutoSkip !== 'undefined') isWaitingForAutoSkip = false;
-        
-        isScenePlaying = saveData.isScenePlaying !== undefined ? saveData.isScenePlaying : true;
+        // 6. Resume execution at the requested line
+        const resumed = (typeof window.resumeDialogueForLoad === 'function')
+            ? window.resumeDialogueForLoad(saveData)
+            : false;
 
-const savedSection = gameScript[currentSectionName];
-
-        if (!isScenePlaying) {
-            // Not mid-dialogue: re-run the scene's initialSection so the
-            // background, character, and BGM are set up, then it will land
-            // on the investigation menu via {sectionEnd}.
-            if (typeof jumpToSection === 'function' && initialSectionName && gameScript[initialSectionName]) {
-                jumpToSection(initialSectionName);
-            } else if (typeof updateSceneState === 'function') {
-                updateSceneState();
-            }
-        } else if (savedSection && savedSection[currentLineIndex]) {
-            if (typeof updateSceneState === 'function') updateSceneState();
-            updateDialogue(savedSection[currentLineIndex]);
-        } else {
+        if (!resumed) {
             console.error("Save state line not found in loaded script.");
             alert("Warning: Could not resolve saved script line.");
         }

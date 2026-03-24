@@ -1,6 +1,51 @@
 ﻿// js/title-screen.js
 console.log("Title Screen logic loaded");
 
+function fitTitleButtons() {
+    const top = document.getElementById('title-screen-top');
+    if (!top || top.classList.contains('hidden')) return;
+    const wrapper = document.getElementById('main-wrapper');
+    if (!wrapper || !wrapper.classList.contains('single-screen-mode')) return;
+    const buttons = top.querySelectorAll('.title-btn');
+    if (buttons.length === 0) return;
+
+    const applyScale = () => {
+        top.querySelectorAll('.title-btn > .title-btn-inner').forEach(span => {
+            const btn = span.parentElement;
+            const edgeMargin = Math.max(8, Math.floor(btn.clientWidth * 0.04));
+            const avail = btn.clientWidth - (edgeMargin * 2);
+            const natural = span.scrollWidth;
+            span.style.transform = (natural > avail && avail > 0)
+                ? `scaleX(${Math.max(0.6, avail / natural)})`
+                : 'scaleX(1)';
+        });
+    };
+
+    buttons.forEach(btn => {
+        let span = btn.querySelector(':scope > .title-btn-inner');
+        const text = span ? span.textContent.trim() : btn.textContent.trim();
+
+        if (!span) {
+            btn.textContent = '';
+            span = document.createElement('span');
+            span.className = 'title-btn-inner';
+            span.style.cssText = 'display:inline-block;white-space:nowrap;transform-origin:center;';
+            btn.appendChild(span);
+        }
+
+        span.textContent = text;
+    });
+
+    requestAnimationFrame(applyScale);
+
+    // Re-apply after fonts are ready because glyph metrics can change after initial paint.
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+            requestAnimationFrame(applyScale);
+        });
+    }
+}
+
 window.rearrangeTitleButtons = function() {
     const titleTop = document.getElementById('title-screen-top');
     const titleBottom = document.getElementById('title-screen-bottom');
@@ -13,6 +58,7 @@ window.rearrangeTitleButtons = function() {
                 titleTop.appendChild(titleButtons);
             }
             if (titleBottom) titleBottom.classList.add('hidden');
+            fitTitleButtons();
         } else {
             if (titleBottom && !titleBottom.contains(titleButtons)) {
                 titleBottom.appendChild(titleButtons);
@@ -30,6 +76,7 @@ window.initTitleScreen = function() {
     const titleBottom = document.getElementById('title-screen-bottom');
     const logo = document.getElementById('title-logo');
     const btnCaseSelect = document.getElementById('btn-case-select');
+    const btnTitleLoad = document.getElementById('btn-title-load');
     const btnGallery = document.getElementById('btn-gallery');
     const btnTitleConfig = document.getElementById('btn-title-config');
 
@@ -63,11 +110,20 @@ window.initTitleScreen = function() {
         };
     }
 
+    if (btnTitleLoad) {
+        btnTitleLoad.onclick = async () => {
+            console.log("Load clicked from title screen");
+            if (typeof window.loadGame === 'function') {
+                await window.loadGame(1);
+            }
+        };
+    }
+
     if (btnTitleConfig) {
         btnTitleConfig.onclick = () => {
             console.log("Settings clicked from title screen");
             if (typeof window.openConfigMenu === 'function') {
-                window.openConfigMenu();
+                window.openConfigMenu(true);
             }
         };
     }
@@ -86,3 +142,14 @@ window.hideTitleScreen = function() {
         titleBottom.appendChild(titleButtons);
     }
 };
+
+document.addEventListener('uiTextUpdated', () => {
+    const top = document.getElementById('title-screen-top');
+    if (top && !top.classList.contains('hidden') && top.querySelector('#title-buttons')) {
+        fitTitleButtons();
+    }
+});
+
+window.addEventListener('load', fitTitleButtons);
+window.addEventListener('resize', fitTitleButtons);
+window.addEventListener('orientationchange', fitTitleButtons);

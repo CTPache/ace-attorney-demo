@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Office_Init",
     "actions": {
         "move": true,
@@ -54,7 +54,8 @@
     "sounds": {
         "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
         "cling": "assets/audio/se/cling.ogg",
-        "jingle": "assets/audio/bgm/bgm016.m4a"
+        "jingle": "assets/audio/bgm/bgm016.m4a",
+        "damage2": "assets/audio/se/damage2.ogg"
     },
     "evidence": {
         "loud_sound_updated": {
@@ -72,13 +73,19 @@
     },
     "move": [
         {
+            "label": "イベントホール",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/crime_scene.json"
+        },
+        {
             "label": "留置所",
             "target": "Detention_Center_Init",
             "preview": "DetentionCenter",
             "json": "assets/scenes/FlyHigh/detention_center.json"
         },
         {
-            "label": "4階",
+            "label": "４階",
             "target": "Floor4_Init",
             "preview": "Floor4",
             "json": "assets/scenes/FlyHigh/4th_floor.json"

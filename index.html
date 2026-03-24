@@ -73,12 +73,12 @@
         </div>
         <div id="bottom-screen">
             <div id="bottom-top-bar">
-                <button id="court-record-btn" data-i18n="ui.courtRecord">Court Record</button>
+                <button id="court-record-btn" data-i18n="ui.courtRecord" data-i18n-title="ui.courtRecordTitle" title="Court Record (E)">Court Record</button>
             </div>
             <div id="bottom-main-window">
                 <button id="advance-btn">▶</button>
                 <button id="config-btn" class="small-config-btn" data-i18n="ui.config"
-                    title="Config (G)">Config</button>
+                    data-i18n-title="ui.configTitle" title="Config (G)">Config</button>
                 <div id="config-menu" class="hidden">
                     <div class="config-card">
                         <h3 data-i18n="ui.configuration">Configuration</h3>
@@ -109,6 +109,7 @@
                             </select>
                         </label>
                         <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
+                        <button id="config-return-title-btn" data-i18n="ui.returnToTitle">Return to Title</button>
                         <button id="config-close-btn" data-i18n="ui.close">Close</button>
                     </div>
                 </div>
@@ -176,6 +177,7 @@
             <div id="title-screen-bottom" class="title-screen-layer">
                 <div class="title-bg-scroller"></div>
                 <div id="title-buttons">
+                    <button id="btn-title-load" class="title-btn" data-i18n="ui.load">Load</button>
                     <button id="btn-case-select" class="title-btn" data-i18n="ui.caseSelect">Case Select</button>
                     <button id="btn-gallery" class="title-btn" data-i18n="ui.gallery">Gallery</button>
                     <button id="btn-title-config" class="title-btn" data-i18n="ui.settings">Settings</button>
@@ -184,11 +186,11 @@
 
             <div id="case-select-bottom" class="menu-overlay hidden">
                 <div id="case-list-view">
-                    <button id="btn-case-select-back" class="cs-back-btn">Back</button>
+                    <button id="btn-case-select-back" class="cs-back-btn" data-i18n="ui.back">Back</button>
                     <div id="cases-container" class="cs-scroll-container"></div>
                 </div>
                 <div id="chapter-list-view" class="hidden">
-                    <button id="btn-chapter-back" class="cs-back-btn">Back to Cases</button>
+                    <button id="btn-chapter-back" class="cs-back-btn" data-i18n="ui.backToCases">Back to Cases</button>
                     <div id="chapters-container" class="cs-scroll-container"></div>
                 </div>
             </div>
@@ -204,15 +206,22 @@
     <script src="js/engine.js"></script>
     <script src="js/script-actions.js"></script>
     <script src="js/text-renderer.js"></script>
-    <script src="js/ui.js"></script>
+    <script src="js/ui/action-menus.js"></script>
+    <script src="js/ui/config-history.js"></script>
+    <script src="js/ui/scene-flow.js"></script>
+    <script src="js/ui/advance-controls.js"></script>
+    <script src="js/ui/return-to-title.js"></script>
+    <script src="js/ui/screen-mode.js"></script>
     <script src="js/investigation.js"></script>
     <script src="js/court-record.js"></script>
     <script src="js/topics.js"></script>
     <script src="js/lifebar.js"></script>
+    <script src="js/save-load/helpers.js"></script>
     <script src="js/save-load.js"></script>
     <script src="js/title-screen.js"></script>
     <script src="js/case-select.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/input/menu-close-stack.js"></script>
     <script src="js/key-events.js"></script>
 </body>
 

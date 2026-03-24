@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Floor4_Init",
     "actions": {
         "move": true,
@@ -95,13 +95,19 @@
     },
     "move": [
         {
+            "label": "Event Hall",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/crime_scene.json"
+        },
+        {
             "label": "事務所",
             "target": "Office_Init",
             "preview": "Office",
             "json": "assets/scenes/FlyHigh/office.json"
         },
         {
-            "label": "拘置所",
+            "label": "留置所",
             "target": "Detention_Center_Init",
             "preview": "DetentionCenter",
             "json": "assets/scenes/FlyHigh/detention_center.json"
@@ -146,7 +152,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}わかりますよ。"
+                "text": "{blip:1,false}{sprite:Gumshoe[\"Sad\"]}{sprite:Gumshoe[\"ScratchingHead2\"]}わかりますよ。"
             },
             {
                 "name": "イトノコ",
@@ -174,11 +180,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation,true}そ、それだけですか？"
+                "text": "{color:white}{blip:1,false}{sprite:Gumshoe[\"Normal\"]}{startBGM:investigation,true}そ、それだけですか？"
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}これを見てほしいッス。"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}これを見てほしいッス。{nl}"
             },
             {
                 "name": "イトノコ",

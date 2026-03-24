@@ -185,6 +185,7 @@ async function loadSelectedChapter(caseKey, chapterKey) {
 
         // Populate
         if (typeof evidenceDB !== 'undefined' && chapterInfo.courtRecord.evidence) {
+            for (const key in evidenceDB) delete evidenceDB[key];
             Object.assign(evidenceDB, chapterInfo.courtRecord.evidence);
             evidenceInventory.push(...Object.keys(chapterInfo.courtRecord.evidence));
             // Ensure evidence status reflects in gamestate
@@ -194,6 +195,7 @@ async function loadSelectedChapter(caseKey, chapterKey) {
         }
         
         if (typeof profilesDB !== 'undefined' && chapterInfo.courtRecord.profiles) {
+            for (const key in profilesDB) delete profilesDB[key];
             Object.assign(profilesDB, chapterInfo.courtRecord.profiles);
             profilesInventory.push(...Object.keys(chapterInfo.courtRecord.profiles));
         }

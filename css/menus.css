@@ -48,6 +48,18 @@
     font-size: 3cqh;
 }
 
+/* On title screen, config acts like Settings-only: hide save/load/history/return-to-title actions. */
+#config-menu.title-config-mode .save-load-row,
+#config-menu.title-config-mode #config-history-btn,
+#config-menu.title-config-mode #config-return-title-btn {
+    display: none !important;
+}
+
+/* In-game: Return to Title is visible */
+#config-menu:not(.title-config-mode) #config-return-title-btn {
+    display: block;
+}
+
 .config-row input[type="checkbox"] {
     width: 3.2cqh;
     height: 3.2cqh;

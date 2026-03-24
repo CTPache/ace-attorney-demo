@@ -242,7 +242,7 @@
         ],
         "Crime_Scene_Default": [
             {
-                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{startBGM:investigation}{skip:0}{sectionEnd}"
             }
         ],
         "Crime_Scene_Finish": [
@@ -471,7 +471,11 @@
             },
             {
                 "name": "Shawit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{sprite:Shawit[\"Nervous\"]}{showTextbox}W-well....{nl}Standing on end is just a figure of speech."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{showTextbox}What?!{skip:100}"
+            },
+            {
+                "name": "Shawit",
+                "text": "{sprite:Shawit[\"Nervous\"]}{showTextbox}W-well...{nl}Standing on end is just a figure of speech."
             },
             {
                 "name": "Phoenix",

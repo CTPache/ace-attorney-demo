@@ -11,7 +11,9 @@
     "ui.skipVideoAria": "Skip Video",
     "ui.playVideoAria": "Play Video",
     "ui.courtRecord": "Court Record",
+    "ui.courtRecordTitle": "Court Record (E)",
     "ui.config": "Options",
+    "ui.configTitle": "Config (G)",
     "ui.configuration": "Configuration",
     "ui.autoSpeed": "Auto Speed",
     "ui.slow": "Slow",
@@ -35,7 +37,14 @@
     "ui.caseSelect": "Case Select",
     "ui.gallery": "Gallery",
     "ui.settings": "Settings",
-    "ui.optionsHeader": "Select an option"
+    "ui.optionsHeader": "Select an option",
+    "ui.save": "Save",
+    "ui.load": "Load",
+    "ui.returnToTitle": "Return to Title",
+    "ui.returnToTitleConfirm": "Return to title screen? All unsaved progress will be lost.",
+    "ui.saveError": "Cannot save from this menu!",
+    "ui.saveSuccess": "Game Saved!",
+    "ui.backToCases": "Back to Cases"
   },
   "ES": {
     "ui.auto": "Autoplay",
@@ -49,7 +58,9 @@
     "ui.skipVideoAria": "Saltar vídeo",
     "ui.playVideoAria": "Reproducir vídeo",
     "ui.courtRecord": "Acta del juicio",
+    "ui.courtRecordTitle": "Acta del juicio (E)",
     "ui.config": "Opciones",
+    "ui.configTitle": "Opciones (G)",
     "ui.configuration": "Configuración",
     "ui.autoSpeed": "Velocidad auto",
     "ui.slow": "Lenta",
@@ -73,7 +84,14 @@
     "ui.caseSelect": "Selección de Caso",
     "ui.gallery": "Galería",
     "ui.settings": "Ajustes",
-    "ui.optionsHeader": "Selecciona una opción"
+    "ui.optionsHeader": "Selecciona una opción",
+    "ui.save": "Guardar",
+    "ui.load": "Cargar",
+    "ui.returnToTitle": "Volver al título",
+    "ui.returnToTitleConfirm": "¿Volver a la pantalla de título? Se perderá todo el progreso no guardado.",
+    "ui.saveError": "¡No se puede guardar desde este menú!",
+    "ui.saveSuccess": "¡Partida guardada!",
+    "ui.backToCases": "Volver a casos"
   },
   "JP": {
     "ui.auto": "オート",
@@ -87,7 +105,9 @@
     "ui.skipVideoAria": "動画をスキップ",
     "ui.playVideoAria": "動画を再生",
     "ui.courtRecord": "法廷記録",
+    "ui.courtRecordTitle": "法廷記録 (E)",
     "ui.config": "設定",
+    "ui.configTitle": "設定 (G)",
     "ui.configuration": "コンフィグ",
     "ui.autoSpeed": "オート速度",
     "ui.slow": "遅い",
@@ -111,7 +131,14 @@
     "ui.caseSelect": "ケース選択",
     "ui.gallery": "ギャラリー",
     "ui.settings": "設定",
-    "ui.optionsHeader": "選択してください"
+    "ui.optionsHeader": "選択してください",
+    "ui.save": "セーブ",
+    "ui.load": "ロード",
+    "ui.returnToTitle": "タイトルへ戻る",
+    "ui.returnToTitleConfirm": "タイトル画面に戻りますか？未保存のデータは失われます。",
+    "ui.saveError": "このメニューからはセーブできません！",
+    "ui.saveSuccess": "セーブしました！",
+    "ui.backToCases": "ケース一覧へ"
   },
   "scene": {
     "EN": {

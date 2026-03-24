@@ -177,7 +177,7 @@
 }
 
 .single-screen-mode #textbox-container {
-    z-index: 90;
+    z-index: 125;
 }
 
 .single-screen-mode #autoplay-indicator,
@@ -199,6 +199,11 @@
 .single-screen-mode #title-screen-bottom {
     display: none !important;
     pointer-events: none !important;
+}
+
+/* Keep dialogue readable above topic choices in single-screen mode. */
+.single-screen-mode:has(#topic-menu:not(.hidden)) #bottom-screen {
+    z-index: 124 !important;
 }
 
 /* Elevate bottom screen when a fullscreen menu is open so it covers the title screen */
@@ -237,6 +242,7 @@
     width: auto;
     height: 10cqh;
     font-size: 3.4cqh;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {

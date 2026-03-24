@@ -6,24 +6,34 @@ function handleGlobalKeydown(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
     // Config menu (G)
-    if (e.key.toLowerCase() === 'g' && !isInputBlocked) {
+    if (e.key.toLowerCase() === 'g') {
         if (configMenu && !configMenu.classList.contains('hidden')) {
             closeConfigMenu();
-        } else {
+            e.preventDefault();
+        } else if (!isInputBlocked) {
             openConfigMenu();
+            e.preventDefault();
         }
-        e.preventDefault();
         return;
     }
 
-    // Escape closes config/history
-    if (e.key === 'Escape' && configMenu && !configMenu.classList.contains('hidden')) {
-        closeConfigMenu();
+    // Court record toggle (E)
+    if (e.key.toLowerCase() === 'e' && !isInputBlocked) {
+        if (courtRecordBtn && !courtRecordBtn.disabled) {
+            courtRecordBtn.click();
+            e.preventDefault();
+        }
         return;
     }
-    if (e.key === 'Escape' && historyMenu && !historyMenu.classList.contains('hidden')) {
-        closeHistoryMenu();
-        return;
+
+    // Escape — close the innermost open menu using the shared close stack.
+    if (e.key === 'Escape') {
+        if (typeof window.closeInnermostMenu === 'function') {
+            if (window.closeInnermostMenu()) {
+                e.preventDefault();
+            }
+            return;
+        }
     }
 
     // Screen mode toggle (M)

@@ -242,7 +242,7 @@
         ],
         "Crime_Scene_Default": [
             {
-                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:crime_scene_done,Crime_Scene_Finish}{bg:Crime_Scene}{startBGM:investigation}{skip:0}{sectionEnd}"
             }
         ],
         "Crime_Scene_Finish": [
@@ -471,7 +471,11 @@
             },
             {
                 "name": "Shawit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{sprite:Shawit[\"Nervous\"]}{showTextbox}B-bueno...{nl}Ponerse los pelos de punta es solo una forma de hablar."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{showTextbox}¡¿Cómo?!{skip:100}"
+            },
+            {
+                "name": "Shawit",
+                "text": "{sprite:Shawit[\"Nervous\"]}{showTextbox}B-bueno...{nl}\"Ponerse los pelos de punta\" es solo un dicho."
             },
             {
                 "name": "Phoenix",
