@@ -60,7 +60,7 @@
 .back-btn,
 .detail-nav-btn,
 #evidence-present-btn {
-    padding: 1cqh 4cqh;
+    padding: 1cqw 2cqh;
     font-size: 4cqh;
     background: linear-gradient(180deg, #8B4513 0%, #5D2906 100%);
     border: 0.6cqh solid #CD853F;
@@ -97,9 +97,9 @@
 }
 
 #advance-btn {
-    width: 80%;
-    height: 80%;
-    font-size: 20cqw;
+    width: 70%;
+    height: 70%;
+    font-size: 24cqw;
 }
 
 #advance-btn:disabled,
