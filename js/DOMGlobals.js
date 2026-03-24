@@ -80,6 +80,7 @@ const configCloseBtn = document.getElementById('config-close-btn');
 const configAutoSpeedRadios = document.querySelectorAll('input[name="auto-speed"]');
 const configLanguageSelect = document.getElementById('config-language-select');
 const configHistoryBtn = document.getElementById('config-history-btn');
+const configFullscreenBtn = document.getElementById('config-fullscreen-btn');
 
 // History Menu
 const historyMenu = document.getElementById('history-menu');

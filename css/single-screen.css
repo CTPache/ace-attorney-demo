@@ -286,7 +286,7 @@
 }
 
 .single-screen-mode #case-list-view{
-    height: 55%;
+    height: 10%;
     background: transparent !important;
     border-top: none !important;
     display: flex;
@@ -334,6 +334,10 @@
 }
 
 .single-screen-mode .cs-carousel-nav {
+    position: absolute;
+    bottom: 1.5%;
+    left: 0;
+    width: 100%;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;

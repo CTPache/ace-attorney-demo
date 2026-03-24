@@ -45,6 +45,7 @@
     "ui.saveError": "Cannot save from this menu!",
     "ui.saveSuccess": "Game Saved!",
     "ui.backToCases": "Back to Cases"
+    ,"ui.fullscreen": "Full screen"
   },
   "ES": {
     "ui.auto": "Autoplay",
@@ -92,6 +93,7 @@
     "ui.saveError": "¡No se puede guardar desde este menú!",
     "ui.saveSuccess": "¡Partida guardada!",
     "ui.backToCases": "Volver a casos"
+    ,"ui.fullscreen": "Pantalla completa"
   },
   "JP": {
     "ui.auto": "オート",
@@ -139,6 +141,7 @@
     "ui.saveError": "このメニューからはセーブできません！",
     "ui.saveSuccess": "セーブしました！",
     "ui.backToCases": "ケース一覧へ"
+    ,"ui.fullscreen": "フルスクリーン"
   },
   "scene": {
     "EN": {
