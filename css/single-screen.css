@@ -87,40 +87,23 @@
     pointer-events: auto;
 }
 
-.single-screen-mode #config-menu,
-.single-screen-mode #history-menu,
-.single-screen-mode #investigation-menu,
-.single-screen-mode #move-menu,
-.single-screen-mode #topic-menu,
-.single-screen-mode #evidence-container,
-.single-screen-mode #investigation-panel,
-.single-screen-mode #case-select-bottom,
-.single-screen-mode #gallery-menu {
+.single-screen-mode :is(#config-menu, #history-menu, #investigation-menu, #move-menu, #topic-menu, #evidence-container, #investigation-panel, #case-select-bottom, #gallery-menu) {
     position: absolute;
     inset: 0;
     z-index: 120;
     pointer-events: auto;
 }
 
-.single-screen-mode #config-menu,
-.single-screen-mode #history-menu,
-.single-screen-mode #topic-menu,
-.single-screen-mode #investigation-menu,
-.single-screen-mode #move-menu,
-.single-screen-mode #evidence-container {
+.single-screen-mode :is(#config-menu, #history-menu, #topic-menu, #investigation-menu, #move-menu, #evidence-container) {
     background-color: rgba(20, 16, 12, 0.82);
     backdrop-filter: blur(1.5px);
 }
 
-.single-screen-mode #config-menu,
-.single-screen-mode #history-menu {
+.single-screen-mode :is(#config-menu, #history-menu) {
     top: 0;
 }
 
-.single-screen-mode #topic-menu,
-.single-screen-mode #investigation-menu,
-.single-screen-mode #move-menu,
-.single-screen-mode #evidence-container {
+.single-screen-mode :is(#topic-menu, #investigation-menu, #move-menu, #evidence-container) {
     padding-bottom: 14cqh;
 }
 
@@ -155,11 +138,7 @@
     margin: 0;
 }
 
-.single-screen-mode #investigation-panel .back-btn,
-.single-screen-mode #move-menu .back-btn,
-.single-screen-mode #topic-menu .back-btn,
-.single-screen-mode #evidence-container .back-btn,
-.single-screen-mode #gallery-menu .back-btn {
+.single-screen-mode :is(#investigation-panel, #move-menu, #topic-menu, #evidence-container, #gallery-menu) .back-btn {
     bottom: 2.2cqh !important;
 }
 
@@ -182,10 +161,7 @@
     z-index: 125;
 }
 
-.single-screen-mode #autoplay-indicator,
-.single-screen-mode #skip-video-btn,
-.single-screen-mode #life-bar-container,
-.single-screen-mode #evidence-popup {
+.single-screen-mode :is(#autoplay-indicator, #skip-video-btn, #life-bar-container, #evidence-popup) {
     z-index: 95;
 }
 
@@ -209,10 +185,7 @@
 }
 
 /* Elevate bottom screen when a fullscreen menu is open so it covers the title screen */
-.single-screen-mode:has(#config-menu:not(.hidden)) #bottom-screen,
-.single-screen-mode:has(#history-menu:not(.hidden)) #bottom-screen,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #bottom-screen,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #bottom-screen {
+.single-screen-mode:has(:is(#config-menu, #history-menu, #case-select-bottom, #gallery-menu):not(.hidden)) #bottom-screen {
     z-index: 1300 !important;
 }
 
@@ -222,14 +195,7 @@
 }
 
 /* Hide game corner buttons when full-screen menus are open */
-.single-screen-mode:has(#config-menu:not(.hidden)) #bottom-top-bar,
-.single-screen-mode:has(#config-menu:not(.hidden)) #config-btn,
-.single-screen-mode:has(#history-menu:not(.hidden)) #bottom-top-bar,
-.single-screen-mode:has(#history-menu:not(.hidden)) #config-btn,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #bottom-top-bar,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #config-btn,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #bottom-top-bar,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #config-btn {
+.single-screen-mode:has(:is(#config-menu, #history-menu, #case-select-bottom, #gallery-menu):not(.hidden)) :is(#bottom-top-bar, #config-btn) {
     display: none !important;
 }
 
@@ -260,16 +226,12 @@
         padding: 0;
     }
 
-    .single-screen-mode #game-container,
-    .single-screen-mode #bottom-screen {
+    .single-screen-mode :is(#game-container, #bottom-screen) {
         width: 100vw;
         margin: 0;
     }
 
-    .single-screen-mode #topic-menu,
-    .single-screen-mode #investigation-menu,
-    .single-screen-mode #move-menu,
-    .single-screen-mode #evidence-container {
+    .single-screen-mode :is(#topic-menu, #investigation-menu, #move-menu, #evidence-container) {
         padding-bottom: 16cqh;
     }
 
@@ -324,13 +286,11 @@
     margin-top: 10cqh;
 }
 
-.single-screen-mode #autoplay-indicator,
-.single-screen-mode #skip-video-btn {
+.single-screen-mode :is(#autoplay-indicator, #skip-video-btn) {
     right: 5cqw !important;
     top: 69cqh !important;
 }
-.single-screen-mode #carousel-case-label,
-.single-screen-mode .cs-carousel-select {
+.single-screen-mode :is(#carousel-case-label, .cs-carousel-select) {
     display: none !important;
 }
 
@@ -338,8 +298,7 @@
     pointer-events: none !important;
 }
 
-.single-screen-mode #case-list-view,
-.single-screen-mode #chapter-list-view {
+.single-screen-mode :is(#case-list-view, #chapter-list-view) {
     pointer-events: auto !important;
 }
 
@@ -353,15 +312,6 @@
     box-shadow: none !important;
 }
 
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #investigation-menu,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #move-menu,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #topic-menu,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #evidence-container,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #advance-btn,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #investigation-menu,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #move-menu,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #topic-menu,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #evidence-container,
-.single-screen-mode:has(#gallery-menu:not(.hidden)) #advance-btn {
+.single-screen-mode:has(:is(#case-select-bottom, #gallery-menu):not(.hidden)) :is(#investigation-menu, #move-menu, #topic-menu, #evidence-container, #advance-btn) {
     display: none !important;
 }

@@ -138,37 +138,17 @@
 }
 
 /* Hide all gameplay menus underneath when full-screen popups (Court Record, Config) are active inside the bottom screen bounds */
-#bottom-main-window:has(#config-menu:not(.hidden)) #investigation-menu,
-#bottom-main-window:has(#config-menu:not(.hidden)) #move-menu,
-#bottom-main-window:has(#config-menu:not(.hidden)) #topic-menu,
-#bottom-main-window:has(#config-menu:not(.hidden)) #investigation-panel,
-#bottom-main-window:has(#config-menu:not(.hidden)) #evidence-container,
-#bottom-main-window:has(#history-menu:not(.hidden)) #investigation-menu,
-#bottom-main-window:has(#history-menu:not(.hidden)) #move-menu,
-#bottom-main-window:has(#history-menu:not(.hidden)) #topic-menu,
-#bottom-main-window:has(#history-menu:not(.hidden)) #investigation-panel,
-#bottom-main-window:has(#history-menu:not(.hidden)) #evidence-container,
-#bottom-main-window:has(#evidence-container:not(.hidden)) #investigation-menu,
-#bottom-main-window:has(#evidence-container:not(.hidden)) #move-menu,
-#bottom-main-window:has(#evidence-container:not(.hidden)) #topic-menu,
-#bottom-main-window:has(#evidence-container:not(.hidden)) #investigation-panel {
+#bottom-main-window:has(:is(#config-menu, #history-menu):not(.hidden)) :is(#investigation-menu, #move-menu, #topic-menu, #investigation-panel, #evidence-container),
+#bottom-main-window:has(#evidence-container:not(.hidden)) :is(#investigation-menu, #move-menu, #topic-menu, #investigation-panel) {
     display: none !important;
 }
 
 /* Hide Court Record button (and its top bar container) and Config button when inside action sub-menus */
-#bottom-screen:has(#move-menu:not(.hidden)) #bottom-top-bar,
-#bottom-screen:has(#topic-menu:not(.hidden)) #bottom-top-bar,
-#bottom-screen:has(#investigation-panel:not(.hidden)) #bottom-top-bar,
-#bottom-screen:has(#evidence-container:not(.hidden)) #bottom-top-bar,
-#bottom-screen:has(#move-menu:not(.hidden)) #config-btn,
-#bottom-screen:has(#topic-menu:not(.hidden)) #config-btn,
-#bottom-screen:has(#investigation-panel:not(.hidden)) #config-btn,
-#bottom-screen:has(#evidence-container:not(.hidden)) #config-btn {
+#bottom-screen:has(:is(#move-menu, #topic-menu, #investigation-panel, #evidence-container):not(.hidden)) :is(#bottom-top-bar, #config-btn) {
     display: none !important;
 }
 
 /* Also hide bottom main window entirely if Gallery menu is open (overrides translucent overlay issues) */
-#bottom-screen:has(#gallery-menu:not(.hidden)) #bottom-main-window,
-#bottom-screen:has(#gallery-menu:not(.hidden)) #bottom-top-bar {
+#bottom-screen:has(#gallery-menu:not(.hidden)) :is(#bottom-main-window, #bottom-top-bar) {
     display: none !important;
 }
