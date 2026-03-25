@@ -44,8 +44,11 @@
     "ui.returnToTitleConfirm": "Return to title screen? All unsaved progress will be lost.",
     "ui.saveError": "Cannot save from this menu!",
     "ui.saveSuccess": "Game Saved!",
-    "ui.backToCases": "Back to Cases"
-    ,"ui.fullscreen": "Full screen"
+    "ui.backToCases": "Back to Cases",
+    "ui.fullscreen": "Full screen",
+    "ui.artwork": "Artwork",
+    "ui.cg": "Illustrations",
+    "ui.backgrounds": "Backgrounds"
   },
   "ES": {
     "ui.auto": "Autoplay",
@@ -92,8 +95,11 @@
     "ui.returnToTitleConfirm": "¿Volver a la pantalla de título? Se perderá todo el progreso no guardado.",
     "ui.saveError": "¡No se puede guardar desde este menú!",
     "ui.saveSuccess": "¡Partida guardada!",
-    "ui.backToCases": "Volver a casos"
-    ,"ui.fullscreen": "Pantalla completa"
+    "ui.backToCases": "Volver a casos",
+    "ui.fullscreen": "Pantalla completa",
+    "ui.artwork": "Arte",
+    "ui.cg": "Ilustraciones",
+    "ui.backgrounds": "Fondos"
   },
   "JP": {
     "ui.auto": "オート",
@@ -140,8 +146,11 @@
     "ui.returnToTitleConfirm": "タイトル画面に戻りますか？未保存のデータは失われます。",
     "ui.saveError": "このメニューからはセーブできません！",
     "ui.saveSuccess": "セーブしました！",
-    "ui.backToCases": "ケース一覧へ"
-    ,"ui.fullscreen": "フルスクリーン"
+    "ui.backToCases": "ケース一覧へ",
+    "ui.fullscreen": "フルスクリーン",
+    "ui.artwork": "アートワーク",
+    "ui.cg": "イラスト",
+    "ui.backgrounds": "背景"
   },
   "scene": {
     "EN": {

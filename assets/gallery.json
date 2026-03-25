@@ -1,0 +1,39 @@
+{
+  "Artwork": [
+    "assets/img/Artwork/Char_Edgeworth.png",
+    "assets/img/Artwork/Char_Maya.png",
+    "assets/img/Artwork/Char_Phoenix.png",
+    "assets/img/Artwork/GS_Restaurant_Artwork.png",
+    "assets/img/Artwork/Posters/Poster_Char_Edgeworth.png",
+    "assets/img/Artwork/Posters/Poster_Char_Maya.png",
+    "assets/img/Artwork/Posters/Poster_Char_Phoenix.png",
+    "assets/img/Artwork/Posters/Poster_Don (NO AI).png",
+    "assets/img/Artwork/Posters/Poster_Fly_High.png",
+    "assets/img/Artwork/Posters/Poster_Locked_Room.png",
+    "assets/img/Artwork/Posters/Poster_Ninja.png",
+    "assets/img/Artwork/Sketches/Sketch1.png",
+    "assets/img/Artwork/Sketches/Sketch2.png",
+    "assets/img/Artwork/Sketches/Sketch3.png"
+  ],
+  "CG": [
+    "assets/img/CG/Fly High/Blog_Post.png",
+    "assets/img/CG/Fly High/Byrde_Kurumi.png",
+    "assets/img/CG/Fly High/Byrde_Samurai.png",
+    "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png",
+    "assets/img/CG/Fly High/samurai_2.png",
+    "assets/img/CG/Fly High/samurai_2_1.png",
+    "assets/img/CG/GameOver.webp",
+    "assets/img/CG/Maya_Move_EN.png",
+    "assets/img/CG/Maya_Move_JP.png",
+    "assets/img/CG/Phoenix_Move_EN.png",
+    "assets/img/CG/Phoenix_Move_JP.png"
+  ],
+  "Backgrounds": [
+    "assets/img/backgrounds/Common/Courtroom_witness.webp",
+    "assets/img/backgrounds/Common/Detention_Center.png",
+    "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
+    "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+    "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+    "assets/img/backgrounds/Fly High/Scene_body.png"
+  ]
+}

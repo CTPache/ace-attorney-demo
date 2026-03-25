@@ -166,3 +166,9 @@
 #bottom-screen:has(#evidence-container:not(.hidden)) #config-btn {
     display: none !important;
 }
+
+/* Also hide bottom main window entirely if Gallery menu is open (overrides translucent overlay issues) */
+#bottom-screen:has(#gallery-menu:not(.hidden)) #bottom-main-window,
+#bottom-screen:has(#gallery-menu:not(.hidden)) #bottom-top-bar {
+    display: none !important;
+}

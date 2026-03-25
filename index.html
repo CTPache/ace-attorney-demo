@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/title-screen.css">
     <link rel="stylesheet" href="css/case-select.css">
     <link rel="stylesheet" href="css/single-screen.css">
+    <link rel="stylesheet" href="css/gallery.css">
 </head>
 
 <body>
@@ -69,6 +70,12 @@
                 <div id="case-select-top-ui">
                     <h2 id="case-select-title">Case Name</h2>
                 </div>
+            </div>
+            <div id="gallery-viewer" class="hidden" onclick="closeGalleryViewer(event)">
+                <button id="gallery-viewer-prev" class="gallery-nav-btn" onclick="window.prevGalleryImage(event)">◀</button>
+                <img id="gallery-viewer-img" src="" alt="Gallery Fullscreen">
+                <button id="gallery-viewer-next" class="gallery-nav-btn" onclick="window.nextGalleryImage(event)">▶</button>
+                <button id="gallery-viewer-close" onclick="closeGalleryViewer(event)" data-i18n="ui.close">Close</button>
             </div>
         </div>
         <div id="bottom-screen">
@@ -195,6 +202,15 @@
                     <div id="chapters-container" class="cs-scroll-container"></div>
                 </div>
             </div>
+            <div id="gallery-menu" class="hidden">
+                <div class="gallery-tabs">
+                    <div class="gallery-tab" data-category="Artwork" onclick="showGalleryTab('Artwork')" data-i18n="ui.artwork">Artwork</div>
+                    <div class="gallery-tab" data-category="CG" onclick="showGalleryTab('CG')" data-i18n="ui.cg">CG</div>
+                    <div class="gallery-tab" data-category="Backgrounds" onclick="showGalleryTab('Backgrounds')" data-i18n="ui.backgrounds">Backgrounds</div>
+                </div>
+                <div id="gallery-grid"></div>
+                <button id="btn-gallery-back" class="back-btn" onclick="window.hideGallery()" data-i18n="ui.back">Back</button>
+            </div>
         </div>
     </div>
     <script src="js/DOMGlobals.js"></script>
@@ -221,6 +237,7 @@
     <script src="js/save-load.js"></script>
     <script src="js/title-screen.js"></script>
     <script src="js/case-select.js"></script>
+    <script src="js/gallery.js"></script>
     <script src="js/main.js"></script>
     <script src="js/input/menu-close-stack.js"></script>
     <script src="js/key-events.js"></script>

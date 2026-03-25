@@ -1,4 +1,4 @@
-﻿// js/title-screen.js
+// js/title-screen.js
 console.log("Title Screen logic loaded");
 
 function fitTitleButtons() {
@@ -106,7 +106,9 @@ window.initTitleScreen = function() {
     if (btnGallery) {
         btnGallery.onclick = () => {
             console.log("Gallery clicked");
-            // Placeholder: Add gallery handling here in the future
+            if (typeof window.initGallery === 'function') {
+                window.initGallery();
+            }
         };
     }
 

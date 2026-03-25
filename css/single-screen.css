@@ -94,7 +94,8 @@
 .single-screen-mode #topic-menu,
 .single-screen-mode #evidence-container,
 .single-screen-mode #investigation-panel,
-.single-screen-mode #case-select-bottom {
+.single-screen-mode #case-select-bottom,
+.single-screen-mode #gallery-menu {
     position: absolute;
     inset: 0;
     z-index: 120;
@@ -157,7 +158,8 @@
 .single-screen-mode #investigation-panel .back-btn,
 .single-screen-mode #move-menu .back-btn,
 .single-screen-mode #topic-menu .back-btn,
-.single-screen-mode #evidence-container .back-btn {
+.single-screen-mode #evidence-container .back-btn,
+.single-screen-mode #gallery-menu .back-btn {
     bottom: 2.2cqh !important;
 }
 
@@ -209,8 +211,14 @@
 /* Elevate bottom screen when a fullscreen menu is open so it covers the title screen */
 .single-screen-mode:has(#config-menu:not(.hidden)) #bottom-screen,
 .single-screen-mode:has(#history-menu:not(.hidden)) #bottom-screen,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #bottom-screen {
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #bottom-screen,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #bottom-screen {
     z-index: 1300 !important;
+}
+
+/* Ensure the top screen covers the bottom menu when viewing a fullscreen image */
+.single-screen-mode:has(#gallery-viewer:not(.hidden)) #game-container {
+    z-index: 1400 !important;
 }
 
 /* Hide game corner buttons when full-screen menus are open */
@@ -219,7 +227,9 @@
 .single-screen-mode:has(#history-menu:not(.hidden)) #bottom-top-bar,
 .single-screen-mode:has(#history-menu:not(.hidden)) #config-btn,
 .single-screen-mode:has(#case-select-bottom:not(.hidden)) #bottom-top-bar,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #config-btn {
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #config-btn,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #bottom-top-bar,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #config-btn {
     display: none !important;
 }
 
@@ -347,6 +357,11 @@
 .single-screen-mode:has(#case-select-bottom:not(.hidden)) #move-menu,
 .single-screen-mode:has(#case-select-bottom:not(.hidden)) #topic-menu,
 .single-screen-mode:has(#case-select-bottom:not(.hidden)) #evidence-container,
-.single-screen-mode:has(#case-select-bottom:not(.hidden)) #advance-btn {
+.single-screen-mode:has(#case-select-bottom:not(.hidden)) #advance-btn,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #investigation-menu,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #move-menu,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #topic-menu,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #evidence-container,
+.single-screen-mode:has(#gallery-menu:not(.hidden)) #advance-btn {
     display: none !important;
 }
