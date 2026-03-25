@@ -26,10 +26,13 @@
     "assets/img/CG/Fly High/samurai_5_1.png",
     "assets/img/CG/Fly High/samurai_5_2.png",
     "assets/img/CG/Fly High/samurai_6.png",
-    "assets/img/CG/GameOver.webp",
+    "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png",
+    "assets/img/CG/GameOver_JP.webp",
+    "assets/img/CG/GameOver_EN.webp",
     "assets/img/CG/Maya_Move_JP.png",
+    "assets/img/CG/Maya_Move_EN.png",
     "assets/img/CG/Phoenix_Move_JP.png",
-    "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png"
+    "assets/img/CG/Phoenix_Move_EN.png"
   ],
   "Backgrounds": [
     "assets/img/backgrounds/Common/Detention_Center.png",

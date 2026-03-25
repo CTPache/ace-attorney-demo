@@ -72,20 +72,24 @@
                 </div>
             </div>
             <div id="gallery-viewer" class="hidden" onclick="closeGalleryViewer(event)">
-                <button id="gallery-viewer-prev" class="gallery-nav-btn" onclick="window.prevGalleryImage(event)">◀</button>
+                <button id="gallery-viewer-prev" class="gallery-nav-btn"
+                    onclick="window.prevGalleryImage(event)">◀</button>
                 <img id="gallery-viewer-img" src="" alt="Gallery Fullscreen">
-                <button id="gallery-viewer-next" class="gallery-nav-btn" onclick="window.nextGalleryImage(event)">▶</button>
-                <button id="gallery-viewer-close" onclick="closeGalleryViewer(event)" data-i18n="ui.close">Close</button>
+                <button id="gallery-viewer-next" class="gallery-nav-btn"
+                    onclick="window.nextGalleryImage(event)">▶</button>
+                <button id="gallery-viewer-close" onclick="closeGalleryViewer(event)"
+                    data-i18n="ui.close">Close</button>
             </div>
         </div>
         <div id="bottom-screen">
             <div id="bottom-top-bar">
-                <button id="court-record-btn" data-i18n="ui.courtRecord" data-i18n-title="ui.courtRecordTitle" title="Court Record (E)">Court Record</button>
+                <button id="court-record-btn" data-i18n="ui.courtRecord" data-i18n-title="ui.courtRecordTitle"
+                    title="Court Record (E)">Court Record</button>
             </div>
             <div id="bottom-main-window">
                 <button id="advance-btn">▶</button>
-                <button id="config-btn" class="small-config-btn" data-i18n="ui.config"
-                    data-i18n-title="ui.configTitle" title="Config (G)">Config</button>
+                <button id="config-btn" class="small-config-btn" data-i18n="ui.config" data-i18n-title="ui.configTitle"
+                    title="Config (G)">Config</button>
                 <div id="config-menu" class="hidden">
                     <div class="config-card">
                         <h3 data-i18n="ui.configuration">Configuration</h3>
@@ -204,12 +208,16 @@
             </div>
             <div id="gallery-menu" class="hidden">
                 <div class="gallery-tabs">
-                    <div class="gallery-tab" data-category="Artwork" onclick="showGalleryTab('Artwork')" data-i18n="ui.artwork">Artwork</div>
-                    <div class="gallery-tab" data-category="CG" onclick="showGalleryTab('CG')" data-i18n="ui.cg">CG</div>
-                    <div class="gallery-tab" data-category="Backgrounds" onclick="showGalleryTab('Backgrounds')" data-i18n="ui.backgrounds">Backgrounds</div>
+                    <div class="gallery-tab" data-category="Artwork" onclick="showGalleryTab('Artwork')"
+                        data-i18n="ui.artwork">Artwork</div>
+                    <div class="gallery-tab" data-category="CG" onclick="showGalleryTab('CG')" data-i18n="ui.cg">CG
+                    </div>
+                    <div class="gallery-tab" data-category="Backgrounds" onclick="showGalleryTab('Backgrounds')"
+                        data-i18n="ui.backgrounds">Backgrounds</div>
                 </div>
                 <div id="gallery-grid"></div>
-                <button id="btn-gallery-back" class="back-btn" onclick="window.hideGallery()" data-i18n="ui.back">Back</button>
+                <button id="btn-gallery-back" class="back-btn" onclick="window.hideGallery()"
+                    data-i18n="ui.back">Back</button>
             </div>
         </div>
     </div>
