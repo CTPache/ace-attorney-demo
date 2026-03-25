@@ -9,6 +9,10 @@
     overflow: hidden;
 }
 
+.single-screen-mode button:disabled {
+    display: none !important;
+}
+
 .single-screen-mode #main-wrapper {
     position: relative;
     width: 100%;
@@ -123,6 +127,8 @@
     bottom: 3cqh;
     height: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     gap: 15cqh;
     padding: 1.5cqh 2cqh;
@@ -133,6 +139,7 @@
 .single-screen-mode #investigation-menu .inv-btn {
     flex: 1;
     width: auto;
+    max-width: 20cqw;
     height: 9cqh;
     font-size: 3.5cqh;
     margin: 0;
@@ -257,7 +264,7 @@
     justify-content: flex-end;
 }
 
-.single-screen-mode #case-list-view{
+.single-screen-mode #case-list-view {
     height: 10%;
     background: transparent !important;
     border-top: none !important;
@@ -290,6 +297,7 @@
     right: 5cqw !important;
     top: 69cqh !important;
 }
+
 .single-screen-mode :is(#carousel-case-label, .cs-carousel-select) {
     display: none !important;
 }
