@@ -45,7 +45,6 @@
     background: transparent;
     border: none;
     box-shadow: none;
-    z-index: 200;
     pointer-events: none;
 }
 
@@ -58,12 +57,10 @@
 
 .single-screen-mode #bottom-top-bar {
     position: absolute;
-    right: 2.2cqh;
-    top: 2.2cqh;
     left: auto;
     bottom: auto;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
     padding: 0;
     border: none;
     background: transparent;
@@ -71,10 +68,17 @@
     pointer-events: auto;
 }
 
-.single-screen-mode #court-record-btn,
-.single-screen-mode #config-btn {
+.single-screen-mode #court-record-btn {
     font-size: 2.5cqh !important;
     padding: 1cqh 1cqh !important;
+    opacity: 0.85 !important;
+    position: absolute;
+    top: 1cqh;
+    right: 1cqw;
+    left: auto;
+    bottom: auto;
+    z-index: 130;
+    pointer-events: auto;
 }
 
 .single-screen-mode #advance-btn {
@@ -82,9 +86,11 @@
 }
 
 .single-screen-mode #config-btn {
+    font-size: 2.5cqh !important;
+    padding: 1cqh 1cqh !important;
     position: absolute;
-    left: 2.2cqh;
-    top: 2.2cqh;
+    left: 1cqw;
+    top: 1cqh;
     right: auto;
     bottom: auto;
     z-index: 130;
@@ -94,7 +100,7 @@
 .single-screen-mode :is(#config-menu, #history-menu, #investigation-menu, #move-menu, #topic-menu, #evidence-container, #investigation-panel, #case-select-bottom, #gallery-menu) {
     position: absolute;
     inset: 0;
-    z-index: 120;
+    z-index: 210;
     pointer-events: auto;
 }
 
@@ -169,7 +175,7 @@
 }
 
 .single-screen-mode :is(#autoplay-indicator, #skip-video-btn, #life-bar-container, #evidence-popup) {
-    z-index: 95;
+    z-index: 210;
 }
 
 .single-screen-mode #title-logo {
@@ -322,4 +328,26 @@
 
 .single-screen-mode:has(:is(#case-select-bottom, #gallery-menu):not(.hidden)) :is(#investigation-menu, #move-menu, #topic-menu, #evidence-container, #advance-btn) {
     display: none !important;
+}
+
+.single-screen-mode #life-bar-container {
+    top: 12cqh;
+    right: 2cqw;
+    width: 20%;
+    height: 3cqh;
+}
+
+.single-screen-mode #ce-controls {
+    z-index: 130;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.single-screen-mode .ce-floating-btn {
+    width: 10cqw;
+    height: 8cqh;
+    margin: 1cqh;
+    opacity: 0.85 !important;
+    font-size: 2.5cqh !important;
 }

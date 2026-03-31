@@ -169,6 +169,29 @@ function executeScriptAction(segment) {
             // We should call it.
             if (window.showEndGameOverlay) window.showEndGameOverlay();
             return 'STOP';
+        case 'startCE':
+            if (window.CrossExamination) window.CrossExamination.start(segment.ceId);
+            return 'STOP'; // Ce mode manages its own progression
+        case 'returnToCE':
+            if (window.CrossExamination) window.CrossExamination.returnToCE(segment.statementId);
+            return 'STOP';
+        case 'endCE':
+            if (window.CrossExamination) window.CrossExamination.exit();
+            return true;
+        case 'addCEStatement':
+            if (window.CrossExamination) {
+                window.CrossExamination.addStatement(segment.ceId, {
+                    text: segment.text,
+                    press: segment.press,
+                    present: segment.present
+                });
+            }
+            return true;
+        case 'replaceCEStatement':
+            if (window.CrossExamination) {
+                window.CrossExamination.replaceStatement(segment.ceId, segment.targetId, segment.newId);
+            }
+            return true;
         
         default:
             return false;

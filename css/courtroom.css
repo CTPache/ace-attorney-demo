@@ -34,6 +34,7 @@
     opacity: 0;
     pointer-events: none;
 }
+
 /* #sprite-defense / #sprite-witness / #sprite-prosecution left values are
    set dynamically — see buildStandSpriteStyles() in courtroom.js */
 
@@ -91,4 +92,16 @@
     height: 45%;
     object-fit: cover;
     object-position: top;
+}
+
+/* ── Cross Examination ───────────────────── */
+
+#ce-controls {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.ce-floating-btn {
+    width: 14cqw;
 }

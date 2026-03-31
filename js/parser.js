@@ -56,7 +56,12 @@ const patterns = [
     /\{courtPan:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,        // 54,55: CourtPan (ViewName, Duration)
     /\{courtSprite:([a-zA-Z0-9_]+)\["([^"]+)"\]\}/,    // 56,57: CourtSprite (Slot, Emotion)
     /\{courtChar:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/,   // 58,59: CourtChar (Slot, CharacterName)
-    /\{changeCharacter:([a-zA-Z0-9_]+)\["([^"]+)"\](?:,([a-zA-Z0-9_]+))?\}/ // 60,61,62: ChangeCharacter (Character, Emotion, View)
+    /\{changeCharacter:([a-zA-Z0-9_]+)\["([^"]+)"\](?:,([a-zA-Z0-9_]+))?\}/, // 60,61,62: ChangeCharacter (Character, Emotion, View)
+    /\{startCE:([a-zA-Z0-9_]+)\}/,                      // 63: StartCE (ID)
+    /\{returnToCE(?::([a-zA-Z0-9_]+))?\}/,                             // 64: ReturnToCE (StatementId)
+    /\{endCE\}/,                                        // 0: EndCE
+    /\{addCEStatement:([a-zA-Z0-9_]+),([^,]+),([a-zA-Z0-9_]+)(?:,([^}]+))?\}/, // 65,66,67,68: AddCEStatement (ceId, text, press, present)
+    /\{replaceCEStatement:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/                   // 69,70,71: ReplaceCEStatement (ceId, targetId, newId)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
@@ -191,6 +196,27 @@ function parseText(text) {
             parsedSegments.push({ type: 'courtChar', slot: match[58], characterName: match[59] });
         } else if (match[60] && match[61]) { // ChangeCharacter {changeCharacter:Character["Emotion"][,view]}
             parsedSegments.push({ type: 'changeCharacter', characterName: match[60], emotion: match[61], view: match[62] || null });
+        } else if (match[63]) { // StartCE {startCE:ID}
+            parsedSegments.push({ type: 'startCE', ceId: match[63] });
+        } else if (match[0].startsWith('{returnToCE')) { // ReturnToCE
+            parsedSegments.push({ type: 'returnToCE', statementId: match[64] || null });
+        } else if (match[0] === '{endCE}') { // EndCE
+            parsedSegments.push({ type: 'endCE' });
+        } else if (match[65]) { // AddCEStatement
+            parsedSegments.push({ 
+                type: 'addCEStatement', 
+                ceId: match[65], 
+                text: match[66], 
+                press: match[67], 
+                present: match[68] ? JSON.parse(match[68].replace(/'/g, '"')) : null 
+            });
+        } else if (match[69]) { // ReplaceCEStatement
+            parsedSegments.push({ 
+                type: 'replaceCEStatement', 
+                ceId: match[69], 
+                targetId: match[70], 
+                newId: match[71]
+            });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });
         }

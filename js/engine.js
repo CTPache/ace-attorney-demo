@@ -112,6 +112,10 @@ function jumpToSection(sectionName) {
         currentLineIndex = 0;
         showTopicsOnEnd = false; // Reset flag
         
+        if (window.CrossExamination && window.CrossExamination.isCEMode) {
+            window.CrossExamination.setLoopActive(false);
+        }
+
         isScenePlaying = true;
         updateSceneState();
 
@@ -169,6 +173,9 @@ function advanceDialogue(force = false) {
     if (isTyping) {
         // If currently typing, finish immediately
         finishTyping();
+    } else if (window.CrossExamination && window.CrossExamination.isCEMode && window.CrossExamination.isLoopActive) {
+        // If in Cross-Examination mode and the loop is active, advance to next statement
+        window.CrossExamination.next();
     } else {
         // Move to next line
         currentLineIndex++;

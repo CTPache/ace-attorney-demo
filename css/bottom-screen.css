@@ -59,7 +59,8 @@
 #advance-btn,
 .back-btn,
 .detail-nav-btn,
-#evidence-present-btn {
+#evidence-present-btn,
+.ce-floating-btn {
     padding: 1cqw 2cqh;
     font-size: 4cqh;
     background: linear-gradient(180deg, #8B4513 0%, #5D2906 100%);

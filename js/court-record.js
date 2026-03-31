@@ -41,16 +41,29 @@ btnEvidenceBack.addEventListener('click', () => {
     }
 });
 
+function openCourtRecord(mode = 'view') {
+    isCourtRecordOpen = true;
+    isPresentingMode = (mode === 'present');
+    
+    if (isScenePlaying) {
+        advanceBtn.classList.add('hidden');
+    }
+    
+    bottomTopBar.classList.add('hidden'); // Hide top bar
+    evidenceContainer.classList.remove('hidden');
+    renderEvidence();
+
+    if (window.CrossExamination) window.CrossExamination.updateUI();
+}
+
+window.openCourtRecord = openCourtRecord;
+
 // Top Bar Button Handler (Toggle View Mode)
 courtRecordBtn.addEventListener('click', (e) => {
     isCourtRecordOpen = !isCourtRecordOpen;
 
     if (isCourtRecordOpen) {
-        isPresentingMode = false; // View only
-        advanceBtn.classList.add('hidden');
-        bottomTopBar.classList.add('hidden'); // Hide top bar
-        evidenceContainer.classList.remove('hidden');
-        renderEvidence();
+        openCourtRecord('view');
     } else {
         evidenceContainer.classList.add('hidden');
         evidenceDetails.classList.add('hidden'); // Hide details if open        
@@ -59,6 +72,8 @@ courtRecordBtn.addEventListener('click', (e) => {
         if (isScenePlaying) {
             advanceBtn.classList.remove('hidden');
         }
+
+        if (window.CrossExamination) window.CrossExamination.updateUI();
     }
 });
 
@@ -198,8 +213,11 @@ function showEvidenceDetails(item, key) {
     }
     presentBtn.textContent = window.t('ui.present', 'Present');
 
-    // Only show Present button if NOT in a scene (i.e., in menu mode) AND in presenting mode
-    if (!isScenePlaying && isPresentingMode) {
+    // Only show Present button if in presenting mode
+    // (Either via investigation menu or CE mode)
+    const canPresentInCE = (window.CrossExamination && window.CrossExamination.isCEMode);
+    
+    if (isPresentingMode || canPresentInCE) {
         presentBtn.classList.remove('hidden');
         
         // Update Present Handler
@@ -210,13 +228,13 @@ function showEvidenceDetails(item, key) {
             isCourtRecordOpen = false;
             evidenceContainer.classList.add('hidden');
             evidenceDetails.classList.add('hidden');
-            // advanceBtn.classList.remove('hidden'); // Removed: Engine handles scene start
             
-            // Trigger Engine Logic
-            if (window.handlePresentEvidence) {
+            if (canPresentInCE) {
+                window.CrossExamination.present(key);
+            } else if (window.handlePresentEvidence) {
                 window.handlePresentEvidence(key);
             } else {
-                console.error("handlePresentEvidence not defined");
+                console.error("No presentation handler found");
             }
         };
     } else {

@@ -268,6 +268,10 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
         musicDB = data.music || {};
         videosDB = data.videos || {};
         
+        if (window.CrossExamination) {
+            window.CrossExamination.init(data.crossExaminations || {});
+        }
+        
         // Setup initial action states based on scene data or reset to default
         if (data.actions) {
             actionStates = {

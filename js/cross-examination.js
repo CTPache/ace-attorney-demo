@@ -1,0 +1,215 @@
+/**
+ * js/cross-examination.js
+ * Manages the state and logic for Cross-Examination mode.
+ */
+
+window.CrossExamination = (function() {
+    let activeCE = null;
+    let currentIndex = 0;
+    let isCEMode = false;
+    let isLoopActive = false; // Whether the testimony loop is active (not in a sub-sequence)
+    let crossExams = {}; // Loaded from scene JSON
+
+    function init(data) {
+        crossExams = data || {};
+        isCEMode = false;
+        activeCE = null;
+        currentIndex = 0;
+    }
+
+    function start(id) {
+        if (!crossExams[id]) {
+            console.error(`Cross Examination ${id} not found.`);
+            return false;
+        }
+        activeCE = crossExams[id];
+        
+        // Initialize dynamic statement list from initialStatements (which should be an array of keys)
+        // If initialStatements is not present, fallback to dictionary keys (less deterministic)
+        if (activeCE.initialStatements) {
+            activeCE.activeStatementIds = [...activeCE.initialStatements];
+        } else {
+            // Fallback for older format if statements is still an array
+            if (Array.isArray(activeCE.statements)) {
+                activeCE.activeStatementIds = activeCE.statements.map((_, i) => i);
+            } else {
+                activeCE.activeStatementIds = Object.keys(activeCE.statements);
+            }
+        }
+
+        currentIndex = 0;
+        isCEMode = true;
+        isLoopActive = true;
+        
+        document.body.classList.add('ce-mode');
+        playStatement();
+        updateUI();
+        return true;
+    }
+
+    function exit() {
+        isCEMode = false;
+        isLoopActive = false;
+        activeCE = null;
+        document.body.classList.remove('ce-mode');
+        updateUI();
+    }
+
+    function next() {
+        if (!isCEMode || !activeCE) return;
+        const len = activeCE.activeStatementIds.length;
+        currentIndex = (currentIndex + 1) % len;
+        playStatement();
+    }
+
+    function prev() {
+        if (!isCEMode || !activeCE) return;
+        const len = activeCE.activeStatementIds.length;
+        currentIndex = (currentIndex - 1 + len) % len;
+        playStatement();
+    }
+
+    function returnToCE(statementId) {
+        if (statementId && activeCE && activeCE.activeStatementIds) {
+            const idx = activeCE.activeStatementIds.indexOf(String(statementId));
+            if (idx !== -1) {
+                currentIndex = idx;
+            }
+        }
+        isLoopActive = true;
+        playStatement();
+        updateUI();
+    }
+
+    function playStatement() {
+        const statementId = activeCE.activeStatementIds[currentIndex];
+        const statement = activeCE.statements[statementId];
+        if (!statement) return;
+
+        // Use the standard engine updateDialogue if available, 
+        // or trigger a custom render event.
+        if (window.updateDialogue) {
+            window.updateDialogue({
+                name: statement.name || activeCE.witnessName,
+                text: statement.text
+            });
+        }
+        
+        updateUI();
+    }
+
+    function press() {
+        if (!isCEMode || !isLoopActive || !activeCE) return;
+        const statementId = activeCE.activeStatementIds[currentIndex];
+        const statement = activeCE.statements[statementId];
+        if (statement.press && window.jumpToSection) {
+            isLoopActive = false;
+            updateUI();
+            window.jumpToSection(statement.press);
+        }
+    }
+
+    function present(evidenceId) {
+        if (!isCEMode || !isLoopActive || !activeCE) return;
+        const statementId = activeCE.activeStatementIds[currentIndex];
+        const statement = activeCE.statements[statementId];
+        
+        let target = null;
+        if (statement.present && statement.present[evidenceId]) {
+            target = statement.present[evidenceId];
+        } else if (activeCE.defaultPresent) {
+            target = activeCE.defaultPresent;
+        }
+
+        if (target && window.jumpToSection) {
+            isLoopActive = false;
+            updateUI();
+            window.jumpToSection(target);
+        } else {
+            // Default penalty logic if no match and no default target
+            if (activeCE.failSequence && window.jumpToSection) {
+                isLoopActive = false;
+                updateUI();
+                window.jumpToSection(activeCE.failSequence);
+            } else if (window.modifyLife) {
+                window.modifyLife(-1);
+            }
+        }
+    }
+
+    function addStatement(ceId, statementId, statementBody, index = -1) {
+        const ce = crossExams[ceId] || activeCE;
+        if (!ce) return;
+        
+        ce.statements[statementId] = statementBody;
+        
+        if (index === -1) {
+            ce.activeStatementIds.push(statementId);
+        } else {
+            ce.activeStatementIds.splice(index, 0, statementId);
+        }
+    }
+
+    function replaceStatement(ceId, targetId, newId) {
+        // Handle case where we pass an object (old way) vs ID (new way)
+        const ce = crossExams[ceId] || activeCE;
+        if (!ce) return;
+
+        // New system: replace by ID
+        if (typeof targetId === 'string' || typeof targetId === 'number') {
+            const idx = ce.activeStatementIds.indexOf(String(targetId));
+            if (idx !== -1) {
+                ce.activeStatementIds[idx] = String(newId);
+                // If we are currently on this statement, it's safer to refresh when we return from the sequence
+            }
+        } 
+        // Backward compatibility: targetId as index, newId as statement object
+        else if (typeof targetId === 'number' && typeof newId === 'object') {
+            const idx = targetId;
+            const stmtId = ce.activeStatementIds[idx];
+            if (stmtId) {
+                ce.statements[stmtId] = newId;
+            }
+        }
+    }
+
+    function updateUI() {
+        const ceControls = document.getElementById('ce-controls');
+        const ceBottomControls = document.getElementById('ce-bottom-controls');
+        const cePrevArrow = document.getElementById('ce-prev-arrow');
+        const ceNextArrow = document.getElementById('ce-next-arrow');
+        const courtRecordBtn = document.getElementById('court-record-btn');
+
+        const shouldShow = isCEMode && isLoopActive && (!window.isCourtRecordOpen);
+
+        if (ceControls) ceControls.classList.toggle('hidden', !shouldShow);
+        if (ceBottomControls) ceBottomControls.classList.toggle('hidden', !shouldShow);
+        if (cePrevArrow) cePrevArrow.classList.toggle('hidden', !shouldShow);
+        if (ceNextArrow) ceNextArrow.classList.toggle('hidden', !shouldShow);
+        if (courtRecordBtn) courtRecordBtn.classList.toggle('hidden', shouldShow);
+    }
+
+    function setLoopActive(active) {
+        isLoopActive = active;
+        updateUI();
+    }
+
+    return {
+        init,
+        start,
+        exit,
+        returnToCE,
+        next,
+        prev,
+        press,
+        present,
+        addStatement,
+        replaceStatement,
+        setLoopActive,
+        updateUI,
+        get activeCE() { return activeCE; },
+        get isCEMode() { return isCEMode; },
+        get isLoopActive() { return isLoopActive; },
+        get currentIndex() { return currentIndex; }
+    };
+})();
