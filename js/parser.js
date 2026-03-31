@@ -51,7 +51,12 @@ const patterns = [
     /\{fadeOutCharacter:(\d+)\}/,                      // 46: Fade Out Character Duration
     /\{bgMove:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,         // 47,48: Background Move (Position, Duration)
     /\{setAction:([a-zA-Z]+),(true|false)\}/,          // 49,50: SetAction (Name, Visibility)
-    /\{startBGM:([a-zA-Z0-9_]+),(true|false)\}/        // 51,52: StartBGM with FadeIn
+    /\{startBGM:([a-zA-Z0-9_]+),(true|false)\}/,       // 51,52: StartBGM with FadeIn
+    /\{courtView:([a-zA-Z0-9_]+)\}/,                   // 53: CourtView (ViewName)
+    /\{courtPan:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,        // 54,55: CourtPan (ViewName, Duration)
+    /\{courtSprite:([a-zA-Z0-9_]+)\["([^"]+)"\]\}/,    // 56,57: CourtSprite (Slot, Emotion)
+    /\{courtChar:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/,   // 58,59: CourtChar (Slot, CharacterName)
+    /\{changeCharacter:([a-zA-Z0-9_]+)\["([^"]+)"\](?:,([a-zA-Z0-9_]+))?\}/ // 60,61,62: ChangeCharacter (Character, Emotion, View)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
@@ -176,6 +181,16 @@ function parseText(text) {
             parsedSegments.push({ type: 'setAction', actionName: match[49], isEnabled: match[50] === 'true' });
         } else if (match[51]) { // StartBGM with FadeIn {startBGM:Name,true|false}
             parsedSegments.push({ type: 'startBGM', musicName: match[51], fadeIn: match[52] === 'true' });
+        } else if (match[53]) { // CourtView {courtView:ViewName}
+            parsedSegments.push({ type: 'courtView', view: match[53] });
+        } else if (match[54]) { // CourtPan {courtPan:ViewName,Duration}
+            parsedSegments.push({ type: 'courtPan', view: match[54], duration: match[55] ? parseInt(match[55]) : 400 });
+        } else if (match[56] && match[57]) { // CourtSprite {courtSprite:Slot["Emotion"]}
+            parsedSegments.push({ type: 'courtSprite', slot: match[56], emotion: match[57] });
+        } else if (match[58] && match[59]) { // CourtChar {courtChar:Slot,CharacterName}
+            parsedSegments.push({ type: 'courtChar', slot: match[58], characterName: match[59] });
+        } else if (match[60] && match[61]) { // ChangeCharacter {changeCharacter:Character["Emotion"][,view]}
+            parsedSegments.push({ type: 'changeCharacter', characterName: match[60], emotion: match[61], view: match[62] || null });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });
         }

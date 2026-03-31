@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/case-select.css">
     <link rel="stylesheet" href="css/single-screen.css">
     <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/courtroom.css">
 </head>
 
 <body>
@@ -28,6 +29,18 @@
         <div id="game-container">
             <div id="background" class="layer"></div>
             <img id="character" class="layer" alt="" src="/">
+            <div id="courtroom-sprites" class="layer hidden">
+                <img id="sprite-defense" class="court-sprite" alt="" src="/">
+                <img id="sprite-witness" class="court-sprite" alt="" src="/">
+                <img id="sprite-prosecution" class="court-sprite" alt="" src="/">
+            </div>
+            <div id="courtroom-overview-sprites" class="layer hidden">
+                <img id="overview-defense" class="overview-sprite" alt="" src="/">
+                <img id="overview-prosecution" class="overview-sprite" alt="" src="/">
+                <img id="overview-witness" class="overview-sprite" alt="" src="/">
+                <img id="overview-judge" class="overview-sprite" alt="" src="/">
+                <img id="overview-gallery" class="overview-sprite" alt="" src="/">
+            </div>
             <div id="foreground" class="layer"></div>
             <video id="top-video" class="layer hidden" preload="metadata" playsinline></video>
             <div id="flash-overlay" class="layer"></div>
@@ -237,6 +250,7 @@
     <script src="js/ui/advance-controls.js"></script>
     <script src="js/ui/return-to-title.js"></script>
     <script src="js/ui/screen-mode.js"></script>
+    <script src="js/courtroom.js"></script>
     <script src="js/investigation.js"></script>
     <script src="js/court-record.js"></script>
     <script src="js/topics.js"></script>

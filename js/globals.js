@@ -84,3 +84,7 @@ let isPresentingMode = false;
 let isExamining = false;
 let isInputBlocked = false;
 let isSingleScreenMode = false;
+
+// Courtroom State
+let courtroomDB = {};
+let isCourtMode = false;

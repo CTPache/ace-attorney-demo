@@ -317,6 +317,14 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
         // Clear top screen layers before starting the new scene
         if (typeof clearTopScreen === 'function') clearTopScreen();
 
+        // Courtroom: initialize AFTER clearTopScreen so cleanup doesn't undo it
+        if (data.courtroom && typeof window.initCourtroom === 'function') {
+            courtroomDB = data.courtroom;
+            window.initCourtroom(data.courtroom);
+        } else if (typeof window.cleanupCourtroom === 'function') {
+            window.cleanupCourtroom();
+        }
+
         if (!isLoadingSave) {
             // Start the game logic normally
             startGame();

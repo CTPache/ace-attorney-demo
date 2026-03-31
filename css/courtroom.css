@@ -1,0 +1,94 @@
+/* ═══════════════════════════════════════════
+   Courtroom Scene System
+   ═══════════════════════════════════════════ */
+
+/* Panoramic sprite container — holds defense/witness/prosecution sprites.
+   Lives inside #game-container. Its children extend beyond the viewport
+   and are clipped by #game-container's overflow:hidden.
+/* Panning is handled via transform:translateX() synced with bg-position. */
+#courtroom-sprites {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    /* Duration is set dynamically by JS when panning */
+    transition: transform 0ms ease-in-out;
+}
+
+/* When in court mode, foreground must match panoramic bg sizing */
+.court-mode-fg #foreground {
+    background-size: cover;
+    background-position: 0cqw 0cqh;
+}
+
+/* Individual court sprites — each fills one "viewport" of the panoramic.
+   Left positions are injected at runtime by courtroom.js based on the
+   scene's CourtStands.positions data (see #courtroom-sprites-dynamic). */
+.court-sprite {
+    position: absolute;
+    width: 100cqw;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    opacity: 0;
+    pointer-events: none;
+}
+/* #sprite-defense / #sprite-witness / #sprite-prosecution left values are
+   set dynamically — see buildStandSpriteStyles() in courtroom.js */
+
+/* ── Overview Sprites ───────────────────── */
+/* Small overlay characters shown during the courtroom overview shot */
+#courtroom-overview-sprites {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.overview-sprite {
+    position: absolute;
+    object-fit: contain;
+    object-position: bottom;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Default overview positions — can be overridden per-scene via JS */
+#overview-defense {
+    left: 5%;
+    bottom: 0;
+    width: 30%;
+    height: 65%;
+}
+
+#overview-prosecution {
+    right: 5%;
+    bottom: 0;
+    width: 30%;
+    height: 65%;
+}
+
+#overview-witness {
+    left: 35%;
+    bottom: 0;
+    width: 30%;
+    height: 55%;
+}
+
+#overview-judge {
+    left: 30%;
+    top: 2%;
+    width: 40%;
+    height: 40%;
+}
+
+#overview-gallery {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
+    object-fit: cover;
+    object-position: top;
+}

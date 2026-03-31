@@ -16,7 +16,11 @@ function executeScriptAction(segment) {
             return true;
         case 'bgMove':
             if (window.moveBackgroundByName) {
-                window.moveBackgroundByName(currentBackgroundKey, segment.position, segment.duration);
+                let dur = segment.duration;
+                if (typeof isFastForwarding !== 'undefined' && isFastForwarding) {
+                    dur = 0;
+                }
+                window.moveBackgroundByName(currentBackgroundKey, segment.position, dur);
             }
             return true;
         case 'fg':
@@ -133,16 +137,37 @@ function executeScriptAction(segment) {
             if (window.stopTopVideoSequence) window.stopTopVideoSequence(true);
             return true;
         case 'shake':
-            triggerShake(segment.duration);
+            let shakeDur = segment.duration;
+            if (typeof isFastForwarding !== 'undefined' && isFastForwarding) {
+                shakeDur = 0;
+            }
+            triggerShake(shakeDur);
+            return true;
+        case 'courtView':
+            if (window.setCourtView) window.setCourtView(segment.view);
+            return true;
+        case 'courtSprite':
+            if (window.setCourtSlotSprite) window.setCourtSlotSprite(segment.slot, segment.emotion);
+            return true;
+        case 'courtChar':
+            if (window.setCourtSlotCharacter) window.setCourtSlotCharacter(segment.slot, segment.characterName);
+            return true;
+        case 'changeCharacter':
+            let targetView = segment.view;
+            if (!targetView) {
+                if (window.getCurrentCourtView) {
+                    targetView = window.getCurrentCourtView();
+                } else {
+                    targetView = "witness"; // fallback
+                }
+            }
+            if (window.setCourtSlotCharacter) window.setCourtSlotCharacter(targetView, segment.characterName);
+            if (window.setCourtSlotSprite) window.setCourtSlotSprite(targetView, segment.emotion);
             return true;
         case 'endGame':
             // showEndGameOverlay is in text-renderer.js usually.
             // We should call it.
             if (window.showEndGameOverlay) window.showEndGameOverlay();
-            // We return STOP-like signal? 
-            // the caller needs to know to stop typing.
-            // Returning 'true' just means handled.
-            // The logic in text-renderer needs to handle the STOP effect.
             return 'STOP';
         
         default:

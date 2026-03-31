@@ -86,3 +86,15 @@ const configFullscreenBtn = document.getElementById('config-fullscreen-btn');
 const historyMenu = document.getElementById('history-menu');
 const historyList = document.getElementById('history-list');
 const historyCloseBtn = document.getElementById('history-close-btn');
+
+// Courtroom Sprites
+const courtroomSprites = document.getElementById('courtroom-sprites');
+const spriteDefense = document.getElementById('sprite-defense');
+const spriteWitness = document.getElementById('sprite-witness');
+const spriteProsecution = document.getElementById('sprite-prosecution');
+const courtroomOverviewSprites = document.getElementById('courtroom-overview-sprites');
+const overviewDefense = document.getElementById('overview-defense');
+const overviewProsecution = document.getElementById('overview-prosecution');
+const overviewWitness = document.getElementById('overview-witness');
+const overviewJudge = document.getElementById('overview-judge');
+const overviewGallery = document.getElementById('overview-gallery');

@@ -38,28 +38,41 @@ function handleGlobalKeydown(e) {
 
     // Screen mode toggle (M)
     if (e.key.toLowerCase() === 'm') {
-        toggleScreenMode();
+        if (typeof toggleScreenMode === 'function') toggleScreenMode();
         return;
     }
     // Switch screen (S)
     if (e.key.toLowerCase() === 's') {
-        switchScreen();
+        if (typeof switchScreen === 'function') switchScreen();
         return;
     }
     // Autoplay toggle (A)
     if (e.key.toLowerCase() === 'a') {
-        toggleAutoplay();
+        if (typeof toggleAutoplay === 'function') toggleAutoplay();
         return;
     }
 
     // Advance dialogue (Space) — replaces the advance button in single-screen mode
-    if (e.key === ' ') {
-        if (typeof advanceDialogue === 'function' && !isInputBlocked) {
-            advanceDialogue();
-            e.preventDefault();
+    if (e.key === ' ' || e.code === 'Space') {
+        if (!e.repeat) {
+            if (typeof startFastForward === 'function' && !isInputBlocked) {
+                startFastForward(e);
+            }
         }
+        e.preventDefault(); // Always prevent scrolling
         return;
     }
 }
 
+function handleGlobalKeyup(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key === ' ' || e.code === 'Space') {
+        if (typeof stopFastForward === 'function') {
+            stopFastForward();
+        }
+    }
+}
+
 document.addEventListener('keydown', handleGlobalKeydown);
+document.addEventListener('keyup', handleGlobalKeyup);

@@ -404,6 +404,12 @@ if (skipVideoBtn) {
 }
 
 function setSpriteState(state) {
+    // Delegate to courtroom module if active
+    if (isCourtMode && window._courtroomSetSpriteState) {
+        window._courtroomSetSpriteState(state);
+        return;
+    }
+
     if (!currentCharacterName || !currentAnimationKey) return;
 
     const charData = characters[currentCharacterName];
@@ -433,11 +439,19 @@ function changeBackground(bgName) {
         return;
     }
     
-    // Check if background is a positioned background (object with path and positions)
-    if (typeof bgData === 'object' && bgData.path) {
-        backgroundElement.style.backgroundImage = `url('${bgData.path}')`;
+    // Check if background is a positioned background (object with path/background and positions)
+    const bgUrl = bgData.path || bgData.background;
+    if (typeof bgData === 'object' && bgUrl) {
+        backgroundElement.style.backgroundImage = `url('${bgUrl}')`;
         backgroundElement.style.opacity = '1';
         currentBackgroundKey = bgName;
+        
+        // Apply integrated foreground if specified
+        if (bgData.foreground) {
+            foregroundElement.style.backgroundImage = `url('${bgData.foreground}')`;
+            foregroundElement.style.opacity = '1';
+            currentForegroundKey = bgName + "_fg";
+        }
         
         // Apply default position if available
         if (bgData.positions && bgData.positions.default) {
@@ -485,6 +499,10 @@ function applyCurrentBackgroundPosition(duration = 0) {
     backgroundElement.style.backgroundPosition = `${x} ${y}`;
     requestAnimationFrame(() => { backgroundElement.style.transition = ''; });
 }
+
+window.snapBackgroundToPositionInstant = function() {
+    applyCurrentBackgroundPosition(0);
+};
 
 function moveBackgroundToPosition(x, y, duration = 400) {
     if (!backgroundElement) {
@@ -538,6 +556,12 @@ function fadeOutElement(element, duration = 400) {
 function fadeInElement(element, duration = 400) {
     if (!element) return;
     const ms = Number.isFinite(duration) ? duration : 400;
+    
+    // Force target to 0 before fading in
+    element.style.transition = 'none';
+    element.style.opacity = '0';
+    void element.offsetWidth;
+    
     element.style.transition = `opacity ${ms}ms ease-in-out`;
     element.style.opacity = '1';
 }
@@ -560,8 +584,14 @@ function fadeForeground(fgName, duration = 400) {
     }, ms);
 }
 
-window.fadeOutBackground = (duration = 400) => fadeOutElement(backgroundElement, duration);
-window.fadeInBackground = (duration = 400) => fadeInElement(backgroundElement, duration);
+window.fadeOutBackground = (duration = 400) => {
+    fadeOutElement(backgroundElement, duration);
+    fadeOutElement(foregroundElement, duration);
+};
+window.fadeInBackground = (duration = 400) => {
+    fadeInElement(backgroundElement, duration);
+    fadeInElement(foregroundElement, duration);
+};
 window.fadeBackground = fadeBackground;
 
 window.fadeOutForeground = (duration = 400) => fadeOutElement(foregroundElement, duration);
@@ -569,6 +599,12 @@ window.fadeInForeground = (duration = 400) => fadeInElement(foregroundElement, d
 window.fadeForeground = fadeForeground;
 
 function changeSprite(charName, spriteKey) {
+    // Delegate to courtroom module if active
+    if (isCourtMode && window._courtroomChangeSprite) {
+        window._courtroomChangeSprite(charName, spriteKey);
+        return;
+    }
+
     currentCharacterName = charName;
     currentAnimationKey = spriteKey;
     setSpriteState('default');

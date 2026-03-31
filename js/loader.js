@@ -23,11 +23,20 @@ async function preloadAssets() {
             promises.push(preloadImage(bgData).then(newUrl => {
                 backgrounds[key] = newUrl;
             }));
-        } else if (typeof bgData === 'object' && bgData.path) {
-            // Positioned background with path property
-            promises.push(preloadImage(bgData.path).then(newUrl => {
-                bgData.path = newUrl;
-            }));
+        } else if (typeof bgData === 'object') {
+            // Positioned/Courtroom background objects
+            const bgUrl = bgData.path || bgData.background;
+            if (bgUrl) {
+                promises.push(preloadImage(bgUrl).then(newUrl => {
+                    if (bgData.path) bgData.path = newUrl;
+                    if (bgData.background) bgData.background = newUrl;
+                }));
+            }
+            if (bgData.foreground) {
+                promises.push(preloadImage(bgData.foreground).then(newUrl => {
+                    bgData.foreground = newUrl;
+                }));
+            }
         }
     }
 

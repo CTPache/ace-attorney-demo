@@ -241,6 +241,10 @@ function clearTopScreen() {
     if (nameTag) { nameTag.textContent = ''; nameTag.style.display = 'none'; nameTag.style.opacity = ''; }
     if (textboxContainer) textboxContainer.classList.add('no-name');
     if (textContent) textContent.innerHTML = '';
+    // Clean up courtroom layers
+    if (typeof window.cleanupCourtroom === 'function') {
+        window.cleanupCourtroom();
+    }
     // Reset internal tracking state
     currentCharacterName = '';
     currentAnimationKey = '';

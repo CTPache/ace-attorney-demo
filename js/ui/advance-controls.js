@@ -13,7 +13,9 @@ function startFastForward(e) {
     // Start delay timer for fast forward
     fastForwardTimeout = setTimeout(() => {
         isFastForwarding = true;
-        advanceBtn.textContent = "▶▶";
+        if (typeof advanceBtn !== 'undefined' && advanceBtn) {
+            advanceBtn.textContent = "▶▶";
+        }
 
         // Loop
         fastForwardInterval = setInterval(() => {
@@ -29,7 +31,9 @@ function stopFastForward() {
     }
 
     isFastForwarding = false;
-    advanceBtn.textContent = "▶";
+    if (typeof advanceBtn !== 'undefined' && advanceBtn) {
+        advanceBtn.textContent = "▶";
+    }
     if (fastForwardInterval) {
         clearInterval(fastForwardInterval);
         fastForwardInterval = null;

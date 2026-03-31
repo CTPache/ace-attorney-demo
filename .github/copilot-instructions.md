@@ -99,6 +99,13 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{playVideo:Key}`: Play a top-screen video sequence from the `videos` DB.
 - `{stopVideo}`: Stop the currently playing video sequence.
 
+**Courtroom Mechanics:**
+- `{courtView:ViewName}`: Switch to a predefined courtroom view layer (`judge`, `witness`, `defense`, `prosecution`, `cocounsel`, `gallery`, `overview`). Automatically transitions backgrounds and layer visibility.
+- `{courtPan:ViewName}` / `{courtPan:ViewName,Duration}`: Smoothly pan the courtroom stand background to an adjacent view (e.g., `{courtPan:defense,400}`). Skips panning instantly if fast-forwarding is active.
+- `{courtSprite:SlotName["Emotion"]}`: Changes the sprite mapped to a specific courtroom slot.
+- `{courtChar:SlotName,CharName}`: Reassigns the overarching character occupying a specific courtroom slot.
+- `{changeCharacter:CharName["Emotion"]}` / `{changeCharacter:CharName["Emotion"],ViewName}`: Changes a character's active emotion remotely on a specific layer view (defaults to the active viewport if omitted).
+
 **Audio:**
 - `{blip:Type,Speak}`: Change text blip. `Speak` is (opt) boolean. If false, mouth doesn't move. Types: 1: Male, 2: Female, 3: Typewriter, 4: Silence.
 - `{playSound:Key}`: Play a sound effect once.
@@ -112,10 +119,10 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - `{fadeFg:Key}`: Fade out current foreground, change to new foreground, fade in.
 - `{fadeOutFg}`: Fade out current foreground.
 - `{fadeInFg}`: Fade in current foreground.
-- `{fadeInCharacter}` / `{fadeOutCharacter}`: Fade character in or out (use built-in command, optional duration).
+- `{fadeInCharacter}` / `{fadeOutCharacter}`: Fade character in or out (use built-in command, optional duration). During Courtroom stand views, this safely targets the entire `courtroomSprites` container instead of the solitary `#character`.
 - `{fadeInCharacter:Duration}` / `{fadeOutCharacter:Duration}`: Fade with custom duration in milliseconds (e.g., `{fadeInCharacter:500}`).
 - All fade commands support optional duration: `{fadeBg:Key,Duration}`, `{fadeOutBg:300}`, `{fadeInFg:500}`, etc. Default is 400ms.
-- Multiple fades execute simultaneously and the engine waits for the longest duration to complete.
+- Inline Flow: Fade commands can be placed **anywhere** within the script line (mid-dialogue). The parser will organically pause the typewriter, execute the visual transition inline securely, and then resume typing.
 
 **Flow Control:**
 - `{p:Milliseconds}`: Pause typing for X ms.
@@ -149,19 +156,20 @@ The engine parses commands enclosed in `{}` within the `text` string.
 - **Characters**: Nested object structure: `CharacterName -> Emotion -> State (default/talking)`.
 - **Backgrounds**: Can be either:
   - Simple string: `"BackgroundName": "assets/path/to/image.png"`
-  - Positioned object (for panning/scrolling):
+  - Positioned object (for panning/scrolling, or Courtroom depth):
     ```json
-    "BackgroundName": {
-      "path": "assets/path/to/image.png",
+    "CourtStands": {
+      "background": "assets/path/to/bg.webp",
+      "foreground": "assets/path/to/fg.webp",
       "positions": {
-        "default": "top",
-        "top": [0, 0],
-        "middle": [100, 200],
-        "bottom": [0, -300]
+        "default": "witness",
+        "defense": [0, 0],
+        "witness": [-200, 0],
+        "prosecution": [-400, 0]
       }
     }
     ```
-    The `positions` object maps position names to `[x, y]` pixel offsets. The `default` key specifies which position loads initially. Use `{bgMove:positionName}` to move to different positions.
+    The `positions` object maps position names to `[x, y]` pixel offsets. `background` is the core texture layer, and `foreground` is an optional integrated parallax depth layer dynamically rendered via `.court-mode-fg`. If using a simple path, you can also use `"path": "url"`.
 - **Evidence/Profiles**: Objects with `name`, `description`, and `image`.
 - **Topics**: Objects with `text` (display name) and `label` (target section).
 - **Move**: Array of objects defining locations to travel to for the scene. Included at the top level of the JSON:
