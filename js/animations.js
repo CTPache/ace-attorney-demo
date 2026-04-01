@@ -61,8 +61,12 @@ window.AnimationManager = (function() {
                     const soundSrc = config.sound;
                     if (soundSrc.includes('/')) {
                         const resolvedSoundSrc = soundSrc.startsWith('assets/') ? soundSrc : `assets/${soundSrc}`;
-                        const audio = new Audio(resolvedSoundSrc);
-                        audio.play().catch(e => console.warn("Animation SFX failed:", e));
+                        if (window.playSoundByPath) {
+                            window.playSoundByPath(resolvedSoundSrc);
+                        } else {
+                            const audio = new Audio(resolvedSoundSrc);
+                            audio.play().catch(e => console.warn("Animation SFX failed:", e));
+                        }
                     } else {
                         if (window.playSound) window.playSound(soundSrc);
                     }

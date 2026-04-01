@@ -267,6 +267,10 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
         soundsDB = data.sounds || {};
         musicDB = data.music || {};
         videosDB = data.videos || {};
+
+        if (typeof window.warmSceneSfxCache === 'function') {
+            window.warmSceneSfxCache();
+        }
         
         if (window.CrossExamination) {
             window.CrossExamination.init(data.crossExaminations || {});

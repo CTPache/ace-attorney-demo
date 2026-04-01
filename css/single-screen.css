@@ -306,6 +306,13 @@
     left: auto !important;
 }
 
+.single-screen-mode #skip-video-btn {
+    right: 2.2cqh !important;
+    top: 2.2cqh !important;
+    bottom: auto !important;
+    left: auto !important;
+}
+
 .single-screen-mode :is(#carousel-case-label, .cs-carousel-select) {
     display: none !important;
 }

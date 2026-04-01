@@ -1,32 +1,112 @@
 
 // Audio
-const blipSounds = {
-    1: new Audio('assets/audio/blip_1.ogg'),
-    2: new Audio('assets/audio/blip_2.ogg'),
-    3: new Audio('assets/audio/typewriter.ogg')
+const blipPaths = {
+    1: 'assets/audio/blip_1.ogg',
+    2: 'assets/audio/blip_2.ogg',
+    3: 'assets/audio/typewriter.ogg'
 };
+const BLIP_POOL_SIZE = 6;
+const blipPools = {};
+const blipPoolIndex = {};
 const activeSFX = new Set();
+const sfxTemplateCache = new Map();
+
+function buildBlipPool(path, size = BLIP_POOL_SIZE) {
+    const pool = [];
+    for (let i = 0; i < size; i++) {
+        const audio = new Audio(path);
+        audio.preload = 'auto';
+        audio.load();
+        pool.push(audio);
+    }
+    return pool;
+}
+
+Object.keys(blipPaths).forEach((key) => {
+    const type = Number(key);
+    blipPools[type] = buildBlipPool(blipPaths[type]);
+    blipPoolIndex[type] = 0;
+});
+
+function normalizeSfxPath(rawPath) {
+    if (!rawPath || typeof rawPath !== 'string') return null;
+    if (rawPath.startsWith('http://') || rawPath.startsWith('https://') || rawPath.startsWith('data:')) {
+        return rawPath;
+    }
+    if (rawPath.startsWith('/')) {
+        return rawPath;
+    }
+    if (rawPath.startsWith('assets/')) {
+        return rawPath;
+    }
+    return `assets/${rawPath}`;
+}
+
+function getOrCreateSfxTemplate(soundPath) {
+    const normalizedPath = normalizeSfxPath(soundPath);
+    if (!normalizedPath) return null;
+
+    if (!sfxTemplateCache.has(normalizedPath)) {
+        const templateAudio = new Audio(normalizedPath);
+        templateAudio.preload = 'auto';
+        templateAudio.load();
+        sfxTemplateCache.set(normalizedPath, templateAudio);
+    }
+
+    return sfxTemplateCache.get(normalizedPath);
+}
+
+function playSoundByPath(soundPath) {
+    const template = getOrCreateSfxTemplate(soundPath);
+    if (!template) return;
+
+    const audio = template.cloneNode(true);
+    audio.currentTime = 0;
+    activeSFX.add(audio);
+
+    const cleanup = () => {
+        activeSFX.delete(audio);
+        audio.src = '';
+    };
+
+    audio.addEventListener('ended', cleanup, { once: true });
+    audio.addEventListener('error', cleanup, { once: true });
+    audio.play().catch(e => {
+        cleanup();
+        console.warn('SFX play failed:', e);
+    });
+}
+
+function warmSceneSfxCache() {
+    if (!soundsDB || typeof soundsDB !== 'object') return;
+
+    Object.values(soundsDB).forEach((pathValue) => {
+        getOrCreateSfxTemplate(pathValue);
+    });
+}
 
 function playBlip() {
     if (currentBlipType === 4) return; // Silence
 
-    const audio = blipSounds[currentBlipType];
-    if (audio) {
-        if (!audio.paused) return;
-        audio.currentTime = 0;
-        audio.play().catch(e => console.warn("Audio play failed:", e));
-    }
+    const pool = blipPools[currentBlipType];
+    if (!pool || pool.length === 0) return;
+
+    // User-requested behavior: never overlap blips.
+    if (pool.some(channel => !channel.paused)) return;
+
+    const idx = blipPoolIndex[currentBlipType] || 0;
+    const audio = pool[idx];
+    blipPoolIndex[currentBlipType] = (idx + 1) % pool.length;
+
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play().catch(e => console.warn('Audio play failed:', e));
 }
 
 function playSound(soundName) {
     const soundPath = soundsDB[soundName];
     if (soundPath) {
-        const audio = new Audio(soundPath);
-        activeSFX.add(audio);
-        const cleanup = () => activeSFX.delete(audio);
-        audio.addEventListener('ended', cleanup, { once: true });
-        audio.addEventListener('error', cleanup, { once: true });
-        audio.play().catch(e => console.warn("SFX play failed:", e));
+        playSoundByPath(soundPath);
     } else {
         console.warn(`Sound not found: ${soundName}`);
     }
@@ -141,13 +221,15 @@ function stopAllSceneAudio() {
     });
     activeSFX.clear();
 
-    Object.values(blipSounds).forEach((audio) => {
-        try {
-            audio.pause();
-            audio.currentTime = 0;
-        } catch (e) {
-            console.warn('Failed to stop blip audio:', e);
-        }
+    Object.values(blipPools).forEach((pool) => {
+        pool.forEach((audio) => {
+            try {
+                audio.pause();
+                audio.currentTime = 0;
+            } catch (e) {
+                console.warn('Failed to stop blip audio:', e);
+            }
+        });
     });
 
     stopTopVideoSequence(false);
@@ -385,6 +467,8 @@ function playTopVideoSequence(videoKey, onComplete) {
 window.playTopVideoSequence = playTopVideoSequence;
 window.stopTopVideoSequence = stopTopVideoSequence;
 window.stopAllSceneAudio = stopAllSceneAudio;
+window.playSoundByPath = playSoundByPath;
+window.warmSceneSfxCache = warmSceneSfxCache;
 
 // Skip video button event listener
 if (skipVideoBtn) {

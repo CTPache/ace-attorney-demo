@@ -18,9 +18,9 @@
 }
 
 #skip-video-btn {
-    top: 2cqh;
-    right: 2cqh;
-    z-index: var(--z-ui-control);
+    right: 1cqh;
+    bottom: 11.5cqh;
+    z-index: var(--z-ui-control-raised);
 }
 
 #autoplay-indicator {

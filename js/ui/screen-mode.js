@@ -5,14 +5,18 @@ console.log("UI Screen Mode Loaded");
 function syncAutoplayIndicatorPlacement() {
     const bottomMainWindow = document.getElementById("bottom-main-window");
 
-    if (!autoplayIndicator) {
+    if (!autoplayIndicator && !skipVideoBtn) {
         return;
     }
 
     const targetParent = isSingleScreenMode ? gameContainer : bottomMainWindow;
 
-    if (targetParent && autoplayIndicator.parentElement !== targetParent) {
+    if (targetParent && autoplayIndicator && autoplayIndicator.parentElement !== targetParent) {
         targetParent.appendChild(autoplayIndicator);
+    }
+
+    if (targetParent && skipVideoBtn && skipVideoBtn.parentElement !== targetParent) {
+        targetParent.appendChild(skipVideoBtn);
     }
 }
 

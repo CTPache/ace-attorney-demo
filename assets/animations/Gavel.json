@@ -13,7 +13,7 @@
             "class": "gavel-swing",
             "duration": 1180
         },
-        "680": {
+        "480": {
             "sound": "assets/audio/se/se010.m4a"
         }
     }

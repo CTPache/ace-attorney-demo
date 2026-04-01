@@ -55,89 +55,39 @@
         },
         "Edgeworth": {
             "Normal": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal_talking.gif"
-            },
-            "Normal2": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal_2.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Normal_talking_2.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Normal_talking.gif"
             },
             "Smug": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_DD_HD_-_Smug.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_DD_HD_-_Smug_talking.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_DD_HD_-_Smug.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_DD_HD_-_Smug_talking.gif"
             },
             "Angry": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Angry.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Angry_talking.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Angry.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Angry_talking.gif"
             },
             "Annoyed": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Annoyed.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Annoyed_talking.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Annoyed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Annoyed_talking.gif"
             },
             "Brooding": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Brooding.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Brooding_talking.gif"
-            },
-            "CloseUp": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Close-up.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Close-up_talking.gif"
-            },
-            "Confident": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Confident.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Confident_talking.gif"
-            },
-            "Determined": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Determined.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Determined_talking.gif"
-            },
-            "Dismayed": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Dismayed.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Dismayed_talking.gif"
-            },
-            "HoldingDocument": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Holding_document.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Holding_document_talking.gif"
-            },
-            "Pointing": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Pointing.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Pointing_talking.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Brooding.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Brooding_talking.gif"
             },
             "SidewaysLook": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Sideways_look.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Sideways_look_talking.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Sideways_look.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Sideways_look_talking.gif"
             },
             "Smiling": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Smiling.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Smiling_talking.gif"
-            },
-            "Thinking": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Thinking.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Thinking_talking.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Smiling.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Smiling_talking.gif"
             },
             "Worried": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Worried.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Worried_talking.gif"
-            },
-            "Bowing": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Bowing.gif"
-            },
-            "ConfidentShrugging": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Confident_shrugging.gif"
-            },
-            "SlammingDesk": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Slamming_desk.gif"
-            },
-            "Smirking": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Smirking.gif"
-            },
-            "Unknown": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Unknown.gif"
-            },
-            "WaggingFinger": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Wagging_his_finger.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Worried.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Worried_talking.gif"
             },
             "ObjectingLeft": {
-                "default": "assets/img/characters/Common/Edgeworth/Miles_Edgeworth_HD_-_Objecting_left.gif"
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Objecting_left.gif"
             }
         }
     },
