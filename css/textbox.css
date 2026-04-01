@@ -13,35 +13,6 @@
     padding: 2cqw;
 }
 
-.ce-textbox-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 4cqw;
-    color: white;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.1s, color 0.1s;
-    z-index: 4;
-}
-
-#ce-prev-arrow {
-    left: -5cqw;
-}
-
-#ce-next-arrow {
-    right: -5cqw;
-}
-
-.ce-textbox-arrow:hover {
-    transform: translateY(-50%) scale(1.1);
-    color: lightgray;
-}
-
-.ce-textbox-arrow.hidden {
-    display: none;
-}
-
 #textbox-content-wrapper {
     flex: 1;
     display: flex;

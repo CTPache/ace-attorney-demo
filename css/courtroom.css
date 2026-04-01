@@ -102,6 +102,32 @@
     justify-content: space-between;
 }
 
-.ce-floating-btn {
+#ce-arrow-container {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    z-index: 300;
+}
+
+.ce-floating-btn,
+.ce-arrow {
     width: 14cqw;
+}
+
+.ce-arrow {
+    width: 30%;
+    height: 55cqh;
+    font-size: 24cqw;
+}
+
+.ce-arrow.hidden,
+#ce-arrow-container.hidden {
+    display: none;
+}
+
+
+/*Display next arrow button like this if the previous button is hidden */
+.ce-arrow.hidden ~ #ce-next-arrow {
+    width: 70cqw;
+    height: 56cqh;
 }

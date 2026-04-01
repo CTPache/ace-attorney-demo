@@ -176,17 +176,26 @@ window.CrossExamination = (function() {
     function updateUI() {
         const ceControls = document.getElementById('ce-controls');
         const ceBottomControls = document.getElementById('ce-bottom-controls');
+        const ceArrowContainer = document.getElementById('ce-arrow-container');
         const cePrevArrow = document.getElementById('ce-prev-arrow');
         const ceNextArrow = document.getElementById('ce-next-arrow');
         const courtRecordBtn = document.getElementById('court-record-btn');
+        const advanceBtn = document.getElementById('advance-btn');
 
         const shouldShow = isCEMode && isLoopActive && (!window.isCourtRecordOpen);
+        const statementCount = activeCE && Array.isArray(activeCE.activeStatementIds)
+            ? activeCE.activeStatementIds.length
+            : 0;
+        const isFirstStatement = currentIndex <= 0;
+        const hasMultipleStatements = statementCount > 1;
 
         if (ceControls) ceControls.classList.toggle('hidden', !shouldShow);
         if (ceBottomControls) ceBottomControls.classList.toggle('hidden', !shouldShow);
-        if (cePrevArrow) cePrevArrow.classList.toggle('hidden', !shouldShow);
-        if (ceNextArrow) ceNextArrow.classList.toggle('hidden', !shouldShow);
+        if (ceArrowContainer) ceArrowContainer.classList.toggle('hidden', !shouldShow);
+        if (cePrevArrow) cePrevArrow.classList.toggle('hidden', !shouldShow || !hasMultipleStatements || isFirstStatement);
+        if (ceNextArrow) ceNextArrow.classList.toggle('hidden', !shouldShow || !hasMultipleStatements);
         if (courtRecordBtn) courtRecordBtn.classList.toggle('hidden', shouldShow);
+        if (advanceBtn) advanceBtn.classList.toggle('hidden', shouldShow);
     }
 
     function setLoopActive(active) {

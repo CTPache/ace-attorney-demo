@@ -60,7 +60,8 @@
 .back-btn,
 .detail-nav-btn,
 #evidence-present-btn,
-.ce-floating-btn {
+.ce-floating-btn,
+.ce-arrow {
     padding: 1cqw 2cqh;
     font-size: 4cqh;
     background: linear-gradient(180deg, #8B4513 0%, #5D2906 100%);
@@ -77,7 +78,9 @@
 #advance-btn:hover,
 .back-btn:hover,
 .detail-nav-btn:hover,
-#evidence-present-btn:hover {
+#evidence-present-btn:hover,
+.ce-floating-btn:hover,
+.ce-arrow:hover {
     border-color: #FFA500;
     box-shadow:
         0 0 0 0.4cqh #3E1F0B,
@@ -89,7 +92,9 @@
 #config-btn:active,
 #advance-btn:active,
 .back-btn:active,
-.detail-nav-btn:active {
+.detail-nav-btn:active,
+.ce-arrow:active,
+.ce-floating-btn:active {
     transform: translateY(0.4cqh);
 }
 

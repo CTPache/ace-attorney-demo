@@ -58,9 +58,9 @@
 .single-screen-mode #bottom-top-bar {
     position: absolute;
     left: auto;
-    bottom: auto;
+    bottom: 31cqh;
     width: 100%;
-    height: 100%;
+    height: 10%;
     padding: 0;
     border: none;
     background: transparent;
@@ -73,10 +73,10 @@
     padding: 1cqh 1cqh !important;
     opacity: 0.85 !important;
     position: absolute;
-    top: 1cqh;
+    bottom: 60cqh;
     right: 1cqw;
     left: auto;
-    bottom: auto;
+    top: auto;
     z-index: 130;
     pointer-events: auto;
 }
@@ -344,10 +344,36 @@
     justify-content: space-between;
 }
 
+.single-screen-mode #ce-arrow-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 131;
+    pointer-events: none;
+    bottom: -70cqh;
+}
+
 .single-screen-mode .ce-floating-btn {
     width: 10cqw;
     height: 8cqh;
     margin: 1cqh;
     opacity: 0.85 !important;
     font-size: 2.5cqh !important;
+    pointer-events: auto;
+}
+
+.single-screen-mode .ce-arrow,
+.single-screen-mode #ce-arrow-container:has(#ce-prev-arrow.hidden):not(:has(#ce-next-arrow.hidden)) #ce-next-arrow {
+    width: 2cqw;
+    height: 20cqh;
+    font-size: 4cqh;
+    opacity: 0.85 !important;
+    pointer-events: auto;
+    margin: 1cqh 1cqw;
+}
+
+.single-screen-mode #ce-arrow-container:has(#ce-prev-arrow.hidden):not(:has(#ce-next-arrow.hidden)) {
+    flex-direction: row-reverse;
 }
