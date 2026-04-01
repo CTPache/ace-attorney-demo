@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1000;
+    z-index: var(--z-title-screen);
     overflow: hidden;
     background-color: black;
 }
@@ -20,7 +20,7 @@
     height: 100%;
     width: 100%;
     /* Must be 100% so % inside are relative to container width! */
-    z-index: 1;
+    z-index: var(--z-layer-base);
     animation: scrollBg 20s linear infinite;
 }
 
@@ -65,7 +65,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: 100%;
-    z-index: 50;
+    z-index: var(--z-layer-title-content);
     object-fit: contain;
 }
 
@@ -75,7 +75,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 50;
+    z-index: var(--z-layer-title-content);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,7 +112,7 @@
     width: 100%;
     height: 8cqh;
     background-color: black;
-    z-index: 40;
+    z-index: var(--z-layer-title-bar);
 }
 
 .title-top-bar {

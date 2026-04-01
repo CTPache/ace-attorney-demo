@@ -1,6 +1,14 @@
 
 let showTopicsOnEnd = false;
 
+function isAutoPlayBlockedByCrossExamination() {
+    return !!(
+        window.CrossExamination &&
+        window.CrossExamination.isCEMode &&
+        window.CrossExamination.isLoopActive
+    );
+}
+
 function clearAutoPlayTimer() {
     if (autoPlayTimeout) {
         clearTimeout(autoPlayTimeout);
@@ -77,6 +85,7 @@ function scheduleAutoPlayAdvance() {
     if (isInputBlocked) return;
     if (isTyping) return;
     if (isWaitingForAutoSkip) return;
+    if (isAutoPlayBlockedByCrossExamination()) return;
 
     autoPlayTimeout = setTimeout(() => {
         autoPlayTimeout = null;
@@ -86,6 +95,7 @@ function scheduleAutoPlayAdvance() {
         if (isInputBlocked) return;
         if (isTyping) return;
         if (isWaitingForAutoSkip) return;
+        if (isAutoPlayBlockedByCrossExamination()) return;
 
         advanceDialogue(true);
     }, getAutoPlayDelayMs());

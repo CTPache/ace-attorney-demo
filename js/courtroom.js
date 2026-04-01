@@ -25,6 +25,87 @@ console.log("Courtroom Module Loaded");
     // Injected <style> tag for dynamic sprite positions
     let spritePositionStyleSheet = null;
 
+    function getOverviewSpriteKey(slotName) {
+        const slot = String(slotName || '').toLowerCase();
+        if (!slot) return '';
+        return `${slot.charAt(0).toUpperCase()}${slot.slice(1)}_overview`;
+    }
+
+    function resolveSpriteEntryUrl(entry, state) {
+        if (!entry) return '';
+        if (typeof entry === 'string') return entry;
+        if (typeof entry !== 'object') return '';
+
+        if (state === 'talking' && typeof entry.talking === 'string') {
+            return entry.talking;
+        }
+
+        if (typeof entry.default === 'string') {
+            return entry.default;
+        }
+
+        if (typeof entry.talking === 'string') {
+            return entry.talking;
+        }
+
+        return '';
+    }
+
+    function resolveCourtSpriteEntry(slotName, characterName, emotion, preferOverviewVariant = false) {
+        const charData = characters[characterName];
+        if (!charData) return null;
+
+        if (preferOverviewVariant) {
+            const overviewEntry = charData[getOverviewSpriteKey(slotName)];
+            if (resolveSpriteEntryUrl(overviewEntry, 'default')) {
+                return overviewEntry;
+            }
+        }
+
+        return charData[emotion] || null;
+    }
+
+    function clearOverviewSpriteDisplay(element) {
+        if (!element) return;
+
+        element.style.left = '';
+        element.style.right = '';
+        element.style.top = '';
+        element.style.bottom = '';
+        element.style.transform = '';
+        element.style.transformOrigin = '';
+    }
+
+    function applyOverviewSpriteDisplay(element, entry) {
+        clearOverviewSpriteDisplay(element);
+
+        if (!entry || typeof entry !== 'object' || !entry.display || typeof entry.display !== 'object') {
+            return;
+        }
+
+        const { x, y, scale } = entry.display;
+
+        if (typeof x === 'number' && isFinite(x)) {
+            element.style.left = `${x}%`;
+            element.style.right = 'auto';
+        }
+
+        if (typeof y === 'number' && isFinite(y)) {
+            element.style.bottom = `${y}%`;
+            element.style.top = 'auto';
+        }
+
+        if (typeof scale === 'number' && isFinite(scale) && scale > 0) {
+            element.style.transform = `scale(${scale / 100})`;
+            element.style.transformOrigin = 'center bottom';
+        }
+    }
+
+    function resolveCourtSpriteUrl(slotName, characterName, emotion, state, preferOverviewVariant = false) {
+        const entry = resolveCourtSpriteEntry(slotName, characterName, emotion, preferOverviewVariant);
+        return resolveSpriteEntryUrl(entry, state);
+    }
+
     // ── Dynamic Sprite Position Builder ─────────────────────────
 
     /**
@@ -103,6 +184,7 @@ console.log("Courtroom Module Loaded");
         overviewElements.prosecution = overviewProsecution;
         overviewElements.witness = overviewWitness;
         overviewElements.judge = overviewJudge;
+        overviewElements.cocounsel = overviewCocounsel;
         overviewElements.gallery = overviewGallery;
 
         // Build dynamic sprite position styles from CourtStands data
@@ -155,12 +237,15 @@ console.log("Courtroom Module Loaded");
         const allEls = [
             spriteDefense, spriteWitness, spriteProsecution,
             overviewDefense, overviewProsecution, overviewWitness,
-            overviewJudge, overviewGallery
+            overviewJudge, overviewCocounsel, overviewGallery
         ];
         allEls.forEach(el => {
             if (el) {
                 el.style.opacity = '0';
                 el.src = '/';
+                if (el.classList.contains('overview-sprite')) {
+                    clearOverviewSpriteDisplay(el);
+                }
             }
         });
 
@@ -249,6 +334,9 @@ console.log("Courtroom Module Loaded");
 
         // Disable panoramic foreground mode
         if (gameContainer) gameContainer.classList.remove('court-mode-fg');
+        if (typeof window.changeForeground === 'function') {
+            window.changeForeground('');
+        }
 
         const overviewConfig = courtroomDB.views && courtroomDB.views.overview;
         if (overviewConfig && overviewConfig.background) {
@@ -418,27 +506,34 @@ console.log("Courtroom Module Loaded");
         const slot = slotState[slotName];
         if (!slot || !slot.character || !slot.emotion) {
             element.style.opacity = '0';
+            if (element.classList.contains('overview-sprite')) {
+                clearOverviewSpriteDisplay(element);
+            }
             return;
         }
 
-        const charData = characters[slot.character];
-        if (!charData) {
-            element.style.opacity = '0';
-            return;
-        }
+        const useOverviewVariant = currentView === 'overview' && element.classList.contains('overview-sprite');
+        const spriteEntry = resolveCourtSpriteEntry(
+            slotName,
+            slot.character,
+            slot.emotion,
+            useOverviewVariant
+        );
 
-        const animData = charData[slot.emotion];
-        if (!animData) {
-            element.style.opacity = '0';
-            return;
-        }
-
-        const spriteUrl = animData.default || animData.talking || '';
+        const spriteUrl = resolveSpriteEntryUrl(spriteEntry, 'default');
         if (spriteUrl) {
+            if (useOverviewVariant) {
+                applyOverviewSpriteDisplay(element, spriteEntry);
+            } else if (element.classList.contains('overview-sprite')) {
+                clearOverviewSpriteDisplay(element);
+            }
             element.src = spriteUrl;
             element.style.opacity = '1';
         } else {
             element.style.opacity = '0';
+            if (element.classList.contains('overview-sprite')) {
+                clearOverviewSpriteDisplay(element);
+            }
         }
     }
 
@@ -476,18 +571,13 @@ console.log("Courtroom Module Loaded");
         const slot = slotState[activeSlot];
         if (!slot.character || !slot.emotion) return;
 
-        const charData = characters[slot.character];
-        if (!charData) return;
-
-        const animData = charData[slot.emotion];
-        if (!animData) return;
-
-        let spriteUrl = '';
-        if (state === 'talking' && animData.talking) {
-            spriteUrl = animData.talking;
-        } else {
-            spriteUrl = animData.default || animData.talking || '';
-        }
+        const spriteUrl = resolveCourtSpriteUrl(
+            activeSlot,
+            slot.character,
+            slot.emotion,
+            state,
+            currentView === 'overview'
+        );
 
         if (!spriteUrl) return;
 
@@ -495,6 +585,8 @@ console.log("Courtroom Module Loaded");
         let element = null;
         if (STAND_SLOTS.includes(activeSlot) && standElements[activeSlot]) {
             element = standElements[activeSlot];
+        } else if (currentView === 'overview' && overviewElements[activeSlot]) {
+            element = overviewElements[activeSlot];
         }
 
         if (element) {

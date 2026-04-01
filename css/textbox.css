@@ -6,7 +6,7 @@
     width: 90%;
     height: 23%;
     background-color: rgba(0, 0, 0, 0.8);
-    z-index: 3;
+    z-index: var(--z-layer-foreground);
     border: 0.4cqw solid rgba(255, 255, 255, 0.8);
     border-radius: 1cqw;
     box-sizing: border-box;
@@ -41,7 +41,7 @@
     white-space: nowrap;
     overflow: hidden;
     font-family: 'FOT-SeuratPro-B', 'Arial', sans-serif;
-    z-index: 5;
+    z-index: var(--z-layer-title-content);
 }
 
 #name-tag .name-tag-text {
@@ -56,7 +56,6 @@
     color: white;
     font-size: 2.8cqw;
     line-height: 1.2;
-    margin-top: 1cqw;
 }
 
 #textbox-container.no-name #text-content {

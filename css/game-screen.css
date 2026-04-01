@@ -13,7 +13,7 @@
     background-color: black;
     background-size: cover;
     background-position: center;
-    z-index: 1;
+    z-index: var(--z-layer-base);
 }
 
 .layer {
@@ -28,7 +28,7 @@
 }
 
 #character {
-    z-index: 2;
+    z-index: var(--z-layer-character);
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -46,12 +46,12 @@
 }
 
 #foreground {
-    z-index: 3;
+    z-index: var(--z-layer-foreground);
     pointer-events: none;
 }
 
 #top-video {
-    z-index: 2;
+    z-index: var(--z-layer-character);
     object-fit: cover;
     object-position: center;
     background: #000;
@@ -69,7 +69,7 @@
 #flash-overlay {
     background-color: white;
     opacity: 0;
-    z-index: 10;
+    z-index: var(--z-layer-effect);
     pointer-events: none;
 }
 
@@ -116,7 +116,7 @@
     align-items: center;
     color: white;
     flex-direction: column;
-    z-index: 2000;
+    z-index: var(--z-blocking-overlay);
 }
 
 #end-game-overlay button {

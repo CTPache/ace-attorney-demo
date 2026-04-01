@@ -64,7 +64,7 @@
     padding: 0;
     border: none;
     background: transparent;
-    z-index: 130;
+    z-index: var(--z-bottom-controls);
     pointer-events: auto;
 }
 
@@ -77,7 +77,7 @@
     right: 1cqw;
     left: auto;
     top: auto;
-    z-index: 130;
+    z-index: var(--z-bottom-controls);
     pointer-events: auto;
 }
 
@@ -93,14 +93,14 @@
     top: 1cqh;
     right: auto;
     bottom: auto;
-    z-index: 130;
+    z-index: var(--z-bottom-controls);
     pointer-events: auto;
 }
 
 .single-screen-mode :is(#config-menu, #history-menu, #investigation-menu, #move-menu, #topic-menu, #evidence-container, #investigation-panel, #case-select-bottom, #gallery-menu) {
     position: absolute;
     inset: 0;
-    z-index: 210;
+    z-index: var(--z-menu-overlay);
     pointer-events: auto;
 }
 
@@ -171,20 +171,20 @@
 }
 
 .single-screen-mode #textbox-container {
-    z-index: 125;
+    z-index: var(--z-ui-textbox-elevated);
 }
 
 .single-screen-mode :is(#autoplay-indicator, #skip-video-btn, #life-bar-container, #evidence-popup) {
-    z-index: 210;
+    z-index: var(--z-single-screen-floating);
 }
 
 .single-screen-mode #title-logo {
-    height: 62%;
-    top: 42%;
+    height: 90%;
+    top: 45%;
 }
 
 .single-screen-mode #title-screen-top {
-    z-index: 1200;
+    z-index: var(--z-title-screen);
 }
 
 .single-screen-mode #title-screen-bottom {
@@ -194,17 +194,17 @@
 
 /* Keep dialogue readable above topic choices in single-screen mode. */
 .single-screen-mode:has(#topic-menu:not(.hidden)) #bottom-screen {
-    z-index: 124 !important;
+    z-index: var(--z-ui-textbox-underlay) !important;
 }
 
 /* Elevate bottom screen when a fullscreen menu is open so it covers the title screen */
 .single-screen-mode:has(:is(#config-menu, #history-menu, #case-select-bottom, #gallery-menu):not(.hidden)) #bottom-screen {
-    z-index: 1300 !important;
+    z-index: var(--z-blocking-overlay) !important;
 }
 
 /* Ensure the top screen covers the bottom menu when viewing a fullscreen image */
 .single-screen-mode:has(#gallery-viewer:not(.hidden)) #game-container {
-    z-index: 1400 !important;
+    z-index: var(--z-blocking-overlay-top) !important;
 }
 
 /* Hide game corner buttons when full-screen menus are open */
@@ -291,7 +291,7 @@
     top: 2.2cqh;
     right: auto;
     bottom: auto;
-    z-index: 130;
+    z-index: var(--z-bottom-controls);
     pointer-events: auto;
 }
 
@@ -302,6 +302,8 @@
 .single-screen-mode :is(#autoplay-indicator, #skip-video-btn) {
     right: 5cqw !important;
     top: 69cqh !important;
+    bottom: auto !important;
+    left: auto !important;
 }
 
 .single-screen-mode :is(#carousel-case-label, .cs-carousel-select) {
@@ -338,7 +340,7 @@
 }
 
 .single-screen-mode #ce-controls {
-    z-index: 130;
+    z-index: var(--z-bottom-controls);
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
@@ -350,7 +352,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 131;
+    z-index: var(--z-bottom-overlays);
     pointer-events: none;
     bottom: -70cqh;
 }

@@ -160,6 +160,37 @@ Characters are defined as:
 }
 ```
 
+Courtroom overview shots can also use slot-specific overview entries. The engine looks for keys named after the slot plus `_overview`, for example `Defense_overview`, `Prosecution_overview`, `Witness_overview`, `Judge_overview`, `Cocounsel_overview`, and `Gallery_overview`.
+
+Example:
+
+```json
+"Phoenix": {
+  "Normal": {
+    "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal.gif",
+    "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal_talking.gif"
+  },
+  "Defense_overview": {
+    "default": "assets/img/characters/Common/Phoenix/Phoenix_defense_overview.png",
+    "talking": "assets/img/characters/Common/Phoenix/Phoenix_defense_overview.png",
+    "display": {
+      "scale": 74,
+      "x": 3,
+      "y": 0
+    }
+  }
+}
+```
+
+Overview entry rules:
+
+- `default` and `talking` work the same way as normal character emotion entries
+- `display` is optional and only affects overview rendering
+- `display.scale` is a percentage scale multiplier where `100` means the slot's default CSS size
+- `display.x` sets the sprite's `left` position as a percentage of the overview viewport
+- `display.y` sets the sprite's `bottom` position as a percentage of the overview viewport
+- If an overview entry is missing, the engine falls back to the slot's currently selected normal emotion entry
+
 Character emotion objects can also include timed one-shot animation metadata:
 
 - `time`: how long the animation should block the line before continuing
@@ -405,10 +436,41 @@ Example:
     "defense": { "character": "Phoenix" },
     "prosecution": { "character": "Edgeworth" },
     "witness": { "character": "Gumshoe" },
-    "judge": { "character": "Judge" }
+    "judge": { "character": "Judge" },
+    "cocounsel": { "character": "Maya" },
+    "gallery": { "character": "Gallery" }
   }
 }
 ```
+
+Notes:
+
+- `overview` uses a separate overlay renderer from the panoramic stand views
+- `stands.positions` maps each stand slot to a named background position
+- `cocounsel`, `judge`, and `gallery` can have their own direct views as well as overview presence
+- `gallery` is optional; set its slot character to `null` if the overview should not show a crowd
+
+### Overview Sprite Placement
+
+Overview placement can now be authored directly in scene JSON through each slot's overview entry.
+
+Example:
+
+```json
+"Gallery": {
+  "Gallery_overview": {
+    "default": "assets/img/sprites/Courtroom_gallery_speak.webp",
+    "talking": "assets/img/sprites/Courtroom_gallery_speak.webp",
+    "display": {
+      "scale": 54,
+      "x": 23,
+      "y": 49
+    }
+  }
+}
+```
+
+Use this when overview sprites have different framing, proportions, or anchor points than the default CSS layout. This is the preferred way to tune overview compositions per scene.
 
 ### Cross-Examinations
 
@@ -474,6 +536,15 @@ You can combine multiple commands in the same line.
 `{jump:SectionName}`
 
 - Immediately jumps to another section.
+
+`{loadScene:ScenePath}`
+
+- Loads another scene JSON file through the normal language-aware loader.
+- Use a case-relative path without the language segment, for example `assets/scenes/tests/ce_test.json`.
+
+`{loadScene:ScenePath,SectionName}`
+
+- Loads another scene JSON file and starts at the specified section instead of the scene's `initialSection`.
 
 `{jumpIf:StateKey,TrueSection,FalseSection}`
 
@@ -766,6 +837,8 @@ Supported blip types:
 `{courtSprite:Slot["Emotion"]}`
 
 - Changes the sprite shown in a courtroom slot.
+- In overview view, the engine first tries the slot-specific overview entry such as `Witness_overview` or `Gallery_overview`.
+- If no overview entry exists, it falls back to the character's normal emotion entry.
 
 `{courtChar:Slot,CharacterName}`
 

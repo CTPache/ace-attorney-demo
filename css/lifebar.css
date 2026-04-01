@@ -4,9 +4,10 @@
     right: 2cqh;
     width: 40%;
     height: 5cqh;
-    z-index: 100;
+    z-index: var(--z-ui-hud);
     display: flex;
     justify-content: flex-end;
+    opacity: 0.8;
 }
 
 #life-bar-body {
@@ -29,7 +30,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: var(--z-layer-character);
 }
 
 #life-bar-penalty {
@@ -43,7 +44,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: var(--z-layer-foreground);
     animation: flashPenalty 0.5s infinite alternate;
 }
 

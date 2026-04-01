@@ -52,6 +52,7 @@
     border: 1cqh solid #5e4020;
     box-sizing: border-box;
     padding: 2cqh;
+    z-index: var(--z-bottom-overlays);
 }
 
 #cr-tabs {
@@ -116,7 +117,7 @@
     padding: 4cqh;
     padding-top: 12cqh;
     box-sizing: border-box;
-    z-index: 10;
+    z-index: var(--z-layer-effect);
 }
 
 #evidence-details::before {
@@ -239,7 +240,7 @@
     align-items: center;
     padding: 2cqh;
     box-sizing: border-box;
-    z-index: 20;
+    z-index: var(--z-ui-hud);
     box-shadow: 0 0 4cqh rgba(0, 0, 0, 0.8);
     animation: slideDown 0.5s ease-out;
 }

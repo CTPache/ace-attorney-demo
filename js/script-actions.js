@@ -192,6 +192,12 @@ function executeScriptAction(segment) {
                 window.CrossExamination.replaceStatement(segment.ceId, segment.targetId, segment.newId);
             }
             return true;
+        case 'loadScene':
+            if (window.loadGameData) {
+                window.loadGameData(segment.scenePath, segment.sectionName || null);
+                return 'STOP';
+            }
+            return false;
         
         default:
             return false;

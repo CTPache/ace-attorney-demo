@@ -1,8 +1,6 @@
-#autoplay-indicator, #skip-video-btn {
+#autoplay-indicator,
+#skip-video-btn {
     position: absolute;
-    top: 2cqh;
-    right: 2cqh;
-    z-index: 25;
     font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 2.2cqh;
     letter-spacing: 0.15cqh;
@@ -17,6 +15,18 @@
     cursor: pointer;
     transition: opacity 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
     opacity: 0.85;
+}
+
+#skip-video-btn {
+    top: 2cqh;
+    right: 2cqh;
+    z-index: var(--z-ui-control);
+}
+
+#autoplay-indicator {
+    right: 1cqh;
+    bottom: 11.5cqh;
+    z-index: var(--z-ui-control-raised);
 }
 
 #autoplay-indicator:hover, #skip-video-btn:hover {

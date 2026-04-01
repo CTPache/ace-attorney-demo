@@ -97,4 +97,5 @@ const overviewDefense = document.getElementById('overview-defense');
 const overviewProsecution = document.getElementById('overview-prosecution');
 const overviewWitness = document.getElementById('overview-witness');
 const overviewJudge = document.getElementById('overview-judge');
+const overviewCocounsel = document.getElementById('overview-cocounsel');
 const overviewGallery = document.getElementById('overview-gallery');

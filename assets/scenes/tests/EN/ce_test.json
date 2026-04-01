@@ -16,7 +16,7 @@
         "Cigar": {
             "name": "Burnt Cigar",
             "description": "Found near the body. Smells expensive.",
-            "image": "assets/img/evidence/cigar.png",
+            "image": "assets/img/evidence/document.png",
             "type": "evidence"
         }
     },
@@ -55,6 +55,9 @@
             },
             "cocounsel": {
                 "character": "Maya"
+            },
+            "gallery": {
+                "character": "Gallery"
             }
         }
     },
@@ -68,6 +71,10 @@
                 "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident.gif",
                 "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident_talking.gif"
             },
+            "Determined": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined_talking.gif"
+            },
             "Thinking": {
                 "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking.gif",
                 "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking_talking.gif"
@@ -79,6 +86,30 @@
             "Sweating": {
                 "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating.gif",
                 "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating_talking.gif"
+            },
+            "Objecting": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Objecting.gif",
+                "time": 600
+            },
+            "SlamDesk": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Slamming_bench.gif"
+            },
+            "HoldingDocument": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document_talking.gif"
+            },
+            "Abashed": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Abashed.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Abashed_talking.gif"
+            },
+            "Defense_overview": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_defense_overview.png",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_defense_overview.png",
+                "display": {
+                    "scale": 80,
+                    "x": 70,
+                    "y": 16
+                }
             }
         },
         "Edgeworth": {
@@ -89,6 +120,27 @@
             "Confident": {
                 "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident.gif",
                 "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident_talking.gif"
+            },
+            "Dismayed": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed_talking.gif"
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking_talking.gif"
+            },
+            "Prosecution_overview": {
+                "default": "assets/img/characters/Common/Edgeworth/Edgeworth_prosecution_overview.png",
+                "talking": "assets/img/characters/Common/Edgeworth/Edgeworth_prosecution_overview.png",
+                "display": {
+                    "scale": 55,
+                    "x": 9,
+                    "y": 29
+                }
             }
         },
         "Gumshoe": {
@@ -100,26 +152,110 @@
                 "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
                 "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
             },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
             "Sad": {
                 "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
                 "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "Witness_overview": {
+                "default": "assets/img/characters/Common/Gumshoe/Gumshoe_witness_overview.png",
+                "talking": "assets/img/characters/Common/Gumshoe/Gumshoe_witness_overview.png",
+                "display": {
+                    "scale": 130,
+                    "x": 39,
+                    "y": 0
+                }
             }
         },
         "Judge": {
             "Normal": {
                 "default": "assets/img/characters/Common/Judge/Judge-Normal-1-HD.webp",
                 "talking": "assets/img/characters/Common/Judge/Judge-Normal-2-HD.webp"
+            },
+            "Stern": {
+                "default": "assets/img/characters/Common/Judge/Judge-Stern-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Stern-2-HD.webp"
+            },
+            "Surprised": {
+                "default": "assets/img/characters/Common/Judge/Judge-Surprised-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Surprised-2-HD.webp"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Judge/Judge-Thinking-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Thinking-2-HD.webp"
+            },
+            "Nod": {
+                "default": "assets/img/characters/Common/Judge/Judge-Nod-HD.webp"
+            },
+            "HeadShake": {
+                "default": "assets/img/characters/Common/Judge/Judge-Head_Shake-HD.webp"
+            },
+            "Judge_overview": {
+                "default": "assets/img/characters/Common/Judge/Judge_judge_overview.png",
+                "talking": "assets/img/characters/Common/Judge/Judge_judge_overview.png",
+                "display": {
+                    "scale": 65,
+                    "x": 41,
+                    "y": 59.5
+                }
             }
         },
         "Maya": {
             "Normal": {
                 "default": "assets/img/characters/Common/Maya/Maya-Bench-Normal-1-HD.webp",
                 "talking": "assets/img/characters/Common/Maya/Maya-Bench-Normal-2-HD.webp"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Determined-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Determined-2-HD.webp"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-2-HD.webp"
+            },
+            "Strict": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Strict-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Strict-2-HD.webp"
+            },
+            "Exasperated": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Exasperated-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Exasperated-2-HD.webp"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Maya/Maya-Confident-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Confident-2-HD.webp"
+            },
+            "Cocounsel_overview": {
+                "default": "assets/img/characters/Common/Maya/Maya_cocounsel_overview.png",
+                "talking": "assets/img/characters/Common/Maya/Maya_cocounsel_overview.png",
+                "display": {
+                    "scale": 72,
+                    "x": 69,
+                    "y": 32.6
+                }
+            }
+        },
+        "Gallery": {
+            "Gallery_overview": {
+                "default": "assets/img/sprites/Courtroom_gallery_speak.webp",
+                "talking": "assets/img/sprites/Courtroom_gallery_speak.webp",
+                "display": {
+                    "scale": 416,
+                    "x": 0,
+                    "y": 0
+                }
             }
         }
     },
     "backgrounds": {
-        "CourtOverview": "assets/img/backgrounds/Common/Courtroom_witness.webp",
+        "CourtOverview": "assets/img/backgrounds/Common/Courtroom_overview.webp",
         "CourtStands": {
             "background": "assets/img/backgrounds/Common/Courtroom_full.webp",
             "foreground": "assets/img/backgrounds/Common/Courtroom_full_foreground.webp",
@@ -190,15 +326,15 @@
     "gameScript": {
         "Intro": [
             {
-                "text": "{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{blip:3}Courtroom - Cross Examination Test"
+                "text": "{courtView:overview}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{blip:3}Courtroom - Cross Examination Test"
             },
             {
                 "name": "Judge",
-                "text": "{addEvidence:AttorneyBadge,false}{addEvidence:Cigar,false}{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}The court is now in session."
+                "text": "{addEvidence:AttorneyBadge,false}{addEvidence:Cigar,false}{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}The court is now in session for the trial of the defendant."
             },
             {
                 "name": "Judge",
-                "text": "Are the defense and prosecution ready to proceed?"
+                "text": "Are the defense and prosecution prepared to begin?"
             },
             {
                 "name": "Phoenix",
@@ -210,23 +346,51 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Confident\"]}{blip:1}Detective, proceed with your testimony regarding the night in question."
+                "text": "{courtSprite:prosecution[\"Confident\"]}{blip:1}The facts are straightforward. Detective Gumshoe found the defendant at the scene, and the evidence appeared to support that conclusion."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtPan:defense,500}{courtSprite:defense[\"Sweating\"]}{blip:0,false}{color:lightblue}(Edgeworth already sounds certain of the verdict...)"
+            },
+            {
+                "name": "Maya",
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Determined\"]}{blip:2,true}Then all we need is one contradiction, Nick. Keep listening."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:cocounsel[\"Determined\"]}{blip:0,false}{color:lightblue}(Right. If the detective's story slips even once, that's my opening.)"
+            },
+            {
+                "name": "Judge",
+                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}The prosecution may call its first witness."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}{blip:1}The prosecution calls Detective Dick Gumshoe to the stand."
             },
             {
                 "name": "Gumshoe",
-                "text": "{courtPan:witness,600}{courtSprite:witness[\"Normal\"]}{blip:1}You got it, sir! I won't miss a single detail, pal!"
+                "text": "{courtPan:witness,600}{courtSprite:witness[\"Confident\"]}{blip:1}Detective Dick Gumshoe, reporting for duty, sir!"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:3}{center}{color:lightblue}Witness Testimony{nl}--The Night in Question --{color:white}"
+                "text": "{courtSprite:witness[\"Normal\"]}I was one of the first officers at the scene, and I checked the area myself, pal."
+            },
+            {
+                "name": "Judge",
+                "text": "{courtView:judge}{courtSprite:judge[\"Nod\"]}Very well.{p:300}{courtSprite:judge[\"Normal\"]} Give the court your testimony."
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1}The defendant was found at the scene with a smoking gun, pal!"
+                "text": "{courtView:witness}{blip:0,false}{center}{color:lightblue}Witness Testimony{nl}--The Night in Question --{color:white}"
             },
             {
                 "name": "Gumshoe",
-                "text": "I saw him standin' there with my own eyes!"
+                "text": "{blip:1,true}{courtSprite:witness[\"Normal\"]}The defendant was found at the scene with a smoking gun, pal!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{courtSprite:witness[\"Confident\"]}I saw him standin' there with my own eyes!"
             },
             {
                 "name": "Gumshoe",
@@ -234,7 +398,15 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(His testimony seems a bit... weak. It's time for the Cross-Examination!)"
+                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(The timeline is shaky, the details are too convenient... and that cigar is bothering me.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Determined\"]}{blip:1}Your Honor, the defense requests permission to cross-examine the witness."
+            },
+            {
+                "name": "Judge",
+                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}You may proceed, Mr. Wright."
             },
             {
                 "text": "{courtView:witness}{blip:3}{center}{color:red}Cross-Examination{nl}--The Night in Question--{color:white}"
@@ -316,17 +488,17 @@
                 "text": "{courtView:witness}{courtSprite:witness[\"Confident\"]}That's right, pal! The smell was everywhere!{p:200} I could practically taste it in the air!"
             },
             {
-                "text": "{returnToCE:end}{sectionEnd}"
+                "text": "{returnToCE:hints}{sectionEnd}"
             }
         ],
         "CE_Hints": [
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Normal\"]}{blip:2,true}I don't think that's right, Nick!"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking\"]}{blip:2,true}That cigar statement is still bugging me, Nick."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}{courtSprite:cocounsel[\"Normal\"]}I know, Maya!"
+                "text": "{blip:1,false}{courtSprite:cocounsel[\"Normal\"]}Me too. If the evidence says it never burned, his whole conclusion falls apart."
             },
             {
                 "text": "{returnToCE:0}{sectionEnd}"
@@ -339,7 +511,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{showLifeBar:1}{courtView:prosecution}{courtSprite:prosecution[\"Confident\"]}{blip:1,true}Mr. Wright, please stop wasting our time with such irrelevant evidence."
+                "text": "{showLifeBar:1}{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}{blip:1,true}Mr. Wright, flailing at random evidence will not save your case."
             },
             {
                 "name": "Judge",
@@ -351,16 +523,23 @@
         ],
         "CE_Victory": [
             {
-                "name": "Phoenix",
-                "text": "{hideLifeBar}{blip:0,false}{playSound:PhoenixObjection}Objection!{p:500}"
+                "text": "{hideLifeBar}{blip:0,false}{playSound:PhoenixObjection}{courtView:defense}{skip:0}"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtPan:defense}{courtSprite:defense[\"Pointing\"]}{blip:1,true}Detective, look closely at this cigar you found."
+                "text": "{courtSprite:defense[\"Objecting\"]}{p:600}{courtSprite:defense[\"Pointing\"]}Objection!{p:500}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtPan:defense}{courtSprite:defense[\"HoldingDocument\"]}{blip:1,true}Detective, this cigar destroys the certainty of your entire testimony."
             },
             {
                 "name": "Phoenix",
                 "text": "According to the police report, it was found COMPLETELY unlit near the victim's body!"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Dismayed\"]}What exactly are you implying, Wright?"
             },
             {
                 "name": "Gumshoe",
@@ -368,18 +547,29 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Confident\"]}It's simple, Detective. If the cigar wasn't lit, then the smell couldn't have been 'everywhere' as you claimed!{endCE}"
+                "text": "{courtView:defense}{courtSprite:defense[\"Confident\"]}It's simple. If the cigar wasn't lit, then there was no smoke and no smell to fill the room the way the witness described!{endCE}"
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}An excellent observation, Mr. Wright. The witness's testimony is clearly unreliable."
+                "text": "{courtView:judge}{courtSprite:judge[\"Surprised\"]}An excellent observation, Mr. Wright.{p:250}{courtSprite:judge[\"Normal\"]} That contradiction strikes at the heart of the witness's account."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}Hmph. It seems we have more work to do, Detective...{checkpoint:Success_End}"
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}...Hmph. It would seem the detective reached his conclusion too quickly.{checkpoint:Success_End}"
             },
             {
-                "text": "{center}{blip:3}Test complete.{endGame}{sectionEnd}"
+                "name": "Maya",
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Normal\"]}{blip:2,true}Nice one, Nick! That was the crack we needed!"
+            },
+            {
+                "name": "Judge",
+                "text": "{courtView:judge}{courtSprite:judge[\"Stern\"]}The court will demand a revised testimony. For now, the defense has established a clear contradiction."
+            },
+            {
+                "text": "{center}{blip:3}Test complete."
+            },
+            {
+                "text": "{loadScene:assets/scenes/tests/courtroom_test.json,Redirect}{sectionEnd}"
             }
         ]
     }

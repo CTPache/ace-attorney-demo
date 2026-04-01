@@ -8,6 +8,35 @@
     src: url('../assets/fonts/FOT-SeuratPro-B.otf') format('opentype');
 }
 
+:root {
+    --z-layer-base: 1;
+    --z-layer-character: 2;
+    --z-layer-foreground: 3;
+    --z-layer-title-bar: 4;
+    --z-layer-title-content: 5;
+    --z-layer-effect: 10;
+
+    --z-ui-hud: 20;
+    --z-ui-control: 21;
+    --z-ui-control-raised: 22;
+    --z-ui-textbox-underlay: 24;
+    --z-ui-textbox-elevated: 25;
+
+    --z-bottom-controls: 30;
+    --z-bottom-overlays: 31;
+    --z-single-screen-floating: 35;
+
+    --z-title-screen: 40;
+    --z-menu-overlay: 42;
+    --z-modal-config: 45;
+    --z-modal-history: 46;
+    --z-blocking-overlay: 47;
+    --z-blocking-overlay-top: 48;
+
+    --z-fullscreen-viewer: 55;
+    --z-fullscreen-viewer-controls: 56;
+}
+
 body {
     margin: 0;
     padding: 0;

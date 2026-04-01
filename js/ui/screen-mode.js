@@ -2,6 +2,20 @@
 // Handles single-screen mode toggling and orientation sync.
 console.log("UI Screen Mode Loaded");
 
+function syncAutoplayIndicatorPlacement() {
+    const bottomMainWindow = document.getElementById("bottom-main-window");
+
+    if (!autoplayIndicator) {
+        return;
+    }
+
+    const targetParent = isSingleScreenMode ? gameContainer : bottomMainWindow;
+
+    if (targetParent && autoplayIndicator.parentElement !== targetParent) {
+        targetParent.appendChild(autoplayIndicator);
+    }
+}
+
 function updateScreenVisibility() {
     const topScreen = gameContainer;
     const bottomScreen = document.getElementById("bottom-screen");
@@ -22,6 +36,8 @@ function updateScreenVisibility() {
             wrapper.appendChild(bottomScreen);
         }
     }
+
+    syncAutoplayIndicatorPlacement();
 }
 
 function scheduleBackgroundPositionReapply() {

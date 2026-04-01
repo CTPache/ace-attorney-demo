@@ -61,7 +61,8 @@ const patterns = [
     /\{returnToCE(?::([a-zA-Z0-9_]+))?\}/,                             // 64: ReturnToCE (StatementId)
     /\{endCE\}/,                                        // 0: EndCE
     /\{addCEStatement:([a-zA-Z0-9_]+),([^,]+),([a-zA-Z0-9_]+)(?:,([^}]+))?\}/, // 65,66,67,68: AddCEStatement (ceId, text, press, present)
-    /\{replaceCEStatement:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/                   // 69,70,71: ReplaceCEStatement (ceId, targetId, newId)
+    /\{replaceCEStatement:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/,                  // 69,70,71: ReplaceCEStatement (ceId, targetId, newId)
+    /\{loadScene:([A-Za-z0-9_./\-]+)(?:,([a-zA-Z0-9_]+))?\}/                                    // 72,73: LoadScene (Path, StartSection)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
@@ -216,6 +217,12 @@ function parseText(text) {
                 ceId: match[69], 
                 targetId: match[70], 
                 newId: match[71]
+            });
+        } else if (match[72]) { // LoadScene {loadScene:path[,Section]}
+            parsedSegments.push({
+                type: 'loadScene',
+                scenePath: match[72],
+                sectionName: match[73] || null
             });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });

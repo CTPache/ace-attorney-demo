@@ -127,7 +127,7 @@
     width: auto !important;
     height: auto;
     font-size: 4cqh;
-    z-index: 21;
+    z-index: var(--z-ui-control-raised);
 }
 
 #evidence-present-btn {
@@ -136,7 +136,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 4cqh !important;
-    z-index: 100;
+    z-index: var(--z-ui-control-raised);
 }
 
 #evidence-present-btn:active {
@@ -146,6 +146,10 @@
 /* Hide all gameplay menus underneath when full-screen popups (Court Record, Config) are active inside the bottom screen bounds */
 #bottom-main-window:has(:is(#config-menu, #history-menu):not(.hidden)) :is(#investigation-menu, #move-menu, #topic-menu, #investigation-panel, #evidence-container),
 #bottom-main-window:has(#evidence-container:not(.hidden)) :is(#investigation-menu, #move-menu, #topic-menu, #investigation-panel) {
+    display: none !important;
+}
+
+#bottom-main-window:has(#evidence-container:not(.hidden)) :is(#advance-btn, #ce-arrow-container) {
     display: none !important;
 }
 

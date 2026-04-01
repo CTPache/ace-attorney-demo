@@ -10,7 +10,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: var(--z-layer-character);
     pointer-events: none;
     /* Duration is set dynamically by JS when panning */
     transition: transform 0ms ease-in-out;
@@ -44,7 +44,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: var(--z-layer-character);
     pointer-events: none;
 }
 
@@ -58,40 +58,49 @@
 
 /* Default overview positions — can be overridden per-scene via JS */
 #overview-defense {
-    left: 5%;
-    bottom: 0;
-    width: 30%;
-    height: 65%;
+    left: 8%;
+    bottom: 6%;
+    width: 18%;
+    height: 46%;
+    object-position: left bottom;
 }
 
 #overview-prosecution {
-    right: 5%;
-    bottom: 0;
-    width: 30%;
-    height: 65%;
+    right: 7%;
+    bottom: 7%;
+    width: 20%;
+    height: 48%;
+    object-position: right bottom;
 }
 
 #overview-witness {
-    left: 35%;
+    left: 39%;
     bottom: 0;
-    width: 30%;
-    height: 55%;
+    width: 22%;
+    height: 44%;
 }
 
 #overview-judge {
-    left: 30%;
-    top: 2%;
-    width: 40%;
-    height: 40%;
+    left: 41%;
+    top: 15%;
+    width: 18%;
+    height: 16%;
+}
+
+#overview-cocounsel {
+    left: 27%;
+    bottom: 11%;
+    width: 14%;
+    height: 28%;
 }
 
 #overview-gallery {
-    left: 0;
-    bottom: 0;
+    left: 6%;
+    top: 18%;
     width: 100%;
-    height: 45%;
-    object-fit: cover;
-    object-position: top;
+    height: 24%;
+    object-fit: contain;
+    object-position: center top;
 }
 
 /* ── Cross Examination ───────────────────── */
@@ -106,7 +115,7 @@
     display: flex;
     flex-grow: 1;
     justify-content: space-evenly;
-    z-index: 300;
+    z-index: var(--z-bottom-overlays);
 }
 
 .ce-floating-btn,

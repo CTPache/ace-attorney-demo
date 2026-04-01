@@ -3,6 +3,42 @@ console.log("Court Record Loaded");
 // Local State
 let currentRecordTab = 'evidence'; // 'evidence' or 'profiles'
 
+function syncCourtRecordDependentControls() {
+    if (window.CrossExamination) {
+        window.CrossExamination.updateUI();
+    }
+
+    if (!advanceBtn) {
+        return;
+    }
+
+    const shouldHideAdvanceForCE = !!(
+        window.CrossExamination &&
+        window.CrossExamination.isCEMode &&
+        window.CrossExamination.isLoopActive &&
+        !isCourtRecordOpen
+    );
+
+    if (isCourtRecordOpen) {
+        advanceBtn.classList.add('hidden');
+    } else if (isScenePlaying && !shouldHideAdvanceForCE) {
+        advanceBtn.classList.remove('hidden');
+    }
+}
+
+function closeCourtRecord() {
+    isCourtRecordOpen = false;
+    evidenceContainer.classList.add('hidden');
+    evidenceDetails.classList.add('hidden');
+    bottomTopBar.classList.remove('hidden');
+
+    if (!isScenePlaying) {
+        isPresentingMode = false;
+    }
+
+    syncCourtRecordDependentControls();
+}
+
 // Tab Handlers
 crTabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
@@ -23,37 +59,23 @@ btnPresent.addEventListener('click', () => {
     isCourtRecordOpen = true;
     isPresentingMode = true;
     renderEvidence();
+    syncCourtRecordDependentControls();
 });
 
 // Back Button Handler
 btnEvidenceBack.addEventListener('click', () => {
-    // Close Court Record
-    isCourtRecordOpen = false;
-    evidenceContainer.classList.add('hidden');
-    evidenceDetails.classList.add('hidden');
-    bottomTopBar.classList.remove('hidden'); // Show top bar
-
-    if (!isScenePlaying) {
-        isPresentingMode = false; // Reset mode
-    } else {
-        // Return to scene
-        advanceBtn.classList.remove('hidden');
-    }
+    closeCourtRecord();
 });
 
 function openCourtRecord(mode = 'view') {
     isCourtRecordOpen = true;
     isPresentingMode = (mode === 'present');
-    
-    if (isScenePlaying) {
-        advanceBtn.classList.add('hidden');
-    }
-    
+
     bottomTopBar.classList.add('hidden'); // Hide top bar
     evidenceContainer.classList.remove('hidden');
     renderEvidence();
 
-    if (window.CrossExamination) window.CrossExamination.updateUI();
+    syncCourtRecordDependentControls();
 }
 
 window.openCourtRecord = openCourtRecord;
@@ -65,15 +87,7 @@ courtRecordBtn.addEventListener('click', (e) => {
     if (isCourtRecordOpen) {
         openCourtRecord('view');
     } else {
-        evidenceContainer.classList.add('hidden');
-        evidenceDetails.classList.add('hidden'); // Hide details if open        
-        bottomTopBar.classList.remove('hidden'); // Show top bar
-
-        if (isScenePlaying) {
-            advanceBtn.classList.remove('hidden');
-        }
-
-        if (window.CrossExamination) window.CrossExamination.updateUI();
+        closeCourtRecord();
     }
 });
 
