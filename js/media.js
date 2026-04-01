@@ -32,9 +32,13 @@ function playSound(soundName) {
     }
 }
 
-function playBGM(musicName, fadeIn = false) {
+function playBGM(musicName, fadeIn = false, force = false) {
     const musicPath = musicDB[musicName];
     if (musicPath) {
+        if (currentBGMKey === musicName && currentBGM && !currentBGM.paused && !force) {
+            return;
+        }
+
         // Stop current BGM if playing
         stopBGM(false);
         currentBGMKey = musicName;

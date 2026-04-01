@@ -1,0 +1,20 @@
+{
+    "initialSection": "Redirect",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "gameScript": {
+        "Redirect": [
+            
+            {
+                "text": "{stopBGM:false}{courtView:witness}{blip:0,false}{hideTextbox}{playAnimation:Gavel}{skip:100}"
+            },
+            {
+                "text": "{loadScene:assets/scenes/tests/anim_test.json,Redirect}{sectionEnd}"
+            }
+        ]
+    }
+}

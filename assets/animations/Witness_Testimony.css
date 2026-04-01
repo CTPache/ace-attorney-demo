@@ -1,0 +1,157 @@
+#witness-word-left,
+#witness-word-right,
+#witness-testimony-shine {
+    z-index: 4;
+}
+
+#witness-word-left,
+#witness-word-right {
+    top: 18%;
+    width: 66%;
+    height: auto;
+    opacity: 0;
+}
+
+#witness-testimony-shine {
+    top: 18%;
+    left: 20%;
+    width: 66%;
+    height: auto;
+    opacity: 0;
+}
+
+.witness-enter-left {
+    animation: witness-enter-left-anim linear forwards;
+}
+
+.witness-enter-right {
+    animation: witness-enter-right-anim linear forwards;
+}
+
+.witness-center-left {
+    left: 0%;
+    opacity: 1;
+}
+
+.witness-center-right {
+    left: 20%;
+    opacity: 1;
+}
+
+.witness-shine {
+    animation: witness-shine-anim linear forwards;
+}
+
+.witness-flash-left {
+    animation: witness-flash-left-anim linear forwards;
+}
+
+.witness-flash-right {
+    animation: witness-flash-right-anim linear forwards;
+}
+
+.witness-exit-right {
+    animation: witness-exit-right-anim linear forwards;
+}
+
+.witness-exit-left {
+    animation: witness-exit-left-anim linear forwards;
+}
+
+@keyframes witness-enter-left-anim {
+    0% {
+        left: -78%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+    }
+}
+
+@keyframes witness-enter-right-anim {
+    0% {
+        left: 108%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+    }
+}
+
+@keyframes witness-shine-anim {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes witness-flash-left-anim {
+    0% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+
+    50% {
+        left: 20%;
+        opacity: 1;
+        filter: brightness(100%) saturate(100%) contrast(0%);
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+}
+
+@keyframes witness-flash-right-anim {  
+    0% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+
+    50% {
+        left: 20%;
+        opacity: 1;
+        filter: brightness(100%) saturate(100%) contrast(0%);
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+}
+
+@keyframes witness-exit-right-anim {
+    0% {
+        left: 20%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 108%;
+        opacity: 1;
+    }
+}
+
+@keyframes witness-exit-left-anim {
+    0% {
+        left: 20%;
+        opacity: 1;
+    }
+
+    100% {
+        left: -78%;
+        opacity: 1;
+    }
+}

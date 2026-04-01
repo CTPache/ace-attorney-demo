@@ -44,6 +44,7 @@ let currentCharacterName = "";
 let currentAnimationKey = "";
 let isWaitingForAutoSkip = false;
 let isFastForwarding = false;
+let isTextSkipEnabled = true;
 let fastForwardInterval = null;
 let fastForwardTimeout = null;
 let isAutoPlayEnabled = false;

@@ -40,6 +40,12 @@ function executeScriptAction(segment) {
         case 'setState':
             setGameState(segment.key, segment.value);
             return true;
+        case 'setSkipEnabled':
+            isTextSkipEnabled = segment.enabled;
+            if (!isTextSkipEnabled && typeof stopFastForward === 'function') {
+                stopFastForward();
+            }
+            return true;
         case 'blip':
             currentBlipType = segment.value;
             // Note: currentTalkingAnimationEnabled is a global state used by text-renderer
@@ -111,7 +117,7 @@ function executeScriptAction(segment) {
             if (window.playSound) window.playSound(segment.soundName);
             return true;
         case 'startBGM':
-            if (window.playBGM) window.playBGM(segment.musicName, segment.fadeIn);
+            if (window.playBGM) window.playBGM(segment.musicName, segment.fadeIn, segment.force);
             return true;
         case 'stopBGM':
             if (window.stopBGM) window.stopBGM(segment.fadeOut);

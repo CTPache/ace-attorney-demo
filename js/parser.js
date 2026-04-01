@@ -51,7 +51,7 @@ const patterns = [
     /\{fadeOutCharacter:(\d+)\}/,                      // 46: Fade Out Character Duration
     /\{bgMove:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,         // 47,48: Background Move (Position, Duration)
     /\{setAction:([a-zA-Z]+),(true|false)\}/,          // 49,50: SetAction (Name, Visibility)
-    /\{startBGM:([a-zA-Z0-9_]+),(true|false)\}/,       // 51,52: StartBGM with FadeIn
+    /\{startBGM:([a-zA-Z0-9_]+),((?:true|false)(?:,(?:true|false))?)\}/, // 51,52: StartBGM with FadeIn[,Force]
     /\{courtView:([a-zA-Z0-9_]+)\}/,                   // 53: CourtView (ViewName)
     /\{courtPan:([a-zA-Z0-9_]+)(?:,(\d+))?\}/,        // 54,55: CourtPan (ViewName, Duration)
     /\{courtSprite:([a-zA-Z0-9_]+)\["([^"]+)"\]\}/,    // 56,57: CourtSprite (Slot, Emotion)
@@ -62,7 +62,8 @@ const patterns = [
     /\{endCE\}/,                                        // 0: EndCE
     /\{addCEStatement:([a-zA-Z0-9_]+),([^,]+),([a-zA-Z0-9_]+)(?:,([^}]+))?\}/, // 65,66,67,68: AddCEStatement (ceId, text, press, present)
     /\{replaceCEStatement:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/,                  // 69,70,71: ReplaceCEStatement (ceId, targetId, newId)
-    /\{loadScene:([A-Za-z0-9_./\-]+)(?:,([a-zA-Z0-9_]+))?\}/                                    // 72,73: LoadScene (Path, StartSection)
+    /\{loadScene:([A-Za-z0-9_./\-]+)(?:,([a-zA-Z0-9_]+))?\}/,                                   // 72,73: LoadScene (Path, StartSection)
+    /\{setSkipEnabled:(true|false)\}/                                                            // 74: SetSkipEnabled
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
@@ -185,8 +186,14 @@ function parseText(text) {
             parsedSegments.push({ type: 'bgMove', position: match[47], duration: match[48] ? parseInt(match[48]) : 400 });
         } else if (match[49]) { // Set Action {setAction:Name,Bool}
             parsedSegments.push({ type: 'setAction', actionName: match[49], isEnabled: match[50] === 'true' });
-        } else if (match[51]) { // StartBGM with FadeIn {startBGM:Name,true|false}
-            parsedSegments.push({ type: 'startBGM', musicName: match[51], fadeIn: match[52] === 'true' });
+        } else if (match[51]) { // StartBGM with FadeIn/Force {startBGM:Name,true|false[,true|false]}
+            const bgmFlags = match[52].split(',');
+            parsedSegments.push({
+                type: 'startBGM',
+                musicName: match[51],
+                fadeIn: bgmFlags[0] === 'true',
+                force: bgmFlags[1] === 'true'
+            });
         } else if (match[53]) { // CourtView {courtView:ViewName}
             parsedSegments.push({ type: 'courtView', view: match[53] });
         } else if (match[54]) { // CourtPan {courtPan:ViewName,Duration}
@@ -223,6 +230,11 @@ function parseText(text) {
                 type: 'loadScene',
                 scenePath: match[72],
                 sectionName: match[73] || null
+            });
+        } else if (match[74]) { // SetSkipEnabled {setSkipEnabled:true|false}
+            parsedSegments.push({
+                type: 'setSkipEnabled',
+                enabled: match[74] === 'true'
             });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });

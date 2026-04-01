@@ -1,0 +1,20 @@
+{
+    "layers": [
+        "gavel"
+    ],
+    "animationCss": "Gavel.css",
+    "images": [
+        "Gavel.png"
+    ],
+    "timeline": {
+        "0": {
+            "image": "img/sprites/Gavel.webp",
+            "targetId": "gavel",
+            "class": "gavel-swing",
+            "duration": 1180
+        },
+        "680": {
+            "sound": "assets/audio/se/se010.m4a"
+        }
+    }
+}

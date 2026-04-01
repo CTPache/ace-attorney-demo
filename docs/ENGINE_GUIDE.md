@@ -533,6 +533,12 @@ You can combine multiple commands in the same line.
 
 - Stops typing the current line and auto-advances after the given delay.
 
+`{setSkipEnabled:true|false}`
+
+- Enables or disables user text skipping and fast-forward input.
+- When `false`, user advance input cannot force-finish currently typing text.
+- Scripted `{skip:Milliseconds}` still works while skip is disabled.
+
 `{jump:SectionName}`
 
 - Immediately jumps to another section.
@@ -717,6 +723,7 @@ You can combine multiple commands in the same line.
 
 - Plays an animation timeline from `assets/animations/Name.json`.
 - The line waits for the animation to finish before continuing.
+- Player advance and skip input are ignored while that animation wait is active.
 
 `{playVideo:VideoKey}`
 
@@ -751,10 +758,22 @@ Supported blip types:
 `{startBGM:MusicKey}`
 
 - Starts looping music.
+- If that same music key is already playing, the command does nothing.
 
 `{startBGM:MusicKey,true|false}`
 
 - Starts looping music and optionally fades it in.
+- The second boolean is the fade-in flag.
+- If that same music key is already playing, the command does nothing.
+
+`{startBGM:MusicKey,true|false,true|false}`
+
+- Starts looping music with explicit `fadeIn` and `force` flags.
+- The third boolean forces a restart even if the requested music key is already the active BGM.
+- Examples:
+  - `{startBGM:courtroom,true}`: fade in unless `courtroom` is already playing
+  - `{startBGM:courtroom,true,true}`: fade in and force a restart
+  - `{startBGM:courtroom,false,true}`: restart immediately without fade-in
 
 `{stopBGM}`
 
@@ -927,6 +946,11 @@ Event fields:
 - `class`: CSS class to apply to the layer
 - `duration`: animation duration in milliseconds
 - `sound`: sound key or asset path
+
+Playback notes:
+
+- A `playAnimation` command blocks line progression until its timeline finishes.
+- User advance input does not skip past that wait.
 
 ## 10. Practical Authoring Rules
 

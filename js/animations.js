@@ -22,7 +22,8 @@ window.AnimationManager = (function() {
         createdLayers.forEach(layer => layer.remove());
         createdLayers = [];
         
-        // Reset Character Element        if (character) {
+        // Reset Character Element
+        if (character) {
             character.style.animation = '';
             character.className = 'layer'; 
             character.style.animationDuration = '';
@@ -59,7 +60,8 @@ window.AnimationManager = (function() {
                 if (config.sound) {
                     const soundSrc = config.sound;
                     if (soundSrc.includes('/')) {
-                        const audio = new Audio(`assets/${soundSrc}`);
+                        const resolvedSoundSrc = soundSrc.startsWith('assets/') ? soundSrc : `assets/${soundSrc}`;
+                        const audio = new Audio(resolvedSoundSrc);
                         audio.play().catch(e => console.warn("Animation SFX failed:", e));
                     } else {
                         if (window.playSound) window.playSound(soundSrc);

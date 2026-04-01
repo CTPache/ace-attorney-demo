@@ -1,0 +1,77 @@
+{
+    "layers": [
+        "witness-word-left",
+        "witness-word-right",
+        "witness-testimony-shine"
+    ],
+    "animationCss": "Witness_Testimony.css",
+    "images": [
+        "(Witness)_Testimony.webp",
+        "Witness_(Testimony).webp",
+        "Witness_Testimony_shine.webp"
+    ],
+    "timeline": {
+        "0": [
+            {
+                "image": "img/sprites/(Witness)_Testimony.webp",
+                "targetId": "witness-word-left",
+                "class": "witness-enter-left",
+                "duration": 700
+            },
+            {
+                "image": "img/sprites/Witness_(Testimony).webp",
+                "targetId": "witness-word-right",
+                "class": "witness-enter-right",
+                "duration": 700
+            }
+        ],
+        "700": [
+            {
+                "image": "img/sprites/(Witness)_Testimony.webp",
+                "targetId": "witness-word-left",
+                "class": "witness-center-left",
+                "duration": 2400
+            },
+            {
+                "image": "img/sprites/Witness_(Testimony).webp",
+                "targetId": "witness-word-right",
+                "class": "witness-center-right",
+                "duration": 2400
+            },
+            {
+                "image": "img/sprites/Witness_Testimony_shine.webp",
+                "targetId": "witness-testimony-shine",
+                "class": "witness-shine",
+                "duration": 1200
+            }
+        ],
+        "1900": [
+            {
+                "image": "img/sprites/(Witness)_Testimony.webp",
+                "targetId": "witness-word-left",
+                "class": "witness-flash-left",
+                "duration": 1200
+            },
+            {
+                "image": "img/sprites/Witness_(Testimony).webp",
+                "targetId": "witness-word-right",
+                "class": "witness-flash-right",
+                "duration": 1200
+            }
+        ],
+        "3100": [
+            {
+                "image": "img/sprites/(Witness)_Testimony.webp",
+                "targetId": "witness-word-left",
+                "class": "witness-exit-right",
+                "duration": 700
+            },
+            {
+                "image": "img/sprites/Witness_(Testimony).webp",
+                "targetId": "witness-word-right",
+                "class": "witness-exit-left",
+                "duration": 700
+            }
+        ]
+    }
+}

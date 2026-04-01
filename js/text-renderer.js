@@ -567,6 +567,10 @@ function showEndGameOverlay() {
 }
 
 function finishTyping() {
+    if (isWaitingForAnimation) {
+        return;
+    }
+
     clearTimeout(typingInterval);
     isWaitingForAnimation = false;
     completeActiveCharacterFadeInstant();

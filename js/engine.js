@@ -171,6 +171,9 @@ function advanceDialogue(force = false) {
     // Check if input is blocked (e.g., options menu open)
     if (isInputBlocked) return;
 
+    // Keep dialogue locked until scripted overlay animations finish.
+    if (typeof isWaitingForAnimation !== 'undefined' && isWaitingForAnimation) return;
+
     // Dispatch event to notify UI (e.g., hide popups)
     document.dispatchEvent(new Event('dialogueAdvanced'));
 
@@ -181,6 +184,7 @@ function advanceDialogue(force = false) {
     if (force === true) isWaitingForAutoSkip = false;
 
     if (isTyping) {
+        if (!isTextSkipEnabled) return;
         // If currently typing, finish immediately
         finishTyping();
     } else if (window.CrossExamination && window.CrossExamination.isCEMode && window.CrossExamination.isLoopActive) {

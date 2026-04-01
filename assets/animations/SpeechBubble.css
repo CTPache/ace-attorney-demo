@@ -1,0 +1,60 @@
+#speech-bubble {
+    z-index: 4;
+    top: 0%;
+    left: 10%;
+    width: 80%;
+    height: auto;
+    opacity: 0;
+    transform-origin: center;
+}
+
+.speech-bubble-pop {
+    animation: speech-bubble-pop-anim cubic-bezier(0.18, 0.9, 0.32, 1.12) forwards;
+}
+
+@keyframes speech-bubble-pop-anim {
+    0% {
+        opacity: 1;
+        transform: translate(3%, -4%) rotate(-2.4deg) scale(0.96);
+    }
+
+    12% {
+        opacity: 1;
+        transform: translate(-2.5%, 2%) rotate(1.8deg) scale(1.03);
+    }
+
+    24% {
+        opacity: 1;
+        transform: translate(2%, 3.5%) rotate(-1.4deg) scale(0.99);
+    }
+
+    36% {
+        opacity: 1;
+        transform: translate(-3.5%, -1.5%) rotate(2.2deg) scale(1.04);
+    }
+
+    49% {
+        opacity: 1;
+        transform: translate(1.5%, -3%) rotate(-2.8deg) scale(0.98);
+    }
+
+    63% {
+        opacity: 1;
+        transform: translate(-1%, 2.8%) rotate(1.1deg) scale(1.02);
+    }
+
+    78% {
+        opacity: 1;
+        transform: translate(2.8%, 1.2%) rotate(-1.7deg) scale(1);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(-1.6%, -2.4%) rotate(1.4deg) scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0%, 0%) rotate(0deg) scale(1);
+    }
+}
