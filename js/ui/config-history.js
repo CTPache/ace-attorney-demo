@@ -50,10 +50,15 @@ function refreshTopBarButtonDisabledState() {
 
 function closeConfigMenu() {
     if (!configMenu) return;
+    const wasTitleContext = isTitleConfigMode || isTitleScreenVisible();
     configMenu.classList.add('hidden');
     setConfigMenuContext(false);
     isInputBlocked = false;
     refreshTopBarButtonDisabledState();
+
+    if (wasTitleContext && typeof window.hideActionMenus === 'function') {
+        window.hideActionMenus();
+    }
 
     if (isAutoPlayEnabled && !isTyping && isScenePlaying) {
         if (typeof window.scheduleAutoPlayAdvance === 'function') {
@@ -172,6 +177,10 @@ function openConfigMenu(fromTitle = null) {
 
     const shouldUseTitleMode = typeof fromTitle === 'boolean' ? fromTitle : isTitleScreenVisible();
     setConfigMenuContext(shouldUseTitleMode);
+
+    if (shouldUseTitleMode && typeof window.hideActionMenus === 'function') {
+        window.hideActionMenus();
+    }
 
     syncConfigMenuControls();
     configMenu.classList.remove('hidden');

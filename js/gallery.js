@@ -40,6 +40,9 @@ window.hideGallery = function () {
         galleryMenu.classList.add('hidden');
     }
     closeGalleryViewer();
+    if (typeof window.hideActionMenus === 'function') {
+        window.hideActionMenus();
+    }
     window.initTitleScreen(); // Restore title buttons
 };
 

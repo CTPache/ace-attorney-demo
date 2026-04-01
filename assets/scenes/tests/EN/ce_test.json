@@ -342,11 +342,11 @@
     "gameScript": {
         "Intro": [
             {
-                "text": "{setSkipEnabled:false}{courtView:overview}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{center}{blip:3}Courtroom{nl}Cross Examination Test{playSound:galleryReaction}{p:2000}{skip:0}"
+                "text": "{setSkipEnabled:false}{courtView:overview}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{center}{blip:3}Courtroom{nl}Cross Examination Test{p:500}{hideTextbox}{playSound:galleryReaction}{p:2000}{playAnimation:Gavel}{skip:0}"
             },
             {
                 "name": "Judge",
-                "text": "{setSkipEnabled:true}{playAnimation:Gavel}{startBGM:courtroom,true}{addEvidence:AttorneyBadge,false}{addEvidence:Cigar,false}{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}The court is now in session for the trial of the defendant."
+                "text": "{showTextbox}{setSkipEnabled:true}{startBGM:courtroom,true}{addEvidence:AttorneyBadge,false}{addEvidence:Cigar,false}{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}The court is now in session for the trial of the defendant."
             },
             {
                 "name": "Judge",

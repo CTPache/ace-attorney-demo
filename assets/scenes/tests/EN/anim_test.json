@@ -10,7 +10,7 @@
         "Redirect": [
             
             {
-                "text": "{hideTextbox}{playAnimation:CrossExamination}{playAnimation:WitnessTestimony}{skip:100}"
+                "text": "{hideTextbox}{playAnimation:WitnessTestimony}{skip:100}"
             },
             {
                 "text": "{loadScene:assets/scenes/tests/anim_test.json,Redirect}{sectionEnd}"

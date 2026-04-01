@@ -119,6 +119,20 @@ window.renderOptionsMenu = function(optionKey) {
     }
 };
 
+function isNonGameplayMenuVisible() {
+    const titleTop = document.getElementById('title-screen-top');
+    const galleryMenu = document.getElementById('gallery-menu');
+    const caseSelectTop = document.getElementById('case-select-top');
+    const caseSelectBottom = document.getElementById('case-select-bottom');
+
+    return !!(
+        (titleTop && !titleTop.classList.contains('hidden')) ||
+        (galleryMenu && !galleryMenu.classList.contains('hidden')) ||
+        (caseSelectTop && !caseSelectTop.classList.contains('hidden')) ||
+        (caseSelectBottom && !caseSelectBottom.classList.contains('hidden'))
+    );
+}
+
 // Listen for scene state changes
 document.addEventListener('sceneStateChanged', (e) => {
     const isPlaying = e.detail.isPlaying;
@@ -149,6 +163,16 @@ document.addEventListener('sceneStateChanged', (e) => {
         advanceBtn.classList.add('hidden');
 
         if (typeof hideLifeBar === 'function') hideLifeBar();
+
+        if (isNonGameplayMenuVisible()) {
+            investigationMenu.classList.add('hidden');
+            moveMenu.classList.add('hidden');
+            topicMenu.classList.add('hidden');
+            investigationPanel.classList.add('hidden');
+            bottomTopBar.classList.add('hidden');
+            gameContainer.classList.remove('investigating');
+            return;
+        }
 
         if (isExamining) {
             investigationMenu.classList.add('hidden');

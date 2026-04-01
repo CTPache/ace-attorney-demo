@@ -16,17 +16,17 @@
                 "image": "img/sprites/(Cross)_Examination.webp",
                 "targetId": "cross_examination-word-left",
                 "class": "cross_examination-enter-left",
-                "duration": 700,
+                "duration": 400,
                 "sound": "/audio/se/se029.m4a"
             },
             {
                 "image": "img/sprites/Cross_(Examination).webp",
                 "targetId": "cross_examination-word-right",
                 "class": "cross_examination-enter-right",
-                "duration": 700
+                "duration": 400
             }
         ],
-        "700": [
+        "400": [
             {
                 "image": "img/sprites/(Cross)_Examination.webp",
                 "targetId": "cross_examination-word-left",
@@ -46,21 +46,21 @@
                 "duration": 1200
             }
         ],
-        "1900": [
+        "1200": [
             {
                 "image": "img/sprites/(Cross)_Examination.webp",
                 "targetId": "cross_examination-word-left",
                 "class": "cross_examination-flash-left",
-                "duration": 600
+                "duration": 1000
             },
             {
                 "image": "img/sprites/Cross_(Examination).webp",
                 "targetId": "cross_examination-word-right",
                 "class": "cross_examination-flash-right",
-                "duration": 600
+                "duration": 1000
             }
         ],
-        "2500": [
+        "2200": [
             {
                 "image": "img/sprites/(Cross)_Examination.webp",
                 "targetId": "cross_examination-word-left",
