@@ -5,6 +5,10 @@ let galleryData = null;
 let currentGalleryTab = "Artwork";
 let currentGalleryImages = [];
 let currentGalleryIndex = 0;
+const galleryMenu = document.getElementById('gallery-menu');
+const galleryGrid = document.getElementById('gallery-grid');
+const galleryViewer = document.getElementById('gallery-viewer');
+const galleryViewerImg = document.getElementById('gallery-viewer-img');
 
 window.initGallery = async function () {
     console.log("Initializing Gallery Menu...");
@@ -24,18 +28,16 @@ window.initGallery = async function () {
         }
     }
 
-    const menu = document.getElementById('gallery-menu');
-    if (menu) {
-        menu.classList.remove('hidden');
+    if (galleryMenu) {
+        galleryMenu.classList.remove('hidden');
         window.hideTitleScreen();
         showGalleryTab("Artwork"); // Default tab
     }
 };
 
 window.hideGallery = function () {
-    const menu = document.getElementById('gallery-menu');
-    if (menu) {
-        menu.classList.add('hidden');
+    if (galleryMenu) {
+        galleryMenu.classList.add('hidden');
     }
     closeGalleryViewer();
     window.initTitleScreen(); // Restore title buttons
@@ -53,10 +55,9 @@ function showGalleryTab(category) {
         }
     });
 
-    const grid = document.getElementById('gallery-grid');
-    if (!grid || !galleryData) return;
+    if (!galleryGrid || !galleryData) return;
 
-    grid.innerHTML = ''; // Clear existing images
+    galleryGrid.innerHTML = ''; // Clear existing images
 
     const items = galleryData[category] || [];
     currentGalleryImages = items;
@@ -78,18 +79,15 @@ function showGalleryTab(category) {
             openGalleryViewer(path, index);
         };
 
-        grid.appendChild(itemDiv);
+        galleryGrid.appendChild(itemDiv);
     });
 }
 
 function openGalleryViewer(imagePath, index = 0) {
-    const viewer = document.getElementById('gallery-viewer');
-    const viewerImg = document.getElementById('gallery-viewer-img');
-
-    if (viewer && viewerImg) {
-        viewerImg.src = imagePath;
+    if (galleryViewer && galleryViewerImg) {
+        galleryViewerImg.src = imagePath;
         currentGalleryIndex = index;
-        viewer.classList.remove('hidden');
+        galleryViewer.classList.remove('hidden');
         resetGalleryNavTimer();
     }
 }
@@ -101,16 +99,13 @@ function closeGalleryViewer(e) {
         return;
     }
 
-    const viewer = document.getElementById('gallery-viewer');
-    const viewerImg = document.getElementById('gallery-viewer-img');
-
-    if (viewer) {
-        viewer.classList.add('hidden');
-        viewer.classList.remove('show-nav');
+    if (galleryViewer) {
+        galleryViewer.classList.add('hidden');
+        galleryViewer.classList.remove('show-nav');
         if (galleryNavTimer) clearTimeout(galleryNavTimer);
     }
-    if (viewerImg) {
-        viewerImg.src = ''; // clear to prevent visual ghosting on reopen
+    if (galleryViewerImg) {
+        galleryViewerImg.src = ''; // clear to prevent visual ghosting on reopen
     }
 }
 
@@ -128,44 +123,47 @@ window.nextGalleryImage = function (e) {
     openGalleryViewer(currentGalleryImages[currentGalleryIndex], currentGalleryIndex);
 };
 
-document.addEventListener('keydown', (e) => {
-    const viewer = document.getElementById('gallery-viewer');
-    if (viewer && !viewer.classList.contains('hidden')) {
-        if (e.key === 'ArrowLeft') {
-            window.prevGalleryImage();
-            e.preventDefault();
-        } else if (e.key === 'ArrowRight') {
-            window.nextGalleryImage();
-            e.preventDefault();
-        } else if (e.key === 'Escape') {
-            closeGalleryViewer();
-            e.preventDefault();
-        }
+function handleGalleryKeydown(e) {
+    if (!galleryViewer || galleryViewer.classList.contains('hidden')) {
+        return;
     }
-});
+
+    if (e.key === 'ArrowLeft') {
+        window.prevGalleryImage();
+        e.preventDefault();
+    } else if (e.key === 'ArrowRight') {
+        window.nextGalleryImage();
+        e.preventDefault();
+    } else if (e.key === 'Escape') {
+        closeGalleryViewer();
+        e.preventDefault();
+    }
+
+    resetGalleryNavTimer();
+}
+
+document.addEventListener('keydown', handleGalleryKeydown);
 
 let galleryNavTimer = null;
 
 function resetGalleryNavTimer() {
-    const viewer = document.getElementById('gallery-viewer');
-    if (!viewer || viewer.classList.contains('hidden')) return;
+    if (!galleryViewer || galleryViewer.classList.contains('hidden')) return;
 
-    viewer.classList.add('show-nav');
+    galleryViewer.classList.add('show-nav');
 
     if (galleryNavTimer) clearTimeout(galleryNavTimer);
 
     galleryNavTimer = setTimeout(() => {
-        if (!viewer.classList.contains('hidden')) {
-            viewer.classList.remove('show-nav');
+        if (!galleryViewer.classList.contains('hidden')) {
+            galleryViewer.classList.remove('show-nav');
         }
     }, 3000);
 }
 
 // Container activity trackers
 ['mousemove', 'touchstart', 'touchmove', 'click', 'pointermove'].forEach(evt => {
-    const container = document.getElementById('game-container');
-    if (container) {
-        container.addEventListener(evt, () => {
+    if (gameContainer) {
+        gameContainer.addEventListener(evt, () => {
             resetGalleryNavTimer();
         }, { passive: true });
     }
@@ -174,9 +172,8 @@ function resetGalleryNavTimer() {
 // Immediately hide arrows when mouse leaves the viewer area
 if (gameContainer) {
     gameContainer.addEventListener('mouseleave', () => {
-        const viewer = document.getElementById('gallery-viewer');
-        if (viewer && !viewer.classList.contains('hidden')) {
-            viewer.classList.remove('show-nav');
+        if (galleryViewer && !galleryViewer.classList.contains('hidden')) {
+            galleryViewer.classList.remove('show-nav');
             if (galleryNavTimer) {
                 clearTimeout(galleryNavTimer);
                 galleryNavTimer = null;
@@ -184,10 +181,6 @@ if (gameContainer) {
         }
     });
 }
-
-document.addEventListener('keydown', () => {
-    resetGalleryNavTimer();
-}, { passive: true });
 
 // Ensure the menu can be closed by Escape key if we wanted, 
 // but sticking to Return to Title button is fine for now, handled via title-screen/main stack logic.

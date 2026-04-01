@@ -3,6 +3,24 @@ console.log("Court Record Loaded");
 // Local State
 let currentRecordTab = 'evidence'; // 'evidence' or 'profiles'
 
+function getCurrentRecordData() {
+    const currentInventory = (currentRecordTab === 'evidence') ? evidenceInventory : profilesInventory;
+    const currentDB = (currentRecordTab === 'evidence') ? evidenceDB : profilesDB;
+    return { currentInventory, currentDB };
+}
+
+function getSlotFromEventTarget(target) {
+    if (!target || !target.closest) return null;
+    const slot = target.closest('.evidence-slot');
+    if (!slot || !evidenceGrid.contains(slot)) return null;
+    return slot;
+}
+
+function shouldKeepEvidenceDetailsOpen(target) {
+    if (!target || !target.closest) return false;
+    return !!target.closest('#evidence-present-btn, #evidence-prev-btn, #evidence-next-btn');
+}
+
 function syncCourtRecordDependentControls() {
     if (window.CrossExamination) {
         window.CrossExamination.updateUI();
@@ -138,12 +156,49 @@ document.addEventListener('dialogueAdvanced', () => {
     }
 });
 
+evidenceGrid.addEventListener('mouseover', (e) => {
+    const slot = getSlotFromEventTarget(e.target);
+    if (!slot || !slot.dataset.key) {
+        evidenceNameDisplay.textContent = '';
+        return;
+    }
+
+    const { currentDB } = getCurrentRecordData();
+    const item = currentDB[slot.dataset.key];
+    evidenceNameDisplay.textContent = item ? item.name : '';
+});
+
+evidenceGrid.addEventListener('mouseout', (e) => {
+    const slot = getSlotFromEventTarget(e.target);
+    if (!slot) return;
+
+    const nextSlot = getSlotFromEventTarget(e.relatedTarget);
+    if (nextSlot === slot) return;
+    evidenceNameDisplay.textContent = '';
+});
+
+evidenceGrid.addEventListener('click', (e) => {
+    const slot = getSlotFromEventTarget(e.target);
+    if (!slot || !slot.dataset.key) return;
+
+    const { currentDB } = getCurrentRecordData();
+    const key = slot.dataset.key;
+    const item = currentDB[key];
+    if (!item) return;
+
+    showEvidenceDetails(item, key);
+});
+
+evidenceDetails.addEventListener('click', (e) => {
+    if (shouldKeepEvidenceDetailsOpen(e.target)) return;
+    evidenceDetails.classList.add('hidden');
+});
+
 function renderEvidence() {
     evidenceGrid.innerHTML = '';
     evidenceNameDisplay.textContent = ''; // Clear name display
     
-    const currentInventory = (currentRecordTab === 'evidence') ? evidenceInventory : profilesInventory;
-    const currentDB = (currentRecordTab === 'evidence') ? evidenceDB : profilesDB;
+    const { currentInventory, currentDB } = getCurrentRecordData();
 
     // Create 8 slots (2x4)
     for (let i = 0; i < 8; i++) {
@@ -160,20 +215,7 @@ function renderEvidence() {
                 img.alt = item.name;
                 
                 slot.appendChild(img);
-                
-                // Hover: Show name
-                slot.addEventListener('mouseenter', () => {
-                    evidenceNameDisplay.textContent = item.name;
-                });
-                
-                slot.addEventListener('mouseleave', () => {
-                    evidenceNameDisplay.textContent = '';
-                });
-                
-                // Click: Show details
-                slot.addEventListener('click', () => {
-                    showEvidenceDetails(item, key);
-                });
+                slot.dataset.key = key;
             }
         }
         
@@ -256,16 +298,4 @@ function showEvidenceDetails(item, key) {
     }
 
     evidenceDetails.classList.remove('hidden');
-    
-    // Click anywhere on details to close
-    const closeHandler = (e) => {
-        // Don't close if clicking nav buttons or present button
-        if (e.target !== presentBtn && 
-            e.target !== btnPrevEvidence && 
-            e.target !== btnNextEvidence) {
-            evidenceDetails.classList.add('hidden');
-            evidenceDetails.removeEventListener('click', closeHandler);
-        }
-    };
-    evidenceDetails.addEventListener('click', closeHandler);
 }

@@ -1,0 +1,157 @@
+#cross_examination-word-left,
+#cross_examination-word-right,
+#cross_examination-testimony-shine {
+    z-index: 4;
+}
+
+#cross_examination-word-left,
+#cross_examination-word-right {
+    top: 18%;
+    width: 66%;
+    height: auto;
+    opacity: 0;
+}
+
+#cross_examination-testimony-shine {
+    top: 18%;
+    left: 20%;
+    width: 66%;
+    height: auto;
+    opacity: 0;
+}
+
+.cross_examination-enter-left {
+    animation: cross_examination-enter-left-anim linear forwards;
+}
+
+.cross_examination-enter-right {
+    animation: cross_examination-enter-right-anim linear forwards;
+}
+
+.cross_examination-center-left {
+    left: 0%;
+    opacity: 1;
+}
+
+.cross_examination-center-right {
+    left: 20%;
+    opacity: 1;
+}
+
+.cross_examination-shine {
+    animation: cross_examination-shine-anim linear forwards;
+}
+
+.cross_examination-flash-left {
+    animation: cross_examination-flash-left-anim linear forwards;
+}
+
+.cross_examination-flash-right {
+    animation: cross_examination-flash-right-anim linear forwards;
+}
+
+.cross_examination-exit-right {
+    animation: cross_examination-exit-right-anim linear forwards;
+}
+
+.cross_examination-exit-left {
+    animation: cross_examination-exit-left-anim linear forwards;
+}
+
+@keyframes cross_examination-enter-left-anim {
+    0% {
+        left: -78%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+    }
+}
+
+@keyframes cross_examination-enter-right-anim {
+    0% {
+        left: 108%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+    }
+}
+
+@keyframes cross_examination-shine-anim {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes cross_examination-flash-left-anim {
+    0% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+
+    50% {
+        left: 20%;
+        opacity: 1;
+        filter: brightness(100%) saturate(100%) contrast(0%);
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+}
+
+@keyframes cross_examination-flash-right-anim {  
+    0% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+
+    50% {
+        left: 20%;
+        opacity: 1;
+        filter: brightness(100%) saturate(100%) contrast(0%);
+    }
+
+    100% {
+        left: 20%;
+        opacity: 1;
+        filter: none;
+    }
+}
+
+@keyframes cross_examination-exit-right-anim {
+    0% {
+        left: 20%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 108%;
+        opacity: 1;
+    }
+}
+
+@keyframes cross_examination-exit-left-anim {
+    0% {
+        left: 20%;
+        opacity: 1;
+    }
+
+    100% {
+        left: -78%;
+        opacity: 1;
+    }
+}

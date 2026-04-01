@@ -425,7 +425,7 @@
                 "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}You may proceed, Mr. Wright."
             },
             {
-                "text": "{courtView:witness}{blip:3}{center}{color:red}Cross-Examination{nl}--The Night in Question--{color:white}"
+                "text": "{courtView:witness}{blip:3}{center}{color:red}{playAnimation:CrossExamination}--The Night in Question--{color:white}"
             },
             {
                 "text": "{startCE:Gumshoe_Testimony}{sectionEnd}"

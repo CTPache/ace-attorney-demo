@@ -10,6 +10,14 @@ const blipPools = {};
 const blipPoolIndex = {};
 const activeSFX = new Set();
 const sfxTemplateCache = new Map();
+let activeBgmFadeInterval = null;
+
+function clearBgmFadeInterval() {
+    if (activeBgmFadeInterval) {
+        clearInterval(activeBgmFadeInterval);
+        activeBgmFadeInterval = null;
+    }
+}
 
 function buildBlipPool(path, size = BLIP_POOL_SIZE) {
     const pool = [];
@@ -115,6 +123,8 @@ function playSound(soundName) {
 function playBGM(musicName, fadeIn = false, force = false) {
     const musicPath = musicDB[musicName];
     if (musicPath) {
+        clearBgmFadeInterval();
+
         if (currentBGMKey === musicName && currentBGM && !currentBGM.paused && !force) {
             return;
         }
@@ -146,12 +156,13 @@ function playBGM(musicName, fadeIn = false, force = false) {
 
             currentBGM.play().then(() => {
                 if (fadeIn) {
-                    const fadeInterval = setInterval(() => {
+                    clearBgmFadeInterval();
+                    activeBgmFadeInterval = setInterval(() => {
                         if (currentBGM && currentBGM.volume < 0.95) {
                             currentBGM.volume += 0.05;
                         } else {
                             if (currentBGM) currentBGM.volume = 1;
-                            clearInterval(fadeInterval);
+                            clearBgmFadeInterval();
                         }
                     }, 100);
                 }
@@ -162,12 +173,13 @@ function playBGM(musicName, fadeIn = false, force = false) {
             if (fadeIn) currentBGM.volume = 0;
             currentBGM.play().then(() => {
                 if (fadeIn) {
-                    const fadeInterval = setInterval(() => {
+                    clearBgmFadeInterval();
+                    activeBgmFadeInterval = setInterval(() => {
                         if (currentBGM && currentBGM.volume < 0.95) {
                             currentBGM.volume += 0.05;
                         } else {
                             if (currentBGM) currentBGM.volume = 1;
-                            clearInterval(fadeInterval);
+                            clearBgmFadeInterval();
                         }
                     }, 100);
                 }
@@ -179,14 +191,16 @@ function playBGM(musicName, fadeIn = false, force = false) {
 }
 
 function stopBGM(fadeOut = true) {
+    clearBgmFadeInterval();
+
     if (currentBGM) {
         if (fadeOut) {
             const audio = currentBGM; // Capture reference
-            const fadeInterval = setInterval(() => {
+            activeBgmFadeInterval = setInterval(() => {
                 if (audio.volume > 0.05) {
                     audio.volume -= 0.05;
                 } else {
-                    clearInterval(fadeInterval);
+                    clearBgmFadeInterval();
                     audio.pause();
                     audio.currentTime = 0;
                     audio.volume = 1; // Reset for next use if reused
@@ -209,6 +223,7 @@ function stopBGM(fadeOut = true) {
 }
 
 function stopAllSceneAudio() {
+    clearBgmFadeInterval();
     stopBGM(false);
 
     activeSFX.forEach((audio) => {

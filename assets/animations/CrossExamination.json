@@ -1,0 +1,77 @@
+{
+    "layers": [
+        "cross_examination-word-left",
+        "cross_examination-word-right",
+        "cross_examination-testimony-shine"
+    ],
+    "animationCss": "Cross_Examination.css",
+    "images": [
+        "(Cross)_Examination.webp",
+        "(Cross)_Examination.webp",
+        "Cross_Examination_shine.webp"
+    ],
+    "timeline": {
+        "0": [
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-left",
+                "class": "cross_examination-enter-left",
+                "duration": 700
+            },
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-right",
+                "class": "cross_examination-enter-right",
+                "duration": 700
+            }
+        ],
+        "700": [
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-left",
+                "class": "cross_examination-center-left",
+                "duration": 2400
+            },
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-right",
+                "class": "cross_examination-center-right",
+                "duration": 2400
+            },
+            {
+                "image": "img/sprites/Cross_Examination_shine.webp",
+                "targetId": "cross_examination-testimony-shine",
+                "class": "cross_examination-shine",
+                "duration": 1200
+            }
+        ],
+        "1900": [
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-left",
+                "class": "cross_examination-flash-left",
+                "duration": 1200
+            },
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-right",
+                "class": "cross_examination-flash-right",
+                "duration": 1200
+            }
+        ],
+        "3100": [
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-left",
+                "class": "cross_examination-exit-right",
+                "duration": 700
+            },
+            {
+                "image": "img/sprites/(Cross)_Examination.webp",
+                "targetId": "cross_examination-word-right",
+                "class": "cross_examination-exit-left",
+                "duration": 700
+            }
+        ]
+    }
+}

@@ -31,6 +31,8 @@ function hideActionMenus() {
     if (investigationPanel) investigationPanel.classList.add('hidden');
     if (evidenceContainer) evidenceContainer.classList.add('hidden');
     if (evidenceDetails) evidenceDetails.classList.add('hidden');
+    if (evidencePopup) evidencePopup.classList.add('hidden');
+    if (evidenceNameDisplay) evidenceNameDisplay.textContent = '';
     if (bottomTopBar) bottomTopBar.classList.remove('hidden');
     if (gameContainer) gameContainer.classList.remove('investigating');
 

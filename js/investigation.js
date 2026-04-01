@@ -2,6 +2,13 @@ console.log("Investigation Loaded");
 
 let currentInvestigationDefault = null;
 
+function setInvestigationCursorState(active, visited = false) {
+    cursorBox.classList.toggle('active', active);
+    cursorH.classList.toggle('active', active);
+    cursorV.classList.toggle('active', active);
+    cursorBox.classList.toggle('visited', !!visited);
+}
+
 function getBackgroundAsset(bgKey) {
     const bgData = backgrounds[bgKey];
     if (!bgData) {
@@ -155,6 +162,49 @@ investigationPanel.addEventListener('click', (e) => {
     }
 });
 
+investigationOverlay.addEventListener('mouseover', (e) => {
+    const polygon = e.target.closest('.investigation-polygon');
+    if (!polygon || !investigationOverlay.contains(polygon)) return;
+    setInvestigationCursorState(true, polygon.classList.contains('visited'));
+});
+
+investigationOverlay.addEventListener('mouseout', (e) => {
+    const polygon = e.target.closest('.investigation-polygon');
+    if (!polygon || !investigationOverlay.contains(polygon)) return;
+
+    const nextPolygon = e.relatedTarget && e.relatedTarget.closest
+        ? e.relatedTarget.closest('.investigation-polygon')
+        : null;
+
+    if (nextPolygon && investigationOverlay.contains(nextPolygon)) {
+        return;
+    }
+
+    setInvestigationCursorState(false, false);
+});
+
+investigationOverlay.addEventListener('touchstart', (e) => {
+    const polygon = e.target.closest('.investigation-polygon');
+    if (!polygon || !investigationOverlay.contains(polygon)) return;
+    setInvestigationCursorState(true, polygon.classList.contains('visited'));
+}, { passive: true });
+
+investigationOverlay.addEventListener('click', (e) => {
+    const polygon = e.target.closest('.investigation-polygon');
+    if (!polygon || !investigationOverlay.contains(polygon)) return;
+
+    e.stopPropagation();
+    const label = polygon.dataset.label;
+    if (!label) return;
+
+    gameState[label + '_visited'] = true;
+    polygon.classList.add('visited');
+
+    if (window.jumpToSection) {
+        window.jumpToSection(label);
+    }
+});
+
 function renderInvestigation() {
     setInvestigationBackground(currentBackgroundKey);
     
@@ -186,6 +236,9 @@ function renderInvestigation() {
         
         polygon.setAttribute("points", pointsStr.trim());
         polygon.setAttribute("class", "investigation-polygon");
+        if (typeof point.label === 'string') {
+            polygon.dataset.label = point.label;
+        }
         
         if (typeof debugShowInvestigationBounds !== 'undefined' && debugShowInvestigationBounds) {
             polygon.classList.add('debug');
@@ -196,48 +249,6 @@ function renderInvestigation() {
         if (isVisited) {
             polygon.classList.add('visited');
         }
-        
-        // Hover effects for cursor
-        polygon.addEventListener('mouseenter', () => {
-            cursorBox.classList.add('active');
-            cursorH.classList.add('active');
-            cursorV.classList.add('active');
-            if (gameState[point.label + "_visited"]) {
-                cursorBox.classList.add('visited');
-            }
-        });
-        
-        polygon.addEventListener('mouseleave', () => {
-            cursorBox.classList.remove('active');
-            cursorH.classList.remove('active');
-            cursorV.classList.remove('active');
-            cursorBox.classList.remove('visited');
-        });
-
-        // Touch start to simulate hover/click logic
-        polygon.addEventListener('touchstart', (e) => {
-            // e.stopPropagation(); // Don't stop propagation, let move handle it?
-            // On touch start, we highlight it
-            cursorBox.classList.add('active');
-            cursorH.classList.add('active');
-            cursorV.classList.add('active');
-            if (gameState[point.label + "_visited"]) {
-                cursorBox.classList.add('visited');
-            }
-        }, {passive: true});
-
-
-        polygon.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // Mark visited
-            gameState[point.label + "_visited"] = true;
-            polygon.classList.add('visited');
-            
-            // Jump to label
-            if (window.jumpToSection) {
-                window.jumpToSection(point.label);
-            }
-        });
         
         investigationOverlay.appendChild(polygon);
     });
@@ -258,14 +269,22 @@ function updateCursor(clientX, clientY) {
     cursorV.style.left = `${x}px`;
 }
 
+function handleInvestigationPointerMove(clientX, clientY, shouldCheckHover = false) {
+    updateCursor(clientX, clientY);
+    if (shouldCheckHover) {
+        checkHover(clientX, clientY);
+    }
+}
+
 investigationPanel.addEventListener('mousemove', (e) => {
-    updateCursor(e.clientX, e.clientY);
+    handleInvestigationPointerMove(e.clientX, e.clientY, false);
 });
 
 investigationPanel.addEventListener('touchmove', (e) => {
     e.preventDefault(); // Prevent scrolling
     const touch = e.touches[0];
-    updateCursor(touch.clientX, touch.clientY);
+    if (!touch) return;
+    handleInvestigationPointerMove(touch.clientX, touch.clientY, true);
 }, { passive: false });
 
 function checkHover(clientX, clientY) {
@@ -296,18 +315,6 @@ function checkHover(clientX, clientY) {
     }
 }
 
-// Add touch hover support
-investigationPanel.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    checkHover(touch.clientX, touch.clientY);
-}, { passive: false });
-
-investigationPanel.addEventListener('mousemove', (e) => {
-    // Mouse hover is handled by CSS/Events on elements, 
-    // but the cursorBox styling is manually handled in renderInvestigation
-    // so we don't need checkHover here unless we refactor renderInvestigation logic.
-    // The renderInvestigation puts listeners on the polygons directly.
-});
 // Add touch hover support for Move List
 moveList.addEventListener('touchmove', (e) => {
     e.preventDefault();

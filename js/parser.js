@@ -67,6 +67,17 @@ const patterns = [
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
+function parseCEPresentPayload(rawPayload) {
+    if (!rawPayload) return null;
+
+    try {
+        return JSON.parse(rawPayload.replace(/'/g, '"'));
+    } catch (error) {
+        console.warn('Invalid addCEStatement present payload:', rawPayload, error);
+        return null;
+    }
+}
+
 function parseText(text) {
     const parsedSegments = [];
     masterRegex.lastIndex = 0; // Reset regex state
@@ -216,7 +227,7 @@ function parseText(text) {
                 ceId: match[65], 
                 text: match[66], 
                 press: match[67], 
-                present: match[68] ? JSON.parse(match[68].replace(/'/g, '"')) : null 
+                present: parseCEPresentPayload(match[68])
             });
         } else if (match[69]) { // ReplaceCEStatement
             parsedSegments.push({ 

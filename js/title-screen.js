@@ -83,6 +83,17 @@ window.initTitleScreen = function() {
     if (titleTop) titleTop.classList.remove('hidden');
     if (titleBottom) titleBottom.classList.remove('hidden');
 
+    // Ensure gameplay-only overlays are fully hidden when returning to menu UIs
+    // (e.g. from Gallery or Case Select back buttons).
+    if (typeof window.hideActionMenus === 'function') {
+        window.hideActionMenus();
+    }
+
+    const ceControls = document.getElementById('ce-controls');
+    if (ceControls) {
+        ceControls.classList.add('hidden');
+    }
+
     window.rearrangeTitleButtons();
 
     const currentLang = typeof window.getGameLanguage === 'function' ? window.getGameLanguage() : 'EN';

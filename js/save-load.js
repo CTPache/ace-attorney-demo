@@ -59,6 +59,16 @@ window.loadGame = async function(slot = 1) {
 
     try {
         const saveData = JSON.parse(saveString);
+
+        const missingCoreFns = [];
+        if (typeof window.loadGameData !== 'function') missingCoreFns.push('loadGameData');
+        if (typeof window.updateDialogue !== 'function') missingCoreFns.push('updateDialogue');
+
+        if (missingCoreFns.length > 0) {
+            console.error('Cannot load save: missing required functions:', missingCoreFns);
+            alert('Cannot load save right now. Missing runtime hooks: ' + missingCoreFns.join(', '));
+            return;
+        }
         
         if (!saveData.currentSceneRequestPath || saveData.currentSceneRequestPath === "") {
             console.warn("Save file missing valid scene path.");
