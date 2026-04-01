@@ -4,7 +4,7 @@
         "cross_examination-word-right",
         "cross_examination-testimony-shine"
     ],
-    "animationCss": "Cross_Examination.css",
+    "animationCss": "CrossExamination.css",
     "images": [
         "(Cross)_Examination.webp",
         "(Cross)_Examination.webp",
@@ -16,10 +16,11 @@
                 "image": "img/sprites/(Cross)_Examination.webp",
                 "targetId": "cross_examination-word-left",
                 "class": "cross_examination-enter-left",
-                "duration": 700
+                "duration": 700,
+                "sound": "/audio/se/se029.m4a"
             },
             {
-                "image": "img/sprites/(Cross)_Examination.webp",
+                "image": "img/sprites/Cross_(Examination).webp",
                 "targetId": "cross_examination-word-right",
                 "class": "cross_examination-enter-right",
                 "duration": 700
@@ -33,7 +34,7 @@
                 "duration": 2400
             },
             {
-                "image": "img/sprites/(Cross)_Examination.webp",
+                "image": "img/sprites/Cross_(Examination).webp",
                 "targetId": "cross_examination-word-right",
                 "class": "cross_examination-center-right",
                 "duration": 2400
@@ -50,26 +51,28 @@
                 "image": "img/sprites/(Cross)_Examination.webp",
                 "targetId": "cross_examination-word-left",
                 "class": "cross_examination-flash-left",
-                "duration": 1200
+                "duration": 600
             },
             {
-                "image": "img/sprites/(Cross)_Examination.webp",
+                "image": "img/sprites/Cross_(Examination).webp",
                 "targetId": "cross_examination-word-right",
                 "class": "cross_examination-flash-right",
-                "duration": 1200
+                "duration": 600
             }
         ],
-        "3100": [
+        "2500": [
             {
                 "image": "img/sprites/(Cross)_Examination.webp",
                 "targetId": "cross_examination-word-left",
-                "class": "cross_examination-exit-right",
-                "duration": 700
+                "class": "cross_examination-exit-top",
+                "duration": 700,
+                "sound": "/audio/se/se040.m4a"
+            
             },
             {
-                "image": "img/sprites/(Cross)_Examination.webp",
+                "image": "img/sprites/Cross_(Examination).webp",
                 "targetId": "cross_examination-word-right",
-                "class": "cross_examination-exit-left",
+                "class": "cross_examination-exit-bottom",
                 "duration": 700
             }
         ]

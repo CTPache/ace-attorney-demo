@@ -50,12 +50,12 @@
     animation: cross_examination-flash-right-anim linear forwards;
 }
 
-.cross_examination-exit-right {
-    animation: cross_examination-exit-right-anim linear forwards;
+.cross_examination-exit-bottom {
+    animation: cross_examination-exit-bottom-anim linear forwards;
 }
 
-.cross_examination-exit-left {
-    animation: cross_examination-exit-left-anim linear forwards;
+.cross_examination-exit-top {
+    animation: cross_examination-exit-top-anim linear forwards;
 }
 
 @keyframes cross_examination-enter-left-anim {
@@ -132,26 +132,30 @@
     }
 }
 
-@keyframes cross_examination-exit-right-anim {
+@keyframes cross_examination-exit-bottom-anim {
     0% {
         left: 20%;
+        top: 18%;
         opacity: 1;
     }
 
     100% {
-        left: 108%;
+        left: 20%;
+        top: 108%;
         opacity: 1;
     }
 }
 
-@keyframes cross_examination-exit-left-anim {
+@keyframes cross_examination-exit-top-anim {
     0% {
         left: 20%;
+        top: 18%;
         opacity: 1;
     }
 
     100% {
-        left: -78%;
+        left: 20%;
+        top: -78%;
         opacity: 1;
     }
 }
