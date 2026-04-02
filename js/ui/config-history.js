@@ -4,6 +4,77 @@ console.log("UI Config/History Loaded");
 
 let returnToConfigAfterHistory = false;
 let isTitleConfigMode = false;
+const SETTINGS_STORAGE_KEY = 'ace_attorney_settings';
+
+function getAvailableSettingsLanguages() {
+    return (configLanguageSelect && configLanguageSelect.options)
+        ? Array.from(configLanguageSelect.options).map((option) => String(option.value || '').toUpperCase()).filter(Boolean)
+        : ['EN', 'ES', 'JP'];
+}
+
+function normalizePersistedSettings(rawSettings = {}) {
+    const validSpeedPresets = ['slow', 'normal', 'fast'];
+    const nextSpeed = String(rawSettings.autoPlaySpeedPreset || autoPlaySpeedPreset || 'normal').toLowerCase();
+    const nextLanguage = String(rawSettings.language || currentLanguage || 'EN').toUpperCase();
+    const validLanguages = getAvailableSettingsLanguages();
+
+    return {
+        autoPlaySpeedPreset: validSpeedPresets.includes(nextSpeed) ? nextSpeed : 'normal',
+        isAutoPlayEnabled: !!rawSettings.isAutoPlayEnabled,
+        language: validLanguages.includes(nextLanguage) ? nextLanguage : (validLanguages[0] || 'EN')
+    };
+}
+
+function readPersistedSettings() {
+    try {
+        const settingsString = localStorage.getItem(SETTINGS_STORAGE_KEY);
+        if (!settingsString) {
+            return normalizePersistedSettings({});
+        }
+
+        const parsedSettings = JSON.parse(settingsString);
+        return normalizePersistedSettings(parsedSettings && typeof parsedSettings === 'object' ? parsedSettings : {});
+    } catch (error) {
+        console.warn('Failed to read persisted settings:', error);
+        return normalizePersistedSettings({});
+    }
+}
+
+function savePersistedSettings(partialSettings = {}) {
+    const nextSettings = normalizePersistedSettings({
+        ...readPersistedSettings(),
+        ...(partialSettings && typeof partialSettings === 'object' ? partialSettings : {})
+    });
+
+    try {
+        localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(nextSettings));
+    } catch (error) {
+        console.warn('Failed to save persisted settings:', error);
+    }
+
+    return nextSettings;
+}
+
+window.getPersistedSettings = readPersistedSettings;
+window.savePersistedSettings = savePersistedSettings;
+window.applyPersistedSettings = function() {
+    const settings = readPersistedSettings();
+
+    if (typeof window.setAutoPlaySpeedPreset === 'function') {
+        window.setAutoPlaySpeedPreset(settings.autoPlaySpeedPreset);
+    } else {
+        autoPlaySpeedPreset = settings.autoPlaySpeedPreset;
+    }
+
+    isAutoPlayEnabled = settings.isAutoPlayEnabled;
+    currentLanguage = settings.language;
+
+    if (configLanguageSelect) {
+        configLanguageSelect.value = settings.language;
+    }
+
+    return settings;
+};
 
 function updateAutoplayIndicator() {
     if (!autoplayIndicator) return;
@@ -21,6 +92,10 @@ function updateAutoplayIndicator() {
 
 function setAutoplayEnabled(nextEnabled) {
     isAutoPlayEnabled = !!nextEnabled;
+
+    if (typeof window.savePersistedSettings === 'function') {
+        window.savePersistedSettings({ isAutoPlayEnabled: isAutoPlayEnabled });
+    }
 
     updateAutoplayIndicator();
 
@@ -247,6 +322,10 @@ if (configLanguageSelect) {
         if (typeof window.setGameLanguage === 'function') {
             await window.setGameLanguage(selectedLanguage);
         }
+
+        if (typeof window.savePersistedSettings === 'function') {
+            window.savePersistedSettings({ language: selectedLanguage });
+        }
     });
 }
 
@@ -256,6 +335,10 @@ if (configAutoSpeedRadios && configAutoSpeedRadios.length > 0) {
             if (!radio.checked) return;
             if (typeof window.setAutoPlaySpeedPreset === 'function') {
                 window.setAutoPlaySpeedPreset(radio.value);
+            }
+
+            if (typeof window.savePersistedSettings === 'function') {
+                window.savePersistedSettings({ autoPlaySpeedPreset: radio.value });
             }
 
             if (typeof window.clearAutoPlayTimer === 'function') {
@@ -278,8 +361,12 @@ if (document.getElementById("config-load-btn")) {
     document.getElementById("config-load-btn").addEventListener("click", () => { window.loadGame(1); });
 }
 
+if (typeof window.applyPersistedSettings === 'function') {
+    window.applyPersistedSettings();
+}
+
 refreshTopBarButtonDisabledState();
-updateAutoplayIndicator();
+syncConfigMenuControls();
 
 window.toggleAutoplay = toggleAutoplay;
 window.openConfigMenu = openConfigMenu;
