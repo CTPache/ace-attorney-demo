@@ -800,7 +800,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}(Next time, maybe I should pick the option that isn't obviously catastrophic.){endGame}"
+                "text": "{blip:1,false}(Next time, maybe I should pick the option that isn't obviously catastrophic.){endGame}{sectionEnd}"
             }
         ]
     }

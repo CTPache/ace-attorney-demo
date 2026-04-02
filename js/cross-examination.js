@@ -73,7 +73,22 @@ window.CrossExamination = (function() {
     }
 
     function returnToCE(statementId) {
-        if (statementId && activeCE && activeCE.activeStatementIds) {
+        if (window.isGameOverPending) {
+            exit();
+            if (typeof window.jumpToSection === 'function' && typeof gameOverLabel !== 'undefined') {
+                window.jumpToSection(gameOverLabel);
+            }
+            return false;
+        }
+
+        if (!activeCE || !Array.isArray(activeCE.activeStatementIds) || activeCE.activeStatementIds.length === 0) {
+            console.warn('Cannot return to cross-examination without an active testimony.');
+            isLoopActive = false;
+            updateUI();
+            return false;
+        }
+
+        if (statementId) {
             const idx = activeCE.activeStatementIds.indexOf(String(statementId));
             if (idx !== -1) {
                 currentIndex = idx;
@@ -82,6 +97,7 @@ window.CrossExamination = (function() {
         isLoopActive = true;
         playStatement();
         updateUI();
+        return true;
     }
 
     function playStatement() {

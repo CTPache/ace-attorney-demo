@@ -342,7 +342,7 @@
     "gameScript": {
         "Intro": [
             {
-                "text": "{setSkipEnabled:false}{courtView:overview}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{center}{blip:3}Courtroom{nl}Cross Examination Test{p:500}{hideTextbox}{playSound:galleryReaction}{p:2000}{playAnimation:Gavel}{skip:0}"
+                "text": "{setGameOver:CE_GameOver}{setSkipEnabled:false}{courtView:overview}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{center}{blip:3}Courtroom{nl}Cross Examination Test{p:500}{hideTextbox}{playSound:galleryReaction}{p:2000}{playAnimation:Gavel}{skip:0}"
             },
             {
                 "name": "Judge",
@@ -397,9 +397,16 @@
                 "text": "{courtView:judge}{courtSprite:judge[\"Nod\"]}Very well.{p:300}{courtSprite:judge[\"Normal\"]} Give the court your testimony."
             },
             {
+                "text": "{jump:Gumshoe_Testimony}"
+            }
+        ],
+        "Gumshoe_Testimony": [
+            {
                 "text": "{stopBGM:false}{courtView:witness}{blip:0,false}{hideTextbox}{playAnimation:Witness_Testimony}{skip:100}"
             },
-            {"text":"{showTextbox}{color:lightBlue}{center}--The Night in Question--{color:white}"},
+            {
+                "text": "{showTextbox}{color:lightBlue}{center}--The Night in Question--{color:white}"
+            },
             {
                 "name": "Gumshoe",
                 "text": "{startBGM:interrogatory_moderato,true}{blip:1,true}{courtSprite:witness[\"Normal\"]}The defendant was found at the scene with a smoking gun, pal!"
@@ -428,7 +435,7 @@
                 "text": "{courtView:witness}{blip:3}{center}{color:red}{playAnimation:CrossExamination}--The Night in Question--{color:white}"
             },
             {
-                "text": "{startCE:Gumshoe_Testimony}{sectionEnd}"
+                "text": "{checkpoint:Gumshoe_Testimony}{startCE:Gumshoe_Testimony}{sectionEnd}"
             }
         ],
         "Press_Statement_1": [
@@ -535,6 +542,15 @@
             },
             {
                 "text": "{returnToCE}{sectionEnd}"
+            }
+        ],
+        "CE_GameOver": [
+            {
+                "name": "Judge",
+                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}{blip:1,true}The defense has exhausted all evidence and failed to find a single contradiction. This case is closed.{p:400}{playSound:damage}{flash}"
+            },
+            {
+                "text": "{endGame}{sectionEnd}"
             }
         ],
         "CE_Victory": [

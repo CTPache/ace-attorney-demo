@@ -179,7 +179,14 @@ function executeScriptAction(segment) {
             if (window.CrossExamination) window.CrossExamination.start(segment.ceId);
             return 'STOP'; // Ce mode manages its own progression
         case 'returnToCE':
-            if (window.CrossExamination) window.CrossExamination.returnToCE(segment.statementId);
+            if (window.isGameOverPending && window.jumpToSection && typeof gameOverLabel !== 'undefined') {
+                if (window.CrossExamination && typeof window.CrossExamination.exit === 'function') {
+                    window.CrossExamination.exit();
+                }
+                window.jumpToSection(gameOverLabel);
+            } else if (window.CrossExamination) {
+                window.CrossExamination.returnToCE(segment.statementId);
+            }
             return 'STOP';
         case 'endCE':
             if (window.CrossExamination) window.CrossExamination.exit();

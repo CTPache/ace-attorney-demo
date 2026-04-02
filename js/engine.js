@@ -187,6 +187,18 @@ function advanceDialogue(force = false) {
         if (!isTextSkipEnabled) return;
         // If currently typing, finish immediately
         finishTyping();
+    } else if (
+        window.isGameOverPending
+        && typeof gameOverLabel !== 'undefined'
+        && currentSectionName !== gameOverLabel
+    ) {
+        if (window.CrossExamination && window.CrossExamination.isCEMode && typeof window.CrossExamination.exit === 'function') {
+            window.CrossExamination.exit();
+        }
+
+        if (window.jumpToSection) {
+            jumpToSection(gameOverLabel);
+        }
     } else if (window.CrossExamination && window.CrossExamination.isCEMode && window.CrossExamination.isLoopActive) {
         // If in Cross-Examination mode and the loop is active, advance to next statement
         window.CrossExamination.next();
