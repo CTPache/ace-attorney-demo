@@ -1,0 +1,807 @@
+{
+    "initialSection": "Showcase_Boot",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "characters": {
+        "Gumshoe": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "ScratchingHead": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
+                "time": 600
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
+            }
+        },
+        "Oldbag": {
+            "Normal": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Normal-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Normal-2.webp"
+            },
+            "Embarrassed": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Embarrassed-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Embarrassed-2.webp"
+            },
+            "Shocked": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Shocked.webp",
+                "time": 680
+            },
+            "ShockedHold": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Shocked2.webp"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Angry-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Angry-2.webp"
+            },
+            "Smirking": {
+                "default": "assets/img/characters/Locked Room/Oldbag/Smirking-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Smirking-2.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "BriefingRoom": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "AtriumDemo": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [
+                    0,
+                    0
+                ],
+                "bottom": [
+                    0,
+                    -81.9
+                ]
+            }
+        },
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
+        "CourtroomFull": "assets/img/backgrounds/Common/Courtroom_full.webp"
+    },
+    "foregrounds": {
+        "DetentionBars": "assets/img/backgrounds/Common/Detention_Center_foreground.png",
+        "CourtroomFG": "assets/img/backgrounds/Common/Courtroom_full_foreground.webp"
+    },
+    "music": {
+        "investigation": [
+            "assets/audio/bgm/bgm001.m4a",
+            "assets/audio/bgm/bgm001lp.m4a"
+        ],
+        "courtroom": [
+            "assets/audio/bgm/bgm013.m4a",
+            "assets/audio/bgm/bgm013lp.m4a"
+        ],
+        "objection": [
+            "assets/audio/bgm/bgm004.m4a",
+            "assets/audio/bgm/bgm004lp.m4a"
+        ]
+    },
+    "sounds": {
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "damage": "assets/audio/se/damage.ogg",
+        "question1": "assets/audio/se/question1.ogg",
+        "PhoenixObjection": "assets/audio/se/se027.m4a",
+        "gavel": "assets/audio/se/se010.m4a"
+    },
+    "evidence": {
+        "badge": {
+            "name": "Attorney's Badge",
+            "data": "Type: Evidence\nPhoenix Wright's calling card.",
+            "description": "A reminder that this is still an Ace Attorney scene, even when it's showing off engine systems.",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "casefile": {
+            "name": "Showcase Case File",
+            "data": "Type: Evidence\nA checklist of engine features to test.",
+            "description": "A condensed brief listing menus, hotspots, video, animations, movement, and branching logic.",
+            "image": "assets/img/evidence/Document.png"
+        },
+        "keycard": {
+            "name": "Security Keycard",
+            "data": "Type: Evidence\nIssued by Detective Gumshoe.",
+            "description": "A temporary access card for the demo workstation in the briefing room.",
+            "image": "assets/img/evidence/Archive.png"
+        },
+        "keycardnote": {
+            "name": "Annotated Keycard",
+            "data": "Type: Evidence\nNow includes a handwritten note.",
+            "description": "The workstation updated the keycard with a note proving that evidence entries can be replaced in-place.",
+            "image": "assets/img/evidence/Archive.png"
+        },
+        "posterphoto": {
+            "name": "Atrium Display Photo",
+            "data": "Type: Evidence\nA snapshot from the upper catwalk display.",
+            "description": "A souvenir image recovered from the atrium exhibit while testing the investigation hotspots.",
+            "image": "assets/img/evidence/Screen.png"
+        }
+    },
+    "profiles": {
+        "Gumshoe": {
+            "name": "Dick Gumshoe",
+            "data": "Age: 31\nOccupation: Detective",
+            "description": "Today's enthusiastic tour guide for the engine showcase.",
+            "image": "assets/img/profiles/Gumshoe.png"
+        },
+        "Maya": {
+            "name": "Maya Fey",
+            "data": "Age: 17\nOccupation: Spirit Medium",
+            "description": "Not on-screen here, but still part of the court record demo.",
+            "image": "assets/img/profiles/Maya.png"
+        },
+        "Oldbag": {
+            "name": "Wendy Oldbag",
+            "data": "Age: Secret\nOccupation: Security Guard",
+            "description": "A self-appointed quality inspector for any dramatic presentation system.",
+            "image": "assets/img/profiles/Oldbag.png"
+        }
+    },
+    "videos": {
+        "intro": {
+            "file": "assets/video/FlyHighIntro.mp4",
+            "script": [
+                {
+                    "text": "{center}{color:lime}{blip:3}Engine Showcase{nl}Systems Demo",
+                    "timestamp": 1500,
+                    "duration": 2600
+                },
+                {
+                    "text": "{center}{color:white}Video playback, scripted text, and timed overlays",
+                    "timestamp": 5200,
+                    "duration": 2600
+                }
+            ]
+        }
+    },
+    "investigations": {
+        "BriefingRoom": {
+            "default": "Showcase_Office_Default",
+            "points": [
+                {
+                    "bounds": [
+                        10,
+                        52,
+                        45,
+                        52,
+                        45,
+                        82,
+                        10,
+                        82
+                    ],
+                    "label": "Showcase_Office_Desk"
+                },
+                {
+                    "bounds": [
+                        56,
+                        16,
+                        79,
+                        16,
+                        79,
+                        44,
+                        56,
+                        44
+                    ],
+                    "label": "Showcase_Office_Window"
+                },
+                {
+                    "bounds": [
+                        80,
+                        48,
+                        98,
+                        48,
+                        98,
+                        80,
+                        80,
+                        80
+                    ],
+                    "label": "Showcase_Office_Terminal"
+                }
+            ]
+        },
+        "AtriumDemo": {
+            "default": "Showcase_Atrium_Default",
+            "points": [
+                {
+                    "bounds": [
+                        20,
+                        10,
+                        82,
+                        10,
+                        82,
+                        28,
+                        20,
+                        28
+                    ],
+                    "label": "Showcase_Atrium_Banner"
+                },
+                {
+                    "bounds": [
+                        8,
+                        50,
+                        40,
+                        50,
+                        40,
+                        82,
+                        8,
+                        82
+                    ],
+                    "label": "Showcase_Atrium_Booth"
+                },
+                {
+                    "bounds": [
+                        65,
+                        28,
+                        95,
+                        28,
+                        95,
+                        58,
+                        65,
+                        58
+                    ],
+                    "label": "Showcase_Atrium_Catwalk"
+                }
+            ]
+        },
+        "DetentionCenter": {
+            "default": "Showcase_Detention_Default",
+            "points": [
+                {
+                    "bounds": [
+                        46,
+                        10,
+                        58,
+                        10,
+                        58,
+                        84,
+                        46,
+                        84
+                    ],
+                    "label": "Showcase_Detention_Bars"
+                }
+            ]
+        }
+    },
+    "Topics": {
+        "Showcase_systems": {
+            "text": "Ask about dialogue systems",
+            "label": "Showcase_topic_systems"
+        },
+        "Showcase_records": {
+            "text": "Review the court record demo",
+            "label": "Showcase_topic_records"
+        },
+        "Showcase_branching": {
+            "text": "Try a branching choice",
+            "label": "Showcase_topic_branching"
+        },
+        "Showcase_courtroom": {
+            "text": "Where's the courtroom content?",
+            "label": "Showcase_topic_courtroom"
+        },
+        "Showcase_finale": {
+            "text": "See the finale options",
+            "label": "Showcase_topic_finale"
+        }
+    },
+    "options": {
+        "ShowcaseChoice": {
+            "name": "Gumshoe",
+            "text": "Which system deserves the spotlight next?",
+            "options": [
+                {
+                    "text": "Investigation hotspots and camera movement",
+                    "label": "Showcase_branch_hotspots"
+                },
+                {
+                    "text": "Court record responses and evidence logic",
+                    "label": "Showcase_branch_records"
+                },
+                {
+                    "text": "Pull the fire alarm for extra drama",
+                    "label": "Showcase_branch_alarm"
+                }
+            ]
+        },
+        "ShowcaseFinalChoice": {
+            "name": "Phoenix",
+            "text": "Ready to push the showcase a little further?",
+            "options": [
+                {
+                    "text": "Load the dedicated cross-examination test",
+                    "label": "Showcase_load_ce"
+                },
+                {
+                    "text": "Stay here and run the local finale animation",
+                    "label": "Showcase_finale_animation"
+                }
+            ]
+        }
+    },
+    "move": [
+        {
+            "label": "Briefing Room",
+            "target": "Showcase_ReturnOffice",
+            "preview": "BriefingRoom"
+        },
+        {
+            "label": "Atrium Exhibit",
+            "target": "Showcase_Atrium_Start",
+            "preview": "AtriumDemo"
+        },
+        {
+            "label": "Detention Center",
+            "target": "Showcase_Detention_Start",
+            "preview": "DetentionCenter"
+        },
+        {
+            "label": "Cross-Examination Test",
+            "target": "Intro",
+            "preview": "CourtroomFull",
+            "json": "assets/scenes/tests/ce_test.json"
+        }
+    ],
+    "gameScript": {
+        "Showcase_Boot": [
+            {
+                "text": "{setGameOver:Showcase_GameOver}{setState:scenePrefix,Showcase}{jumpIf:showcase_initialized,Showcase_ReturnOffice,Showcase_IntroOpen}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_IntroOpen": [
+            {
+                "text": "{setSkipEnabled:false}{hideTextbox}{playVideo:intro}{skip:0}"
+            },
+            {
+                "text": "{setSkipEnabled:true}{showTextbox}{jump:Showcase_Intro}{sectionEnd}"
+            }
+        ],
+        "Showcase_Intro": [
+            {
+                "text": "{fadeBg:BriefingRoom,500}{startBGM:investigation,true,true}{addEvidence:badge,false}{addEvidence:casefile,true}{addProfile:Gumshoe,false}{addProfile:Maya,true}{center}{color:lime}{blip:3}October 15, 11:32 AM{nl}Engine Showcase Briefing Room{color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}{color:lightblue}(Looks like this test file is determined to show off every stable system it can.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{showCharacter}{sprite:Gumshoe[\"Confident\"]}{blip:1}Perfect timing, pal! This scene strings together investigation tools, court record logic, branching, video, and animation hooks."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Use the action menu after this briefing, and don't be shy about bouncing between rooms. That's what this file is for."
+            },
+            {
+                "text": "{setAction:move,true}{setAction:examine,true}{setAction:talk,true}{setAction:present,true}{topicUnlock:Showcase_systems}{topicUnlock:Showcase_records}{topicUnlock:Showcase_branching}{topicUnlock:Showcase_courtroom}{topicUnlock:Showcase_finale}{setState:showcase_initialized,true}{jump:Showcase_ReturnOffice}{sectionEnd}"
+            }
+        ],
+        "Showcase_ReturnOffice": [
+            {
+                "text": "{fadeOutFg:150}{bg:BriefingRoom}{sprite:Gumshoe[\"Confident\"]}{setState:showcase_loc_office,true}{setState:showcase_loc_atrium,false}{setState:showcase_loc_detention,false}{jumpIf:showcase_seen_office,Showcase_Office_Menu,Showcase_Office_First}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_First": [
+            {
+                "name": "Gumshoe",
+                "text": "This briefing room is your hub. {color:orange}Talk{color:white}, {color:red}Examine{color:white}, {color:lime}Move{color:white}, and {color:gold}Present{color:white} all branch cleanly from here."
+            },
+            {
+                "name": "Phoenix",
+                "text": "So the scene is basically a guided systems checklist."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Exactly. The atrium handles hotspot testing, the detention center shows foreground layering, and the move menu can even load the dedicated courtroom demo."
+            },
+            {
+                "text": "{setState:showcase_seen_office,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_Menu": [
+            {
+                "text": "{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_systems": [
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}{blip:1}The dialogue renderer can swap {color:yellow}colors{color:white}, pauses, and text speed on the fly."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{textSpeed:18}Slow... suspenseful... detective... narration..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{textSpeed:70}Or rapid-fire when the chief wants the report yesterday!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{textSpeed:40}{blip:1,false}{color:lightblue}(That explains a lot about Gumshoe's paperwork.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}{playSound:question1}{flash}{shake:250}And when the moment needs impact, the engine can punch the whole scene!{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_records": [
+            {
+                "text": "{jumpIf:evidence_keycard,Showcase_topic_records_after,Showcase_topic_records_first}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_records_first": [
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Confident\"]}{blip:1}Court record demo coming right up. Here, take this security keycard."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{addEvidence:keycard,true}Try {color:gold}Present{color:white} from the action menu, or inspect the workstation in this room for an evidence update example."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Nice. So item pickups, popups, and context responses are all covered too.{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_records_after": [
+            {
+                "name": "Gumshoe",
+                "text": "You already have the keycard, pal. Present an item or use the terminal if you want to see inventory logic in action.{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_branching": [
+            {
+                "text": "{lifeMod:10}{skip:0}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}Okay, detective quiz time."
+            },
+            {
+                "text": "{checkpoint:Showcase_topic_branching}{option:ShowcaseChoice}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_branch_hotspots": [
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Confident\"]}{showLifeBar:0}Exactly! Investigation hotspots and moving backgrounds make a scene feel alive."
+            },
+            {
+                "name": "Phoenix",
+                "text": "And they push the player to actually read the room instead of just advancing text."
+            },
+            {
+                "text": "{hideLifeBar}{setState:showcase_branch_complete,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_branch_records": [
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}{showLifeBar:0}Right! Evidence responses and court record checks are core to the whole investigation flow."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Good thing you handed me the keycard before asking the question."
+            },
+            {
+                "text": "{hideLifeBar}{setState:showcase_branch_complete,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_branch_alarm": [
+            {
+                "name": "Gumshoe",
+                "text": "{showLifeBar:0}{sprite:Gumshoe[\"Angry\"]}P-Pal! That's not a feature test, that's a full evacuation!{playSound:damage}{flash}{lifeMod:-10}{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_courtroom": [
+            {
+                "name": "Gumshoe",
+                "text": "If you want the courtroom module, open {color:lime}Move{color:white} and pick {color:gold}Cross-Examination Test{color:white}."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "That file is built around layered courtroom views, objections, and testimony loops. This one mostly covers the investigation-side systems."
+            },
+            {
+                "text": "{hideTextbox}{playSound:gavel}{playAnimation:Gavel}{showTextbox}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_finale": [
+            {
+                "text": "{jumpIf:showcase_terminal_unlocked,Showcase_topic_finale_ready,Showcase_topic_finale_locked}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_finale_locked": [
+            {
+                "name": "Phoenix",
+                "text": "Looks like there's still one piece missing."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Right, pal. Grab the keycard from the court record topic, then inspect the terminal in the briefing room to unlock the finale branch.{sectionEnd}"
+            }
+        ],
+        "Showcase_topic_finale_ready": [
+            {
+                "name": "Phoenix",
+                "text": "We've covered video, moving backgrounds, hotspot examination, foreground layering, the court record, and branching dialogue."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}So, want the local animation beat, or should we hand things off to the dedicated courtroom test scene?"
+            },
+            {
+                "text": "{option:ShowcaseFinalChoice}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_load_ce": [
+            {
+                "name": "Gumshoe",
+                "text": "{stopBGM:false}{blip:1}Alright, pal. Loading the cross-examination package now!"
+            },
+            {
+                "text": "{loadScene:assets/scenes/tests/ce_test.json,Intro}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_finale_animation": [
+            {
+                "text": "{stopBGM:false}{fadeBg:CourtroomFull,400}{fadeFg:CourtroomFG,300}{startBGM:courtroom,true,true}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixObjection}{playAnimation:Objection}{p:300}{showTextbox}Now that's a proper test scene finale."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Confident\"]}{playSound:question1}{flash}{shake:250}And if you still want more, the move menu will send you straight into the full courtroom demo!"
+            },
+            {
+                "text": "{fadeOutFg:200}{fadeBg:BriefingRoom,400}{startBGM:investigation,true,true}{sprite:Gumshoe[\"Confident\"]}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_Start": [
+            {
+                "text": "{fadeOutFg:150}{fadeBg:AtriumDemo,500}{sprite:Gumshoe[\"Thinking\"]}{setState:showcase_loc_office,false}{setState:showcase_loc_atrium,true}{setState:showcase_loc_detention,false}{jumpIf:showcase_seen_atrium,Showcase_Atrium_Menu,Showcase_Atrium_First}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_First": [
+            {
+                "name": "Gumshoe",
+                "text": "{bgMove:top,900}{blip:1}This exhibit uses a background with named camera positions, so the script can pan around the scene cleanly."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{bgMove:bottom,900}{sprite:Gumshoe[\"Confident\"]}And the Examine mode lays hotspot polygons on top of it for targeted interactions."
+            },
+            {
+                "text": "{setState:showcase_seen_atrium,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_Menu": [
+            {
+                "text": "{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_Default": [
+            {
+                "name": "Phoenix",
+                "text": "The whole atrium is built to encourage clicking around."
+            }
+        ],
+        "Showcase_Atrium_Banner": [
+            {
+                "text": "{jumpIf:evidence_posterphoto,Showcase_Atrium_Banner_After,Showcase_Atrium_Banner_First}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_Banner_First": [
+            {
+                "name": "Phoenix",
+                "text": "{bgMove:top,700}That hanging display looks important."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{addEvidence:posterphoto,true}{playSound:evidenceUnlock}Nice catch, pal. The still frame is now stored in the court record."
+            },
+            {
+                "text": "{setState:showcase_photo_found,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_Banner_After": [
+            {
+                "name": "Gumshoe",
+                "text": "You already logged that photo. The court record's keeping up just fine.{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_Booth": [
+            {
+                "name": "Phoenix",
+                "text": "{bgMove:bottom,700}The lower exhibit is great for testing close-up pans and default examine text.{sectionEnd}"
+            }
+        ],
+        "Showcase_Atrium_Catwalk": [
+            {
+                "name": "Gumshoe",
+                "text": "{bgMove:top,700}Up there is where the banner shot came from. Good proof that the background mover can revisit saved positions.{sectionEnd}"
+            }
+        ],
+        "Showcase_Detention_Start": [
+            {
+                "text": "{fadeBg:DetentionCenter,400}{fadeFg:DetentionBars,300}{sprite:Oldbag[\"Smirking\"]}{setState:showcase_loc_office,false}{setState:showcase_loc_atrium,false}{setState:showcase_loc_detention,true}{jumpIf:showcase_seen_detention,Showcase_Detention_Menu,Showcase_Detention_First}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Detention_First": [
+            {
+                "name": "Oldbag",
+                "text": "{addProfile:Oldbag,true}{blip:1}So this is the big feature tour, is it? Hmph. Needs more security! And more me!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}{color:lightblue}(The foreground bars do make the room feel more like a detention center.)"
+            },
+            {
+                "text": "{setState:showcase_seen_detention,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Detention_Menu": [
+            {
+                "text": "{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Detention_Default": [
+            {
+                "name": "Phoenix",
+                "text": "The bars sit on a separate foreground layer, so the scene can frame the speaker differently."
+            }
+        ],
+        "Showcase_Detention_Bars": [
+            {
+                "name": "Oldbag",
+                "text": "Strong bars, crisp layering, excellent dramatic tension. That's what I call presentation!{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_Default": [
+            {
+                "name": "Phoenix",
+                "text": "A quiet office, a suspicious terminal, and just enough props for a good systems check."
+            }
+        ],
+        "Showcase_Office_Desk": [
+            {
+                "name": "Phoenix",
+                "text": "The desk is covered in debug notes, branch maps, and reminders to save often.{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_Window": [
+            {
+                "name": "Phoenix",
+                "text": "The city view doesn't do much mechanically, but it does make the room feel like a place instead of a menu.{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_Terminal": [
+            {
+                "text": "{jumpIf:showcase_terminal_unlocked,Showcase_Office_Terminal_After}{jumpIf:evidence_keycard,Showcase_Office_Terminal_Use,Showcase_Office_Terminal_Locked}{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_Terminal_Locked": [
+            {
+                "name": "Phoenix",
+                "text": "The workstation wants a keycard. Gumshoe probably has one tucked away in the talk topics.{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_Terminal_Use": [
+            {
+                "name": "Phoenix",
+                "text": "{playSound:evidenceUnlock}{flash}The terminal accepts the card and pulls up an annotated note."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{updateEvidence:keycard,keycardnote,true}{blip:1}There you go, pal: an example of replacing one evidence entry with an updated version."
+            },
+            {
+                "text": "{setState:showcase_terminal_unlocked,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_Office_Terminal_After": [
+            {
+                "name": "Gumshoe",
+                "text": "The workstation already updated the record. That's the finale branch unlocked.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_default": [
+            {
+                "name": "Phoenix",
+                "text": "Useful, but maybe not the piece of evidence I need right this second.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_badge": [
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Confident\"]}Yep, that's your badge all right. Still doing heavy lifting in every single case.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_casefile": [
+            {
+                "name": "Phoenix",
+                "text": "The file literally lists the systems this scene is meant to exercise. Hard to ask for clearer documentation than that.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_keycard": [
+            {
+                "text": "{jumpIf:showcase_terminal_unlocked,Showcase_evidence_keycard_used,Showcase_evidence_keycard_fresh}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_keycard_fresh": [
+            {
+                "name": "Gumshoe",
+                "text": "Take that to the terminal in the briefing room, pal. It'll show off evidence updates nicely.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_keycard_used": [
+            {
+                "name": "Phoenix",
+                "text": "The plain card already did its job. The updated note is the version that matters now.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_keycardnote": [
+            {
+                "name": "Gumshoe",
+                "text": "Now that's the polished version. Same slot in the court record, new information on the item.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_posterphoto": [
+            {
+                "name": "Phoenix",
+                "text": "A nice little reward for exploring the atrium properly. Investigation scenes always benefit from that kind of payoff.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_Gumshoe": [
+            {
+                "name": "Gumshoe",
+                "text": "Hey! Presenting my profile to my face feels a little rude, pal.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_Maya": [
+            {
+                "name": "Phoenix",
+                "text": "Maya isn't on-screen for this tour, but the profile tab still works exactly the way it should.{sectionEnd}"
+            }
+        ],
+        "Showcase_evidence_Oldbag": [
+            {
+                "name": "Oldbag",
+                "text": "Now that's a profile worthy of preservation. Don't wear it out, dearie!{sectionEnd}"
+            }
+        ],
+        "Showcase_GameOver": [
+            {
+                "text": "{center}{color:red}{blip:3}Bad End{nl}The demonstration was shut down by the fire marshal.{color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}(Next time, maybe I should pick the option that isn't obviously catastrophic.){endGame}"
+            }
+        ]
+    }
+}

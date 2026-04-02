@@ -426,8 +426,23 @@ async function initializeGame() {
 initializeGame();
 
 // Add click event listener to the game container
-gameContainer.addEventListener('click', () => {
+gameContainer.addEventListener('click', (event) => {
     if (isCourtRecordOpen) return;
+    if (isInputBlocked) return;
+    if (event.defaultPrevented) return;
+
+    const target = event.target;
+    const clickedInteractiveControl = target instanceof Element
+        && !!target.closest('button, input, select, textarea, label, a, summary, [role="button"]');
+
+    if (clickedInteractiveControl) {
+        return;
+    }
+
+    if (typeof window.shouldBlockDialogueAdvance === 'function' && window.shouldBlockDialogueAdvance(target)) {
+        return;
+    }
+
     advanceDialogue();
 });
 

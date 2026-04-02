@@ -171,6 +171,9 @@ document.addEventListener('sceneStateChanged', (e) => {
             investigationPanel.classList.add('hidden');
             bottomTopBar.classList.add('hidden');
             gameContainer.classList.remove('investigating');
+            if (typeof window.syncMenuInputBlockState === 'function') {
+                window.syncMenuInputBlockState();
+            }
             return;
         }
 
@@ -187,5 +190,9 @@ document.addEventListener('sceneStateChanged', (e) => {
             investigationPanel.classList.add('hidden');
             bottomTopBar.classList.remove('hidden');
         }
+    }
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
     }
 });

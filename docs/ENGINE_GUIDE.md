@@ -29,6 +29,9 @@ High-level structure:
 Important runtime files:
 
 - `js/main.js`: startup, URL parameters, case-aware scene loading, language fallback
+- `js/save-load.js`: save slot serialization and load-time scene rebuild/restore flow
+- `js/save-load/helpers.js`: stable snapshot/restore helpers for mid-line saves and smooth loads
+- `js/ui/config-history.js`: config/history UI plus persisted autoplay and language settings
 - `js/parser.js`: parses inline `{commands}` inside dialogue text
 - `js/text-renderer.js`: typewriter rendering, pauses, fades, animation/video waits
 - `js/script-actions.js`: non-rendering command execution such as inventory, flow state, audio, and courtroom state
@@ -72,6 +75,14 @@ Inside scene JSON, cross-scene links should omit the language segment. Use paths
 ```
 
 The loader inserts the active language automatically.
+
+### Save/Load And Settings Persistence
+
+- Game progress saves are stored in `localStorage` under `ace_attorney_save_{slot}`.
+- UI preferences are stored separately under `ace_attorney_settings`.
+- Persisted settings currently include autoplay speed, the autoplay toggle state, and language.
+- Mid-entry saves are stabilized to the fully rendered current line before storage, so loading restores that completed line state instead of replaying a partial entry.
+- Load applies a brief blackout overlay while the scene rebuilds to hide flicker.
 
 ## 4. Scene JSON Structure
 
@@ -972,6 +983,7 @@ After editing a scene, verify the following in the browser:
 4. Any new commands run without leaving the typewriter stuck.
 5. Single-screen mode still works for the affected scene if UI flow changed.
 6. If you touched scene switching or language handling, test at least one non-English scene.
+7. If you touched save/load or settings persistence, verify save slots and persisted settings survive reloads and restore correctly.
 
 ## 12. Current Caveats
 

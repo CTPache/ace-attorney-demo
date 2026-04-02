@@ -9,7 +9,7 @@
     "gameScript": {
         "Redirect": [
             {
-                "text": "{loadScene:assets/scenes/tests/ce_test.json,Intro}{sectionEnd}"
+                "text": "{loadScene:assets/scenes/tests/comprehensive_demo.json,Showcase_Boot}{sectionEnd}"
             }
         ]
     }

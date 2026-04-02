@@ -39,6 +39,63 @@ function hideActionMenus() {
     isExamining = false;
     isCourtRecordOpen = false;
     isPresentingMode = false;
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
+}
+
+function isMenuLikeElementVisible(element) {
+    return !!(
+        element
+        && !element.classList.contains('hidden')
+        && getComputedStyle(element).display !== 'none'
+        && getComputedStyle(element).visibility !== 'hidden'
+    );
+}
+
+function isBlockingMenuOpen() {
+    const caseSelectBottom = document.getElementById('case-select-bottom');
+    const galleryMenu = document.getElementById('gallery-menu');
+
+    return [
+        configMenu,
+        historyMenu,
+        investigationMenu,
+        moveMenu,
+        topicMenu,
+        investigationPanel,
+        evidenceContainer,
+        evidenceDetails,
+        caseSelectBottom,
+        galleryMenu
+    ].some(isMenuLikeElementVisible);
+}
+
+function syncMenuInputBlockState() {
+    const shouldBlock = isBlockingMenuOpen();
+    isInputBlocked = shouldBlock;
+    return shouldBlock;
+}
+
+function shouldBlockDialogueAdvance(target) {
+    if (isInputBlocked || isBlockingMenuOpen()) {
+        return true;
+    }
+
+    if (!(target instanceof Element)) {
+        return false;
+    }
+
+    if (target.closest('button, input, select, textarea, label, a, summary, [role="button"]')) {
+        return true;
+    }
+
+    if (target.closest('#bottom-top-bar, #config-btn, #court-record-btn, #autoplay-indicator, #skip-video-btn, #ce-controls, #ce-arrow-container')) {
+        return true;
+    }
+
+    return false;
 }
 
 function updateActionButtons() {
@@ -58,4 +115,7 @@ function updateActionButtons() {
 
 window.setBottomScreenButtonsDisabled = setBottomScreenButtonsDisabled;
 window.hideActionMenus = hideActionMenus;
+window.isBlockingMenuOpen = isBlockingMenuOpen;
+window.syncMenuInputBlockState = syncMenuInputBlockState;
+window.shouldBlockDialogueAdvance = shouldBlockDialogueAdvance;
 window.updateActionButtons = updateActionButtons;
