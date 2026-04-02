@@ -57,6 +57,8 @@ window.loadGame = async function(slot = 1) {
         return;
     }
 
+    let didApplyLoadMask = false;
+
     try {
         const saveData = JSON.parse(saveString);
 
@@ -74,6 +76,11 @@ window.loadGame = async function(slot = 1) {
             console.warn("Save file missing valid scene path.");
             alert("This save file appears to be empty or corrupted.");
             return;
+        }
+
+        if (typeof window.setLoadTransitionMaskVisible === 'function') {
+            window.setLoadTransitionMaskVisible(true);
+            didApplyLoadMask = true;
         }
 
         // 1. Close menus if open.
@@ -94,17 +101,17 @@ window.loadGame = async function(slot = 1) {
         // 3. Clear Active Screens BEFORE restoring globals so our vars aren't overridden
         if (typeof clearTopScreen === 'function') clearTopScreen();
 
-        // 4. Check if scene changed
-        const sceneChanged = currentSceneRequestPath !== saveData.currentSceneRequestPath;
-        const langChanged = (typeof window.restoreLanguageForLoad === 'function')
-            ? window.restoreLanguageForLoad(saveData)
-            : (currentLanguage !== saveData.currentLanguage);
-
-        if (sceneChanged || langChanged || !gameScript || Object.keys(gameScript).length === 0) {
-            currentSceneRequestPath = saveData.currentSceneRequestPath;
-            // Pass isLoadingSave = true
-            await window.loadGameData(saveData.currentSceneRequestPath, null, true);
+        // 4. Rebuild the target scene runtime before applying saved state.
+        // This is required even for same-scene loads because clearTopScreen()
+        // tears down courtroom layers and other scene-owned runtime state.
+        if (typeof window.restoreLanguageForLoad === 'function') {
+            window.restoreLanguageForLoad(saveData);
+        } else if (currentLanguage !== saveData.currentLanguage) {
+            currentLanguage = saveData.currentLanguage;
         }
+
+        currentSceneRequestPath = saveData.currentSceneRequestPath;
+        await window.loadGameData(saveData.currentSceneRequestPath, null, true);
 
         // 5. Restore globals + visuals
         if (typeof window.restoreCoreStateForLoad === 'function') {
@@ -112,7 +119,7 @@ window.loadGame = async function(slot = 1) {
         }
 
         if (typeof window.restoreVisualStateForLoad === 'function') {
-            window.restoreVisualStateForLoad();
+            window.restoreVisualStateForLoad(saveData);
         }
         
         // 6. Resume execution at the requested line
@@ -128,5 +135,9 @@ window.loadGame = async function(slot = 1) {
     } catch (e) {
         console.error("Failed to load save:", e);
         alert("Failed to load save data. It might be corrupted or outdated.");
+    } finally {
+        if (didApplyLoadMask && typeof window.setLoadTransitionMaskVisible === 'function') {
+            window.setLoadTransitionMaskVisible(false);
+        }
     }
 };

@@ -10,9 +10,24 @@ window.CrossExamination = (function() {
     let isLoopActive = false; // Whether the testimony loop is active (not in a sub-sequence)
     let crossExams = {}; // Loaded from scene JSON
 
+    function buildActiveStatementIds(ce) {
+        if (!ce) return [];
+
+        if (ce.initialStatements) {
+            return [...ce.initialStatements].map(id => String(id));
+        }
+
+        if (Array.isArray(ce.statements)) {
+            return ce.statements.map((_, i) => String(i));
+        }
+
+        return Object.keys(ce.statements || {}).map(id => String(id));
+    }
+
     function init(data) {
         crossExams = data || {};
         isCEMode = false;
+        isLoopActive = false;
         activeCE = null;
         currentIndex = 0;
     }
@@ -23,19 +38,7 @@ window.CrossExamination = (function() {
             return false;
         }
         activeCE = crossExams[id];
-        
-        // Initialize dynamic statement list from initialStatements (which should be an array of keys)
-        // If initialStatements is not present, fallback to dictionary keys (less deterministic)
-        if (activeCE.initialStatements) {
-            activeCE.activeStatementIds = [...activeCE.initialStatements];
-        } else {
-            // Fallback for older format if statements is still an array
-            if (Array.isArray(activeCE.statements)) {
-                activeCE.activeStatementIds = activeCE.statements.map((_, i) => i);
-            } else {
-                activeCE.activeStatementIds = Object.keys(activeCE.statements);
-            }
-        }
+        activeCE.activeStatementIds = buildActiveStatementIds(activeCE);
 
         currentIndex = 0;
         isCEMode = true;
@@ -173,6 +176,64 @@ window.CrossExamination = (function() {
         }
     }
 
+    function buildSnapshot() {
+        let activeCEId = null;
+
+        if (activeCE) {
+            activeCEId = Object.keys(crossExams).find((id) => crossExams[id] === activeCE) || null;
+        }
+
+        return {
+            isActive: !!(isCEMode && activeCE),
+            activeCEId,
+            currentIndex,
+            isLoopActive,
+            activeStatementIds: (activeCE && Array.isArray(activeCE.activeStatementIds))
+                ? [...activeCE.activeStatementIds].map(id => String(id))
+                : []
+        };
+    }
+
+    function restoreSnapshot(snapshot, options = {}) {
+        if (!snapshot || !snapshot.isActive || !snapshot.activeCEId) {
+            return false;
+        }
+
+        const shouldReplayCurrentStatement = options.replayCurrentStatement !== false;
+        const ce = crossExams[snapshot.activeCEId];
+        if (!ce) {
+            console.warn(`Cross Examination ${snapshot.activeCEId} could not be restored.`);
+            return false;
+        }
+
+        activeCE = ce;
+        activeCE.activeStatementIds = buildActiveStatementIds(activeCE);
+
+        if (Array.isArray(snapshot.activeStatementIds) && snapshot.activeStatementIds.length > 0) {
+            activeCE.activeStatementIds = snapshot.activeStatementIds.map(id => String(id));
+        }
+
+        const statementCount = activeCE.activeStatementIds.length;
+        currentIndex = 0;
+        if (typeof snapshot.currentIndex === 'number' && statementCount > 0) {
+            const normalizedIndex = Math.trunc(snapshot.currentIndex);
+            currentIndex = Math.min(Math.max(normalizedIndex, 0), statementCount - 1);
+        }
+
+        isCEMode = true;
+        isLoopActive = snapshot.isLoopActive !== undefined ? !!snapshot.isLoopActive : true;
+
+        document.body.classList.add('ce-mode');
+
+        if (isLoopActive && statementCount > 0 && shouldReplayCurrentStatement) {
+            playStatement();
+        } else {
+            updateUI();
+        }
+
+        return true;
+    }
+
     function updateUI() {
         const ceControls = document.getElementById('ce-controls');
         const ceBottomControls = document.getElementById('ce-bottom-controls');
@@ -216,6 +277,8 @@ window.CrossExamination = (function() {
         replaceStatement,
         setLoopActive,
         updateUI,
+        buildSnapshot,
+        restoreSnapshot,
         get activeCE() { return activeCE; },
         get isCEMode() { return isCEMode; },
         get isLoopActive() { return isLoopActive; },

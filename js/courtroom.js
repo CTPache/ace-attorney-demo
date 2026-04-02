@@ -296,6 +296,8 @@ console.log("Courtroom Module Loaded");
     }
 
     function activateStandView(standName) {
+        activeSlot = String(standName).toLowerCase();
+
         // Force the container to be visible after explicit fades
         if (courtroomSprites) courtroomSprites.style.opacity = '1';
 
@@ -355,6 +357,8 @@ console.log("Courtroom Module Loaded");
     }
 
     function activateSingleCharView(viewName) {
+        activeSlot = String(viewName).toLowerCase();
+
         // Disable panoramic foreground mode
         if (gameContainer) gameContainer.classList.remove('court-mode-fg');
 
@@ -398,6 +402,7 @@ console.log("Courtroom Module Loaded");
         const stand = String(standName).toLowerCase();
 
         currentView = stand;
+        activeSlot = stand;
 
         // Ensure stand containers are visible
         if (courtroomSprites) courtroomSprites.classList.remove('hidden');
@@ -629,6 +634,67 @@ console.log("Courtroom Module Loaded");
         return false;
     }
 
+    function buildSnapshot() {
+        return {
+            isActive: !!isCourtMode,
+            currentView: currentView || null,
+            activeSlot: activeSlot || null,
+            slotState: JSON.parse(JSON.stringify(slotState || {}))
+        };
+    }
+
+    function restoreSnapshot(snapshot) {
+        if (!snapshot || !snapshot.isActive) {
+            return false;
+        }
+
+        if (!isCourtMode) {
+            const hasCourtroomData = courtroomDB && typeof courtroomDB === 'object' && Object.keys(courtroomDB).length > 0;
+            if (hasCourtroomData) {
+                initCourtroom(courtroomDB);
+            }
+        }
+
+        if (!isCourtMode) {
+            return false;
+        }
+
+        const restoredSlotState = {};
+        ALL_SLOTS.forEach((slot) => {
+            const savedSlot = snapshot.slotState && snapshot.slotState[slot]
+                ? snapshot.slotState[slot]
+                : {};
+
+            restoredSlotState[slot] = {
+                character: savedSlot.character || null,
+                emotion: savedSlot.emotion || null
+            };
+        });
+
+        slotState = restoredSlotState;
+
+        const targetView = snapshot.currentView || currentView || 'overview';
+        activeSlot = snapshot.activeSlot || targetView || null;
+        setCourtView(targetView);
+
+        if (targetView === 'overview') {
+            ALL_SLOTS.forEach((slot) => {
+                if (overviewElements[slot]) {
+                    applySpriteToElement(slot, overviewElements[slot]);
+                }
+            });
+        } else if (STAND_SLOTS.includes(targetView)) {
+            STAND_SLOTS.forEach((slot) => {
+                if (standElements[slot]) {
+                    applySpriteToElement(slot, standElements[slot]);
+                }
+            });
+            syncSpritesToBackground(0);
+        }
+
+        return true;
+    }
+
     // ── Expose API ──────────────────────────────────────────────
 
     window.initCourtroom = initCourtroom;
@@ -640,6 +706,8 @@ console.log("Courtroom Module Loaded");
     window.fadeCurrentCourtSpriteContainer = fadeCurrentCourtSpriteContainer;
     window.getCurrentCourtView = () => currentView;
     window.getActiveCourtSlot = () => activeSlot;
+    window.getCourtroomSnapshot = buildSnapshot;
+    window.restoreCourtroomSnapshot = restoreSnapshot;
     window.snapCourtPanInstant = () => syncSpritesToBackground(0);
 
 })();

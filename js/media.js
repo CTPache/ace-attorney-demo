@@ -626,9 +626,45 @@ function moveBackgroundByName(bgName, positionName, duration = 400) {
     }
 }
 
+function getMediaSnapshot() {
+    return {
+        backgroundPosition: currentBackgroundPosition
+            ? { x: currentBackgroundPosition.x || 0, y: currentBackgroundPosition.y || 0 }
+            : null,
+        bgmCurrentTime: (currentBGM && Number.isFinite(currentBGM.currentTime)) ? currentBGM.currentTime : 0,
+        bgmWasPlaying: !!(currentBGM && !currentBGM.paused)
+    };
+}
+
+function restoreMediaSnapshot(snapshot) {
+    if (!snapshot || typeof snapshot !== 'object') return;
+
+    if (snapshot.backgroundPosition
+        && typeof snapshot.backgroundPosition.x === 'number'
+        && typeof snapshot.backgroundPosition.y === 'number') {
+        moveBackgroundToPosition(snapshot.backgroundPosition.x, snapshot.backgroundPosition.y, 0);
+        if (typeof window.snapCourtPanInstant === 'function') {
+            window.snapCourtPanInstant();
+        }
+    }
+
+    if (currentBGM
+        && typeof snapshot.bgmCurrentTime === 'number'
+        && Number.isFinite(snapshot.bgmCurrentTime)
+        && snapshot.bgmCurrentTime > 0) {
+        try {
+            currentBGM.currentTime = snapshot.bgmCurrentTime;
+        } catch (error) {
+            console.warn('Could not restore BGM playback position:', error);
+        }
+    }
+}
+
 window.moveBackgroundToPosition = moveBackgroundToPosition;
 window.moveBackgroundByName = moveBackgroundByName;
 window.applyCurrentBackgroundPosition = applyCurrentBackgroundPosition;
+window.getMediaSnapshot = getMediaSnapshot;
+window.restoreMediaSnapshot = restoreMediaSnapshot;
 
 function changeForeground(fgName) {
     if (!fgName) {

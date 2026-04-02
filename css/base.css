@@ -80,6 +80,21 @@ body {
     box-shadow: none;
 }
 
+#game-container.load-transition-blackout,
+#bottom-screen.load-transition-blackout {
+    isolation: isolate;
+}
+
+#game-container.load-transition-blackout::after,
+#bottom-screen.load-transition-blackout::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #000;
+    z-index: 999;
+    pointer-events: all;
+}
+
 @media screen and (max-width: 768px) {
     #main-wrapper {
         justify-content: flex-start;

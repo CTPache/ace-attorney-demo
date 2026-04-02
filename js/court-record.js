@@ -57,16 +57,50 @@ function closeCourtRecord() {
     syncCourtRecordDependentControls();
 }
 
+function syncActiveRecordTabs() {
+    crTabs.forEach((tab, index) => {
+        const tabName = (index === 0) ? 'evidence' : 'profiles';
+        tab.classList.toggle('active', currentRecordTab === tabName);
+    });
+}
+
+function setCurrentRecordTab(tabName) {
+    currentRecordTab = (tabName === 'profiles') ? 'profiles' : 'evidence';
+    syncActiveRecordTabs();
+
+    if (isCourtRecordOpen) {
+        renderEvidence();
+    }
+}
+
+function getCourtRecordSnapshot() {
+    return {
+        isOpen: !!isCourtRecordOpen,
+        tab: currentRecordTab,
+        isPresentingMode: !!isPresentingMode
+    };
+}
+
+function restoreCourtRecordSnapshot(snapshot) {
+    if (!snapshot || typeof snapshot !== 'object') {
+        return false;
+    }
+
+    setCurrentRecordTab(snapshot.tab);
+
+    if (snapshot.isOpen) {
+        openCourtRecord(snapshot.isPresentingMode ? 'present' : 'view');
+    } else {
+        closeCourtRecord();
+    }
+
+    return true;
+}
+
 // Tab Handlers
 crTabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
-        // Update active state
-        crTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        
-        // Update logic
-        currentRecordTab = (index === 0) ? 'evidence' : 'profiles';
-        renderEvidence();
+        setCurrentRecordTab((index === 0) ? 'evidence' : 'profiles');
     });
 });
 
@@ -76,6 +110,7 @@ btnPresent.addEventListener('click', () => {
     bottomTopBar.classList.add('hidden'); // Hide top bar
     isCourtRecordOpen = true;
     isPresentingMode = true;
+    syncActiveRecordTabs();
     renderEvidence();
     syncCourtRecordDependentControls();
 });
@@ -91,12 +126,15 @@ function openCourtRecord(mode = 'view') {
 
     bottomTopBar.classList.add('hidden'); // Hide top bar
     evidenceContainer.classList.remove('hidden');
+    syncActiveRecordTabs();
     renderEvidence();
 
     syncCourtRecordDependentControls();
 }
 
 window.openCourtRecord = openCourtRecord;
+window.getCourtRecordSnapshot = getCourtRecordSnapshot;
+window.restoreCourtRecordSnapshot = restoreCourtRecordSnapshot;
 
 // Top Bar Button Handler (Toggle View Mode)
 courtRecordBtn.addEventListener('click', (e) => {
