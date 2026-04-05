@@ -251,6 +251,16 @@ window.CrossExamination = (function() {
     }
 
     function updateUI() {
+        const shouldShow = isCEMode && isLoopActive && (!window.isCourtRecordOpen);
+
+        if (shouldShow && typeof window.ensureLazyElementMounted === 'function') {
+            window.ensureLazyElementMounted('ce-controls', 'ce-controls-template', '#bottom-top-bar');
+            window.ensureLazyElementMounted('ce-arrow-container', 'ce-arrow-container-template', '#bottom-main-window');
+            if (window.CE_UI && typeof window.CE_UI.init === 'function') {
+                window.CE_UI.init();
+            }
+        }
+
         const ceControls = document.getElementById('ce-controls');
         const ceBottomControls = document.getElementById('ce-bottom-controls');
         const ceArrowContainer = document.getElementById('ce-arrow-container');
@@ -259,7 +269,6 @@ window.CrossExamination = (function() {
         const courtRecordBtn = document.getElementById('court-record-btn');
         const advanceBtn = document.getElementById('advance-btn');
 
-        const shouldShow = isCEMode && isLoopActive && (!window.isCourtRecordOpen);
         const statementCount = activeCE && Array.isArray(activeCE.activeStatementIds)
             ? activeCE.activeStatementIds.length
             : 0;
@@ -273,6 +282,10 @@ window.CrossExamination = (function() {
         if (ceNextArrow) ceNextArrow.classList.toggle('hidden', !shouldShow || !hasMultipleStatements);
         if (courtRecordBtn) courtRecordBtn.classList.toggle('hidden', shouldShow);
         if (advanceBtn) advanceBtn.classList.toggle('hidden', shouldShow);
+
+        if (!shouldShow && typeof window.shelveLazyElements === 'function') {
+            window.shelveLazyElements(['ce-controls', 'ce-arrow-container']);
+        }
     }
 
     function setLoopActive(active) {

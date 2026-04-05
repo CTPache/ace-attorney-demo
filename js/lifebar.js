@@ -1,8 +1,19 @@
 console.log("Life Bar Loaded");
 
+function getLifeBarElements() {
+    return {
+        container: document.getElementById('life-bar-container'),
+        fill: document.getElementById('life-bar-fill'),
+        penalty: document.getElementById('life-bar-penalty')
+    };
+}
+
 window.updateLifeBar = function(penalty = 0) {
     if (currentLife < 0) currentLife = 0;
     if (currentLife > maxLife) currentLife = maxLife;
+
+    const { fill, penalty: penaltyBar } = getLifeBarElements();
+    if (!fill || !penaltyBar) return;
 
     // Calculate Percentages
     // Fill: The safe green part. 
@@ -20,21 +31,34 @@ window.updateLifeBar = function(penalty = 0) {
     const safePct = currentPct - penaltyPct;
     
     // Update widths
-    lifeBarFill.style.width = `${Math.max(0, safePct)}%`;
+    fill.style.width = `${Math.max(0, safePct)}%`;
     
     // The penalty bar sits next to the safe bar
     // We position it using left property or just rely on absolute positioning
-    lifeBarPenalty.style.width = `${penaltyPct}%`;
-    lifeBarPenalty.style.left = `${Math.max(0, safePct)}%`;
+    penaltyBar.style.width = `${penaltyPct}%`;
+    penaltyBar.style.left = `${Math.max(0, safePct)}%`;
 }
 
 window.showLifeBar = function(penalty = 0) {
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('life-bar-container', 'life-bar-template', '#game-container');
+    }
+
+    const { container } = getLifeBarElements();
+    if (!container) return;
+
     updateLifeBar(penalty);
-    lifeBarContainer.classList.remove('hidden');
+    container.classList.remove('hidden');
 }
 
 window.hideLifeBar = function() {
-    lifeBarContainer.classList.add('hidden');
+    const { container } = getLifeBarElements();
+    if (!container) return;
+
+    container.classList.add('hidden');
+    if (typeof window.shelveLazyElement === 'function') {
+        window.shelveLazyElement('life-bar-container');
+    }
 }
 
 window.modifyLife = function(amount) {

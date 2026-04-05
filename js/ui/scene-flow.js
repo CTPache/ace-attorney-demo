@@ -10,11 +10,21 @@ window.renderOptionsMenu = function(optionKey) {
         return;
     }
 
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('topic-menu', 'topic-menu-template', '#bottom-main-window');
+    }
+    if (typeof window.refreshDOMGlobals === 'function') {
+        window.refreshDOMGlobals();
+    }
+    if (typeof window.bindTopicEvents === 'function') {
+        window.bindTopicEvents();
+    }
+
     // Reuse topicMenu as the container for options
-    topicMenu.classList.remove('hidden');
+    if (topicMenu) topicMenu.classList.remove('hidden');
     // Hide other overlapping menus if any
-    investigationMenu.classList.add('hidden');
-    investigationPanel.classList.add('hidden');
+    if (investigationMenu) investigationMenu.classList.add('hidden');
+    if (investigationPanel) investigationPanel.classList.add('hidden');
 
     // Hide Advance Button
     advanceBtn.classList.add('hidden');
@@ -106,7 +116,10 @@ window.renderOptionsMenu = function(optionKey) {
                 isInputBlocked = false;
 
                 // Hide menu
-                topicMenu.classList.add('hidden');
+                if (topicMenu) topicMenu.classList.add('hidden');
+                if (typeof window.shelveLazyElement === 'function') {
+                    window.shelveLazyElement('topic-menu');
+                }
 
                 // Jump to the selected label
                 if (window.jumpToSection) {
@@ -149,28 +162,34 @@ document.addEventListener('sceneStateChanged', (e) => {
 
     if (isPlaying) {
         if (autoplayIndicator) autoplayIndicator.classList.remove('hidden');
-        textboxContainer.classList.remove('hidden');
-        investigationMenu.classList.add('hidden');
-        moveMenu.classList.add('hidden');
-        topicMenu.classList.add('hidden');
-        advanceBtn.classList.remove('hidden');
-        investigationPanel.classList.add('hidden');
-        bottomTopBar.classList.remove('hidden');
-        gameContainer.classList.remove('investigating');
+        if (textboxContainer) textboxContainer.classList.remove('hidden');
+        if (investigationMenu) investigationMenu.classList.add('hidden');
+        if (moveMenu) moveMenu.classList.add('hidden');
+        if (topicMenu) topicMenu.classList.add('hidden');
+        if (advanceBtn) advanceBtn.classList.remove('hidden');
+        if (investigationPanel) investigationPanel.classList.add('hidden');
+        if (bottomTopBar) bottomTopBar.classList.remove('hidden');
+        if (gameContainer) gameContainer.classList.remove('investigating');
+        if (typeof window.shelveLazyElements === 'function') {
+            window.shelveLazyElements(['investigation-menu', 'move-menu', 'topic-menu', 'investigation-panel', 'evidence-container']);
+        }
     } else {
         if (autoplayIndicator) autoplayIndicator.classList.add('hidden');
-        textboxContainer.classList.add('hidden');
-        advanceBtn.classList.add('hidden');
+        if (textboxContainer) textboxContainer.classList.add('hidden');
+        if (advanceBtn) advanceBtn.classList.add('hidden');
 
         if (typeof hideLifeBar === 'function') hideLifeBar();
 
         if (isNonGameplayMenuVisible()) {
-            investigationMenu.classList.add('hidden');
-            moveMenu.classList.add('hidden');
-            topicMenu.classList.add('hidden');
-            investigationPanel.classList.add('hidden');
-            bottomTopBar.classList.add('hidden');
-            gameContainer.classList.remove('investigating');
+            if (investigationMenu) investigationMenu.classList.add('hidden');
+            if (moveMenu) moveMenu.classList.add('hidden');
+            if (topicMenu) topicMenu.classList.add('hidden');
+            if (investigationPanel) investigationPanel.classList.add('hidden');
+            if (bottomTopBar) bottomTopBar.classList.add('hidden');
+            if (gameContainer) gameContainer.classList.remove('investigating');
+            if (typeof window.shelveLazyElements === 'function') {
+                window.shelveLazyElements(['investigation-menu', 'move-menu', 'topic-menu', 'investigation-panel', 'evidence-container']);
+            }
             if (typeof window.syncMenuInputBlockState === 'function') {
                 window.syncMenuInputBlockState();
             }
@@ -178,17 +197,44 @@ document.addEventListener('sceneStateChanged', (e) => {
         }
 
         if (isExamining) {
-            investigationMenu.classList.add('hidden');
-            investigationPanel.classList.remove('hidden');
-            topicMenu.classList.add('hidden');
-            bottomTopBar.classList.add('hidden');
-            gameContainer.classList.add('investigating');
+            if (typeof window.ensureLazyElementMounted === 'function') {
+                window.ensureLazyElementMounted('investigation-panel', 'investigation-panel-template', '#bottom-main-window');
+            }
+            if (typeof window.refreshDOMGlobals === 'function') {
+                window.refreshDOMGlobals();
+            }
+            if (typeof window.bindInvestigationUIEvents === 'function') {
+                window.bindInvestigationUIEvents();
+            }
+            if (investigationMenu) investigationMenu.classList.add('hidden');
+            if (investigationPanel) investigationPanel.classList.remove('hidden');
+            if (topicMenu) topicMenu.classList.add('hidden');
+            if (bottomTopBar) bottomTopBar.classList.add('hidden');
+            if (gameContainer) gameContainer.classList.add('investigating');
             renderInvestigation();
         } else {
-            investigationMenu.classList.remove('hidden');
-            topicMenu.classList.add('hidden');
-            investigationPanel.classList.add('hidden');
-            bottomTopBar.classList.remove('hidden');
+            if (typeof window.ensureLazyElementMounted === 'function') {
+                window.ensureLazyElementMounted('investigation-menu', 'investigation-menu-template', '#bottom-main-window');
+            }
+            if (typeof window.refreshDOMGlobals === 'function') {
+                window.refreshDOMGlobals();
+            }
+            if (typeof window.bindInvestigationUIEvents === 'function') {
+                window.bindInvestigationUIEvents();
+            }
+            if (typeof window.bindTopicEvents === 'function') {
+                window.bindTopicEvents();
+            }
+            if (typeof window.bindCourtRecordEvents === 'function') {
+                window.bindCourtRecordEvents();
+            }
+            if (typeof window.updateActionButtons === 'function') {
+                window.updateActionButtons();
+            }
+            if (investigationMenu) investigationMenu.classList.remove('hidden');
+            if (topicMenu) topicMenu.classList.add('hidden');
+            if (investigationPanel) investigationPanel.classList.add('hidden');
+            if (bottomTopBar) bottomTopBar.classList.remove('hidden');
         }
     }
 

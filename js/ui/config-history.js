@@ -7,8 +7,9 @@ let isTitleConfigMode = false;
 const SETTINGS_STORAGE_KEY = 'ace_attorney_settings';
 
 function getAvailableSettingsLanguages() {
-    return (configLanguageSelect && configLanguageSelect.options)
-        ? Array.from(configLanguageSelect.options).map((option) => String(option.value || '').toUpperCase()).filter(Boolean)
+    const languageSelect = document.getElementById('config-language-select') || configLanguageSelect;
+    return (languageSelect && languageSelect.options)
+        ? Array.from(languageSelect.options).map((option) => String(option.value || '').toUpperCase()).filter(Boolean)
         : ['EN', 'ES', 'JP'];
 }
 
@@ -76,6 +77,23 @@ window.applyPersistedSettings = function() {
     return settings;
 };
 
+function getCurrentConfigMenuSettings() {
+    const liveLanguageSelect = document.getElementById('config-language-select') || configLanguageSelect;
+    const selectedSpeedRadio = document.querySelector('input[name="auto-speed"]:checked');
+
+    return normalizePersistedSettings({
+        autoPlaySpeedPreset: selectedSpeedRadio ? selectedSpeedRadio.value : autoPlaySpeedPreset,
+        isAutoPlayEnabled,
+        language: liveLanguageSelect
+            ? liveLanguageSelect.value
+            : (typeof window.getGameLanguage === 'function' ? window.getGameLanguage() : currentLanguage)
+    });
+}
+
+function persistCurrentConfigMenuSettings() {
+    return savePersistedSettings(getCurrentConfigMenuSettings());
+}
+
 function updateAutoplayIndicator() {
     if (!autoplayIndicator) return;
 
@@ -114,19 +132,149 @@ function toggleAutoplay() {
     setAutoplayEnabled(!isAutoPlayEnabled);
 }
 
+function ensureConfigHistoryMenuMounted(elementId, templateId) {
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted(elementId, templateId, '#bottom-main-window');
+    }
+    if (typeof window.refreshDOMGlobals === 'function') {
+        window.refreshDOMGlobals();
+    }
+    bindConfigHistoryEvents();
+    if (typeof window.bindReturnToTitleEvents === 'function') {
+        window.bindReturnToTitleEvents();
+    }
+}
+
+function bindConfigHistoryEvents() {
+    const liveConfigCloseBtn = document.getElementById('config-close-btn');
+    if (liveConfigCloseBtn && liveConfigCloseBtn.dataset.boundConfigHistory !== 'true') {
+        liveConfigCloseBtn.dataset.boundConfigHistory = 'true';
+        liveConfigCloseBtn.addEventListener('click', () => {
+            closeConfigMenu();
+        });
+    }
+
+    const liveConfigHistoryBtn = document.getElementById('config-history-btn');
+    if (liveConfigHistoryBtn && liveConfigHistoryBtn.dataset.boundConfigHistory !== 'true') {
+        liveConfigHistoryBtn.dataset.boundConfigHistory = 'true';
+        liveConfigHistoryBtn.addEventListener('click', () => {
+            if (isTitleConfigMode) return;
+            openHistoryMenu(true);
+        });
+    }
+
+    const liveHistoryCloseBtn = document.getElementById('history-close-btn');
+    if (liveHistoryCloseBtn && liveHistoryCloseBtn.dataset.boundConfigHistory !== 'true') {
+        liveHistoryCloseBtn.dataset.boundConfigHistory = 'true';
+        liveHistoryCloseBtn.addEventListener('click', () => {
+            closeHistoryMenu();
+        });
+    }
+
+    const liveLanguageSelect = document.getElementById('config-language-select');
+    if (liveLanguageSelect && liveLanguageSelect.dataset.boundConfigHistory !== 'true') {
+        liveLanguageSelect.dataset.boundConfigHistory = 'true';
+        liveLanguageSelect.addEventListener('change', async () => {
+            const selectedLanguage = liveLanguageSelect.value;
+
+            if (typeof window.setGameLanguage === 'function') {
+                await window.setGameLanguage(selectedLanguage, { reloadScene: !isTitleConfigMode });
+            }
+
+            syncConfigMenuControls();
+        });
+    }
+
+    document.querySelectorAll('input[name="auto-speed"]').forEach((radio) => {
+        if (radio.dataset.boundConfigHistory === 'true') return;
+        radio.dataset.boundConfigHistory = 'true';
+        radio.addEventListener('change', () => {
+            if (!radio.checked) return;
+            if (typeof window.setAutoPlaySpeedPreset === 'function') {
+                window.setAutoPlaySpeedPreset(radio.value);
+            }
+
+            if (typeof window.clearAutoPlayTimer === 'function') {
+                window.clearAutoPlayTimer();
+            }
+
+            if (isAutoPlayEnabled && !isTyping && isScenePlaying && !isInputBlocked) {
+                if (typeof window.scheduleAutoPlayAdvance === 'function') {
+                    window.scheduleAutoPlayAdvance();
+                }
+            }
+        });
+    });
+
+    const saveBtn = document.getElementById('config-save-btn');
+    if (saveBtn && saveBtn.dataset.boundConfigHistory !== 'true') {
+        saveBtn.dataset.boundConfigHistory = 'true';
+        saveBtn.addEventListener('click', () => { window.saveGame(1); });
+    }
+
+    const loadBtn = document.getElementById('config-load-btn');
+    if (loadBtn && loadBtn.dataset.boundConfigHistory !== 'true') {
+        loadBtn.dataset.boundConfigHistory = 'true';
+        loadBtn.addEventListener('click', () => { window.loadGame(1); });
+    }
+
+    const fullscreenBtn = document.getElementById('config-fullscreen-btn');
+    if (fullscreenBtn && fullscreenBtn.dataset.boundConfigHistory !== 'true') {
+        fullscreenBtn.dataset.boundConfigHistory = 'true';
+        fullscreenBtn.addEventListener('click', () => {
+            const elem = document.documentElement;
+            if (!document.fullscreenElement) {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        });
+    }
+}
+
 function refreshTopBarButtonDisabledState() {
-    const isConfigVisible = configMenu && !configMenu.classList.contains('hidden');
-    const isHistoryVisible = historyMenu && !historyMenu.classList.contains('hidden');
-    const shouldDisable = !!(isConfigVisible || isHistoryVisible);
+    const liveConfigMenu = document.getElementById('config-menu') || configMenu;
+    const liveHistoryMenu = document.getElementById('history-menu') || historyMenu;
+    const isConfigVisible = liveConfigMenu && !liveConfigMenu.classList.contains('hidden');
+    const isHistoryVisible = liveHistoryMenu && !liveHistoryMenu.classList.contains('hidden');
+    const isTextBusy = !!(
+        (typeof isTyping !== 'undefined' && isTyping)
+        || (typeof isWaitingForAnimation !== 'undefined' && isWaitingForAnimation)
+        || (typeof isWaitingForAutoSkip !== 'undefined' && isWaitingForAutoSkip)
+    );
+    const shouldDisable = !!(isConfigVisible || isHistoryVisible || isTextBusy);
 
     if (courtRecordBtn) courtRecordBtn.disabled = shouldDisable;
     if (configBtn) configBtn.disabled = shouldDisable;
 }
 
 function closeConfigMenu() {
-    if (!configMenu) return;
+    const liveConfigMenu = document.getElementById('config-menu') || configMenu;
+    if (!liveConfigMenu) return;
+
+    persistCurrentConfigMenuSettings();
+
     const wasTitleContext = isTitleConfigMode || isTitleScreenVisible();
-    configMenu.classList.add('hidden');
+    liveConfigMenu.classList.add('hidden');
+    if (typeof window.shelveLazyElement === 'function') {
+        window.shelveLazyElement('config-menu');
+    }
     setConfigMenuContext(false);
     isInputBlocked = false;
     refreshTopBarButtonDisabledState();
@@ -143,16 +291,17 @@ function closeConfigMenu() {
 }
 
 function renderHistoryEntries() {
-    if (!historyList) return;
+    const liveHistoryList = document.getElementById('history-list') || historyList;
+    if (!liveHistoryList) return;
 
-    historyList.innerHTML = '';
+    liveHistoryList.innerHTML = '';
     const entries = (typeof window.getDialogueHistory === 'function') ? window.getDialogueHistory() : [];
 
     if (!entries.length) {
         const empty = document.createElement('div');
         empty.className = 'history-empty';
         empty.textContent = window.t('ui.noHistory', 'No dialogue history yet.');
-        historyList.appendChild(empty);
+        liveHistoryList.appendChild(empty);
         return;
     }
 
@@ -170,12 +319,16 @@ function renderHistoryEntries() {
 
         wrapper.appendChild(nameEl);
         wrapper.appendChild(textEl);
-        historyList.appendChild(wrapper);
+        liveHistoryList.appendChild(wrapper);
     });
 }
 
 function openHistoryMenu(fromConfig = false) {
-    if (!historyMenu) return;
+    ensureConfigHistoryMenuMounted('history-menu', 'history-menu-template');
+
+    const liveHistoryMenu = document.getElementById('history-menu') || historyMenu;
+    const liveConfigMenu = document.getElementById('config-menu') || configMenu;
+    if (!liveHistoryMenu) return;
 
     if (typeof window.clearAutoPlayTimer === 'function') {
         window.clearAutoPlayTimer();
@@ -183,24 +336,29 @@ function openHistoryMenu(fromConfig = false) {
 
     returnToConfigAfterHistory = fromConfig;
 
-    if (fromConfig && configMenu) {
-        configMenu.classList.add('hidden');
+    if (fromConfig && liveConfigMenu) {
+        liveConfigMenu.classList.add('hidden');
     }
 
     renderHistoryEntries();
-    historyMenu.classList.remove('hidden');
+    liveHistoryMenu.classList.remove('hidden');
     isInputBlocked = true;
     refreshTopBarButtonDisabledState();
 }
 
 function closeHistoryMenu(restoreConfig = true) {
-    if (!historyMenu) return;
+    const liveHistoryMenu = document.getElementById('history-menu') || historyMenu;
+    const liveConfigMenu = document.getElementById('config-menu') || configMenu;
+    if (!liveHistoryMenu) return;
 
-    historyMenu.classList.add('hidden');
+    liveHistoryMenu.classList.add('hidden');
+    if (typeof window.shelveLazyElement === 'function') {
+        window.shelveLazyElement('history-menu');
+    }
 
-    if (restoreConfig && returnToConfigAfterHistory && configMenu) {
+    if (restoreConfig && returnToConfigAfterHistory && liveConfigMenu) {
         returnToConfigAfterHistory = false;
-        configMenu.classList.remove('hidden');
+        liveConfigMenu.classList.remove('hidden');
         isInputBlocked = true;
         refreshTopBarButtonDisabledState();
         return;
@@ -221,12 +379,14 @@ function closeHistoryMenu(restoreConfig = true) {
 function syncConfigMenuControls() {
     updateAutoplayIndicator();
 
-    if (configLanguageSelect && typeof window.getGameLanguage === 'function') {
-        configLanguageSelect.value = window.getGameLanguage();
+    const liveLanguageSelect = document.getElementById('config-language-select') || configLanguageSelect;
+    if (liveLanguageSelect && typeof window.getGameLanguage === 'function') {
+        liveLanguageSelect.value = window.getGameLanguage();
     }
 
-    if (configAutoSpeedRadios && configAutoSpeedRadios.length > 0) {
-        configAutoSpeedRadios.forEach((radio) => {
+    const liveAutoSpeedRadios = document.querySelectorAll('input[name="auto-speed"]');
+    if (liveAutoSpeedRadios && liveAutoSpeedRadios.length > 0) {
+        liveAutoSpeedRadios.forEach((radio) => {
             radio.checked = radio.value === autoPlaySpeedPreset;
         });
     }
@@ -238,13 +398,28 @@ function isTitleScreenVisible() {
 }
 
 function setConfigMenuContext(fromTitle) {
-    if (!configMenu) return;
+    const liveConfigMenu = document.getElementById('config-menu') || configMenu;
+    if (!liveConfigMenu) return;
+
     isTitleConfigMode = !!fromTitle;
-    configMenu.classList.toggle('title-config-mode', isTitleConfigMode);
+    liveConfigMenu.classList.toggle('title-config-mode', isTitleConfigMode);
+
+    const liveLanguageSelect = document.getElementById('config-language-select') || configLanguageSelect;
+    const liveLanguageRow = liveLanguageSelect ? liveLanguageSelect.closest('.config-row') : null;
+    if (liveLanguageRow) {
+        liveLanguageRow.classList.toggle('hidden', !isTitleConfigMode);
+    }
+    if (liveLanguageSelect) {
+        liveLanguageSelect.disabled = !isTitleConfigMode;
+        liveLanguageSelect.setAttribute('aria-hidden', (!isTitleConfigMode).toString());
+    }
 }
 
 function openConfigMenu(fromTitle = null) {
-    if (!configMenu) return;
+    ensureConfigHistoryMenuMounted('config-menu', 'config-menu-template');
+
+    const liveConfigMenu = document.getElementById('config-menu') || configMenu;
+    if (!liveConfigMenu) return;
 
     if (typeof window.clearAutoPlayTimer === 'function') {
         window.clearAutoPlayTimer();
@@ -258,7 +433,7 @@ function openConfigMenu(fromTitle = null) {
     }
 
     syncConfigMenuControls();
-    configMenu.classList.remove('hidden');
+    liveConfigMenu.classList.remove('hidden');
     isInputBlocked = true;
     refreshTopBarButtonDisabledState();
 }
@@ -273,24 +448,7 @@ if (configBtn) {
     });
 }
 
-if (configCloseBtn) {
-    configCloseBtn.addEventListener('click', () => {
-        closeConfigMenu();
-    });
-}
-
-if (configHistoryBtn) {
-    configHistoryBtn.addEventListener('click', () => {
-        if (isTitleConfigMode) return;
-        openHistoryMenu(true);
-    });
-}
-
-if (historyCloseBtn) {
-    historyCloseBtn.addEventListener('click', () => {
-        closeHistoryMenu();
-    });
-}
+bindConfigHistoryEvents();
 
 document.addEventListener('historyUpdated', () => {
     if (historyMenu && !historyMenu.classList.contains('hidden')) {
@@ -300,6 +458,7 @@ document.addEventListener('historyUpdated', () => {
 
 document.addEventListener('uiTextUpdated', () => {
     updateAutoplayIndicator();
+    syncConfigMenuControls();
     if (historyMenu && !historyMenu.classList.contains('hidden')) {
         renderHistoryEntries();
     }
@@ -312,54 +471,6 @@ if (autoplayIndicator) {
     });
 }
 
-if (configLanguageSelect) {
-    configLanguageSelect.addEventListener('change', async () => {
-        const selectedLanguage = configLanguageSelect.value;
-
-        closeHistoryMenu(false);
-        closeConfigMenu();
-
-        if (typeof window.setGameLanguage === 'function') {
-            await window.setGameLanguage(selectedLanguage);
-        }
-
-        if (typeof window.savePersistedSettings === 'function') {
-            window.savePersistedSettings({ language: selectedLanguage });
-        }
-    });
-}
-
-if (configAutoSpeedRadios && configAutoSpeedRadios.length > 0) {
-    configAutoSpeedRadios.forEach((radio) => {
-        radio.addEventListener('change', () => {
-            if (!radio.checked) return;
-            if (typeof window.setAutoPlaySpeedPreset === 'function') {
-                window.setAutoPlaySpeedPreset(radio.value);
-            }
-
-            if (typeof window.savePersistedSettings === 'function') {
-                window.savePersistedSettings({ autoPlaySpeedPreset: radio.value });
-            }
-
-            if (typeof window.clearAutoPlayTimer === 'function') {
-                window.clearAutoPlayTimer();
-            }
-
-            if (isAutoPlayEnabled && !isTyping && isScenePlaying && !isInputBlocked) {
-                if (typeof window.scheduleAutoPlayAdvance === 'function') {
-                    window.scheduleAutoPlayAdvance();
-                }
-            }
-        });
-    });
-}
-
-if (document.getElementById("config-save-btn")) {
-    document.getElementById("config-save-btn").addEventListener("click", () => { window.saveGame(1); });
-}
-if (document.getElementById("config-load-btn")) {
-    document.getElementById("config-load-btn").addEventListener("click", () => { window.loadGame(1); });
-}
 
 if (typeof window.applyPersistedSettings === 'function') {
     window.applyPersistedSettings();
@@ -375,30 +486,3 @@ window.openHistoryMenu = openHistoryMenu;
 window.closeHistoryMenu = closeHistoryMenu;
 window.refreshTopBarButtonDisabledState = refreshTopBarButtonDisabledState;
 
-// Full screen button logic
-if (typeof configFullscreenBtn !== 'undefined' && configFullscreenBtn) {
-    configFullscreenBtn.addEventListener('click', () => {
-        const elem = document.documentElement;
-        if (!document.fullscreenElement) {
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { /* Firefox */
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { /* IE/Edge */
-                elem.msRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-    });
-}

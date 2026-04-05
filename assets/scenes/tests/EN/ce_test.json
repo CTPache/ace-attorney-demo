@@ -287,19 +287,19 @@
             "failSequence": "CE_Fail",
             "statements": {
                 "0": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtView:witness}{blip:1,true}{courtSprite:witness[\"Normal\"]}The defendant was found at the scene with a smoking gun, pal!",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}The defendant was found at the scene with a smoking gun, pal!",
                     "press": "Press_Statement_1"
                 },
                 "1": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtView:witness}{blip:1,true}{courtSprite:witness[\"Confident\"]}I saw him standin' there with my own eyes!",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Confident\"]}{courtView:witness}{blip:1,true}I saw him standin' there with my own eyes!",
                     "press": "Press_Statement_2"
                 },
                 "1a": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtView:witness}{blip:1,true}{courtSprite:witness[\"Normal\"]}I even saw the defendant's red tie with my own eyes!",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}I even saw the defendant's red tie with my own eyes!",
                     "press": "Press_Red_Tie_Detail"
                 },
                 "2": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtView:witness}{blip:1,true}{courtSprite:witness[\"Confident\"]}And he was definitely smoking that expensive cigar we found!",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Confident\"]}{courtView:witness}{blip:1,true}And he was definitely smoking that expensive cigar we found!",
                     "press": "Press_Statement_3",
                     "present": {
                         "Cigar": "CE_Victory"
@@ -342,11 +342,11 @@
     "gameScript": {
         "Intro": [
             {
-                "text": "{setGameOver:CE_GameOver}{setSkipEnabled:false}{courtView:overview}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{center}{blip:3}Courtroom{nl}Cross Examination Test{p:500}{hideTextbox}{playSound:galleryReaction}{p:2000}{playAnimation:Gavel}{skip:0}"
+                "text": "{setGameOver:CE_GameOver}{setSkipEnabled:false}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{center}{blip:3}Courtroom{nl}Cross Examination Test{p:500}{hideTextbox}{playSound:galleryReaction}{p:2000}{playAnimation:Gavel}{skip:0}"
             },
             {
                 "name": "Judge",
-                "text": "{showTextbox}{setSkipEnabled:true}{startBGM:courtroom,true}{addEvidence:AttorneyBadge,false}{addEvidence:Cigar,false}{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}The court is now in session for the trial of the defendant."
+                "text": "{showTextbox}{setSkipEnabled:true}{startBGM:courtroom,true}{addEvidence:AttorneyBadge,false}{addEvidence:Cigar,false}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}The court is now in session for the trial of the defendant."
             },
             {
                 "name": "Judge",
@@ -354,11 +354,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Normal\"]}{blip:1}The defense is ready, Your Honor."
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:1}The defense is ready, Your Honor."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}{blip:1}The prosecution is ready as well."
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}The prosecution is ready as well."
             },
             {
                 "name": "Edgeworth",
@@ -366,11 +366,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtPan:defense,500}{courtSprite:defense[\"Sweating\"]}{blip:0,false}{color:lightblue}(Edgeworth already sounds certain of the verdict...)"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtPan:defense,500}{blip:0,false}{color:lightblue}(Edgeworth already sounds certain of the verdict...)"
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Determined\"]}{blip:2,true}Then all we need is one contradiction, Nick. Keep listening."
+                "text": "{courtSprite:cocounsel[\"Determined\"]}{courtView:cocounsel}{blip:2,true}Then all we need is one contradiction, Nick. Keep listening."
             },
             {
                 "name": "Phoenix",
@@ -378,15 +378,15 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}The prosecution may call its first witness."
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}The prosecution may call its first witness."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}{blip:1}The prosecution calls Detective Dick Gumshoe to the stand."
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}The prosecution calls Detective Dick Gumshoe to the stand."
             },
             {
                 "name": "Gumshoe",
-                "text": "{courtPan:witness,600}{courtSprite:witness[\"Confident\"]}{blip:1}Detective Dick Gumshoe, reporting for duty, sir!"
+                "text": "{courtSprite:witness[\"Confident\"]}{courtPan:witness,600}{blip:1}Detective Dick Gumshoe, reporting for duty, sir!"
             },
             {
                 "name": "Gumshoe",
@@ -394,7 +394,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Nod\"]}Very well.{p:300}{courtSprite:judge[\"Normal\"]} Give the court your testimony."
+                "text": "{courtSprite:judge[\"Nod\"]}{courtView:judge}Very well.{p:300}{courtSprite:judge[\"Normal\"]} Give the court your testimony."
             },
             {
                 "text": "{jump:Gumshoe_Testimony}"
@@ -421,7 +421,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{stopBGM}{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(The timeline is shaky, the details are too convenient... and that cigar is bothering me.)"
+                "text": "{stopBGM}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(The timeline is shaky, the details are too convenient... and that cigar is bothering me.)"
             },
             {
                 "name": "Phoenix",
@@ -429,7 +429,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}You may proceed, Mr. Wright."
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}You may proceed, Mr. Wright."
             },
             {
                 "text": "{courtView:witness}{blip:3}{center}{color:red}{playAnimation:CrossExamination}--The Night in Question--{color:white}"
@@ -445,11 +445,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtPan:defense}{courtSprite:defense[\"Pointing\"]}{blip:1,true}A smoking gun? Are you absolutely sure about that?"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtPan:defense}{blip:1,true}A smoking gun? Are you absolutely sure about that?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{courtView:witness}{courtSprite:witness[\"Confident\"]}Well, it was... you know, smoky!{p:200} I could smell the gunpowder all the way from the door!"
+                "text": "{courtSprite:witness[\"Confident\"]}{courtView:witness}Well, it was... you know, smoky!{p:200} I could smell the gunpowder all the way from the door!"
             },
             {
                 "text": "{returnToCE:1}{sectionEnd}"
@@ -462,11 +462,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtView:defense}{courtSprite:defense[\"Pointing\"]}{blip:1,true}How clear was your view of the defendant?"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1,true}How clear was your view of the defendant?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{courtView:witness}{courtSprite:witness[\"Confident\"]}Crystal clear, pal! I've got 20/20 vision when it comes to crime scenes!"
+                "text": "{courtSprite:witness[\"Confident\"]}{courtView:witness}Crystal clear, pal! I've got 20/20 vision when it comes to crime scenes!"
             },
             {
                 "name": "Gumshoe",
@@ -474,7 +474,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(Red tie? That's a very specific detail...){p:200}{replaceCEStatement:Gumshoe_Testimony,1,1a}"
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Red tie? That's a very specific detail...){p:200}{replaceCEStatement:Gumshoe_Testimony,1,1a}"
             },
             {
                 "text": "{returnToCE:1a}{sectionEnd}"
@@ -487,11 +487,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtPan:defense}{courtSprite:defense[\"Pointing\"]}{blip:1,true}You're positive he was wearing a red tie?"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtPan:defense}{blip:1,true}You're positive he was wearing a red tie?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{courtView:witness}{courtSprite:witness[\"Normal\"]}That's right! Bright red! I'd recognize that fashion disaster anywhere!"
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}That's right! Bright red! I'd recognize that fashion disaster anywhere!"
             },
             {
                 "text": "{returnToCE:2}{sectionEnd}"
@@ -504,11 +504,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtPan:defense}{courtSprite:defense[\"Normal\"]}{blip:1,true}You're claiming with absolute certainty he was smoking a cigar?"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Normal\"]}{courtPan:defense}{blip:1,true}You're claiming with absolute certainty he was smoking a cigar?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{courtView:witness}{courtSprite:witness[\"Confident\"]}That's right, pal! The smell was everywhere!{p:200} I could practically taste it in the air!"
+                "text": "{courtSprite:witness[\"Confident\"]}{courtView:witness}That's right, pal! The smell was everywhere!{p:200} I could practically taste it in the air!"
             },
             {
                 "text": "{returnToCE:hints}{sectionEnd}"
@@ -517,7 +517,7 @@
         "CE_Hints": [
             {
                 "name": "Maya",
-                "text": "{hideLifeBar}{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking\"]}{blip:2,true}That cigar statement is still bugging me, Nick."
+                "text": "{hideLifeBar}{courtSprite:cocounsel[\"Thinking\"]}{courtView:cocounsel}{blip:2,true}That cigar statement is still bugging me, Nick."
             },
             {
                 "name": "Phoenix",
@@ -534,11 +534,11 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{showTextbox}{showLifeBar:1}{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}{blip:1,true}Mr. Wright, flailing at random evidence will not save your case."
+                "text": "{showTextbox}{showLifeBar:1}{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}{blip:1,true}Mr. Wright, flailing at random evidence will not save your case."
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}I must agree. Please be more careful, or I shall have no choice but to penalize you.{p:400}{playSound:damage}{flash}{lifeMod:-1}"
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}I must agree. Please be more careful, or I shall have no choice but to penalize you.{p:400}{playSound:damage}{flash}{lifeMod:-1}"
             },
             {
                 "text": "{returnToCE}{sectionEnd}"
@@ -547,7 +547,7 @@
         "CE_GameOver": [
             {
                 "name": "Judge",
-                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}{blip:1,true}The defense has exhausted all evidence and failed to find a single contradiction. This case is closed.{p:400}{playSound:damage}{flash}"
+                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1,true}The defense has exhausted all evidence and failed to find a single contradiction. This case is closed.{p:400}{playSound:damage}{flash}"
             },
             {
                 "text": "{endGame}{sectionEnd}"
@@ -563,7 +563,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"HoldingDocument\"]}{showTextbox}{blip:1,true}Detective, this cigar destroys the certainty of your entire testimony."
+                "text": "{courtSprite:defense[\"HoldingDocument\"]}{courtView:defense}{showTextbox}{blip:1,true}Detective, this cigar destroys the certainty of your entire testimony."
             },
             {
                 "name": "Phoenix",
@@ -571,31 +571,31 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Dismayed\"]}What exactly are you implying, Wright?"
+                "text": "{courtSprite:prosecution[\"Dismayed\"]}{courtView:prosecution}What exactly are you implying, Wright?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{courtView:witness}{courtSprite:witness[\"Sad\"]}W-What?!{p:400} But... but I was so sure it was SMOKIN'!{p:300} How could I have been wrong?!"
+                "text": "{courtSprite:witness[\"Sad\"]}{courtView:witness}W-What?!{p:400} But... but I was so sure it was SMOKIN'!{p:300} How could I have been wrong?!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Confident\"]}It's simple. If the cigar wasn't lit, then there was no smoke and no smell to fill the room the way the witness described!{endCE}"
+                "text": "{courtSprite:defense[\"Confident\"]}{courtView:defense}It's simple. If the cigar wasn't lit, then there was no smoke and no smell to fill the room the way the witness described!{endCE}"
             },
             {
                 "name": "Judge",
-                "text": "{startBGM:courtroom,true}{courtView:judge}{courtSprite:judge[\"Surprised\"]}An excellent observation, Mr. Wright.{p:250}{courtSprite:judge[\"Normal\"]} That contradiction strikes at the heart of the witness's account."
+                "text": "{startBGM:courtroom,true}{courtSprite:judge[\"Surprised\"]}{courtView:judge}An excellent observation, Mr. Wright.{p:250}{courtSprite:judge[\"Normal\"]} That contradiction strikes at the heart of the witness's account."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}...Hmph. It would seem the detective reached his conclusion too quickly.{checkpoint:Success_End}"
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}...Hmph. It would seem the detective reached his conclusion too quickly.{checkpoint:Success_End}"
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Normal\"]}{blip:2,true}Nice one, Nick! That was the crack we needed!"
+                "text": "{courtSprite:cocounsel[\"Normal\"]}{courtView:cocounsel}{blip:2,true}Nice one, Nick! That was the crack we needed!"
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Stern\"]}The court will demand a revised testimony. For now, the defense has established a clear contradiction."
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}The court will demand a revised testimony. For now, the defense has established a clear contradiction."
             },
             {
                 "text": "{center}{blip:3}Test complete."

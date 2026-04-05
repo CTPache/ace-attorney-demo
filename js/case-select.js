@@ -4,13 +4,69 @@ console.log('Case Select logic loaded');
 let casesData = null;
 let selectedCaseKey = null;
 
+function ensureCaseSelectDOM() {
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('case-select-top', 'case-select-top-template', '#game-container');
+        window.ensureLazyElementMounted('case-select-bottom', 'case-select-bottom-template', '#bottom-screen');
+    }
+
+    bindCaseSelectEvents();
+}
+
+function bindCaseSelectEvents() {
+    const coverEl = document.getElementById('case-select-cover');
+    if (coverEl && coverEl.dataset.boundCaseSelect !== 'true') {
+        coverEl.dataset.boundCaseSelect = 'true';
+        coverEl.onclick = (e) => {
+            e.stopPropagation();
+            const caseListView = document.getElementById('case-list-view');
+            if (caseKeys.length > 0 && caseListView && !caseListView.classList.contains('hidden')) {
+                selectedCaseKey = caseKeys[currentCaseIndex];
+                renderChapterList(selectedCaseKey);
+            }
+        };
+    }
+
+    const backToTitleBtn = document.getElementById('btn-case-select-back');
+    if (backToTitleBtn && backToTitleBtn.dataset.boundCaseSelect !== 'true') {
+        backToTitleBtn.dataset.boundCaseSelect = 'true';
+        backToTitleBtn.onclick = (e) => {
+            e.stopPropagation();
+            window.hideCaseSelect();
+            if (typeof window.initTitleScreen === 'function') {
+                window.initTitleScreen();
+            }
+        };
+    }
+
+    const backToCasesBtn = document.getElementById('btn-chapter-back');
+    if (backToCasesBtn && backToCasesBtn.dataset.boundCaseSelect !== 'true') {
+        backToCasesBtn.dataset.boundCaseSelect = 'true';
+        backToCasesBtn.onclick = (e) => {
+            e.stopPropagation();
+            const chapterListView = document.getElementById('chapter-list-view');
+            const caseListView = document.getElementById('case-list-view');
+            if (chapterListView) chapterListView.classList.add('hidden');
+            if (caseListView) caseListView.classList.remove('hidden');
+
+            if (typeof updateCarouselView === 'function') {
+                updateCarouselView();
+            }
+        };
+    }
+}
+
 window.initCaseSelect = async function() {
+    ensureCaseSelectDOM();
+
     // Hide title screen
     window.hideTitleScreen();
 
     // Show case select screens
-    document.getElementById('case-select-top').classList.remove('hidden');
-    document.getElementById('case-select-bottom').classList.remove('hidden');
+    const caseSelectTop = document.getElementById('case-select-top');
+    const caseSelectBottom = document.getElementById('case-select-bottom');
+    if (caseSelectTop) caseSelectTop.classList.remove('hidden');
+    if (caseSelectBottom) caseSelectBottom.classList.remove('hidden');
 
     // Reset views
     document.getElementById('case-list-view').classList.remove('hidden');
@@ -46,6 +102,10 @@ window.hideCaseSelect = function() {
     const csBottom = document.getElementById('case-select-bottom');
     if (csTop) csTop.classList.add('hidden');
     if (csBottom) csBottom.classList.add('hidden');
+
+    if (typeof window.unmountLazyElements === 'function') {
+        window.unmountLazyElements(['case-select-top', 'case-select-bottom']);
+    }
 };
 
 let currentCaseIndex = 0;
@@ -205,42 +265,5 @@ async function loadSelectedChapter(caseKey, chapterKey) {
     await window.loadGameData(chapterInfo.scene);
 }
 
-// Bind back buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const coverEl = document.getElementById('case-select-cover');
-    if (coverEl) {
-        coverEl.onclick = (e) => {
-            e.stopPropagation();
-            if (caseKeys.length > 0 && !document.getElementById('case-list-view').classList.contains('hidden')) {
-                selectedCaseKey = caseKeys[currentCaseIndex];
-                renderChapterList(selectedCaseKey);
-            }
-        };
-    }
-
-    const backToTitleBtn = document.getElementById('btn-case-select-back');
-    if (backToTitleBtn) {
-        backToTitleBtn.onclick = (e) => {
-            e.stopPropagation();
-            window.hideCaseSelect();
-            if (typeof window.initTitleScreen === 'function') {
-                window.initTitleScreen();
-            }
-        };
-    }
-
-    const backToCasesBtn = document.getElementById('btn-chapter-back');
-    if (backToCasesBtn) {
-        backToCasesBtn.onclick = (e) => {
-            e.stopPropagation();
-            document.getElementById('chapter-list-view').classList.add('hidden');
-            document.getElementById('case-list-view').classList.remove('hidden');
-            
-            // Restore carousel cover view
-            if (typeof updateCarouselView === 'function') {
-                updateCarouselView();
-            }
-        };
-    }
-});
+// Events are bound when the lazy-mounted case select DOM is created.
 

@@ -5,13 +5,25 @@ let galleryData = null;
 let currentGalleryTab = "Artwork";
 let currentGalleryImages = [];
 let currentGalleryIndex = 0;
-const galleryMenu = document.getElementById('gallery-menu');
-const galleryGrid = document.getElementById('gallery-grid');
-const galleryViewer = document.getElementById('gallery-viewer');
-const galleryViewerImg = document.getElementById('gallery-viewer-img');
+
+function ensureGalleryDOM() {
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('gallery-menu', 'gallery-menu-template', '#bottom-screen');
+        window.ensureLazyElementMounted('gallery-viewer', 'gallery-viewer-template', '#game-container');
+    }
+
+    return {
+        galleryMenu: document.getElementById('gallery-menu'),
+        galleryGrid: document.getElementById('gallery-grid'),
+        galleryViewer: document.getElementById('gallery-viewer'),
+        galleryViewerImg: document.getElementById('gallery-viewer-img')
+    };
+}
 
 window.initGallery = async function () {
     console.log("Initializing Gallery Menu...");
+
+    const { galleryMenu } = ensureGalleryDOM();
 
     if (!galleryData) {
         try {
@@ -36,12 +48,17 @@ window.initGallery = async function () {
 };
 
 window.hideGallery = function () {
+    const galleryMenu = document.getElementById('gallery-menu');
+
     if (galleryMenu) {
         galleryMenu.classList.add('hidden');
     }
     closeGalleryViewer();
     if (typeof window.hideActionMenus === 'function') {
         window.hideActionMenus();
+    }
+    if (typeof window.unmountLazyElements === 'function') {
+        window.unmountLazyElements(['gallery-menu', 'gallery-viewer']);
     }
     window.initTitleScreen(); // Restore title buttons
 };
@@ -58,6 +75,7 @@ function showGalleryTab(category) {
         }
     });
 
+    const { galleryGrid } = ensureGalleryDOM();
     if (!galleryGrid || !galleryData) return;
 
     galleryGrid.innerHTML = ''; // Clear existing images
@@ -87,6 +105,8 @@ function showGalleryTab(category) {
 }
 
 function openGalleryViewer(imagePath, index = 0) {
+    const { galleryViewer, galleryViewerImg } = ensureGalleryDOM();
+
     if (galleryViewer && galleryViewerImg) {
         galleryViewerImg.src = imagePath;
         currentGalleryIndex = index;
@@ -96,6 +116,8 @@ function openGalleryViewer(imagePath, index = 0) {
 }
 
 function closeGalleryViewer(e) {
+    const galleryViewer = document.getElementById('gallery-viewer');
+    const galleryViewerImg = document.getElementById('gallery-viewer-img');
     if (e && e.target.id !== 'gallery-viewer' && e.target.id !== 'gallery-viewer-close' && e.target.tagName !== 'IMG') {
         // Prevent background clicks on other buttons from closing the viewer wildly, 
         // but we allow clicking the black background or the image to close.
@@ -127,6 +149,7 @@ window.nextGalleryImage = function (e) {
 };
 
 function handleGalleryKeydown(e) {
+    const galleryViewer = document.getElementById('gallery-viewer');
     if (!galleryViewer || galleryViewer.classList.contains('hidden')) {
         return;
     }
@@ -150,6 +173,7 @@ document.addEventListener('keydown', handleGalleryKeydown);
 let galleryNavTimer = null;
 
 function resetGalleryNavTimer() {
+    const galleryViewer = document.getElementById('gallery-viewer');
     if (!galleryViewer || galleryViewer.classList.contains('hidden')) return;
 
     galleryViewer.classList.add('show-nav');
@@ -175,6 +199,7 @@ function resetGalleryNavTimer() {
 // Immediately hide arrows when mouse leaves the viewer area
 if (gameContainer) {
     gameContainer.addEventListener('mouseleave', () => {
+        const galleryViewer = document.getElementById('gallery-viewer');
         if (galleryViewer && !galleryViewer.classList.contains('hidden')) {
             galleryViewer.classList.remove('show-nav');
             if (galleryNavTimer) {

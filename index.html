@@ -50,21 +50,25 @@
                 data-i18n-aria-label="ui.autoplayToggle">Auto</button>
             <button id="skip-video-btn" class="hidden" type="button" aria-label="Skip Video" title="Skip Video (V)"
                 data-i18n="ui.skip" data-i18n-title="ui.skipVideo" data-i18n-aria-label="ui.skipVideoAria">Skip</button>
-            <div id="life-bar-container" class="hidden">
-                <div id="life-bar-body">
-                    <div id="life-bar-fill"></div>
-                    <div id="life-bar-penalty"></div>
+            <template id="life-bar-template">
+                <div id="life-bar-container" class="hidden">
+                    <div id="life-bar-body">
+                        <div id="life-bar-fill"></div>
+                        <div id="life-bar-penalty"></div>
+                    </div>
                 </div>
-            </div>
-            <div id="evidence-popup" class="hidden">
-                <div id="popup-icon-container">
-                    <img id="popup-icon" src="/" alt="Evidence Icon">
+            </template>
+            <template id="evidence-popup-template">
+                <div id="evidence-popup" class="hidden">
+                    <div id="popup-icon-container">
+                        <img id="popup-icon" src="/" alt="Evidence Icon">
+                    </div>
+                    <div id="popup-info">
+                        <div id="popup-name"></div>
+                        <div id="popup-desc"></div>
+                    </div>
                 </div>
-                <div id="popup-info">
-                    <div id="popup-name"></div>
-                    <div id="popup-desc"></div>
-                </div>
-            </div>
+            </template>
 
             <div id="textbox-container">
                 <div id="textbox-content-wrapper">
@@ -82,134 +86,156 @@
                 </div>
             </div>
 
-            <div id="case-select-top" class="menu-overlay hidden">
-                <img id="case-select-cover" src="/assets/img/sprites/TitleScreen_Logo_EN.png" alt="Case Cover">
-                <div id="case-select-top-ui">
-                    <h2 id="case-select-title">Case Name</h2>
+            <template id="case-select-top-template">
+                <div id="case-select-top" class="menu-overlay hidden">
+                    <img id="case-select-cover" src="/assets/img/sprites/TitleScreen_Logo_EN.png" alt="Case Cover">
+                    <div id="case-select-top-ui">
+                        <h2 id="case-select-title">Case Name</h2>
+                    </div>
                 </div>
-            </div>
-            <div id="gallery-viewer" class="hidden" onclick="closeGalleryViewer(event)">
-                <button id="gallery-viewer-prev" class="gallery-nav-btn"
-                    onclick="window.prevGalleryImage(event)">◀</button>
-                <img id="gallery-viewer-img" src="/" alt="Gallery Fullscreen">
-                <button id="gallery-viewer-next" class="gallery-nav-btn"
-                    onclick="window.nextGalleryImage(event)">▶</button>
-                <button id="gallery-viewer-close" onclick="closeGalleryViewer(event)"
-                    data-i18n="ui.close">Close</button>
-            </div>
+            </template>
+            <template id="gallery-viewer-template">
+                <div id="gallery-viewer" class="hidden" onclick="closeGalleryViewer(event)">
+                    <button id="gallery-viewer-prev" class="gallery-nav-btn"
+                        onclick="window.prevGalleryImage(event)">◀</button>
+                    <img id="gallery-viewer-img" src="/" alt="Gallery Fullscreen">
+                    <button id="gallery-viewer-next" class="gallery-nav-btn"
+                        onclick="window.nextGalleryImage(event)">▶</button>
+                    <button id="gallery-viewer-close" onclick="closeGalleryViewer(event)"
+                        data-i18n="ui.close">Close</button>
+                </div>
+            </template>
         </div>
         <div id="bottom-screen">
             <div id="bottom-top-bar">
-                <div id="ce-controls" class="hidden">
-                    <button id="ce-press-btn" class="ce-floating-btn" data-i18n="ui.press">Press</button>
-                    <button id="ce-present-btn" class="ce-floating-btn" data-i18n="ui.present">Present</button>
-                </div>
+                <template id="ce-controls-template">
+                    <div id="ce-controls" class="hidden">
+                        <button id="ce-press-btn" class="ce-floating-btn" data-i18n="ui.press">Press</button>
+                        <button id="ce-present-btn" class="ce-floating-btn" data-i18n="ui.present">Present</button>
+                    </div>
+                </template>
                 <button id="court-record-btn" data-i18n="ui.courtRecord" data-i18n-title="ui.courtRecordTitle"
                     title="Court Record (E)">Court Record</button>
             </div>
             <div id="bottom-main-window">
-                <div id="ce-arrow-container" class="hidden">
-                    <button id="ce-prev-arrow" class="ce-arrow">◀</button>
-                    <button id="ce-next-arrow" class="ce-arrow">▶</button>
-                </div>
+                <template id="ce-arrow-container-template">
+                    <div id="ce-arrow-container" class="hidden">
+                        <button id="ce-prev-arrow" class="ce-arrow">◀</button>
+                        <button id="ce-next-arrow" class="ce-arrow">▶</button>
+                    </div>
+                </template>
                 <button id="advance-btn">▶</button>
                 <button id="config-btn" class="small-config-btn" data-i18n="ui.config" data-i18n-title="ui.configTitle"
                     title="Config (G)">Config</button>
-                <div id="config-menu" class="hidden">
-                    <div class="config-card">
-                        <h3 data-i18n="ui.configuration">Configuration</h3>
-                        <div class="config-row save-load-row"
-                            style="display: flex; gap: 10cqh; margin-top: 2cqh; margin-bottom: 2cqh;">
-                            <button id="config-save-btn" data-i18n="ui.save"
-                                style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Save</button>
-                            <button id="config-load-btn" data-i18n="ui.load"
-                                style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Load</button>
+                <template id="config-menu-template">
+                    <div id="config-menu" class="hidden">
+                        <div class="config-card">
+                            <h3 data-i18n="ui.configuration">Configuration</h3>
+                            <div class="config-row save-load-row"
+                                style="display: flex; gap: 10cqh; margin-top: 2cqh; margin-bottom: 2cqh;">
+                                <button id="config-save-btn" data-i18n="ui.save"
+                                    style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Save</button>
+                                <button id="config-load-btn" data-i18n="ui.load"
+                                    style="flex: 1; padding: 2cqh; font-weight: bold; font-family: inherit; font-size: inherit;">Load</button>
+                            </div>
+                            <div class="config-row config-speed-row">
+                                <span data-i18n="ui.autoSpeed">Auto Speed</span>
+                                <div class="config-speed-options">
+                                    <label><input type="radio" name="auto-speed" value="slow"> <span
+                                            data-i18n="ui.slow">Slow</span></label>
+                                    <label><input type="radio" name="auto-speed" value="normal" checked> <span
+                                            data-i18n="ui.normal">Normal</span></label>
+                                    <label><input type="radio" name="auto-speed" value="fast"> <span
+                                            data-i18n="ui.fast">Fast</span></label>
+                                </div>
+                            </div>
+                            <label class="config-row">
+                                <span data-i18n="ui.language">Language</span>
+                                <select id="config-language-select">
+                                    <option value="EN">English</option>
+                                    <option value="ES">Español</option>
+                                    <option value="JP">日本語</option>
+                                </select>
+                            </label>
+                            <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
+                            <button id="config-fullscreen-btn" data-i18n="ui.fullscreen">Full screen</button>
+                            <button id="config-return-title-btn" data-i18n="ui.returnToTitle">Return to Title</button>
+                            <button id="config-close-btn" data-i18n="ui.close">Close</button>
                         </div>
-                        <div class="config-row config-speed-row">
-                            <span data-i18n="ui.autoSpeed">Auto Speed</span>
-                            <div class="config-speed-options">
-                                <label><input type="radio" name="auto-speed" value="slow"> <span
-                                        data-i18n="ui.slow">Slow</span></label>
-                                <label><input type="radio" name="auto-speed" value="normal" checked> <span
-                                        data-i18n="ui.normal">Normal</span></label>
-                                <label><input type="radio" name="auto-speed" value="fast"> <span
-                                        data-i18n="ui.fast">Fast</span></label>
+                    </div>
+                </template>
+                <template id="history-menu-template">
+                    <div id="history-menu" class="hidden">
+                        <div class="history-card">
+                            <h3 data-i18n="ui.history">History</h3>
+                            <div id="history-list"></div>
+                            <button id="history-close-btn" data-i18n="ui.close">Close</button>
+                        </div>
+                    </div>
+                </template>
+                <template id="investigation-menu-template">
+                    <div id="investigation-menu" class="hidden">
+                        <button id="btn-examine" class="inv-btn" data-i18n="ui.examine">Examine</button>
+                        <button id="btn-move" class="inv-btn" data-i18n="ui.move">Move</button>
+                        <button id="btn-talk" class="inv-btn" data-i18n="ui.talk">Talk</button>
+                        <button id="btn-present" class="inv-btn" data-i18n="ui.present">Present</button>
+                    </div>
+                </template>
+                <template id="move-menu-template">
+                    <div id="move-menu" class="hidden">
+                        <div id="move-preview-container">
+                            <img id="move-preview-image" src="/" alt="Location Preview">
+                        </div>
+                        <div id="move-list">
+                            <!-- Move buttons will be injected here -->
+                        </div>
+                        <button id="btn-move-back" class="back-btn" data-i18n="ui.back">Back</button>
+                    </div>
+                </template>
+                <template id="investigation-panel-template">
+                    <div id="investigation-panel" class="hidden">
+                        <img id="investigation-bg" src="/" alt="Investigation Background">
+                        <svg id="investigation-overlay" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+                        <div id="investigation-cursor-h" class="cursor-line"></div>
+                        <div id="investigation-cursor-v" class="cursor-line"></div>
+                        <div id="investigation-cursor-box">
+                            <div id="cursor-check">✓</div>
+                        </div>
+                        <button id="btn-investigation-back" class="back-btn" data-i18n="ui.back">Back</button>
+                    </div>
+                </template>
+                <template id="topic-menu-template">
+                    <div id="topic-menu" class="hidden">
+                        <button id="btn-topic-back" class="back-btn" data-i18n="ui.back">Back</button>
+                    </div>
+                </template>
+                <template id="evidence-container-template">
+                    <div id="evidence-container" class="hidden">
+                        <div id="cr-tabs">
+                            <div class="cr-tab active" data-i18n="ui.evidence">Evidence</div>
+                            <div class="cr-tab" data-i18n="ui.profiles">Profiles</div>
+                        </div>
+                        <div id="evidence-name-display"></div>
+                        <div id="evidence-grid"></div>
+                        <button id="btn-evidence-back" class="back-btn" data-i18n="ui.back">Back</button>
+                        <div id="evidence-details" class="hidden">
+                            <div id="evidence-details-top">
+                                <button id="evidence-prev-btn" class="detail-nav-btn">◀</button>
+                                <div id="evidence-icon-container">
+                                    <img id="evidence-icon-large" src="/" alt="Evidence Icon">
+                                </div>
+                                <div id="evidence-info-right">
+                                    <h3 id="evidence-title">dummy</h3>
+                                    <div id="evidence-data-box">dummy data</div>
+                                </div>
+                                <button id="evidence-next-btn" class="detail-nav-btn">▶</button>
+                            </div>
+                            <div id="evidence-description-box">
+                                <p id="evidence-description">dummy description</p>
                             </div>
                         </div>
-                        <label class="config-row">
-                            <span data-i18n="ui.language">Language</span>
-                            <select id="config-language-select">
-                                <option value="EN">English</option>
-                                <option value="ES">Español</option>
-                                <option value="JP">日本語</option>
-                            </select>
-                        </label>
-                        <button id="config-history-btn" data-i18n="ui.viewHistory">View History</button>
-                        <button id="config-fullscreen-btn" data-i18n="ui.fullscreen">Full screen</button>
-                        <button id="config-return-title-btn" data-i18n="ui.returnToTitle">Return to Title</button>
-                        <button id="config-close-btn" data-i18n="ui.close">Close</button>
                     </div>
-                </div>
-                <div id="history-menu" class="hidden">
-                    <div class="history-card">
-                        <h3 data-i18n="ui.history">History</h3>
-                        <div id="history-list"></div>
-                        <button id="history-close-btn" data-i18n="ui.close">Close</button>
-                    </div>
-                </div>
-                <div id="investigation-menu" class="hidden">
-                    <button id="btn-examine" class="inv-btn" data-i18n="ui.examine">Examine</button>
-                    <button id="btn-move" class="inv-btn" data-i18n="ui.move">Move</button>
-                    <button id="btn-talk" class="inv-btn" data-i18n="ui.talk">Talk</button>
-                    <button id="btn-present" class="inv-btn" data-i18n="ui.present">Present</button>
-                </div>
-                <div id="move-menu" class="hidden">
-                    <div id="move-preview-container">
-                        <img id="move-preview-image" src="/" alt="Location Preview">
-                    </div>
-                    <div id="move-list">
-                        <!-- Move buttons will be injected here -->
-                    </div>
-                    <button id="btn-move-back" class="back-btn" data-i18n="ui.back">Back</button>
-                </div>
-                <div id="investigation-panel" class="hidden">
-                    <img id="investigation-bg" src="/" alt="Investigation Background">
-                    <svg id="investigation-overlay" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
-                    <div id="investigation-cursor-h" class="cursor-line"></div>
-                    <div id="investigation-cursor-v" class="cursor-line"></div>
-                    <div id="investigation-cursor-box">
-                        <div id="cursor-check">✓</div>
-                    </div>
-                    <button id="btn-investigation-back" class="back-btn" data-i18n="ui.back">Back</button>
-                </div>
-                <div id="topic-menu" class="hidden">
-                    <button id="btn-topic-back" class="back-btn" data-i18n="ui.back">Back</button>
-                </div>
-                <div id="evidence-container" class="hidden">
-                    <div id="cr-tabs">
-                        <div class="cr-tab active" data-i18n="ui.evidence">Evidence</div>
-                        <div class="cr-tab" data-i18n="ui.profiles">Profiles</div>
-                    </div>
-                    <div id="evidence-name-display"></div>
-                    <div id="evidence-grid"></div>
-                    <button id="btn-evidence-back" class="back-btn" data-i18n="ui.back">Back</button>
-                    <div id="evidence-details" class="hidden">
-                        <div id="evidence-details-top">
-                            <button id="evidence-prev-btn" class="detail-nav-btn">◀</button>
-                            <div id="evidence-icon-container">
-                                <img id="evidence-icon-large" src="/" alt="Evidence Icon">
-                            </div>
-                            <div id="evidence-info-right">
-                                <h3 id="evidence-title">dummy</h3>
-                                <div id="evidence-data-box">dummy data</div>
-                            </div>
-                            <button id="evidence-next-btn" class="detail-nav-btn">▶</button>
-                        </div>
-                        <div id="evidence-description-box">
-                            <p id="evidence-description">dummy description</p>
-                        </div>
-                    </div>
-                </div>
+                </template>
             </div>
             <div id="title-screen-bottom" class="title-screen-layer">
                 <div class="title-bg-scroller"></div>
@@ -221,29 +247,33 @@
                 </div>
             </div>
 
-            <div id="case-select-bottom" class="menu-overlay hidden">
-                <div id="case-list-view">
-                    <button id="btn-case-select-back" class="cs-back-btn" data-i18n="ui.back">Back</button>
-                    <div id="cases-container" class="cs-scroll-container"></div>
-                </div>
-                <div id="chapter-list-view" class="hidden">
-                    <button id="btn-chapter-back" class="cs-back-btn" data-i18n="ui.backToCases">Back to Cases</button>
-                    <div id="chapters-container" class="cs-scroll-container"></div>
-                </div>
-            </div>
-            <div id="gallery-menu" class="hidden">
-                <div class="gallery-tabs">
-                    <div class="gallery-tab" data-category="Artwork" onclick="showGalleryTab('Artwork')"
-                        data-i18n="ui.artwork">Artwork</div>
-                    <div class="gallery-tab" data-category="CG" onclick="showGalleryTab('CG')" data-i18n="ui.cg">CG
+            <template id="case-select-bottom-template">
+                <div id="case-select-bottom" class="menu-overlay hidden">
+                    <div id="case-list-view">
+                        <button id="btn-case-select-back" class="cs-back-btn" data-i18n="ui.back">Back</button>
+                        <div id="cases-container" class="cs-scroll-container"></div>
                     </div>
-                    <div class="gallery-tab" data-category="Backgrounds" onclick="showGalleryTab('Backgrounds')"
-                        data-i18n="ui.backgrounds">Backgrounds</div>
+                    <div id="chapter-list-view" class="hidden">
+                        <button id="btn-chapter-back" class="cs-back-btn" data-i18n="ui.backToCases">Back to Cases</button>
+                        <div id="chapters-container" class="cs-scroll-container"></div>
+                    </div>
                 </div>
-                <div id="gallery-grid"></div>
-                <button id="btn-gallery-back" class="back-btn" onclick="window.hideGallery()"
-                    data-i18n="ui.back">Back</button>
-            </div>
+            </template>
+            <template id="gallery-menu-template">
+                <div id="gallery-menu" class="hidden">
+                    <div class="gallery-tabs">
+                        <div class="gallery-tab" data-category="Artwork" onclick="showGalleryTab('Artwork')"
+                            data-i18n="ui.artwork">Artwork</div>
+                        <div class="gallery-tab" data-category="CG" onclick="showGalleryTab('CG')" data-i18n="ui.cg">CG
+                        </div>
+                        <div class="gallery-tab" data-category="Backgrounds" onclick="showGalleryTab('Backgrounds')"
+                            data-i18n="ui.backgrounds">Backgrounds</div>
+                    </div>
+                    <div id="gallery-grid"></div>
+                    <button id="btn-gallery-back" class="back-btn" onclick="window.hideGallery()"
+                        data-i18n="ui.back">Back</button>
+                </div>
+            </template>
         </div>
     </div>
     <script src="js/DOMGlobals.js"></script>
@@ -272,6 +302,7 @@
     <script src="js/save-load/helpers.js"></script>
     <script src="js/save-load.js"></script>
     <script src="js/title-screen.js"></script>
+    <script src="js/ui/lazy-dom.js"></script>
     <script src="js/case-select.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/main.js"></script>

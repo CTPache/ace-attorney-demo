@@ -31,7 +31,13 @@ function hideActionMenus() {
     if (investigationPanel) investigationPanel.classList.add('hidden');
     if (evidenceContainer) evidenceContainer.classList.add('hidden');
     if (evidenceDetails) evidenceDetails.classList.add('hidden');
-    if (evidencePopup) evidencePopup.classList.add('hidden');
+    const evidencePopupEl = document.getElementById('evidence-popup');
+    if (evidencePopupEl) {
+        evidencePopupEl.classList.add('hidden');
+        if (typeof window.shelveLazyElement === 'function') {
+            window.shelveLazyElement('evidence-popup');
+        }
+    }
     if (evidenceNameDisplay) evidenceNameDisplay.textContent = '';
     if (bottomTopBar) bottomTopBar.classList.remove('hidden');
     if (gameContainer) gameContainer.classList.remove('investigating');
@@ -39,6 +45,16 @@ function hideActionMenus() {
     isExamining = false;
     isCourtRecordOpen = false;
     isPresentingMode = false;
+
+    if (typeof window.shelveLazyElements === 'function') {
+        window.shelveLazyElements([
+            'investigation-menu',
+            'move-menu',
+            'investigation-panel',
+            'topic-menu',
+            'evidence-container'
+        ]);
+    }
 
     if (typeof window.syncMenuInputBlockState === 'function') {
         window.syncMenuInputBlockState();

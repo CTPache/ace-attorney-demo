@@ -143,9 +143,8 @@ window.buildSaveDataSnapshot = function() {
             isPresentingMode: typeof isPresentingMode !== 'undefined' ? !!isPresentingMode : false
         };
 
-    const isLifeBarVisible = typeof lifeBarContainer !== 'undefined' && lifeBarContainer
-        ? !lifeBarContainer.classList.contains('hidden')
-        : false;
+    const liveLifeBar = document.getElementById('life-bar-container');
+    const isLifeBarVisible = !!(liveLifeBar && !liveLifeBar.classList.contains('hidden'));
 
     return {
         schemaVersion: 2,

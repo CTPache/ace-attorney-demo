@@ -2,6 +2,12 @@
 let isWaitingForAnimation = false;
 let activeCharacterFadeTarget = null;
 
+function syncTopBarTextRenderingState() {
+    if (typeof window.refreshTopBarButtonDisabledState === 'function') {
+        window.refreshTopBarButtonDisabledState();
+    }
+}
+
 function setNameTagText(name) {
     if (!nameTag) return;
 
@@ -127,6 +133,7 @@ window.setTalkingAnimationState = function (state) {
 function typeWriter(text) {
     if (typingInterval) clearTimeout(typingInterval);
     isTyping = true;
+    syncTopBarTextRenderingState();
     textContent.innerHTML = ""; // Clear content
 
     // Create initial span
@@ -378,6 +385,7 @@ function finishFadeBatchInstant() {
 function processNextChar() {
     if (segmentIndex >= segments.length) {
         isTyping = false;
+        syncTopBarTextRenderingState();
         setSpriteState('default'); // Finished typing
         document.dispatchEvent(new Event('lineTypingCompleted'));
         return;
@@ -461,11 +469,13 @@ function processNextChar() {
     } else if (segment.type === 'playAnimation') {
         setSpriteState('default');
         isWaitingForAnimation = true;
+        syncTopBarTextRenderingState();
         
         if (window.AnimationManager) {
             window.AnimationManager.play(segment.name).then(() => {
                 if (isWaitingForAnimation) {
                     isWaitingForAnimation = false;
+                    syncTopBarTextRenderingState();
                     segmentIndex++;
                     processNextChar();
                 }
@@ -478,6 +488,7 @@ function processNextChar() {
         if (window.playTopVideoSequence) {
             setSpriteState('default');
             isTyping = false;
+            syncTopBarTextRenderingState();
             window.playTopVideoSequence(segment.videoKey, () => {
                 segmentIndex++;
                 processNextChar();
@@ -496,8 +507,11 @@ function processNextChar() {
         isWaitingForAutoSkip = true;
         setSpriteState('default');
         isTyping = false;
+        syncTopBarTextRenderingState();
         clearTimeout(typingInterval); // Stop any pending typing
         setTimeout(() => {
+            isWaitingForAutoSkip = false;
+            syncTopBarTextRenderingState();
             advanceDialogue(true);
         }, segment.duration);
     } else if (segment.type === 'courtPan') {
@@ -639,6 +653,7 @@ function finishTyping() {
         } else if (segment.type === 'playVideo') {
             if (window.playTopVideoSequence) {
                 isTyping = false;
+                syncTopBarTextRenderingState();
                 window.playTopVideoSequence(segment.videoKey, () => {
                     advanceDialogue(true);
                 });
@@ -650,8 +665,10 @@ function finishTyping() {
             isWaitingForAutoSkip = true;
             setSpriteState('default');
             isTyping = false;
+            syncTopBarTextRenderingState();
             setTimeout(() => {
                 isWaitingForAutoSkip = false;
+                syncTopBarTextRenderingState();
                 advanceDialogue(true); // Force advance
             }, segment.duration);
             return; // Stop processing further segments
@@ -671,6 +688,7 @@ function finishTyping() {
     }
 
     isTyping = false;
+    syncTopBarTextRenderingState();
     setSpriteState('default'); // End of all text
     document.dispatchEvent(new Event('lineTypingCompleted'));
 }

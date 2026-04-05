@@ -73,35 +73,185 @@ function setInvestigationBackground(bgKey) {
     investigationBg.style.objectPosition = getInvestigationObjectPosition(asset.positionName);
 }
 
-// Investigation Menu Handlers
-btnExamine.addEventListener('click', () => {
-    investigationMenu.classList.add('hidden');
-    investigationPanel.classList.remove('hidden');
-    bottomTopBar.classList.add('hidden'); // Hide top bar
-    gameContainer.classList.add('investigating');
-    isExamining = true;
-    renderInvestigation();
-});
+function ensureInvestigationMenuMounted() {
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('investigation-menu', 'investigation-menu-template', '#bottom-main-window');
+    }
+    if (typeof window.refreshDOMGlobals === 'function') {
+        window.refreshDOMGlobals();
+    }
+    bindInvestigationUIEvents();
+    if (typeof window.bindTopicEvents === 'function') {
+        window.bindTopicEvents();
+    }
+    if (typeof window.bindCourtRecordEvents === 'function') {
+        window.bindCourtRecordEvents();
+    }
+    if (typeof window.updateActionButtons === 'function') {
+        window.updateActionButtons();
+    }
+}
 
-btnInvestigationBack.addEventListener('click', (e) => {
-    e.stopPropagation();
-    isExamining = false;
-    investigationPanel.classList.add('hidden');
-    investigationMenu.classList.remove('hidden');
-    bottomTopBar.classList.remove('hidden'); // Show top bar
-    gameContainer.classList.remove('investigating');
-});
+function ensureMoveMenuMounted() {
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('move-menu', 'move-menu-template', '#bottom-main-window');
+    }
+    if (typeof window.refreshDOMGlobals === 'function') {
+        window.refreshDOMGlobals();
+    }
+    bindInvestigationUIEvents();
+}
 
-btnMove.addEventListener('click', () => {
-    investigationMenu.classList.add('hidden');
-    moveMenu.classList.remove('hidden');
-    renderMoveMenu();
-});
+function ensureInvestigationPanelMounted() {
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('investigation-panel', 'investigation-panel-template', '#bottom-main-window');
+    }
+    if (typeof window.refreshDOMGlobals === 'function') {
+        window.refreshDOMGlobals();
+    }
+    bindInvestigationUIEvents();
+}
 
-btnMoveBack.addEventListener('click', () => {
-    moveMenu.classList.add('hidden');
-    investigationMenu.classList.remove('hidden');
-});
+function bindInvestigationUIEvents() {
+    if (btnExamine && btnExamine.dataset.boundInvestigation !== 'true') {
+        btnExamine.dataset.boundInvestigation = 'true';
+        btnExamine.addEventListener('click', () => {
+            ensureInvestigationPanelMounted();
+
+            investigationMenu.classList.add('hidden');
+            if (typeof window.shelveLazyElement === 'function') {
+                window.shelveLazyElement('investigation-menu');
+            }
+            investigationPanel.classList.remove('hidden');
+            bottomTopBar.classList.add('hidden');
+            gameContainer.classList.add('investigating');
+            isExamining = true;
+            renderInvestigation();
+        });
+    }
+
+    if (btnInvestigationBack && btnInvestigationBack.dataset.boundInvestigation !== 'true') {
+        btnInvestigationBack.dataset.boundInvestigation = 'true';
+        btnInvestigationBack.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isExamining = false;
+            investigationPanel.classList.add('hidden');
+            if (typeof window.shelveLazyElement === 'function') {
+                window.shelveLazyElement('investigation-panel');
+            }
+            ensureInvestigationMenuMounted();
+            investigationMenu.classList.remove('hidden');
+            bottomTopBar.classList.remove('hidden');
+            gameContainer.classList.remove('investigating');
+        });
+    }
+
+    if (btnMove && btnMove.dataset.boundInvestigation !== 'true') {
+        btnMove.dataset.boundInvestigation = 'true';
+        btnMove.addEventListener('click', () => {
+            ensureMoveMenuMounted();
+
+            investigationMenu.classList.add('hidden');
+            if (typeof window.shelveLazyElement === 'function') {
+                window.shelveLazyElement('investigation-menu');
+            }
+            moveMenu.classList.remove('hidden');
+            renderMoveMenu();
+        });
+    }
+
+    if (btnMoveBack && btnMoveBack.dataset.boundInvestigation !== 'true') {
+        btnMoveBack.dataset.boundInvestigation = 'true';
+        btnMoveBack.addEventListener('click', () => {
+            moveMenu.classList.add('hidden');
+            if (typeof window.shelveLazyElement === 'function') {
+                window.shelveLazyElement('move-menu');
+            }
+            ensureInvestigationMenuMounted();
+            investigationMenu.classList.remove('hidden');
+        });
+    }
+
+    if (investigationPanel && investigationPanel.dataset.boundInvestigation !== 'true') {
+        investigationPanel.dataset.boundInvestigation = 'true';
+        investigationPanel.addEventListener('click', () => {
+            if (isExamining) {
+                if (window.jumpToSection && currentInvestigationDefault) {
+                    window.jumpToSection(currentInvestigationDefault);
+                }
+            }
+        });
+
+        investigationPanel.addEventListener('mousemove', (e) => {
+            handleInvestigationPointerMove(e.clientX, e.clientY, false);
+        });
+
+        investigationPanel.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            if (!touch) return;
+            handleInvestigationPointerMove(touch.clientX, touch.clientY, true);
+        }, { passive: false });
+    }
+
+    if (investigationOverlay && investigationOverlay.dataset.boundInvestigation !== 'true') {
+        investigationOverlay.dataset.boundInvestigation = 'true';
+        investigationOverlay.addEventListener('mouseover', (e) => {
+            const polygon = e.target.closest('.investigation-polygon');
+            if (!polygon || !investigationOverlay.contains(polygon)) return;
+            setInvestigationCursorState(true, polygon.classList.contains('visited'));
+        });
+
+        investigationOverlay.addEventListener('mouseout', (e) => {
+            const polygon = e.target.closest('.investigation-polygon');
+            if (!polygon || !investigationOverlay.contains(polygon)) return;
+
+            const nextPolygon = e.relatedTarget && e.relatedTarget.closest
+                ? e.relatedTarget.closest('.investigation-polygon')
+                : null;
+
+            if (nextPolygon && investigationOverlay.contains(nextPolygon)) {
+                return;
+            }
+
+            setInvestigationCursorState(false, false);
+        });
+
+        investigationOverlay.addEventListener('touchstart', (e) => {
+            const polygon = e.target.closest('.investigation-polygon');
+            if (!polygon || !investigationOverlay.contains(polygon)) return;
+            setInvestigationCursorState(true, polygon.classList.contains('visited'));
+        }, { passive: true });
+
+        investigationOverlay.addEventListener('click', (e) => {
+            const polygon = e.target.closest('.investigation-polygon');
+            if (!polygon || !investigationOverlay.contains(polygon)) return;
+
+            e.stopPropagation();
+            const label = polygon.dataset.label;
+            if (!label) return;
+
+            gameState[label + '_visited'] = true;
+            polygon.classList.add('visited');
+
+            if (window.jumpToSection) {
+                window.jumpToSection(label);
+            }
+        });
+    }
+
+    if (moveList && moveList.dataset.boundInvestigation !== 'true') {
+        moveList.dataset.boundInvestigation = 'true';
+        moveList.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const element = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (element && element.tagName === 'BUTTON' && moveList.contains(element)) {
+                element.dispatchEvent(new Event('mouseenter'));
+            }
+        }, { passive: false });
+    }
+}
 
 function renderMoveMenu() {
     moveList.innerHTML = '';
@@ -130,6 +280,9 @@ function renderMoveMenu() {
             if (loc.target) {
                 // Ensure UI is cleaned up (handled by sceneStateChanged, but being safe)
                 moveMenu.classList.add('hidden');
+                if (typeof window.shelveLazyElement === 'function') {
+                    window.shelveLazyElement('move-menu');
+                }
                 
                 if (loc.json) {
                     if (window.loadGameData) {
@@ -154,56 +307,6 @@ function renderMoveMenu() {
     }
 }
 
-investigationPanel.addEventListener('click', (e) => {
-    if (isExamining) {
-        if (window.jumpToSection && currentInvestigationDefault) {
-             window.jumpToSection(currentInvestigationDefault);
-        }
-    }
-});
-
-investigationOverlay.addEventListener('mouseover', (e) => {
-    const polygon = e.target.closest('.investigation-polygon');
-    if (!polygon || !investigationOverlay.contains(polygon)) return;
-    setInvestigationCursorState(true, polygon.classList.contains('visited'));
-});
-
-investigationOverlay.addEventListener('mouseout', (e) => {
-    const polygon = e.target.closest('.investigation-polygon');
-    if (!polygon || !investigationOverlay.contains(polygon)) return;
-
-    const nextPolygon = e.relatedTarget && e.relatedTarget.closest
-        ? e.relatedTarget.closest('.investigation-polygon')
-        : null;
-
-    if (nextPolygon && investigationOverlay.contains(nextPolygon)) {
-        return;
-    }
-
-    setInvestigationCursorState(false, false);
-});
-
-investigationOverlay.addEventListener('touchstart', (e) => {
-    const polygon = e.target.closest('.investigation-polygon');
-    if (!polygon || !investigationOverlay.contains(polygon)) return;
-    setInvestigationCursorState(true, polygon.classList.contains('visited'));
-}, { passive: true });
-
-investigationOverlay.addEventListener('click', (e) => {
-    const polygon = e.target.closest('.investigation-polygon');
-    if (!polygon || !investigationOverlay.contains(polygon)) return;
-
-    e.stopPropagation();
-    const label = polygon.dataset.label;
-    if (!label) return;
-
-    gameState[label + '_visited'] = true;
-    polygon.classList.add('visited');
-
-    if (window.jumpToSection) {
-        window.jumpToSection(label);
-    }
-});
 
 function renderInvestigation() {
     setInvestigationBackground(currentBackgroundKey);
@@ -276,16 +379,6 @@ function handleInvestigationPointerMove(clientX, clientY, shouldCheckHover = fal
     }
 }
 
-investigationPanel.addEventListener('mousemove', (e) => {
-    handleInvestigationPointerMove(e.clientX, e.clientY, false);
-});
-
-investigationPanel.addEventListener('touchmove', (e) => {
-    e.preventDefault(); // Prevent scrolling
-    const touch = e.touches[0];
-    if (!touch) return;
-    handleInvestigationPointerMove(touch.clientX, touch.clientY, true);
-}, { passive: false });
 
 function checkHover(clientX, clientY) {
     // Hide cursor if it's visible to not block elementFromPoint
@@ -315,12 +408,6 @@ function checkHover(clientX, clientY) {
     }
 }
 
-// Add touch hover support for Move List
-moveList.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const element = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (element && element.tagName === 'BUTTON' && moveList.contains(element)) {
-        element.dispatchEvent(new Event('mouseenter'));
-    }
-}, { passive: false });
+// Bind lazy-mounted investigation UI immediately when available.
+bindInvestigationUIEvents();
+window.bindInvestigationUIEvents = bindInvestigationUIEvents;

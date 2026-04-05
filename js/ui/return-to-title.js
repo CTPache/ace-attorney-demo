@@ -2,8 +2,13 @@
 // Handles return-to-title confirmation and full gameplay teardown.
 console.log("UI Return To Title Loaded");
 
-const configReturnTitleBtn = document.getElementById('config-return-title-btn');
-if (configReturnTitleBtn) {
+function bindReturnToTitleEvents() {
+    const configReturnTitleBtn = document.getElementById('config-return-title-btn');
+    if (!configReturnTitleBtn || configReturnTitleBtn.dataset.boundReturnToTitle === 'true') {
+        return;
+    }
+
+    configReturnTitleBtn.dataset.boundReturnToTitle = 'true';
     configReturnTitleBtn.addEventListener('click', () => {
         const confirmMsg = typeof window.t === 'function'
             ? window.t('ui.returnToTitleConfirm', 'Return to title screen? All unsaved progress will be lost.')
@@ -15,6 +20,9 @@ if (configReturnTitleBtn) {
         }
     });
 }
+
+bindReturnToTitleEvents();
+window.bindReturnToTitleEvents = bindReturnToTitleEvents;
 
 window.returnToTitle = function() {
     // 1. Stop all timers (auto-play, typing, fast-forward)
@@ -51,7 +59,8 @@ window.returnToTitle = function() {
     // 6. Hide all gameplay menus and reset UI flags
     if (typeof hideActionMenus === 'function') hideActionMenus();
     if (typeof window.hideLifeBar === 'function') window.hideLifeBar();
-    if (typeof evidencePopup !== 'undefined' && evidencePopup) evidencePopup.classList.add('hidden');
+    const evidencePopupEl = document.getElementById('evidence-popup');
+    if (evidencePopupEl) evidencePopupEl.classList.add('hidden');
     if (typeof textboxContainer !== 'undefined' && textboxContainer) textboxContainer.style.opacity = '1';
 
     isInputBlocked = false;

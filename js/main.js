@@ -1,6 +1,11 @@
 
 
-const SCENE_LANGUAGES = document.getElementById('config-language-select') && document.getElementById('config-language-select').options ? Array.from(document.getElementById('config-language-select').options).map(opt => opt.value.toUpperCase()) : ['EN'];
+const DEFAULT_SCENE_LANGUAGES = ['EN', 'ES', 'JP'];
+const sceneLanguageSelectSource = document.getElementById('config-language-select')
+    || document.querySelector('#config-menu-template #config-language-select');
+const SCENE_LANGUAGES = sceneLanguageSelectSource && sceneLanguageSelectSource.options
+    ? Array.from(sceneLanguageSelectSource.options).map((opt) => String(opt.value || '').toUpperCase()).filter(Boolean)
+    : DEFAULT_SCENE_LANGUAGES;
 
 function normalizeScenePath(path) {
     return String(path || '').replace(/\\/g, '/');
@@ -269,7 +274,7 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
         videosDB = data.videos || {};
 
         if (typeof window.warmSceneSfxCache === 'function') {
-            window.warmSceneSfxCache();
+            window.warmSceneSfxCache({ immediate: false, limit: 6 });
         }
         
         if (window.CrossExamination) {
@@ -319,8 +324,17 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
             currentLineIndex = 0;
         }
 
-        // Re-run preload (this updates the new objects in-place with blob URLs)
-        await preloadAssets();
+        // Warm a small critical subset now, then defer the rest so scene startup stays responsive.
+        if (typeof preloadAssets === 'function') {
+            await preloadAssets({
+                limit: 8,
+                concurrency: 2,
+                includeBackgrounds: true,
+                includeForegrounds: true,
+                includeCharacters: false,
+                label: 'critical scene art'
+            });
+        }
 
         // Clear top screen layers before starting the new scene
         if (typeof clearTopScreen === 'function') clearTopScreen();
@@ -337,6 +351,16 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
             // Start the game logic normally
             startGame();
         }
+
+        if (typeof window.scheduleDeferredSceneWarmup === 'function') {
+            window.scheduleDeferredSceneWarmup({
+                concurrency: 2,
+                timeout: 2500,
+                includeBackgrounds: true,
+                includeForegrounds: true,
+                includeCharacters: false
+            });
+        }
     } catch (error) {
         console.error('Error loading game script:', error);
         const message = (typeof window.t === 'function')
@@ -346,15 +370,23 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
     }
 };
 
-window.setGameLanguage = async function(languageCode) {
+window.setGameLanguage = async function(languageCode, options = {}) {
     const nextLanguage = String(languageCode || 'EN').toUpperCase();
     if (!SCENE_LANGUAGES.includes(nextLanguage)) return;
 
+    const { reloadScene = true } = options || {};
     const hasChanged = currentLanguage !== nextLanguage;
     currentLanguage = nextLanguage;
 
     if (typeof window.loadUIText === 'function') {
         await window.loadUIText();
+    }
+
+    const titleScreenVisible = !!document.getElementById('title-screen-top')
+        && !document.getElementById('title-screen-top').classList.contains('hidden');
+
+    if (typeof window.initTitleScreen === 'function' && (titleScreenVisible || !reloadScene)) {
+        window.initTitleScreen();
     }
 
     if (!hasChanged) return;
@@ -364,13 +396,8 @@ window.setGameLanguage = async function(languageCode) {
     }
 
     const sceneToReload = currentSceneRequestPath || currentSceneResolvedPath;
-    if (sceneToReload) {
+    if (reloadScene && sceneToReload) {
         await window.loadGameData(sceneToReload);
-    } else {
-        // Update Title Screen instead of loading game
-        if (typeof window.initTitleScreen === 'function') {
-            window.initTitleScreen();
-        }
     }
 };
 

@@ -1,15 +1,46 @@
 console.log("Topics Loaded");
 
-btnTalk.addEventListener('click', () => {
-    investigationMenu.classList.add('hidden');
-    topicMenu.classList.remove('hidden');
-    renderTopics();
-});
+function bindTopicEvents() {
+    if (btnTalk && btnTalk.dataset.boundTopics !== 'true') {
+        btnTalk.dataset.boundTopics = 'true';
+        btnTalk.addEventListener('click', () => {
+            if (typeof window.ensureLazyElementMounted === 'function') {
+                window.ensureLazyElementMounted('topic-menu', 'topic-menu-template', '#bottom-main-window');
+            }
+            if (typeof window.refreshDOMGlobals === 'function') {
+                window.refreshDOMGlobals();
+            }
+            bindTopicEvents();
 
-btnTopicBack.addEventListener('click', () => {
-    topicMenu.classList.add('hidden');
-    investigationMenu.classList.remove('hidden');
-});
+            investigationMenu.classList.add('hidden');
+            if (typeof window.shelveLazyElement === 'function') {
+                window.shelveLazyElement('investigation-menu');
+            }
+            topicMenu.classList.remove('hidden');
+            renderTopics();
+        });
+    }
+
+    if (btnTopicBack && btnTopicBack.dataset.boundTopics !== 'true') {
+        btnTopicBack.dataset.boundTopics = 'true';
+        btnTopicBack.addEventListener('click', () => {
+            topicMenu.classList.add('hidden');
+            if (typeof window.shelveLazyElement === 'function') {
+                window.shelveLazyElement('topic-menu');
+            }
+            if (typeof window.ensureLazyElementMounted === 'function') {
+                window.ensureLazyElementMounted('investigation-menu', 'investigation-menu-template', '#bottom-main-window');
+            }
+            if (typeof window.refreshDOMGlobals === 'function') {
+                window.refreshDOMGlobals();
+            }
+            if (typeof window.bindCourtRecordEvents === 'function') {
+                window.bindCourtRecordEvents();
+            }
+            investigationMenu.classList.remove('hidden');
+        });
+    }
+}
 
 function renderTopics() {
     // Clear existing buttons except the Back button
@@ -34,6 +65,9 @@ function renderTopics() {
             btn.addEventListener('click', () => {
                 // Hide menu and jump
                 topicMenu.classList.add('hidden');
+                if (typeof window.shelveLazyElement === 'function') {
+                    window.shelveLazyElement('topic-menu');
+                }
                 advanceBtn.classList.remove('hidden');
                 
                 if (window.jumpToSection) {
@@ -47,3 +81,6 @@ function renderTopics() {
         }
     });
 }
+
+bindTopicEvents();
+window.bindTopicEvents = bindTopicEvents;

@@ -24,6 +24,7 @@ console.log("Courtroom Module Loaded");
 
     // Injected <style> tag for dynamic sprite positions
     let spritePositionStyleSheet = null;
+    let singleViewSwapToken = 0;
 
     function getOverviewSpriteKey(slotName) {
         const slot = String(slotName || '').toLowerCase();
@@ -358,6 +359,7 @@ console.log("Courtroom Module Loaded");
 
     function activateSingleCharView(viewName) {
         activeSlot = String(viewName).toLowerCase();
+        const swapToken = ++singleViewSwapToken;
 
         // Disable panoramic foreground mode
         if (gameContainer) gameContainer.classList.remove('court-mode-fg');
@@ -367,25 +369,48 @@ console.log("Courtroom Module Loaded");
             window.changeForeground('');
         }
 
+        // Hide the shared layer first so previous-view sprites (e.g. Maya -> Judge)
+        // are never shown on the new background during the switch.
+        if (character) {
+            character.style.transition = 'none';
+            character.style.opacity = '0';
+        }
+        characterIsVisible = false;
+
         // cocounsel, judge, or gallery — use regular #character element
         const viewConfig = courtroomDB.views && courtroomDB.views[viewName];
         if (viewConfig && viewConfig.background) {
             changeBackground(viewConfig.background);
         }
 
-        // If the slot has a character & emotion, apply to #character
+        // If the slot has a character & emotion, preload/set that sprite while hidden,
+        // then reveal the layer only after the correct sprite is ready.
         const slot = slotState[viewName];
         if (slot && slot.character && slot.emotion) {
-            const charData = characters[slot.character];
-            if (charData && charData[slot.emotion]) {
+            const spriteUrl = resolveCourtSpriteUrl(viewName, slot.character, slot.emotion, 'default');
+            if (spriteUrl) {
                 currentCharacterName = slot.character;
                 currentAnimationKey = slot.emotion;
-                setSpriteState('default');
-                character.style.transition = 'none';
-                character.style.opacity = '1';
-                characterIsVisible = true;
-                void character.offsetWidth;
-                character.style.transition = '';
+
+                const revealSprite = (resolvedUrl) => {
+                    if (swapToken !== singleViewSwapToken || currentView !== activeSlot) return;
+                    if (character) {
+                        character.src = resolvedUrl || spriteUrl;
+                        character.style.transition = 'none';
+                        character.style.opacity = '1';
+                        void character.offsetWidth;
+                        character.style.transition = '';
+                    }
+                    characterIsVisible = true;
+                };
+
+                if (typeof preloadImage === 'function') {
+                    preloadImage(spriteUrl)
+                        .then((resolvedUrl) => revealSprite(resolvedUrl))
+                        .catch(() => revealSprite(spriteUrl));
+                } else {
+                    revealSprite(spriteUrl);
+                }
             }
         }
 
@@ -403,6 +428,15 @@ console.log("Courtroom Module Loaded");
 
         currentView = stand;
         activeSlot = stand;
+
+        // Stand pans should always use the courtroom sprite layers, never the regular #character layer.
+        if (character) {
+            character.style.transition = 'none';
+            character.style.opacity = '0';
+            void character.offsetWidth;
+            character.style.transition = '';
+        }
+        characterIsVisible = false;
 
         // Ensure stand containers are visible
         if (courtroomSprites) courtroomSprites.classList.remove('hidden');

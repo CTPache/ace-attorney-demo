@@ -93,6 +93,13 @@ window.initTitleScreen = function() {
     if (ceControls) {
         ceControls.classList.add('hidden');
     }
+    const ceArrowContainer = document.getElementById('ce-arrow-container');
+    if (ceArrowContainer) {
+        ceArrowContainer.classList.add('hidden');
+    }
+    if (typeof window.shelveLazyElements === 'function') {
+        window.shelveLazyElements(['ce-controls', 'ce-arrow-container']);
+    }
 
     window.rearrangeTitleButtons();
 

@@ -10,7 +10,8 @@
 }
 
 .single-screen-mode button:disabled {
-    display: none !important;
+    opacity: 0.5 !important;
+    pointer-events: none !important;
 }
 
 .single-screen-mode #main-wrapper {
@@ -95,6 +96,11 @@
     bottom: auto;
     z-index: var(--z-bottom-controls);
     pointer-events: auto;
+}
+
+.single-screen-mode :is(#court-record-btn, #config-btn):disabled {
+    opacity: 0.45 !important;
+    filter: grayscale(0.35) !important;
 }
 
 .single-screen-mode :is(#config-menu, #history-menu, #investigation-menu, #move-menu, #topic-menu, #evidence-container, #investigation-panel, #case-select-bottom, #gallery-menu) {
@@ -208,7 +214,8 @@
 }
 
 /* Hide game corner buttons when full-screen menus are open */
-.single-screen-mode:has(:is(#config-menu, #history-menu, #case-select-bottom, #gallery-menu):not(.hidden)) :is(#bottom-top-bar, #config-btn) {
+.single-screen-mode:has(:is(#config-menu, #history-menu, #case-select-bottom, #gallery-menu):not(.hidden)) :is(#bottom-top-bar, #config-btn),
+.single-screen-mode:has(#skip-video-btn:not(.hidden)) :is(#bottom-top-bar, #config-btn) {
     display: none !important;
 }
 

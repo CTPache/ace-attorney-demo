@@ -5,17 +5,41 @@ const blipPaths = {
     2: 'assets/audio/blip_2.ogg',
     3: 'assets/audio/typewriter.ogg'
 };
-const BLIP_POOL_SIZE = 6;
+const BLIP_POOL_SIZE = 4;
 const blipPools = {};
 const blipPoolIndex = {};
 const activeSFX = new Set();
 const sfxTemplateCache = new Map();
 let activeBgmFadeInterval = null;
+let currentBgmPlaybackId = 0;
+let pendingSfxWarmupHandle = null;
 
 function clearBgmFadeInterval() {
     if (activeBgmFadeInterval) {
         clearInterval(activeBgmFadeInterval);
         activeBgmFadeInterval = null;
+    }
+}
+
+function resetAndStopAudio(audio) {
+    if (!audio) return;
+
+    try {
+        audio.pause();
+    } catch (error) {
+        console.warn('Failed to pause audio:', error);
+    }
+
+    try {
+        audio.currentTime = 0;
+    } catch (error) {
+        console.warn('Failed to reset audio time:', error);
+    }
+
+    try {
+        audio.volume = 1;
+    } catch (error) {
+        console.warn('Failed to reset audio volume:', error);
     }
 }
 
@@ -30,11 +54,15 @@ function buildBlipPool(path, size = BLIP_POOL_SIZE) {
     return pool;
 }
 
-Object.keys(blipPaths).forEach((key) => {
-    const type = Number(key);
-    blipPools[type] = buildBlipPool(blipPaths[type]);
-    blipPoolIndex[type] = 0;
-});
+function ensureBlipPool(type) {
+    const normalizedType = Number(type);
+    if (!blipPools[normalizedType] && blipPaths[normalizedType]) {
+        blipPools[normalizedType] = buildBlipPool(blipPaths[normalizedType]);
+        blipPoolIndex[normalizedType] = 0;
+    }
+
+    return blipPools[normalizedType] || null;
+}
 
 function normalizeSfxPath(rawPath) {
     if (!rawPath || typeof rawPath !== 'string') return null;
@@ -85,18 +113,43 @@ function playSoundByPath(soundPath) {
     });
 }
 
-function warmSceneSfxCache() {
+function warmSceneSfxCache(options = {}) {
     if (!soundsDB || typeof soundsDB !== 'object') return;
 
-    Object.values(soundsDB).forEach((pathValue) => {
-        getOrCreateSfxTemplate(pathValue);
-    });
+    const { immediate = false, limit = 6 } = options;
+    const soundPaths = Object.values(soundsDB).slice(0, Math.max(0, limit));
+    const warm = () => {
+        pendingSfxWarmupHandle = null;
+        soundPaths.forEach((pathValue) => {
+            getOrCreateSfxTemplate(pathValue);
+        });
+    };
+
+    if (immediate) {
+        warm();
+        return;
+    }
+
+    if (pendingSfxWarmupHandle) {
+        if (typeof window !== 'undefined' && typeof window.cancelIdleCallback === 'function') {
+            window.cancelIdleCallback(pendingSfxWarmupHandle);
+        } else {
+            clearTimeout(pendingSfxWarmupHandle);
+        }
+        pendingSfxWarmupHandle = null;
+    }
+
+    if (typeof window !== 'undefined' && typeof window.requestIdleCallback === 'function') {
+        pendingSfxWarmupHandle = window.requestIdleCallback(warm, { timeout: 1200 });
+    } else {
+        pendingSfxWarmupHandle = setTimeout(warm, 120);
+    }
 }
 
 function playBlip() {
     if (currentBlipType === 4) return; // Silence
 
-    const pool = blipPools[currentBlipType];
+    const pool = ensureBlipPool(currentBlipType);
     if (!pool || pool.length === 0) return;
 
     // User-requested behavior: never overlap blips.
@@ -122,103 +175,117 @@ function playSound(soundName) {
 
 function playBGM(musicName, fadeIn = false, force = false) {
     const musicPath = musicDB[musicName];
-    if (musicPath) {
-        clearBgmFadeInterval();
-
-        if (currentBGMKey === musicName && currentBGM && !currentBGM.paused && !force) {
-            return;
-        }
-
-        // Stop current BGM if playing
-        stopBGM(false);
-        currentBGMKey = musicName;
-
-        if (Array.isArray(musicPath)) {
-            const introPath = musicPath[0];
-            const loopPath = musicPath[1];
-            
-            currentBGM = new Audio(introPath);
-            currentBGM.loop = false;
-            if (fadeIn) currentBGM.volume = 0;
-            
-            // Preload loop portion to minimize gap
-            const loopAudio = new Audio(loopPath);
-            loopAudio.loop = true;
-            loopAudio.preload = 'auto';
-
-            currentBGM.addEventListener('ended', function() {
-                // If BGM was stopped or changed before intro could finish, abort
-                if (currentBGM !== this) return;
-                
-                currentBGM = loopAudio;
-                currentBGM.play().catch(e => console.warn("BGM loop play failed:", e));
-            });
-
-            currentBGM.play().then(() => {
-                if (fadeIn) {
-                    clearBgmFadeInterval();
-                    activeBgmFadeInterval = setInterval(() => {
-                        if (currentBGM && currentBGM.volume < 0.95) {
-                            currentBGM.volume += 0.05;
-                        } else {
-                            if (currentBGM) currentBGM.volume = 1;
-                            clearBgmFadeInterval();
-                        }
-                    }, 100);
-                }
-            }).catch(e => console.warn("BGM play failed:", e));
-        } else {
-            currentBGM = new Audio(musicPath);
-            currentBGM.loop = true;
-            if (fadeIn) currentBGM.volume = 0;
-            currentBGM.play().then(() => {
-                if (fadeIn) {
-                    clearBgmFadeInterval();
-                    activeBgmFadeInterval = setInterval(() => {
-                        if (currentBGM && currentBGM.volume < 0.95) {
-                            currentBGM.volume += 0.05;
-                        } else {
-                            if (currentBGM) currentBGM.volume = 1;
-                            clearBgmFadeInterval();
-                        }
-                    }, 100);
-                }
-            }).catch(e => console.warn("BGM play failed:", e));
-        }
-    } else {
+    if (!musicPath) {
         console.warn(`Music not found: ${musicName}`);
+        return;
     }
+
+    clearBgmFadeInterval();
+
+    if (currentBGMKey === musicName && currentBGM && !currentBGM.paused && !force) {
+        return;
+    }
+
+    // Fully stop any currently playing track before starting a different one.
+    stopBGM(false);
+
+    const playbackId = ++currentBgmPlaybackId;
+    currentBGMKey = musicName;
+
+    const startFadeIn = () => {
+        if (!fadeIn) return;
+
+        clearBgmFadeInterval();
+        activeBgmFadeInterval = setInterval(() => {
+            if (currentBgmPlaybackId !== playbackId || !currentBGM) {
+                clearBgmFadeInterval();
+                return;
+            }
+
+            if (currentBGM.volume < 0.95) {
+                currentBGM.volume += 0.05;
+            } else {
+                currentBGM.volume = 1;
+                clearBgmFadeInterval();
+            }
+        }, 100);
+    };
+
+    if (Array.isArray(musicPath)) {
+        const introPath = musicPath[0];
+        const loopPath = musicPath[1];
+
+        const introAudio = new Audio(introPath);
+        const loopAudio = new Audio(loopPath);
+        introAudio.loop = false;
+        loopAudio.loop = true;
+        loopAudio.preload = 'auto';
+
+        if (fadeIn) {
+            introAudio.volume = 0;
+            loopAudio.volume = 0;
+        }
+
+        currentBGM = introAudio;
+
+        introAudio.addEventListener('ended', function() {
+            if (currentBgmPlaybackId !== playbackId || currentBGM !== introAudio) {
+                return;
+            }
+
+            currentBGM = loopAudio;
+            loopAudio.play().catch(e => console.warn('BGM loop play failed:', e));
+        });
+
+        introAudio.play()
+            .then(startFadeIn)
+            .catch(e => console.warn('BGM play failed:', e));
+        return;
+    }
+
+    const loopedAudio = new Audio(musicPath);
+    loopedAudio.loop = true;
+    if (fadeIn) {
+        loopedAudio.volume = 0;
+    }
+
+    currentBGM = loopedAudio;
+    loopedAudio.play()
+        .then(startFadeIn)
+        .catch(e => console.warn('BGM play failed:', e));
 }
 
 function stopBGM(fadeOut = true) {
     clearBgmFadeInterval();
 
-    if (currentBGM) {
-        if (fadeOut) {
-            const audio = currentBGM; // Capture reference
-            activeBgmFadeInterval = setInterval(() => {
-                if (audio.volume > 0.05) {
-                    audio.volume -= 0.05;
-                } else {
-                    clearBgmFadeInterval();
-                    audio.pause();
-                    audio.currentTime = 0;
-                    audio.volume = 1; // Reset for next use if reused
-                }
-            }, 100);
-            
-            // If we start a new BGM immediately, we don't want to overwrite the fading one's reference
-            // But since currentBGM is global, we set it to null so the engine knows "active" music is gone
+    const audio = currentBGM;
+    currentBGMKey = null;
+    currentBgmPlaybackId++;
+
+    if (!audio) {
+        currentBGM = null;
+        return;
+    }
+
+    if (fadeOut && !audio.paused) {
+        activeBgmFadeInterval = setInterval(() => {
+            if (audio.volume > 0.05) {
+                audio.volume -= 0.05;
+                return;
+            }
+
+            clearBgmFadeInterval();
+            resetAndStopAudio(audio);
             if (currentBGM === audio) {
                 currentBGM = null;
-                currentBGMKey = null;
             }
-        } else {
-            currentBGM.pause();
-            currentBGM.currentTime = 0;
-            currentBGM = null;
-            currentBGMKey = null;
-        }
+        }, 100);
+        return;
+    }
+
+    resetAndStopAudio(audio);
+    if (currentBGM === audio) {
+        currentBGM = null;
     }
 }
 

@@ -11,11 +11,23 @@ window.CE_UI = (function() {
         const prevArrow = document.getElementById('ce-prev-arrow');
         const nextArrow = document.getElementById('ce-next-arrow');
 
-        if (pressBtn) pressBtn.addEventListener('click', () => window.CrossExamination.press());
-        if (presentBtn) presentBtn.addEventListener('click', () => openCourtRecordForPresenting());
+        if (pressBtn && pressBtn.dataset.ceUiBound !== 'true') {
+            pressBtn.dataset.ceUiBound = 'true';
+            pressBtn.addEventListener('click', () => window.CrossExamination.press());
+        }
+        if (presentBtn && presentBtn.dataset.ceUiBound !== 'true') {
+            presentBtn.dataset.ceUiBound = 'true';
+            presentBtn.addEventListener('click', () => openCourtRecordForPresenting());
+        }
         
-        if (prevArrow) prevArrow.addEventListener('click', () => window.CrossExamination.prev());
-        if (nextArrow) nextArrow.addEventListener('click', () => window.CrossExamination.next());
+        if (prevArrow && prevArrow.dataset.ceUiBound !== 'true') {
+            prevArrow.dataset.ceUiBound = 'true';
+            prevArrow.addEventListener('click', () => window.CrossExamination.prev());
+        }
+        if (nextArrow && nextArrow.dataset.ceUiBound !== 'true') {
+            nextArrow.dataset.ceUiBound = 'true';
+            nextArrow.addEventListener('click', () => window.CrossExamination.next());
+        }
     }
 
     function openCourtRecordForPresenting() {
