@@ -1,1 +1,0 @@
-const fs = require('fs'); const code = fs.readFileSync('js/parser.js', 'utf8').replace('export function parseText', 'function parseText').replace('export function parseCEPresentPayload', 'function parseCEPresentPayload'); eval(code); console.log(JSON.stringify(parseText('{showEvidenceIcon:left,mask_photo}'), null, 2));

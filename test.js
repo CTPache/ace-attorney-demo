@@ -1,1 +1,0 @@
-const { chromium } = require('playwright'); (async () => { const browser = await chromium.launch(); const page = await browser.newPage(); page.on('console', msg => console.log('Browser:', msg.text())); await page.goto('http://localhost/Demo/?case=FlyHigh&scene=4th_floor'); await page.waitForTimeout(3000); await browser.close(); })();

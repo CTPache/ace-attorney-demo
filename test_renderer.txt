@@ -1,1 +1,0 @@
-grep text-renderer.js for case statements
