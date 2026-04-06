@@ -1,0 +1,186 @@
+{
+    "characters": {
+        "Maggey": {
+            "Officer": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde_Officer_HD.gif"
+            },
+            "Salute_Officer": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde_Officer_Saluting_HD.gif",
+                "time": 700
+            },
+            "Normal": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Normal-2-HD.webp"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Sad-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Sad-2-HD.webp"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Determined-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Determined-2-HD.webp"
+            },
+            "Admiring": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-1-HD.webp",
+                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-2-HD.webp"
+            },
+            "Saluting": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde-Saluting-HD.webp",
+                "time": 700,
+                "shake": [
+                    {
+                        "at": 400,
+                        "duration": 300
+                    }
+                ],
+                "sound": [
+                    {
+                        "at": 400,
+                        "sound": "salute"
+                    }
+                ]
+            }
+        },
+        "Gumshoe": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
+            },
+            "Sad": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
+            },
+            "LookingAway": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
+            },
+            "ScratchingHead": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
+                "time": 600
+            },
+            "ScratchingHead2": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
+                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
+            }
+        },
+        "Edgeworth": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Normal_talking.gif"
+            },
+            "Smug": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_DD_HD_-_Smug.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_DD_HD_-_Smug_talking.gif"
+            },
+            "Angry": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Angry.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Angry_talking.gif"
+            },
+            "Annoyed": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Annoyed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Annoyed_talking.gif"
+            },
+            "Brooding": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Brooding.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Brooding_talking.gif"
+            },
+            "SidewaysLook": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Sideways_look.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Sideways_look_talking.gif"
+            },
+            "Smiling": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Smiling.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Smiling_talking.gif"
+            },
+            "Worried": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Worried.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Worried_talking.gif"
+            },
+            "ObjectingLeft": {
+                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Objecting_left.gif"
+            }
+        },
+        "Shawit": {
+            "Stand": {
+                "default": "assets/img/characters/Fly High/Shawit/Stand.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Stand_Talk.webp"
+            },
+            "Nervous": {
+                "default": "assets/img/characters/Fly High/Shawit/Nervous.webp",
+                "talking": "assets/img/characters/Fly High/Shawit/Nervous_Talk.webp"
+            },
+            "Cornered": {
+                "default": "assets/img/characters/Fly High/Shawit/Cornered.gif",
+                "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
+            },
+            "Damage": {
+                "default": "assets/img/characters/Fly High/Shawit/Damage.webp",
+                "time": 700,
+                "shake": [
+                    {
+                        "at": 0,
+                        "duration": 300
+                    }
+                ],
+                "sound": [
+                    {
+                        "at": 0,
+                        "sound": "damage2"
+                    }
+                ]
+            }
+        }
+    },
+    "backgrounds": {
+        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
+        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
+        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
+        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
+        "Crime_Scene": {
+            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
+            "positions": {
+                "default": "bottom",
+                "top": [0, 0],
+                "bottom": [0, -81.9]
+            }
+        }
+    },
+    "foregrounds": {
+        "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
+    },
+    "music": {
+        "investigation": [
+            "assets/audio/bgm/bgm001.m4a",
+            "assets/audio/bgm/bgm001lp.m4a"
+        ],
+        "grossberg": "assets/audio/bgm/bgm026.m4a",
+        "detentionCenter": "assets/audio/bgm/bgm000.m4a"
+    },
+    "sounds": {
+        "damage": "assets/audio/se/damage.ogg",
+        "damage2": "assets/audio/se/damage2.ogg",
+        "shake": "assets/audio/se/se026.m4a",
+        "salute": "assets/audio/se/se044.m4a",
+        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
+        "cling": "assets/audio/se/cling.ogg",
+        "jingle": "assets/audio/bgm/bgm016.m4a",
+        "question1": "assets/audio/se/question1.ogg",
+        "realize": "assets/audio/se/se00a.m4a"
+    }
+}

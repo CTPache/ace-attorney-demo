@@ -128,6 +128,146 @@ function getSceneLoadCandidates(scenePath, languageCode) {
     return uniqueCandidates;
 }
 
+const SHARED_SCENE_ASSET_KEYS = [
+    'characters',
+    'backgrounds',
+    'foregrounds',
+    'evidence',
+    'profiles',
+    'Topics',
+    'topics',
+    'investigations',
+    'options',
+    'sounds',
+    'music',
+    'videos',
+    'crossExaminations'
+];
+
+function isMergeableSceneObject(value) {
+    return !!value && typeof value === 'object' && !Array.isArray(value);
+}
+
+function cloneSceneAssetValue(value) {
+    if (Array.isArray(value)) {
+        return value.map((item) => cloneSceneAssetValue(item));
+    }
+
+    if (isMergeableSceneObject(value)) {
+        const clone = {};
+        Object.keys(value).forEach((key) => {
+            clone[key] = cloneSceneAssetValue(value[key]);
+        });
+        return clone;
+    }
+
+    return value;
+}
+
+function mergeSceneAssetValue(baseValue, overrideValue) {
+    if (overrideValue === undefined) {
+        return cloneSceneAssetValue(baseValue);
+    }
+
+    if (Array.isArray(overrideValue)) {
+        return overrideValue.map((item) => cloneSceneAssetValue(item));
+    }
+
+    if (!isMergeableSceneObject(overrideValue)) {
+        return overrideValue;
+    }
+
+    const baseObject = isMergeableSceneObject(baseValue) ? baseValue : {};
+    const merged = {};
+    const keys = new Set([...Object.keys(baseObject), ...Object.keys(overrideValue)]);
+
+    keys.forEach((key) => {
+        merged[key] = mergeSceneAssetValue(baseObject[key], overrideValue[key]);
+    });
+
+    return merged;
+}
+
+function getSharedSceneAssetPaths(scenePath, languageCode) {
+    const parts = getScenePathParts(scenePath);
+    if (!parts || !parts.caseFolder) {
+        return {
+            caseSharedPath: '',
+            localizedCandidates: []
+        };
+    }
+
+    const lang = String(languageCode || 'EN').toUpperCase();
+    const caseSharedPath = `${parts.prefix}${parts.caseFolder}/shared_assets.json`;
+    const localizedCandidates = [
+        `${parts.prefix}${parts.caseFolder}/${lang}/localized_shared_assets.json`,
+        `${parts.prefix}${parts.caseFolder}/EN/localized_shared_assets.json`
+    ].filter((candidate, index, candidates) => candidate && candidates.indexOf(candidate) === index);
+
+    return {
+        caseSharedPath,
+        localizedCandidates
+    };
+}
+
+async function fetchOptionalSceneJson(jsonPath) {
+    if (!jsonPath) return null;
+
+    try {
+        const response = await fetch(jsonPath);
+        if (!response.ok) {
+            return null;
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.warn(`Failed to load optional scene asset file: ${jsonPath}`, error);
+        return null;
+    }
+}
+
+async function loadSharedSceneAssets(scenePath, languageCode) {
+    const { caseSharedPath, localizedCandidates } = getSharedSceneAssetPaths(scenePath, languageCode);
+
+    const caseSharedData = await fetchOptionalSceneJson(caseSharedPath);
+    let localizedSharedData = null;
+
+    for (const candidate of localizedCandidates) {
+        localizedSharedData = await fetchOptionalSceneJson(candidate);
+        if (localizedSharedData) {
+            break;
+        }
+    }
+
+    return {
+        caseSharedData,
+        localizedSharedData
+    };
+}
+
+function mergeSharedAssetsIntoSceneData(sceneData, ...sharedLayers) {
+    const mergedSceneData = isMergeableSceneObject(sceneData) ? { ...sceneData } : {};
+
+    SHARED_SCENE_ASSET_KEYS.forEach((key) => {
+        const layers = [...sharedLayers, sceneData]
+            .map((entry) => (entry && entry[key] !== undefined ? entry[key] : undefined))
+            .filter((entry) => entry !== undefined);
+
+        if (layers.length === 0) {
+            return;
+        }
+
+        let mergedValue;
+        layers.forEach((value) => {
+            mergedValue = mergeSceneAssetValue(mergedValue, value);
+        });
+
+        mergedSceneData[key] = mergedValue;
+    });
+
+    return mergedSceneData;
+}
+
 function getSanitizedCase(caseValue) {
     const normalized = String(caseValue || '')
         .replace(/\\/g, '/')
@@ -248,7 +388,9 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
     // Maybe pause the game/input?
 
     try {
-        const { data, resolvedPath } = await fetchSceneDataWithFallback(requestedPath, currentLanguage);
+        const { data: sceneData, resolvedPath } = await fetchSceneDataWithFallback(requestedPath, currentLanguage);
+        const { caseSharedData, localizedSharedData } = await loadSharedSceneAssets(resolvedPath, currentLanguage);
+        const data = mergeSharedAssetsIntoSceneData(sceneData, caseSharedData, localizedSharedData);
         currentSceneResolvedPath = resolvedPath;
 
         if (typeof window.setCurrentSceneTranslationKey === 'function') {

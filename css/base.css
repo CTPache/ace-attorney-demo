@@ -9,6 +9,7 @@
 }
 
 :root {
+    --z-layer-video: 0;
     --z-layer-base: 1;
     --z-layer-character: 2;
     --z-layer-foreground: 3;

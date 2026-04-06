@@ -6,78 +6,8 @@
         "talk": false,
         "present": false
     },
-    "characters": {
-        "Gumshoe": {
-            "Normal": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
-            },
-            "Sad": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
-            },
-            "LookingAway": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
-            },
-            "Confident": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
-            },
-            "Thinking": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
-            },
-            "Determined": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
-            },
-            "ScratchingHead": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
-                "time": 600
-            },
-            "ScratchingHead2": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
-            },
-            "Angry": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
-            }
-        }
-    },
     "backgrounds": {
-        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
-        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
-        "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png",
-        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
-        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
-        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
-        "Crime_Scene": {
-            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
-            "positions": {
-                "default": "bottom",
-                "top": [
-                    0,
-                    0
-                ],
-                "bottom": [
-                    0,
-                    -81.9
-                ]
-            }
-        }
-    },
-    "music": {
-        "investigation": [
-            "assets/audio/bgm/bgm001.m4a",
-            "assets/audio/bgm/bgm001lp.m4a"
-        ]
-    },
-    "sounds": {
-        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
-        "cling": "assets/audio/se/cling.ogg",
-        "shake": "assets/audio/se/se026.m4a",
-        "jingle": "assets/audio/bgm/bgm016.m4a"
+        "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png"
     },
     "evidence": {
         "mask_photo": {

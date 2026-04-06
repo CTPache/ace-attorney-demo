@@ -1,0 +1,14 @@
+{
+    "backgrounds": {
+        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png",
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png"
+    },
+    "profiles": {
+        "Kurumi": {
+            "name": "Kurumi Nakaki",
+            "data": "",
+            "description": "",
+            "image": "assets/img/profiles/Kurumi.png"
+        }
+    }
+}

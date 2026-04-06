@@ -6,120 +6,8 @@
         "talk": false,
         "present": false
     },
-    "characters": {
-        "Maggey": {
-            "Officer": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde_Officer_HD.gif"
-            },
-            "Salute_Officer": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde_Officer_Saluting_HD.gif",
-                "time": 700
-            }
-        },
-        "Gumshoe": {
-            "Normal": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-_Normal_talking.gif"
-            },
-            "Sad": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Sad_talking.gif"
-            },
-            "LookingAway": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Looking_away_talking.gif"
-            },
-            "Confident": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Confident_talking.gif"
-            },
-            "Thinking": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Thinking_talking.gif"
-            },
-            "Determined": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Determined_talking.gif"
-            },
-            "ScratchingHead": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head.gif",
-                "time": 600
-            },
-            "ScratchingHead2": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Scratching_head_2.gif"
-            },
-            "Angry": {
-                "default": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry.gif",
-                "talking": "assets/img/characters/Common/Gumshoe/Dick_Gumshoe_HD_-Angry_talking.gif"
-            }
-        },
-        "Edgeworth": {
-            "Normal": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Normal.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Normal_talking.gif"
-            },
-            "Smug": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_DD_HD_-_Smug.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_DD_HD_-_Smug_talking.gif"
-            },
-            "Angry": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Angry.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Angry_talking.gif"
-            },
-            "Annoyed": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Annoyed.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Annoyed_talking.gif"
-            },
-            "Brooding": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Brooding.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Brooding_talking.gif"
-            },
-            "SidewaysLook": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Sideways_look.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Sideways_look_talking.gif"
-            },
-            "Smiling": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Smiling.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Smiling_talking.gif"
-            },
-            "Worried": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Worried.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Worried_talking.gif"
-            },
-            "ObjectingLeft": {
-                "default": "assets/img/characters/Common/Edgeworth/witness/Miles_Edgeworth_HD_-_Objecting_left.gif"
-            }
-        }
-    },
-    "backgrounds": {
-        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
-        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
-        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
-        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
-        "phoenixMove": "assets/img/CG/Phoenix_Move_JP.png",
-        "Crime_Scene": {
-            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
-            "positions": {
-                "default": "bottom",
-                "top": [
-                    0,
-                    0
-                ],
-                "bottom": [
-                    0,
-                    -81.9
-                ]
-            }
-        }
-    },
     "music": {
         "investigation": "assets/audio/bgm/bgm025.m4a"
-    },
-    "sounds": {
-        "damage": "assets/audio/se/damage.ogg",
-        "shake": "assets/audio/se/se026.m4a",
-        "salute": "assets/audio/se/se044.m4a",
-        "jingle": "assets/audio/bgm/bgm016.m4a"
     },
     "investigations": {
         "JoyPolis": {
@@ -131,7 +19,7 @@
             "file": "assets/video/FlyHighIntro.mp4",
             "script": [
                 {
-                    "text": "{center}{color:lime}{blip:3}９月１７日　午後１時１７分{nl}ジョイポリス　イベントホール",
+                    "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}９月１７日　午後１時１７分{nl}ジョイポリス　イベントホール",
                     "timestamp": 2000,
                     "duration": 7000
                 },
@@ -212,14 +100,6 @@
             "json": "assets/scenes/FlyHigh/crime_scene.json"
         }
     ],
-    "profiles": {
-        "Kurumi": {
-            "name": "中木 クルミ",
-            "data": "",
-            "description": "",
-            "image": "assets/img/profiles/Kurumi.png"
-        }
-    },
     "gameScript": {
         "Intro_Start": [
             {

@@ -212,7 +212,9 @@ window.AnimationManager = (function() {
                 if (config.sound) {
                     const soundSrc = config.sound;
                     if (soundSrc.includes('/')) {
-                        const resolvedSoundSrc = soundSrc.startsWith('assets/') ? soundSrc : `assets/${soundSrc}`;
+                        const resolvedSoundSrc = (typeof window.resolveMediaAssetPath === 'function')
+                            ? window.resolveMediaAssetPath(soundSrc)
+                            : (soundSrc.startsWith('assets/') ? soundSrc : `assets/${soundSrc}`);
                         if (window.playSoundByPath) {
                             window.playSoundByPath(resolvedSoundSrc);
                         } else {

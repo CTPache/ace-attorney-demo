@@ -6,55 +6,10 @@
         "talk": false,
         "present": true
     },
-    "characters": {
-        "Shawit": {
-            "Stand": {
-                "default": "assets/img/characters/Fly High/Shawit/Stand.webp",
-                "talking": "assets/img/characters/Fly High/Shawit/Stand_Talk.webp"
-            },
-            "Nervous": {
-                "default": "assets/img/characters/Fly High/Shawit/Nervous.webp",
-                "talking": "assets/img/characters/Fly High/Shawit/Nervous_Talk.webp"
-            },
-            "Cornered": {
-                "default": "assets/img/characters/Fly High/Shawit/Cornered.gif",
-                "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
-            },
-            "Damage": {
-                "default": "assets/img/characters/Fly High/Shawit/Damage.webp"
-            }
-        }
-    },
     "backgrounds": {
-        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
-        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "Samurai2": "assets/img/CG/Fly High/Samurai_2.png",
-        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
         "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
-        "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png",
-        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
-        "Crime_Scene": {
-            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
-            "positions": {
-                "default": "bottom",
-                "top": [
-                    0,
-                    0
-                ],
-                "bottom": [
-                    0,
-                    -81.9
-                ]
-            }
-        }
-    },
-    "music": {
-        "grossberg": "assets/audio/bgm/bgm026.m4a"
-    },
-    "sounds": {
-        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
-        "cling": "assets/audio/se/cling.ogg",
-        "jingle": "assets/audio/bgm/bgm016.m4a"
+        "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png"
     },
     "evidence": {
         "loud_sound_updated": {

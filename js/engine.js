@@ -314,8 +314,29 @@ function startGame() {
 }
 
 let cornerEvidenceHideTimeout = null;
+let cornerEvidenceShowRequestId = 0;
 
-window.showEvidenceIcon = function(position, evidenceKey) {
+function animateCornerEvidenceIconIn(position = 'right') {
+    if (!cornerEvidenceIcon) return;
+
+    cornerEvidenceIcon.classList.remove('hidden', 'hidden-left', 'hidden-right', 'show-left', 'show-right');
+    void cornerEvidenceIcon.offsetWidth;
+
+    if (position === 'left') {
+        cornerEvidenceIcon.classList.add('hidden-left');
+        void cornerEvidenceIcon.offsetWidth;
+        cornerEvidenceIcon.classList.remove('hidden-left');
+        cornerEvidenceIcon.classList.add('show-left');
+        return;
+    }
+
+    cornerEvidenceIcon.classList.add('hidden-right');
+    void cornerEvidenceIcon.offsetWidth;
+    cornerEvidenceIcon.classList.remove('hidden-right');
+    cornerEvidenceIcon.classList.add('show-right');
+}
+
+window.showEvidenceIcon = async function(position, evidenceKey) {
     if (cornerEvidenceHideTimeout) {
         clearTimeout(cornerEvidenceHideTimeout);
         cornerEvidenceHideTimeout = null;
@@ -333,28 +354,42 @@ window.showEvidenceIcon = function(position, evidenceKey) {
         return;
     }
 
-    cornerEvidenceIcon.src = iconSrc;
-    cornerEvidenceIcon.alt = recordItem?.name || evidenceKey;
-    cornerEvidenceIcon.classList.remove('hidden', 'hidden-left', 'hidden-right', 'show-left', 'show-right');
-    
-    // Force layout
-    void cornerEvidenceIcon.offsetWidth;
+    const requestId = ++cornerEvidenceShowRequestId;
 
-    if (position === 'left') {
-        cornerEvidenceIcon.classList.add('hidden-left');
-        void cornerEvidenceIcon.offsetWidth;
-        cornerEvidenceIcon.classList.remove('hidden-left');
-        cornerEvidenceIcon.classList.add('show-left');
-    } else {
-        cornerEvidenceIcon.classList.add('hidden-right');
-        void cornerEvidenceIcon.offsetWidth;
-        cornerEvidenceIcon.classList.remove('hidden-right');
-        cornerEvidenceIcon.classList.add('show-right');
+    cornerEvidenceIcon.classList.remove('hidden-left', 'hidden-right', 'show-left', 'show-right');
+    cornerEvidenceIcon.classList.add('hidden');
+
+    let resolvedIconSrc = iconSrc;
+    if (typeof window.preloadImage === 'function') {
+        resolvedIconSrc = await window.preloadImage(iconSrc);
     }
+
+    if (requestId !== cornerEvidenceShowRequestId || !cornerEvidenceIcon) {
+        return;
+    }
+
+    cornerEvidenceIcon.src = resolvedIconSrc;
+    cornerEvidenceIcon.alt = recordItem?.name || evidenceKey;
+
+    if (typeof cornerEvidenceIcon.decode === 'function') {
+        try {
+            await cornerEvidenceIcon.decode();
+        } catch (error) {
+            // Ignore decode failures; the preload fallback already keeps the old image hidden.
+        }
+    }
+
+    if (requestId !== cornerEvidenceShowRequestId || !cornerEvidenceIcon) {
+        return;
+    }
+
+    animateCornerEvidenceIconIn(position);
     if (typeof playSound === 'function') playSound('realize');
 };
 
 window.hideEvidenceIcon = function() {
+    cornerEvidenceShowRequestId++;
+
     if (!cornerEvidenceIcon) return;
     if (cornerEvidenceHideTimeout) {
         clearTimeout(cornerEvidenceHideTimeout);

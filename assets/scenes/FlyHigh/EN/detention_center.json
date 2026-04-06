@@ -6,81 +6,10 @@
         "talk": false,
         "present": false
     },
-    "characters": {
-        "Maggey": {
-            "Normal": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde-Normal-1-HD.webp",
-                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Normal-2-HD.webp"
-            },
-            "Sad": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde-Sad-1-HD.webp",
-                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Sad-2-HD.webp"
-            },
-            "Determined": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde-Determined-1-HD.webp",
-                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Determined-2-HD.webp"
-            },
-            "Admiring": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-1-HD.webp",
-                "talking": "assets/img/characters/Fly High/Byrde/Byrde-Admiring-2-HD.webp"
-            },
-            "Saluting": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde-Saluting-HD.webp",
-                "time": 700,
-                "shake": [
-                    {
-                        "at": 400,
-                        "duration": 300
-                    }
-                ],
-                "sound": [
-                    {
-                        "at": 400,
-                        "sound": "salute"
-                    }
-                ]
-            }
-        }
-    },
-    "backgrounds": {
-        "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
-        "BlogPost": "assets/img/CG/Fly High/Blog_Post.png",
-        "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
-        "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",
-        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
-        "Crime_Scene": {
-            "path": "assets/img/backgrounds/Fly High/Scene_body.png",
-            "positions": {
-                "default": "bottom",
-                "top": [
-                    0,
-                    0
-                ],
-                "bottom": [
-                    0,
-                    -81.9
-                ]
-            }
-        }
-    },
-    "foregrounds": {
-        "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
-    },
-    "music": {
-        "detentionCenter": "assets/audio/bgm/bgm000.m4a"
-    },
     "investigations": {
         "DetentionCenter": {
             "default": "Detention_Center_Examine_Default"
         }
-    },
-    "sounds": {
-        "evidenceUnlock": "assets/audio/se/evidence_unlock.ogg",
-        "damage": "assets/audio/se/damage.ogg",
-        "shake": "assets/audio/se/se026.m4a",
-        "salute": "assets/audio/se/se044.m4a",
-        "cling": "assets/audio/se/cling.ogg",
-        "jingle": "assets/audio/bgm/bgm016.m4a"
     },
     "evidence": {
         "blog_post_charm": {

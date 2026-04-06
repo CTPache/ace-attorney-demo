@@ -1,0 +1,14 @@
+{
+    "backgrounds": {
+        "phoenixMove": "assets/img/CG/Phoenix_Move_JP.png",
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png"
+    },
+    "profiles": {
+        "Kurumi": {
+            "name": "中木 クルミ",
+            "data": "",
+            "description": "",
+            "image": "assets/img/profiles/Kurumi.png"
+        }
+    }
+}
