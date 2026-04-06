@@ -1,0 +1,16 @@
+{
+    "initialSection": "Redirect",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "gameScript": {
+        "Redirect": [
+            {
+                "text": "{loadScene:assets/scenes/tests/comprehensive_demo.json,Showcase_Boot}{sectionEnd}"
+            }
+        ]
+    }
+}

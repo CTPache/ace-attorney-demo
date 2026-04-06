@@ -114,19 +114,19 @@
             "label": "Oficina",
             "target": "Office_Init",
             "preview": "Office",
-            "json": "assets/scenes/FlyHigh/office.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/office.json"
         },
         {
             "label": "Centro de detención",
             "target": "Detention_Center_Init",
             "preview": "DetentionCenter",
-            "json": "assets/scenes/FlyHigh/detention_center.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/detention_center.json"
         },
         {
             "label": "4.ª planta",
             "target": "Floor4_Init",
             "preview": "Floor4",
-            "json": "assets/scenes/FlyHigh/4th_floor.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/4th_floor.json"
         }
     ],
     "gameScript": {
@@ -142,7 +142,7 @@
         ],
         "Crime_Scene_Finish": [
             {
-                "text": "{setAction:examine,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+                "text": "{setAction:examine,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{skip:0}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{sectionEnd}"
             }
         ],
         "Crime_Scene_Intro": [
@@ -321,22 +321,7 @@
         ],
         "Body_Examined": [
             {
-                "text": "{jumpIf:body_investigated,Out_Examined}{skip:0}{sectionEnd}"
-            }
-        ],
-        "Out_Examined": [
-            {
-                "text": "{jumpIf:out_investigated,Background_Examined}{skip:0}{sectionEnd}"
-            }
-        ],
-        "Background_Examined": [
-            {
-                "text": "{jumpIf:background_investigated,Floor_Examined}{skip:0}{sectionEnd}"
-            }
-        ],
-        "Floor_Examined": [
-            {
-                "text": "{jumpIf:floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
             }
         ],
         "Shawit_Appears": [

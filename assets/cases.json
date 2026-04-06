@@ -7,7 +7,7 @@
             "Chapters": {
                 "investigation1": {
                     "name": "Investigation",
-                    "scene": "assets/scenes/FlyHigh/intro.json",
+                    "scene": "assets/scenes/FlyHigh/Investigation1/intro.json",
                     "courtRecord": {
                         "evidence": {
                             "badge": {

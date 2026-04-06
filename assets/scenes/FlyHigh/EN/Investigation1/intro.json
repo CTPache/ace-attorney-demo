@@ -87,25 +87,25 @@
             "label": "Office",
             "target": "Office_Init",
             "preview": "Office",
-            "json": "assets/scenes/FlyHigh/office.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/office.json"
         },
         {
             "label": "Detention Center",
             "target": "Detention_Center_Init",
             "preview": "DetentionCenter",
-            "json": "assets/scenes/FlyHigh/detention_center.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/detention_center.json"
         },
         {
             "label": "4th Floor",
             "target": "Floor4_Init",
             "preview": "Floor4",
-            "json": "assets/scenes/FlyHigh/4th_floor.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/4th_floor.json"
         },
         {
             "label": "Event Hall",
             "target": "Crime_Scene_Init",
             "preview": "Crime_Scene",
-            "json": "assets/scenes/FlyHigh/crime_scene.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/crime_scene.json"
         }
     ],
     "gameScript": {

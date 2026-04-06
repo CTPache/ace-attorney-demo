@@ -227,6 +227,47 @@ function executeScriptAction(segment) {
     }
 }
 
+function evaluateJumpCondition(condition) {
+    if (typeof condition !== 'string') {
+        return false;
+    }
+
+    const normalizedCondition = condition
+        .trim()
+        .replace(/\s+/g, '')
+        .replace(/&&/g, '&')
+        .replace(/\|\|/g, '|');
+
+    if (!normalizedCondition) {
+        return false;
+    }
+
+    const resolvedCondition = normalizedCondition.replace(/[A-Za-z_][A-Za-z0-9_]*/g, (token) => {
+        const lowerToken = token.toLowerCase();
+        if (lowerToken === 'true' || lowerToken === 'false') {
+            return lowerToken;
+        }
+
+        return Boolean(gameState[token]) ? 'true' : 'false';
+    });
+
+    if (!/^[()!&|truefals]+$/i.test(resolvedCondition)) {
+        console.warn('Unsupported jumpIf condition:', condition);
+        return false;
+    }
+
+    try {
+        const jsCondition = resolvedCondition
+            .replace(/&/g, '&&')
+            .replace(/\|/g, '||');
+
+        return Boolean(Function(`"use strict"; return (${jsCondition});`)());
+    } catch (error) {
+        console.warn('Failed to evaluate jumpIf condition:', condition, error);
+        return false;
+    }
+}
+
 /**
  * Handles Control Flow (jumping, options)
  */
@@ -254,7 +295,7 @@ function handleFlowControl(segment) {
         if (window.jumpToSection) jumpToSection(segment.label);
         return true;
     } else if (segment.type === 'jumpIf') {
-        if (gameState[segment.condition]) {
+        if (evaluateJumpCondition(segment.condition)) {
             if (window.jumpToSection) jumpToSection(segment.labelTrue);
             return true;
         } else if (segment.labelFalse) {

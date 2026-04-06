@@ -36,19 +36,19 @@
             "label": "4th Floor",
             "target": "Floor4_Init",
             "preview": "Floor4",
-            "json": "assets/scenes/FlyHigh/4th_floor.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/4th_floor.json"
         },
         {
             "label": "Office",
             "target": "Office_Init",
             "preview": "Office",
-            "json": "assets/scenes/FlyHigh/office.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/office.json"
         },
         {
             "label": "Event Hall",
             "target": "Crime_Scene_Init",
             "preview": "Crime_Scene",
-            "json": "assets/scenes/FlyHigh/crime_scene.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/crime_scene.json"
         }
     ],
     "gameScript": {
@@ -59,7 +59,7 @@
         ],
         "Detention_Center_Default": [
             {
-                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{sectionEnd}{skip:0}"
             }
         ],
         "Detention_Center_Examine_Default": [
@@ -222,6 +222,11 @@
             {
                 "name": "Phoenix",
                 "text": "{color:lightblue}{blip:0}(All right. I think I'm done here.){setState:detention_center_done,true}{color:white}{jump:Detention_Center_Default}{sectionEnd}"
+            }
+        ],
+        "Load_Courtroom": [
+            {
+                "text": "{loadScene:assets/scenes/FlyHigh/Courtroom1/courtroom.json}{sectionEnd}"
             }
         ]
     }

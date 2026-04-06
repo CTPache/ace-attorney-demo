@@ -30,19 +30,19 @@
             "label": "Salón de actos",
             "target": "Crime_Scene_Init",
             "preview": "Crime_Scene",
-            "json": "assets/scenes/FlyHigh/crime_scene.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/crime_scene.json"
         },
         {
             "label": "Centro de detención",
             "target": "Detention_Center_Init",
             "preview": "DetentionCenter",
-            "json": "assets/scenes/FlyHigh/detention_center.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/detention_center.json"
         },
         {
             "label": "4.ª planta",
             "target": "Floor4_Init",
             "preview": "Floor4",
-            "json": "assets/scenes/FlyHigh/4th_floor.json"
+            "json": "assets/scenes/FlyHigh/Investigation1/4th_floor.json"
         }
     ],
     "gameScript": {
@@ -58,7 +58,7 @@
         ],
         "Office_Finish": [
             {
-                "text": " {setAction:present,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+                "text": " {setAction:present,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{sectionEnd}{skip:0}"
             }
         ],
         "Office_Intro": [
@@ -236,6 +236,11 @@
         "Office_evidence_default_2": [
             {
                 "text": "{skip:0}{sectionEnd}"
+            }
+        ],
+        "Load_Courtroom": [
+            {
+                "text": "{loadScene:assets/scenes/FlyHigh/Courtroom1/courtroom.json}{sectionEnd}"
             }
         ]
     }

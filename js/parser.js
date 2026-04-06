@@ -12,7 +12,7 @@ const patterns = [
     /\{hideCharacter\}/,                                // 0: Hide
     /\{bg:([a-zA-Z0-9_]+)\}/,                           // 6: Bg
     /\{jump:([a-zA-Z0-9_]+)\}/,                         // 7: Jump
-    /\{jumpIf:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/, // 8,9,10: JumpIf
+    /\{jumpIf:([^,}]+),([a-zA-Z0-9_]+)(?:,([a-zA-Z0-9_]+))?\}/, // 8,9,10: JumpIf
     /\{setState:([a-zA-Z0-9_]+),([^}]+)\}/,             // 11,12: SetState
     /\{blip:(\d+)(?:,(true|false))?\}/,                 // 13,14: Blip (Type, ShouldSpeak)
     /\{center\}/,                                       // 0: Center
@@ -130,8 +130,8 @@ function parseText(text) {
             parsedSegments.push({ type: 'bg', bgName: match[6] });
         } else if (match[7]) { // Jump {jump:Label}
             parsedSegments.push({ type: 'jump', label: match[7] });
-        } else if (match[8] && match[9]) { // JumpIf {jumpIf:Cond,True,False(Optional)}
-            parsedSegments.push({ type: 'jumpIf', condition: match[8], labelTrue: match[9], labelFalse: match[10] });
+        } else if (match[8] && match[9]) { // JumpIf {jumpIf:ConditionExpr,True,False(Optional)}
+            parsedSegments.push({ type: 'jumpIf', condition: match[8].trim(), labelTrue: match[9], labelFalse: match[10] });
         } else if (match[11] && match[12]) { // SetState {setState:Key,Value}
             parsedSegments.push({ type: 'setState', key: match[11], value: match[12] });
         } else if (match[13]) { // Blip {blip:Type}

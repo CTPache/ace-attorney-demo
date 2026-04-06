@@ -71,7 +71,7 @@ Language fallback behavior:
 Inside scene JSON, cross-scene links should omit the language segment. Use paths like this:
 
 ```json
-"json": "assets/scenes/FlyHigh/office.json"
+"json": "assets/scenes/FlyHigh/Investigation1/office.json"
 ```
 
 The loader inserts the active language automatically.
@@ -377,7 +377,7 @@ Rules:
     "label": "Office",
     "target": "Office_Init",
     "preview": "Office",
-    "json": "assets/scenes/FlyHigh/office.json"
+    "json": "assets/scenes/FlyHigh/Investigation1/office.json"
   }
 ]
 ```
@@ -569,6 +569,20 @@ You can combine multiple commands in the same line.
 - Jumps to `TrueSection` if `gameState[StateKey]` is truthy.
 - If the optional false section is supplied, jumps there when false.
 - If the false section is omitted and the condition is false, the script continues normally.
+
+`{jumpIf:ConditionExpr,TrueSection,FalseSection}`
+
+- `jumpIf` also supports combined boolean conditions using `&` (AND), `|` (OR), `!` (NOT), and parentheses.
+- This is useful for investigation gates or other multi-state checks.
+
+Examples:
+
+```text
+{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Shawit_Appears}
+{jumpIf:evidence_keycard|evidence_pass,OpenDoor,KeepSearching}
+{jumpIf:!intro_seen,FirstTimeOnly}
+{jumpIf:(flagA&flagB)|flagC,Success,Fallback}
+```
 
 `{setState:Key,Value}`
 
