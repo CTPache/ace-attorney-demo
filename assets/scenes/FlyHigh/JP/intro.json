@@ -212,6 +212,14 @@
             "json": "assets/scenes/FlyHigh/crime_scene.json"
         }
     ],
+    "profiles": {
+        "Kurumi": {
+            "name": "中木 クルミ",
+            "data": "",
+            "description": "",
+            "image": "assets/img/profiles/Kurumi.png"
+        }
+    },
     "gameScript": {
         "Intro_Start": [
             {

@@ -215,8 +215,8 @@
     "profiles": {
         "Kurumi": {
             "name": "Kurumi Nakaki",
-            "data": "Age: 16\nOccupation: Student, Suit Actress",
-            "description": "The victim of the case. She worked at Joypolis as a suit actress for the Steel Samurai show.",
+            "data": "",
+            "description": "",
             "image": "assets/img/profiles/Kurumi.png"
         }
     },
