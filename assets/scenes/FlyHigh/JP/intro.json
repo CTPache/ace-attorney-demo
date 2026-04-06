@@ -113,10 +113,7 @@
         }
     },
     "music": {
-        "investigation": [
-            "assets/audio/bgm/bgm001.m4a",
-            "assets/audio/bgm/bgm001lp.m4a"
-        ]
+        "investigation": "assets/audio/bgm/bgm025.m4a"
     },
     "sounds": {
         "damage": "assets/audio/se/damage.ogg",
@@ -225,7 +222,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}{color:lightblue}（ぼくの名前は、成歩堂 龍一）"
+                "text": "{startBGM:investigation,false}{blip:1}{color:lightblue}（ぼくの名前は、成歩堂 龍一）"
             },
             {
                 "name": "ナルホド",
@@ -257,7 +254,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}{startBGM:investigation,true}・・・・{p:200}はあ。"
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}・・・・{p:200}はあ。"
             },
             {
                 "name": "ミツルギ",
@@ -277,7 +274,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}被害者は中木 クルミさん。"
+                "text": "{showEvidenceIcon:left,Kurumi}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}被害者は中木 クルミ《なかきくるみ》さん。"
             },
             {
                 "name": "イトノコ",
@@ -285,7 +282,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "死体発見時刻は午後１０時５分。"
+                "text": "{hideEvidenceIcon}死体発見時刻は午後１０時５分。"
             },
             {
                 "name": "イトノコ",

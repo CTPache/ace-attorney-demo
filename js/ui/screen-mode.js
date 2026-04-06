@@ -42,6 +42,10 @@ function updateScreenVisibility() {
     }
 
     syncAutoplayIndicatorPlacement();
+
+    if (typeof window.updateActionButtons === 'function') {
+        window.updateActionButtons();
+    }
 }
 
 function scheduleBackgroundPositionReapply() {

@@ -16,6 +16,7 @@ let topVideo;
 let flashOverlay;
 let autoplayIndicator;
 let skipVideoBtn;
+let cornerEvidenceIcon;
 
 let nameTag;
 let textContent;
@@ -103,6 +104,7 @@ function refreshDOMGlobals() {
     flashOverlay = document.getElementById('flash-overlay');
     autoplayIndicator = document.getElementById('autoplay-indicator');
     skipVideoBtn = document.getElementById('skip-video-btn');
+    cornerEvidenceIcon = document.getElementById('corner-evidence-icon');
 
     nameTag = document.getElementById('name-tag');
     textContent = document.getElementById('text-content');

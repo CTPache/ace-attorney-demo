@@ -113,10 +113,7 @@
         }
     },
     "music": {
-        "investigation": [
-            "assets/audio/bgm/bgm001.m4a",
-            "assets/audio/bgm/bgm001lp.m4a"
-        ]
+        "investigation": "assets/audio/bgm/bgm025.m4a"
     },
     "sounds": {
         "damage": "assets/audio/se/damage.ogg",
@@ -225,7 +222,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{color:lightblue}(Mi nombre es Phoenix Wright.)"
+                "text": "{startBGM:investigation,false}{blip:1}{color:lightblue}(Mi nombre es Phoenix Wright.)"
             },
             {
                 "name": "Phoenix",
@@ -257,8 +254,8 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}{startBGM:investigation,true}*suspiro*{p:200}..."
-            },
+                    "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}*suspiro*{p:200}..."
+                },
             {
                 "name": "Edgeworth",
                 "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}Detective Gumshoe, póngame al día con el caso de inmediato."
@@ -277,7 +274,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}La víctima es Kurumi Nakaki."
+                "text": "{showEvidenceIcon:left,Kurumi}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}La víctima es Kurumi Nakaki."
             },
             {
                 "name": "Gumshoe",
@@ -285,7 +282,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "El cuerpo fue descubierto a las 10:05 p. m."
+                "text": "{hideEvidenceIcon}El cuerpo fue descubierto a las 10:05 p. m."
             },
             {
                 "name": "Gumshoe",

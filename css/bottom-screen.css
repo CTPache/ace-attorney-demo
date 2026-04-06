@@ -149,7 +149,7 @@
     display: none !important;
 }
 
-#bottom-main-window:has(#evidence-container:not(.hidden)) :is(#advance-btn, #ce-arrow-container) {
+#bottom-main-window:has(:is(#investigation-menu, #move-menu, #topic-menu, #investigation-panel, #evidence-container):not(.hidden)) :is(#advance-btn, #ce-arrow-container) {
     display: none !important;
 }
 

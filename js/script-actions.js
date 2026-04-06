@@ -79,6 +79,16 @@ function executeScriptAction(segment) {
                 delete gameState['evidence_' + segment.key];
             }
             return true;
+        case 'showEvidenceIcon':
+            if (window.showEvidenceIcon) {
+                window.showEvidenceIcon(segment.position, segment.evidenceKey);
+            }
+            return true;
+        case 'hideEvidenceIcon':
+            if (window.hideEvidenceIcon) {
+                window.hideEvidenceIcon();
+            }
+            return true;
         case 'updateEvidence':
             // Remove old
             const updateIndex = evidenceInventory.indexOf(segment.oldKey);

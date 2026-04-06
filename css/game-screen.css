@@ -125,3 +125,73 @@
     margin-top: 20px;
     cursor: pointer;
 }
+
+
+#corner-evidence-icon {
+    width: 22cqw;
+    height: 22cqw;
+    position: absolute;
+    top: 5cqh;
+    z-index: var(--z-layer-evidence-icons);
+    background: gray;
+    transition: transform 0.4s ease;
+    opacity: 1;
+    transform: scale(0);
+    pointer-events: none;
+    display: block;
+    border: 1cqh solid white;
+}
+
+#corner-evidence-icon.hidden {
+    opacity: 1;
+    transform: scale(0);
+}
+
+#corner-evidence-icon.show-left {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top left;
+    left: 5cqw;
+    right: auto;
+}
+
+#corner-evidence-icon.show-right {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top right;
+    right: 5cqw;
+    left: auto;
+}
+
+#corner-evidence-icon.hidden-left {
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: top left;
+    left: 5cqw;
+    right: auto;
+}
+
+#corner-evidence-icon.hidden-right {
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: top right;
+    right: 5cqw;
+    left: auto;
+}
+
+#corner-evidence-icon.show-left {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top left;
+    left: 5cqw;
+    right: auto;
+}
+
+#corner-evidence-icon.show-right {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top right;
+    right: 5cqw;
+    left: auto;
+}
+

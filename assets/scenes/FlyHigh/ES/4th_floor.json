@@ -184,7 +184,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}En fin, {nl} mira esto."
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}En fin, {nl} mira esto.{showEvidenceIcon:left,mask_photo}"
             },
             {
                 "name": "Gumshoe",
@@ -203,7 +203,7 @@
                 "text": "{blip:0}{color:lightblue}(Solo está abollada la zona de la ceja...)"
             },
             {
-                "text": "{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}\"Foto de la máscara\" añadido al acta del juicio."
+                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}\"Foto de la máscara\" añadido al acta del juicio."
             },
             {
                 "name": "Gumshoe",

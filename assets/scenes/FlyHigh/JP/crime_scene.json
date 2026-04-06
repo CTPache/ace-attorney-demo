@@ -495,7 +495,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}・・・ん？{nl}何か地面に落ちているぞ。"
+                "text": "{showEvidenceIcon:right,accessory}{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}・・・ん？{nl}何か地面に落ちているぞ。"
             },
             {
                 "name": "ナルホド",
@@ -503,7 +503,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}ほんとッスね。{p:200}さっきまでは{nl}ナニも落ちていなかったッスけど・・・・"
+                "text": "{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}ほんとッスね。{p:200}さっきまでは{nl}ナニも落ちていなかったッスけど・・・・"
             },
             {
                 "name": "ナルホド",

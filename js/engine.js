@@ -265,6 +265,10 @@ function clearTopScreen() {
     if (topVideo) {
         topVideo.classList.add('hidden');
     }
+    // Hide and shelve evidence icon if any
+    if (typeof window.hideEvidenceIcon === 'function') {
+        window.hideEvidenceIcon();
+    }
     // Clear flash overlay
     if (flashOverlay) {
         flashOverlay.classList.remove('flashing');
@@ -308,3 +312,71 @@ function startGame() {
         updateDialogue(initialSection[0]);
     }
 }
+
+let cornerEvidenceHideTimeout = null;
+
+window.showEvidenceIcon = function(position, evidenceKey) {
+    if (cornerEvidenceHideTimeout) {
+        clearTimeout(cornerEvidenceHideTimeout);
+        cornerEvidenceHideTimeout = null;
+    }
+    if (typeof window.ensureLazyElementMounted === 'function') {
+        window.ensureLazyElementMounted('corner-evidence-icon', 'corner-evidence-icon-template', '#game-container');
+    }
+    if (!cornerEvidenceIcon) return;
+
+    const recordItem = evidenceDB[evidenceKey] || profilesDB[evidenceKey];
+    const iconSrc = recordItem?.image || recordItem?.icon;
+
+    if (!iconSrc) {
+        console.warn(`Record icon could not be shown for key: ${evidenceKey}`);
+        return;
+    }
+
+    cornerEvidenceIcon.src = iconSrc;
+    cornerEvidenceIcon.alt = recordItem?.name || evidenceKey;
+    cornerEvidenceIcon.classList.remove('hidden', 'hidden-left', 'hidden-right', 'show-left', 'show-right');
+    
+    // Force layout
+    void cornerEvidenceIcon.offsetWidth;
+
+    if (position === 'left') {
+        cornerEvidenceIcon.classList.add('hidden-left');
+        void cornerEvidenceIcon.offsetWidth;
+        cornerEvidenceIcon.classList.remove('hidden-left');
+        cornerEvidenceIcon.classList.add('show-left');
+    } else {
+        cornerEvidenceIcon.classList.add('hidden-right');
+        void cornerEvidenceIcon.offsetWidth;
+        cornerEvidenceIcon.classList.remove('hidden-right');
+        cornerEvidenceIcon.classList.add('show-right');
+    }
+    if (typeof playSound === 'function') playSound('realize');
+};
+
+window.hideEvidenceIcon = function() {
+    if (!cornerEvidenceIcon) return;
+    if (cornerEvidenceHideTimeout) {
+        clearTimeout(cornerEvidenceHideTimeout);
+    }
+    if (cornerEvidenceIcon.classList.contains('show-left')) {
+        cornerEvidenceIcon.classList.remove('show-left');
+        cornerEvidenceIcon.classList.add('hidden-left');
+    } else if (cornerEvidenceIcon.classList.contains('show-right')) {
+        cornerEvidenceIcon.classList.remove('show-right');
+        cornerEvidenceIcon.classList.add('hidden-right');
+    } else {
+        cornerEvidenceIcon.classList.add('hidden');
+    }
+    // Hide completely after transition
+    cornerEvidenceHideTimeout = setTimeout(() => {
+        cornerEvidenceHideTimeout = null;
+        if (!cornerEvidenceIcon) return;
+        cornerEvidenceIcon.classList.remove('hidden-left', 'hidden-right');
+        cornerEvidenceIcon.classList.add('hidden');
+        if (typeof window.shelveLazyElement === 'function') {
+            window.shelveLazyElement('corner-evidence-icon');
+        }
+    }, 400);
+};
+

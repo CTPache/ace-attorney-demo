@@ -114,19 +114,21 @@ function shouldBlockDialogueAdvance(target) {
     return false;
 }
 
+function applyActionButtonState(button, isEnabled) {
+    if (!button) return;
+
+    button.disabled = !isEnabled;
+
+    const shouldHideInSingleScreen = !!isSingleScreenMode && !isEnabled;
+    button.style.display = shouldHideInSingleScreen ? 'none' : '';
+    button.setAttribute('aria-hidden', shouldHideInSingleScreen ? 'true' : 'false');
+}
+
 function updateActionButtons() {
-    if (btnExamine) {
-        btnExamine.disabled = !actionStates.examine;
-    }
-    if (btnMove) {
-        btnMove.disabled = !actionStates.move;
-    }
-    if (btnTalk) {
-        btnTalk.disabled = !actionStates.talk;
-    }
-    if (btnPresent) {
-        btnPresent.disabled = !actionStates.present;
-    }
+    applyActionButtonState(btnExamine, actionStates.examine);
+    applyActionButtonState(btnMove, actionStates.move);
+    applyActionButtonState(btnTalk, actionStates.talk);
+    applyActionButtonState(btnPresent, actionStates.present);
 }
 
 window.setBottomScreenButtonsDisabled = setBottomScreenButtonsDisabled;

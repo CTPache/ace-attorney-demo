@@ -113,10 +113,7 @@
         }
     },
     "music": {
-        "investigation": [
-            "assets/audio/bgm/bgm001.m4a",
-            "assets/audio/bgm/bgm001lp.m4a"
-        ]
+        "investigation": "assets/audio/bgm/bgm025.m4a"
     },
     "sounds": {
         "damage": "assets/audio/se/damage.ogg",
@@ -215,6 +212,14 @@
             "json": "assets/scenes/FlyHigh/crime_scene.json"
         }
     ],
+    "profiles": {
+        "Kurumi": {
+            "name": "Kurumi Nakaki",
+            "data": "Age: 16\nOccupation: Student, Suit Actress",
+            "description": "The victim of the case. She worked at Joypolis as a suit actress for the Steel Samurai show.",
+            "image": "assets/img/profiles/Kurumi.png"
+        }
+    },
     "gameScript": {
         "Intro_Init": [
             {
@@ -235,7 +240,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{color:lightblue}(My name is Phoenix Wright.)"
+                "text": "{startBGM:investigation,false}{blip:1}{color:lightblue}(My name is Phoenix Wright.)"
             },
             {
                 "name": "Phoenix",
@@ -267,7 +272,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}{startBGM:investigation,true}*sigh*{p:200}..."
+                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}*sigh*{p:200}..."
             },
             {
                 "name": "Edgeworth",
@@ -287,7 +292,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}The victim is Kurumi Nakaki."
+                "text": "{showEvidenceIcon:left,Kurumi}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}The victim is Kurumi Nakaki."
             },
             {
                 "name": "Gumshoe",
@@ -299,7 +304,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "The estimated time of death is between 9:30 PM and 10:30 PM."
+                "text": "{hideEvidenceIcon}The estimated time of death is between 9:30 PM and 10:30 PM."
             },
             {
                 "name": "Edgeworth",

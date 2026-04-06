@@ -184,7 +184,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}Anyway, {nl} Take a look at this."
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}Anyway, {nl} Take a look at this.{showEvidenceIcon:left,mask_photo}"
             },
             {
                 "name": "Gumshoe",
@@ -203,7 +203,7 @@
                 "text": "{blip:0}{color:lightblue}(Only the eyebrow area is dented...)"
             },
             {
-                "text": "{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record."
+                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record."
             },
             {
                 "name": "Gumshoe",

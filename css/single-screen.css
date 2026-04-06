@@ -157,6 +157,10 @@
     margin: 0;
 }
 
+.single-screen-mode #investigation-menu .inv-btn:disabled {
+    display: none !important;
+}
+
 .single-screen-mode :is(#investigation-panel, #move-menu, #topic-menu, #evidence-container, #gallery-menu) .back-btn {
     bottom: 2.2cqh !important;
 }
@@ -392,4 +396,9 @@
 
 .single-screen-mode #ce-arrow-container:has(#ce-prev-arrow.hidden):not(:has(#ce-next-arrow.hidden)) {
     flex-direction: row-reverse;
+}
+
+.single-screen-mode #corner-evidence-icon.show-left,
+.single-screen-mode #corner-evidence-icon.show-right {
+    top: 11cqh;
 }

@@ -184,7 +184,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}これを見てほしいッス。{nl}"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}これを見てほしいッス。{showEvidenceIcon:left,mask_photo}"
             },
             {
                 "name": "イトノコ",
@@ -203,7 +203,7 @@
                 "text": "{blip:0}{color:lightblue}（へこみは眉毛の部分だけ ・・・・ ）"
             },
             {
-                "text": "{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}証拠品《マスクの証拠写真》のデータを{nl}法廷記録に書き込んでください。"
+                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}証拠品《マスクの証拠写真》のデータを{nl}法廷記録に書き込んでください。"
             },
             {
                 "name": "イトノコ",

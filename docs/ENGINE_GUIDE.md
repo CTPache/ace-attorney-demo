@@ -340,6 +340,7 @@ Important behavior:
 
 - Evidence and profile databases merge across scene loads.
 - Loading a new scene extends the global databases instead of resetting them.
+- `{showEvidenceIcon:left|right,Key}` can display either an evidence entry or a profile entry, as long as that record has an `image` path (or `icon` fallback).
 - Avoid accidental key collisions unless you intentionally want to update a prior definition.
 
 ## 6. Investigation, Move, Topics, And Options
@@ -828,6 +829,16 @@ Supported blip types:
 `{addProfile:Key,true|false}`
 
 - Adds a profile and optionally controls the popup notification.
+
+`{showEvidenceIcon:left|right,Key}`
+
+- Shows a temporary Court Record callout in the requested top corner.
+- `Key` may reference either an entry in `evidence` or an entry in `profiles`.
+- The record should define an `image` path for display.
+
+`{hideEvidenceIcon}`
+
+- Hides the current Court Record callout.
 
 `{topicUnlock:TopicKey}`
 

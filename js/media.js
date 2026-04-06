@@ -428,28 +428,35 @@ function stopTopVideoSequence(callCallback = false) {
     if (!topVideo) return;
 
     clearActiveVideoScriptTimeouts();
-    topVideo.pause();
-    topVideo.classList.add('hidden');
+
+    const callback = (callCallback && typeof activeVideoCompleteCallback === 'function')
+        ? activeVideoCompleteCallback
+        : null;
+    activeVideoCompleteCallback = null;
+
+    // Restore dialogue state first so any teardown events cannot re-block advancement.
+    textboxContainer.style.opacity = '1';
+    nameTag.style.opacity = '';
 
     isVideoAwaitingGesture = false;
     pendingVideoPlayback = null;
     isVideoPlaying = false;
     setSkipButtonMode('skip');
     toggleVideoControlButtons(false);
+    isInputBlocked = false;
 
     if (typeof window.setBottomScreenButtonsDisabled === 'function') {
         window.setBottomScreenButtonsDisabled(false);
     }
 
-    if (callCallback && typeof activeVideoCompleteCallback === 'function') {
-        const callback = activeVideoCompleteCallback;
-        activeVideoCompleteCallback = null;
-        callback();
-    } else {
-        activeVideoCompleteCallback = null;
-    }
+    topVideo.pause();
+    topVideo.removeAttribute('src');
+    topVideo.classList.add('hidden');
+    topVideo.load();
 
-    isInputBlocked = false;
+    if (callback) {
+        callback();
+    }
 }
 
 function playTopVideoSequence(videoKey, onComplete) {

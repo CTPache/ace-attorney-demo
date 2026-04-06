@@ -495,7 +495,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}Huh...?{nl}There's something on the floor."
+                "text": "{showEvidenceIcon:right,accessory}{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}Huh...?{nl}There's something on the floor."
             },
             {
                 "name": "Phoenix",
@@ -503,7 +503,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}You're right, pal.{p:200}{nl}That wasn't there a minute ago..."
+                "text": "{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}You're right, pal.{p:200}{nl}That wasn't there a minute ago..."
             },
             {
                 "name": "Phoenix",

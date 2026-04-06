@@ -39,27 +39,27 @@
         },
         "Oldbag": {
             "Normal": {
-                "default": "assets/img/characters/Locked Room/Oldbag/Normal-1.webp",
-                "talking": "assets/img/characters/Locked Room/Oldbag/Normal-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Wendy-Normal-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Wendy-Normal-2.webp"
             },
             "Embarrassed": {
-                "default": "assets/img/characters/Locked Room/Oldbag/Embarrassed-1.webp",
-                "talking": "assets/img/characters/Locked Room/Oldbag/Embarrassed-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Wendy-Embarrassed-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Wendy-Embarrassed-2.webp"
             },
             "Shocked": {
-                "default": "assets/img/characters/Locked Room/Oldbag/Shocked.webp",
+                "default": "assets/img/characters/Locked Room/Oldbag/Wendy-Shocked.webp",
                 "time": 680
             },
             "ShockedHold": {
-                "default": "assets/img/characters/Locked Room/Oldbag/Shocked2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Wendy-Shocked2.webp"
             },
             "Angry": {
-                "default": "assets/img/characters/Locked Room/Oldbag/Angry-1.webp",
-                "talking": "assets/img/characters/Locked Room/Oldbag/Angry-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Wendy-Angry-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Wendy-Angry-2.webp"
             },
             "Smirking": {
-                "default": "assets/img/characters/Locked Room/Oldbag/Smirking-1.webp",
-                "talking": "assets/img/characters/Locked Room/Oldbag/Smirking-2.webp"
+                "default": "assets/img/characters/Locked Room/Oldbag/Wendy-Smirking-1.webp",
+                "talking": "assets/img/characters/Locked Room/Oldbag/Wendy-Smirking-2.webp"
             }
         }
     },
@@ -444,6 +444,10 @@
             {
                 "name": "Gumshoe",
                 "text": "{sprite:Gumshoe[\"Determined\"]}{playSound:question1}{flash}{shake:250}And when the moment needs impact, the engine can punch the whole scene!{sectionEnd}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{showEvidenceIcon:left,badge}Wait, what is this icon?{p:1500}{showEvidenceIcon:right,badge}Oh, it moves?!{hideEvidenceIcon}"
             }
         ],
         "Showcase_topic_records": [

@@ -270,3 +270,8 @@ function parseText(text) {
 
     return parsedSegments;
 }
+
+
+const testStr = {showEvidenceIcon:left,mask_photo};
+const res = parseText(testStr);
+console.log(JSON.stringify(res, null, 2));
