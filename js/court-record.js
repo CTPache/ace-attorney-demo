@@ -22,6 +22,100 @@ function shouldKeepEvidenceDetailsOpen(target) {
     return !!target.closest('#evidence-present-btn, #evidence-prev-btn, #evidence-next-btn');
 }
 
+const COURT_RECORD_COLOR_ALIASES = {
+    red: '#ff4d4d',
+    orange: 'orange',
+    yellow: '#ffd700',
+    green: '#7CFC00',
+    lime: 'lime',
+    blue: '#4a90e2',
+    lightblue: '#8fd3ff',
+    cyan: '#7df9ff',
+    purple: '#c792ea',
+    pink: '#ff8ad8',
+    white: '#ffffff',
+    black: '#222222',
+    gray: '#aaaaaa',
+    grey: '#aaaaaa'
+};
+
+function resolveCourtRecordColor(rawValue) {
+    const colorValue = String(rawValue || '').trim().toLowerCase();
+    if (!colorValue) return null;
+
+    if (['default', 'inherit', 'reset', 'initial', 'auto'].includes(colorValue)) {
+        return '';
+    }
+
+    if (Object.prototype.hasOwnProperty.call(COURT_RECORD_COLOR_ALIASES, colorValue)) {
+        return COURT_RECORD_COLOR_ALIASES[colorValue];
+    }
+
+    if (/^#[0-9a-f]{3,8}$/i.test(colorValue)) {
+        return colorValue;
+    }
+
+    if (/^[a-z]+$/i.test(colorValue)) {
+        return colorValue;
+    }
+
+    return null;
+}
+
+function renderCourtRecordRichText(element, text) {
+    if (!element) return;
+
+    const source = text == null ? '' : String(text);
+    if (!/(\{nl\}|\{color:[^}]+\}|\r?\n)/.test(source)) {
+        element.textContent = source;
+        return;
+    }
+
+    const fragment = document.createDocumentFragment();
+    const tokenRegex = /\{nl\}|\{color:([^}]+)\}|\r?\n/g;
+    let currentColor = '';
+    let lastIndex = 0;
+    let match;
+
+    const appendText = (content) => {
+        if (!content) return;
+        const span = document.createElement('span');
+        span.textContent = content;
+        if (currentColor) {
+            span.style.color = currentColor;
+        }
+        fragment.appendChild(span);
+    };
+
+    while ((match = tokenRegex.exec(source)) !== null) {
+        if (match.index > lastIndex) {
+            appendText(source.slice(lastIndex, match.index));
+        }
+
+        if (match[0] === '{nl}' || match[0] === '\n' || match[0] === '\r\n') {
+            fragment.appendChild(document.createElement('br'));
+        } else {
+            const resolvedColor = resolveCourtRecordColor(match[1]);
+            if (resolvedColor !== null) {
+                currentColor = resolvedColor;
+            } else {
+                appendText(match[0]);
+            }
+        }
+
+        lastIndex = tokenRegex.lastIndex;
+    }
+
+    if (lastIndex < source.length) {
+        appendText(source.slice(lastIndex));
+    }
+
+    element.textContent = '';
+    element.appendChild(fragment);
+}
+
+window.renderCourtRecordRichText = renderCourtRecordRichText;
+
 function showEvidencePopupItem(item) {
     if (!item) return;
 
@@ -38,7 +132,7 @@ function showEvidencePopupItem(item) {
 
     popupIcon.src = item.image;
     popupName.textContent = item.name;
-    popupDesc.textContent = item.description;
+    renderCourtRecordRichText(popupDesc, item.description);
     evidencePopup.classList.remove('hidden');
 }
 
@@ -74,6 +168,18 @@ function syncCourtRecordDependentControls() {
     }
 }
 
+function syncCourtRecordModeUI(mode = (isPresentingMode ? 'present' : 'view')) {
+    const hasForcedPresentCommand = (typeof window.hasPendingPresentCommand === 'function')
+        && window.hasPendingPresentCommand();
+    const shouldHideBackButton = mode === 'present' && hasForcedPresentCommand;
+
+    if (btnEvidenceBack) {
+        btnEvidenceBack.classList.toggle('hidden', shouldHideBackButton);
+        btnEvidenceBack.disabled = shouldHideBackButton;
+        btnEvidenceBack.setAttribute('aria-hidden', shouldHideBackButton ? 'true' : 'false');
+    }
+}
+
 function closeCourtRecord() {
     isCourtRecordOpen = false;
     if (evidenceContainer) evidenceContainer.classList.add('hidden');
@@ -87,6 +193,7 @@ function closeCourtRecord() {
         isPresentingMode = false;
     }
 
+    syncCourtRecordModeUI('view');
     syncCourtRecordDependentControls();
 }
 
@@ -123,6 +230,7 @@ function bindCourtRecordEvents() {
             bottomTopBar.classList.add('hidden');
             isCourtRecordOpen = true;
             isPresentingMode = true;
+            syncCourtRecordModeUI('present');
             syncActiveRecordTabs();
             renderEvidence();
             syncCourtRecordDependentControls();
@@ -246,6 +354,7 @@ function openCourtRecord(mode = 'view') {
 
     if (bottomTopBar) bottomTopBar.classList.add('hidden');
     if (evidenceContainer) evidenceContainer.classList.remove('hidden');
+    syncCourtRecordModeUI(mode);
     syncActiveRecordTabs();
     renderEvidence();
 
@@ -327,9 +436,9 @@ function renderEvidence() {
 
 function showEvidenceDetails(item, key) {
     evidenceTitle.textContent = item.name;
-    evidenceDescription.textContent = item.description;
+    renderCourtRecordRichText(evidenceDescription, item.description);
     evidenceIconLarge.src = item.image;
-    evidenceDataBox.textContent = item.data || "";
+    renderCourtRecordRichText(evidenceDataBox, item.data || "");
     
     // Navigation Logic
     const currentInventory = (currentRecordTab === 'evidence') ? evidenceInventory : profilesInventory;
@@ -374,6 +483,8 @@ function showEvidenceDetails(item, key) {
     // Only show Present button if in presenting mode
     // (Either via investigation menu or CE mode)
     const canPresentInCE = (window.CrossExamination && window.CrossExamination.isCEMode);
+    const hasForcedPresentCommand = (typeof window.hasPendingPresentCommand === 'function')
+        && window.hasPendingPresentCommand();
     
     if (isPresentingMode || canPresentInCE) {
         presentBtn.classList.remove('hidden');
@@ -387,7 +498,9 @@ function showEvidenceDetails(item, key) {
             evidenceContainer.classList.add('hidden');
             evidenceDetails.classList.add('hidden');
             
-            if (canPresentInCE) {
+            if (hasForcedPresentCommand && window.handlePresentEvidence) {
+                window.handlePresentEvidence(key);
+            } else if (canPresentInCE) {
                 window.CrossExamination.present(key);
             } else if (window.handlePresentEvidence) {
                 window.handlePresentEvidence(key);

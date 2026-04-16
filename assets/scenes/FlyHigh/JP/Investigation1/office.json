@@ -1,23 +1,10 @@
-﻿{
+{
     "initialSection": "Office_Init",
     "actions": {
         "move": true,
         "examine": false,
         "talk": false,
         "present": true
-    },
-    "backgrounds": {
-        "Samurai2": "assets/img/CG/Fly High/Samurai_2.png",
-        "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
-        "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png"
-    },
-    "evidence": {
-        "loud_sound_updated": {
-            "name": "大きな音",
-            "data": "種類: 証拠品\n",
-            "description": "山野は中木さんが落下した音だと証言。発生時刻は午後10時5分ごろ。",
-            "image": "assets/img/evidence/Document.png"
-        }
     },
     "investigations": {
         "Office": {
@@ -58,12 +45,12 @@
         ],
         "Office_Finish": [
             {
-                "text": " {hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{sectionEnd}{skip:0}"
+                "text": "　{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{sectionEnd}{skip:0}"
             }
         ],
         "Office_Intro": [
             {
-                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}9月17日 某時刻{nl}ジョイポリス 事務所{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
+                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}９月１７日　某時刻{nl}ジョイポリス　事務所{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
             },
             {
                 "name": "ナルホド",
@@ -71,7 +58,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "もちろんです。第1発見者として、{nl}よろこんで協力させていただきますよ。"
+                "text": "もちろんです。第１発見者として、{nl}よろこんで協力させていただきますよ。"
             },
             {
                 "name": "ナルホド",
@@ -91,7 +78,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}まさか・・・・その熱意が警備員の{nl}須々木 マコさんを怒らせてしまうなんて。"
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}まさか・・・・その熱意が警備員の{nl}須々木　マコさんを怒らせてしまうなんて。"
             },
             {
                 "name": "ナルホド",
@@ -107,11 +94,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "1度、言い合いが始まると{nl}互いにもうすごい剣幕になり・・・・。"
+                "text": "１度、言い合いが始まると{nl}互いにもうすごい剣幕になり・・・・。"
             },
             {
                 "name": "ヤマノ",
-                "text": "そこでワタシは考え、2人に話し合いを{nl}させるコトにしました。"
+                "text": "そこでワタシは考え、２人に話し合いを{nl}させるコトにしました。"
             },
             {
                 "name": "ヤマノ",
@@ -119,15 +106,15 @@
             },
             {
                 "name": "ナルホド",
-                "text": "事件当時、第1発見者として見たコトを{nl}詳しく教えてください。"
+                "text": "事件当時、第１発見者として見たコトを{nl}詳しく教えてください。"
             },
             {
                 "name": "ヤマノ",
-                "text": "事件当日、2人には午後10時にイベント{nl}ホール4階にくるよう言いました。"
+                "text": "事件当日、２人には午後１０時にイベント{nl}ホール４階にくるよう言いました。"
             },
             {
                 "name": "ナルホド",
-                "text": "{playSound:cling}{flash}どうして午後10時だったのですか？{nl}閉館から1時間もあとですが。"
+                "text": "{playSound:cling}{flash}どうして午後１０時だったのですか？{nl}閉館から１時間もあとですが。"
             },
             {
                 "name": "ヤマノ",
@@ -143,7 +130,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "閉館から15分後くらいでしょうか。一階の{nl}ステージに行って時間が来るのを待ちました。"
+                "text": "閉館から１５分後くらいでしょうか。一階の{nl}ステージに行って時間が来るのを待ちました。"
             },
             {
                 "name": "ナルホド",
@@ -151,11 +138,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "すると、上階から2人の言い争う声が{nl}聞こえたのでございます。"
+                "text": "すると、上階から２人の言い争う声が{nl}聞こえたのでございます。"
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}見上げると、須々木さんが4階から{nl}中木さんを落とすのが見えました。"
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}見上げると、須々木さんが４階から{nl}中木さんを落とすのが見えました。"
             },
             {
                 "name": "ヤマノ",
@@ -167,7 +154,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}{color:lightblue}(他に聞くことは？){setState:office_intro_done,true}{sectionEnd}"
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}{color:lightblue}（他に聞くことは？）{setState:office_intro_done,true}{sectionEnd}"
             }
         ],
         "Office_Examine_Default": [
@@ -200,11 +187,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}(中木さんが落ちた音ということは、{nl}午後10時5分ごろのことか・・・・)"
+                "text": "{blip:0}{color:lightblue}（中木さんが落ちた音ということは、{nl}午後１０時５分ごろのことか・・・・）"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}(マコちゃんが聞いたっていう音とは{nl}時間が全然ちがう・・・・)"
+                "text": "{color:lightblue}（マコちゃんが聞いたっていう音とは{nl}時間が全然ちがう・・・・）"
             },
             {
                 "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}証拠品《大きな音》のデータを更新した。"
@@ -215,11 +202,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}(よし。ここはこんなところか)"
+                "text": "{blip:0}{color:lightblue}（よし。ここはこんなところか）"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}(情報が揃ったら法廷に向かおう。{nl}そこですべてをアキラカにするんだ!){setAction:present,false}{setState:office_done,true}{jump:Office_Default}{sectionEnd}"
+                "text": "{color:lightblue}（情報が揃ったら法廷に向かおう。{nl}そこですべてをアキラカにするんだ！）{setAction:present,false}{setState:office_done,true}{jump:Office_Default}{sectionEnd}"
             }
         ],
         "Office_evidence_default": [
@@ -229,14 +216,14 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}(心当たりはないようだ)"
+                "text": "{blip:0}{color:lightblue}（心当たりはないようだ）"
             },
             {
                 "text": "{jumpIf:evidence_loud_sound_updated,Office_evidence_default_2}{skip:0}"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}(もっと聞くべきことがある気がする。{nl}他の場所を調査して、改めて聞いてみよう){sectionEnd}"
+                "text": "{color:lightblue}（もっと聞くべきことがある気がする。{nl}他の場所を調査して、改めて聞いてみよう）{sectionEnd}"
             }
         ],
         "Office_evidence_default_2": [

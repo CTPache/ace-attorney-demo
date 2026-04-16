@@ -15,7 +15,7 @@
         }
     },
     "backgrounds": {
-        "Samurai": "assets/img/CG/Fly High/samurai_es.png"
+        "Samurai": "assets/img/CG/Fly High/samurai_en.png"
     },
     "videos": {
         "intro": {
@@ -111,7 +111,7 @@
     "gameScript": {
         "Intro_Init": [
             {
-                "text": "{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
+                "text": "{addEvidence:badge,false}{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
             }
         ],
         "Intro_Default": [

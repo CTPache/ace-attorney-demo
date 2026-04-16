@@ -1,0 +1,79 @@
+{
+    "initialSection": "Final_Victory",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "backgrounds": {
+        "Lobby": "assets/img/backgrounds/Common/Courtroom_lobby.png",
+        "Ending": "assets/img/CG/Fly High/Ending.png"
+    },
+    "gameScript": {
+        "Final_Victory": [
+            {
+                "text": "{hideLifeBar}{fadeBg:Lobby,800}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}９月１８日　午前１２時１４分{nl}地方裁判所　被告人第二控え室{color:white}"
+            },
+            {
+                "name": "マコ",
+                "text": "{startBGM:victory}{sprite:Maggey[\"Admiring\"]}{fadeInCharacter:600}{blip:2}成歩堂さん・・・・{nl}ありがとうッス！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1,false}お礼なんていいんだ。{nl}ぼくは真実をアキラカにしただけさ。"
+            },
+            {
+                "name": "マコ",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}・・・・でもアタシ、やっぱり中木さんを{nl}落としてしまったッス。"
+            },
+            {
+                "name": "マコ",
+                "text": "それはジジツッスよね。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1,false}いや。そのときは既に亡くなっていたんだ。{nl}仕方ないことだよ。"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}なるほどくん、すごかったよ！{nl}感動しちゃった！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1,false}ありがとう。でもうまく行ったのは{nl}真宵ちゃんのおかげさ。"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{sprite:Maya[\"Determined\"]}{blip:2}あ、そうだ。そろそろトノサマンショーの時間だよ。{nl}イトノコ刑事がトノサマンをやるんだって！"
+            },
+            {
+                "name": "マコ",
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Sad\"]}{fadeInCharacter:600}・・・・いや、ショーは中止じゃないッスか？{nl}だって中木さんは・・・・。"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}それがね、今日は急遽、開催されるみたい。{nl}イトノコ刑事がトノサマンをやるんだって！"
+            },
+            {
+                "name": "マヨイ",
+                "text": "マコちゃんの疑いが晴れたお祝いに！"
+            },
+            {
+                "name": "マコ",
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Normal\"]}{fadeInCharacter:600}{blip:2}えーッ？{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{nl}それは楽しみッス！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1,false}イトノコ刑事・・・・大丈夫かな・・・・。{nl}そもそもあのスーツを着られるのか？"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}ほら、行こう行こう！"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{fadeBg:Ending,800}{p:4000}{fadeOutBg:1000}{stopBGM:true}{returnToTitle:\"\"}{sectionEnd}"
+            }
+        ]
+    }
+}

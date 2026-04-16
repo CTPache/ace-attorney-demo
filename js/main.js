@@ -473,7 +473,7 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
                 concurrency: 2,
                 includeBackgrounds: true,
                 includeForegrounds: true,
-                includeCharacters: false,
+                includeCharacters: !!data.courtroom,
                 label: 'critical scene art'
             });
         }
@@ -500,7 +500,7 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
                 timeout: 2500,
                 includeBackgrounds: true,
                 includeForegrounds: true,
-                includeCharacters: false
+                includeCharacters: !!data.courtroom
             });
         }
     } catch (error) {

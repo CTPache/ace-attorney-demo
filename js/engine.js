@@ -1,5 +1,6 @@
 
 let showTopicsOnEnd = false;
+let pendingPresentCommand = null;
 
 function isAutoPlayBlockedByCrossExamination() {
     return !!(
@@ -135,7 +136,41 @@ function jumpToSection(sectionName) {
     }
 }
 
+window.beginForcedPresentCommand = function(correctEvidence, successLabel, failureLabel) {
+    pendingPresentCommand = {
+        correctEvidence: String(correctEvidence || ''),
+        successLabel: String(successLabel || ''),
+        failureLabel: String(failureLabel || '')
+    };
+
+    if (window.openCourtRecord) {
+        window.openCourtRecord('present');
+    }
+};
+
+window.hasPendingPresentCommand = function() {
+    return !!pendingPresentCommand;
+};
+
 function handlePresentEvidence(evidenceId) {
+    if (pendingPresentCommand) {
+        const {
+            correctEvidence,
+            successLabel,
+            failureLabel
+        } = pendingPresentCommand;
+
+        pendingPresentCommand = null;
+
+        const targetLabel = String(evidenceId || '') === correctEvidence
+            ? successLabel
+            : failureLabel;
+
+        if (targetLabel && window.jumpToSection) {
+            jumpToSection(targetLabel);
+        }
+        return;
+    }
     
     // Determine the scene prefix (e.g., "Demo" or "Case1_Part1")
     // This allows for context-sensitive responses.
@@ -171,6 +206,17 @@ function advanceDialogue(force = false) {
     // Check if input is blocked (e.g., options menu open)
     if (isInputBlocked) return;
 
+    if (typeof window.hasPendingPresentCommand === 'function' && window.hasPendingPresentCommand()) {
+        if (typeof window.openCourtRecord === 'function' && !isCourtRecordOpen) {
+            window.openCourtRecord('present');
+        }
+        return;
+    }
+
+    const completedVisualTransition = (typeof window.completeVisualTransitionsForAdvance === 'function')
+        ? window.completeVisualTransitionsForAdvance()
+        : false;
+
     // Keep dialogue locked until scripted overlay animations finish.
     if (typeof isWaitingForAnimation !== 'undefined' && isWaitingForAnimation) return;
 
@@ -187,6 +233,10 @@ function advanceDialogue(force = false) {
         if (!isTextSkipEnabled) return;
         // If currently typing, finish immediately
         finishTyping();
+    } else if (completedVisualTransition && force !== true) {
+        // A manual advance during a BG/FG fade should snap the visual state first
+        // and let the next press move the dialogue forward.
+        return;
     } else if (
         window.isGameOverPending
         && typeof gameOverLabel !== 'undefined'
@@ -252,6 +302,15 @@ function clearTopScreen() {
     }
     // Character sprite
     if (character) {
+        if (window.releasePreloadedImageUrl && character.__temporaryPreloadedUrl) {
+            window.releasePreloadedImageUrl(character.__temporaryPreloadedUrl);
+        }
+        character.__temporaryPreloadedUrl = null;
+        character.__logicalSpriteSource = null;
+        if (character.dataset) {
+            delete character.dataset.preloadRequestId;
+        }
+
         character.style.transition = 'none';
         character.style.opacity = '0';
         character.src = '/';
@@ -268,6 +327,9 @@ function clearTopScreen() {
     // Hide and shelve evidence icon if any
     if (typeof window.hideEvidenceIcon === 'function') {
         window.hideEvidenceIcon();
+    }
+    if (typeof window.hideTestimonyIndicator === 'function') {
+        window.hideTestimonyIndicator();
     }
     // Clear flash overlay
     if (flashOverlay) {
@@ -315,6 +377,42 @@ function startGame() {
 
 let cornerEvidenceHideTimeout = null;
 let cornerEvidenceShowRequestId = 0;
+
+window.showTestimonyIndicator = function() {
+    const indicator = document.getElementById('testimony-indicator');
+    if (!indicator) return;
+
+    if (typeof window.applyUIText === 'function') {
+        window.applyUIText();
+    } else if (typeof window.t === 'function') {
+        indicator.textContent = window.t('ui.testimony', 'Testimony');
+    }
+
+    indicator.classList.remove('hidden');
+};
+
+window.hideTestimonyIndicator = function() {
+    const indicator = document.getElementById('testimony-indicator');
+    if (!indicator) return;
+
+    indicator.classList.add('hidden');
+};
+
+window.getTestimonyIndicatorSnapshot = function() {
+    const indicator = document.getElementById('testimony-indicator');
+    return {
+        isVisible: !!(indicator && !indicator.classList.contains('hidden'))
+    };
+};
+
+window.restoreTestimonyIndicatorSnapshot = function(snapshot = {}) {
+    if (snapshot && snapshot.isVisible) {
+        window.showTestimonyIndicator();
+        return;
+    }
+
+    window.hideTestimonyIndicator();
+};
 
 function animateCornerEvidenceIconIn(position = 'right') {
     if (!cornerEvidenceIcon) return;

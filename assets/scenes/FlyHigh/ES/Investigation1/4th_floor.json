@@ -9,14 +9,6 @@
     "backgrounds": {
         "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png"
     },
-    "evidence": {
-        "mask_photo": {
-            "name": "Foto de la máscara",
-            "data": "Tipo: Prueba\n",
-            "description": "La máscara de Steel Samurai que llevaba la víctima en el momento del incidente. La zona de la ceja está ligeramente abollada. No hay otros daños. El moño superior también está intacto.",
-            "image": "assets/img/evidence/Samurai.png"
-        }
-    },
     "investigations": {
         "Floor4": {
             "default": "Floor4_Examine_Default",

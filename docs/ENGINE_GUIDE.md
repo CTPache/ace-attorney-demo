@@ -572,8 +572,9 @@ You can combine multiple commands in the same line.
 
 `{jumpIf:ConditionExpr,TrueSection,FalseSection}`
 
-- `jumpIf` also supports combined boolean conditions using `&` (AND), `|` (OR), `!` (NOT), and parentheses.
-- This is useful for investigation gates or other multi-state checks.
+- `jumpIf` supports combined boolean conditions using `&` (AND), `|` (OR), `!` (NOT), and parentheses.
+- It also supports direct comparisons with `==`, `!=`, `<`, `<=`, `>`, and `>=`.
+- This is useful for investigation gates, testimony routing, and other multi-state checks.
 
 Examples:
 
@@ -582,15 +583,40 @@ Examples:
 {jumpIf:evidence_keycard|evidence_pass,OpenDoor,KeepSearching}
 {jumpIf:!intro_seen,FirstTimeOnly}
 {jumpIf:(flagA&flagB)|flagC,Success,Fallback}
+{jumpIf:currentTestimony==1,Mia_Hint_1}
+{jumpIf:currentTestimony>=3,LaterHint}
+{jumpIf:scenePrefix=="Office",Office_Menu,Default_Menu}
 ```
+
+Notes:
+
+- Comparison expressions read values from `gameState`.
+- String comparisons should use quoted literals, for example `scenePrefix=="Office"`.
+- If the false section is omitted and the expression resolves to false, the script continues normally.
 
 `{setState:Key,Value}`
 
-- Sets `gameState[Key]` to the provided string value.
+- Sets `gameState[Key]` to the provided value.
+- `true` and `false` are stored as booleans.
+- Numeric values like `1` or `9.5` are stored as numbers.
+- Any other value is stored as a string.
 
 `{option:OptionKey}`
 
 - Opens an options menu using the corresponding entry in the top-level `options` database.
+
+`{present:RecordKey,SuccessSection,FailureSection}`
+
+- Opens the Court Record in **forced present** mode and waits for the player to choose an entry.
+- If the selected record key matches `RecordKey`, the engine jumps to `SuccessSection`.
+- Any other selection jumps to `FailureSection`.
+- While this command is active, the Court Record `Back` button is hidden so the player must present an item.
+
+Example:
+
+```text
+{present:AttorneyBadge,Badge_Correct,Badge_Wrong}
+```
 
 `{sectionEnd}`
 

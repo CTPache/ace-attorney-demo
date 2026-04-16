@@ -1,0 +1,77 @@
+{
+    "layers": [
+        "guilty-1",
+        "guilty-2"
+    ],
+    "animationCss": "Guilty_JP.css",
+    "images": [
+        "NotGuilty1_JP.png",
+        "NotGuilty2_JP.png"
+    ],
+    "timeline": {
+        "0": {
+            "image": "img/sprites/NotGuilty1_JP.png",
+            "targetId": "guilty-1",
+            "class": "guilty-1",
+            "sound": "audio/se/se02c.m4a",
+            "duration": 500
+        },
+        "500": [
+            {
+                "image": "img/sprites/NotGuilty1_JP.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            }
+        ],
+        "1020": [
+            {
+                "image": "img/sprites/NotGuilty1_JP.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty2_JP.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "sound": "audio/se/se02c.m4a",
+                "duration": 500
+            }
+        ],
+        "1520": [
+            {
+                "image": "img/sprites/NotGuilty1_JP.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty2_JP.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            }
+        ],
+        "2020": {
+            "image": "img/sprites/NotGuilty2_JP.png",
+            "targetId": "guilty-2",
+            "class": "guilty-2",
+            "duration": 0
+        },
+        "2021": [
+            {
+                "image": "img/sprites/NotGuilty1_JP.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1-out",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty2_JP.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2-out",
+                "duration": 0
+            }
+        ]
+    }
+}

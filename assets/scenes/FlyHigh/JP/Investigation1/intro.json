@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Intro_Init",
     "actions": {
         "move": true,
@@ -110,7 +110,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{startBGM:investigation,false}{blip:1}{color:lightblue}（ぼくの名前は、成歩堂 龍一）"
+                "text": "{startBGM:investigation,false}{blip:1}{color:lightblue}（ぼくの名前は、成歩堂　龍一）"
             },
             {
                 "name": "ナルホド",
@@ -118,7 +118,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（殺人事件の容疑者・須々木 マコちゃんから依頼を受け・・・・）"
+                "text": "{color:lightblue}（殺人事件の容疑者・須々木　マコちゃんから依頼を受け・・・・）"
             },
             {
                 "name": "ナルホド",
@@ -150,7 +150,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{fadeOutBg}（彼は御剣 怜侍。{nl}地方検事局の検事だ）"
+                "text": "{color:lightblue}{fadeOutBg}（彼は御剣　怜侍。{nl}地方検事局の検事だ）"
             },
             {
                 "name": "イトノコ",
@@ -158,11 +158,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{fadeOutBg}（彼は糸鋸 圭介。{nl}所轄署の刑事だ）"
+                "text": "{color:lightblue}{fadeOutBg}（彼は糸鋸　圭介。{nl}所轄署の刑事だ）"
             },
             {
                 "name": "イトノコ",
-                "text": "{showEvidenceIcon:left,Kurumi}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}被害者は中木 クルミ《なかきくるみ》さん。"
+                "text": "{showEvidenceIcon:left,Kurumi}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}被害者は中木　クルミ《なかきくるみ》さん。"
             },
             {
                 "name": "イトノコ",
@@ -182,7 +182,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Sad\"]}・・・・ここで警備員のアルバイトを{nl}していた、須々木 マコくんッス・・・・。"
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Sad\"]}・・・・ここで警備員のアルバイトを{nl}していた、須々木　マコくんッス・・・・。"
             },
             {
                 "name": "ナルホド",
@@ -202,7 +202,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}この遊園地のイベントホール主任{nl}山野 星雄ッス。"
+                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}この遊園地のイベントホール主任{nl}山野　星雄ッス。"
             },
             {
                 "name": "ミツルギ",
@@ -241,7 +241,7 @@
         ],
         "Intro_Init": [
             {
-                "text": "{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
+                "text": "{addEvidence:badge,false}{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
             }
         ],
         "Intro_Default": [

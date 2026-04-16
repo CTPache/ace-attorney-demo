@@ -9,14 +9,6 @@
     "backgrounds": {
         "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png"
     },
-    "evidence": {
-        "mask_photo": {
-            "name": "Mask Evidence Photo",
-            "data": "Type: Evidence\n",
-            "description": "The Steel Samurai mask the victim was wearing at the time of the incident. The eyebrow area is slightly dented. There is no other damage. The topknot is also intact.",
-            "image": "assets/img/evidence/Samurai.png"
-        }
-    },
     "investigations": {
         "Floor4": {
             "default": "Floor4_Examine_Default",

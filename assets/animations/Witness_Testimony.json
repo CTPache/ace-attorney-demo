@@ -17,7 +17,7 @@
                 "targetId": "witness-word-left",
                 "class": "witness-enter-left",
                 "duration": 400,
-                "sound": "/audio/se/se029.m4a"
+                "sound": "assets/audio/se/se029.m4a"
             },
             {
                 "image": "img/sprites/Witness_(Testimony).webp",
@@ -66,7 +66,7 @@
                 "targetId": "witness-word-left",
                 "class": "witness-exit-right",
                 "duration": 700,
-                "sound": "/audio/se/se040.m4a"
+                "sound": "assets/audio/se/se040.m4a"
             },
             {
                 "image": "img/sprites/Witness_(Testimony).webp",

@@ -8,9 +8,8 @@
     },
     "gameScript": {
         "Redirect": [
-            
             {
-                "text": "{hideTextbox}{playAnimation:WitnessTestimony}{skip:100}"
+                "text": "{hideTextbox}{playAnimation:NotGuilty}{skip:1000}"
             },
             {
                 "text": "{loadScene:assets/scenes/tests/anim_test.json,Redirect}{sectionEnd}"

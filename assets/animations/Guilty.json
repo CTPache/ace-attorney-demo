@@ -1,0 +1,196 @@
+{
+    "layers": [
+        "guilty-1",
+        "guilty-2",
+        "guilty-3",
+        "guilty-4",
+        "guilty-5",
+        "guilty-6"
+    ],
+    "animationCss": "Guilty.css",
+    "images": [
+        "Guilty.png"
+    ],
+    "timeline": {
+        "0": {
+            "image": "img/sprites/Guilty.png",
+            "targetId": "guilty-1",
+            "class": "guilty-layer-1",
+            "duration": 500,
+            "sound": "audio/se/se02d.m4a"
+        },
+        "200": [
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-layer-1",
+                "duration": 500,
+                "sound": "audio/se/se02d.m4a"
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-layer-2",
+                "duration": 500
+            }
+        ],
+        "400": [
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-layer-1",
+                "duration": 500,
+                "sound": "audio/se/se02d.m4a"
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-layer-2",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-layer-3",
+                "duration": 500
+            }
+        ],
+        "600": [
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-layer-1",
+                "duration": 500,
+                "sound": "audio/se/se02d.m4a"
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-layer-2",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-layer-3",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-layer-4",
+                "duration": 500
+            }
+        ],
+        "800": [
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-layer-1",
+                "duration": 500,
+                "sound": "audio/se/se02d.m4a"
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-layer-2",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-layer-3",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-layer-4",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-layer-5",
+                "duration": 500
+            }
+        ],
+        "1000": [
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-layer-1",
+                "duration": 500,
+                "sound": "audio/se/se02d.m4a"
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-layer-2",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-layer-3",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-layer-4",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-layer-5",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-6",
+                "class": "guilty-layer-6",
+                "duration": 500
+            }
+        ],
+        "1500": [
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-layer-1",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-layer-2",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-layer-3",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-layer-4",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-layer-5",
+                "duration": 500
+            },
+            {
+                "image": "img/sprites/Guilty.png",
+                "targetId": "guilty-6",
+                "class": "guilty-layer-6",
+                "duration": 500
+            }
+        ]
+    }
+}

@@ -1,0 +1,76 @@
+#guilty-1,
+#guilty-2 {
+    z-index: 4;
+    top: 0%;
+    left: 10%;
+    width: 80%;
+    height: auto;
+    opacity: 1;
+    transform-origin: center;
+}
+
+.guilty-1 {
+    animation: guilty-1-anim forwards;
+}
+
+.guilty-2 {
+    animation: guilty-2-anim forwards;
+}
+
+.guilty-1-out {
+    animation: guilty-1-out-anim forwards;
+}
+
+.guilty-2-out {
+    animation: guilty-2-out-anim forwards;
+}
+
+@keyframes guilty-1-anim {
+    0% {
+        opacity: 1;
+        transform: scale(0.1) translate(-80%, -50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(0.4) translate(-80%, -50%);
+    }
+}
+
+@keyframes guilty-1-out-anim {
+    0% {
+        opacity: 1;
+        transform: scale(0.4) translate(-80%, -50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.4) translate(-80%, -50%);
+    }
+}
+
+@keyframes guilty-2-anim {
+    0% {
+        opacity: 1;
+        transform: scale(0.1) translate(80%, -50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(0.4) translate(80%, -50%);
+    }
+}
+
+
+
+@keyframes guilty-2-out-anim {
+    0% {
+        opacity: 1;
+        transform: scale(0.4) translate(80%, -50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.4) translate(80%, -50%);
+    }
+}

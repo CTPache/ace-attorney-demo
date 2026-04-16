@@ -65,7 +65,11 @@ const patterns = [
     /\{loadScene:([A-Za-z0-9_./\-]+)(?:,([a-zA-Z0-9_]+))?\}/,                                   // 72,73: LoadScene (Path, StartSection)
     /\{setSkipEnabled:(true|false)\}/,                                                           // 74: SetSkipEnabled
     /\{showEvidenceIcon:(left|right),([a-zA-Z0-9_]+)\}/,                                         // 75,76: ShowEvidenceIcon (Position, Item)
-    /\{hideEvidenceIcon\}/                                                                       // 0: HideEvidenceIcon
+    /\{hideEvidenceIcon\}/,                                                                      // 0: HideEvidenceIcon
+    /\{showTestimonyIndicator\}/,                                                                // 0: ShowTestimonyIndicator
+    /\{hideTestimonyIndicator\}/,                                                                // 0: HideTestimonyIndicator
+    /\{present:([a-zA-Z0-9_]+),([a-zA-Z0-9_]+),([a-zA-Z0-9_]+)\}/,                              // 77,78,79: Forced Present (CorrectEvidence, SuccessLabel, FailureLabel)
+    /\{returnToTitle(?::"([^"]*)")\}/                                                              // 80: ReturnToTitle (optional quoted message)
 ];
 const masterRegex = new RegExp(patterns.map(p => p.source).join('|'), 'g');
 
@@ -257,8 +261,21 @@ function parseText(text) {
             });
         } else if (match[0] === '{hideEvidenceIcon}') {
             parsedSegments.push({ type: 'hideEvidenceIcon' });
+        } else if (match[0] === '{showTestimonyIndicator}') {
+            parsedSegments.push({ type: 'showTestimonyIndicator' });
+        } else if (match[0] === '{hideTestimonyIndicator}') {
+            parsedSegments.push({ type: 'hideTestimonyIndicator' });
+        } else if (match[77] && match[78] && match[79]) {
+            parsedSegments.push({
+                type: 'present',
+                correctEvidence: match[77],
+                successLabel: match[78],
+                failureLabel: match[79]
+            });
         } else if (match[0] === '{endGame}') { // End Game
             parsedSegments.push({ type: 'endGame' });
+        } else if (match[0].startsWith('{returnToTitle')) { // ReturnToTitle
+            parsedSegments.push({ type: 'returnToTitle', message: match[80] || null });
         }
 
         lastIndex = masterRegex.lastIndex;

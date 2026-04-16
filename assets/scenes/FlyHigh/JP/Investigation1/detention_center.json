@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Detention_Center_Init",
     "actions": {
         "move": true,
@@ -9,26 +9,6 @@
     "investigations": {
         "DetentionCenter": {
             "default": "Detention_Center_Examine_Default"
-        }
-    },
-    "evidence": {
-        "blog_post_charm": {
-            "name": "眼鏡のブログ記事",
-            "data": "種類: 証拠品\n",
-            "description": "事件当日の午後9時27分に投稿された。眼鏡チャームが2つ付いた眼鏡の画像がある。",
-            "image": "assets/img/evidence/Screen.png"
-        },
-        "blog_post_charm_updated": {
-            "name": "眼鏡のブログ記事",
-            "data": "種類: 証拠品\n",
-            "description": "事件当日の午後9時27分に投稿された。眼鏡チャームが2つ付いた眼鏡の画像がある。投稿から約30分後に盗まれた。",
-            "image": "assets/img/evidence/Screen.png"
-        },
-        "loud_sound": {
-            "name": "大きな音",
-            "data": "種類: 証拠品\n",
-            "description": "事件当日の午後9時30分ごろ、シャワー中のマコが聞いた大きな音。",
-            "image": "assets/img/evidence/Document.png"
         }
     },
     "move": [
@@ -70,7 +50,7 @@
         ],
         "Detention_Center_Start": [
             {
-                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}{showTextbox}9月17日 某時刻{nl}{p:500}留置所"
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}{showTextbox}９月１７日　某時刻{nl}{p:500}留置所"
             },
             {
                 "text": "{color:white}{sprite:Maggey[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:500}{startBGM:detentionCenter,true}{skip:1000}"
@@ -81,7 +61,7 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}‥‥{p:800}{nl}実はあれから、いろいろ思い出してきて。{p:160}{p:260}"
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}・・・・{p:800}{nl}実はあれから、いろいろ思い出してきて。{p:160}{p:260}"
             },
             {
                 "name": "マコ",
@@ -89,7 +69,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}{playSound:shake}{shake:500}えっ？{p:140} と、どういうこと？"
+                "text": "{blip:1}{playSound:shake}{shake:500}えっ？{p:140}　と、どういうこと？"
             },
             {
                 "name": "ナルホド",
@@ -97,11 +77,11 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}はい。{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あの日、{p:140}4階に中木さんがいて、トノサマンショーの練習をしてたッス。{p:250}"
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}はい。{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あの日、{p:140}４階に中木さんがいて、トノサマンショーの練習をしてたッス。{p:250}"
             },
             {
                 "name": "マコ",
-                "text": "彼女は閉館後にトノサマンショーの練習をよくする子で‥‥。"
+                "text": "彼女は閉館後にトノサマンショーの練習をよくする子で・・・・。"
             },
             {
                 "name": "マコ",
@@ -117,11 +97,11 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}軽くッスね。{p:120}{p:200}{nl}でもいつものコトだから、{p:150}半ばあきらめて‥‥。{p:360}"
+                "text": "{sprite:Maggey[\"Determined\"]}{blip:2}軽くッスね。{p:120}{p:200}{nl}でもいつものコトだから、{p:150}半ばあきらめて・・・・。{p:360}"
             },
             {
                 "name": "マコ",
-                "text": "警備日誌を書かなきゃいけないので、{p:140}がんばって書いたッス。{p:140}{p:220}{nl}30分くらいかかって、{p:140}ブログを更新したッス。{p:220}"
+                "text": "警備日誌を書かなきゃいけないので、{p:140}がんばって書いたッス。{p:140}{p:220}{nl}３０分くらいかかって、{p:140}ブログを更新したッス。{p:220}"
             },
             {
                 "name": "ナルホド",
@@ -140,7 +120,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{blip:0}{color:lightblue}（不気味なタイトルのブログだなぁ‥‥{nl}ああ、これがそうか）"
+                "text": "{showTextbox}{blip:0}{color:lightblue}（不気味なタイトルのブログだなぁ・・・・{nl}ああ、これがそうか）"
             },
             {
                 "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}証拠品《眼鏡のブログ記事》のデータを法廷記録に書き込んだ。"
@@ -170,7 +150,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:white}{blip:1}それで、よく目が見えないまま‥‥？{p:320}"
+                "text": "{color:white}{blip:1}それで、よく目が見えないまま・・・・？{p:320}"
             },
             {
                 "name": "マコ",
@@ -178,15 +158,15 @@
             },
             {
                 "name": "マコ",
-                "text": "いや、{p:120}実際はダレかが手すりに腰かけてるなーってくらいで‥‥。{p:340}"
+                "text": "いや、{p:120}実際はダレかが手すりに腰かけてるなーってくらいで・・・・。{p:340}"
             },
             {
                 "name": "マコ",
-                "text": "声をかけても返事がなかったから、{p:140}手を伸ばしてみたッス。{p:140}{p:140}{p:220}そしたら何かに触れたような‥‥{p:300}{nl}触れてないような‥‥。{p:150}{p:300}"
+                "text": "声をかけても返事がなかったから、{p:140}手を伸ばしてみたッス。{p:140}{p:140}{p:220}そしたら何かに触れたような・・・・{p:300}{nl}触れてないような・・・・。{p:150}{p:300}"
             },
             {
                 "name": "マコ",
-                "text": "{playSound:shake}{shake:500}そしたら、下からナニかが落ちた音と‥‥。"
+                "text": "{playSound:shake}{shake:500}そしたら、下からナニかが落ちた音と・・・・。"
             },
             {
                 "name": "ナルホド",
@@ -194,11 +174,11 @@
             },
             {
                 "name": "マコ",
-                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}他に何か気になったコト‥‥。{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あ、あるッス！{p:100}{p:140}シャワーを浴び始めたころッスかね。{p:220}"
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}他に何か気になったコト・・・・。{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}あ、あるッス！{p:100}{p:140}シャワーを浴び始めたころッスかね。{p:220}"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（シャワーを浴び始めたところというコトは午後9時30分ごろか）"
+                "text": "{color:lightblue}{blip:0}（シャワーを浴び始めたところというコトは午後９時３０分ごろか）"
             },
             {
                 "name": "マコ",
@@ -213,7 +193,7 @@
             },
             {
                 "name": "マコ",
-                "text": "{color:white}{sprite:Maggey[\"Determined\"]}{blip:2}成歩堂さん‥‥{p:260}{nl}アタシ、やばいッスかね。{p:140}{p:220}{nl}有罪になってしまうッスかね。{p:150}{p:320}"
+                "text": "{color:white}{sprite:Maggey[\"Determined\"]}{blip:2}成歩堂さん・・・・{p:260}{nl}アタシ、やばいッスかね。{p:140}{p:220}{nl}有罪になってしまうッスかね。{p:150}{p:320}"
             },
             {
                 "name": "ナルホド",

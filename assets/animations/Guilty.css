@@ -1,0 +1,52 @@
+#guilty-1, #guilty-2, #guilty-3, #guilty-4, #guilty-5, #guilty-6 {
+    z-index: 4;
+    top: 40%;
+    left: 0%;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transform-origin: center;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+
+.guilty-layer-1 { animation: guilty-reveal-1 3s forwards; }
+.guilty-layer-2 { animation: guilty-reveal-2 3s forwards; }
+.guilty-layer-3 { animation: guilty-reveal-3 3s forwards; }
+.guilty-layer-4 { animation: guilty-reveal-4 3s forwards; }
+.guilty-layer-5 { animation: guilty-reveal-5 3s forwards; }
+.guilty-layer-6 { animation: guilty-reveal-6 3s forwards; }
+
+
+.guilty-layer-out {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@keyframes guilty-reveal-1 {
+    0% { opacity: 1; transform: scale(0.2) translate(-24%, 0%); clip-path: polygon(0 0, 27% 0, 27% 100%, 0 100%); }
+    100% { opacity: 1; transform: scale(1) translate(6%, 0%); clip-path: polygon(0 0, 27% 0, 27% 100%, 0 100%); }
+}
+
+@keyframes guilty-reveal-2 {
+    0% { opacity: 1; transform: scale(0.2) translate(-18%, 0%); clip-path: polygon(28% 0, 40% 0, 40% 100%, 28% 100%); }
+    100% { opacity: 1; transform: scale(1) translate(6%, 0%); clip-path: polygon(28% 0, 40% 0, 40% 100%, 28% 100%); }
+}
+
+@keyframes guilty-reveal-3 {
+    0% { opacity: 1; transform: scale(0.2) translate(-8%, 0%); clip-path: polygon(40% 0, 48% 0, 48% 100%, 40% 100%); }
+    100% { opacity: 1; transform: scale(1) translate(4%, 0%); clip-path: polygon(40% 0, 48% 0, 48% 100%, 40% 100%); }
+}
+
+@keyframes guilty-reveal-4 {
+    0% { opacity: 1; transform: scale(0.2) translate(1%, 0%); clip-path: polygon(52% 0, 59% 0, 59% 100%, 52% 100%); }
+    100% { opacity: 1; transform: scale(1) translate(-0.5%, 0%); clip-path: polygon(52% 0, 59% 0, 59% 100%, 52% 100%); }
+}
+
+@keyframes guilty-reveal-5 {
+    0% { opacity: 1; transform: scale(0.2) translate(8%, 0%); clip-path: polygon(60% 0, 72% 0, 72% 100%, 60% 100%); }
+    100% { opacity: 1; transform: scale(1) translate(-4%, 0%); clip-path: polygon(60% 0, 72% 0, 72% 100%, 60% 100%); }
+}
+
+@keyframes guilty-reveal-6 {
+    0% { opacity: 1; transform: scale(0.2) translate(18%, 0%); clip-path: polygon(72% 0, 100% 0, 100% 100%, 72% 100%); }
+    100% { opacity: 1; transform: scale(1) translate(-6%, 0%); clip-path: polygon(72% 0, 100% 0, 100% 100%, 72% 100%); }
+}

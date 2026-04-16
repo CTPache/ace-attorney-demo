@@ -11,14 +11,6 @@
         "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
         "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png"
     },
-    "evidence": {
-        "loud_sound_updated": {
-            "name": "Loud Sound",
-            "data": "Type: Evidence\n",
-            "description": "Shawit says the loud sound was from Ms. Nakaki falling, placing it around 10:05 PM.",
-            "image": "assets/img/evidence/Document.png"
-        }
-    },
     "investigations": {
         "Office": {
             "default": "Office_Examine_Default",

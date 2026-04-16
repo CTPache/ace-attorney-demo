@@ -6,15 +6,6 @@
         "talk": false,
         "present": false
     },
-    "evidence": {
-        "accessory": {
-            "name": "Accesorio",
-            "data": "Tipo: Prueba\n",
-            "description": "Al parecer, se trata de una especie de accesorio que se le cayó a Shawit mientras examinábamos la escena del crimen.",
-            "image": "assets/img/evidence/Blue_Badger.png"
-        }
-    },
-    "profiles": {},
     "investigations": {
         "Crime_Scene": {
             "default": "Examine_Default",

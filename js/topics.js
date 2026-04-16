@@ -62,7 +62,19 @@ function renderTopics() {
             btn.className = 'topic-button';
             btn.textContent = topic.text;
             
+            // Check if topic was already visited
+            if (gameState["topic_visited_" + topicId]) {
+                const check = document.createElement('div');
+                check.className = 'topic-check';
+                check.textContent = '✓';
+                btn.appendChild(check);
+                btn.classList.add('visited');
+            }
+            
             btn.addEventListener('click', () => {
+                // Mark topic as visited in gameState
+                gameState["topic_visited_" + topicId] = true;
+
                 // Hide menu and jump
                 topicMenu.classList.add('hidden');
                 if (typeof window.shelveLazyElement === 'function') {

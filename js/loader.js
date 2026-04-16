@@ -1,6 +1,7 @@
 console.log("Loader Loaded");
 
 const preloadedImageUrlCache = new Map();
+const preloadedImageBlobCache = new Map();
 const inFlightImagePreloads = new Map();
 let deferredSceneWarmupId = 0;
 
@@ -33,7 +34,10 @@ async function preloadImage(url) {
             }
 
             const blob = await response.blob();
+            preloadedImageBlobCache.set(url, blob);
+
             const objectUrl = URL.createObjectURL(blob);
+            preloadedImageBlobCache.set(objectUrl, blob);
             preloadedImageUrlCache.set(url, objectUrl);
             inFlightImagePreloads.delete(url);
             return objectUrl;
@@ -46,6 +50,116 @@ async function preloadImage(url) {
 
     inFlightImagePreloads.set(url, request);
     return request;
+}
+
+async function preloadImageFresh(url) {
+    if (typeof url === 'string' && url.startsWith('blob:') && preloadedImageBlobCache.has(url)) {
+        return URL.createObjectURL(preloadedImageBlobCache.get(url));
+    }
+
+    if (!isPreloadableImageUrl(url)) {
+        return url;
+    }
+
+    if (preloadedImageBlobCache.has(url)) {
+        return URL.createObjectURL(preloadedImageBlobCache.get(url));
+    }
+
+    const sharedUrl = await preloadImage(url);
+    const cachedBlob = preloadedImageBlobCache.get(url) || preloadedImageBlobCache.get(sharedUrl);
+    return cachedBlob ? URL.createObjectURL(cachedBlob) : sharedUrl;
+}
+
+function releasePreloadedImageUrl(url) {
+    if (typeof url !== 'string' || !url.startsWith('blob:')) {
+        return;
+    }
+
+    try {
+        URL.revokeObjectURL(url);
+    } catch (error) {
+        console.warn('Failed to revoke preloaded image URL:', url, error);
+    }
+}
+
+function waitForImageToBeReady(url) {
+    if (typeof url !== 'string' || !url) {
+        return Promise.resolve(url);
+    }
+
+    return new Promise((resolve, reject) => {
+        const probe = new Image();
+        let settled = false;
+
+        const finish = (callback, value) => {
+            if (settled) return;
+            settled = true;
+            callback(value);
+        };
+
+        probe.onload = () => finish(resolve, url);
+        probe.onerror = (error) => finish(reject, error || new Error(`Failed to decode image: ${url}`));
+        probe.src = url;
+
+        if (probe.complete) {
+            finish(resolve, url);
+        }
+    });
+}
+
+async function applyPreloadedImageToElement(element, sourceUrl, options = {}) {
+    if (!element) {
+        return sourceUrl;
+    }
+
+    const {
+        restartAnimation = false,
+        forceReload = false
+    } = options;
+
+    const currentRenderedSrc = element.getAttribute('src') || '';
+    if (!forceReload && !restartAnimation && element.__logicalSpriteSource === sourceUrl && currentRenderedSrc && currentRenderedSrc !== '/') {
+        return currentRenderedSrc;
+    }
+
+    const requestId = (Number(element.dataset.preloadRequestId || '0') + 1);
+    element.dataset.preloadRequestId = String(requestId);
+
+    const resolvedUrl = restartAnimation
+        ? await preloadImageFresh(sourceUrl)
+        : await preloadImage(sourceUrl);
+
+    const nextUrl = resolvedUrl || sourceUrl;
+
+    try {
+        await waitForImageToBeReady(nextUrl);
+    } catch (error) {
+        console.warn('Preloaded image was not ready in time:', nextUrl, error);
+    }
+
+    if (element.dataset.preloadRequestId !== String(requestId)) {
+        if (restartAnimation && resolvedUrl !== sourceUrl) {
+            releasePreloadedImageUrl(resolvedUrl);
+        }
+        return nextUrl;
+    }
+
+    const previousTempUrl = element.__temporaryPreloadedUrl;
+
+    element.src = nextUrl;
+    element.__logicalSpriteSource = sourceUrl;
+
+    if (restartAnimation && typeof nextUrl === 'string' && nextUrl.startsWith('blob:')) {
+        element.__temporaryPreloadedUrl = nextUrl;
+    } else {
+        element.__temporaryPreloadedUrl = null;
+    }
+
+    if (previousTempUrl && previousTempUrl !== nextUrl) {
+        releasePreloadedImageUrl(previousTempUrl);
+    }
+
+    return nextUrl;
 }
 
 function pushPreloadTask(taskFns, sourceUrl, applyPreloadedUrl) {
@@ -208,5 +322,9 @@ function scheduleDeferredSceneWarmup(options = {}) {
     }
 }
 
+window.preloadImage = preloadImage;
+window.preloadImageFresh = preloadImageFresh;
+window.releasePreloadedImageUrl = releasePreloadedImageUrl;
+window.applyPreloadedImageToElement = applyPreloadedImageToElement;
 window.preloadAssets = preloadAssets;
 window.scheduleDeferredSceneWarmup = scheduleDeferredSceneWarmup;

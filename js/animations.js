@@ -9,17 +9,22 @@ window.AnimationManager = (function() {
     const animationCssTextCache = new Map();
     const inFlightAnimationCss = new Map();
     const animationImageCache = new Map();
-    const injectedAnimationStyles = new Set();
+    let activeAnimationStyleElement = null;
     const TRANSPARENT_PIXEL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     function resetLayerElement(img) {
         if (!img) return;
 
         const isMainCharacterLayer = img.id === 'character';
+        const tempUrl = img.__temporaryPreloadedUrl;
 
-        if (!isMainCharacterLayer) {
-            img.src = TRANSPARENT_PIXEL;
+        if (tempUrl && typeof window.releasePreloadedImageUrl === 'function') {
+            window.releasePreloadedImageUrl(tempUrl);
         }
+
+        img.__temporaryPreloadedUrl = null;
+        img.__logicalSpriteSource = null;
+        delete img.dataset.preloadRequestId;
 
         img.className = 'layer';
         img.style.animation = '';
@@ -27,14 +32,11 @@ window.AnimationManager = (function() {
         img.style.animationDelay = '';
         img.style.filter = '';
 
-        if (!isMainCharacterLayer) {
-            img.style.opacity = '';
-            img.style.left = '';
-            img.style.top = '';
-            img.style.transform = '';
+        if (isMainCharacterLayer) {
+            return;
         }
 
-        delete img.dataset.runId;
+        img.src = TRANSPARENT_PIXEL;
     }
 
     function cleanup() {
@@ -46,6 +48,11 @@ window.AnimationManager = (function() {
         });
 
         resetLayerElement(character);
+
+        if (activeAnimationStyleElement) {
+            activeAnimationStyleElement.remove();
+            activeAnimationStyleElement = null;
+        }
 
         // preloadImage() now returns shared cached object URLs from loader.js.
         // Dropping local references is enough here; revoking them per run breaks reuse.
@@ -132,29 +139,26 @@ window.AnimationManager = (function() {
         return request;
     }
 
-    async function ensureAnimationCssLoaded(animationCss) {
-        if (!animationCss) {
-            return;
-        }
-
-        const styleKey = animationCss.toLowerCase().endsWith('.css')
-            ? `file:${animationCss}`
-            : `inline:${animationCss}`;
-
-        if (injectedAnimationStyles.has(styleKey)) {
+    async function ensureAnimationCssLoaded(animationCss, container) {
+        if (!animationCss || !container) {
             return;
         }
 
         const cssText = await loadAnimationCssText(animationCss);
-        if (!cssText || injectedAnimationStyles.has(styleKey)) {
+        if (!cssText) {
             return;
         }
 
+        if (activeAnimationStyleElement) {
+            activeAnimationStyleElement.remove();
+            activeAnimationStyleElement = null;
+        }
+
         const styleSheet = document.createElement('style');
-        styleSheet.dataset.animationStyle = styleKey;
-        styleSheet.innerText = cssText;
-        document.head.appendChild(styleSheet);
-        injectedAnimationStyles.add(styleKey);
+        styleSheet.dataset.animationStyle = animationCss;
+        styleSheet.textContent = cssText;
+        container.appendChild(styleSheet);
+        activeAnimationStyleElement = styleSheet;
     }
 
     function warmAnimationImages(animationName, data) {
@@ -165,6 +169,14 @@ window.AnimationManager = (function() {
         const request = (async () => {
             const warmedImages = {};
             const uniqueImages = new Set();
+
+            if (Array.isArray(data.images)) {
+                data.images.forEach((imageName) => {
+                    if (typeof imageName === 'string' && imageName.trim()) {
+                        uniqueImages.add(imageName.trim());
+                    }
+                });
+            }
 
             if (data.timeline) {
                 Object.values(data.timeline).forEach(events => {
@@ -244,7 +256,19 @@ window.AnimationManager = (function() {
                 }
 
                 if (url) {
-                    img.src = url;
+                    if (typeof window.applyPreloadedImageToElement === 'function') {
+                        window.applyPreloadedImageToElement(img, url, {
+                            restartAnimation: true,
+                            forceReload: true
+                        }).catch((error) => {
+                            console.warn('Failed to apply animation image:', url, error);
+                            img.src = url;
+                        });
+                    } else {
+                        img.src = url;
+                    }
+                } else {
+                    img.src = TRANSPARENT_PIXEL;
                 }
 
                 if (config.class) {
@@ -263,9 +287,6 @@ window.AnimationManager = (function() {
                     }
                 } else {
                     resetLayerElement(img);
-                    if (url) {
-                        img.src = url;
-                    }
                 }
             };
 
@@ -281,7 +302,7 @@ window.AnimationManager = (function() {
                     }
 
                     return Promise.all([
-                        ensureAnimationCssLoaded(data.animationCss),
+                        ensureAnimationCssLoaded(data.animationCss, container),
                         warmAnimationImages(animationName, data)
                     ]).then(([, warmedImages]) => {
                         imageBlobs = warmedImages || {};

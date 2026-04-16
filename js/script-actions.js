@@ -6,7 +6,7 @@
 function executeScriptAction(segment) {
     // Check flow control first, although usually handled separately
     // DO NOT handle flow control here as it requires stopping the renderer loop
-    if (['jump', 'jumpIf', 'option'].includes(segment.type)) {
+    if (['jump', 'jumpIf', 'option', 'present'].includes(segment.type)) {
         return false;
     }
 
@@ -89,6 +89,16 @@ function executeScriptAction(segment) {
                 window.hideEvidenceIcon();
             }
             return true;
+        case 'showTestimonyIndicator':
+            if (window.showTestimonyIndicator) {
+                window.showTestimonyIndicator();
+            }
+            return true;
+        case 'hideTestimonyIndicator':
+            if (window.hideTestimonyIndicator) {
+                window.hideTestimonyIndicator();
+            }
+            return true;
         case 'updateEvidence':
             // Remove old
             const updateIndex = evidenceInventory.indexOf(segment.oldKey);
@@ -160,7 +170,11 @@ function executeScriptAction(segment) {
             triggerShake(shakeDur);
             return true;
         case 'courtView':
-            if (window.setCourtView) window.setCourtView(segment.view);
+            if (window.setCourtView) {
+                window.setCourtView(segment.view, {
+                    preserveBackground: !!segment.preserveBackground
+                });
+            }
             return true;
         case 'courtSprite':
             if (window.setCourtSlotSprite) window.setCourtSlotSprite(segment.slot, segment.emotion);
@@ -221,6 +235,11 @@ function executeScriptAction(segment) {
                 return 'STOP';
             }
             return false;
+        case 'returnToTitle':
+            if (typeof window.returnToTitle === 'function') {
+                window.returnToTitle(segment.message || null);
+            }
+            return 'STOP';
         
         default:
             return false;
@@ -244,14 +263,28 @@ function evaluateJumpCondition(condition) {
 
     const resolvedCondition = normalizedCondition.replace(/[A-Za-z_][A-Za-z0-9_]*/g, (token) => {
         const lowerToken = token.toLowerCase();
-        if (lowerToken === 'true' || lowerToken === 'false') {
+        if (lowerToken === 'true' || lowerToken === 'false' || lowerToken === 'null') {
             return lowerToken;
         }
 
-        return Boolean(gameState[token]) ? 'true' : 'false';
+        const value = gameState[token];
+
+        if (typeof value === 'boolean') {
+            return value ? 'true' : 'false';
+        }
+
+        if (typeof value === 'number' && Number.isFinite(value)) {
+            return String(value);
+        }
+
+        if (typeof value === 'string') {
+            return JSON.stringify(value);
+        }
+
+        return value ? 'true' : 'false';
     });
 
-    if (!/^[()!&|truefals]+$/i.test(resolvedCondition)) {
+    if (!/^[()!<>=&|0-9."'\-_,a-z]+$/i.test(resolvedCondition)) {
         console.warn('Unsupported jumpIf condition:', condition);
         return false;
     }
@@ -274,7 +307,7 @@ function evaluateJumpCondition(condition) {
 function handleFlowControl(segment) {
     // Only intercept actual flow control segments to avoid hijacking text/visuals
     // during fast-forward (finishTyping)
-    const flowTypes = ['jump', 'jumpIf', 'option'];
+    const flowTypes = ['jump', 'jumpIf', 'option', 'present'];
     if (!flowTypes.includes(segment.type)) {
         return false;
     }
@@ -310,6 +343,11 @@ function handleFlowControl(segment) {
         
         if (window.renderOptionsMenu) {
             window.renderOptionsMenu(segment.optionKey);
+        }
+        return true;
+    } else if (segment.type === 'present') {
+        if (typeof window.beginForcedPresentCommand === 'function') {
+            window.beginForcedPresentCommand(segment.correctEvidence, segment.successLabel, segment.failureLabel);
         }
         return true;
     }
