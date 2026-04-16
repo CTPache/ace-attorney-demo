@@ -128,7 +128,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{startBGM:investigation,false}{blip:1}{color:lightblue}(My name is Phoenix Wright.)"
+                "text": "{startBGM:investigation,false}{blip:0,false}{color:lightblue}(My name is Phoenix Wright.)"
             },
             {
                 "name": "Phoenix",
@@ -160,27 +160,27 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}*sigh*{p:200}..."
+                "text": "{hideTextbox}{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{showTextbox}*sigh*{p:200}..."
             },
             {
                 "name": "Edgeworth",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}Detective Gumshoe. Give us your summary of the case immediately."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Detective Gumshoe. Give us your summary of the case immediately."
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{fadeOutBg}(That's Miles Edgeworth.{nl}A prosecutor from the district prosecutor's office.)"
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}(That's Miles Edgeworth.{nl}A prosecutor from the district prosecutor's office.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeInBg}{fadeOutCharacter:300}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{color:white}Y-Yessir..."
+                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{blip:1,true}{color:white}Y-Yessir..."
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{fadeOutBg}(And that's Detective Dick Gumshoe.{nl}A detective at the local precinct.)"
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}(And that's Detective Dick Gumshoe.{nl}A detective at the local precinct.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{showEvidenceIcon:left,Kurumi}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}The victim is Kurumi Nakaki."
+                "text": "{showEvidenceIcon:left,Kurumi}{blip:1,true}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}The victim is Kurumi Nakaki."
             },
             {
                 "name": "Gumshoe",
@@ -196,35 +196,35 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}And...{p:500} the suspect is..."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}And...{p:500} the suspect is..."
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} who was working here part-time as a security guard,{p:200} sir..."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} who was working here part-time as a security guard,{p:200} sir..."
             },
             {
                 "name": "Phoenix",
-                "text": "{fadeOutBg}{fadeOutCharacter:300}{sprite:Maggey[\"Officer\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Maggey[\"Salute_Officer\"]}{sprite:Maggey[\"Officer\"]}{color:lightblue}(Maggey used to be a police officer and was Detective Gumshoe's junior.)"
+                "text": "{hideTextbox}{fadeOutBg}{fadeOutCharacter:300}{sprite:Maggey[\"Officer\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Maggey[\"Salute_Officer\"]}{sprite:Maggey[\"Officer\"]}{blip:0,false}{color:lightblue}{showTextbox}(Maggey used to be a police officer and was Detective Gumshoe's junior.)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Detective Gumshoe always looked out for her.{nl}This must be really hard on him.)"
+                "text": "{blip:0,false}{color:lightblue}(Detective Gumshoe always looked out for her.{nl}This must be really hard on him.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{p:10}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInBg}{fadeInCharacter:300}{color:white}It seems Maggey pushed the victim off the 4th floor of the event hall..."
+                "text": "{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{p:10}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInBg}{fadeInCharacter:300}{color:white}{showTextbox}It seems Maggey pushed the victim off the 4th floor of the event hall..."
             },
             {
                 "name": "Edgeworth",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}Who was the first to discover the body?"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Who was the first to discover the body?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}The event hall manager for this amusement park,{nl}Frank Shawit, sir."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}The event hall manager for this amusement park,{nl}Frank Shawit, sir."
             },
             {
                 "name": "Edgeworth",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Edgeworth[\"Smug\"]}I see. This is a truly simple case."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Edgeworth[\"Smug\"]}{showTextbox}I see. This is a truly simple case."
             },
             {
                 "name": "Edgeworth",
@@ -232,15 +232,15 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{flash}{playSound:damage}What!?"
+                "text": "{flash}{blip:1,false}{playSound:damage}What!?"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(No, I can't let him get to me.{nl}{p:300}No matter what evidence they have,{p:200} I can't lose.)"
+                "text": "{blip:0,false}{color:lightblue}(No, I can't let him get to me.{nl}{p:300}No matter what evidence they have,{p:200} I can't lose.)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(I have to uncover the truth no matter what{nl}{p:300}and prove Maggey's innocence!)"
+                "text": "{blip:0,false}{color:lightblue}(I have to uncover the truth no matter what{nl}{p:300}and prove Maggey's innocence!)"
             },
             {
                 "text": "{setState:intro_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:phoenixMove}{playSound:jingle}{sectionEnd}{skip:0}"

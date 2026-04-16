@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Floor4_Init",
     "actions": {
         "move": true,
@@ -8,12 +8,6 @@
     },
     "backgrounds": {
         "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png"
-    },
-    "investigations": {
-        "Floor4": {
-            "default": "Floor4_Examine_Default",
-            "points": []
-        }
     },
     "move": [
         {
@@ -49,7 +43,7 @@
         "Floor4_Examine_Default": [
             {
                 "name": "ナルホド",
-                "text": "{blip:1}ここには特に何もない。"
+                "text": "{blip:1,false}ここには特に何もない。"
             }
         ],
         "Floor4_Start": [
@@ -58,7 +52,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation,true}マコくんはかわいそうな子ッス。"
+                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1,true}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation,true}マコくんはかわいそうな子ッス。"
             },
             {
                 "name": "イトノコ",
@@ -78,7 +72,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}・・・・　あ、そうだ。{nl}ここだけのハナシがあったッス。"
+                "text": "{blip:1,true}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}・・・・　あ、そうだ。{nl}ここだけのハナシがあったッス。"
             },
             {
                 "name": "イトノコ",
@@ -86,11 +80,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "何ですか？"
+                "text": "{blip:1,false}何ですか？"
             },
             {
                 "name": "イトノコ",
-                "text": "被害者の中木さんって{nl}スーツアクターだったッスよね。"
+                "text": "{blip:1,true}被害者の中木さんって{nl}スーツアクターだったッスよね。"
             },
             {
                 "name": "イトノコ",
@@ -98,7 +92,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}（・・・・ど、どうでもいい！）"
+                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}（・・・・ど、どうでもいい！）"
             },
             {
                 "name": "ナルホド",
@@ -106,7 +100,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}これを見てほしいッス。{showEvidenceIcon:left,mask_photo}"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}{blip:1,true}これを見てほしいッス。{showEvidenceIcon:left,mask_photo}"
             },
             {
                 "name": "イトノコ",
@@ -114,22 +108,22 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}それはわかりますけど・・・・{nl}これがナニか？"
+                "text": "{blip:1,false}それはわかりますけど・・・・{nl}これがナニか？"
             },
             {
                 "name": "イトノコ",
-                "text": "マスクの眉毛の部分が少しへこんでいる{nl}くらいで、他は傷１つないッス。"
+                "text": "{blip:1,true}マスクの眉毛の部分が少しへこんでいる{nl}くらいで、他は傷１つないッス。"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}（へこみは眉毛の部分だけ　・・・・　）"
+                "text": "{blip:0,false}{color:lightblue}（へこみは眉毛の部分だけ　・・・・　）"
             },
             {
-                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}証拠品《マスクの証拠写真》のデータを{nl}法廷記録に書き込んでください。"
+                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0,false}{color:lightblue}証拠品《マスクの証拠写真》のデータを{nl}法廷記録に書き込んでください。"
             },
             {
                 "name": "イトノコ",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}・・・・自分、スーツアクターに{nl}なりたかったからわかるッス。"
+                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}・・・・自分、スーツアクターに{nl}なりたかったからわかるッス。"
             },
             {
                 "name": "イトノコ",
@@ -141,11 +135,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}{playSound:shake}{flash}{shake:500}（いや、そんなコトはないと思うけど）"
+                "text": "{blip:0,false}{color:lightblue}{playSound:shake}{flash}{shake:500}（いや、そんなコトはないと思うけど）"
             },
             {
                 "name": "イトノコ",
-                "text": "{color:white}{blip:1}そんな立派な人を{nl}マコくんが殺すワケないッス。"
+                "text": "{color:white}{blip:1,true}そんな立派な人を{nl}マコくんが殺すワケないッス。"
             },
             {
                 "name": "イトノコ",
@@ -153,25 +147,15 @@
             },
             {
                 "name": "ナルホド",
-                "text": "それは同感です。ぼくが、{nl}必ず彼女の無実を証明してみせますよ。"
+                "text": "{blip:1,false}それは同感です。ぼくが、{nl}必ず彼女の無実を証明してみせますよ。"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}（よし。ここはこんなところか）"
+                "text": "{blip:0,false}{color:lightblue}（よし。ここはこんなところか）"
             },
             {
                 "name": "ナルホド",
                 "text": "{color:lightblue}（情報が揃ったら法廷に向かおう。{nl}そこですべてをアキラカにするんだ！）{color:white}{setState:floor4_done,true}{jump:Floor4_Default}{sectionEnd}"
-            }
-        ],
-        "Floor4_evidence_default": [
-            {
-                "name": "イトノコ",
-                "text": "{blip:1}{color:white}{showCharacter}{sprite:Gumshoe[\"Thinking\"]}ん？{nl}それは何ッスか？"
-            },
-            {
-                "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}（何もわかっていないようだ。）{sectionEnd}"
             }
         ],
         "Load_Courtroom": [

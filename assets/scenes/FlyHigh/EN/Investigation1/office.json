@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Office_Init",
     "actions": {
         "move": true,
@@ -10,12 +10,6 @@
         "Samurai2": "assets/img/CG/Fly High/Samurai_2.png",
         "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
         "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png"
-    },
-    "investigations": {
-        "Office": {
-            "default": "Office_Examine_Default",
-            "points": []
-        }
     },
     "move": [
         {
@@ -59,19 +53,19 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{color:white}Mr. Shawit.{nl}May I ask you a few questions?"
+                "text": "{blip:1,false}{color:white}Mr. Shawit.{nl}May I ask you a few questions?"
             },
             {
                 "name": "Shawit",
-                "text": "Of course. As the first person to discover the body,{nl}I will gladly cooperate."
+                "text": "{blip:1,true}Of course. As the first person to discover the body,{nl}I will gladly cooperate."
             },
             {
                 "name": "Phoenix",
-                "text": "First of all...{nl}what kind of relationship did you have with the victim,{nl}Ms. Nakaki?"
+                "text": "{blip:1,false}First of all...{nl}what kind of relationship did you have with the victim,{nl}Ms. Nakaki?"
             },
             {
                 "name": "Shawit",
-                "text": "I am the chief of this event hall.{nl}Ms. Nakaki was one of our staff members."
+                "text": "{blip:1,true}I am the chief of this event hall.{nl}Ms. Nakaki was one of our staff members."
             },
             {
                 "name": "Shawit",
@@ -87,11 +81,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}Could you tell me more about that?"
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}{blip:1,false}Could you tell me more about that?"
             },
             {
                 "name": "Shawit",
-                "text": "Well, from a security guard's perspective, having someone practicing inside the facility after hours is quite the nuisance."
+                "text": "{blip:1,true}Well, from a security guard's perspective, having someone practicing inside the facility after hours is quite the nuisance."
             },
             {
                 "name": "Shawit",
@@ -111,19 +105,19 @@
             },
             {
                 "name": "Phoenix",
-                "text": "Please tell me in detail what you saw{nl}that day as the first witness."
+                "text": "{blip:1,false}Please tell me in detail what you saw{nl}that day as the first witness."
             },
             {
                 "name": "Shawit",
-                "text": "On the day of the incident, I told both of them to come{nl}to the 4th floor of the event hall at 10:00 PM."
+                "text": "{blip:1,true}On the day of the incident, I told both of them to come{nl}to the 4th floor of the event hall at 10:00 PM."
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:cling}{flash}Why 10:00 PM?{nl}That's a full hour after closing."
+                "text": "{playSound:cling}{flash}{blip:1,false}Why 10:00 PM?{nl}That's a full hour after closing."
             },
             {
                 "name": "Shawit",
-                "text": "Ms. Byrde said that time would be best because she wanted to write up the security log and take a shower first."
+                "text": "{blip:1,true}Ms. Byrde said that time would be best because she wanted to write up the security log and take a shower first."
             },
             {
                 "name": "Shawit",
@@ -139,11 +133,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "I see..."
+                "text": "{blip:1,false}I see..."
             },
             {
                 "name": "Shawit",
-                "text": "Then, I heard the two of them{nl}arguing from the floor above."
+                "text": "{blip:1,true}Then, I heard the two of them{nl}arguing from the floor above."
             },
             {
                 "name": "Shawit",
@@ -159,32 +153,21 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}{color:lightblue}(Is there anything else I should ask about?){setState:office_intro_done,true}{sectionEnd}"
-            }
-        ],
-        "Office_Examine_Default": [
-            {
-                "name": "Phoenix",
-                "text": "{blip:1}{showTextbox}Nothing to see here."
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}{blip:0,false}{color:lightblue}(Is there anything else I should ask about?){setState:office_intro_done,true}{sectionEnd}"
             }
         ],
         "Office_evidence_loud_sound": [
             {
-                "text": "{jumpIf:detention_center_done,Office_LoudSound_A,Office_LoudSound_B}{sectionEnd}"
-            }
-        ],
-        "Office_LoudSound_A": [
-            {
                 "name": "Shawit",
-                "text": "{sprite:Shawit[\"Stand\"]}{blip:1}{color:white}{showTextbox}A sound, you say?"
+                "text": "{sprite:Shawit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}A sound, you say?"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{color:white}Right. On the day of the incident,{nl}did you hear any suspicious sounds?"
+                "text": "{blip:1,false}{color:white}Right. On the day of the incident,{nl}did you hear any suspicious sounds?"
             },
             {
                 "name": "Shawit",
-                "text": "{sprite:Shawit[\"Nervous\"]}Ah.{p:500}{nl}If you mean that, I clearly heard the sound of Ms. Nakaki falling."
+                "text": "{sprite:Shawit[\"Nervous\"]}{blip:1,true}Ah.{p:500}{nl}If you mean that, I clearly heard the sound of Ms. Nakaki falling."
             },
             {
                 "name": "Shawit",
@@ -192,7 +175,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(If that was the sound of Ms. Nakaki falling,{nl}then it must have been around 10:05 PM...)"
+                "text": "{blip:0,false}{color:lightblue}(If that was the sound of Ms. Nakaki falling,{nl}then it must have been around 10:05 PM...)"
             },
             {
                 "name": "Phoenix",
@@ -203,11 +186,11 @@
             },
             {
                 "name": "Shawit",
-                "text": "{blip:1}{color:white}{sprite:Shawit[\"Stand\"]}...Yes.{nl}That is all."
+                "text": "{blip:1,true}{color:white}{sprite:Shawit[\"Stand\"]}...Yes.{nl}That is all."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(All right. I think that's everything for here.)"
+                "text": "{blip:0,false}{color:lightblue}(All right. I think that's everything for here.)"
             },
             {
                 "name": "Phoenix",
@@ -221,19 +204,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(He doesn't seem to have any idea.)"
-            },
-            {
-                "text": "{jumpIf:evidence_loud_sound_updated,Office_evidence_default_2}{skip:0}"
+                "text": "{blip:0,false}{color:lightblue}(He doesn't seem to have any idea.)"
             },
             {
                 "name": "Phoenix",
                 "text": "{color:lightblue}(I feel like there are still things I have to ask him about.{nl}I should investigate somewhere else and come back later.){sectionEnd}"
-            }
-        ],
-        "Office_evidence_default_2": [
-            {
-                "text": "{skip:0}{sectionEnd}"
             }
         ],
         "Load_Courtroom": [

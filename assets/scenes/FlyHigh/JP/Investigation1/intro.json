@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Intro_Init",
     "actions": {
         "move": true,
@@ -110,7 +110,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{startBGM:investigation,false}{blip:1}{color:lightblue}（ぼくの名前は、成歩堂　龍一）"
+                "text": "{startBGM:investigation,false}{blip:0,false}{color:lightblue}（ぼくの名前は、成歩堂　龍一）"
             },
             {
                 "name": "ナルホド",
@@ -142,27 +142,27 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{hideTextbox}{fadeInCharacter:300}{p:200}{showTextbox}・・・・{p:200}はあ。"
+                "text": "{hideTextbox}{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{showTextbox}・・・・{p:200}はあ。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}イトノコ刑事。{nl}早く事件の概要を説明してくれたまえ。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}イトノコ刑事。{nl}早く事件の概要を説明してくれたまえ。"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{fadeOutBg}（彼は御剣　怜侍。{nl}地方検事局の検事だ）"
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}（彼は御剣　怜侍。{nl}地方検事局の検事だ）"
             },
             {
                 "name": "イトノコ",
-                "text": "{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{color:white}わ、わかったッス・・・・。"
+                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{blip:1,true}{color:white}わ、わかったッス・・・・。"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{fadeOutBg}（彼は糸鋸　圭介。{nl}所轄署の刑事だ）"
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}（彼は糸鋸　圭介。{nl}所轄署の刑事だ）"
             },
             {
                 "name": "イトノコ",
-                "text": "{showEvidenceIcon:left,Kurumi}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}被害者は中木　クルミ《なかきくるみ》さん。"
+                "text": "{showEvidenceIcon:left,Kurumi}{blip:1,true}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}被害者は中木　クルミ《なかきくるみ》さん。"
             },
             {
                 "name": "イトノコ",
@@ -178,15 +178,15 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}そして・・・・{p:500}容疑者は・・・・。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}そして・・・・{p:500}容疑者は・・・・。"
             },
             {
                 "name": "イトノコ",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Sad\"]}・・・・ここで警備員のアルバイトを{nl}していた、須々木　マコくんッス・・・・。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}・・・・ここで警備員のアルバイトを{nl}していた、須々木　マコくんッス・・・・。"
             },
             {
                 "name": "ナルホド",
-                "text": "{fadeOutBg}{fadeOutCharacter:300}{sprite:Maggey[\"Officer\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Maggey[\"Salute_Officer\"]}{sprite:Maggey[\"Officer\"]}{color:lightblue}（マコちゃんは昔、警察官をやっていて{nl}イトノコ刑事の後輩だったことがある）"
+                "text": "{hideTextbox}{fadeOutBg}{fadeOutCharacter:300}{sprite:Maggey[\"Officer\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Maggey[\"Salute_Officer\"]}{sprite:Maggey[\"Officer\"]}{blip:0,false}{color:lightblue}{showTextbox}（マコちゃんは昔、警察官をやっていて{nl}イトノコ刑事の後輩だったことがある）"
             },
             {
                 "name": "ナルホド",
@@ -194,19 +194,19 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{fadeOutCharacter:300}{p:10}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInBg}{fadeInCharacter:300}{color:white}マコくんがイベントホールの４階から{nl}被害者を突き落としたらしいッス・・・・。"
+                "text": "{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{p:10}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInBg}{fadeInCharacter:300}{color:white}{showTextbox}マコくんがイベントホールの４階から{nl}被害者を突き落としたらしいッス・・・・。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}第１発見者は？"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}第１発見者は？"
             },
             {
                 "name": "イトノコ",
-                "text": "{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}この遊園地のイベントホール主任{nl}山野　星雄ッス。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}この遊園地のイベントホール主任{nl}山野　星雄ッス。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Edgeworth[\"Smug\"]}これは実に簡単な事件だ。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Edgeworth[\"Smug\"]}{showTextbox}これは実に簡単な事件だ。"
             },
             {
                 "name": "ミツルギ",
@@ -214,11 +214,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{flash}{playSound:damage}なんだって？"
+                "text": "{flash}{blip:1,false}{playSound:damage}なんだって？"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（いや、動じちゃダメだ。{nl}{p:300}どんな証拠があろうと、負けるわけにはいかない）"
+                "text": "{color:lightblue}{blip:0,false}（いや、動じちゃダメだ。{nl}{p:300}どんな証拠があろうと、負けるわけにはいかない）"
             },
             {
                 "name": "ナルホド",

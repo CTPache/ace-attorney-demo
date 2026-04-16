@@ -1,15 +1,10 @@
-{
+﻿{
     "initialSection": "Detention_Center_Init",
     "actions": {
         "move": true,
         "examine": false,
         "talk": false,
         "present": false
-    },
-    "investigations": {
-        "DetentionCenter": {
-            "default": "Detention_Center_Examine_Default"
-        }
     },
     "move": [
         {
@@ -42,12 +37,6 @@
                 "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{sectionEnd}{skip:0}"
             }
         ],
-        "Detention_Center_Examine_Default": [
-            {
-                "name": "ナルホド",
-                "text": "{blip:1}ここには特に何もない。"
-            }
-        ],
         "Detention_Center_Start": [
             {
                 "text": "{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}{showTextbox}９月１７日　某時刻{nl}{p:500}留置所"
@@ -57,7 +46,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{blip:1}マコ。"
+                "text": "{showTextbox}{blip:1,false}マコ。"
             },
             {
                 "name": "マコ",
@@ -69,7 +58,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}{playSound:shake}{shake:500}えっ？{p:140}　と、どういうこと？"
+                "text": "{blip:1,false}{playSound:shake}{shake:500}えっ？{p:140}　と、どういうこと？"
             },
             {
                 "name": "ナルホド",
@@ -93,7 +82,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}で、そのときは言い合いしたの？"
+                "text": "{blip:1,false}で、そのときは言い合いしたの？"
             },
             {
                 "name": "マコ",
@@ -105,7 +94,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}ブログ？"
+                "text": "{blip:1,false}ブログ？"
             },
             {
                 "name": "マコ",
@@ -120,7 +109,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{blip:0}{color:lightblue}（不気味なタイトルのブログだなぁ・・・・{nl}ああ、これがそうか）"
+                "text": "{showTextbox}{blip:0,false}{color:lightblue}（不気味なタイトルのブログだなぁ・・・・{nl}ああ、これがそうか）"
             },
             {
                 "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}証拠品《眼鏡のブログ記事》のデータを法廷記録に書き込んだ。"
@@ -131,7 +120,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}えっ？"
+                "text": "{blip:1,false}えっ？"
             },
             {
                 "name": "マコ",
@@ -139,18 +128,18 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}じゃあ、今しているその眼鏡は？"
+                "text": "{blip:1,false}じゃあ、今しているその眼鏡は？"
             },
             {
                 "name": "マコ",
                 "text": "{sprite:Maggey[\"Determined\"]}{blip:2}家にあった予備の眼鏡を頼んで持ってきてもらったッス。{p:220}{nl}乱視だから、{p:140}眼鏡がないとホントきついッス。{p:140}{p:220}"
             },
             {
-                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《眼鏡のブログ記事》のデータを更新した。"
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}証拠品《眼鏡のブログ記事》のデータを更新した。"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:white}{blip:1}それで、よく目が見えないまま・・・・？{p:320}"
+                "text": "{color:white}{blip:1,false}それで、よく目が見えないまま・・・・？{p:320}"
             },
             {
                 "name": "マコ",
@@ -170,7 +159,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}なるほど。{p:180}何か他に気になったコトは？"
+                "text": "{blip:1,false}なるほど。{p:180}何か他に気になったコトは？"
             },
             {
                 "name": "マコ",
@@ -178,7 +167,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（シャワーを浴び始めたところというコトは午後９時３０分ごろか）"
+                "text": "{blip:0,false}{color:lightblue}（シャワーを浴び始めたところというコトは午後９時３０分ごろか）"
             },
             {
                 "name": "マコ",
@@ -186,10 +175,10 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（気になるな。誰かに聞いてみよう）"
+                "text": "{blip:0,false}{color:lightblue}（気になるな。誰かに聞いてみよう）"
             },
             {
-                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《大きな音》のデータを法廷記録に書き込んだ。"
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}証拠品《大きな音》のデータを法廷記録に書き込んだ。"
             },
             {
                 "name": "マコ",
@@ -197,11 +186,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1}大丈夫だよ、{p:140}ぼくを信じて。{p:220}{nl}きっと真実を暴いて助け出してみせるから。{p:220}"
+                "text": "{blip:1,false}大丈夫だよ、{p:140}ぼくを信じて。{p:220}{nl}きっと真実を暴いて助け出してみせるから。{p:220}"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}{blip:0}（よし。ここはこんなところか）{setState:detention_center_done,true}{color:white}{jump:Detention_Center_Default}{sectionEnd}"
+                "text": "{blip:0,false}{color:lightblue}（よし。ここはこんなところか）{setState:detention_center_done,true}{color:white}{jump:Detention_Center_Default}{sectionEnd}"
             }
         ],
         "Load_Courtroom": [

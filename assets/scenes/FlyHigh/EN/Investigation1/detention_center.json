@@ -6,11 +6,6 @@
         "talk": false,
         "present": false
     },
-    "investigations": {
-        "DetentionCenter": {
-            "default": "Detention_Center_Examine_Default"
-        }
-    },
     "move": [
         {
             "label": "4th Floor",
@@ -42,12 +37,6 @@
                 "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{sectionEnd}{skip:0}"
             }
         ],
-        "Detention_Center_Examine_Default": [
-            {
-                "name": "Phoenix",
-                "text": "{blip:1}Nothing to see here."
-            }
-        ],
         "Detention_Center_Start": [
             {
                 "text": "{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}{showTextbox}September 17{nl}{p:500}Detention Center"
@@ -57,7 +46,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{blip:1}Maggey."
+                "text": "{showTextbox}{blip:1,false}Maggey."
             },
             {
                 "name": "Maggey",
@@ -69,7 +58,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}{playSound:shake}{shake:500}Wait,{p:140} what do you mean?"
+                "text": "{blip:1,false}{playSound:shake}{shake:500}Wait,{p:140} what do you mean?"
             },
             {
                 "name": "Phoenix",
@@ -93,7 +82,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}So did you argue with her that day too?"
+                "text": "{blip:1,false}So did you argue with her that day too?"
             },
             {
                 "name": "Maggey",
@@ -105,7 +94,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}Blog?"
+                "text": "{blip:1,false}Blog?"
             },
             {
                 "name": "Maggey",
@@ -120,7 +109,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{blip:0}{color:lightblue}(What a creepy blog title...{nl} Ah, this must be it.)"
+                "text": "{showTextbox}{blip:0,false}{color:lightblue}(What a creepy blog title...{nl} Ah, this must be it.)"
             },
             {
                 "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}Data for \"Blog Post - Glasses Charm\" added to the Court Record."
@@ -131,7 +120,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}Huh?"
+                "text": "{blip:1,false}Huh?"
             },
             {
                 "name": "Maggey",
@@ -139,18 +128,18 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}Then what about the glasses you're wearing right now?"
+                "text": "{blip:1,false}Then what about the glasses you're wearing right now?"
             },
             {
                 "name": "Maggey",
                 "text": "{sprite:Maggey[\"Determined\"]}{blip:2}I had someone bring the spare pair from my place.{p:220}{nl}I have astigmatism,{p:140} so without glasses I can barely see a thing,{p:140} sir.{p:220}"
             },
             {
-                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Blog Post - Glasses Charm\" updated in the Court Record."
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}Data for \"Blog Post - Glasses Charm\" updated in the Court Record."
             },
             {
                 "name": "Phoenix",
-                "text": "{color:white}{blip:1}So you were walking around practically blind...{p:320}"
+                "text": "{color:white}{blip:1,false}So you were walking around practically blind...{p:320}"
             },
             {
                 "name": "Maggey",
@@ -170,7 +159,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}I see.{p:180} Was there anything else that stood out to you?"
+                "text": "{blip:1,false}I see.{p:180} Was there anything else that stood out to you?"
             },
             {
                 "name": "Maggey",
@@ -178,7 +167,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(If she was just starting her shower, that puts it at around 9:30 PM.)"
+                "text": "{color:lightblue}{blip:0,false}(If she was just starting her shower, that puts it at around 9:30 PM.)"
             },
             {
                 "name": "Maggey",
@@ -186,10 +175,10 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(That's odd. I should ask someone about this.)"
+                "text": "{color:lightblue}{blip:0,false}(That's odd. I should ask someone about this.)"
             },
             {
-                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}Data for \"Loud Sound\" added to the Court Record."
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}Data for \"Loud Sound\" added to the Court Record."
             },
             {
                 "name": "Maggey",
@@ -197,11 +186,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}It's okay,{p:140} trust me.{p:220}{nl}I'll uncover the truth and get you out of this.{p:220}"
+                "text": "{blip:1,false}It's okay,{p:140} trust me.{p:220}{nl}I'll uncover the truth and get you out of this.{p:220}"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0}(All right. I think I'm done here.){setState:detention_center_done,true}{color:white}{jump:Detention_Center_Default}{sectionEnd}"
+                "text": "{color:lightblue}{blip:0,false}(All right. I think I'm done here.){setState:detention_center_done,true}{color:white}{jump:Detention_Center_Default}{sectionEnd}"
             }
         ],
         "Load_Courtroom": [

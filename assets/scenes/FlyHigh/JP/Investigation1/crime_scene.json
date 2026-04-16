@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Crime_Scene_Init",
     "actions": {
         "move": true,
@@ -133,7 +133,7 @@
         ],
         "Crime_Scene_Finish": [
             {
-                "text": "{setAction:examine,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+                "text": "{setAction:examine,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{jumpIf:crime_scene_done&office_done&detention_center_done&floor4_done,Load_Courtroom}{skip:0}{sectionEnd}"
             }
         ],
         "Crime_Scene_Intro": [
@@ -162,11 +162,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}（薄暗い場所だけど、この辺では{nl}一応、目視できるんだな）"
+                "text": "{blip:0,false}{color:lightblue}（薄暗い場所だけど、この辺では{nl}一応、目視できるんだな）"
             },
             {
                 "name": "イトノコ",
-                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1}あそこからマコくんに突き落とされて、{nl}この手すりの真下まで落下したらしいッス。"
+                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1,true}あそこからマコくんに突き落とされて、{nl}この手すりの真下まで落下したらしいッス。"
             },
             {
                 "name": "イトノコ",
@@ -174,11 +174,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "ん？{flash}{playSound:cling}{nl}どういうコトですか？"
+                "text": "ん？{flash}{playSound:cling}{nl}{blip:1,false}どういうコトですか？"
             },
             {
                 "name": "イトノコ",
-                "text": "被害者はイベントホールの４階から落下して、{nl}第１発見者の目の前に落ちたッス。"
+                "text": "{blip:1,true}被害者はイベントホールの４階から落下して、{nl}第１発見者の目の前に落ちたッス。"
             },
             {
                 "name": "イトノコ",
@@ -186,19 +186,19 @@
             },
             {
                 "name": "ナルホド",
-                "text": "・・・・なるほど。{nl}ではさっそく調べてみることにします。{setState:Crime_Scene_Intro_done,true}{sectionEnd}"
+                "text": "{blip:1,false}・・・・なるほど。{nl}ではさっそく調べてみることにします。{setState:Crime_Scene_Intro_done,true}{sectionEnd}"
             }
         ],
         "Examine_Default": [
             {
                 "name": "ナルホド",
-                "text": "{color:white}{hideCharacter}{blip:1}特に気になるものはないな。{sectionEnd}"
+                "text": "{color:white}{hideCharacter}{blip:1,false}特に気になるものはないな。{sectionEnd}"
             }
         ],
         "Examine_Body": [
             {
                 "name": "ナルホド",
-                "text": "{color:white}{hideCharacter}{blip:1}トノサマンのマスクとスーツを着たまま{nl}亡くなっているのか・・・・。"
+                "text": "{color:white}{hideCharacter}{blip:1,false}トノサマンのマスクとスーツを着たまま{nl}亡くなっているのか・・・・。"
             },
             {
                 "name": "ナルホド",
@@ -206,11 +206,11 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}そッスけど。{nl}どうかしたッスか？"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}{blip:1,true}{showTextbox}そッスけど。{nl}どうかしたッスか？"
             },
             {
                 "name": "ナルホド",
-                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1,false}今、遺体はうつぶせで倒れています。"
+                "text": "{blip:0,false}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}今、遺体はうつぶせで倒れています。"
             },
             {
                 "name": "ナルホド",
@@ -241,7 +241,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{showTextbox}・・・・ああ。{nl}言われてみればそッスね。"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{blip:1,true}{showTextbox}・・・・ああ。{nl}言われてみればそッスね。"
             },
             {
                 "name": "イトノコ",
@@ -249,11 +249,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}{playSound:question1}（・・・・後頭部と顔面の両方に傷と打撲{nl}ということなんだろう）"
+                "text": "{blip:0,false}{color:lightblue}{playSound:question1}（・・・・後頭部と顔面の両方に傷と打撲{nl}ということなんだろう）"
             },
             {
                 "name": "イトノコ",
-                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}床ににじみ出ている血は、{nl}マスクの隙間から漏れ出ているものッス。"
+                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}床ににじみ出ている血は、{nl}マスクの隙間から漏れ出ているものッス。"
             },
             {
                 "text": "{setState:body_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -262,11 +262,11 @@
         "Examine_Background": [
             {
                 "name": "イトノコ",
-                "text": "{color:white}{hideCharacter}{blip:1}各階や天井は全て調査済みッス。{nl}仕掛けのようなものは一切ないッス。"
+                "text": "{color:white}{hideCharacter}{blip:1,true}各階や天井は全て調査済みッス。{nl}仕掛けのようなものは一切ないッス。"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}（ただタンジュンに突き落とされただけ{nl}ということか・・・・）"
+                "text": "{blip:0,false}{color:lightblue}（ただタンジュンに突き落とされただけ{nl}ということか・・・・）"
             },
             {
                 "text": "{setState:background_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -275,23 +275,23 @@
         "Examine_Out": [
             {
                 "name": "ナルホド",
-                "text": "{hideCharacter}{color:white}{blip:1}事件当時、一般のお客さんは？"
+                "text": "{hideCharacter}{color:white}{blip:1,false}事件当時、一般のお客さんは？"
             },
             {
                 "name": "イトノコ",
-                "text": "{blip:1}いなかったッス。{nl}ここは午後９時に閉まるッスから。"
+                "text": "{blip:1,true}いなかったッス。{nl}ここは午後９時に閉まるッスから。"
             },
             {
                 "name": "ナルホド",
-                "text": "ということは、事件当時は第１発見者と{nl}被害者と容疑者の３人だけだったんですか？"
+                "text": "{blip:1,false}ということは、事件当時は第１発見者と{nl}被害者と容疑者の３人だけだったんですか？"
             },
             {
                 "name": "イトノコ",
-                "text": "そういうことッスね。{nl}警備員もマコくん１人だけだったッス。"
+                "text": "{blip:0,true}そういうことッスね。{nl}警備員もマコくん１人だけだったッス。"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}（他の目撃者から話を聞くことは{nl}無理というワケか・・・・）"
+                "text": "{blip:0,false}{color:lightblue}（他の目撃者から話を聞くことは{nl}無理というワケか・・・・）"
             },
             {
                 "text": "{setState:out_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -300,7 +300,7 @@
         "Examine_Floor": [
             {
                 "name": "イトノコ",
-                "text": "{color:white}{hideCharacter}{blip:1}キレイッスよね。{nl}掃除が行き届いているッス。"
+                "text": "{blip:1,true}{color:white}{hideCharacter}{blip:1}キレイッスよね。{nl}掃除が行き届いているッス。"
             },
             {
                 "name": "イトノコ",
@@ -312,13 +312,13 @@
         ],
         "Body_Examined": [
             {
-                "text": "{color:white}{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
             }
         ],
         "Shawit_Appears": [
             {
                 "name": "ヤマノ",
-                "text": "{color:white}{hideTextbox}{blip:1}{fadeOutCharacter:300}{stopBGM}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}おや、{flash}{playSound:cling}現場検証でございますか。{nl}ご苦労様でございます。"
+                "text": "{color:white}{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{stopBGM}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}おや、{flash}{playSound:cling}現場検証でございますか。{nl}ご苦労様でございます。"
             },
             {
                 "name": "イトノコ",
@@ -350,7 +350,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（イトノコ刑事・・・・山野さんがカツラだって{nl}コトを言いたいのかな）"
+                "text": "{blip:0,false}{color:lightblue}（イトノコ刑事・・・・山野さんがカツラだって{nl}コトを言いたいのかな）"
             },
             {
                 "name": "ナルホド",
@@ -358,7 +358,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{color:white}{sprite:Shawit[\"Stand\"]}そんなことはさておき。{nl}一刻も早い解決を望んでおりますよ。"
+                "text": "{blip:1,true}{color:white}{sprite:Shawit[\"Stand\"]}そんなことはさておき。{nl}一刻も早い解決を望んでおりますよ。"
             },
             {
                 "name": "ヤマノ",
@@ -366,7 +366,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showEvidenceIcon:right,accessory}{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}・・・・ん？{nl}何か地面に落ちているぞ。"
+                "text": "{hideTextbox}{fadeOutCharacter:1000}{stopBGM}{p:1400}{showEvidenceIcon:right,accessory}{playSound:question1}{blip:1,false}{showTextbox}・・・・ん？{nl}何か地面に落ちているぞ。"
             },
             {
                 "name": "ナルホド",
@@ -374,18 +374,18 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}ほんとッスね。{p:200}さっきまでは{nl}ナニも落ちていなかったッスけど・・・・"
+                "text": "{hideTextbox}{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}{blip:1,true}{showTextbox}ほんとッスね。{p:200}さっきまでは{nl}ナニも落ちていなかったッスけど・・・・"
             },
             {
                 "name": "ナルホド",
                 "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（とりあず証拠品として持っていよう）"
             },
             {
-                "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0}証拠品《アクセサリーのようなもの》の{nl}データを法廷記録に書き込んでください。"
+                "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}証拠品《アクセサリーのようなもの》の{nl}データを法廷記録に書き込んでください。"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（よし、ここはこんなところか）"
+                "text": "{blip:0,false}{color:lightblue}（よし、ここはこんなところか）"
             },
             {
                 "name": "ナルホド",
@@ -393,6 +393,11 @@
             },
             {
                 "text": "{setState:crime_scene_done,true}{jump:Crime_Scene_Finish}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Load_Courtroom": [
+            {
+                "text": "{loadScene:assets/scenes/FlyHigh/Courtroom1/courtroom.json}{sectionEnd}"
             }
         ]
     }

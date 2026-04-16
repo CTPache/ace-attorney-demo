@@ -9,12 +9,6 @@
     "backgrounds": {
         "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png"
     },
-    "investigations": {
-        "Floor4": {
-            "default": "Floor4_Examine_Default",
-            "points": []
-        }
-    },
     "move": [
         {
             "label": "Event Hall",
@@ -78,7 +72,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...{nl}Oh, right.{nl}There's something I wanted to tell you, just between us."
+                "text": "{blip:1,true}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...{nl}Oh, right.{nl}There's something I wanted to tell you, just between us."
             },
             {
                 "name": "Gumshoe",
@@ -86,11 +80,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "What is it?"
+                "text": "{blip:1,false}What is it?"
             },
             {
                 "name": "Gumshoe",
-                "text": "The victim, Ms. Nakaki...{nl}She was a suit actress, right?"
+                "text": "{blip:1,true}The victim, Ms. Nakaki...{nl}She was a suit actress, right?"
             },
             {
                 "name": "Gumshoe",
@@ -98,7 +92,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}(...I-I really don't care!)"
+                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}(...I-I really don't care!)"
             },
             {
                 "name": "Phoenix",
@@ -106,7 +100,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}Anyway, {nl} Take a look at this.{showEvidenceIcon:left,mask_photo}"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Thinking\"]}{blip:1,true}Anyway, {nl} Take a look at this.{showEvidenceIcon:left,mask_photo}"
             },
             {
                 "name": "Gumshoe",
@@ -114,22 +108,22 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1}I get that, but...{nl}what's your point?"
+                "text": "{blip:1,false}I get that, but...{nl}what's your point?"
             },
             {
                 "name": "Gumshoe",
-                "text": "The eyebrow area is dented a little,{nl}but other than that, not a single scratch."
+                "text": "{blip:1,true}The eyebrow area is dented a little,{nl}but other than that, not a single scratch."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(Only the eyebrow area is dented...)"
+                "text": "{blip:0,false}{color:lightblue}(Only the eyebrow area is dented...)"
             },
             {
-                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record."
+                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0,false}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record."
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1}{sprite:Gumshoe[\"Normal\"]}I can tell because I wanted to be a suit actor myself."
+                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}I can tell because I wanted to be a suit actor myself."
             },
             {
                 "name": "Gumshoe",
@@ -141,11 +135,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... I don't think that's right.)"
+                "text": "{blip:0,false}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... I don't think that's right.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1}There's no way Maggey would kill{nl}someone that admirable."
+                "text": "{color:white}{blip:1,true}There's no way Maggey would kill{nl}someone that admirable."
             },
             {
                 "name": "Gumshoe",
@@ -153,25 +147,15 @@
             },
             {
                 "name": "Phoenix",
-                "text": "On that, we agree. I swear,{nl}I'll prove her innocence."
+                "text": "{blip:1,false}On that, we agree. I swear,{nl}I'll prove her innocence."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(All right. I think that's everything here.)"
+                "text": "{blip:0,false}{color:lightblue}(All right. I think that's everything here.)"
             },
             {
                 "name": "Phoenix",
                 "text": "{color:lightblue}(Once I've got all the information, I'll head to court.{nl}That's where I'll make everything clear!){color:white}{setState:floor4_done,true}{jump:Floor4_Default}{sectionEnd}"
-            }
-        ],
-        "Floor4_evidence_default": [
-            {
-                "name": "Gumshoe",
-                "text": "{blip:1}{color:white}{showCharacter}{sprite:Gumshoe[\"Thinking\"]}Hm?{nl}What is that?"
-            },
-            {
-                "name": "Phoenix",
-                "text": "{blip:0}{color:lightblue}(He doesn't seem to have any idea.){sectionEnd}"
             }
         ],
         "Load_Courtroom": [
