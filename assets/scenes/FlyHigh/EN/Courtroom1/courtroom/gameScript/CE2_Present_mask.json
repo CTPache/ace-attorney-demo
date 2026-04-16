@@ -1,6 +1,0 @@
-[
-    {
-        "name": "{{i18n:Name_ナルホド}}",
-        "text": "{showLifeBar:2}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}{{i18n:CE2_Present_mask_0}}{present:mask_photo,CE2_Victory,CE2_WrongEvidence}{sectionEnd}"
-    }
-]

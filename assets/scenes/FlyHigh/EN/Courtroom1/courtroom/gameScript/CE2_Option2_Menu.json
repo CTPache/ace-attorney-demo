@@ -1,6 +1,0 @@
-[
-    {
-        "name": "{{i18n:Name_ナルホド}}",
-        "text": "{playSound:bubble_sfx}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}{{i18n:CE2_Option2_Menu_0}}{showLifeBar:2}{option:CE2_Option2_Choice}{sectionEnd}"
-    }
-]

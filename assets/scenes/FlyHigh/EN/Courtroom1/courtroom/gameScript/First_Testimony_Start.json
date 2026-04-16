@@ -1,5 +1,0 @@
-[
-    {
-        "text": "{courtChar:witness,Shawit}{courtSprite:witness[\"Stand\"]}{setState:currentTestimony,1}{setState:Mia_hint_condition,false}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{fadeInFg:600}{showTextbox}{blip:0,false}{center}{color:red}{{i18n:First_Testimony_Start_0}}{playAnimation:CrossExamination}{startCE:Yamano_Testimony_1}{sectionEnd}"
-    }
-]

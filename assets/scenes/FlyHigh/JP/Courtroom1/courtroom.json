@@ -124,7 +124,7 @@
                 "character": "Edgeworth"
             },
             "witness": {
-                "character": "Shawit"
+                "character": "Maggey"
             },
             "judge": {
                 "character": "Judge"
@@ -375,7 +375,7 @@
         },
         "Shawit": {
             "Witness_overview": {
-                "default": "assets/img/characters/Fly High/Shawit/Shawit_Witness_overview.png",
+                "default": "assets/img/characters/Fly High/Shawit/Shawit_witness_overview.png",
                 "display": {
                     "scale": 120,
                     "x": 38,
@@ -405,7 +405,7 @@
         },
         "Maggey": {
             "Witness_overview": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde_Witness_overview.png",
+                "default": "assets/img/characters/Fly High/Byrde/Byrde_witness_overview.png",
                 "display": {
                     "scale": 120,
                     "x": 40,
@@ -619,7 +619,7 @@
                 "text": "{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}９月１８日　午前１０時{nl}地方裁判所　第二法廷{color:white}"
             },
             {
-                "text": "{setSkipEnabled:false}{hideTextbox}{p:500}{hideCharacter}{courtSprite:witness[\"Stand\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{skip:0}"
+                "text": "{setSkipEnabled:false}{hideTextbox}{p:500}{hideCharacter}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{skip:0}"
             },
             {
                 "name": "サイバンチョ",
@@ -714,7 +714,7 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}ジョイポリスのイベントホール主任、{nl}山野　星雄だ。"
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}ジョイポリスのイベントホール主任、{nl}山野　星雄だ。{courtChar:witness,Shawit}"
             },
             {
                 "text": "{stopBGM:true}{hideTextbox}{fadeOutBg:600}{fadeOutCharacter}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{center}{color:red}{blip:0,false}～至件当時の権子～{playAnimation:Witness_Testimony}{color:white}"

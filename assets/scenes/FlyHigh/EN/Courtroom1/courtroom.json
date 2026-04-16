@@ -271,7 +271,7 @@
         },
         "Shawit": {
             "Witness_overview": {
-                "default": "assets/img/characters/Fly High/Shawit/Shawit_Witness_overview.png",
+                "default": "assets/img/characters/Fly High/Shawit/Shawit_witness_overview.png",
                 "display": {
                     "scale": 120,
                     "x": 38,
@@ -301,7 +301,7 @@
         },
         "Maggey": {
             "Witness_overview": {
-                "default": "assets/img/characters/Fly High/Byrde/Byrde_Witness_overview.png",
+                "default": "assets/img/characters/Fly High/Byrde/Byrde_witness_overview.png",
                 "display": {
                     "scale": 120,
                     "x": 40,
@@ -338,7 +338,7 @@
                 "character": "Edgeworth"
             },
             "witness": {
-                "character": "Shawit"
+                "character": "Maggey"
             },
             "judge": {
                 "character": "Judge"
@@ -2310,7 +2310,7 @@
                 "text": "{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}September 18, 10:00 AM{nl}District Court - Courtroom No. 2{color:white}"
             },
             {
-                "text": "{setSkipEnabled:false}{hideTextbox}{p:500}{hideCharacter}{courtSprite:witness[\"Stand\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{skip:0}"
+                "text": "{setSkipEnabled:false}{hideTextbox}{p:500}{hideCharacter}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{skip:0}"
             },
             {
                 "name": "Judge",
@@ -2405,7 +2405,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}The event hall supervisor at Joypolis,{nl}Frank Sahwit."
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}The event hall supervisor at Joypolis,{nl}Frank Sahwit.{courtChar:witness,Shawit}"
             },
             {
                 "text": "{stopBGM:true}{hideTextbox}{fadeOutBg:600}{fadeOutCharacter}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{center}{color:red}{blip:0,false}--The Situation at the Time of the Incident--{playAnimation:Witness_Testimony}{color:white}"

@@ -1,5 +1,0 @@
-[
-    {
-        "text": "{jumpIf:currentTestimony==1,Mia_Hint_1}{jumpIf:currentTestimony==2,Mia_Hint_2}{jumpIf:currentTestimony==3,Mia_Hint_3}{returnToCE}{sectionEnd}"
-    }
-]

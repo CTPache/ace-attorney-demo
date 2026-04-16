@@ -1,6 +1,0 @@
-[
-    {
-        "name": "{{i18n:Name_ナルホド}}",
-        "text": "{courtView:defense}{courtSprite:defense[\"Determined\"]}{showLifeBar:2}{courtView:defense}{blip:0,false}{color:lightblue}{{i18n:Final_Present_Evidence_0}}{p:500}{present:blog_post_charm_updated,CE3_Final_Right_Evidence,CE3_Final_Wrong_Evidence}{sectionEnd}"
-    }
-]
