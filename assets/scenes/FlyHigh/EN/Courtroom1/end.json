@@ -13,7 +13,7 @@
     "gameScript": {
         "Final_Victory": [
             {
-                "text": "{hideLifeBar}{fadeBg:Lobby,800}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}September 18, 12:14 PM{nl}District Court - Defendant Lobby No. 2{color:white}"
+                "text": "{hideTextbox}{hideLifeBar}{fadeBg:Lobby,800}{p:700}{hideCharacter}{center}{color:lime}{blip:3}{showTextbox}September 18, 12:14 PM{nl}District Court - Defendant Lobby No. 2{color:white}"
             },
             {
                 "name": "Maggey",
@@ -45,7 +45,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{sprite:Maya[\"Determined\"]}{blip:2}Oh, right.{nl}It's almost time for the Steel Samurai show!"
+                "text": "{sprite:Maya[\"Determined\"]}{blip:2}Oh, right!{nl}It's almost time for the Steel Samurai show!"
             },
             {
                 "name": "Maggey",

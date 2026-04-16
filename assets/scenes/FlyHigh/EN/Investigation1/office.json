@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Office_Init",
     "actions": {
         "move": true,
@@ -182,7 +182,7 @@
                 "text": "{color:lightblue}(That means the time is completely different{nl}from the sound Maggey said she heard...)"
             },
             {
-                "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Loud Sound\" updated in the Court Record."
+                "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}\"Loud Sound\" updated in the Court Record."
             },
             {
                 "name": "Sahwit",

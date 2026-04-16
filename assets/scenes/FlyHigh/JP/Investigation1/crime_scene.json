@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Crime_Scene_Init",
     "actions": {
         "move": true,
@@ -378,7 +378,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（とりあず証拠品として持っていよう）"
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（とりあえず証拠品として持っていよう）"
             },
             {
                 "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}証拠品《アクセサリーのようなもの》の{nl}データを法廷記録に書き込んでください。"

@@ -759,7 +759,7 @@
                 "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{blip:1}{startBGM:courtroom}Hmm...{p:300}{nl}Then I believe this is settled."
             },
             {
-                "name": "Edgeworth",
+                "name": "Phoenix",
                 "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}Urgh..."
             },
             {
@@ -1119,7 +1119,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}U-Umm... well...)"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}U-Umm... well..."
             },
             {
                 "name": "Maya",
@@ -1846,7 +1846,7 @@
                 "text": "{courtView:judge}Then, court is now adjourned!"
             },
             {
-                "text": "{playAnimation:Gavel}{loadScene:assets/scenes/FlyHigh/EN/Courtroom1/end.json,Final_Victory}{sectionEnd}"
+                "text": "{hideTextbox}{playAnimation:Gavel}{loadScene:assets/scenes/FlyHigh/EN/Courtroom1/end.json,Final_Victory}{sectionEnd}"
             }
         ],
         "CE3_Final_Wrong_Evidence": [
@@ -2393,7 +2393,7 @@
                 "text": "The details are recorded in the autopsy report.{nl}That is all."
             },
             {
-                "text": "{blip:0,false}{addEvidence:autopsy_report,true}{playSound:evidenceUnlock}{color:lightblue}Please add the data from the {Autopsy Report}{nl}to the Court Record."
+                "text": "{blip:0,false}{addEvidence:autopsy_report,true}{playSound:evidenceUnlock}{color:lightblue}\"Autopsy Report\" added to the Court Record."
             },
             {
                 "name": "Edgeworth",
@@ -2583,7 +2583,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "However...{p:200}{nl}since they were both very dedicated to their work, it was a major headache for me as their supervisor."
+                "text": "However...{p:200}{nl}since they were both very dedicated to their work, it was a major headache for me as their chief."
             },
             {
                 "name": "Sahwit",
@@ -2703,7 +2703,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "From their voices,{nl}I knew it was the victim and the defendantarguing on the 4th floor."
+                "text": "From their voices,{nl}I knew it was the victim and the defendant arguing on the 4th floor."
             },
             {
                 "name": "Sahwit",
@@ -3179,7 +3179,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "I finished my work around 9:15 PM,{nl}and after that, I stayed on the 1st-floor stage the entire time."
+                "text": "You might suspect me, but{nl}you are making a massive misunderstanding."
             },
             {
                 "name": "Sahwit",

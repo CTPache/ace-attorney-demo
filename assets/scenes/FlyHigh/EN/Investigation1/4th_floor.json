@@ -119,7 +119,7 @@
                 "text": "{blip:0,false}{color:lightblue}(Only the eyebrow area is dented...)"
             },
             {
-                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0,false}{color:lightblue}Data for \"Mask Evidence Photo\" added to the Court Record."
+                "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0,false}{color:lightblue}\"Mask Evidence Photo\" added to the Court Record."
             },
             {
                 "name": "Gumshoe",

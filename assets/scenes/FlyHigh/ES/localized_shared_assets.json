@@ -1,0 +1,77 @@
+{
+    "backgrounds": {
+        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png",
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
+        "GameOver": "assets/img/CG/GameOver_EN.webp"
+    },
+    "profiles": {
+        "Kurumi": {
+            "name": "Kurumi Nakaki",
+            "data": "",
+            "description": "",
+            "image": "assets/img/profiles/Kurumi.png"
+        }
+    },
+    "evidence": {
+        "badge": {
+            "name": "Distintivo de letrado",
+            "data": "Tipo: Prueba\nUna de mis pertenencias.",
+            "description": "Sin esto, nadie creería que soy abogado.",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "autopsy_report": {
+            "name": "Informe de la autopsia",
+            "data": "Tipo: Prueba",
+            "description": "La causa de la muerte es una contusión cerebral{nl}resultante de una caída desde la 4.ª planta.{nl}La hora estimada de la muerte es entre{nl}{color:red}las 21:30 y las 22:30.",
+            "image": "assets/img/evidence/Archive.png"
+        },
+        "blog_post_charm": {
+            "name": "Entrada del blog - Colgante",
+            "data": "Tipo: Prueba\n",
+            "description": "Publicada a las 21:27 del día del incidente. Contiene una imagen de unas gafas con dos colgantes.",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "blog_post_charm_updated": {
+            "name": "Entrada del blog - Colgante",
+            "data": "Tipo: Prueba\n",
+            "description": "Publicada a las 21:27 del día del incidente. Contiene una imagen de unas gafas con dos colgantes. Robadas aproximadamente 30 minutos después de su publicación.",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "loud_sound": {
+            "name": "Sonido fuerte",
+            "data": "Tipo: Prueba\n",
+            "description": "Un sonido fuerte que Maggey escuchó mientras se duchaba sobre las 21:30 el día del incidente.",
+            "image": "assets/img/evidence/Document.png"
+        },
+        "loud_sound_updated": {
+            "name": "Sonido fuerte",
+            "data": "Tipo: Prueba\n",
+            "description": "Sahwit afirma que el sonido fuerte fue de la caída de la señorita Nakaki, situándolo sobre las 22:05.",
+            "image": "assets/img/evidence/Document.png"
+        },
+        "mask_photo": {
+            "name": "Foto de la máscara",
+            "data": "Tipo: Prueba\n",
+            "description": "La máscara del Samurái de Acero que la víctima llevaba en el momento del incidente. La zona de la ceja está un poco abollada. No hay más daños. El moño también está intacto.",
+            "image": "assets/img/evidence/Samurai.png"
+        },
+        "accessory": {
+            "name": "Accesorio",
+            "data": "Tipo: Prueba",
+            "description": "Encontrado al investigar la escena del crimen. Parece una especie de accesorio que se le cayó a Sahwit.",
+            "image": "assets/img/evidence/Blue_Badger.png"
+        },
+        "maggey_glasses": {
+            "name": "",
+            "data": "",
+            "description": "",
+            "image": "assets/img/evidence/Glasses.png"
+        }
+    },
+    "sounds": {
+        "PhoenixObjection": "assets/audio/se/se027.m4a",
+        "PhoenixHoldIt": "assets/audio/se/se01d.m4a",
+        "PhoenixTakeThat": "assets/audio/se/se00d.m4a",
+        "EdgeworthObjection": "assets/audio/se/se00e.m4a"
+    }
+}

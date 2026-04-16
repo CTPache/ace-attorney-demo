@@ -1,0 +1,79 @@
+{
+    "initialSection": "Final_Victory",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "backgrounds": {
+        "Lobby": "assets/img/backgrounds/Common/Courtroom_lobby.png",
+        "Ending": "assets/img/CG/Fly High/Ending.png"
+    },
+    "gameScript": {
+        "Final_Victory": [
+            {
+                "text": "{hideLifeBar}{fadeBg:Lobby,800}{hideTextbox}{p:700}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}18 de septiembre, 12:14{nl}Tribunal del Distrito - Sala de acusados n.º 2{color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{startBGM:victory}{sprite:Maggey[\"Admiring\"]}{fadeInCharacter:600}{blip:2}Señor Wright...{nl}¡Muchísimas gracias, señor!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}No hay de qué.{nl}Solo he sacado la verdad a la luz."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}... Pero aun así, acabé dejando{nl}caer a la señorita Nakaki, señor."
+            },
+            {
+                "name": "Maggey",
+                "text": "Esa es la verdad, ¿no, señor?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}No. Ya había fallecido para entonces.{nl}No se podía evitar."
+            },
+            {
+                "name": "Maya",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}¡Nick, estuviste increíble!{nl}¡Me he emocionado muchísimo!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}Gracias. Pero las cosas solo salieron bien{nl}gracias a ti, Maya."
+            },
+            {
+                "name": "Maya",
+                "text": "{sprite:Maya[\"Determined\"]}{blip:2}¡Ah, claro!{nl}¡Es casi la hora del espectáculo del Samurái de Acero!"
+            },
+            {
+                "name": "Maggey",
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Sad\"]}{fadeInCharacter:600}... Un momento, ¿el espectáculo no se había cancelado, señor?{nl}Digo, como la señorita Nakaki..."
+            },
+            {
+                "name": "Maya",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}En realidad, parece que lo han organizado en el último minuto.{nl}¡Dicen que el inspector Gumshoe va a hacer del Samurái de Acero!"
+            },
+            {
+                "name": "Maya",
+                "text": "¡Para celebrar que te han absuelto de todos los cargos, Maggey!"
+            },
+            {
+                "name": "Maggey",
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Normal\"]}{fadeInCharacter:600}{blip:2}¡¿Quéee?!{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{nl}¡Qué ganas de verlo, señor!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}El inspector Gumshoe... Me pregunto si estará bien...{nl}¿Siquiera cabe en ese traje?"
+            },
+            {
+                "name": "Maya",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}¡Venga, vamos!"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{fadeBg:Ending,800}{p:4000}{fadeOutBg:1000}{stopBGM:true}{returnToTitle:\"¡Felicidades, has ganado! ¡Hasta la próxima!\"}{sectionEnd}"
+            }
+        ]
+    }
+}

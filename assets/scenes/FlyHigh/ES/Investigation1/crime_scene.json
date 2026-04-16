@@ -83,18 +83,18 @@
     },
     "options": {
         "BodyPosition": {
-            "text": "If the back of the head took the fatal blow, the body should be...",
+            "text": "Si recibió el golpe mortal en la nuca, el cuerpo debería...",
             "options": [
                 {
-                    "text": "Be lying face up",
+                    "text": "Estar boca arriba",
                     "label": "Body_Lying_Face_Up"
                 },
                 {
-                    "text": "Be lying face down",
+                    "text": "Estar boca abajo",
                     "label": "Body_Lying_Face_Down"
                 },
                 {
-                    "text": "Be lying on its side",
+                    "text": "Estar de lado",
                     "label": "Body_Lying_On_Side"
                 }
             ]
@@ -102,19 +102,19 @@
     },
     "move": [
         {
-            "label": "Office",
+            "label": "Bufete",
             "target": "Office_Init",
             "preview": "Office",
             "json": "assets/scenes/FlyHigh/Investigation1/office.json"
         },
         {
-            "label": "Detention Center",
+            "label": "Centro de detención",
             "target": "Detention_Center_Init",
             "preview": "DetentionCenter",
             "json": "assets/scenes/FlyHigh/Investigation1/detention_center.json"
         },
         {
-            "label": "4th Floor",
+            "label": "4.ª Planta",
             "target": "Floor4_Init",
             "preview": "Floor4",
             "json": "assets/scenes/FlyHigh/Investigation1/4th_floor.json"
@@ -138,83 +138,83 @@
         ],
         "Crime_Scene_Intro": [
             {
-                "text": "{fadeBg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}September 17{nl}Joypolis Atrium Event Hall{color:white}{p:1000}"
+                "text": "{fadeBg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}17 de septiembre{nl}Joypolis, sala de eventos Atrium{color:white}{p:1000}"
             },
             {
                 "name": "Gumshoe",
-                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}This is the murder scene, pal.{nl}It's dark because we're past closing."
+                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}Esta es la escena del crimen, colega.{nl}Está a oscuras porque ya hemos cerrado."
             },
             {
                 "name": "Gumshoe",
-                "text": "Mr. Sahwit, the one who found the body, was standing right here.{nl}On the first floor of the event hall, pal."
+                "text": "El señor Sahwit, quien encontró el cuerpo, estaba justo aquí.{nl}En la primera planta de la sala de eventos, colega."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Normal\"]}Take a look up, pal."
+                "text": "{sprite:Gumshoe[\"Normal\"]}Eche un vistazo arriba, colega."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}See up there? The upper levels form an atrium."
+                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}¿Ve eso de ahí? Las plantas superiores forman un atrio."
             },
             {
                 "name": "Gumshoe",
-                "text": "The victim, Ms. Nakaki, was reportedly up there on the 4th floor railing, pal."
+                "text": "Según dicen, la víctima, la señorita Nakaki, estaba ahí arriba, en la barandilla de la 4.ª planta, colega."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(That's a long drop... but I can still see it clearly from here.)"
+                "text": "{blip:0,false}{color:lightblue}(Es una buena caída... pero aún se ve claramente desde aquí.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1}The current theory is that Maggey pushed her from up there...{nl}and she landed right beneath this railing, pal."
+                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1}La teoría actual es que Maggey la empujó desde ahí arriba...{nl}y cayó justo debajo de esta barandilla, colega."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}And this is just my read on it, pal, but...{nl}time of death and discovery might be the same."
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}Y esta es solo mi opinión, colega, pero...{nl}la hora de la muerte y la del descubrimiento podrían ser la misma."
             },
             {
                 "name": "Phoenix",
-                "text": "Huh?{flash}{playSound:cling}{nl}{blip:1,false}What do you mean?"
+                "text": "¿Eh?{flash}{playSound:cling}{nl}{blip:1,false}¿A qué se refiere?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1}The victim fell from the event hall's 4th floor...{nl}and landed right in front of the man who found her, pal."
+                "text": "{blip:1}La víctima cayó desde la 4.ª planta de la sala de eventos...{nl}y aterrizó justo delante del hombre que la encontró, colega."
             },
             {
                 "name": "Gumshoe",
-                "text": "Cause of death was blunt-force trauma to the back of the head from the fall, A fatal contusion...{nl}Looks like death was instant, right here, pal."
+                "text": "La causa de la muerte fue un traumatismo por fuerza contundente en la nuca debido a la caída. Una contusión mortal...{nl}Parece que la muerte fue instantánea, justo aquí, colega."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}I see...{nl}All right. Time to start the investigation.{setState:Crime_Scene_Intro_done,true}{sectionEnd}"
+                "text": "{blip:1,false}Ya veo...{nl}Muy bien. Es hora de empezar la investigación.{setState:Crime_Scene_Intro_done,true}{sectionEnd}"
             }
         ],
         "Examine_Default": [
             {
                 "name": "Phoenix",
-                "text": "{color:white}{hideCharacter}{blip:1,false}There's nothing particularly interesting here.{sectionEnd}"
+                "text": "{color:white}{hideCharacter}{blip:1,false}Aquí no hay nada especialmente interesante.{sectionEnd}"
             }
         ],
         "Examine_Body": [
             {
                 "name": "Phoenix",
-                "text": "{color:white}{hideCharacter}{blip:1,false}She died still wearing the Steel Samurai suit and mask..."
+                "text": "{color:white}{hideCharacter}{blip:1,false}Murió con el traje y la máscara del Samurái de Acero puestos..."
             },
             {
                 "name": "Phoenix",
-                "text": "Huh...?{flash}{playSound:question1} The victim died from a severe blow to the back of the head, right?"
+                "text": "¿Eh...?{flash}{playSound:question1} La víctima murió de un fuerte golpe en la nuca, ¿verdad?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}{blip:1,true}{showTextbox}That's right, pal.{nl}Is something wrong?"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}{blip:1,true}{showTextbox}Así es, colega.{nl}¿Pasa algo?"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Right now, the body is lying face down."
+                "text": "{blip:0,false}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Ahora mismo, el cuerpo está boca abajo."
             },
             {
                 "name": "Phoenix",
-                "text": "But then, logically, a body with that kind of injury should be...{jump:Body_Lying_Question}{sectionEnd}"
+                "text": "Pero, lógicamente, un cuerpo con ese tipo de lesión debería...{jump:Body_Lying_Question}{sectionEnd}"
             }
         ],
         "Body_Lying_Question": [
@@ -225,35 +225,35 @@
         "Body_Lying_Face_Down": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... that doesn't line up if the back of her head took the blow.){jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... eso no cuadra si recibió el golpe en la nuca.){jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_On_Side": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... that doesn't fit either.){jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... eso tampoco encaja.){jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_Face_Up": [
             {
                 "name": "Phoenix",
-                "text": "{color:white}{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Then she should be lying face-up, shouldn't she?"
+                "text": "{color:white}{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Entonces debería estar boca arriba, ¿no?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{blip:1,true}{showTextbox}Ah...{nl}Now that you mention it, that's true, pal."
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{blip:1,true}{showTextbox}Ah...{nl}Ahora que lo menciona, es verdad, colega."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Thinking\"]}But weirdly enough, she's got cuts and bruises on her face too, not just the back of her head, pal."
+                "text": "{sprite:Gumshoe[\"Thinking\"]}Pero, por raro que parezca, también tiene cortes y moratones en la cara, no solo en la nuca, colega."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}{playSound:question1}(So she has injuries on both the back of the head and the face...)"
+                "text": "{blip:0,false}{color:lightblue}{playSound:question1}(Así que tiene heridas tanto en la nuca como en la cara...)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}That blood on the floor's seeping out through the gaps in the mask, pal."
+                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}Esa sangre del suelo se está filtrando por los huecos de la máscara, colega."
             },
             {
                 "text": "{setState:body_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -262,11 +262,11 @@
         "Examine_Background": [
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{hideCharacter}{blip:1}We checked every floor and even the ceiling, pal.{nl}No traps. No gimmicks."
+                "text": "{color:white}{hideCharacter}{blip:1}Revisamos todas las plantas e incluso el techo, colega.{nl}Ni trampas. Ni trucos."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(So... she really was just pushed.)"
+                "text": "{blip:0,false}{color:lightblue}(Así que... de verdad la empujaron.)"
             },
             {
                 "text": "{setState:background_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -275,23 +275,23 @@
         "Examine_Out": [
             {
                 "name": "Phoenix",
-                "text": "{hideCharacter}{color:white}{blip:1,false}Were there any regular guests around at the time?"
+                "text": "{hideCharacter}{color:white}{blip:1,false}¿Había algún visitante habitual por aquí en ese momento?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}There weren't any, pal.{nl}This place closes at 9 PM."
+                "text": "{blip:1,true}No había ninguno, colega.{nl}Este lugar cierra a las 21:00."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}So, at the time of the incident, it was just the first witness, the victim, and the suspect?"
+                "text": "{blip:1,false}Entonces, en el momento del incidente, ¿solo estaban el primer testigo, la víctima y la sospechosa?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:0,true}That's right, pal.{nl}And the only security guard on duty was Maggey."
+                "text": "{blip:0,true}Así es, colega.{nl}Y la única guardia de seguridad de servicio era Maggey."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(Then there are no outside witnesses to question...)"
+                "text": "{blip:0,false}{color:lightblue}(Entonces no hay testigos externos a los que interrogar...)"
             },
             {
                 "text": "{setState:out_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -300,11 +300,11 @@
         "Examine_Floor": [
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}{color:white}{hideCharacter}{blip:1}She died still wearing the Steel Samurai suit and mask..."
+                "text": "{blip:1,true}{color:white}{hideCharacter}{blip:1}Murió con el traje y la máscara del Samurái de Acero puestos..."
             },
             {
                 "name": "Gumshoe",
-                "text": "We've confirmed nothing else fell down with the body, pal."
+                "text": "Hemos confirmado que no cayó nada más con el cuerpo, colega."
             },
             {
                 "text": "{setState:floor_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -318,78 +318,78 @@
         "Sahwit_Appears": [
             {
                 "name": "Sahwit",
-                "text": "{color:white}{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{stopBGM}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}Oh,{flash}{playSound:cling} conducting your crime scene investigation?{nl}Thank you for your hard work."
+                "text": "{color:white}{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{stopBGM}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}Vaya,{flash}{playSound:cling} ¿llevando a cabo la investigación de la escena del crimen?{nl}Gracias por su duro trabajo."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Sahwit."
+                "text": "{hideTextbox}{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Señor Sahwit."
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Coming back here still hurts...{nl}As the chief, this is truly heartbreaking."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Volver aquí todavía duele...{nl}Como encargado, esto es verdaderamente desgarrador."
             },
             {
                 "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Nervous\"]}How can I put this...{nl}Just remembering that moment makes my hair stand on end."
+                "text": "{sprite:Sahwit[\"Nervous\"]}Cómo podría decirlo...{nl}Solo de recordar ese momento se me ponen los pelos de punta."
             },
             {
                 "name": "Sahwit",
-                "text": "Even now, every hair on my body is standing straight up..."
+                "text": "Incluso ahora, todos los pelos de mi cuerpo están erizados..."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Sahwit...{nl}Your hair isn't standing up at all, pal."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Señor Sahwit...{nl}No tiene los pelos de punta en absoluto, colega."
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Sahwit[\"Damage\"]}{flash}{showTextbox}What?!{skip:100}"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Sahwit[\"Damage\"]}{flash}{showTextbox}¡¿Qué?!{skip:100}"
             },
             {
                 "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Nervous\"]}{showTextbox}W-well...{nl}Standing on end is just a figure of speech."
+                "text": "{sprite:Sahwit[\"Nervous\"]}{showTextbox}B-bueno...{nl}Lo de los pelos de punta es solo una forma de hablar."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(Detective Gumshoe...{nl}Is he implying Mr. Sahwit wears a toupee?)"
+                "text": "{blip:0,false}{color:lightblue}(Inspector Gumshoe...{nl}¿Está insinuando que el señor Sahwit lleva peluquín?)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(I mean... a toupee probably wouldn't stand on end.)"
+                "text": "{color:lightblue}(Es decir... un peluquín no se podría poner de punta.)"
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}Putting that aside...{nl}I hope this case is resolved quickly."
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}Dejando eso a un lado...{nl}Espero que este caso se resuelva rápido."
             },
             {
                 "name": "Sahwit",
-                "text": "I pray for the victim's soul...{nl}Well then."
+                "text": "Rezo por el alma de la víctima...{nl}Pues bien."
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{fadeOutCharacter:1000}{stopBGM}{p:1400}{showEvidenceIcon:right,accessory}{playSound:question1}{blip:1,false}{showTextbox}Huh...?{nl}There's something on the floor."
+                "text": "{hideTextbox}{fadeOutCharacter:1000}{stopBGM}{p:1400}{showEvidenceIcon:right,accessory}{playSound:question1}{blip:1,false}{showTextbox}¿Eh...?{nl}Hay algo en el suelo."
             },
             {
                 "name": "Phoenix",
-                "text": "What's this?{nl}Looks like some kind of accessory."
+                "text": "¿Qué es esto?{nl}Parece una especie de accesorio."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}{blip:1,true}{showTextbox}You're right, pal.{p:200}{nl}That wasn't there a minute ago..."
+                "text": "{hideTextbox}{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}{blip:1,true}{showTextbox}Tiene razón, colega.{p:200}{nl}Eso no estaba ahí hace un minuto..."
             },
             {
                 "name": "Phoenix",
-                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(I'll hold onto this as evidence for now.)"
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(Me guardaré esto como prueba por ahora.)"
             },
             {
-                "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}\"Accessory\" added to the Court Record."
-            },
-            {
-                "name": "Phoenix",
-                "text": "{color:lightblue}(All right, I think that's everything here.)"
+                "text": "{addEvidence:accessory,true}{playSound:evidenceUnlock}{color:lightblue}\"Accesorio\" añadido al Acta del juicio."
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Once I've gathered everything I can, it's time for court.{nl}That's where I'll bring the truth to light!)"
+                "text": "{color:lightblue}(Muy bien, creo que eso es todo por aquí.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Una vez que haya reunido todo lo que pueda, será la hora del juicio.{nl}¡Ahí será donde sacaré la verdad a la luz!)"
             },
             {
                 "text": "{setState:crime_scene_done,true}{jump:Crime_Scene_Finish}{skip:0}{sectionEnd}"

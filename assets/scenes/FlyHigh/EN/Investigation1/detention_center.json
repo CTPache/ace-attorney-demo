@@ -112,7 +112,7 @@
                 "text": "{showTextbox}{blip:0,false}{color:lightblue}(What a creepy blog title...{nl} Ah, this must be it.)"
             },
             {
-                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}Data for \"Blog Post - Glasses Charm\" added to the Court Record."
+                "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}\"Blog Post - Glasses Charm\" added to the Court Record."
             },
             {
                 "name": "Maggey",
@@ -135,7 +135,7 @@
                 "text": "{sprite:Maggey[\"Determined\"]}{blip:2}I had someone bring the spare pair from my place.{p:220}{nl}I have astigmatism,{p:140} so without glasses I can barely see a thing,{p:140} sir.{p:220}"
             },
             {
-                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}Data for \"Blog Post - Glasses Charm\" updated in the Court Record."
+                "text": "{updateEvidence:blog_post_charm,blog_post_charm_updated,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}\"Blog Post - Glasses Charm\" updated in the Court Record."
             },
             {
                 "name": "Phoenix",
@@ -178,7 +178,7 @@
                 "text": "{color:lightblue}{blip:0,false}(That's odd. I should ask someone about this.)"
             },
             {
-                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}Data for \"Loud Sound\" added to the Court Record."
+                "text": "{addEvidence:loud_sound,true}{playSound:evidenceUnlock}{color:lightblue}{blip:0,false}\"Loud Sound\" added to the Court Record."
             },
             {
                 "name": "Maggey",

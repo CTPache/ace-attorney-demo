@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Intro_Init",
     "actions": {
         "move": true,
@@ -130,7 +130,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（ゼッタイに真実を見つけ出して{nl}マコちんの容疑を晴らすんだ）"
+                "text": "{color:lightblue}（ゼッタイに真実を見つけ出して{nl}マコちゃんの容疑を晴らすんだ）"
             },
             {
                 "name": "ナルホド",

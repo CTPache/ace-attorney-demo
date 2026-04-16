@@ -1,0 +1,261 @@
+{
+    "initialSection": "Intro_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "music": {
+        "investigation": "assets/audio/bgm/bgm025.m4a"
+    },
+    "investigations": {
+        "JoyPolis": {
+            "default": "Intro_Examine_Default"
+        }
+    },
+    "backgrounds": {
+        "Samurai": "assets/img/CG/Fly High/samurai_en.png"
+    },
+    "videos": {
+        "intro": {
+            "file": "assets/video/FlyHighIntro.mp4",
+            "script": [
+                {
+                    "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}17 de septiembre, 13:17{nl}Joypolis, sala de eventos Atrium",
+                    "timestamp": 2000,
+                    "duration": 7000
+                },
+                {
+                    "text": "{hideTextbox}{flash}{bg:Samurai}",
+                    "timestamp": 15500,
+                    "duration": 1000
+                },
+                {
+                    "name": "Samurái",
+                    "text": "{fadeOutBg:0}{flash}{blip:1}¡Allá vamos, Magistrado Malvado!{nl}¡Esto se acaba hoy!",
+                    "timestamp": 22500
+                },
+                {
+                    "name": "Samurái",
+                    "text": "¡Prepárate!",
+                    "timestamp": 25000,
+                    "duration": 1800
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 21:01{nl}Joypolis, sala de eventos Atrium - 4.ª planta",
+                    "timestamp": 36000,
+                    "duration": 8000
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "{blip:2}No me he movido del todo bien.",
+                    "timestamp": 44500
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "Tengo que hacerlo mucho mejor.{nl}Lo único que puedo hacer es practicar.",
+                    "timestamp": 48000
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "¡Allá vamos, Magistrado Malvado!{nl}¡Esto se acaba hoy!",
+                    "timestamp": 52500
+                },
+                {
+                    "name": "Kurumi",
+                    "text": "¡Prepárate!",
+                    "timestamp": 55000,
+                    "duration": 3000
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 22:05{nl}Joypolis, sala de eventos Atrium",
+                    "timestamp": 64500,
+                    "duration": 8000
+                },
+                {
+                    "name": "Sahwit",
+                    "text": "{blip:1}¡Q-que alguien me ayude!",
+                    "timestamp": 91500,
+                    "duration": 3000
+                }
+            ]
+        }
+    },
+    "move": [
+        {
+            "label": "Oficina",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/FlyHigh/Investigation1/office.json"
+        },
+        {
+            "label": "Centro de detención",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/FlyHigh/Investigation1/detention_center.json"
+        },
+        {
+            "label": "4.ª Planta",
+            "target": "Floor4_Init",
+            "preview": "Floor4",
+            "json": "assets/scenes/FlyHigh/Investigation1/4th_floor.json"
+        },
+        {
+            "label": "Sala de eventos",
+            "target": "Crime_Scene_Init",
+            "preview": "Crime_Scene",
+            "json": "assets/scenes/FlyHigh/Investigation1/crime_scene.json"
+        }
+    ],
+    "gameScript": {
+        "Intro_Init": [
+            {
+                "text": "{addEvidence:badge,false}{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
+            }
+        ],
+        "Intro_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:phoenixMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Intro_Start": [
+            {
+                "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
+            },
+            {
+                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}17 de septiembre, 22:34{nl}Joypolis"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{startBGM:investigation,false}{blip:0,false}{color:lightblue}(Me llamo Phoenix Wright.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Soy abogado defensor en el Bufete Wright y Co.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(He recibido una petición de Maggey Byrde,{nl}{p:300}sospechosa de un caso de asesinato.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Y he venido aquí a Joypolis.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Maggey no es el tipo de persona que cometería un asesinato.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Tengo que descubrir la verdad y limpiar su nombre cueste lo que cueste.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Para ello,{nl}no puedo pasar por alto ni el más mínimo detalle.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Anotaré toda la {color:red}información{color:lightblue}{nl}que encuentre en el {color:red}Acta del juicio{color:lightblue}.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{color:white}{blip:1}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{showTextbox}*suspiro*{p:200}..."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Inspector Gumshoe. Háganos un resumen del caso inmediatamente."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}(Ese es Miles Edgeworth.{nl}El fiscal del distrito.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{blip:1,true}{color:white}S-Sí, señor..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}(Y ese es el inspector Dick Gumshoe.{nl}Un inspector de la comisaría local.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{showEvidenceIcon:left,Kurumi}{blip:1,true}{color:white}{fadeInBg}{sprite:Gumshoe[\"Thinking\"]}La víctima es Kurumi Nakaki."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Trabajaba aquí en Joypolis como especialista para el espectáculo del Samurái de Acero, señor."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "El cuerpo fue descubierto a las 22:05."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideEvidenceIcon}La hora estimada de la muerte es entre las 21:30 y las 22:30."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Y...{p:500} la sospechosa es..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} que trabajaba aquí a tiempo parcial como guardia de seguridad,{p:200} señor..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{hideTextbox}{fadeOutBg}{fadeOutCharacter:300}{sprite:Maggey[\"Officer\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Maggey[\"Salute_Officer\"]}{sprite:Maggey[\"Officer\"]}{blip:0,false}{color:lightblue}{showTextbox}(Maggey solía ser agente de policía y estaba a las órdenes del inspector Gumshoe.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(El inspector Gumshoe siempre cuidaba de ella.{nl}Esto debe ser muy duro para él.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{p:10}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInBg}{fadeInCharacter:300}{color:white}{showTextbox}Parece ser que Maggey empujó a la víctima desde la 4.ª planta de la sala de eventos..."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}¿Quién fue el primero en descubrir el cuerpo?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}El encargado de la sala de eventos de este parque de atracciones,{nl}Frank Sahwit, señor."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Edgeworth[\"Smug\"]}{showTextbox}Ya veo. Es un caso realmente sencillo."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{sprite:Edgeworth[\"Angry\"]}Porque ya se han encontrado pruebas concluyentes que apuntan a la culpabilidad de la acusada."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{flash}{blip:1,false}{playSound:damage}¡¿Qué?!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(No, no puedo dejar que me intimide.{nl}{p:300}No importan las pruebas que tengan,{p:200} no puedo perder.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(¡Tengo que descubrir la verdad cueste lo que cueste{nl}{p:300}y demostrar la inocencia de Maggey!)"
+            },
+            {
+                "text": "{setState:intro_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:phoenixMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Intro_Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}Aquí no hay nada que ver."
+            }
+        ],
+        "Intro_evidence_default": [
+            {
+                "text": "{skip:0}{sectionEnd}"
+            }
+        ]
+    }
+}

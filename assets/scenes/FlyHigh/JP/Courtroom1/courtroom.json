@@ -549,19 +549,19 @@
                     "press": "Press_Y3_0"
                 },
                 "1": {
-                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}ワタシを疑っているのかもしれないですが、{nl}カンチガイもはなはだしいですよ．",
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}ワタシを疑っているのかもしれないですが、{nl}カンチガイもはなはだしいですよ。",
                     "press": "Press_Y3_1"
                 },
                 "2": {
-                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}ワタシは４階になど行っていません．",
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}ワタシは４階になど行っていません。",
                     "press": "Press_Y3_2"
                 },
                 "3": {
-                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}突き落とすコトなど{nl}できるワケがないのです．",
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}突き落とすコトなど{nl}できるワケがないのです。",
                     "press": "Press_Y3_3"
                 },
                 "4": {
-                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}午後９時１５分から事件発生までは{nl}おかしなコトは何もありませんでした．",
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}午後９時１５分から事件発生までは{nl}おかしなコトは何もありませんでした。",
                     "press": "Press_Y3_4"
                 },
                 "hints": {
@@ -717,7 +717,7 @@
                 "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}ジョイポリスのイベントホール主任、{nl}山野　星雄だ。{courtChar:witness,Sahwit}"
             },
             {
-                "text": "{stopBGM:true}{hideTextbox}{fadeOutBg:600}{fadeOutCharacter}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{center}{color:red}{blip:0,false}～至件当時の権子～{playAnimation:Witness_Testimony}{color:white}"
+                "text": "{stopBGM:true}{hideTextbox}{fadeOutBg:600}{fadeOutCharacter}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{center}{color:red}{blip:0,false}～事件当時の様子～{playAnimation:Witness_Testimony}{color:white}"
             },
             {
                 "name": "ヤマノ",
@@ -773,7 +773,7 @@
         ],
         "First_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{setState:currentTestimony,1}{setState:Mia_hint_condition,false}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{fadeInFg:600}{showTextbox}{blip:0,false}{center}{color:red}～至件当時の権子～{playAnimation:CrossExamination}{startCE:Yamano_Testimony_1}{sectionEnd}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{setState:currentTestimony,1}{setState:Mia_hint_condition,false}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{fadeInFg:600}{showTextbox}{blip:0,false}{center}{color:red}～事件当時の様子～{playAnimation:CrossExamination}{startCE:Yamano_Testimony_1}{sectionEnd}"
             }
         ],
         "Press_Y1_0": [
@@ -906,7 +906,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "あの暗間の中、なぜ被告人が{nl}突き落としたとわかったのですか。"
+                "text": "あの暗闇の中、なぜ被告人が{nl}突き落としたとわかったのですか。"
             },
             {
                 "name": "ヤマノ",
@@ -1007,7 +1007,7 @@
             },
             {
                 "name": "マコ",
-                "text": "{playSound:shake}{shake:250}未だにどこかに行ったままッス。{nl}今しているのは予備の眼鏡ッス！。"
+                "text": "{playSound:shake}{shake:250}未だにどこかに行ったままッス。{nl}今しているのは予備の眼鏡ッス！"
             },
             {
                 "name": "ナルホド",
@@ -1046,7 +1046,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{flash}{playSound:question1}{stopBGM:true}{blip:2}あれナ二・・・・{p:200}　。{nl}御剣検事が笑ってるよ　・・・・。"
+                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{flash}{playSound:question1}{stopBGM:true}{blip:2}あれナニ・・・・{p:200}　。{nl}御剣検事が笑ってるよ　・・・・。"
             },
             {
                 "name": "ナルホド",
@@ -1113,7 +1113,7 @@
                 "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{blip:1}{startBGM:courtroom}・・・・{p:300}ふむ。{p:200}{nl}コレはもう、決まりですかな。"
             },
             {
-                "name": "ミツルギ",
+                "name": "ナルホド",
                 "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}くつ・・・・。"
             },
             {
@@ -1198,7 +1198,7 @@
         ],
         "Second_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{stopBGM:false}{showTextbox}{center}{blip:1}{color:red}～海下する被害者の写真～{playAnimation:Witness_Testimony}{skip:100}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{stopBGM:false}{showTextbox}{center}{blip:1}{color:red}～落下する被害者の写真～{playAnimation:Witness_Testimony}{skip:100}"
             },
             {
                 "name": "ヤマノ",
@@ -1237,7 +1237,7 @@
                 "text": "{blip:1,false}・・・・{p:300}そ、そうだね！"
             },
             {
-                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{setState:currentTestimony,2}{setState:Mia_hint_condition,false}{checkpoint:Second_Testimony_Start}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{showTextbox}{center}{color:red}～海下する被害者の写真～{playAnimation:CrossExamination}{startCE:Yamano_Testimony_2}{sectionEnd}"
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{setState:currentTestimony,2}{setState:Mia_hint_condition,false}{checkpoint:Second_Testimony_Start}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{showTextbox}{center}{color:red}～落下する被害者の写真～{playAnimation:CrossExamination}{startCE:Yamano_Testimony_2}{sectionEnd}"
             }
         ],
         "Press_Y2_0": [
@@ -1654,7 +1654,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}えっと・・・・あの・・・・。）"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}えっと・・・・あの・・・・。"
             },
             {
                 "name": "マヨイ",
@@ -1681,7 +1681,7 @@
                 "text": "{color:lightblue}（真宵ちゃん、ありがとう。{nl}みそラーメン１年分を贈呈したい気分だよ）"
             },
             {
-                "name": "マヨイ",
+                "name": "ナルホド",
                 "text": "{color:white}{courtSprite:defense[\"Confident\"]}{blip:1}・・・・{p:300}御剣検事。"
             },
             {
@@ -1955,10 +1955,6 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "ワタシは午後９時１５分ぐらいに仕事を終え、{nl}その後はずっと１階のステージにいました。"
-            },
-            {
-                "name": "ヤマノ",
                 "text": "ワタシを疑っているのかもしれないですが、{nl}カンチガイもはなはだしいですよ。"
             },
             {
@@ -2163,7 +2159,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}・・・・{p:300}えつ？"
+                "text": "{courtView:witness}・・・・{p:300}えっ？"
             },
             {
                 "name": "ナルホド",
@@ -2950,7 +2946,7 @@
         "CE3_Final_Present_Evidence_MiaHint": [
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒ口さんだったらどう考えるだろう？）"
+                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒロさんだったらどう考えるだろう？）"
             },
             {
                 "name": "チヒロ",
@@ -3136,7 +3132,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1,false}・・・・{p:300}いや、真宵ちゃん。{nl}伝言しなくても間こえてるから・・・・。"
+                "text": "{blip:1,false}・・・・{p:300}いや、真宵ちゃん。{nl}伝言しなくても聞こえてるから・・・・。"
             },
             {
                 "name": "サイバンチョ",
@@ -3161,7 +3157,7 @@
         "Mia_Hint_1": [
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒ口さんだったらどう考えるだろう？）"
+                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒロさんだったらどう考えるだろう？）"
             },
             {
                 "name": "チヒロ",
@@ -3178,7 +3174,7 @@
         "Mia_Hint_2": [
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒ口さんだったらどう考えるだろう？）"
+                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒロさんだったらどう考えるだろう？）"
             },
             {
                 "name": "チヒロ",
@@ -3195,7 +3191,7 @@
         "Mia_Hint_3": [
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒ口さんだったらどう考えるだろう？）"
+                "text": "{showTextbox}{hideLifeBar}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（マズイ・・・・{p:200}こういうとき{nl}チヒロさんだったらどう考えるだろう？）"
             },
             {
                 "name": "チヒロ",

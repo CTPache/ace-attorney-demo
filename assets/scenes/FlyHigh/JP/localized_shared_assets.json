@@ -22,7 +22,7 @@
         "autopsy_report": {
             "name": "解剖記録",
             "data": "種類：　証拠品",
-            "description": "死因は４階から落下したこと{nl}による脳挫偏。{nl}死亡推定時刻は{color:red}午後９時半{nl}から午後１０時半の問。",
+            "description": "死因は４階から落下したこと{nl}による脳挫傷。{nl}死亡推定時刻は{color:red}午後９時半{nl}から午後１０時半の間。",
             "image": "assets/img/evidence/Archive.png"
         },
         "blog_post_charm": {

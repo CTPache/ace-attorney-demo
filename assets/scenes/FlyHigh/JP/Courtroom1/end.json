@@ -13,7 +13,7 @@
     "gameScript": {
         "Final_Victory": [
             {
-                "text": "{hideLifeBar}{fadeBg:Lobby,800}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}９月１８日　午前１２時１４分{nl}地方裁判所　被告人第二控え室{color:white}"
+                "text": "{hideLifeBar}{fadeBg:Lobby,800}{hideTextbox}{p:700}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}９月１８日　午前１２時１４分{nl}地方裁判所　被告人第二控え室{color:white}"
             },
             {
                 "name": "マコ",
@@ -45,7 +45,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{sprite:Maya[\"Determined\"]}{blip:2}あ、そうだ。そろそろトノサマンショーの時間だよ。{nl}イトノコ刑事がトノサマンをやるんだって！"
+                "text": "{sprite:Maya[\"Determined\"]}{blip:2}あ、そうだ。{nl}そろそろトノサマンショーの時間だよ！"
             },
             {
                 "name": "マコ",
