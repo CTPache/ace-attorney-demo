@@ -224,8 +224,7 @@
         "speedlines_right": "assets/img/backgrounds/Common/speedlines_right.gif"
     },
     "foregrounds": {
-        "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png",
-        "Confetti": "assets/img/backgrounds/Common/confetti.gif"
+        "Detention_Bars": "assets/img/backgrounds/Common/Detention_Center_foreground.png"
     },
     "music": {
         "investigation": [
