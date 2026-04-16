@@ -1,0 +1,17 @@
+[
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE2_Option2_Timer_0}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}{{i18n:CE2_Option2_Timer_1}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE2_Option2_Timer_2}}{lifeMod:-2}{playSound:explosion}"
+    },
+    {
+        "text": "{jumpIf:CE2_option2_failures==1,CE2_Option2_MiaHint}{setState:CE2_option2_failures,1}{jump:CE2_Option2_Menu}{sectionEnd}"
+    }
+]

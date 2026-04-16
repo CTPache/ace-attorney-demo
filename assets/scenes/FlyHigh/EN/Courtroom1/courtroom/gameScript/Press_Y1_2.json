@@ -1,0 +1,40 @@
+[
+    {
+        "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}{{i18n:Press_Y1_2_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{{i18n:Press_Y1_2_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Press_Y1_2_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Press_Y1_2_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Press_Y1_2_5}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Press_Y1_2_6}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Press_Y1_2_7}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{{i18n:Press_Y1_2_8}}"
+    },
+    {
+        "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:3}{sectionEnd}"
+    }
+]

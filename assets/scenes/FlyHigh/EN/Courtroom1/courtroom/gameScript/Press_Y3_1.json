@@ -1,0 +1,40 @@
+[
+    {
+        "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Determined\"]}{courtPan:defense}{blip:1,true}{{i18n:Press_Y3_1_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:Press_Y3_1_2}}{shake:250}{playSound:bubble_sfx}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{{i18n:Press_Y3_1_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Press_Y3_1_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Press_Y3_1_5}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}{flash}{playSound:question1}{{i18n:Press_Y3_1_6}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{hideTextbox}{courtView:witness}{courtSprite:witness[\"Damage\"]}{courtSprite:witness[\"Nervous\"]}{showTextbox}{{i18n:Press_Y3_1_7}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{{i18n:Press_Y3_1_8}}"
+    },
+    {
+        "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:2}{sectionEnd}"
+    }
+]

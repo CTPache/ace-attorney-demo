@@ -1,0 +1,21 @@
+[
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}{{i18n:CE2_Option2_MiaHint_0}}"
+    },
+    {
+        "name": "{{i18n:Name_チヒロ}}",
+        "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{showTextbox}{blip:2,true}{{i18n:CE2_Option2_MiaHint_1}}"
+    },
+    {
+        "name": "{{i18n:Name_チヒロ}}",
+        "text": "{{i18n:CE2_Option2_MiaHint_2}}"
+    },
+    {
+        "name": "{{i18n:Name_チヒロ}}",
+        "text": "{{i18n:CE2_Option2_MiaHint_3}}"
+    },
+    {
+        "text": "{fadeOutCharacter:600}{fadeOutBg:600}{courtView:defense}{fadeInCharacter:600}{fadeInBg:600}{jump:CE2_Option2_Menu}{sectionEnd}"
+    }
+]

@@ -1,0 +1,28 @@
+[
+    {
+        "text": "{showLifeBar:2}{hideTextbox}{playSound:PhoenixTakeThat}{playAnimation:TakeThat_JP}{blip:0,false}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{showTextbox}{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}{{i18n:CE2_WrongEvidence_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}{blip:1}{{i18n:CE2_WrongEvidence_2}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}{{i18n:CE2_WrongEvidence_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{blip:1}{{i18n:CE2_WrongEvidence_4}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE2_WrongEvidence_5}}{lifeMod:-2}{playSound:explosion}"
+    },
+    {
+        "text": "{fadeOutBg:200}{fadeOutCharacter:200}{courtSprite:defense[\"Determined\"]}{courtView:defense}{fadeInCharacter:200}{fadeInBg:200}{jump:CE2_Present_mask}{sectionEnd}"
+    }
+]

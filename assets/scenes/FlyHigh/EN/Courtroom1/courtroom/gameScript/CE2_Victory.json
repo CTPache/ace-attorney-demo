@@ -1,0 +1,59 @@
+[
+    {
+        "text": "{stopBGM:false}{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{playSound:PhoenixTakeThat}{playAnimation:TakeThat_JP}{p:500}{courtView:defense}{p:600}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{showTextbox}{showEvidenceIcon:right,mask_photo}{courtSprite:defense[\"HoldingDocument\"]}{courtView:defense}{blip:1,true}{{i18n:CE2_Victory_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{hideEvidenceIcon}{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}{{i18n:CE2_Victory_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{{i18n:CE2_Victory_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{courtView:prosecution}{flash}{courtSprite:prosecution[\"Damage\"]}{courtSprite:prosecution[\"Dismayed\"]}{startBGM:objection}{{i18n:CE2_Victory_5}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{{i18n:CE2_Victory_6}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Victory_7}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Pointing\"]}{playSound:bubble_sfx}{{i18n:CE2_Victory_8}}"
+    },
+    {
+        "text": "{setSkipEnabled:false}{hideTextbox}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{setSkipEnabled:true}{showTextbox}{courtSprite:witness[\"Nervous\"]}{courtView:witness}{{i18n:CE2_Victory_10}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE2_Victory_11}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{blip:1}{{i18n:CE2_Victory_12}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:1}{{i18n:CE2_Victory_13}}"
+    },
+    {
+        "text": "{setState:CE2_option_failures,0}{jump:CE2_Option_Menu}{sectionEnd}"
+    }
+]

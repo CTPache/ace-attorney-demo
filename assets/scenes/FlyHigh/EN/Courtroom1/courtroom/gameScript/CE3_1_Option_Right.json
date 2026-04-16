@@ -1,0 +1,29 @@
+[
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{showCharacter}{courtView:defense}{courtSprite:defense[\"Nod\"]}{courtSprite:defense[\"Normal\"]}{blip:1}{{i18n:CE3_1_Option_Right_0}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{hideLifeBar}{{i18n:CE3_1_Option_Right_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Thinking\"]}{{i18n:CE3_1_Option_Right_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{courtSprite:witness[\"Damage\"]}{{i18n:CE3_1_Option_Right_3}}{skip:500}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{courtView:prosecution}{courtSprite:prosecution[\"Pointing\"]}{{i18n:CE3_1_Option_Right_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{showLifeBar:2}{courtView:defense}{{i18n:CE3_1_Option_Right_5}}"
+    },
+    {
+        "text": "{setState:CE3_2_option_failures,0}{jump:CE3_2_Options}{sectionEnd}"
+    }
+]

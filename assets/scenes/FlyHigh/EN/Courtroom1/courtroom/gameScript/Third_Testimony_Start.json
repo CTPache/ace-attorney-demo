@@ -1,0 +1,32 @@
+[
+    {
+        "text": "{courtChar:witness,Shawit}{courtSprite:witness[\"Stand\"]}{stopBGM}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}{{i18n:Third_Testimony_Start_0}}{playAnimation:Witness_Testimony}{color:white}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{showTestimonyIndicator}{startBGM:interrogatory_alegro}{blip:1}{{i18n:Third_Testimony_Start_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Third_Testimony_Start_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Third_Testimony_Start_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Third_Testimony_Start_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{{i18n:Third_Testimony_Start_5}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{hideTestimonyIndicator}{stopBGM}{courtSprite:cocounsel[\"Strict_Bench\"]}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:cocounsel}{fadeInCharacter:600}{fadeInBg:600}{blip:2}{{i18n:Third_Testimony_Start_6}}"
+    },
+    {
+        "text": "{hideTextbox}{setState:currentTestimony,3}{setState:Mia_hint_condition,false}{checkpoint:Third_Testimony_Start}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}{{i18n:Third_Testimony_Start_7}}{playAnimation:CrossExamination}{startCE:Yamano_Testimony_3}{sectionEnd}"
+    }
+]

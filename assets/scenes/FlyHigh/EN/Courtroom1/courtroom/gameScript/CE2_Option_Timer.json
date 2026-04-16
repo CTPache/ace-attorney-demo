@@ -1,0 +1,25 @@
+[
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE2_Option_Timer_0}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{{i18n:CE2_Option_Timer_1}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{{i18n:CE2_Option_Timer_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{{i18n:CE2_Option_Timer_3}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE2_Option_Timer_4}}{lifeMod:-2}{playSound:explosion}"
+    },
+    {
+        "text": "{jump:CE2_Option_Menu}{sectionEnd}"
+    }
+]

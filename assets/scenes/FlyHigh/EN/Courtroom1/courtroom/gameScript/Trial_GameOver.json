@@ -1,0 +1,40 @@
+[
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{stopBGM:false}{hideTextbox}{playAnimation:Gavel}{showTextbox}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1,true}{{i18n:Trial_GameOver_0}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{{i18n:Trial_GameOver_1}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{{i18n:Trial_GameOver_2}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{{i18n:Trial_GameOver_3}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Stern\"]}{playAnimation:Guilty_JP}{skip:1000}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{{i18n:Trial_GameOver_5}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{{i18n:Trial_GameOver_6}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Normal\"]}{{i18n:Trial_GameOver_7}}"
+    },
+    {
+        "text": "{setSkipEnabled:false}{hideTextbox}{courtChar:witness,Maggey}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{setSkipEnabled:true}{skip:0}"
+    },
+    {
+        "text": "{fadeOutBg:100}{fadeOutCharacter:100}{fadeBg:GameOver}{endGame}{sectionEnd}"
+    }
+]

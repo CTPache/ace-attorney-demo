@@ -1,0 +1,163 @@
+[
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{stopBGM:false}{hideLifeBar}{hideTextbox}{blip:1}{playSound:PhoenixTakeThat}{playAnimation:TakeThat_JP}{showTextbox}{courtView:defense}{showEvidenceIcon:right,accessory}{courtSprite:defense[\"HoldingDocument\"]}{{i18n:CE3_Right_Evidence_2_0}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtView:judge}{courtSprite:judge[\"Surprise\"]}{{i18n:CE3_Right_Evidence_2_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{{i18n:CE3_Right_Evidence_2_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{{i18n:CE3_Right_Evidence_2_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{hideEvidenceIcon}{courtChar:witness,Shawit}{courtView:witness}{courtSprite:witness[\"Damage\"]}{{i18n:CE3_Right_Evidence_2_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{{i18n:CE3_Right_Evidence_2_5}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE3_Right_Evidence_2_6}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Normal\"]}{{i18n:CE3_Right_Evidence_2_7}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}{{i18n:CE3_Right_Evidence_2_8}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{hideEvidenceIcon}{courtChar:witness,Shawit}{courtView:witness}{courtSprite:witness[\"Damage\"]}{{i18n:CE3_Right_Evidence_2_9}}{startBGM:cornered}"
+    },
+    {
+        "text": "{setSkipEnabled:false}{hideTextbox}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{setSkipEnabled:true}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}{{i18n:CE3_Right_Evidence_2_11}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{courtSprite:witness[\"Nervous\"]}{{i18n:CE3_Right_Evidence_2_12}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{courtSprite:defense[\"Pointing\"]}{{i18n:CE3_Right_Evidence_2_13}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE3_Right_Evidence_2_14}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{courtSprite:witness[\"Damage_Stand\"]}{{i18n:CE3_Right_Evidence_2_15}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{courtSprite:defense[\"Sweating\"]}{{i18n:CE3_Right_Evidence_2_16}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{{i18n:CE3_Right_Evidence_2_17}}{skip:500}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{courtSprite:defense[\"Toupee\"]}{{i18n:CE3_Right_Evidence_2_18}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtView:judge}{flash}{playSound:cling}{courtSprite:judge[\"Surprised\"]}{{i18n:CE3_Right_Evidence_2_19}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{shake:800}{playSound:shake}{courtSprite:witness[\"Cornered\"]}{{i18n:CE3_Right_Evidence_2_20}}"
+    },
+    {
+        "text": "{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{showTextbox}{courtView:witness}{shake:500}{playSound:shake}{{i18n:CE3_Right_Evidence_2_22}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{flash}{playSound:cling}{blip:0,false}{color:lightblue}{{i18n:CE3_Right_Evidence_2_23}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{shake:500}{playSound:shake}{blip:1}{{i18n:CE3_Right_Evidence_2_24}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{{i18n:CE3_Right_Evidence_2_25}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{shake:500}{playSound:shake}{{i18n:CE3_Right_Evidence_2_26}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{flash}{playSound:question1}{{i18n:CE3_Right_Evidence_2_27}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtView:judge}{courtSprite:judge[\"Stern\"]}{{i18n:CE3_Right_Evidence_2_28}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{shake:500}{playSound:shake}{{i18n:CE3_Right_Evidence_2_29}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{shake:500}{playSound:shake}{{i18n:CE3_Right_Evidence_2_30}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{shake:500}{playSound:shake}{{i18n:CE3_Right_Evidence_2_31}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}{{i18n:CE3_Right_Evidence_2_32}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{{i18n:CE3_Right_Evidence_2_33}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{{i18n:CE3_Right_Evidence_2_34}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtView:defense}{{i18n:CE3_Right_Evidence_2_35}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtView:witness}{shake:500}{playSound:shake}{{i18n:CE3_Right_Evidence_2_36}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Normal\"]}{courtPan:defense}{{i18n:CE3_Right_Evidence_2_37}}{startBGM:explanation}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Confident\"]}{{i18n:CE3_Right_Evidence_2_38}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Normal\"]}{{i18n:CE3_Right_Evidence_2_39}}"
+    },
+    {
+        "text": "{setState:FinalPresentEvidenceFailures,false}{jump:Final_Present_Evidence}{sectionEnd}"
+    }
+]

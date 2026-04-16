@@ -1,0 +1,21 @@
+[
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE3_1_Option_Timer_0}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{{i18n:CE3_1_Option_Timer_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{courtSprite:prosecution[\"Confident\"]}{courtView:prosecution}{{i18n:CE3_1_Option_Timer_2}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}{{i18n:CE3_1_Option_Timer_3}}{lifeMod:-2}{playSound:explosion}"
+    },
+    {
+        "text": "{jumpIf:CE3_1_option_failures==1,CE3_1_Option_MiaHint}{setState:CE3_1_option_failures,1}{jump:CE3_1_Options}{sectionEnd}"
+    }
+]

@@ -1,0 +1,155 @@
+[
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{{i18n:CE2_Option2_Correct_0}}{hideLifeBar}{startBGM:objection}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}{flash}{playSound:question1}{{i18n:CE2_Option2_Correct_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"HoldingDocument\"]}{courtView:defense}{{i18n:CE2_Option2_Correct_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_5}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{flash}{playSound:cling}{blip:1}{{i18n:CE2_Option2_Correct_6}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:1}{{i18n:CE2_Option2_Correct_7}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_8}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Confident\"]}{{i18n:CE2_Option2_Correct_9}}"
+    },
+    {
+        "text": "{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{showTextbox}{{i18n:CE2_Option2_Correct_11}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_12}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}{{i18n:CE2_Option2_Correct_13}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{bg:speedlines}{courtSprite:defense[\"ZoomIn\"]}{playSound:bubble_sfx}{{i18n:CE2_Option2_Correct_14}}"
+    },
+    {
+        "text": "{stopBGM:true}{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}{{i18n:CE2_Option2_Correct_16}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{color:white}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}{{i18n:CE2_Option2_Correct_17}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection_JP}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}{{i18n:CE2_Option2_Correct_18}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{blip:1}{{i18n:CE2_Option2_Correct_19}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{{i18n:CE2_Option2_Correct_20}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Nodding\"]}{courtSprite:defense[\"Normal\"]}{showTextbox}{startBGM:courtroom}{blip:1}{{i18n:CE2_Option2_Correct_21}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_22}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_23}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_24}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtSprite:witness[\"Nervous\"]}{courtPan:witness}{blip:1}{{i18n:CE2_Option2_Correct_25}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{flash}{playSound:question1}{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:1}{{i18n:CE2_Option2_Correct_26}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_27}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection_JP}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}{{i18n:CE2_Option2_Correct_28}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{bg:speedlines_right}{courtSprite:prosecution[\"ZoomIn\"]}{playSound:bubble_sfx}{{i18n:CE2_Option2_Correct_29}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtSprite:witness[\"Damage_Stand\"]}{courtView:witness}{blip:1}{{i18n:CE2_Option2_Correct_30}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{{i18n:CE2_Option2_Correct_31}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{{i18n:CE2_Option2_Correct_32}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:CE2_Option2_Correct_33}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}{{i18n:CE2_Option2_Correct_34}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{{i18n:CE2_Option2_Correct_35}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}{{i18n:CE2_Option2_Correct_36}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtSprite:witness[\"Damage_Stand\"]}{{i18n:CE2_Option2_Correct_37}}"
+    },
+    {
+        "text": "{jump:Third_Testimony_Start}{sectionEnd}"
+    }
+]

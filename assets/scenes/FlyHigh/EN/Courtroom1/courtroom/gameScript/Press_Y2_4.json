@@ -1,0 +1,40 @@
+[
+    {
+        "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{showCharacter}{courtView:defense}{blip:1,true}{{i18n:Press_Y2_4_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{{i18n:Press_Y2_4_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}{{i18n:Press_Y2_4_3}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{color:lightblue}{{i18n:Press_Y2_4_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Thinking\"]}{color:white}{blip:1}{{i18n:Press_Y2_4_5}}"
+    },
+    {
+        "name": "{{i18n:Name_サイバンチョ}}",
+        "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}{{i18n:Press_Y2_4_6}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}{{i18n:Press_Y2_4_7}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}{{i18n:Press_Y2_4_8}}"
+    },
+    {
+        "text": "{jump:CE2_Present_mask}{sectionEnd}"
+    }
+]

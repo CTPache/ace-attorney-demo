@@ -1,0 +1,9 @@
+[
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{hideLifeBar}{courtSprite:cocounsel[\"Thinking_Bench\"]}{courtView:cocounsel}{showCharacter}{blip:2,true}{{i18n:CE2_Hint_0}}"
+    },
+    {
+        "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{returnToCE:0}{sectionEnd}"
+    }
+]

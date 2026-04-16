@@ -1,0 +1,279 @@
+{
+    "characters": {
+        "Phoenix": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking_talking.gif"
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing_talking.gif"
+            },
+            "Sweating": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating_talking.gif"
+            },
+            "HoldingDocument": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document_talking.gif"
+            },
+            "Holding_Doc": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document_talking.gif"
+            },
+            "Abashed": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Abashed.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Abashed_talking.gif"
+            },
+            "Damage": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Damage.webp",
+                "time": 2000,
+                "sound": [
+                    {
+                        "at": 100,
+                        "sound": "damage"
+                    }
+                ],
+                "shake": [
+                    {
+                        "at": 400,
+                        "duration": 300
+                    }
+                ]
+            },
+            "Slamming_Bench": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Slamming_bench.gif",
+                "time": 600,
+                "sound": [
+                    {
+                        "at": 120,
+                        "sound": "hit"
+                    }
+                ]
+            },
+            "Objecting": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Objecting.gif",
+                "time": 600
+            },
+            "Shaking_Head": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Shaking_head.gif",
+                "time": 600
+            },
+            "Defense_overview": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_defense_overview.png",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_defense_overview.png",
+                "display": {
+                    "scale": 80,
+                    "x": 70,
+                    "y": 16
+                }
+            },
+            "Nodding": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Nodding_head.gif",
+                "time": 600
+            },
+            "ZoomIn": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Close-up.webp",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Close-up_talking.webp"
+            },
+            "Toupee": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Having_toupee_thrown_at_face.gif",
+                "time": 600,
+                "sound": [
+                    {
+                        "at": 100,
+                        "sound": "hit"
+                    }
+                ],
+                "shake": [
+                    {
+                        "at": 100,
+                        "duration": 300
+                    }
+                ]
+            }
+        },
+        "Edgeworth": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_2.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_talking_2.gif"
+            },
+            "Confident2": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident_talking.gif"
+            },
+            "Confident_Shrugging": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident_Shrugging.gif",
+                "time": 2000
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking_talking.gif"
+            },
+            "Dismayed": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined_talking.gif"
+            },
+            "Damage": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Damage.webp",
+                "time": 600,
+                "sound": [
+                    {
+                        "at": 100,
+                        "sound": "damage"
+                    }
+                ],
+                "shake": [
+                    {
+                        "at": 400,
+                        "duration": 300
+                    }
+                ]
+            },
+            "Holding_Doc": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document_talking.gif"
+            },
+            "Smirking": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Smirking.gif"
+            },
+            "Slamming_Bench": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Slamming_desk.gif",
+                "time": 600,
+                "sound": [
+                    {
+                        "at": 100,
+                        "sound": "hit"
+                    }
+                ]
+            },
+            "Wagging_finger": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Wagging_his_finger.gif",
+                "time": 2000
+            },
+            "ZoomIn": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Close-up.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Close-up_talking.gif"
+            },
+            "Prosecution_overview": {
+                "default": "assets/img/characters/Common/Edgeworth/Edgeworth_prosecution_overview.png",
+                "talking": "assets/img/characters/Common/Edgeworth/Edgeworth_prosecution_overview.png",
+                "display": {
+                    "scale": 55,
+                    "x": 9,
+                    "y": 29
+                }
+            }
+        },
+        "Judge": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Judge/Judge-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Normal-2-HD.webp"
+            },
+            "Stern": {
+                "default": "assets/img/characters/Common/Judge/Judge-Stern-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Stern-2-HD.webp"
+            },
+            "Surprised": {
+                "default": "assets/img/characters/Common/Judge/Judge-Surprised-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Surprised-2-HD.webp"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Judge/Judge-Thinking-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Thinking-2-HD.webp"
+            },
+            "Nod": {
+                "default": "assets/img/characters/Common/Judge/Judge-Nod-HD.webp",
+                "time": 600
+            },
+            "Shake_Head": {
+                "default": "assets/img/characters/Common/Judge/Judge-Head_Shake-HD.webp",
+                "time": 600
+            },
+            "Judge_overview": {
+                "default": "assets/img/characters/Common/Judge/Judge_judge_overview.png",
+                "talking": "assets/img/characters/Common/Judge/Judge_judge_overview.png",
+                "display": {
+                    "scale": 65,
+                    "x": 41,
+                    "y": 59.5
+                }
+            }
+        },
+        "Gallery": {
+            "Normal": {
+                "default": "assets/img/sprites/Courtroom_gallery_speak.webp",
+                "talking": "assets/img/sprites/Courtroom_gallery_speak.webp"
+            },
+            "Gallery_overview": {
+                "default": "assets/img/sprites/Courtroom_gallery_speak.webp",
+                "talking": "assets/img/sprites/Courtroom_gallery_speak.webp",
+                "display": {
+                    "scale": 416,
+                    "x": 0,
+                    "y": 0
+                }
+            }
+        },
+        "Shawit": {
+            "Witness_overview": {
+                "default": "assets/img/characters/Fly High/Shawit/Shawit_Witness_overview.png",
+                "display": {
+                    "scale": 120,
+                    "x": 38,
+                    "y": 0
+                }
+            },
+            "Throw": {
+                "default": "assets/img/characters/Fly High/Shawit/Throw.gif",
+                "time": 1200,
+                "sound": [
+                    {
+                        "at": 0,
+                        "sound": "shake"
+                    },
+                    {
+                        "at": 600,
+                        "sound": "throw"
+                    }
+                ]
+            },
+            "Breakdown": {
+                "default": "assets/img/characters/Fly High/Shawit/Breakdown.gif"
+            },
+            "Fall": {
+                "default": "assets/img/characters/Fly High/Shawit/Fall.webp"
+            }
+        },
+        "Maggey": {
+            "Witness_overview": {
+                "default": "assets/img/characters/Fly High/Byrde/Byrde_Witness_overview.png",
+                "display": {
+                    "scale": 120,
+                    "x": 40,
+                    "y": 0
+                }
+            }
+        }
+    }
+}
