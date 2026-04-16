@@ -39,7 +39,7 @@
         ],
         "Office_Default": [
             {
-                "text": "{jumpIf:office_done,Office_Finish}{bg:Office}{sprite:Shawit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:office_done,Office_Finish}{bg:Office}{sprite:Sahwit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}{sectionEnd}"
             }
         ],
         "Office_Finish": [
@@ -49,7 +49,7 @@
         ],
         "Office_Intro": [
             {
-                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}９月１７日　某時刻{nl}ジョイポリス　事務所{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
+                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}９月１７日　某時刻{nl}ジョイポリス　事務所{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
             },
             {
                 "name": "ナルホド",
@@ -159,7 +159,7 @@
         "Office_evidence_loud_sound": [
             {
                 "name": "ヤマノ",
-                "text": "{sprite:Shawit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}音でございますか？"
+                "text": "{sprite:Sahwit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}音でございますか？"
             },
             {
                 "name": "ナルホド",
@@ -167,7 +167,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{sprite:Shawit[\"Nervous\"]}{blip:1,true}・・・・ああ。{p:500}{nl}それならば中木さんが落ちた音はしっかりと。"
+                "text": "{sprite:Sahwit[\"Nervous\"]}{blip:1,true}・・・・ああ。{p:500}{nl}それならば中木さんが落ちた音はしっかりと。"
             },
             {
                 "name": "ヤマノ",
@@ -186,7 +186,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{blip:1,true}{color:white}{sprite:Shawit[\"Stand\"]}・・・・はい。{nl}それだけでございます"
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}・・・・はい。{nl}それだけでございます"
             },
             {
                 "name": "ナルホド",
@@ -200,7 +200,7 @@
         "Office_evidence_default": [
             {
                 "name": "ヤマノ",
-                "text": "{blip:1}{color:white}{showCharacter}{sprite:Shawit[\"Stand\"]}{showTextbox}ん？{nl}何のお話ですかな？"
+                "text": "{blip:1}{color:white}{showCharacter}{sprite:Sahwit[\"Stand\"]}{showTextbox}ん？{nl}何のお話ですかな？"
             },
             {
                 "name": "ナルホド",

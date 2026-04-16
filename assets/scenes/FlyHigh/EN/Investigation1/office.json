@@ -39,7 +39,7 @@
         ],
         "Office_Default": [
             {
-                "text": "{jumpIf:office_done,Office_Finish}{bg:Office}{sprite:Shawit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:office_done,Office_Finish}{bg:Office}{sprite:Sahwit[\"Stand\"]}{startBGM:grossberg,true}{skip:0}{sectionEnd}"
             }
         ],
         "Office_Finish": [
@@ -49,14 +49,14 @@
         ],
         "Office_Intro": [
             {
-                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}September 17{nl}Joypolis Office{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
+                "text": "{bg:Office}{center}{color:lime}{blip:3}{showTextbox}September 17{nl}Joypolis Office{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter}{startBGM:grossberg,true}"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}{color:white}Mr. Shawit.{nl}May I ask you a few questions?"
+                "text": "{blip:1,false}{color:white}Mr. Sahwit.{nl}May I ask you a few questions?"
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{blip:1,true}Of course. As the first person to discover the body,{nl}I will gladly cooperate."
             },
             {
@@ -64,19 +64,19 @@
                 "text": "{blip:1,false}First of all...{nl}what kind of relationship did you have with the victim,{nl}Ms. Nakaki?"
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{blip:1,true}I am the chief of this event hall.{nl}Ms. Nakaki was one of our staff members."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Samurai2}{showTextbox}She was the suit actor for the Steel Samurai show,{nl}and she was extremely devoted to it..."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "She said she wanted to make the show even better,{nl}and practiced inside the building late every night."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}I never imagined...{nl}that her passion would end up angering the security guard, Ms. Maggey Byrde."
             },
             {
@@ -84,23 +84,23 @@
                 "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeInCharacter:250}{fadeBg:Office,100}{showTextbox}{blip:1,false}Could you tell me more about that?"
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{blip:1,true}Well, from a security guard's perspective, having someone practicing inside the facility after hours is quite the nuisance."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "She often argued with Ms. Nakaki,{nl}telling her things like, \"Please just go home early.\""
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "Once they started arguing,{nl}they'd both get incredibly heated..."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "So I thought it over, and decided to have{nl}the two of them sit down and talk it out."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "However, just before that discussion could happen,{nl}that terrible incident occurred..."
             },
             {
@@ -108,7 +108,7 @@
                 "text": "{blip:1,false}Please tell me in detail what you saw{nl}that day as the first witness."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{blip:1,true}On the day of the incident, I told both of them to come{nl}to the 4th floor of the event hall at 10:00 PM."
             },
             {
@@ -116,19 +116,19 @@
                 "text": "{playSound:cling}{flash}{blip:1,false}Why 10:00 PM?{nl}That's a full hour after closing."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{blip:1,true}Ms. Byrde said that time would be best because she wanted to write up the security log and take a shower first."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "Then Ms. Nakaki chimed in, saying she wanted{nl}to practice for the show during that time..."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "I, as the chief, was taking care of various miscellaneous administrative tasks..."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "It was about fifteen minutes after closing, I suppose.{nl}I went down to the first-floor stage and waited for the time to come."
             },
             {
@@ -136,19 +136,19 @@
                 "text": "{blip:1,false}I see..."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{blip:1,true}Then, I heard the two of them{nl}arguing from the floor above."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}When I looked up, I saw Ms. Byrde{nl}push Ms. Nakaki down from the 4th floor."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Crime_Scene}{showTextbox}And then, Ms. Nakaki fell right before my very eyes.{p:500}{nl}She never woke up again..."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "Ugh..."
             },
             {
@@ -158,19 +158,19 @@
         ],
         "Office_evidence_loud_sound": [
             {
-                "name": "Shawit",
-                "text": "{sprite:Shawit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}A sound, you say?"
+                "name": "Sahwit",
+                "text": "{sprite:Sahwit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}A sound, you say?"
             },
             {
                 "name": "Phoenix",
                 "text": "{blip:1,false}{color:white}Right. On the day of the incident,{nl}did you hear any suspicious sounds?"
             },
             {
-                "name": "Shawit",
-                "text": "{sprite:Shawit[\"Nervous\"]}{blip:1,true}Ah.{p:500}{nl}If you mean that, I clearly heard the sound of Ms. Nakaki falling."
+                "name": "Sahwit",
+                "text": "{sprite:Sahwit[\"Nervous\"]}{blip:1,true}Ah.{p:500}{nl}If you mean that, I clearly heard the sound of Ms. Nakaki falling."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "It was the kind of sound I never want to remember again...{nl}it was incredibly loud."
             },
             {
@@ -185,8 +185,8 @@
                 "text": "{updateEvidence:loud_sound,loud_sound_updated,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}Data for \"Loud Sound\" updated in the Court Record."
             },
             {
-                "name": "Shawit",
-                "text": "{blip:1,true}{color:white}{sprite:Shawit[\"Stand\"]}...Yes.{nl}That is all."
+                "name": "Sahwit",
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}...Yes.{nl}That is all."
             },
             {
                 "name": "Phoenix",
@@ -199,8 +199,8 @@
         ],
         "Office_evidence_default": [
             {
-                "name": "Shawit",
-                "text": "{blip:1}{color:white}{showCharacter}{sprite:Shawit[\"Stand\"]}{showTextbox}Hm?{nl}What are you talking about?"
+                "name": "Sahwit",
+                "text": "{blip:1}{color:white}{showCharacter}{sprite:Sahwit[\"Stand\"]}{showTextbox}Hm?{nl}What are you talking about?"
             },
             {
                 "name": "Phoenix",

@@ -312,13 +312,13 @@
         ],
         "Body_Examined": [
             {
-                "text": "{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Sahwit_Appears}{skip:0}{sectionEnd}"
             }
         ],
-        "Shawit_Appears": [
+        "Sahwit_Appears": [
             {
                 "name": "ヤマノ",
-                "text": "{color:white}{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{stopBGM}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}おや、{flash}{playSound:cling}現場検証でございますか。{nl}ご苦労様でございます。"
+                "text": "{color:white}{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{stopBGM}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}おや、{flash}{playSound:cling}現場検証でございますか。{nl}ご苦労様でございます。"
             },
             {
                 "name": "イトノコ",
@@ -326,11 +326,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}・・・・ここにくると未だに心が痛みます。{nl}主任として、悲しい限りでございます。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}・・・・ここにくると未だに心が痛みます。{nl}主任として、悲しい限りでございます。"
             },
             {
                 "name": "ヤマノ",
-                "text": "{sprite:Shawit[\"Nervous\"]}もう、何というか・・・・当時のことを思い出す{nl}だけで身の毛がよだつのでございます。"
+                "text": "{sprite:Sahwit[\"Nervous\"]}もう、何というか・・・・当時のことを思い出す{nl}だけで身の毛がよだつのでございます。"
             },
             {
                 "name": "ヤマノ",
@@ -342,11 +342,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{showTextbox}・・・・えっ！{skip:100}"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Sahwit[\"Damage\"]}{flash}{showTextbox}・・・・えっ！{skip:100}"
             },
             {
                 "name": "ヤマノ",
-                "text": "{sprite:Shawit[\"Nervous\"]}{showTextbox}ま、まあ・・・・{nl}逆立つというのは例えでございますから。"
+                "text": "{sprite:Sahwit[\"Nervous\"]}{showTextbox}ま、まあ・・・・{nl}逆立つというのは例えでございますから。"
             },
             {
                 "name": "ナルホド",
@@ -358,7 +358,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{blip:1,true}{color:white}{sprite:Shawit[\"Stand\"]}そんなことはさておき。{nl}一刻も早い解決を望んでおりますよ。"
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}そんなことはさておき。{nl}一刻も早い解決を望んでおりますよ。"
             },
             {
                 "name": "ヤマノ",

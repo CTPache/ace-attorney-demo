@@ -269,9 +269,9 @@
                 }
             }
         },
-        "Shawit": {
+        "Sahwit": {
             "Witness_overview": {
-                "default": "assets/img/characters/Fly High/Shawit/Shawit_witness_overview.png",
+                "default": "assets/img/characters/Fly High/Sahwit/Sahwit_witness_overview.png",
                 "display": {
                     "scale": 120,
                     "x": 38,
@@ -279,7 +279,7 @@
                 }
             },
             "Throw": {
-                "default": "assets/img/characters/Fly High/Shawit/Throw.gif",
+                "default": "assets/img/characters/Fly High/Sahwit/Throw.gif",
                 "time": 1200,
                 "sound": [
                     {
@@ -293,10 +293,10 @@
                 ]
             },
             "Breakdown": {
-                "default": "assets/img/characters/Fly High/Shawit/Breakdown.gif"
+                "default": "assets/img/characters/Fly High/Sahwit/Breakdown.gif"
             },
             "Fall": {
-                "default": "assets/img/characters/Fly High/Shawit/Fall.webp"
+                "default": "assets/img/characters/Fly High/Sahwit/Fall.webp"
             }
         },
         "Maggey": {
@@ -1796,7 +1796,7 @@
                 "text": "{bg:speedlines}{courtSprite:defense[\"ZoomIn\"]}{playSound:bubble_sfx}But along the way, you dropped{nl}one of the glasses charms."
             },
             {
-                "text": "{hideTextbox}{courtChar:witness,Shawit}{courtSprite:witness[\"Cornered\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{playAnimation:Gavel3}{skip:0}"
+                "text": "{hideTextbox}{courtChar:witness,Sahwit}{courtSprite:witness[\"Cornered\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{playAnimation:Gavel3}{skip:0}"
             },
             {
                 "name": "Judge",
@@ -2060,7 +2060,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideEvidenceIcon}{courtChar:witness,Shawit}{courtView:witness}{courtSprite:witness[\"Damage\"]}!"
+                "text": "{hideEvidenceIcon}{courtChar:witness,Sahwit}{courtView:witness}{courtSprite:witness[\"Damage\"]}!"
             },
             {
                 "name": "Phoenix",
@@ -2080,7 +2080,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideEvidenceIcon}{courtChar:witness,Shawit}{courtView:witness}{courtSprite:witness[\"Damage\"]}Guuuuuuuuuh!{startBGM:cornered}"
+                "text": "{hideEvidenceIcon}{courtChar:witness,Sahwit}{courtView:witness}{courtSprite:witness[\"Damage\"]}Guuuuuuuuuh!{startBGM:cornered}"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{setSkipEnabled:true}{skip:0}"
@@ -2405,7 +2405,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}The event hall supervisor at Joypolis,{nl}Frank Sahwit.{courtChar:witness,Shawit}"
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}The event hall supervisor at Joypolis,{nl}Frank Sahwit.{courtChar:witness,Sahwit}"
             },
             {
                 "text": "{stopBGM:true}{hideTextbox}{fadeOutBg:600}{fadeOutCharacter}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{center}{color:red}{blip:0,false}--The Situation at the Time of the Incident--{playAnimation:Witness_Testimony}{color:white}"
@@ -2470,7 +2470,7 @@
         ],
         "First_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Shawit}{courtSprite:witness[\"Stand\"]}{setState:currentTestimony,1}{setState:Mia_hint_condition,false}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{fadeInFg:600}{showTextbox}{blip:0,false}{center}{color:red}--The Situation at the Time of the Incident--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_1}{sectionEnd}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{setState:currentTestimony,1}{setState:Mia_hint_condition,false}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{fadeInFg:600}{showTextbox}{blip:0,false}{center}{color:red}--The Situation at the Time of the Incident--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_1}{sectionEnd}"
             }
         ],
         "Intro_Holding": [
@@ -2787,7 +2787,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter}{courtChar:witness,Shawit}{courtSprite:witness[\"Stand\"]}{fadeInCharacter}{showTextbox}{blip:1}How pathetic.{nl}I clearly heard it with my own two ears."
+                "text": "{hideTextbox}{fadeOutCharacter}{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{fadeInCharacter}{showTextbox}{blip:1}How pathetic.{nl}I clearly heard it with my own two ears."
             },
             {
                 "name": "Judge",
@@ -3127,7 +3127,7 @@
         ],
         "Second_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Shawit}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{stopBGM:false}{showTextbox}{center}{blip:1,false}{color:red}--Photo of the Falling Victim--{playAnimation:Witness_Testimony}{skip:100}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{stopBGM:false}{showTextbox}{center}{blip:1,false}{color:red}--Photo of the Falling Victim--{playAnimation:Witness_Testimony}{skip:100}"
             },
             {
                 "name": "Sahwit",
@@ -3171,7 +3171,7 @@
         ],
         "Third_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Shawit}{courtSprite:witness[\"Stand\"]}{stopBGM}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}--The Blank 50 Minutes--{playAnimation:Witness_Testimony}{color:white}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{stopBGM}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}--The Blank 50 Minutes--{playAnimation:Witness_Testimony}{color:white}"
             },
             {
                 "name": "Sahwit",

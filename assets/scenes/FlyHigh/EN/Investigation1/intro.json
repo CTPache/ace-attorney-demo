@@ -74,7 +74,7 @@
                     "duration": 8000
                 },
                 {
-                    "name": "Shawit",
+                    "name": "Sahwit",
                     "text": "{blip:1}S-Someone! Help!",
                     "timestamp": 91500,
                     "duration": 3000
@@ -220,7 +220,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}The event hall manager for this amusement park,{nl}Frank Shawit, sir."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}The event hall manager for this amusement park,{nl}Frank Sahwit, sir."
             },
             {
                 "name": "Edgeworth",

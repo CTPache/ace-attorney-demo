@@ -162,21 +162,21 @@
                 }
             }
         },
-        "Shawit": {
+        "Sahwit": {
             "Stand": {
-                "default": "assets/img/characters/Fly High/Shawit/Stand.webp",
-                "talking": "assets/img/characters/Fly High/Shawit/Stand_Talk.webp"
+                "default": "assets/img/characters/Fly High/Sahwit/Stand.webp",
+                "talking": "assets/img/characters/Fly High/Sahwit/Stand_Talk.webp"
             },
             "Nervous": {
-                "default": "assets/img/characters/Fly High/Shawit/Nervous.webp",
-                "talking": "assets/img/characters/Fly High/Shawit/Nervous_Talk.webp"
+                "default": "assets/img/characters/Fly High/Sahwit/Nervous.webp",
+                "talking": "assets/img/characters/Fly High/Sahwit/Nervous_Talk.webp"
             },
             "Cornered": {
-                "default": "assets/img/characters/Fly High/Shawit/Cornered.gif",
-                "talking": "assets/img/characters/Fly High/Shawit/Cornered_Talk.gif"
+                "default": "assets/img/characters/Fly High/Sahwit/Cornered.gif",
+                "talking": "assets/img/characters/Fly High/Sahwit/Cornered_Talk.gif"
             },
             "Damage": {
-                "default": "assets/img/characters/Fly High/Shawit/Damage.webp",
+                "default": "assets/img/characters/Fly High/Sahwit/Damage.webp",
                 "time": 700,
                 "shake": [
                     {
@@ -192,8 +192,8 @@
                 ]
             },
             "Damage_Stand": {
-                "default": "assets/img/characters/Fly High/Shawit/Damage_Stand.gif",
-                "talking": "assets/img/characters/Fly High/Shawit/Damage_Talk.gif"
+                "default": "assets/img/characters/Fly High/Sahwit/Damage_Stand.gif",
+                "talking": "assets/img/characters/Fly High/Sahwit/Damage_Talk.gif"
             }
         }
     },

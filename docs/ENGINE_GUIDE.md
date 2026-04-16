@@ -139,7 +139,7 @@ Example:
 "gameScript": {
   "Intro": [
     {
-      "text": "{bg:Office}{sprite:Shawit[\"Stand\"]}Welcome."
+      "text": "{bg:Office}{sprite:Sahwit[\"Stand\"]}Welcome."
     },
     {
       "name": "Phoenix",
@@ -212,7 +212,7 @@ Example:
 
 ```json
 "Damage": {
-  "default": "assets/img/characters/Fly High/Shawit/Damage.webp",
+  "default": "assets/img/characters/Fly High/Sahwit/Damage.webp",
   "time": 700,
   "shake": [{ "at": 0, "duration": 300 }],
   "sound": [{ "at": 0, "sound": "damage2" }]
@@ -530,7 +530,7 @@ Statement fields:
 Commands are written inside dialogue text using curly braces. Example:
 
 ```text
-{bg:Office}{sprite:Shawit["Stand"]}{blip:1}Welcome to the office.
+{bg:Office}{sprite:Sahwit["Stand"]}{blip:1}Welcome to the office.
 ```
 
 You can combine multiple commands in the same line.
@@ -579,7 +579,7 @@ You can combine multiple commands in the same line.
 Examples:
 
 ```text
-{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Shawit_Appears}
+{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Sahwit_Appears}
 {jumpIf:evidence_keycard|evidence_pass,OpenDoor,KeepSearching}
 {jumpIf:!intro_seen,FirstTimeOnly}
 {jumpIf:(flagA&flagB)|flagC,Success,Fallback}

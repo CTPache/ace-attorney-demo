@@ -146,7 +146,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "Mr. Shawit, the one who found the body, was standing right here.{nl}On the first floor of the event hall, pal."
+                "text": "Mr. Sahwit, the one who found the body, was standing right here.{nl}On the first floor of the event hall, pal."
             },
             {
                 "name": "Gumshoe",
@@ -312,56 +312,56 @@
         ],
         "Body_Examined": [
             {
-                "text": "{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Shawit_Appears}{skip:0}{sectionEnd}"
+                "text": "{jumpIf:body_investigated&out_investigated&background_investigated&floor_investigated,Sahwit_Appears}{skip:0}{sectionEnd}"
             }
         ],
-        "Shawit_Appears": [
+        "Sahwit_Appears": [
             {
-                "name": "Shawit",
-                "text": "{color:white}{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{stopBGM}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}Oh,{flash}{playSound:cling} conducting your crime scene investigation?{nl}Thank you for your hard work."
+                "name": "Sahwit",
+                "text": "{color:white}{hideTextbox}{blip:1,true}{fadeOutCharacter:300}{stopBGM}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:1000}{startBGM:grossberg,true}{p:1000}{showTextbox}Oh,{flash}{playSound:cling} conducting your crime scene investigation?{nl}Thank you for your hard work."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Shawit."
+                "text": "{hideTextbox}{fadeOutCharacter}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Sahwit."
             },
             {
-                "name": "Shawit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Coming back here still hurts...{nl}As the chief, this is truly heartbreaking."
+                "name": "Sahwit",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Coming back here still hurts...{nl}As the chief, this is truly heartbreaking."
             },
             {
-                "name": "Shawit",
-                "text": "{sprite:Shawit[\"Nervous\"]}How can I put this...{nl}Just remembering that moment makes my hair stand on end."
+                "name": "Sahwit",
+                "text": "{sprite:Sahwit[\"Nervous\"]}How can I put this...{nl}Just remembering that moment makes my hair stand on end."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "Even now, every hair on my body is standing straight up..."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Shawit...{nl}Your hair isn't standing up at all, pal."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Sahwit...{nl}Your hair isn't standing up at all, pal."
             },
             {
-                "name": "Shawit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{showTextbox}What?!{skip:100}"
+                "name": "Sahwit",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Sahwit[\"Damage\"]}{flash}{showTextbox}What?!{skip:100}"
             },
             {
-                "name": "Shawit",
-                "text": "{sprite:Shawit[\"Nervous\"]}{showTextbox}W-well...{nl}Standing on end is just a figure of speech."
+                "name": "Sahwit",
+                "text": "{sprite:Sahwit[\"Nervous\"]}{showTextbox}W-well...{nl}Standing on end is just a figure of speech."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(Detective Gumshoe...{nl}Is he implying Mr. Shawit wears a toupee?)"
+                "text": "{blip:0,false}{color:lightblue}(Detective Gumshoe...{nl}Is he implying Mr. Sahwit wears a toupee?)"
             },
             {
                 "name": "Phoenix",
                 "text": "{color:lightblue}(I mean... a toupee probably wouldn't stand on end.)"
             },
             {
-                "name": "Shawit",
-                "text": "{blip:1,true}{color:white}{sprite:Shawit[\"Stand\"]}Putting that aside...{nl}I hope this case is resolved quickly."
+                "name": "Sahwit",
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}Putting that aside...{nl}I hope this case is resolved quickly."
             },
             {
-                "name": "Shawit",
+                "name": "Sahwit",
                 "text": "I pray for the victim's soul...{nl}Well then."
             },
             {
