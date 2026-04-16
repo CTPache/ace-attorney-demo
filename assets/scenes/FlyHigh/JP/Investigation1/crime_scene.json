@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Crime_Scene_Init",
     "actions": {
         "move": true,
@@ -6,15 +6,6 @@
         "talk": false,
         "present": false
     },
-    "evidence": {
-        "accessory": {
-            "name": "アクセサリーのようなもの",
-            "data": "タイプ：証拠品\n",
-            "description": "被害現場を調査中、山野が落としていった、なんかのアクセサリだろうか。",
-            "image": "assets/img/evidence/Blue_Badger.png"
-        }
-    },
-    "profiles": {},
     "investigations": {
         "Crime_Scene": {
             "default": "Examine_Default",
@@ -147,7 +138,7 @@
         ],
         "Crime_Scene_Intro": [
             {
-                "text": "{fadeBg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}９月１７日　 某時刻{nl}ジョイポリス　イベントホール{p:1000}"
+                "text": "{fadeBg:Crime_Scene}{center}{color:lime}{blip:3}{showTextbox}９月１７日　　某時刻{nl}ジョイポリス　イベントホール{p:1000}"
             },
             {
                 "name": "イトノコ",
@@ -155,7 +146,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "当時、第一発見者の山野さんがいた場所が{nl}ちょうどここ。1階のイベントホールッス。"
+                "text": "当時、第一発見者の山野さんがいた場所が{nl}ちょうどここ。１階のイベントホールッス。"
             },
             {
                 "name": "イトノコ",
@@ -163,7 +154,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}上階は吹き抜けになっていて・・・・ 。"
+                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}上階は吹き抜けになっていて・・・・　。"
             },
             {
                 "name": "イトノコ",
@@ -179,15 +170,15 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}あと、多分ッスけど・・・{nl}死亡時刻は死体発見時刻と同じッス。"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}あと、多分ッスけど・・・・{nl}死亡時刻は死体発見時刻と同じッス。"
             },
             {
                 "name": "ナルホド",
-                "text": "ん？{flash}{playSound:cling}{nl}どういうコトですか?"
+                "text": "ん？{flash}{playSound:cling}{nl}どういうコトですか？"
             },
             {
                 "name": "イトノコ",
-                "text": "被害者はイベントホールの4階から落下して、{nl}第１発見者の目の前に落ちたッス。"
+                "text": "被害者はイベントホールの４階から落下して、{nl}第１発見者の目の前に落ちたッス。"
             },
             {
                 "name": "イトノコ",
@@ -211,7 +202,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "・・・ん？{flash}{playSound:question1}　被害者は後頭部を強打して{nl}亡くなったんですよね？"
+                "text": "・・・・ん？{flash}{playSound:question1}　被害者は後頭部を強打して{nl}亡くなったんですよね？"
             },
             {
                 "name": "イトノコ",
@@ -234,13 +225,13 @@
         "Body_Lying_Face_Down": [
             {
                 "name": "ナルホド",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（いや・・・それは後頭部を強打したのならおかしい。）{jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（いや・・・・それは後頭部を強打したのならおかしい。）{jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_On_Side": [
             {
                 "name": "ナルホド",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（いや・・・それもおかしいだろう。）{jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}（いや・・・・それもおかしいだろう。）{jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_Face_Up": [
@@ -292,11 +283,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "ということは、事件当時は第1発見者と{nl}被害者と容疑者の3人だけだったんですか?"
+                "text": "ということは、事件当時は第１発見者と{nl}被害者と容疑者の３人だけだったんですか？"
             },
             {
                 "name": "イトノコ",
-                "text": "そういうことッスね。{nl}警備員もマコくん1人だけだったッス。"
+                "text": "そういうことッスね。{nl}警備員もマコくん１人だけだったッス。"
             },
             {
                 "name": "ナルホド",
@@ -335,7 +326,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}・・・ここにくると未だに心が痛みます。{nl}主任として、悲しい限りでございます。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}・・・・ここにくると未だに心が痛みます。{nl}主任として、悲しい限りでございます。"
             },
             {
                 "name": "ヤマノ",
@@ -351,7 +342,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{showTextbox}・・・・えっ!{skip:100}"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Shawit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Shawit[\"Damage\"]}{flash}{showTextbox}・・・・えっ！{skip:100}"
             },
             {
                 "name": "ヤマノ",
@@ -375,7 +366,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showEvidenceIcon:right,accessory}{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}・・・ん？{nl}何か地面に落ちているぞ。"
+                "text": "{showEvidenceIcon:right,accessory}{fadeOutCharacter:1000}{stopBGM}{p:400}{playSound:question1}・・・・ん？{nl}何か地面に落ちているぞ。"
             },
             {
                 "name": "ナルホド",

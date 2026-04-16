@@ -2,6 +2,71 @@
 // Handles option menu rendering and scene state transitions.
 console.log("UI Scene Flow Loaded");
 
+let activeOptionsTimerTimeout = null;
+let activeOptionsTimerFrame = null;
+
+function clearOptionsTimer() {
+    if (activeOptionsTimerTimeout) {
+        clearTimeout(activeOptionsTimerTimeout);
+        activeOptionsTimerTimeout = null;
+    }
+
+    if (activeOptionsTimerFrame) {
+        cancelAnimationFrame(activeOptionsTimerFrame);
+        activeOptionsTimerFrame = null;
+    }
+}
+
+function getOptionTimerConfig(optionData) {
+    const rawTime = optionData && optionData.time;
+
+    if (Array.isArray(rawTime) && rawTime.length >= 2) {
+        const seconds = Number(rawTime[0]);
+        const targetLabel = String(rawTime[1] || '').trim();
+
+        if (Number.isFinite(seconds) && seconds > 0 && targetLabel) {
+            return {
+                durationMs: seconds * 1000,
+                targetLabel
+            };
+        }
+    }
+
+    return null;
+}
+
+function startOptionsTimer(timerConfig, timerFill, onExpire) {
+    if (!timerConfig || !timerFill || typeof onExpire !== 'function') {
+        return;
+    }
+
+    clearOptionsTimer();
+
+    const { durationMs } = timerConfig;
+    const deadline = performance.now() + durationMs;
+
+    const tick = () => {
+        const remainingMs = Math.max(0, deadline - performance.now());
+        const progress = durationMs > 0 ? (remainingMs / durationMs) : 0;
+        timerFill.style.transform = `scaleX(${progress})`;
+
+        if (remainingMs > 0) {
+            activeOptionsTimerFrame = requestAnimationFrame(tick);
+        } else {
+            activeOptionsTimerFrame = null;
+        }
+    };
+
+    timerFill.style.transform = 'scaleX(1)';
+    activeOptionsTimerFrame = requestAnimationFrame(tick);
+    activeOptionsTimerTimeout = setTimeout(() => {
+        clearOptionsTimer();
+        onExpire(timerConfig.targetLabel);
+    }, durationMs);
+}
+
+window.clearOptionsTimer = clearOptionsTimer;
+
 window.renderOptionsMenu = function(optionKey) {
     const optionData = optionsDB[optionKey];
     if (!optionData) {
@@ -31,8 +96,23 @@ window.renderOptionsMenu = function(optionKey) {
 
     // Block interaction
     isInputBlocked = true;
+    clearOptionsTimer();
 
     topicMenu.innerHTML = ''; // Clear previous content
+
+    const closeOptionsMenu = (targetLabel) => {
+        clearOptionsTimer();
+        isInputBlocked = false;
+
+        if (topicMenu) topicMenu.classList.add('hidden');
+        if (typeof window.shelveLazyElement === 'function') {
+            window.shelveLazyElement('topic-menu');
+        }
+
+        if (targetLabel && window.jumpToSection) {
+            jumpToSection(targetLabel);
+        }
+    };
 
     // Create a Header (using a localized string instead of option text)
     const headerText = typeof window.t === 'function' ? window.t('ui.optionsHeader', 'Select an option') : 'Select an option';
@@ -91,7 +171,6 @@ window.renderOptionsMenu = function(optionKey) {
                     }
                 }
                 window.textboxContainer.classList.remove('no-name');
-                window.currentCharacterName = window.lastLineName;
             } else {
                 if (window.nameTag) {
                     window.nameTag.style.display = 'none';
@@ -99,35 +178,57 @@ window.renderOptionsMenu = function(optionKey) {
                     window.nameTag.style.setProperty('--name-tag-text-scale-x', '1');
                 }
                 window.textboxContainer.classList.add('no-name');
-                window.currentCharacterName = null;
             }
         }
     }
 
     // Render buttons
     if (optionData.options && Array.isArray(optionData.options)) {
-        optionData.options.forEach(opt => {
+        optionData.options.forEach((opt, index) => {
             const btn = document.createElement('button');
             btn.className = 'topic-button';
             btn.textContent = opt.text;
 
+            // Generate a unique key for tracking visited status
+            const optionVisitedKey = "option_visited_" + optionKey + "_" + index;
+
+            // Check if option was already visited
+            // Use the global gameState object
+            if (typeof gameState !== 'undefined' && gameState[optionVisitedKey]) {
+                const check = document.createElement('div');
+                check.className = 'topic-check';
+                check.textContent = '✓';
+                btn.appendChild(check);
+                btn.classList.add('visited');
+            }
+
             btn.addEventListener('click', () => {
-                // Unblock interaction
-                isInputBlocked = false;
-
-                // Hide menu
-                if (topicMenu) topicMenu.classList.add('hidden');
-                if (typeof window.shelveLazyElement === 'function') {
-                    window.shelveLazyElement('topic-menu');
+                if (typeof gameState !== 'undefined') {
+                    gameState[optionVisitedKey] = true;
                 }
-
-                // Jump to the selected label
-                if (window.jumpToSection) {
-                    jumpToSection(opt.label);
-                }
+                closeOptionsMenu(opt.label);
             });
 
             topicMenu.appendChild(btn);
+        });
+    }
+
+    const timerConfig = getOptionTimerConfig(optionData);
+    if (timerConfig) {
+        const timerBar = document.createElement('div');
+        timerBar.className = 'options-timer';
+        timerBar.setAttribute('aria-hidden', 'true');
+
+        const timerFill = document.createElement('div');
+        timerFill.className = 'options-timer-fill';
+        timerBar.appendChild(timerFill);
+        topicMenu.appendChild(timerBar);
+
+        startOptionsTimer(timerConfig, timerFill, (targetLabel) => {
+            if (!topicMenu || topicMenu.classList.contains('hidden')) {
+                return;
+            }
+            closeOptionsMenu(targetLabel);
         });
     }
 };

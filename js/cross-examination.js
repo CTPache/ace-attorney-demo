@@ -100,10 +100,24 @@ window.CrossExamination = (function() {
         return true;
     }
 
+    function completePendingStatementVisuals() {
+        if (typeof window.completeVisualTransitionsForAdvance === 'function') {
+            window.completeVisualTransitionsForAdvance();
+        }
+        if (typeof window.completeActiveCourtroomFadeInstant === 'function') {
+            window.completeActiveCourtroomFadeInstant();
+        }
+        if (typeof window.completeActiveBgmFadeInstant === 'function') {
+            window.completeActiveBgmFadeInstant();
+        }
+    }
+
     function playStatement() {
         const statementId = activeCE.activeStatementIds[currentIndex];
         const statement = activeCE.statements[statementId];
         if (!statement) return;
+
+        completePendingStatementVisuals();
 
         // Use the standard engine updateDialogue if available, 
         // or trigger a custom render event.

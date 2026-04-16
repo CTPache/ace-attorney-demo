@@ -6,15 +6,6 @@
         "talk": false,
         "present": false
     },
-    "evidence": {
-        "accessory": {
-            "name": "Accessory",
-            "data": "Type: Evidence",
-            "description": "While examining the murder scene, it seems to be some kind of accessory that Shawit dropped.",
-            "image": "assets/img/evidence/Blue_Badger.png"
-        }
-    },
-    "profiles": {},
     "investigations": {
         "Crime_Scene": {
             "default": "Examine_Default",

@@ -11,14 +11,6 @@
         "Byrde_Kurumi": "assets/img/CG/Fly High/Byrde_Kurumi.png",
         "Byrde_Samurai": "assets/img/CG/Fly High/Byrde_Samurai.png"
     },
-    "evidence": {
-        "loud_sound_updated": {
-            "name": "Ruido fuerte",
-            "data": "Tipo: Prueba\n",
-            "description": "Shawit dice que el ruido fuerte fue la caída de la señorita Nakaki, por lo que habría ocurrido alrededor de las 10:05 p. m.",
-            "image": "assets/img/evidence/Document.png"
-        }
-    },
     "investigations": {
         "Office": {
             "default": "Office_Examine_Default",

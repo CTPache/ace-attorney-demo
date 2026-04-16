@@ -226,6 +226,13 @@
     text-align: left;
 }
 
+#evidence-description,
+#evidence-data-box,
+#popup-desc {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 #evidence-popup {
     position: absolute;
     top: 10%;
@@ -297,8 +304,9 @@
     color: #222;
     font-family: 'FOT-SeuratPro-M', sans-serif;
     font-size: 1.8cqw;
+    line-height: 1.3;
     padding: 1cqh;
     flex-grow: 1;
-    overflow: hidden;
+    overflow-y: auto;
     text-align: left;
 }

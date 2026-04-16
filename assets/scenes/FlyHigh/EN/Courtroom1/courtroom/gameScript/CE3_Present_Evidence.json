@@ -1,0 +1,10 @@
+[
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{startBGM:explanation}{courtSprite:defense[\"Determined\"]}{color:lightblue}{blip:0,false}{{i18n:CE3_Present_Evidence_0}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{showLifeBar:2}{color:lightBlue}{blip:0,false}{{i18n:CE3_Present_Evidence_1}}{p:500}{present:loud_sound_updated,CE3_Right_Evidence,CE3_Wrong_Evidence}{sectionEnd}"
+    }
+]

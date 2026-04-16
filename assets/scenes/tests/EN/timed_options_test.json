@@ -1,0 +1,150 @@
+{
+    "initialSection": "Timed_Question",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "options": {
+        "TimedChoice": {
+            "name": "Phoenix",
+            "text": "{blip:0,false}(You have 5 seconds to choose. If you do nothing, the scene will jump automatically.)",
+            "options": [
+                {
+                    "text": "Choose the correct answer",
+                    "label": "Timed_Correct"
+                },
+                {
+                    "text": "Choose the wrong answer",
+                    "label": "Timed_Wrong"
+                }
+            ],
+            "time": [
+                5,
+                "Timed_Timeout"
+            ]
+        },
+        "UntimedChoice": {
+            "name": "Phoenix",
+            "text": "{blip:0,false}(This menu has no timer. The green bar should be gone, and you can wait as long as you want.)",
+            "options": [
+                {
+                    "text": "Restart the timed test",
+                    "label": "Timed_Question"
+                },
+                {
+                    "text": "Finish the scene",
+                    "label": "End"
+                }
+            ]
+        }
+    },
+    "characters": {
+        "Phoenix": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident_talking.gif"
+            },
+            "Sweating": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating_talking.gif"
+            }
+        },
+        "Maya": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Maya/Maya-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Normal-2-HD.webp"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Determined-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Determined-2-HD.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "Lobby": "assets/img/backgrounds/Common/Courtroom_lobby.png"
+    },
+    "music": {
+        "lobby": [
+            "assets/audio/bgm/bgm008.m4a",
+            "assets/audio/bgm/bgm008lp.m4a"
+        ]
+    },
+    "gameScript": {
+        "Intro": [
+            {
+                "text": "{bg:Lobby}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}Timed Options Test{color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{startBGM:lobby,false}{sprite:Phoenix[\"Thinking\"]}{fadeInCharacter}{blip:1}This scene is a simple test for the new timed option field."
+            },
+            {
+                "name": "Phoenix",
+                "text": "First, a timed choice will appear with a green bar at the bottom."
+            },
+            {
+                "text": "{jump:Timed_Question}{sectionEnd}"
+            }
+        ],
+        "Timed_Question": [
+            {
+                "text": "{option:TimedChoice}{sectionEnd}"
+            }
+        ],
+        "Timed_Correct": [
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{sprite:Phoenix[\"Confident\"]}{blip:1}Nice. You picked an answer before the timer expired."
+            },
+            {
+                "text": "{jump:Untimed_Question}{sectionEnd}"
+            }
+        ],
+        "Timed_Wrong": [
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{sprite:Phoenix[\"Sweating\"]}{blip:1}That was the wrong answer, but it still proves manual selection works."
+            },
+            {
+                "text": "{jump:Untimed_Question}{sectionEnd}"
+            }
+        ],
+        "Timed_Timeout": [
+            {
+                "name": "Maya",
+                "text": "{showTextbox}{sprite:Maya[\"Normal\"]}{fadeInCharacter}{blip:2}Time's up! The menu jumped here automatically."
+            },
+            {
+                "text": "{jump:Untimed_Question}{sectionEnd}"
+            }
+        ],
+        "Untimed_Question": [
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{sprite:Phoenix[\"Normal\"]}{blip:1}Now here's a normal option menu with no timer bar."
+            },
+            {
+                "text": "{option:UntimedChoice}{sectionEnd}"
+            }
+        ],
+        "End": [
+            {
+                "name": "Phoenix",
+                "text": "{showTextbox}{sprite:Phoenix[\"Confident\"]}{blip:1}Test complete. Reload the scene if you want to try it again."
+            },
+            {
+                "text": "{sectionEnd}"
+            }
+        ]
+    }
+}

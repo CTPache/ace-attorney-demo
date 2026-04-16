@@ -42,6 +42,7 @@ function updateScreenVisibility() {
     }
 
     syncAutoplayIndicatorPlacement();
+    requestAnimationFrame(syncAutoplayIndicatorPlacement);
 
     if (typeof window.updateActionButtons === 'function') {
         window.updateActionButtons();
@@ -87,12 +88,14 @@ function enforceOrientationScreenMode() {
         changed = true;
     }
 
-    if (changed) {
-        updateScreenVisibility();
-        if (typeof window.rearrangeTitleButtons === "function") {
-            window.rearrangeTitleButtons();
-        }
+    // Always sync the layout on startup as well, even if the orientation did not change.
+    updateScreenVisibility();
 
+    if (typeof window.rearrangeTitleButtons === "function") {
+        window.rearrangeTitleButtons();
+    }
+
+    if (changed) {
         scheduleBackgroundPositionReapply();
     }
 }
@@ -100,6 +103,7 @@ function enforceOrientationScreenMode() {
 window.addEventListener('resize', enforceOrientationScreenMode);
 window.addEventListener('orientationchange', enforceOrientationScreenMode);
 document.addEventListener('DOMContentLoaded', enforceOrientationScreenMode);
+window.addEventListener('load', syncAutoplayIndicatorPlacement);
 
 // Call it initially immediately
 enforceOrientationScreenMode();

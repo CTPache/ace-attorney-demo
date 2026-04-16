@@ -1,0 +1,43 @@
+{
+    "courtroom": {
+        "views": {
+            "overview": {
+                "background": "CourtOverview"
+            },
+            "stands": {
+                "background": "CourtStands",
+                "positions": {
+                    "defense": "defense",
+                    "witness": "witness",
+                    "prosecution": "prosecution"
+                }
+            },
+            "cocounsel": {
+                "background": "CourtCoCounsel"
+            },
+            "judge": {
+                "background": "CourtJudge"
+            }
+        },
+        "slots": {
+            "defense": {
+                "character": "Phoenix"
+            },
+            "prosecution": {
+                "character": "Edgeworth"
+            },
+            "witness": {
+                "character": "Shawit"
+            },
+            "judge": {
+                "character": "Judge"
+            },
+            "cocounsel": {
+                "character": "Maya"
+            },
+            "gallery": {
+                "character": "Gallery"
+            }
+        }
+    }
+}

@@ -1,14 +1,77 @@
 {
     "backgrounds": {
         "phoenixMove": "assets/img/CG/Phoenix_Move_JP.png",
-        "mayaMove": "assets/img/CG/Maya_Move_JP.png"
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png",
+        "GameOver": "assets/img/CG/GameOver_JP.webp"
     },
     "profiles": {
         "Kurumi": {
-            "name": "中木 クルミ",
+            "name": "中木　クルミ",
             "data": "",
             "description": "",
             "image": "assets/img/profiles/Kurumi.png"
         }
+    },
+    "evidence": {
+        "badge": {
+            "name": "弁護士バッジ",
+            "data": "種類：　証拠品",
+            "description": "これがないと、誰もぼくを弁護士と　認めてくれない。",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "autopsy_report": {
+            "name": "解剖記録",
+            "data": "種類：　証拠品",
+            "description": "死因は４階から落下したこと{nl}による脳挫偏。{nl}死亡推定時刻は{color:red}午後９時半{nl}から午後１０時半の問。",
+            "image": "assets/img/evidence/Archive.png"
+        },
+        "blog_post_charm": {
+            "name": "眼鏡のブログ記事",
+            "data": "種類：　証拠品",
+            "description": "事件当日の午後９時２７分に投稿された。眼鏡チャームが２つ付いた眼鏡の画像がある。",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "blog_post_charm_updated": {
+            "name": "眼鏡のブログ記事",
+            "data": "種類：　証拠品",
+            "description": "事件当日の午後９時２７分に投稿された。眼鏡チャームが２つ付いた眼鏡の画像がある。投稿から約３０分後に盗まれた。",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "loud_sound": {
+            "name": "大きな音",
+            "data": "種類：　証拠品",
+            "description": "事件当日の午後９時３０分ごろ、シャワー中のマコが聞いた大きな音。",
+            "image": "assets/img/evidence/Document.png"
+        },
+        "loud_sound_updated": {
+            "name": "大きな音",
+            "data": "種類：　証拠品",
+            "description": "山野は中木さんが落下した音だと証言。発生時刻は午後１０時５分ごろ。",
+            "image": "assets/img/evidence/Document.png"
+        },
+        "mask_photo": {
+            "name": "マスクの証拠写真",
+            "data": "種類：　証拠品",
+            "description": "被害者が事件時にかぶっていたトノサマンのマスク。眉毛の部分が少しへこんでいる。それ以外の傷はない。チョンマゲも無事。",
+            "image": "assets/img/evidence/Samurai.png"
+        },
+        "accessory": {
+            "name": "アクセサリーのようなもの",
+            "data": "種類：　証拠品",
+            "description": "被害現場を調査中、山野が落としていった、なんかのアクセサリだろうか。",
+            "image": "assets/img/evidence/Blue_Badger.png"
+        },
+        "maggey_glasses": {
+            "name": "",
+            "data": "",
+            "description": "",
+            "image": "assets/img/evidence/Glasses.png"
+        }
+    },
+    "sounds": {
+        "PhoenixObjection": "assets/audio/se/jp/se027.ogg",
+        "PhoenixHoldIt": "assets/audio/se/jp/se01d.ogg",
+        "PhoenixTakeThat": "assets/audio/se/jp/se00d.ogg",
+        "EdgeworthObjection": "assets/audio/se/jp/se00e.ogg"
     }
 }

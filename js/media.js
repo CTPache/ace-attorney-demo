@@ -1,9 +1,9 @@
 
 // Audio
 const blipPaths = {
-    1: 'assets/audio/blip_1.ogg',
-    2: 'assets/audio/blip_2.ogg',
-    3: 'assets/audio/typewriter.ogg'
+    1: 'assets/audio/se/blip_1.ogg',
+    2: 'assets/audio/se/blip_2.ogg',
+    3: 'assets/audio/se/typewriter.ogg'
 };
 const BLIP_POOL_SIZE = 4;
 const blipPools = {};
@@ -11,6 +11,9 @@ const blipPoolIndex = {};
 const activeSFX = new Set();
 const sfxTemplateCache = new Map();
 let activeBgmFadeInterval = null;
+let activeBgmFadeAudio = null;
+let activeBgmFadeTargetVolume = null;
+let activeBgmFadeStopOnComplete = false;
 let currentBgmPlaybackId = 0;
 let pendingSfxWarmupHandle = null;
 
@@ -18,6 +21,39 @@ function clearBgmFadeInterval() {
     if (activeBgmFadeInterval) {
         clearInterval(activeBgmFadeInterval);
         activeBgmFadeInterval = null;
+    }
+}
+
+function shouldSkipBgmFades() {
+    return typeof isFastForwarding !== 'undefined' && !!isFastForwarding;
+}
+
+function completeActiveBgmFadeInstant() {
+    if (!activeBgmFadeAudio) {
+        clearBgmFadeInterval();
+        activeBgmFadeTargetVolume = null;
+        activeBgmFadeStopOnComplete = false;
+        return;
+    }
+
+    const audio = activeBgmFadeAudio;
+    const targetVolume = activeBgmFadeTargetVolume;
+    const shouldStop = activeBgmFadeStopOnComplete;
+
+    clearBgmFadeInterval();
+    activeBgmFadeAudio = null;
+    activeBgmFadeTargetVolume = null;
+    activeBgmFadeStopOnComplete = false;
+
+    if (Number.isFinite(targetVolume)) {
+        audio.volume = Math.max(0, Math.min(1, targetVolume));
+    }
+
+    if (shouldStop) {
+        resetAndStopAudio(audio);
+        if (currentBGM === audio) {
+            currentBGM = null;
+        }
     }
 }
 
@@ -134,7 +170,9 @@ function playSoundByPath(soundPath) {
     audio.addEventListener('error', cleanup, { once: true });
     audio.play().catch(e => {
         cleanup();
-        console.warn('SFX play failed:', e);
+        if (e.name !== 'NotSupportedError' && e.name !== 'NotAllowedError') {
+            console.warn('SFX play failed:', e);
+        }
     });
 }
 
@@ -186,7 +224,11 @@ function playBlip() {
 
     if (!audio) return;
     audio.currentTime = 0;
-    audio.play().catch(e => console.warn('Audio play failed:', e));
+    audio.play().catch(e => {
+        if (e.name !== 'NotSupportedError' && e.name !== 'NotAllowedError') {
+            console.warn('Audio play failed:', e);
+        }
+    });
 }
 
 function playSound(soundName) {
@@ -205,7 +247,7 @@ function playBGM(musicName, fadeIn = false, force = false) {
         return;
     }
 
-    clearBgmFadeInterval();
+    completeActiveBgmFadeInstant();
 
     if (currentBGMKey === musicName && currentBGM && !currentBGM.paused && !force) {
         return;
@@ -217,12 +259,25 @@ function playBGM(musicName, fadeIn = false, force = false) {
     const playbackId = ++currentBgmPlaybackId;
     currentBGMKey = musicName;
 
+    const shouldFadeIn = !!fadeIn && !shouldSkipBgmFades();
+
     const startFadeIn = () => {
-        if (!fadeIn) return;
+        if (!shouldFadeIn) {
+            if (currentBGM) {
+                currentBGM.volume = 1;
+            }
+            return;
+        }
 
         clearBgmFadeInterval();
+        activeBgmFadeAudio = currentBGM;
+        activeBgmFadeTargetVolume = 1;
+        activeBgmFadeStopOnComplete = false;
         activeBgmFadeInterval = setInterval(() => {
             if (currentBgmPlaybackId !== playbackId || !currentBGM) {
+                activeBgmFadeAudio = null;
+                activeBgmFadeTargetVolume = null;
+                activeBgmFadeStopOnComplete = false;
                 clearBgmFadeInterval();
                 return;
             }
@@ -231,6 +286,9 @@ function playBGM(musicName, fadeIn = false, force = false) {
                 currentBGM.volume += 0.05;
             } else {
                 currentBGM.volume = 1;
+                activeBgmFadeAudio = null;
+                activeBgmFadeTargetVolume = null;
+                activeBgmFadeStopOnComplete = false;
                 clearBgmFadeInterval();
             }
         }, 100);
@@ -257,10 +315,8 @@ function playBGM(musicName, fadeIn = false, force = false) {
             loopAudio.preload = 'auto';
         }
 
-        if (fadeIn) {
-            introAudio.volume = 0;
-            loopAudio.volume = 0;
-        }
+        introAudio.volume = shouldFadeIn ? 0 : 1;
+        loopAudio.volume = shouldFadeIn ? 0 : 1;
 
         currentBGM = introAudio;
 
@@ -270,7 +326,11 @@ function playBGM(musicName, fadeIn = false, force = false) {
             }
 
             currentBGM = loopAudio;
-            loopAudio.play().catch(e => console.warn('BGM loop play failed:', e));
+            loopAudio.play().catch(e => {
+                if (e.name !== 'NotSupportedError' && e.name !== 'NotAllowedError') {
+                    console.warn('BGM loop play failed:', e);
+                }
+            });
         });
 
         introAudio.play()
@@ -290,9 +350,7 @@ function playBGM(musicName, fadeIn = false, force = false) {
     if (typeof window.createManagedAudio !== 'function') {
         loopedAudio.loop = true;
     }
-    if (fadeIn) {
-        loopedAudio.volume = 0;
-    }
+    loopedAudio.volume = shouldFadeIn ? 0 : 1;
 
     currentBGM = loopedAudio;
     loopedAudio.play()
@@ -301,7 +359,7 @@ function playBGM(musicName, fadeIn = false, force = false) {
 }
 
 function stopBGM(fadeOut = true) {
-    clearBgmFadeInterval();
+    completeActiveBgmFadeInstant();
 
     const audio = currentBGM;
     currentBGMKey = null;
@@ -312,13 +370,20 @@ function stopBGM(fadeOut = true) {
         return;
     }
 
-    if (fadeOut && !audio.paused) {
+    const shouldFadeOut = !!fadeOut && !shouldSkipBgmFades();
+    if (shouldFadeOut && !audio.paused) {
+        activeBgmFadeAudio = audio;
+        activeBgmFadeTargetVolume = 0;
+        activeBgmFadeStopOnComplete = true;
         activeBgmFadeInterval = setInterval(() => {
             if (audio.volume > 0.05) {
                 audio.volume -= 0.05;
                 return;
             }
 
+            activeBgmFadeAudio = null;
+            activeBgmFadeTargetVolume = null;
+            activeBgmFadeStopOnComplete = false;
             clearBgmFadeInterval();
             resetAndStopAudio(audio);
             if (currentBGM === audio) {
@@ -329,9 +394,7 @@ function stopBGM(fadeOut = true) {
     }
 
     resetAndStopAudio(audio);
-    if (currentBGM === audio) {
-        currentBGM = null;
-    }
+    currentBGM = null;
 }
 
 function stopAllSceneAudio() {
@@ -357,6 +420,7 @@ function stopAllSceneAudio() {
 window.playSound = playSound;
 window.playBGM = playBGM;
 window.stopBGM = stopBGM;
+window.completeActiveBgmFadeInstant = completeActiveBgmFadeInstant;
 window.stopAllSceneAudio = stopAllSceneAudio;
 window.playSoundByPath = playSoundByPath;
 window.warmSceneSfxCache = warmSceneSfxCache;

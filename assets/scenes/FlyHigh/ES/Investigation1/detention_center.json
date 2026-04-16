@@ -11,26 +11,6 @@
             "default": "Detention_Center_Examine_Default"
         }
     },
-    "evidence": {
-        "blog_post_charm": {
-            "name": "Publicación del blog - Colgante para gafas",
-            "data": "Tipo: Prueba\n",
-            "description": "Publicada a las 9:27 p. m. del día del incidente. Contiene una imagen de unas gafas con dos colgantes.",
-            "image": "assets/img/evidence/Screen.png"
-        },
-        "blog_post_charm_updated": {
-            "name": "Publicación del blog - Colgante para gafas",
-            "data": "Tipo: Prueba\n",
-            "description": "Publicada a las 9:27 p. m. del día del incidente. Contiene una imagen de unas gafas con dos colgantes. Fueron robadas aproximadamente 30 minutos después de la publicación.",
-            "image": "assets/img/evidence/Screen.png"
-        },
-        "loud_sound": {
-            "name": "Ruido fuerte",
-            "data": "Tipo: Prueba\n",
-            "description": "Un ruido fuerte que Maggey oyó mientras se duchaba alrededor de las 9:30 p. m. del día del incidente.",
-            "image": "assets/img/evidence/Document.png"
-        }
-    },
     "move": [
         {
             "label": "4.ª planta",

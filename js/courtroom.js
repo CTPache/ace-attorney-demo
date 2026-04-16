@@ -25,6 +25,8 @@ console.log("Courtroom Module Loaded");
     // Injected <style> tag for dynamic sprite positions
     let spritePositionStyleSheet = null;
     let singleViewSwapToken = 0;
+    let activeCourtFadeElement = null;
+    let activeCourtFadeTarget = null;
 
     function getOverviewSpriteKey(slotName) {
         const slot = String(slotName || '').toLowerCase();
@@ -242,6 +244,15 @@ console.log("Courtroom Module Loaded");
         ];
         allEls.forEach(el => {
             if (el) {
+                if (window.releasePreloadedImageUrl && el.__temporaryPreloadedUrl) {
+                    window.releasePreloadedImageUrl(el.__temporaryPreloadedUrl);
+                }
+                el.__temporaryPreloadedUrl = null;
+                el.__logicalSpriteSource = null;
+                if (el.dataset) {
+                    delete el.dataset.preloadRequestId;
+                }
+
                 el.style.opacity = '0';
                 el.src = '/';
                 if (el.classList.contains('overview-sprite')) {
@@ -258,10 +269,28 @@ console.log("Courtroom Module Loaded");
 
     // ── View Switching ──────────────────────────────────────────
 
-    function setCourtView(viewName) {
+    function getCurrentCourtLayerOpacity() {
+        if (currentView === 'overview' && courtroomOverviewSprites) {
+            return getComputedStyle(courtroomOverviewSprites).opacity || '1';
+        }
+
+        if (STAND_SLOTS.includes(currentView) && courtroomSprites) {
+            return getComputedStyle(courtroomSprites).opacity || '1';
+        }
+
+        if (character) {
+            return getComputedStyle(character).opacity || '1';
+        }
+
+        return '1';
+    }
+
+    function setCourtView(viewName, options = {}) {
         if (!isCourtMode) return;
 
         const view = String(viewName).toLowerCase();
+        const preservedLayerOpacity = getCurrentCourtLayerOpacity();
+        const { preserveBackground = false } = options || {};
         currentView = view;
 
         // Determine which layer sets are visible
@@ -288,27 +317,28 @@ console.log("Courtroom Module Loaded");
 
         // Change background based on view
         if (isStandView) {
-            activateStandView(view);
+            activateStandView(view, preservedLayerOpacity, { preserveBackground });
         } else if (isOverview) {
-            activateOverviewView();
+            activateOverviewView(preservedLayerOpacity, { preserveBackground });
         } else if (view === 'cocounsel' || view === 'judge' || view === 'gallery') {
-            activateSingleCharView(view);
+            activateSingleCharView(view, preservedLayerOpacity, { preserveBackground });
         }
     }
 
-    function activateStandView(standName) {
+    function activateStandView(standName, preservedLayerOpacity = '1', options = {}) {
+        const { preserveBackground = false } = options || {};
         activeSlot = String(standName).toLowerCase();
 
-        // Force the container to be visible after explicit fades
-        if (courtroomSprites) courtroomSprites.style.opacity = '1';
+        if (courtroomSprites) courtroomSprites.style.opacity = preservedLayerOpacity;
 
         // Enable panoramic foreground mode
         if (gameContainer) gameContainer.classList.add('court-mode-fg');
 
-        // Set background to the stands panoramic
+        // Set background to the stands panoramic unless the same line will
+        // immediately switch to a custom BG/CG via `{bg:...}` or `{fadeBg:...}`.
         const standsConfig = courtroomDB.views && courtroomDB.views.stands;
-        if (standsConfig && standsConfig.background) {
-            changeBackground(standsConfig.background);
+        if (!preserveBackground && standsConfig && standsConfig.background) {
+            changeBackground(standsConfig.background, { preserveOpacity: true });
         }
 
         // Move to the correct position (instant)
@@ -322,18 +352,22 @@ console.log("Courtroom Module Loaded");
         // Sync sprite container position
         syncSpritesToBackground(0);
 
-        // Apply all stand slot sprites to their elements
+        // Apply all stand slot sprites to their elements, and restart the
+        // active stand now that it is the one being shown on screen.
         STAND_SLOTS.forEach(slot => {
-            applySpriteToElement(slot, standElements[slot]);
+            applySpriteToElement(slot, standElements[slot], {
+                restartAnimation: slot === standName,
+                forceReload: slot === standName
+            });
         });
 
         // Install delegation hooks for stand mode
         installStandHooks();
     }
 
-    function activateOverviewView() {
-        // Force the container to be visible after explicit fades
-        if (courtroomOverviewSprites) courtroomOverviewSprites.style.opacity = '1';
+    function activateOverviewView(preservedLayerOpacity = '1', options = {}) {
+        const { preserveBackground = false } = options || {};
+        if (courtroomOverviewSprites) courtroomOverviewSprites.style.opacity = preservedLayerOpacity;
 
         // Disable panoramic foreground mode
         if (gameContainer) gameContainer.classList.remove('court-mode-fg');
@@ -342,8 +376,8 @@ console.log("Courtroom Module Loaded");
         }
 
         const overviewConfig = courtroomDB.views && courtroomDB.views.overview;
-        if (overviewConfig && overviewConfig.background) {
-            changeBackground(overviewConfig.background);
+        if (!preserveBackground && overviewConfig && overviewConfig.background) {
+            changeBackground(overviewConfig.background, { preserveOpacity: true });
         }
 
         // Apply overview sprites
@@ -357,7 +391,8 @@ console.log("Courtroom Module Loaded");
         removeStandHooks();
     }
 
-    function activateSingleCharView(viewName) {
+    function activateSingleCharView(viewName, preservedLayerOpacity = '1', options = {}) {
+        const { preserveBackground = false } = options || {};
         activeSlot = String(viewName).toLowerCase();
         const swapToken = ++singleViewSwapToken;
 
@@ -379,8 +414,8 @@ console.log("Courtroom Module Loaded");
 
         // cocounsel, judge, or gallery — use regular #character element
         const viewConfig = courtroomDB.views && courtroomDB.views[viewName];
-        if (viewConfig && viewConfig.background) {
-            changeBackground(viewConfig.background);
+        if (!preserveBackground && viewConfig && viewConfig.background) {
+            changeBackground(viewConfig.background, { preserveOpacity: true });
         }
 
         // If the slot has a character & emotion, preload/set that sprite while hidden,
@@ -392,25 +427,60 @@ console.log("Courtroom Module Loaded");
                 currentCharacterName = slot.character;
                 currentAnimationKey = slot.emotion;
 
-                const revealSprite = (resolvedUrl) => {
+                const revealSprite = () => {
                     if (swapToken !== singleViewSwapToken || currentView !== activeSlot) return;
-                    if (character) {
-                        character.src = resolvedUrl || spriteUrl;
+                    if (!character) return;
+
+                    const showCharacterLayer = () => {
+                        if (swapToken !== singleViewSwapToken || currentView !== activeSlot) return;
+                        if (!character) return;
+
+                        const inlineOpacityRaw = String(character.style.opacity || '').trim();
+                        const inlineOpacityValue = inlineOpacityRaw === '' ? NaN : parseFloat(inlineOpacityRaw);
+                        const externalRevealStarted = Number.isFinite(inlineOpacityValue) && inlineOpacityValue > 0.01;
+
+                        // If a later command (for example `{fadeInCharacter}`) has already
+                        // started revealing the sprite, do not stomp that newer opacity state.
+                        if (externalRevealStarted) {
+                            const liveOpacity = parseFloat(getComputedStyle(character).opacity || inlineOpacityRaw);
+                            characterIsVisible = liveOpacity > 0.01;
+                            return;
+                        }
+
                         character.style.transition = 'none';
-                        character.style.opacity = '1';
+                        character.style.opacity = preservedLayerOpacity;
                         void character.offsetWidth;
                         character.style.transition = '';
+                        characterIsVisible = parseFloat(preservedLayerOpacity) > 0.01;
+                    };
+
+                    if (window.applyPreloadedImageToElement) {
+                        window.applyPreloadedImageToElement(character, spriteUrl, {
+                            restartAnimation: true,
+                            forceReload: true
+                        })
+                            .catch(() => {
+                                character.src = spriteUrl;
+                            })
+                            .finally(showCharacterLayer);
+                    } else if (typeof preloadImage === 'function') {
+                        preloadImage(spriteUrl)
+                            .then((resolvedUrl) => {
+                                if (swapToken !== singleViewSwapToken || currentView !== activeSlot) return;
+                                character.src = resolvedUrl || spriteUrl;
+                            })
+                            .catch(() => {
+                                if (swapToken !== singleViewSwapToken || currentView !== activeSlot) return;
+                                character.src = spriteUrl;
+                            })
+                            .finally(showCharacterLayer);
+                    } else {
+                        character.src = spriteUrl;
+                        showCharacterLayer();
                     }
-                    characterIsVisible = true;
                 };
 
-                if (typeof preloadImage === 'function') {
-                    preloadImage(spriteUrl)
-                        .then((resolvedUrl) => revealSprite(resolvedUrl))
-                        .catch(() => revealSprite(spriteUrl));
-                } else {
-                    revealSprite(spriteUrl);
-                }
+                revealSprite();
             }
         }
 
@@ -453,6 +523,15 @@ console.log("Courtroom Module Loaded");
 
         // Sync sprite container
         syncSpritesToBackground(dur);
+
+        // Restart the active stand sprite when panning onto it so the
+        // animation begins from frame 1 when it becomes visible.
+        if (standElements[stand]) {
+            applySpriteToElement(stand, standElements[stand], {
+                restartAnimation: true,
+                forceReload: true
+            });
+        }
 
         // Install hooks
         installStandHooks();
@@ -501,27 +580,50 @@ console.log("Courtroom Module Loaded");
 
     function setCourtSlotSprite(slotName, emotion) {
         const slot = String(slotName).toLowerCase();
-        if (!slotState[slot]) return;
+        if (!slotState[slot]) return null;
 
         slotState[slot].emotion = emotion;
         activeSlot = slot;
 
+        const spriteEntry = resolveCourtSpriteEntry(slot, slotState[slot].character, emotion, false);
+
+        if (slotState[slot].character) {
+            currentCharacterName = slotState[slot].character;
+            currentAnimationKey = emotion;
+        }
+
         // Apply to the appropriate element based on current view
         if (STAND_SLOTS.includes(slot) && standElements[slot]) {
-            applySpriteToElement(slot, standElements[slot]);
+            applySpriteToElement(slot, standElements[slot], {
+                restartAnimation: true,
+                forceReload: true
+            });
         }
         if (overviewElements[slot] && currentView === 'overview') {
-            applySpriteToElement(slot, overviewElements[slot]);
+            applySpriteToElement(slot, overviewElements[slot], {
+                restartAnimation: true,
+                forceReload: true
+            });
         }
         // For cocounsel/judge in their respective views, apply to #character
         if ((slot === 'cocounsel' || slot === 'judge') && currentView === slot) {
             const s = slotState[slot];
             if (s.character && s.emotion) {
+                const preservedOpacity = character
+                    ? (getComputedStyle(character).opacity || character.style.opacity || '1')
+                    : '1';
+
                 currentCharacterName = s.character;
                 currentAnimationKey = s.emotion;
-                setSpriteState('default');
-                character.style.opacity = '1';
-                characterIsVisible = true;
+                setSpriteState('default', {
+                    restartAnimation: true,
+                    forceReload: true
+                });
+
+                if (character) {
+                    character.style.opacity = preservedOpacity;
+                    characterIsVisible = parseFloat(preservedOpacity) > 0.01;
+                }
             }
         }
 
@@ -529,6 +631,8 @@ console.log("Courtroom Module Loaded");
         if (STAND_SLOTS.includes(currentView)) {
             installStandHooks();
         }
+
+        return spriteEntry;
     }
 
     function setCourtSlotCharacter(slotName, characterName) {
@@ -539,8 +643,13 @@ console.log("Courtroom Module Loaded");
         slotState[slot].emotion = null; // Reset emotion when character changes
     }
 
-    function applySpriteToElement(slotName, element) {
+    function applySpriteToElement(slotName, element, options = {}) {
         if (!element) return;
+
+        const {
+            restartAnimation = false,
+            forceReload = false
+        } = options || {};
 
         const slot = slotState[slotName];
         if (!slot || !slot.character || !slot.emotion) {
@@ -566,7 +675,17 @@ console.log("Courtroom Module Loaded");
             } else if (element.classList.contains('overview-sprite')) {
                 clearOverviewSpriteDisplay(element);
             }
-            element.src = spriteUrl;
+
+            if (window.applyPreloadedImageToElement) {
+                window.applyPreloadedImageToElement(element, spriteUrl, {
+                    restartAnimation,
+                    forceReload
+                }).catch(() => {
+                    element.src = spriteUrl;
+                });
+            } else {
+                element.src = spriteUrl;
+            }
             element.style.opacity = '1';
         } else {
             element.style.opacity = '0';
@@ -588,7 +707,7 @@ console.log("Courtroom Module Loaded");
         window._courtroomSetSpriteState = null;
     }
 
-    function courtroomChangeSprite(charName, spriteKey) {
+    function courtroomChangeSprite(charName, spriteKey, options = {}) {
         if (!activeSlot || !slotState[activeSlot]) return;
 
         slotState[activeSlot].character = charName;
@@ -596,7 +715,11 @@ console.log("Courtroom Module Loaded");
 
         // Update the element
         if (STAND_SLOTS.includes(activeSlot) && standElements[activeSlot]) {
-            applySpriteToElement(activeSlot, standElements[activeSlot]);
+            applySpriteToElement(activeSlot, standElements[activeSlot], {
+                restartAnimation: true,
+                forceReload: true,
+                ...options
+            });
         }
 
         // Also set the global tracking for compatibility
@@ -604,7 +727,7 @@ console.log("Courtroom Module Loaded");
         currentAnimationKey = spriteKey;
     }
 
-    function courtroomSetSpriteState(state) {
+    function courtroomSetSpriteState(state, options = {}) {
         if (!activeSlot || !slotState[activeSlot]) return;
 
         const slot = slotState[activeSlot];
@@ -629,7 +752,21 @@ console.log("Courtroom Module Loaded");
         }
 
         if (element) {
-            element.src = spriteUrl;
+            const {
+                restartAnimation = false,
+                forceReload = false
+            } = options || {};
+
+            if (window.applyPreloadedImageToElement) {
+                window.applyPreloadedImageToElement(element, spriteUrl, {
+                    restartAnimation,
+                    forceReload
+                }).catch(() => {
+                    element.src = spriteUrl;
+                });
+            } else {
+                element.src = spriteUrl;
+            }
         }
     }
 
@@ -642,6 +779,8 @@ console.log("Courtroom Module Loaded");
 
         if (STAND_SLOTS.includes(currentView)) {
             if (courtroomSprites) {
+                activeCourtFadeElement = courtroomSprites;
+                activeCourtFadeTarget = opacity;
                 if (isFadeIn) {
                     courtroomSprites.style.transition = 'none';
                     courtroomSprites.style.opacity = '0';
@@ -653,6 +792,8 @@ console.log("Courtroom Module Loaded");
             return true;
         } else if (currentView === 'overview') {
             if (courtroomOverviewSprites) {
+                activeCourtFadeElement = courtroomOverviewSprites;
+                activeCourtFadeTarget = opacity;
                 if (isFadeIn) {
                     courtroomOverviewSprites.style.transition = 'none';
                     courtroomOverviewSprites.style.opacity = '0';
@@ -668,17 +809,70 @@ console.log("Courtroom Module Loaded");
         return false;
     }
 
+    function setCurrentCourtSpriteContainerVisibility(isVisible) {
+        if (!isCourtMode) return false;
+
+        const opacity = isVisible ? '1' : '0';
+
+        if (STAND_SLOTS.includes(currentView)) {
+            if (!courtroomSprites) return false;
+            courtroomSprites.style.transition = 'none';
+            courtroomSprites.style.opacity = opacity;
+            void courtroomSprites.offsetWidth;
+            courtroomSprites.style.transition = '';
+            activeCourtFadeElement = null;
+            activeCourtFadeTarget = null;
+            return true;
+        }
+
+        if (currentView === 'overview') {
+            if (!courtroomOverviewSprites) return false;
+            courtroomOverviewSprites.style.transition = 'none';
+            courtroomOverviewSprites.style.opacity = opacity;
+            void courtroomOverviewSprites.offsetWidth;
+            courtroomOverviewSprites.style.transition = '';
+            activeCourtFadeElement = null;
+            activeCourtFadeTarget = null;
+            return true;
+        }
+
+        return false;
+    }
+
+    function completeActiveCourtroomFadeInstant() {
+        if (!activeCourtFadeElement || activeCourtFadeTarget === null) return;
+
+        activeCourtFadeElement.style.transition = 'none';
+        activeCourtFadeElement.style.opacity = activeCourtFadeTarget;
+        void activeCourtFadeElement.offsetWidth;
+        activeCourtFadeElement.style.transition = '';
+
+        activeCourtFadeElement = null;
+        activeCourtFadeTarget = null;
+    }
+
     function buildSnapshot() {
+        const hasActiveCourtView = !!(isCourtMode && currentView);
+
         return {
-            isActive: !!isCourtMode,
-            currentView: currentView || null,
-            activeSlot: activeSlot || null,
+            isActive: hasActiveCourtView,
+            currentView: hasActiveCourtView ? currentView : null,
+            activeSlot: hasActiveCourtView ? (activeSlot || currentView || null) : null,
             slotState: JSON.parse(JSON.stringify(slotState || {}))
         };
     }
 
-    function restoreSnapshot(snapshot) {
+    function restoreSnapshot(snapshot, options = {}) {
         if (!snapshot || !snapshot.isActive) {
+            return false;
+        }
+
+        const { applyView = true } = options || {};
+        const savedView = typeof snapshot.currentView === 'string'
+            ? snapshot.currentView.trim().toLowerCase()
+            : '';
+
+        if (!savedView) {
             return false;
         }
 
@@ -707,8 +901,13 @@ console.log("Courtroom Module Loaded");
 
         slotState = restoredSlotState;
 
-        const targetView = snapshot.currentView || currentView || 'overview';
+        const targetView = savedView;
         activeSlot = snapshot.activeSlot || targetView || null;
+
+        if (!applyView) {
+            return true;
+        }
+
         setCourtView(targetView);
 
         if (targetView === 'overview') {
@@ -738,6 +937,8 @@ console.log("Courtroom Module Loaded");
     window.setCourtSlotSprite = setCourtSlotSprite;
     window.setCourtSlotCharacter = setCourtSlotCharacter;
     window.fadeCurrentCourtSpriteContainer = fadeCurrentCourtSpriteContainer;
+    window.setCurrentCourtSpriteContainerVisibility = setCurrentCourtSpriteContainerVisibility;
+    window.completeActiveCourtroomFadeInstant = completeActiveCourtroomFadeInstant;
     window.getCurrentCourtView = () => currentView;
     window.getActiveCourtSlot = () => activeSlot;
     window.getCourtroomSnapshot = buildSnapshot;

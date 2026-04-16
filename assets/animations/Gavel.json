@@ -4,11 +4,11 @@
     ],
     "animationCss": "Gavel.css",
     "images": [
-        "Gavel.png"
+        "Gavel1.webp"
     ],
     "timeline": {
         "0": {
-            "image": "img/sprites/Gavel.webp",
+            "image": "img/sprites/Gavel1.webp",
             "targetId": "gavel",
             "class": "gavel-swing",
             "duration": 1180

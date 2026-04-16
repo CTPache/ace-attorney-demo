@@ -5,6 +5,8 @@ console.log("UI Action Menus Loaded");
 function setBottomScreenButtonsDisabled(disabled) {
     const buttons = document.querySelectorAll('#bottom-screen button');
     buttons.forEach((button) => {
+        if (button.id === 'skip-video-btn' || button.id === 'autoplay-indicator') return;
+        
         if (disabled) {
             if (button.dataset.videoDisabled === 'true') return;
             button.dataset.videoDisabled = 'true';
@@ -39,6 +41,9 @@ function hideActionMenus() {
         }
     }
     if (evidenceNameDisplay) evidenceNameDisplay.textContent = '';
+    if (typeof window.clearOptionsTimer === 'function') {
+        window.clearOptionsTimer();
+    }
     if (bottomTopBar) bottomTopBar.classList.remove('hidden');
     if (gameContainer) gameContainer.classList.remove('investigating');
 

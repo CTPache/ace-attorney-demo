@@ -62,6 +62,10 @@ window.prepareStableSaveState = function() {
         finishTyping();
     }
 
+    if (typeof window.completePendingVisualTransitions === 'function') {
+        window.completePendingVisualTransitions();
+    }
+
     return {
         dialogueDisplay: getDialogueDisplaySnapshot()
     };
@@ -142,6 +146,9 @@ window.buildSaveDataSnapshot = function() {
             tab: 'evidence',
             isPresentingMode: typeof isPresentingMode !== 'undefined' ? !!isPresentingMode : false
         };
+    const testimonyIndicatorSnapshot = (typeof window.getTestimonyIndicatorSnapshot === 'function')
+        ? window.getTestimonyIndicatorSnapshot()
+        : { isVisible: false };
 
     const liveLifeBar = document.getElementById('life-bar-container');
     const isLifeBarVisible = !!(liveLifeBar && !liveLifeBar.classList.contains('hidden'));
@@ -195,6 +202,7 @@ window.buildSaveDataSnapshot = function() {
         ),
         uiState: {
             courtRecord: cloneForSave(courtRecordSnapshot, { isOpen: false, tab: 'evidence', isPresentingMode: false }),
+            testimonyIndicator: cloneForSave(testimonyIndicatorSnapshot, { isVisible: false }),
             dialogueDisplay: cloneForSave(dialogueDisplaySnapshot, {
                 html: '',
                 speakerName: '',
@@ -451,10 +459,21 @@ window.restoreCoreStateForLoad = function(saveData = {}) {
 };
 
 window.restoreVisualStateForLoad = function(saveData = {}) {
+    const savedUiState = (saveData.uiState && typeof saveData.uiState === 'object')
+        ? saveData.uiState
+        : {};
+
     if (currentBackgroundKey) {
         changeBackground(currentBackgroundKey);
     }
-    if (currentForegroundKey) {
+
+    const usesInlineForeground = !!(
+        currentBackgroundKey
+        && currentForegroundKey
+        && currentForegroundKey === `${currentBackgroundKey}_fg`
+    );
+
+    if (currentForegroundKey && !usesInlineForeground) {
         changeForeground(currentForegroundKey);
     }
 
@@ -478,9 +497,12 @@ window.restoreVisualStateForLoad = function(saveData = {}) {
             : ((typeof window.inferLegacyCourtroomSnapshotForLoad === 'function')
                 ? window.inferLegacyCourtroomSnapshotForLoad(saveData)
                 : null);
+        const savedBgLooksCourtroom = typeof currentBackgroundKey === 'string' && /^Court/i.test(currentBackgroundKey);
 
         if (courtroomSnapshot && courtroomSnapshot.isActive) {
-            window.restoreCourtroomSnapshot(courtroomSnapshot);
+            window.restoreCourtroomSnapshot(courtroomSnapshot, {
+                applyView: savedBgLooksCourtroom
+            });
         }
     }
 
@@ -492,6 +514,10 @@ window.restoreVisualStateForLoad = function(saveData = {}) {
 
     if (saveData.media && typeof window.restoreMediaSnapshot === 'function') {
         window.restoreMediaSnapshot(saveData.media);
+    }
+
+    if (typeof window.restoreTestimonyIndicatorSnapshot === 'function') {
+        window.restoreTestimonyIndicatorSnapshot(savedUiState.testimonyIndicator || { isVisible: false });
     }
 
     if (typeof window.updateLifeBar === 'function') {

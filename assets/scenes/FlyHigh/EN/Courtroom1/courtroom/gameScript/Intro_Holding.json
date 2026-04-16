@@ -1,0 +1,36 @@
+[
+    {
+        "text": "{setGameOver:Trial_GameOver}{setSkipEnabled:true}{addEvidence:badge,false}{addEvidence:blog_post_charm_updated,false}{addEvidence:loud_sound_updated,false}{addEvidence:mask_photo,false}{addEvidence:accessory,false}{bg:Lobby}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}{{i18n:Intro_Holding_0}}{color:white}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{startBGM:lobby,false}{sprite:Maya[\"Normal\"]}{fadeInCharacter}{blip:2}{{i18n:Intro_Holding_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{blip:1,false}{{i18n:Intro_Holding_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:Intro_Holding_3}}"
+    },
+    {
+        "name": "{{i18n:Name_マコ}}",
+        "text": "{fadeOutCharacter}{sprite:Maggey[\"Sad\"]}{fadeInCharacter}{blip:2}{{i18n:Intro_Holding_4}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{blip:1,false}{{i18n:Intro_Holding_5}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{{i18n:Intro_Holding_6}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{blip:0,false}{color:lightblue}{{i18n:Intro_Holding_7}}"
+    },
+    {
+        "text": "{stopBGM:true}{fadeOutBg:600}{fadeOutCharacter:600}{jump:Court_Opening}{sectionEnd}"
+    }
+]

@@ -1,0 +1,17 @@
+{
+    "layers": [
+        "speech-bubble"
+    ],
+    "animationCss": "SpeechBubble.css",
+    "images": [
+        "Objection.png"
+    ],
+    "timeline": {
+        "0": {
+            "image": "img/sprites/Objection_JP.webp",
+            "targetId": "speech-bubble",
+            "class": "speech-bubble-pop",
+            "duration": 640
+        }
+    }
+}

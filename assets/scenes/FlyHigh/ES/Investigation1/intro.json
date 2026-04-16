@@ -111,7 +111,7 @@
     "gameScript": {
         "Intro_Start": [
             {
-                "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
+                "text": "{addEvidence:badge,false}{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
             },
             {
                 "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}17 de septiembre, 10:34 p. m.{nl}Joypolis"

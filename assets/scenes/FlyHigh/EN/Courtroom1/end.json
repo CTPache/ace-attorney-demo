@@ -1,0 +1,79 @@
+{
+    "initialSection": "Final_Victory",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "backgrounds": {
+        "Lobby": "assets/img/backgrounds/Common/Courtroom_lobby.png",
+        "Ending": "assets/img/CG/Fly High/Ending.png"
+    },
+    "gameScript": {
+        "Final_Victory": [
+            {
+                "text": "{hideLifeBar}{fadeBg:Lobby,800}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}September 18, 12:14 PM{nl}District Court - Defendant Lobby No. 2{color:white}"
+            },
+            {
+                "name": "Maggey",
+                "text": "{startBGM:victory}{sprite:Maggey[\"Admiring\"]}{fadeInCharacter:600}{blip:2}Mr. Wright...{nl}Thank you so much, sir!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}No need to thank me.{nl}I just brought the truth to light."
+            },
+            {
+                "name": "Maggey",
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...But I still ended up{nl}dropping Ms. Nakaki, sir."
+            },
+            {
+                "name": "Maggey",
+                "text": "That's the truth, isn't it, sir?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}No. She had already passed away by then.{nl}It couldn't be helped."
+            },
+            {
+                "name": "Maya",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}Nick, you were amazing!{nl}I was so moved!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}Thanks. But things only went well{nl}because of you, Maya."
+            },
+            {
+                "name": "Maya",
+                "text": "{sprite:Maya[\"Determined\"]}{blip:2}Oh, right.{nl}It's almost time for the Steel Samurai show!"
+            },
+            {
+                "name": "Maggey",
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Sad\"]}{fadeInCharacter:600}...Wait, wasn't the show canceled, sir?{nl}I mean, since Ms. Nakaki..."
+            },
+            {
+                "name": "Maya",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}Actually, it looks like they're putting it on last minute.{nl}They say Detective Gumshoe is playing the Steel Samurai!"
+            },
+            {
+                "name": "Maya",
+                "text": "To celebrate you being cleared of all charges, Maggey!"
+            },
+            {
+                "name": "Maggey",
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Normal\"]}{fadeInCharacter:600}{blip:2}Whaaat?{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{nl}I'm looking forward to it, sir!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}Detective Gumshoe... I wonder if he'll be okay...{nl}Can he even fit into that suit?"
+            },
+            {
+                "name": "Maya",
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}Come on, let's go!"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{fadeBg:Ending,800}{p:4000}{fadeOutBg:1000}{stopBGM:true}{returnToTitle:\"Congratulations, you won! See you next time!\"}{sectionEnd}"
+            }
+        ]
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    }
+}

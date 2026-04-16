@@ -1,0 +1,113 @@
+/* Six float paths — each has a distinct left/right wave pattern */
+@keyframes confetti-fall-a {
+    0%   { transform: translateY(0)                   translateX(0)     rotate(45deg)   }
+    20%  { transform: translateY(20cqh)               translateX(40px)  rotate(45deg)   }
+    40%  { transform: translateY(40cqh)               translateX(10px)  rotate(45deg)   }
+    60%  { transform: translateY(60cqh)               translateX(55px)  rotate(45deg)   }
+    80%  { transform: translateY(80cqh)               translateX(20px)  rotate(45deg)   }
+    100% { transform: translateY(calc(100cqh + 10px)) translateX(40px)  rotate(45deg)   }
+}
+
+@keyframes confetti-fall-b {
+    0%   { transform: translateY(0)                   translateX(0)     rotate(45deg)   }
+    25%  { transform: translateY(25cqh)               translateX(-50px) rotate(45deg)   }
+    50%  { transform: translateY(50cqh)               translateX(-15px) rotate(45deg)   }
+    75%  { transform: translateY(75cqh)               translateX(-60px) rotate(45deg)   }
+    100% { transform: translateY(calc(100cqh + 10px)) translateX(-35px) rotate(45deg)   }
+}
+
+@keyframes confetti-fall-c {
+    0%   { transform: translateY(0)                   translateX(0)     rotate(45deg)   }
+    25%  { transform: translateY(25cqh)               translateX(55px)  rotate(45deg)   }
+    50%  { transform: translateY(50cqh)               translateX(-20px) rotate(45deg)   }
+    75%  { transform: translateY(75cqh)               translateX(65px)  rotate(45deg)   }
+    100% { transform: translateY(calc(100cqh + 10px)) translateX(25px)  rotate(45deg)   }
+}
+
+@keyframes confetti-fall-d {
+    0%   { transform: translateY(0)                   translateX(0)     rotate(45deg)   }
+    33%  { transform: translateY(33cqh)               translateX(-40px) rotate(45deg)   }
+    67%  { transform: translateY(67cqh)               translateX(-65px) rotate(45deg)   }
+    100% { transform: translateY(calc(100cqh + 10px)) translateX(-30px) rotate(45deg)   }
+}
+
+@keyframes confetti-fall-e {
+    0%   { transform: translateY(0)                   translateX(0)     rotate(45deg)   }
+    15%  { transform: translateY(15cqh)               translateX(45px)  rotate(45deg)   }
+    35%  { transform: translateY(35cqh)               translateX(-35px) rotate(45deg)   }
+    55%  { transform: translateY(55cqh)               translateX(60px)  rotate(45deg)   }
+    75%  { transform: translateY(75cqh)               translateX(-45px) rotate(45deg)   }
+    100% { transform: translateY(calc(100cqh + 10px)) translateX(20px)  rotate(45deg)   }
+}
+
+@keyframes confetti-fall-f {
+    0%   { transform: translateY(0)                   translateX(0)     rotate(45deg)   }
+    35%  { transform: translateY(35cqh)               translateX(-55px) rotate(45deg)   }
+    65%  { transform: translateY(65cqh)               translateX(20px)  rotate(45deg)   }
+    85%  { transform: translateY(85cqh)               translateX(-40px) rotate(45deg)   }
+    100% { transform: translateY(calc(100cqh + 10px)) translateX(-25px) rotate(45deg)   }
+}
+
+/* Base sizing for all confetti pieces */
+.layer.cp-0,  .layer.cp-1,  .layer.cp-2,  .layer.cp-3,  .layer.cp-4,
+.layer.cp-5,  .layer.cp-6,  .layer.cp-7,  .layer.cp-8,  .layer.cp-9,
+.layer.cp-10, .layer.cp-11, .layer.cp-12, .layer.cp-13, .layer.cp-14,
+.layer.cp-15, .layer.cp-16, .layer.cp-17, .layer.cp-18, .layer.cp-19,
+.layer.cp-20, .layer.cp-21, .layer.cp-22, .layer.cp-23, .layer.cp-24,
+.layer.cp-25, .layer.cp-26, .layer.cp-27, .layer.cp-28, .layer.cp-29,
+.layer.cp-30, .layer.cp-31, .layer.cp-32, .layer.cp-33, .layer.cp-34 {
+    width: 2cqh;
+    height: 2cqh;
+    top: -2cqh;
+    z-index: 10;
+}
+
+/*
+  Individual pieces.
+  Negative animation-delay offsets each piece's loop phase so they start at
+  different heights — creating the "already falling" / randomised look with
+  no JS.  animation-iteration-count: infinite keeps them looping for as long
+  as the engine holds the animation (controlled by "duration" in the JSON).
+
+  Format: color | left | keyframe  dur    timing  negDelay  infinite
+*/
+.layer.cp-0  { background-color: #00ff00; left:  1%; animation: confetti-fall-a 2.4s linear -0.3s  infinite normal both; }
+.layer.cp-1  { background-color: #ffff00; left:  4%; animation: confetti-fall-b 3.1s linear -1.5s  infinite normal both; }
+.layer.cp-2  { background-color: #ff8800; left:  7%; animation: confetti-fall-c 2.8s linear -0.7s  infinite normal both; }
+.layer.cp-3  { background-color: #ff00ff; left: 10%; animation: confetti-fall-d 3.6s linear -2.1s  infinite normal both; }
+.layer.cp-4  { background-color: #00ffff; left: 13%; animation: confetti-fall-e 2.2s linear -1.0s  infinite normal both; }
+.layer.cp-5  { background-color: #ff0000; left: 16%; animation: confetti-fall-f 4.0s linear -0.4s  infinite normal both; }
+.layer.cp-6  { background-color: #ffffff; left: 19%; animation: confetti-fall-a 3.3s linear -1.8s  infinite normal both; }
+.layer.cp-7  { background-color: #00ff00; left: 22%; animation: confetti-fall-b 2.6s linear -0.9s  infinite normal both; }
+.layer.cp-8  { background-color: #ffff00; left: 25%; animation: confetti-fall-c 3.8s linear -2.4s  infinite normal both; }
+.layer.cp-9  { background-color: #ff8800; left: 28%; animation: confetti-fall-d 2.4s linear -0.6s  infinite normal both; }
+.layer.cp-10 { background-color: #ff00ff; left: 31%; animation: confetti-fall-e 3.1s linear -1.3s  infinite normal both; }
+.layer.cp-11 { background-color: #00ffff; left: 34%; animation: confetti-fall-f 4.2s linear -0.2s  infinite normal both; }
+.layer.cp-12 { background-color: #ff0000; left: 37%; animation: confetti-fall-a 2.7s linear -1.9s  infinite normal both; }
+.layer.cp-13 { background-color: #ffffff; left: 40%; animation: confetti-fall-b 3.4s linear -0.8s  infinite normal both; }
+.layer.cp-14 { background-color: #00ff00; left: 43%; animation: confetti-fall-c 2.2s linear -2.0s  infinite normal both; }
+.layer.cp-15 { background-color: #ffff00; left: 46%; animation: confetti-fall-d 3.8s linear -1.1s  infinite normal both; }
+.layer.cp-16 { background-color: #ff8800; left: 49%; animation: confetti-fall-e 3.0s linear -0.5s  infinite normal both; }
+.layer.cp-17 { background-color: #ff00ff; left: 52%; animation: confetti-fall-f 2.5s linear -2.2s  infinite normal both; }
+.layer.cp-18 { background-color: #00ffff; left: 55%; animation: confetti-fall-a 4.1s linear -0.7s  infinite normal both; }
+.layer.cp-19 { background-color: #ff0000; left: 58%; animation: confetti-fall-b 2.9s linear -1.6s  infinite normal both; }
+.layer.cp-20 { background-color: #ffffff; left: 61%; animation: confetti-fall-c 3.6s linear -0.3s  infinite normal both; }
+.layer.cp-21 { background-color: #00ff00; left: 64%; animation: confetti-fall-d 2.3s linear -2.0s  infinite normal both; }
+.layer.cp-22 { background-color: #ffff00; left: 67%; animation: confetti-fall-e 3.9s linear -1.4s  infinite normal both; }
+.layer.cp-23 { background-color: #ff8800; left: 70%; animation: confetti-fall-f 2.7s linear -0.6s  infinite normal both; }
+.layer.cp-24 { background-color: #ff00ff; left: 73%; animation: confetti-fall-a 3.2s linear -1.2s  infinite normal both; }
+.layer.cp-25 { background-color: #00ffff; left: 76%; animation: confetti-fall-b 4.0s linear -0.9s  infinite normal both; }
+.layer.cp-26 { background-color: #ff0000; left: 79%; animation: confetti-fall-c 2.5s linear -2.3s  infinite normal both; }
+.layer.cp-27 { background-color: #ffffff; left: 82%; animation: confetti-fall-d 3.7s linear -1.7s  infinite normal both; }
+.layer.cp-28 { background-color: #00ff00; left: 85%; animation: confetti-fall-e 2.2s linear -0.4s  infinite normal both; }
+.layer.cp-29 { background-color: #ffff00; left: 88%; animation: confetti-fall-f 3.5s linear -1.0s  infinite normal both; }
+.layer.cp-30 { background-color: #ff8800; left: 91%; animation: confetti-fall-a 2.8s linear -2.6s  infinite normal both; }
+.layer.cp-31 { background-color: #ff00ff; left: 94%; animation: confetti-fall-b 4.1s linear -0.8s  infinite normal both; }
+.layer.cp-32 { background-color: #00ffff; left: 96%; animation: confetti-fall-c 3.3s linear -1.5s  infinite normal both; }
+.layer.cp-33 { background-color: #ff0000; left: 98%; animation: confetti-fall-d 2.6s linear -0.2s  infinite normal both; }
+.layer.cp-34 { background-color: #ffffff; left:  3%; animation: confetti-fall-e 3.0s linear -1.3s  infinite normal both; }
+
+.cp-fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}

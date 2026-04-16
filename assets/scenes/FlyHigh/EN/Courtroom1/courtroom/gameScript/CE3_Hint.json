@@ -1,0 +1,37 @@
+[
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{{i18n:CE3_Hint_0}}"
+    },
+    {
+        "name": "{{i18n:Name_ヤマノ}}",
+        "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{{i18n:CE3_Hint_1}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}{{i18n:CE3_Hint_2}}"
+    },
+    {
+        "name": "{{i18n:Name_ミツルギ}}",
+        "text": "{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Wagging_finger\"]}{courtSprite:prosecution[\"Confident2\"]}{showTextbox}{{i18n:CE3_Hint_3}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2,true}{{i18n:CE3_Hint_4}}"
+    },
+    {
+        "name": "{{i18n:Name_マヨイ}}",
+        "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}{{i18n:CE3_Hint_5}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}{{i18n:CE3_Hint_6}}"
+    },
+    {
+        "name": "{{i18n:Name_ナルホド}}",
+        "text": "{color:lightBlue}{{i18n:CE3_Hint_7}}"
+    },
+    {
+        "text": "{color:lightBlue}{{i18n:CE3_Hint_8}}{returnToCE:0}{sectionEnd}"
+    }
+]

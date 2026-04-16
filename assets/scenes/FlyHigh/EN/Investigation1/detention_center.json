@@ -11,26 +11,6 @@
             "default": "Detention_Center_Examine_Default"
         }
     },
-    "evidence": {
-        "blog_post_charm": {
-            "name": "Blog Post - Glasses Charm",
-            "data": "Type: Evidence\n",
-            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two charms attached.",
-            "image": "assets/img/evidence/Screen.png"
-        },
-        "blog_post_charm_updated": {
-            "name": "Blog Post - Glasses Charm",
-            "data": "Type: Evidence\n",
-            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two charms attached. Stolen approximately 30 minutes after posting.",
-            "image": "assets/img/evidence/Screen.png"
-        },
-        "loud_sound": {
-            "name": "Loud Sound",
-            "data": "Type: Evidence\n",
-            "description": "A loud sound heard by Maggey while she was in the shower at around 9:30 PM on the day of the incident.",
-            "image": "assets/img/evidence/Document.png"
-        }
-    },
     "move": [
         {
             "label": "4th Floor",

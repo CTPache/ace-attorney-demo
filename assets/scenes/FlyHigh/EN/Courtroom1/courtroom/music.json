@@ -1,0 +1,25 @@
+{
+    "music": {
+        "objection": [
+            "assets/audio/bgm/bgm004.m4a",
+            "assets/audio/bgm/bgm004lp.m4a"
+        ],
+        "interrogatory_moderato": [
+            "assets/audio/bgm/bgm010.m4a",
+            "assets/audio/bgm/bgm010lp.m4a"
+        ],
+        "interrogatory_alegro": "assets/audio/bgm/bgm011.m4a",
+        "courtroom": [
+            "assets/audio/bgm/bgm013.m4a",
+            "assets/audio/bgm/bgm013lp.m4a"
+        ],
+        "lobby": [
+            "assets/audio/bgm/bgm008.m4a",
+            "assets/audio/bgm/bgm008lp.m4a"
+        ],
+        "tension": [
+            "assets/audio/bgm/bgm018.m4a",
+            "assets/audio/bgm/bgm018lp.m4a"
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "layers": [
+        "speech-bubble"
+    ],
+    "animationCss": "SpeechBubble.css",
+    "images": [
+        "HoldIt.png"
+    ],
+    "timeline": {
+        "0": {
+            "image": "img/sprites/HoldIt_JP.webp",
+            "targetId": "speech-bubble",
+            "class": "speech-bubble-pop",
+            "duration": 620
+        }
+    }
+}

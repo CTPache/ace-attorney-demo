@@ -357,6 +357,14 @@
     height: 3cqh;
 }
 
+.single-screen-mode #topic-menu {
+    justify-content: flex-start;
+}
+
+.single-screen-mode #topic-menu .options-timer {
+    margin-top: 1cqh;
+}
+
 .single-screen-mode #ce-controls {
     z-index: var(--z-bottom-controls);
     display: flex;
@@ -376,12 +384,16 @@
 }
 
 .single-screen-mode .ce-floating-btn {
-    width: 10cqw;
+    min-width: 16cqh;
     height: 8cqh;
     margin: 1cqh;
     opacity: 0.85 !important;
     font-size: 2.5cqh !important;
     pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .single-screen-mode .ce-arrow,

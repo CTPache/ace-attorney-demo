@@ -1,4 +1,4 @@
-﻿{
+{
     "initialSection": "Floor4_Init",
     "actions": {
         "move": true,
@@ -9,14 +9,6 @@
     "backgrounds": {
         "Ending": "assets/img/CG/Fly High/Ending_Turnabout_Fly_High.png"
     },
-    "evidence": {
-        "mask_photo": {
-            "name": "マスクの証拠写真",
-            "data": "種別：証拠品\n",
-            "description": "被害者が事件時にかぶっていたトノサマンのマスク。眉毛の部分が少しへこんでいる。それ以外の傷はない。チョンマゲも無事。",
-            "image": "assets/img/evidence/Samurai.png"
-        }
-    },
     "investigations": {
         "Floor4": {
             "default": "Floor4_Examine_Default",
@@ -25,7 +17,7 @@
     },
     "move": [
         {
-            "label": "Event Hall",
+            "label": "イベントホール",
             "target": "Crime_Scene_Init",
             "preview": "Crime_Scene",
             "json": "assets/scenes/FlyHigh/Investigation1/crime_scene.json"
@@ -70,15 +62,15 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{sprite:Gumshoe[\"LookingAway\"]}犬も歩けば棒に当たるって言うッスが ・・・・ 。"
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}犬も歩けば棒に当たるって言うッスが　・・・・　。"
             },
             {
                 "name": "イトノコ",
-                "text": "マコくんが歩けば災いに巻き込まれるって{nl}いうくらい、理不尽な目にばかり ・・・・ 。"
+                "text": "マコくんが歩けば災いに巻き込まれるって{nl}いうくらい、理不尽な目にばかり　・・・・　。"
             },
             {
                 "name": "イトノコ",
-                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{shake:500}きっと今回もナニかの間違いッス ・・・・ 。{nl}あの子が人殺しをするハズないッスから・・・・ 。"
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{shake:500}きっと今回もナニかの間違いッス　・・・・　。{nl}あの子が人殺しをするハズないッスから・・・・　。"
             },
             {
                 "name": "ナルホド",
@@ -86,7 +78,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}・・・・ あ、そうだ。{nl}ここだけのハナシがあったッス。"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}・・・・　あ、そうだ。{nl}ここだけのハナシがあったッス。"
             },
             {
                 "name": "イトノコ",
@@ -102,11 +94,11 @@
             },
             {
                 "name": "イトノコ",
-                "text": "じつは ・・・・{p:300} 自分もムカシ ・・・・{nl}{sprite:Gumshoe[\"Determined\"]}{playSound:shake}{flash}{shake:500}スーツアクターになりたかったッス。{p:400}"
+                "text": "じつは　・・・・{p:300}　自分もムカシ　・・・・{nl}{sprite:Gumshoe[\"Determined\"]}{playSound:shake}{flash}{shake:500}スーツアクターになりたかったッス。{p:400}"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}（・・・・ど、どうでもいい!）"
+                "text": "{blip:0}{playSound:shake}{flash}{shake:200}{color:lightblue}（・・・・ど、どうでもいい！）"
             },
             {
                 "name": "ナルホド",
@@ -126,11 +118,11 @@
             },
             {
                 "name": "イトノコ",
-                "text": "マスクの眉毛の部分が少しへこんでいる{nl}くらいで、他は傷1つないッス。"
+                "text": "マスクの眉毛の部分が少しへこんでいる{nl}くらいで、他は傷１つないッス。"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0}{color:lightblue}（へこみは眉毛の部分だけ ・・・・ ）"
+                "text": "{blip:0}{color:lightblue}（へこみは眉毛の部分だけ　・・・・　）"
             },
             {
                 "text": "{hideEvidenceIcon}{addEvidence:mask_photo,true}{playSound:evidenceUnlock}{blip:0}{color:lightblue}証拠品《マスクの証拠写真》のデータを{nl}法廷記録に書き込んでください。"
@@ -157,7 +149,7 @@
             },
             {
                 "name": "イトノコ",
-                "text": "いや、どんな人であっても{nl}マコくんが殺しなんかするワケないッス!"
+                "text": "いや、どんな人であっても{nl}マコくんが殺しなんかするワケないッス！"
             },
             {
                 "name": "ナルホド",

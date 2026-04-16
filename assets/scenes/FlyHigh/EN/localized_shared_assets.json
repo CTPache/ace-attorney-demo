@@ -1,7 +1,8 @@
 {
     "backgrounds": {
         "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png",
-        "mayaMove": "assets/img/CG/Maya_Move_EN.png"
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
+        "GameOver": "assets/img/CG/GameOver_EN.webp"
     },
     "profiles": {
         "Kurumi": {
@@ -10,5 +11,67 @@
             "description": "",
             "image": "assets/img/profiles/Kurumi.png"
         }
+    },
+    "evidence": {
+        "badge": {
+            "name": "Attorney's Badge",
+            "data": "Type: Evidence\nOne of my possessions.",
+            "description": "Without this no one would believe I'm a lawyer.",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "autopsy_report": {
+            "name": "Autopsy Report",
+            "data": "Type: Evidence",
+            "description": "Cause of death is a cerebral contusion{nl}resulting from a 4th floor fall.{nl}Estimated time of death is between{nl}{color:red}9:30 PM and 10:30 PM.",
+            "image": "assets/img/evidence/Archive.png"
+        },
+        "blog_post_charm": {
+            "name": "Blog Post - Glasses Charm",
+            "data": "Type: Evidence\n",
+            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two charms attached.",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "blog_post_charm_updated": {
+            "name": "Blog Post - Glasses Charm",
+            "data": "Type: Evidence\n",
+            "description": "Posted at 9:27 PM on the day of the incident. Contains an image of a pair of glasses with two charms attached. Stolen approximately 30 minutes after posting.",
+            "image": "assets/img/evidence/Screen.png"
+        },
+        "loud_sound": {
+            "name": "Loud Sound",
+            "data": "Type: Evidence\n",
+            "description": "A loud sound heard by Maggey while she was in the shower at around 9:30 PM on the day of the incident.",
+            "image": "assets/img/evidence/Document.png"
+        },
+        "loud_sound_updated": {
+            "name": "Loud Sound",
+            "data": "Type: Evidence\n",
+            "description": "Sahwit says the loud sound was from Ms. Nakaki falling, placing it around 10:05 PM.",
+            "image": "assets/img/evidence/Document.png"
+        },
+        "mask_photo": {
+            "name": "Mask Evidence Photo",
+            "data": "Type: Evidence\n",
+            "description": "The Steel Samurai mask the victim was wearing at the time of the incident. The eyebrow area is slightly dented. There is no other damage. The topknot is also intact.",
+            "image": "assets/img/evidence/Samurai.png"
+        },
+        "accessory": {
+            "name": "Accessory",
+            "data": "Type: Evidence",
+            "description": "While examining the murder scene, it seems to be some kind of accessory that Sahwit dropped.",
+            "image": "assets/img/evidence/Blue_Badger.png"
+        },
+        "maggey_glasses": {
+            "name": "",
+            "data": "",
+            "description": "",
+            "image": "assets/img/evidence/Glasses.png"
+        }
+    },
+    "sounds": {
+        "PhoenixObjection": "assets/audio/se/se027.m4a",
+        "PhoenixHoldIt": "assets/audio/se/se01d.m4a",
+        "PhoenixTakeThat": "assets/audio/se/se00d.m4a",
+        "EdgeworthObjection": "assets/audio/se/se00e.m4a"
     }
 }

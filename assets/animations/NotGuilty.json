@@ -1,0 +1,387 @@
+{
+    "layers": [
+        "guilty-1",
+        "guilty-2",
+        "guilty-3",
+        "guilty-4",
+        "guilty-5",
+        "guilty-6",
+        "guilty-7",
+        "guilty-8",
+        "guilty-9"
+    ],
+    "animationCss": "NotGuilty.css",
+    "images": [
+        "NotGuilty.png"
+    ],
+    "timeline": {
+        "0": {
+            "image": "img/sprites/NotGuilty.png",
+            "targetId": "guilty-1",
+            "class": "guilty-1",
+            "duration": 600
+        },
+        "40": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 600
+            }
+        ],
+        "80": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "sound": "audio/se/se02c.m4a",
+                "duration": 600
+            }
+        ],
+        "680": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {"duration": 1000}
+        ],
+        "780": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-4",
+                "duration": 400
+            }
+        ],
+        "820": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-4",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-5",
+                "duration": 400
+            }
+        ],
+        "860": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-4",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-5",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-6",
+                "class": "guilty-6",
+                "duration": 400
+            }
+        ],
+        "900": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-4",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-5",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-6",
+                "class": "guilty-6",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-7",
+                "class": "guilty-7",
+                "duration": 400
+            }
+        ],
+        "940": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-4",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-5",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-6",
+                "class": "guilty-6",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-7",
+                "class": "guilty-7",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-8",
+                "class": "guilty-8",
+                "duration": 400
+            }
+        ],
+        "980": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-4",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-5",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-6",
+                "class": "guilty-6",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-7",
+                "class": "guilty-7",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-8",
+                "class": "guilty-8",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-9",
+                "class": "guilty-9",
+                "sound": "audio/se/se02c.m4a",
+                "duration": 400
+            }
+        ],
+        "1020": [
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-1",
+                "class": "guilty-1",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-2",
+                "class": "guilty-2",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-3",
+                "class": "guilty-3",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-4",
+                "class": "guilty-4",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-5",
+                "class": "guilty-5",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-6",
+                "class": "guilty-6",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-7",
+                "class": "guilty-7",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-8",
+                "class": "guilty-8",
+                "duration": 0
+            },
+            {
+                "image": "img/sprites/NotGuilty.png",
+                "targetId": "guilty-9",
+                "class": "guilty-9",
+                "duration": 0
+            },
+            {
+                "duration": 2000
+            }
+        ]
+    }
+}

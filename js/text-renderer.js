@@ -155,11 +155,47 @@ function typeWriter(text) {
  * Returns 'STOP' if execution should stop (game end).
  * Returns 'UNHANDLED' if the segment requires specific timing/flow logic.
  */
+function shouldPreserveBackgroundForCourtView(startIndex) {
+    if (!Array.isArray(segments)) return false;
+
+    for (let i = startIndex + 1; i < segments.length; i++) {
+        const nextSegment = segments[i];
+        if (!nextSegment) continue;
+
+        if (nextSegment.type === 'bg' || nextSegment.type === 'fadeBg') {
+            return true;
+        }
+
+        if ([
+            'text',
+            'pause',
+            'flash',
+            'jump',
+            'jumpIf',
+            'option',
+            'startCE',
+            'returnToCE',
+            'endCE'
+        ].includes(nextSegment.type)) {
+            break;
+        }
+    }
+
+    return false;
+}
+
 function processCommonSegment(segment) {
-    // Try delegated script actions first
-    const actionResult = executeScriptAction(segment);
-    if (actionResult === 'STOP') return 'STOP';
-    if (actionResult === true) return 'CONTINUE';
+    if (segment && segment.type === 'courtView') {
+        segment.preserveBackground = shouldPreserveBackgroundForCourtView(segmentIndex);
+    }
+
+    // Let timed courtroom sprite swaps be handled by the renderer loop so
+    // `time`, `sound`, and `shake` metadata behaves like regular sprite tags.
+    if (segment.type !== 'courtSprite') {
+        const actionResult = executeScriptAction(segment);
+        if (actionResult === 'STOP') return 'STOP';
+        if (actionResult === true) return 'CONTINUE';
+    }
 
     // Handle Renderer-specific segments
     switch (segment.type) {
@@ -205,12 +241,13 @@ function isFadeSegment(segment) {
 function processFadeBatch() {
     let i = segmentIndex;
     let maxWait = 0;
+    const shouldSkipFadeDurations = typeof isFastForwarding !== 'undefined' && !!isFastForwarding;
 
     while (i < segments.length && isFadeSegment(segments[i])) {
         const segment = segments[i];
 
         if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
-            const charFadeDuration = segment.duration || 1000;
+            const charFadeDuration = shouldSkipFadeDurations ? 0 : (segment.duration || 1000);
             const isFadeIn = segment.type === 'fadeIn';
             let handledCourt = false;
 
@@ -249,44 +286,50 @@ function processFadeBatch() {
             }
             maxWait = Math.max(maxWait, charFadeDuration);
         } else if (segment.type === 'fadeBg') {
+            const bgFadeDuration = shouldSkipFadeDurations ? 0 : (segment.duration || 400);
             if (window.fadeBackground) {
-                window.fadeBackground(segment.bgName, segment.duration);
-                maxWait = Math.max(maxWait, (segment.duration || 400) * 2);
+                window.fadeBackground(segment.bgName, bgFadeDuration);
+                maxWait = Math.max(maxWait, bgFadeDuration * 2);
             } else {
                 changeBackground(segment.bgName);
             }
         } else if (segment.type === 'fadeOutBg') {
+            const bgFadeDuration = shouldSkipFadeDurations ? 0 : (segment.duration || 400);
             if (window.fadeOutBackground) {
-                window.fadeOutBackground(segment.duration);
-                maxWait = Math.max(maxWait, segment.duration || 400);
+                window.fadeOutBackground(bgFadeDuration);
+                maxWait = Math.max(maxWait, bgFadeDuration);
             } else if (typeof backgroundElement !== 'undefined' && backgroundElement) {
                 backgroundElement.style.opacity = '0';
             }
         } else if (segment.type === 'fadeInBg') {
+            const bgFadeDuration = shouldSkipFadeDurations ? 0 : (segment.duration || 400);
             if (window.fadeInBackground) {
-                window.fadeInBackground(segment.duration);
-                maxWait = Math.max(maxWait, segment.duration || 400);
+                window.fadeInBackground(bgFadeDuration);
+                maxWait = Math.max(maxWait, bgFadeDuration);
             } else if (typeof backgroundElement !== 'undefined' && backgroundElement) {
                 backgroundElement.style.opacity = '1';
             }
         } else if (segment.type === 'fadeFg') {
+            const fgFadeDuration = shouldSkipFadeDurations ? 0 : (segment.duration || 400);
             if (window.fadeForeground) {
-                window.fadeForeground(segment.fgName, segment.duration);
-                maxWait = Math.max(maxWait, (segment.duration || 400) * 2);
+                window.fadeForeground(segment.fgName, fgFadeDuration);
+                maxWait = Math.max(maxWait, fgFadeDuration * 2);
             } else {
                 changeForeground(segment.fgName);
             }
         } else if (segment.type === 'fadeOutFg') {
+            const fgFadeDuration = shouldSkipFadeDurations ? 0 : (segment.duration || 400);
             if (window.fadeOutForeground) {
-                window.fadeOutForeground(segment.duration);
-                maxWait = Math.max(maxWait, segment.duration || 400);
+                window.fadeOutForeground(fgFadeDuration);
+                maxWait = Math.max(maxWait, fgFadeDuration);
             } else if (typeof foregroundElement !== 'undefined' && foregroundElement) {
                 foregroundElement.style.opacity = '0';
             }
         } else if (segment.type === 'fadeInFg') {
+            const fgFadeDuration = shouldSkipFadeDurations ? 0 : (segment.duration || 400);
             if (window.fadeInForeground) {
-                window.fadeInForeground(segment.duration);
-                maxWait = Math.max(maxWait, segment.duration || 400);
+                window.fadeInForeground(fgFadeDuration);
+                maxWait = Math.max(maxWait, fgFadeDuration);
             } else if (typeof foregroundElement !== 'undefined' && foregroundElement) {
                 foregroundElement.style.opacity = '1';
             }
@@ -432,12 +475,21 @@ function processNextChar() {
         segmentIndex++;
         typingInterval = setTimeout(processNextChar, 200);
     } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
-        character.style.transition = "none";
         const isVisible = (segment.type === 'showCharacter');
-        character.style.opacity = isVisible ? 1 : 0;
+        let handledCourt = false;
+
+        if (typeof window.setCurrentCourtSpriteContainerVisibility === 'function') {
+            handledCourt = window.setCurrentCourtSpriteContainerVisibility(isVisible);
+        }
+
+        if (!handledCourt) {
+            character.style.transition = "none";
+            character.style.opacity = isVisible ? 1 : 0;
+            void character.offsetWidth;
+            character.style.transition = "";
+        }
+
         characterIsVisible = isVisible;
-        void character.offsetWidth;
-        character.style.transition = "";
         segmentIndex++;
         processNextChar();
     } else if (segment.type === 'showTextbox' || segment.type === 'hideTextbox') {
@@ -455,11 +507,27 @@ function processNextChar() {
         changeSprite(segment.charName, segment.spriteKey);
         const charData = characters[segment.charName];
         const animData = charData ? charData[segment.spriteKey] : null;
-        if (animData && animData.time) {
+        const animDuration = Number(animData && animData.time);
+        if (Number.isFinite(animDuration) && animDuration > 0) {
             scheduleSpriteShakeEvents(animData);
             scheduleSpriteSoundEvents(animData);
             segmentIndex++;
-            typingInterval = setTimeout(processNextChar, animData.time);
+            typingInterval = setTimeout(processNextChar, animDuration);
+        } else {
+            segmentIndex++;
+            processNextChar();
+        }
+    } else if (segment.type === 'courtSprite') {
+        const animData = window.setCourtSlotSprite
+            ? window.setCourtSlotSprite(segment.slot, segment.emotion)
+            : null;
+        const animDuration = Number(animData && animData.time);
+
+        if (Number.isFinite(animDuration) && animDuration > 0) {
+            scheduleSpriteShakeEvents(animData);
+            scheduleSpriteSoundEvents(animData);
+            segmentIndex++;
+            typingInterval = setTimeout(processNextChar, animDuration);
         } else {
             segmentIndex++;
             processNextChar();
@@ -524,7 +592,7 @@ function processNextChar() {
         }
         segmentIndex++;
         typingInterval = setTimeout(processNextChar, dur);
-    } else if (segment.type === 'jump' || segment.type === 'jumpIf' || segment.type === 'option') {
+    } else if (segment.type === 'jump' || segment.type === 'jumpIf' || segment.type === 'option' || segment.type === 'present') {
         if (!handleFlowControl(segment)) {
             segmentIndex++;
             processNextChar();
@@ -589,6 +657,19 @@ function finishTyping() {
     isWaitingForAnimation = false;
     completeActiveCharacterFadeInstant();
 
+    if (typeof window.completePendingVisualTransitions === 'function') {
+        window.completePendingVisualTransitions();
+    }
+    if (typeof window.completeActiveVisualOpacityTransitionsInstant === 'function') {
+        window.completeActiveVisualOpacityTransitionsInstant();
+    }
+    if (typeof window.completeActiveCourtroomFadeInstant === 'function') {
+        window.completeActiveCourtroomFadeInstant();
+    }
+    if (typeof window.completeActiveBgmFadeInstant === 'function') {
+        window.completeActiveBgmFadeInstant();
+    }
+
     if (typeof window.snapBackgroundToPositionInstant === 'function') {
         window.snapBackgroundToPositionInstant();
     }
@@ -635,14 +716,28 @@ function finishTyping() {
 
             changeSprite(segment.charName, segment.spriteKey);
             segmentIndex++;
+        } else if (segment.type === 'courtSprite') {
+            if (window.setCourtSlotSprite) {
+                window.setCourtSlotSprite(segment.slot, segment.emotion);
+            }
+            segmentIndex++;
         } else if (segment.type === 'showCharacter' || segment.type === 'hideCharacter') {
             // Instant toggle
-            character.style.transition = "none";
             const isVisible = (segment.type === 'showCharacter');
-            character.style.opacity = isVisible ? 1 : 0;
+            let handledCourt = false;
+
+            if (typeof window.setCurrentCourtSpriteContainerVisibility === 'function') {
+                handledCourt = window.setCurrentCourtSpriteContainerVisibility(isVisible);
+            }
+
+            if (!handledCourt) {
+                character.style.transition = "none";
+                character.style.opacity = isVisible ? 1 : 0;
+                void character.offsetWidth;
+                character.style.transition = "";
+            }
+
             characterIsVisible = isVisible;
-            void character.offsetWidth;
-            character.style.transition = "";
             activeCharacterFadeTarget = null;
             segmentIndex++;
         } else if (segment.type === 'showTextbox' || segment.type === 'hideTextbox') {
@@ -695,8 +790,11 @@ function finishTyping() {
 
 function updateDialogue(line) {
     if (textContent.textContent.trim().length > 0) {
+        const currentDisplayedName = nameTag
+            ? ((nameTag.querySelector('.name-tag-text')?.textContent) || nameTag.textContent || '').trim()
+            : '';
         window.lastLineHTML = textContent.innerHTML;
-        window.lastLineName = currentCharacterName;
+        window.lastLineName = currentDisplayedName || '';
     }
 
     if (typeof logDialogueHistory === 'function') {
@@ -708,7 +806,6 @@ function updateDialogue(line) {
         nameTag.style.display = '';
         nameTag.style.opacity = '1';
         textboxContainer.classList.remove('no-name');
-        currentCharacterName = line.name; // Track current character
         fitNameTagText();
         requestAnimationFrame(fitNameTagText);
     } else {
@@ -716,7 +813,6 @@ function updateDialogue(line) {
         nameTag.style.opacity = '';
         nameTag.style.setProperty('--name-tag-text-scale-x', '1');
         textboxContainer.classList.add('no-name');
-        currentCharacterName = null;
     }
     // Reset Text Color to default
     textContent.style.color = "white";

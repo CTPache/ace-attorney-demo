@@ -24,7 +24,8 @@ function bindReturnToTitleEvents() {
 bindReturnToTitleEvents();
 window.bindReturnToTitleEvents = bindReturnToTitleEvents;
 
-window.returnToTitle = function() {
+window.returnToTitle = function(message) {
+    if (message) alert(message);
     // 1. Stop all timers (auto-play, typing, fast-forward)
     if (typeof window.clearAutoPlayTimer === 'function') window.clearAutoPlayTimer();
     if (typeof typingInterval !== 'undefined' && typingInterval) { clearTimeout(typingInterval); typingInterval = null; }
