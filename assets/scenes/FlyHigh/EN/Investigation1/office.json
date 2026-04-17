@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Office_Init",
     "actions": {
         "move": true,
@@ -69,7 +69,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Samurai2}{showTextbox}She was the suit actor for the Steel Samurai show,{nl}and she was extremely devoted to it..."
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Samurai2}{showTextbox}She was the stunt performer for the Steel Samurai show,{nl}and she was extremely devoted to it..."
             },
             {
                 "name": "Sahwit",
@@ -77,7 +77,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}I never imagined...{nl}that her passion would end up angering the security guard, Ms. Maggey Byrde."
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}I never imagined...{nl}that her passion would end up angering the security guard,{p:150} Ms. Maggey Byrde."
             },
             {
                 "name": "Phoenix",
@@ -85,11 +85,11 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}Well, from a security guard's perspective, having someone practicing inside the facility after hours is quite the nuisance."
+                "text": "{blip:1,true}Well,{p:150} from a security guard's perspective,{p:150} having someone practicing inside the facility after hours is quite the nuisance."
             },
             {
                 "name": "Sahwit",
-                "text": "She often argued with Ms. Nakaki,{nl}telling her things like, \"Please just go home early.\""
+                "text": "She often argued with Ms. Nakaki,{nl}telling her things like,{p:150} \"Please just go home early.\""
             },
             {
                 "name": "Sahwit",
@@ -97,11 +97,11 @@
             },
             {
                 "name": "Sahwit",
-                "text": "So I thought it over, and decided to have{nl}the two of them sit down and talk it out."
+                "text": "So I thought it over,{p:150} and decided to have{nl}the two of them sit down and talk it out."
             },
             {
                 "name": "Sahwit",
-                "text": "However, just before that discussion could happen,{nl}that terrible incident occurred..."
+                "text": "However,{p:150} just before that discussion could happen,{nl}that terrible incident occurred..."
             },
             {
                 "name": "Phoenix",
@@ -109,7 +109,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}On the day of the incident, I told both of them to come{nl}to the 4th floor of the event hall at 10:00 PM."
+                "text": "{blip:1,true}On the day of the incident,{p:150} I told both of them to come{nl}to the 4th floor of the event hall at 10:00 PM."
             },
             {
                 "name": "Phoenix",
@@ -121,15 +121,15 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Then Ms. Nakaki chimed in, saying she wanted{nl}to practice for the show during that time..."
+                "text": "Then Ms. Nakaki chimed in,{p:150} saying she wanted{nl}to practice for the show during that time..."
             },
             {
                 "name": "Sahwit",
-                "text": "I, as the chief, was taking care of various miscellaneous administrative tasks..."
+                "text": "I,{p:150} as the chief,{p:150} was taking care of various miscellaneous administrative tasks..."
             },
             {
                 "name": "Sahwit",
-                "text": "It was about fifteen minutes after closing, I suppose.{nl}I went down to the first-floor stage and waited for the time to come."
+                "text": "It was about fifteen minutes after closing,{p:150} I suppose.{nl}I went down to the first-floor stage and waited for the time to come."
             },
             {
                 "name": "Phoenix",
@@ -137,15 +137,15 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}Then, I heard the two of them{nl}arguing from the floor above."
+                "text": "{blip:1,true}Then,{p:150} I heard the two of them{nl}arguing from the floor above."
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}When I looked up, I saw Ms. Byrde{nl}push Ms. Nakaki down from the 4th floor."
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}When I looked up,{p:150} I saw Ms. Byrde{nl}push Ms. Nakaki down from the 4th floor."
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Crime_Scene}{showTextbox}And then, Ms. Nakaki fell right before my very eyes.{p:500}{nl}She never woke up again..."
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Crime_Scene}{showTextbox}And then,{p:150} Ms. Nakaki fell right before my very eyes.{p:500}{nl}She never woke up again..."
             },
             {
                 "name": "Sahwit",
@@ -159,7 +159,7 @@
         "Office_evidence_loud_sound": [
             {
                 "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}A sound, you say?"
+                "text": "{sprite:Sahwit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}A sound,{p:150} you say?"
             },
             {
                 "name": "Phoenix",
@@ -167,7 +167,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Nervous\"]}{blip:1,true}Ah.{p:500}{nl}If you mean that, I clearly heard the sound of Ms. Nakaki falling."
+                "text": "{sprite:Sahwit[\"Nervous\"]}{blip:1,true}Ah.{p:500}{nl}If you mean that,{p:150} I clearly heard the sound of Ms. Nakaki falling."
             },
             {
                 "name": "Sahwit",
@@ -186,7 +186,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}...Yes.{nl}That is all."
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}...{p:200}Yes.{nl}That is all."
             },
             {
                 "name": "Phoenix",
@@ -194,7 +194,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Once I have enough information, I'll head to court.{nl}I'll bring the truth to light there!){setState:office_done,true}{jump:Office_Default}{sectionEnd}"
+                "text": "{color:lightblue}(Once I have enough information,{p:150} I'll head to court.{nl}I'll bring the truth to light there!){setState:office_done,true}{jump:Office_Default}{sectionEnd}"
             }
         ],
         "Office_evidence_default": [

@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Detention_Center_Init",
     "actions": {
         "move": true,
@@ -50,7 +50,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...{p:800}{nl}To be honest, I've been turning it over in my head,{p:160} sir.{p:260}"
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...{p:800}{nl}To be honest,{p:150} I've been turning it over in my head,{p:160} sir.{p:260}"
             },
             {
                 "name": "Maggey",
@@ -66,7 +66,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Yes, sir!{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]} That day,{p:140} Ms. Nakaki was on the fourth floor practicing for the Steel Samurai Show.{p:250}"
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Yes,{p:150} sir!{p:180}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]} That day,{p:140} Ms. Nakaki was on the fourth floor practicing for the Steel Samurai Show.{p:250}"
             },
             {
                 "name": "Maggey",
@@ -74,7 +74,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Determined\"]}Honestly,{p:120} from a security guard's point of view, she was a handful,{p:160} sir.{p:220} We argued over it again and again because I kept telling her to stop.{p:220}"
+                "text": "{sprite:Maggey[\"Determined\"]}Honestly,{p:120} from a security guard's point of view,{p:150} she was a handful,{p:160} sir.{p:220} We argued over it again and again because I kept telling her to stop.{p:220}"
             },
             {
                 "name": "Maggey",
@@ -98,7 +98,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{blip:2}Yes, sir!"
+                "text": "{blip:2}Yes,{p:150} sir!"
             },
             {
                 "name": "Maggey",
@@ -109,7 +109,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{blip:0,false}{color:lightblue}(What a creepy blog title...{nl} Ah, this must be it.)"
+                "text": "{showTextbox}{blip:0,false}{color:lightblue}(What a creepy blog title...{nl} Ah,{p:150} this must be it.)"
             },
             {
                 "text": "{addEvidence:blog_post_charm,true}{playSound:evidenceUnlock}{color:lightblue}\"Blog Post - Glasses Charm\" added to the Court Record."
@@ -143,11 +143,11 @@
             },
             {
                 "name": "Maggey",
-                "text": "{blip:2}Exactly!{p:140}{nl}I walked toward the railing in the dark, scared out of my mind.{p:220}"
+                "text": "{blip:2}Exactly!{p:140}{nl}I walked toward the railing in the dark,{p:150} scared out of my mind.{p:220}"
             },
             {
                 "name": "Maggey",
-                "text": "Well,{p:120} really, I only made out the shape of someone sitting on the railing...{p:340}"
+                "text": "Well,{p:120} really,{p:150} I only made out the shape of someone sitting on the railing...{p:340}"
             },
             {
                 "name": "Maggey",
@@ -155,7 +155,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{playSound:shake}{shake:500}And then, all of a sudden, I heard something crash down below..."
+                "text": "{playSound:shake}{shake:500}And then,{p:150} all of a sudden,{p:150} I heard something crash down below..."
             },
             {
                 "name": "Phoenix",
@@ -163,11 +163,11 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Something else that stood out...{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}Oh, yes,{p:100} sir!{p:140} It happened when I got into the shower.{p:220}"
+                "text": "{sprite:Maggey[\"Normal\"]}{blip:2}Something else that stood out...{p:280}{nl}{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}Oh,{p:150} yes,{p:100} sir!{p:140} It happened when I got into the shower.{p:220}"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}{blip:0,false}(If she was just starting her shower, that puts it at around 9:30 PM.)"
+                "text": "{color:lightblue}{blip:0,false}(If she was just starting her shower,{p:150} that puts it at around 9:30 PM.)"
             },
             {
                 "name": "Maggey",
@@ -182,7 +182,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{color:white}{sprite:Maggey[\"Determined\"]}{blip:2}Mr. Wright...{p:260}{nl}I really messed up,{p:140} didn't I?{p:220}{nl}They're going to find me guilty,{p:150} aren't they...?{p:320}"
+                "text": "{color:white}{sprite:Maggey[\"Determined\"]}{blip:2}Mr. Wright...{p:260}{nl}I really messed up,{p:140} didn't I?{p:220}{nl}They're going to find me guilty,{p:150} aren't they...{p:200}?{p:320}"
             },
             {
                 "name": "Phoenix",

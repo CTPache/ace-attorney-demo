@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Crime_Scene_Init",
     "actions": {
         "move": true,
@@ -83,7 +83,7 @@
     },
     "options": {
         "BodyPosition": {
-            "text": "If the back of the head took the fatal blow, the body should be...",
+            "text": "If the back of the head took the fatal blow,{p:150} the body should be...",
             "options": [
                 {
                     "text": "Be lying face up",
@@ -142,35 +142,35 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}This is the murder scene, pal.{nl}It's dark because we're past closing."
+                "text": "{flash}{playSound:damage2}{sprite:Gumshoe[\"Determined\"]}{startBGM:investigation}{blip:1}This is the murder scene,{p:150} pal.{nl}It's dark because we're past closing."
             },
             {
                 "name": "Gumshoe",
-                "text": "Mr. Sahwit, the one who found the body, was standing right here.{nl}On the first floor of the event hall, pal."
+                "text": "Mr. Sahwit,{p:150} the one who found the body,{p:150} was standing right here.{nl}On the first floor of the event hall,{p:150} pal."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Normal\"]}Take a look up, pal."
+                "text": "{sprite:Gumshoe[\"Normal\"]}Take a look up,{p:150} pal."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}See up there? The upper levels form an atrium."
+                "text": "{hideTextbox}{fadeOutCharacter}{bgMove:top}{p:500}{showTextbox}See up there?{p:200} The upper levels form an atrium."
             },
             {
                 "name": "Gumshoe",
-                "text": "The victim, Ms. Nakaki, was reportedly up there on the 4th floor railing, pal."
+                "text": "The victim,{p:150} Ms. Nakaki,{p:150} was reportedly up there on the 4th floor railing,{p:150} pal."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(That's a long drop... but I can still see it clearly from here.)"
+                "text": "{blip:0,false}{color:lightblue}(That's a long drop...{p:200} but I can still see it clearly from here.)"
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1}The current theory is that Maggey pushed her from up there...{nl}and she landed right beneath this railing, pal."
+                "text": "{color:white}{hideTextbox}{bgMove:bottom}{p:100}{showTextbox}{blip:1}The current theory is that Maggey pushed her from up there...{nl}and she landed right beneath this railing,{p:150} pal."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}And this is just my read on it, pal, but...{nl}time of death and discovery might be the same."
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Normal\"]}And this is just my read on it,{p:150} pal,{p:150} but...{nl}time of death and discovery might be the same."
             },
             {
                 "name": "Phoenix",
@@ -178,11 +178,11 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1}The victim fell from the event hall's 4th floor...{nl}and landed right in front of the man who found her, pal."
+                "text": "{blip:1}The victim fell from the event hall's 4th floor...{nl}and landed right in front of the man who found her,{p:150} pal."
             },
             {
                 "name": "Gumshoe",
-                "text": "Cause of death was blunt-force trauma to the back of the head from the fall, A fatal contusion...{nl}Looks like death was instant, right here, pal."
+                "text": "Cause of death was blunt-force trauma to the back of the head from the fall,{p:150} A fatal contusion...{nl}Looks like death was instant,{p:150} right here,{p:150} pal."
             },
             {
                 "name": "Phoenix",
@@ -202,19 +202,19 @@
             },
             {
                 "name": "Phoenix",
-                "text": "Huh...?{flash}{playSound:question1} The victim died from a severe blow to the back of the head, right?"
+                "text": "Huh...{p:200}?{flash}{playSound:question1} The victim died from a severe blow to the back of the head,{p:150} right?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}{blip:1,true}{showTextbox}That's right, pal.{nl}Is something wrong?"
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{sprite:Gumshoe[\"LookingAway\"]}{blip:1,true}{showTextbox}That's right,{p:150} pal.{nl}Is something wrong?"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Right now, the body is lying face down."
+                "text": "{blip:0,false}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Right now,{p:150} the body is lying face down."
             },
             {
                 "name": "Phoenix",
-                "text": "But then, logically, a body with that kind of injury should be...{jump:Body_Lying_Question}{sectionEnd}"
+                "text": "But then,{p:150} logically,{p:150} a body with that kind of injury should be...{jump:Body_Lying_Question}{sectionEnd}"
             }
         ],
         "Body_Lying_Question": [
@@ -225,27 +225,27 @@
         "Body_Lying_Face_Down": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... that doesn't line up if the back of her head took the blow.){jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No...{p:200} that doesn't line up if the back of her head took the blow.){jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_On_Side": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No... that doesn't fit either.){jump:Body_Lying_Question}"
+                "text": "{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:0,false}{color:lightblue}(No...{p:200} that doesn't fit either.){jump:Body_Lying_Question}"
             }
         ],
         "Body_Lying_Face_Up": [
             {
                 "name": "Phoenix",
-                "text": "{color:white}{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Then she should be lying face-up, shouldn't she?"
+                "text": "{color:white}{showCharacter}{sprite:Gumshoe[\"Normal\"]}{blip:1,false}Then she should be lying face-up,{p:150} shouldn't she?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{blip:1,true}{showTextbox}Ah...{nl}Now that you mention it, that's true, pal."
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{blip:1,true}{showTextbox}Ah...{nl}Now that you mention it,{p:150} that's true,{p:150} pal."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Thinking\"]}But weirdly enough, she's got cuts and bruises on her face too, not just the back of her head, pal."
+                "text": "{sprite:Gumshoe[\"Thinking\"]}But weirdly enough,{p:150} she's got cuts and bruises on her face too,{p:150} not just the back of her head,{p:150} pal."
             },
             {
                 "name": "Phoenix",
@@ -253,7 +253,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}That blood on the floor's seeping out through the gaps in the mask, pal."
+                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}That blood on the floor's seeping out through the gaps in the mask,{p:150} pal."
             },
             {
                 "text": "{setState:body_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -262,11 +262,11 @@
         "Examine_Background": [
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{hideCharacter}{blip:1}We checked every floor and even the ceiling, pal.{nl}No traps. No gimmicks."
+                "text": "{color:white}{hideCharacter}{blip:1}We checked every floor and even the ceiling,{p:150} pal.{nl}No traps. No gimmicks."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(So... she really was just pushed.)"
+                "text": "{blip:0,false}{color:lightblue}(So...{p:200} she really was just pushed.)"
             },
             {
                 "text": "{setState:background_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -279,15 +279,15 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}There weren't any, pal.{nl}This place closes at 9 PM."
+                "text": "{blip:1,true}There weren't any,{p:150} pal.{nl}This place closes at 9 PM."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}So, at the time of the incident, it was just the first witness, the victim, and the suspect?"
+                "text": "{blip:1,false}So,{p:150} at the time of the incident,{p:150} it was just the first witness,{p:150} the victim,{p:150} and the suspect?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:0,true}That's right, pal.{nl}And the only security guard on duty was Maggey."
+                "text": "{blip:0,true}That's right,{p:150} pal.{nl}And the only security guard on duty was Maggey."
             },
             {
                 "name": "Phoenix",
@@ -304,7 +304,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "We've confirmed nothing else fell down with the body, pal."
+                "text": "We've confirmed nothing else fell down with the body,{p:150} pal."
             },
             {
                 "text": "{setState:floor_investigated,true}{jump:Body_Examined}{skip:0}{sectionEnd}"
@@ -326,7 +326,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Coming back here still hurts...{nl}As the chief, this is truly heartbreaking."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Stand\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Coming back here still hurts...{nl}As the chief,{p:150} this is truly heartbreaking."
             },
             {
                 "name": "Sahwit",
@@ -334,15 +334,15 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Even now, every hair on my body is standing straight up..."
+                "text": "Even now,{p:150} every hair on my body is standing straight up..."
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Sahwit...{nl}Your hair isn't standing up at all, pal."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Confident\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Mr. Sahwit...{nl}Your hair isn't standing up at all,{p:150} pal."
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Sahwit[\"Damage\"]}{flash}{showTextbox}What?!{skip:100}"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Sahwit[\"Nervous\"]}{hideCharacter}{fadeInCharacter:300}{p:300}{sprite:Sahwit[\"Damage\"]}{flash}{showTextbox}What?{p:200}!{skip:100}"
             },
             {
                 "name": "Sahwit",
@@ -354,7 +354,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(I mean... a toupee probably wouldn't stand on end.)"
+                "text": "{color:lightblue}(I mean...{p:200} a toupee probably wouldn't stand on end.)"
             },
             {
                 "name": "Sahwit",
@@ -366,7 +366,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{fadeOutCharacter:1000}{stopBGM}{p:1400}{showEvidenceIcon:right,accessory}{playSound:question1}{blip:1,false}{showTextbox}Huh...?{nl}There's something on the floor."
+                "text": "{hideTextbox}{fadeOutCharacter:1000}{stopBGM}{p:1400}{showEvidenceIcon:right,accessory}{playSound:question1}{blip:1,false}{showTextbox}Huh...{p:200}?{nl}There's something on the floor."
             },
             {
                 "name": "Phoenix",
@@ -374,7 +374,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}{blip:1,true}{showTextbox}You're right, pal.{p:200}{nl}That wasn't there a minute ago..."
+                "text": "{hideTextbox}{hideEvidenceIcon}{fadeOutCharacter:300}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter:300}{blip:1,true}{showTextbox}You're right,{p:150} pal.{p:200}{nl}That wasn't there a minute ago..."
             },
             {
                 "name": "Phoenix",
@@ -385,11 +385,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(All right, I think that's everything here.)"
+                "text": "{color:lightblue}(All right,{p:150} I think that's everything here.)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Once I've gathered everything I can, it's time for court.{nl}That's where I'll bring the truth to light!)"
+                "text": "{color:lightblue}(Once I've gathered everything I can,{p:150} it's time for court.{nl}That's where I'll bring the truth to light!)"
             },
             {
                 "text": "{setState:crime_scene_done,true}{jump:Crime_Scene_Finish}{skip:0}{sectionEnd}"

@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Intro_Init",
     "actions": {
         "move": true,
@@ -22,7 +22,7 @@
             "file": "assets/video/FlyHighIntro.mp4",
             "script": [
                 {
-                    "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}17 de septiembre, 13:17{nl}Joypolis, sala de eventos Atrium",
+                    "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}17 de septiembre,{p:150} 13:17{nl}Joypolis,{p:150} sala de eventos Atrium",
                     "timestamp": 2000,
                     "duration": 7000
                 },
@@ -33,7 +33,7 @@
                 },
                 {
                     "name": "Samurái",
-                    "text": "{fadeOutBg:0}{flash}{blip:1}¡Allá vamos, Magistrado Malvado!{nl}¡Esto se acaba hoy!",
+                    "text": "{fadeOutBg:0}{flash}{blip:1}¡Allá vamos,{p:150} Magistrado Malvado!{nl}¡Esto se acaba hoy!",
                     "timestamp": 22500
                 },
                 {
@@ -43,7 +43,7 @@
                     "duration": 1800
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 21:01{nl}Joypolis, sala de eventos Atrium - 4.ª planta",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre,{p:150} 21:01{nl}Joypolis,{p:150} sala de eventos Atrium - 4.ª planta",
                     "timestamp": 36000,
                     "duration": 8000
                 },
@@ -59,7 +59,7 @@
                 },
                 {
                     "name": "Kurumi",
-                    "text": "¡Allá vamos, Magistrado Malvado!{nl}¡Esto se acaba hoy!",
+                    "text": "¡Allá vamos,{p:150} Magistrado Malvado!{nl}¡Esto se acaba hoy!",
                     "timestamp": 52500
                 },
                 {
@@ -69,7 +69,7 @@
                     "duration": 3000
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}17 de septiembre, 22:05{nl}Joypolis, sala de eventos Atrium",
+                    "text": "{center}{color:lime}{blip:3}17 de septiembre,{p:150} 22:05{nl}Joypolis,{p:150} sala de eventos Atrium",
                     "timestamp": 64500,
                     "duration": 8000
                 },
@@ -124,7 +124,7 @@
                 "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
             },
             {
-                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}17 de septiembre, 22:34{nl}Joypolis"
+                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}17 de septiembre,{p:150} 22:34{nl}Joypolis"
             },
             {
                 "name": "Phoenix",
@@ -172,7 +172,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{blip:1,true}{color:white}S-Sí, señor..."
+                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{sprite:Gumshoe[\"Normal\"]}{showTextbox}{blip:1,true}{color:white}S-Sí,{p:150} señor..."
             },
             {
                 "name": "Phoenix",
@@ -184,7 +184,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "Trabajaba aquí en Joypolis como especialista para el espectáculo del Samurái de Acero, señor."
+                "text": "Trabajaba aquí en Joypolis como especialista para el espectáculo del Samurái de Acero,{p:150} señor."
             },
             {
                 "name": "Gumshoe",
@@ -200,7 +200,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} que trabajaba aquí a tiempo parcial como guardia de seguridad,{p:200} señor..."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}...{p:200} Maggey Byrde,{p:300} que trabajaba aquí a tiempo parcial como guardia de seguridad,{p:200} señor..."
             },
             {
                 "name": "Phoenix",
@@ -220,7 +220,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}El encargado de la sala de eventos de este parque de atracciones,{nl}Frank Sahwit, señor."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}El encargado de la sala de eventos de este parque de atracciones,{nl}Frank Sahwit,{p:150} señor."
             },
             {
                 "name": "Edgeworth",
@@ -232,11 +232,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{flash}{blip:1,false}{playSound:damage}¡¿Qué?!"
+                "text": "{flash}{blip:1,false}{playSound:damage}¡¿Qué?{p:200}!"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(No, no puedo dejar que me intimide.{nl}{p:300}No importan las pruebas que tengan,{p:200} no puedo perder.)"
+                "text": "{blip:0,false}{color:lightblue}(No,{p:150} no puedo dejar que me intimide.{nl}{p:300}No importan las pruebas que tengan,{p:200} no puedo perder.)"
             },
             {
                 "name": "Phoenix",

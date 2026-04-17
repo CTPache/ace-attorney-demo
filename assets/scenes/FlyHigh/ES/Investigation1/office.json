@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Office_Init",
     "actions": {
         "move": true,
@@ -77,7 +77,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}Nunca imaginé...{nl}que su pasión acabaría enfureciendo a la guardia de seguridad, la señorita Maggey Byrde."
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Byrde_Kurumi}{showTextbox}Nunca imaginé...{nl}que su pasión acabaría enfureciendo a la guardia de seguridad,{p:150} la señorita Maggey Byrde."
             },
             {
                 "name": "Phoenix",
@@ -85,11 +85,11 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}Verá, para un guardia de seguridad, tener a alguien practicando dentro de las instalaciones fuera de horario es todo un incordio."
+                "text": "{blip:1,true}Verá,{p:150} para un guardia de seguridad,{p:150} tener a alguien practicando dentro de las instalaciones fuera de horario es todo un incordio."
             },
             {
                 "name": "Sahwit",
-                "text": "A menudo discutía con la señorita Nakaki,{nl}diciéndole cosas como: \"Por favor, vete a casa pronto\"."
+                "text": "A menudo discutía con la señorita Nakaki,{nl}diciéndole cosas como: \"Por favor,{p:150} vete a casa pronto\"."
             },
             {
                 "name": "Sahwit",
@@ -101,15 +101,15 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Sin embargo, justo antes de que esa charla pudiera tener lugar,{nl}ocurrió ese terrible incidente..."
+                "text": "Sin embargo,{p:150} justo antes de que esa charla pudiera tener lugar,{nl}ocurrió ese terrible incidente..."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}Por favor, cuénteme con detalle qué vio{nl}ese día como primer testigo."
+                "text": "{blip:1,false}Por favor,{p:150} cuénteme con detalle qué vio{nl}ese día como primer testigo."
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}El día del incidente, les dije a ambas que vinieran{nl}a la 4.ª planta de la sala de eventos a las 22:00."
+                "text": "{blip:1,true}El día del incidente,{p:150} les dije a ambas que vinieran{nl}a la 4.ª planta de la sala de eventos a las 22:00."
             },
             {
                 "name": "Phoenix",
@@ -125,7 +125,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Yo, como encargado, me estaba ocupando de diversos papeleos..."
+                "text": "Yo,{p:150} como encargado,{p:150} me estaba ocupando de diversos papeleos..."
             },
             {
                 "name": "Sahwit",
@@ -137,15 +137,15 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}Entonces, las oí a las dos{nl}discutiendo desde la planta de arriba."
+                "text": "{blip:1,true}Entonces,{p:150} las oí a las dos{nl}discutiendo desde la planta de arriba."
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}Cuando miré hacia arriba, vi a la señorita Byrde{nl}empujar a la señorita Nakaki desde la 4.ª planta."
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg}{p:100}{fadeBg:Byrde_Samurai}{showTextbox}Cuando miré hacia arriba,{p:150} vi a la señorita Byrde{nl}empujar a la señorita Nakaki desde la 4.ª planta."
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Crime_Scene}{showTextbox}Y entonces, la señorita Nakaki cayó justo ante mis propios ojos.{p:500}{nl}Y no volvió a despertar nunca..."
+                "text": "{hideTextbox}{fadeOutBg}{p:100}{fadeBg:Crime_Scene}{showTextbox}Y entonces,{p:150} la señorita Nakaki cayó justo ante mis propios ojos.{p:500}{nl}Y no volvió a despertar nunca..."
             },
             {
                 "name": "Sahwit",
@@ -159,7 +159,7 @@
         "Office_evidence_loud_sound": [
             {
                 "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}¿Un sonido, dice?"
+                "text": "{sprite:Sahwit[\"Stand\"]}{blip:1,true}{color:white}{showTextbox}¿Un sonido,{p:150} dice?"
             },
             {
                 "name": "Phoenix",
@@ -167,7 +167,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{sprite:Sahwit[\"Nervous\"]}{blip:1,true}Ah.{p:500}{nl}Si se refiere a eso, escuché claramente el sonido de la caída de la señorita Nakaki."
+                "text": "{sprite:Sahwit[\"Nervous\"]}{blip:1,true}Ah.{p:500}{nl}Si se refiere a eso,{p:150} escuché claramente el sonido de la caída de la señorita Nakaki."
             },
             {
                 "name": "Sahwit",
@@ -186,7 +186,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}... Sí.{nl}Eso es todo."
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}...{p:200} Sí.{nl}Eso es todo."
             },
             {
                 "name": "Phoenix",
@@ -194,7 +194,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Una vez que tenga suficiente información, iré al juzgado.{nl}¡Ahí será donde sacaré la verdad a la luz!){setState:office_done,true}{jump:Office_Default}{sectionEnd}"
+                "text": "{color:lightblue}(Una vez que tenga suficiente información,{p:150} iré al juzgado.{nl}¡Ahí será donde sacaré la verdad a la luz!){setState:office_done,true}{jump:Office_Default}{sectionEnd}"
             }
         ],
         "Office_evidence_default": [

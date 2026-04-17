@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Intro_Holding",
     "actions": {
         "move": false,
@@ -9,7 +9,7 @@
     "options": {
         "CE2_MaskChoice": {
             "name": "ナルホド",
-            "text": "（つまり、こういうコトなんだ！）",
+            "text": "（つまり、{p:150}こういうコトなんだ！）",
             "options": [
                 {
                     "text": "被害者はマスクを着けずに落ちている",
@@ -474,7 +474,7 @@
             "failSequence": "CE_Fail",
             "statements": {
                 "0": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}事件当日、午後１０時にイベントホールの{nl}４階にいるようワタシは２人に言いました。",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}事件当日、{p:150}午後１０時にイベントホールの{nl}４階にいるようワタシは２人に言いました。",
                     "press": "Press_Y1_0"
                 },
                 "1": {
@@ -486,7 +486,7 @@
                     "press": "Press_Y1_2"
                 },
                 "3": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}すると被告人が被害者にためらいもなく{nl}まっすぐ近付き、突き落としたのです！",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}すると被告人が被害者にためらいもなく{nl}まっすぐ近付き、{p:150}突き落としたのです！",
                     "press": "Press_Y1_3",
                     "present": {
                         "blog_post_charm_updated": "CE1_Victory"
@@ -517,11 +517,11 @@
                     "press": "Press_Y2_1"
                 },
                 "2": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{hideCharacter}{blip:1,true}{color:lime}{fadeBg:Byrde_Samurai2}{showTextbox}ほら、見てください。{nl}被告人が手すりに座る被害者を押しています。",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{hideCharacter}{blip:1,true}{color:lime}{fadeBg:Byrde_Samurai2}{showTextbox}ほら、{p:150}見てください。{nl}被告人が手すりに座る被害者を押しています。",
                     "press": "Press_Y2_2"
                 },
                 "3": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{hideCharacter}{blip:1,true}{color:lime}{fadeBg:Byrde_Samurai3}{showTextbox}きっと、この感じでは{nl}被害者は顔から地面に落ちたのでしょうね。",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{hideCharacter}{blip:1,true}{color:lime}{fadeBg:Byrde_Samurai3}{showTextbox}きっと、{p:150}この感じでは{nl}被害者は顔から地面に落ちたのでしょうね。",
                     "press": "Press_Y2_3"
                 },
                 "4": {
@@ -584,7 +584,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{startBGM:lobby,false}{sprite:Maya[\"Normal\"]}{fadeInCharacter}{blip:2}なるほどくん、どんな感じ？{nl}キンチョーしてない？"
+                "text": "{startBGM:lobby,false}{sprite:Maya[\"Normal\"]}{fadeInCharacter}{blip:2}なるほどくん、{p:150}どんな感じ？{nl}キンチョーしてない？"
             },
             {
                 "name": "ナルホド",
@@ -608,7 +608,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0,false}{color:lightblue}（さあ、裁判が始まるぞ。{color:red}【法廷記録】{color:lightblue}を{nl}もう１度確認しておいたほうがいいな）"
+                "text": "{blip:0,false}{color:lightblue}（さあ、{p:150}裁判が始まるぞ。{color:red}【法廷記録】{color:lightblue}を{nl}もう１度確認しておいたほうがいいな）"
             },
             {
                 "text": "{stopBGM:true}{fadeOutBg:600}{fadeOutCharacter:600}{jump:Court_Opening}{sectionEnd}"
@@ -663,7 +663,7 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "そして、被告人も突き落としたことを{nl}認めている。"
+                "text": "そして、{p:150}被告人も突き落としたことを{nl}認めている。"
             },
             {
                 "name": "ナルホド",
@@ -671,7 +671,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "流れから、結果的に自分が{nl}押したのかもしれないと思っているだけです！"
+                "text": "流れから、{p:150}結果的に自分が{nl}押したのかもしれないと思っているだけです！"
             },
             {
                 "name": "ミツルギ",
@@ -683,7 +683,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}・・・・{p:300}{courtSprite:judge[\"Normal\"]}ふむ。{nl}御剣検事、続けてください。"
+                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}・・・・{p:300}{courtSprite:judge[\"Normal\"]}ふむ。{nl}御剣検事、{p:150}続けてください。"
             },
             {
                 "name": "ミツルギ",
@@ -691,7 +691,7 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "死亡推定時刻は、午後９時半から{nl}午後１０時半の間。"
+                "text": "死亡推定時刻は、{p:150}午後９時半から{nl}午後１０時半の間。"
             },
             {
                 "name": "ミツルギ",
@@ -706,11 +706,11 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{blip:1}今日は、これら全てを見ていた{nl}第１発見者を呼んである。"
+                "text": "{blip:1}今日は、{p:150}これら全てを見ていた{nl}第１発見者を呼んである。"
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}わかりました。{nl}御剣検事、その人物を入廷させてください。"
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}わかりました。{nl}御剣検事、{p:150}その人物を入廷させてください。"
             },
             {
                 "name": "ミツルギ",
@@ -721,7 +721,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{showTestimonyIndicator}{startBGM:interrogatory_moderato,false}{blip:1}事件当日、午後１０時にイベントホールの{nl}４階にいるようワタシは２人に言いました。"
+                "text": "{showTestimonyIndicator}{startBGM:interrogatory_moderato,false}{blip:1}事件当日、{p:150}午後１０時にイベントホールの{nl}４階にいるようワタシは２人に言いました。"
             },
             {
                 "name": "ヤマノ",
@@ -733,11 +733,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "すると被告人が被害者にためらいもなく{nl}まっすぐ近付き、突き落としたのです！"
+                "text": "すると被告人が被害者にためらいもなく{nl}まっすぐ近付き、{p:150}突き落としたのです！"
             },
             {
                 "name": "ミツルギ",
-                "text": "{hideTestimonyIndicator}{fadeOutBg:800}{fadeOutFg:800}{fadeOutCharacter:800}{stopBGM:true}{courtPan:prosecution}{courtSprite:prosecution[\"Confident2\"]}{fadeInCharacter:1400}{fadeInBg:600}{fadeInFg:600}{blip:1}裁判長、どうだろう。{nl}被告人の犯行はアキラカではないか。"
+                "text": "{hideTestimonyIndicator}{fadeOutBg:800}{fadeOutFg:800}{fadeOutCharacter:800}{stopBGM:true}{courtPan:prosecution}{courtSprite:prosecution[\"Confident2\"]}{fadeInCharacter:1400}{fadeInBg:600}{fadeInFg:600}{blip:1}裁判長、{p:150}どうだろう。{nl}被告人の犯行はアキラカではないか。"
             },
             {
                 "name": "ナルホド",
@@ -745,11 +745,11 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}・・・・{p:300}あ、もしかして御剣検事、捜査している{nl}うちにジョイポリスが気に入ったとか？"
+                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}・・・・{p:300}あ、{p:150}もしかして御剣検事、{p:150}捜査している{nl}うちにジョイポリスが気に入ったとか？"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}で、裁判をさっさと終わらせて{nl}遊びにいこうとか考えているんじゃない？"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}で、{p:150}裁判をさっさと終わらせて{nl}遊びにいこうとか考えているんじゃない？"
             },
             {
                 "name": "サイバンチョ",
@@ -790,7 +790,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "２人は、{p:200}そう・・・・いつ殺し合いが始まっても{nl}おかしくないくらい険悪な仲でした。"
+                "text": "２人は、{p:200}そう・・・・{p:200}いつ殺し合いが始まっても{nl}おかしくないくらい険悪な仲でした。"
             },
             {
                 "name": "ヤマノ",
@@ -802,7 +802,7 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}証人、証言をつづけたまえ。"
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}証人、{p:150}証言をつづけたまえ。"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtPan:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:1}{sectionEnd}"
@@ -818,7 +818,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}腰掛けて待つには、１階ステージが{nl}最適なのです。"
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}腰掛けて待つには、{p:150}１階ステージが{nl}最適なのです。"
             },
             {
                 "name": "ナルホド",
@@ -830,11 +830,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "ワタシはずっと１階にいて、時間になったら{nl}４階に上がるつもりでおりました。"
+                "text": "ワタシはずっと１階にいて、{p:150}時間になったら{nl}４階に上がるつもりでおりました。"
             },
             {
                 "name": "ヤマノ",
-                "text": "ですがあの日は結局、１度も４階へは{nl}行かずじまいでした。"
+                "text": "ですがあの日は結局、{p:150}１度も４階へは{nl}行かずじまいでした。"
             },
             {
                 "name": "ナルホド",
@@ -842,7 +842,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "その４５分間、あなたは１階で{nl}ナニをしていたのですか？"
+                "text": "その４５分間、{p:150}あなたは１階で{nl}ナニをしていたのですか？"
             },
             {
                 "name": "ヤマノ",
@@ -870,7 +870,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "ですが、目視だけで彼女たちと{nl}わかったワケではございません。"
+                "text": "ですが、{p:150}目視だけで彼女たちと{nl}わかったワケではございません。"
             },
             {
                 "name": "ヤマノ",
@@ -878,7 +878,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "見上げると、２つの人影が{nl}４階の手すり付近で言い争っていて・・・・。"
+                "text": "見上げると、{p:150}２つの人影が{nl}４階の手すり付近で言い争っていて・・・・。"
             },
             {
                 "name": "ヤマノ",
@@ -886,7 +886,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "・・・・{p:300}しかし情けない話ですが、ワタシは{nl}１階から見守ることしかできなかったのです。"
+                "text": "・・・・{p:300}しかし情けない話ですが、{p:150}ワタシは{nl}１階から見守ることしかできなかったのです。"
             },
             {
                 "name": "サイバンチョ",
@@ -906,7 +906,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "あの暗闇の中、なぜ被告人が{nl}突き落としたとわかったのですか。"
+                "text": "あの暗闇の中、{p:150}なぜ被告人が{nl}突き落としたとわかったのですか。"
             },
             {
                 "name": "ヤマノ",
@@ -914,7 +914,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "声を聞けば、４階で言い争っていたのが{nl}被害者と被告人の２人だとわかりました。"
+                "text": "声を聞けば、{p:150}４階で言い争っていたのが{nl}被害者と被告人の２人だとわかりました。"
             },
             {
                 "name": "ヤマノ",
@@ -926,7 +926,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}た、確かに・・・・。{nl}そうですね・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}た、{p:150}確かに・・・・。{nl}そうですね・・・・。"
             },
             {
                 "text": "{returnToCE:hints}{sectionEnd}"
@@ -935,7 +935,7 @@
         "CE1_Hint": [
             {
                 "name": "マヨイ",
-                "text": "{hideLifeBar}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2,true}ちょっとなるほどくん！{nl}大事なところだよ！落ち着いて！"
+                "text": "{hideLifeBar}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2,true}ちょっとなるほどくん！{nl}大事なところだよ！{p:200}落ち着いて！"
             },
             {
                 "name": "ナルホド",
@@ -947,11 +947,11 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}弁護人、被告人の犯行はアキラカだ。{nl}悪あがきなどせず、負けを認めるといい。"
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}弁護人、{p:150}被告人の犯行はアキラカだ。{nl}悪あがきなどせず、{p:150}負けを認めるといい。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Confident2\"]}事務所の所長と副所長、２人仲良く{nl}遊園地で遊ぶ時間が作れるぞ。"
+                "text": "{courtSprite:prosecution[\"Confident2\"]}事務所の所長と副所長、{p:150}２人仲良く{nl}遊園地で遊ぶ時間が作れるぞ。"
             },
             {
                 "name": "マヨイ",
@@ -959,7 +959,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Shaking_Head\"]}{courtSprite:defense[\"Normal\"]}{blip:1}いいや、ぼくはあきらめない！"
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Shaking_Head\"]}{courtSprite:defense[\"Normal\"]}{blip:1}いいや、{p:150}ぼくはあきらめない！"
             },
             {
                 "name": "ナルホド",
@@ -967,7 +967,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（それはきっと、当時のマコちゃんが{nl}あれを持っていなかったからだ）"
+                "text": "{color:lightblue}（それはきっと、{p:150}当時のマコちゃんが{nl}あれを持っていなかったからだ）"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:0}{sectionEnd}"
@@ -995,15 +995,15 @@
             },
             {
                 "name": "ナルホド",
-                "text": "実はこの眼鏡、事件直前に紛失しています。{nl}時間的には午後９時３０分ごろのコト。"
+                "text": "実はこの眼鏡、{p:150}事件直前に紛失しています。{nl}時間的には午後９時３０分ごろのコト。"
             },
             {
                 "name": "サイバンチョ",
-                "text": "{hideTextbox}{hideEvidenceIcon}{courtView:judge}{p:100}{courtSprite:judge[\"Stern\"]}{showTextbox}む？{nl}本当ですかな、被告人。"
+                "text": "{hideTextbox}{hideEvidenceIcon}{courtView:judge}{p:100}{courtSprite:judge[\"Stern\"]}{showTextbox}む？{nl}本当ですかな、{p:150}被告人。"
             },
             {
                 "name": "マコ",
-                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}ほ、本当ッス！控え室でシャワーを浴びて{nl}いたら、キレイサッパリなくなってたッス！"
+                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}ほ、{p:150}本当ッス！{p:200}控え室でシャワーを浴びて{nl}いたら、{p:150}キレイサッパリなくなってたッス！"
             },
             {
                 "name": "マコ",
@@ -1015,7 +1015,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "証言通りならば、被告人はためらいもなく{nl}まっすぐに被害者に近づき突き落としてます。"
+                "text": "証言通りならば、{p:150}被告人はためらいもなく{nl}まっすぐに被害者に近づき突き落としてます。"
             },
             {
                 "name": "ナルホド",
@@ -1050,7 +1050,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}ほんとだ・・・・。{nl}なんか、ブキミだな・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}ほんとだ・・・・。{nl}なんか、{p:150}ブキミだな・・・・。"
             },
             {
                 "name": "マヨイ",
@@ -1062,11 +1062,11 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "つまり、実際は彼女は眼鏡をしていたのだ。"
+                "text": "つまり、{p:150}実際は彼女は眼鏡をしていたのだ。"
             },
             {
                 "name": "ミツルギ",
-                "text": "そして、普通に暗闇の中を歩き、{nl}手すりから被害者を突き飛ばした。"
+                "text": "そして、{p:150}普通に暗闇の中を歩き、{nl}手すりから被害者を突き飛ばした。"
             },
             {
                 "name": "ミツルギ",
@@ -1090,7 +1090,7 @@
             },
             {
                 "name": "マコ",
-                "text": "{courtSprite:witness[\"Sad\"]}{courtView:witness}{blip:2}・・・・{p:300}は、はい。{nl}眼鏡なしでも何とか歩けたッス・・・・。"
+                "text": "{courtSprite:witness[\"Sad\"]}{courtView:witness}{blip:2}・・・・{p:300}は、{p:150}はい。{nl}眼鏡なしでも何とか歩けたッス・・・・。"
             },
             {
                 "name": "サイバンチョ",
@@ -1110,7 +1110,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{blip:1}{startBGM:courtroom}・・・・{p:300}ふむ。{p:200}{nl}コレはもう、決まりですかな。"
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{blip:1}{startBGM:courtroom}・・・・{p:300}ふむ。{p:200}{nl}コレはもう、{p:150}決まりですかな。"
             },
             {
                 "name": "ナルホド",
@@ -1126,7 +1126,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{hideTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:250}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}待ってください、裁判長！"
+                "text": "{hideTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:250}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}待ってください、{p:150}裁判長！"
             },
             {
                 "name": "ナルホド",
@@ -1138,11 +1138,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{playSound:shake}{shake:250}{courtSprite:defense[\"Sweating\"]}{courtView:defense}そ、それは・・・・。{nl}何だろ・・・・。"
+                "text": "{playSound:shake}{shake:250}{courtSprite:defense[\"Sweating\"]}{courtView:defense}そ、{p:150}それは・・・・。{nl}何だろ・・・・。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtView:prosecution}別のモノを落としたのに、証人の前には{nl}遺体が落ちてきた。おかしな話ではないか。"
+                "text": "{courtView:prosecution}別のモノを落としたのに、{p:150}証人の前には{nl}遺体が落ちてきた。おかしな話ではないか。"
             },
             {
                 "name": "ミツルギ",
@@ -1182,11 +1182,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{playSound:question1}{flash}{courtSprite:defense[\"Sweating\"]}{courtView:defense}写真？{nl}そんな話、聞いてないぞ・・・・。"
+                "text": "{playSound:question1}{flash}{courtSprite:defense[\"Sweating\"]}{courtView:defense}写真？{nl}そんな話、{p:150}聞いてないぞ・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}なるほどくん、まずすぎるよ！"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}なるほどくん、{p:150}まずすぎるよ！"
             },
             {
                 "name": "ナルホド",
@@ -1210,11 +1210,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeBg:Byrde_Samurai2,400}{showTextbox}ほら、見てください。{nl}被告人が手すりに座る被害者を押しています。"
+                "text": "{hideTextbox}{fadeBg:Byrde_Samurai2,400}{showTextbox}ほら、{p:150}見てください。{nl}被告人が手すりに座る被害者を押しています。"
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{fadeBg:Byrde_Samurai3,400}{showTextbox}きっと、この感じでは{nl}被害者は顔から地面に落ちたのでしょうね。"
+                "text": "{hideTextbox}{fadeBg:Byrde_Samurai3,400}{showTextbox}きっと、{p:150}この感じでは{nl}被害者は顔から地面に落ちたのでしょうね。"
             },
             {
                 "name": "ミツルギ",
@@ -1226,7 +1226,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、弱気になっちゃダメ。{nl}マコちゃんのためにも前を向こう！"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}弱気になっちゃダメ。{nl}マコちゃんのためにも前を向こう！"
             },
             {
                 "name": "マヨイ",
@@ -1234,7 +1234,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1,false}・・・・{p:300}そ、そうだね！"
+                "text": "{blip:1,false}・・・・{p:300}そ、{p:150}そうだね！"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{setState:currentTestimony,2}{setState:Mia_hint_condition,false}{checkpoint:Second_Testimony_Start}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{showTextbox}{center}{color:red}～落下する被害者の写真～{playAnimation:CrossExamination}{startCE:Yamano_Testimony_2}{sectionEnd}"
@@ -1250,7 +1250,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}な、ナニが言いたいのですか。"
+                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}な、{p:150}ナニが言いたいのですか。"
             },
             {
                 "name": "ヤマノ",
@@ -1258,7 +1258,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}証人、証言をつづけてください。"
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}証人、{p:150}証言をつづけてください。"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{returnToCE:1}{sectionEnd}"
@@ -1274,15 +1274,15 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}えっと、確かまず・・・・。"
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}えっと、{p:150}確かまず・・・・。"
             },
             {
                 "name": "ヤマノ",
-                "text": "「閉館後の練習はやめてって言ったはずッス」{nl}とかいう、被告人の声が聞こえました。"
+                "text": "「閉館後の練習はやめてって言ったはずッス」{nl}とかいう、{p:150}被告人の声が聞こえました。"
             },
             {
                 "name": "ヤマノ",
-                "text": "すると被害者が「あんたに迷惑かけてる{nl}わけじゃないし、いろいろ言わないで」と。"
+                "text": "すると被害者が「あんたに迷惑かけてる{nl}わけじゃないし、{p:150}いろいろ言わないで」と。"
             },
             {
                 "name": "ヤマノ",
@@ -1294,15 +1294,15 @@
             },
             {
                 "name": "マコ",
-                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{blip:2}嘘ッス！{nl}そんなコト、ひと言も言ってないッスよ！"
+                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{blip:2}嘘ッス！{nl}そんなコト、{p:150}ひと言も言ってないッスよ！"
             },
             {
                 "name": "マコ",
-                "text": "{playSound:shake}って言うか、アタシはナニも言わずに{nl}手すりまで歩いただけッス！"
+                "text": "{playSound:shake}って言うか、{p:150}アタシはナニも言わずに{nl}手すりまで歩いただけッス！"
             },
             {
                 "name": "マコ",
-                "text": "{playSound:shake}そしたらぼんやりと、ダレかいるなーって{nl}思って、小声で声をかけただけッス！"
+                "text": "{playSound:shake}そしたらぼんやりと、{p:150}ダレかいるなーって{nl}思って、{p:150}小声で声をかけただけッス！"
             },
             {
                 "name": "ヤマノ",
@@ -1310,7 +1310,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}それでは、先に進めましょう。"
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}それでは、{p:150}先に進めましょう。"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{returnToCE:2}{sectionEnd}"
@@ -1322,7 +1322,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{showCharacter}{courtView:defense}{blip:1,true}足しか写っていないのに、どうして{nl}被告人と判別できるのですか？"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{showCharacter}{courtView:defense}{blip:1,true}足しか写っていないのに、{p:150}どうして{nl}被告人と判別できるのですか？"
             },
             {
                 "name": "ミツルギ",
@@ -1350,7 +1350,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{color:white}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}証人、証言をつづけてください。"
+                "text": "{color:white}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}証人、{p:150}証言をつづけてください。"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{returnToCE:3}{sectionEnd}"
@@ -1370,7 +1370,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1}ああ、シツレイしました。{nl}これは説明しないとわかりづらいですね。"
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1}ああ、{p:150}シツレイしました。{nl}これは説明しないとわかりづらいですね。"
             },
             {
                 "name": "ヤマノ",
@@ -1378,11 +1378,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "次の瞬間、衝撃で１回転して{nl}そのあとに後頭部を激しく打ったのです。"
+                "text": "次の瞬間、{p:150}衝撃で１回転して{nl}そのあとに後頭部を激しく打ったのです。"
             },
             {
                 "name": "ナルホド",
-                "text": "{flash}{playSound:question1}{courtView:defense}そ、それで致命傷に？"
+                "text": "{flash}{playSound:question1}{courtView:defense}そ、{p:150}それで致命傷に？"
             },
             {
                 "name": "ヤマノ",
@@ -1418,7 +1418,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（もし証言の通りならば、あの証拠品との{nl}間に大きなムジュンがあるコトになる！）"
+                "text": "{color:lightblue}（もし証言の通りならば、{p:150}あの証拠品との{nl}間に大きなムジュンがあるコトになる！）"
             },
             {
                 "name": "ナルホド",
@@ -1430,7 +1430,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}がんばれがんばれ、なるほどくん！"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}がんばれがんばれ、{p:150}なるほどくん！"
             },
             {
                 "name": "ナルホド",
@@ -1465,11 +1465,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}{blip:1}い、いえ・・・・{p:200}{nl}ジョイポリスのことを考えていて・・・・。"
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}{blip:1}い、{p:150}いえ・・・・{p:200}{nl}ジョイポリスのことを考えていて・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、裁判が終わってから{nl}みんなで行けばいいじゃない！"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}裁判が終わってから{nl}みんなで行けばいいじゃない！"
             },
             {
                 "name": "ナルホド",
@@ -1509,7 +1509,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}でも、チョンマゲはこの通り無事です。"
+                "text": "{courtView:defense}でも、{p:150}チョンマゲはこの通り無事です。"
             },
             {
                 "name": "ナルホド",
@@ -1532,7 +1532,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{blip:1}では弁護人は、被害者がどのように{nl}後頭部を打ったと考えるのですか？"
+                "text": "{blip:1}では弁護人は、{p:150}被害者がどのように{nl}後頭部を打ったと考えるのですか？"
             },
             {
                 "name": "ナルホド",
@@ -1549,7 +1549,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（それは、マスクの後頭部が無傷である{nl}コトが証明している・・・・）"
+                "text": "{color:lightblue}（それは、{p:150}マスクの後頭部が無傷である{nl}コトが証明している・・・・）"
             },
             {
                 "text": "{showLifeBar:2}{option:CE2_MaskChoice}{sectionEnd}"
@@ -1562,11 +1562,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}い、いえ････{nl}ジョイポリスのことを考えていて････。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}い、{p:150}いえ････{nl}ジョイポリスのことを考えていて････。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}なるほどくん、裁判が終わってから{nl}みんなで行けばいいじゃない！"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}なるほどくん、{p:150}裁判が終わってから{nl}みんなで行けばいいじゃない！"
             },
             {
                 "name": "ナルホド",
@@ -1587,7 +1587,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、しっかりしてよ！{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}しっかりしてよ！{p:200}{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE2_option_failures==1,CE2_Option_MiaHint}{setState:CE2_option_failures,1}{jump:CE2_Option_Menu}{sectionEnd}"
@@ -1600,7 +1600,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}ですから、被害者はマスクをマッスグ・・・・。{nl}マスクをマッスク・・・・。"
+                "text": "{showTextbox}{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}ですから、{p:150}被害者はマスクをマッスグ・・・・。{nl}マスクをマッスク・・・・。"
             },
             {
                 "name": "マヨイ",
@@ -1621,7 +1621,7 @@
             },
             {
                 "name": "チヒロ",
-                "text": "つまり、被害者はマスクをかぶっていない{nl}状態で・・・・。"
+                "text": "つまり、{p:150}被害者はマスクをかぶっていない{nl}状態で・・・・。"
             },
             {
                 "text": "{fadeOutCharacter:600}{fadeOutBg:600}{courtView:defense}{fadeInCharacter:600}{fadeInBg:600}{jump:CE2_Option_Menu}{sectionEnd}"
@@ -1630,7 +1630,7 @@
         "CE2_Option_Correct": [
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}被害者はマスクを着けていない状態で{nl}落とされて、後頭部を強打したのです！"
+                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}被害者はマスクを着けていない状態で{nl}落とされて、{p:150}後頭部を強打したのです！"
             },
             {
                 "name": "ミツルギ",
@@ -1650,15 +1650,15 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{color:white}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人、どうしたのですかな。"
+                "text": "{color:white}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人、{p:150}どうしたのですかな。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}えっと・・・・あの・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}えっと・・・・{p:200}あの・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、困ったときは落ち着いて{nl}情報を整理する。それが大事だよ！"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}困ったときは落ち着いて{nl}情報を整理する。それが大事だよ！"
             },
             {
                 "name": "ナルホド",
@@ -1666,11 +1666,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{flash}{playSound:cling}{color:white}{blip:1}あっ！{nl}そうか、そういうことかッ！"
+                "text": "{flash}{playSound:cling}{color:white}{blip:1}あっ！{nl}そうか、{p:150}そういうことかッ！"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:0,false}{color:lightblue}（午後９時３０分ごろ、マコちゃんは{nl}大きな音を聞いていたんだ）"
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:0,false}{color:lightblue}（午後９時３０分ごろ、{p:150}マコちゃんは{nl}大きな音を聞いていたんだ）"
             },
             {
                 "name": "ナルホド",
@@ -1678,7 +1678,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（真宵ちゃん、ありがとう。{nl}みそラーメン１年分を贈呈したい気分だよ）"
+                "text": "{color:lightblue}（真宵ちゃん、{p:150}ありがとう。{nl}みそラーメン１年分を贈呈したい気分だよ）"
             },
             {
                 "name": "ナルホド",
@@ -1690,7 +1690,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "でも、それは午後１０時５分のハナシだ。"
+                "text": "でも、{p:150}それは午後１０時５分のハナシだ。"
             },
             {
                 "name": "ナルホド",
@@ -1707,7 +1707,7 @@
         "CE2_Option2_Menu": [
             {
                 "name": "ナルホド",
-                "text": "{playSound:bubble_sfx}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}こういうコトですッ！{showLifeBar:2}{option:CE2_Option2_Choice}{sectionEnd}"
+                "text": "{playSound:bubble_sfx}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}こういうコトですッ！{p:200}{showLifeBar:2}{option:CE2_Option2_Choice}{sectionEnd}"
             }
         ],
         "CE2_Option2_Wrong_1": [
@@ -1717,15 +1717,15 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}なんですと！？{nl}それはどういう理由で？"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}なんですと！{p:200}？{nl}それはどういう理由で？"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}えーっと・・・・{p:200}高いところが{nl}好きだったから・・・・とか？"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}えーっと・・・・{p:200}高いところが{nl}好きだったから・・・・{p:200}とか？"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん・・・・{p:200}いくらなんでも{nl}ムチャクチャすぎるよ！{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん・・・・{p:200}いくらなんでも{nl}ムチャクチャすぎるよ！{p:200}{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE2_option2_failures==1,CE2_Option2_MiaHint}{setState:CE2_option2_failures,1}{jump:CE2_Option2_Menu}{sectionEnd}"
@@ -1738,15 +1738,15 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}さ、３回もですか！？"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}さ、{p:150}３回もですか！{p:200}？"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}はい！１回目は顔から、２回目は後頭部から、{nl}そして３回目は・・・・えっと・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}はい！{p:200}１回目は顔から、{p:150}２回目は後頭部から、{nl}そして３回目は・・・・{p:200}えっと・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん・・・・{p:200}さすがに{nl}３度目は無理があるんじゃない？{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん・・・・{p:200}さすがに{nl}３度目は無理があるんじゃない？{p:200}{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE2_option2_failures==1,CE2_Option2_MiaHint}{setState:CE2_option2_failures,1}{jump:CE2_Option2_Menu}{sectionEnd}"
@@ -1755,11 +1755,11 @@
         "CE2_Option2_Timer": [
             {
                 "name": "サイバンチョ",
-                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人？{nl}どうしたのですか、ぼんやりして。"
+                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人？{nl}どうしたのですか、{p:150}ぼんやりして。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}い、いえ・・・・{p:200}{nl}頭の中で整理をしていまして・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}い、{p:150}いえ・・・・{p:200}{nl}頭の中で整理をしていまして・・・・。"
             },
             {
                 "name": "サイバンチョ",
@@ -1793,7 +1793,7 @@
         "CE2_Option2_Correct": [
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}被害者は事前にマスクなしで落とされ、{nl}後頭部を強打したのではないでしょうか！{hideLifeBar}{startBGM:objection}"
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}被害者は事前にマスクなしで落とされ、{nl}後頭部を強打したのではないでしょうか！{p:200}{hideLifeBar}{startBGM:objection}"
             },
             {
                 "name": "ミツルギ",
@@ -1805,11 +1805,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "というコトは、１０時５分より前に被害者が{nl}殺されていてもおかしくありません。"
+                "text": "というコトは、{p:150}１０時５分より前に被害者が{nl}殺されていてもおかしくありません。"
             },
             {
                 "name": "ナルホド",
-                "text": "被告人は午後９時３０分ごろ、控え室の外で{nl}大きな音がしたと言っています。"
+                "text": "被告人は午後９時３０分ごろ、{p:150}控え室の外で{nl}大きな音がしたと言っています。"
             },
             {
                 "name": "ナルホド",
@@ -1821,7 +1821,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:1}そして午後１０時５分、２度目はマスクを{nl}つけられた状態で顔面から落ちた。"
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:1}そして午後１０時５分、{p:150}２度目はマスクを{nl}つけられた状態で顔面から落ちた。"
             },
             {
                 "name": "ナルホド",
@@ -1829,7 +1829,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Confident\"]}・・・・{p:300}そう考えれば、被害者の死因と{nl}マスクの後頭部のツジツマが合います！"
+                "text": "{courtSprite:defense[\"Confident\"]}・・・・{p:300}そう考えれば、{p:150}被害者の死因と{nl}マスクの後頭部のツジツマが合います！"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
@@ -1855,11 +1855,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}（・・・・{p:300}よし！事件の真相に{nl}一気に近づいた気がする！）"
+                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}（・・・・{p:300}よし！{p:200}事件の真相に{nl}一気に近づいた気がする！）"
             },
             {
                 "name": "マヨイ",
-                "text": "{color:white}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}いいぞ、なるほどくん！{nl}形勢逆転！"
+                "text": "{color:white}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}いいぞ、{p:150}なるほどくん！{nl}形勢逆転！"
             },
             {
                 "name": "ミツルギ",
@@ -1875,7 +1875,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Nodding\"]}{courtSprite:defense[\"Normal\"]}{showTextbox}{startBGM:courtroom}{blip:1}おっしゃる通りです、裁判長。"
+                "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Nodding\"]}{courtSprite:defense[\"Normal\"]}{showTextbox}{startBGM:courtroom}{blip:1}おっしゃる通りです、{p:150}裁判長。"
             },
             {
                 "name": "ナルホド",
@@ -1883,7 +1883,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "裁判長。もう一度、山野さんを{nl}尋問させてください。"
+                "text": "裁判長。もう一度、{p:150}山野さんを{nl}尋問させてください。"
             },
             {
                 "name": "ナルホド",
@@ -1891,7 +1891,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Nervous\"]}{courtPan:witness}{blip:1}ま、まだやるのでございますか？{nl}そろそろ判決でいいではありませんか・・・・。"
+                "text": "{courtSprite:witness[\"Nervous\"]}{courtPan:witness}{blip:1}ま、{p:150}まだやるのでございますか？{nl}そろそろ判決でいいではありませんか・・・・。"
             },
             {
                 "name": "ナルホド",
@@ -1907,7 +1907,7 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{bg:speedlines_right}{courtSprite:prosecution[\"ZoomIn\"]}{playSound:bubble_sfx}だがそれと、様子がおかしいコトには{nl}何の因果関係もない！"
+                "text": "{bg:speedlines_right}{courtSprite:prosecution[\"ZoomIn\"]}{playSound:bubble_sfx}だがそれと、{p:150}様子がおかしいコトには{nl}何の因果関係もない！"
             },
             {
                 "name": "ヤマノ",
@@ -1919,7 +1919,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}９時１５分から事件発生までの、山野さんの{nl}空白の５０分間について尋問させてください。"
+                "text": "{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}９時１５分から事件発生までの、{p:150}山野さんの{nl}空白の５０分間について尋問させてください。"
             },
             {
                 "name": "ナルホド",
@@ -1935,7 +1935,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}ふ・・・・ふん、望むところでございますよ。"
+                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}ふ・・・・{p:200}ふん、{p:150}望むところでございますよ。"
             },
             {
                 "name": "ヤマノ",
@@ -1967,7 +1967,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{hideTestimonyIndicator}{stopBGM}{courtSprite:cocounsel[\"Strict_Bench\"]}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:cocounsel}{fadeInCharacter:600}{fadeInBg:600}{blip:2}なるほどくん、どうする？{nl}アイマイな証言ばかりだよ・・・・。"
+                "text": "{hideTestimonyIndicator}{stopBGM}{courtSprite:cocounsel[\"Strict_Bench\"]}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:cocounsel}{fadeInCharacter:600}{fadeInBg:600}{blip:2}なるほどくん、{p:150}どうする？{nl}アイマイな証言ばかりだよ・・・・。"
             },
             {
                 "text": "{hideTextbox}{setState:currentTestimony,3}{setState:Mia_hint_condition,false}{checkpoint:Third_Testimony_Start}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}～空白の５０分間～{playAnimation:CrossExamination}{startCE:Yamano_Testimony_3}{sectionEnd}"
@@ -1999,11 +1999,11 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}２人とも、その辺で。{nl}キリがなさそうです。"
+                "text": "{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}２人とも、{p:150}その辺で。{nl}キリがなさそうです。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}証人、証言をつづけたまえ。"
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}証人、{p:150}証言をつづけたまえ。"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:1}{sectionEnd}"
@@ -2019,7 +2019,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "午後９時１５分から事件発生までの、{nl}空白の５０分間について、{p:250}{courtSprite:defense[\"Pointing\"]}コト細かに！{shake:250}{playSound:bubble_sfx}"
+                "text": "午後９時１５分から事件発生までの、{nl}空白の５０分間について、{p:250}{courtSprite:defense[\"Pointing\"]}コト細かに！{p:200}{shake:250}{playSound:bubble_sfx}"
             },
             {
                 "name": "ヤマノ",
@@ -2039,11 +2039,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideTextbox}{courtView:witness}{courtSprite:witness[\"Damage\"]}{courtSprite:witness[\"Nervous\"]}{showTextbox}な、何のハナシですか？{nl}意味がわかりませんね！"
+                "text": "{hideTextbox}{courtView:witness}{courtSprite:witness[\"Damage\"]}{courtSprite:witness[\"Nervous\"]}{showTextbox}な、{p:150}何のハナシですか？{nl}意味がわかりませんね！"
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}証人、証言をつづけてください。"
+                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}証人、{p:150}証言をつづけてください。"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:2}{sectionEnd}"
@@ -2059,11 +2059,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}あ、ありますとも！{nl}先ほどお見せした連続写真です！"
+                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}あ、{p:150}ありますとも！{nl}先ほどお見せした連続写真です！"
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Stand\"]}あれを見れば、ワタシが１階にいたコトは{nl}アキラカでございます！"
+                "text": "{courtSprite:witness[\"Stand\"]}あれを見れば、{p:150}ワタシが１階にいたコトは{nl}アキラカでございます！"
             },
             {
                 "name": "ナルホド",
@@ -2079,7 +2079,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}・・・・ふむ。重要な情報ですな。{nl}証言に追加していただきましょう。"
+                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}・・・・{p:200}ふむ。重要な情報ですな。{nl}証言に追加していただきましょう。"
             },
             {
                 "text": "{replaceCEStatement:Yamano_Testimony_3,3,4}{returnToCE:4}{sectionEnd}"
@@ -2091,7 +2091,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}シャワー中の被告人にも聞こえるほどの音が、{nl}たった１回だけ・・・・？"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}シャワー中の被告人にも聞こえるほどの音が、{nl}たった１回だけ・・・・{p:200}？"
             },
             {
                 "name": "ヤマノ",
@@ -2107,7 +2107,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}検事のおっしゃる通りです。{nl}それに、もし２回も大きな音がしたのなら・・・・"
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}検事のおっしゃる通りです。{nl}それに、{p:150}もし２回も大きな音がしたのなら・・・・"
             },
             {
                 "name": "ヤマノ",
@@ -2119,7 +2119,7 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、言い負かされないで！"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}言い負かされないで！"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:hints}{sectionEnd}"
@@ -2135,7 +2135,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}こ、この頭にしっかりと{nl}刻み込まれているからでございます！"
+                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}こ、{p:150}この頭にしっかりと{nl}刻み込まれているからでございます！"
             },
             {
                 "name": "ナルホド",
@@ -2143,15 +2143,15 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}{shake:300}{playSound:shake}ナ、ナニを言うのですか！{nl}記憶に刻み込まれているのです！"
+                "text": "{courtView:witness}{shake:300}{playSound:shake}ナ、{p:150}ナニを言うのですか！{nl}記憶に刻み込まれているのです！"
             },
             {
                 "name": "ヤマノ",
-                "text": "繰り返します！{nl}午後９時１５分から事件発生まで、おかしな"
+                "text": "繰り返します！{nl}午後９時１５分から事件発生まで、{p:150}おかしな"
             },
             {
                 "name": "ヤマノ",
-                "text": "午後９時１５分から事件発生まで、おかしな{nl}コトはナニ１つとしてありませんでしたッ！"
+                "text": "午後９時１５分から事件発生まで、{p:150}おかしな{nl}コトはナニ１つとしてありませんでしたッ！"
             },
             {
                 "name": "ナルホド",
@@ -2163,7 +2163,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}裁判長、弁護側は今の証言のムジュンを{nl}指摘する証拠を提示したいと思います。"
+                "text": "{courtView:defense}裁判長、{p:150}弁護側は今の証言のムジュンを{nl}指摘する証拠を提示したいと思います。"
             },
             {
                 "name": "サイバンチョ",
@@ -2180,7 +2180,7 @@
         "CE3_Hint": [
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}もう一度、証言をお願いします。{nl}できればもっと詳しく。"
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}もう一度、{p:150}証言をお願いします。{nl}できればもっと詳しく。"
             },
             {
                 "name": "ヤマノ",
@@ -2196,15 +2196,15 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2,true}見て、なるほどくん。{nl}御剣検事がまた笑ってるよ・・・・。"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2,true}見て、{p:150}なるほどくん。{nl}御剣検事がまた笑ってるよ・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}状況が厳しくなって、遊園地で遊ぶ自分を{nl}妄想して現実逃避してるのかもね。"
+                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}状況が厳しくなって、{p:150}遊園地で遊ぶ自分を{nl}妄想して現実逃避してるのかもね。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}（・・・・{p:300}いや、違う。{nl}あの笑みは自信の笑みだ）"
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}（・・・・{p:300}いや、{p:150}違う。{nl}あの笑みは自信の笑みだ）"
             },
             {
                 "name": "ナルホド",
@@ -2235,11 +2235,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}えっと・・・・{p:200}だからその・・・・。{nl}あ、あれ？間違えたかな？{hideTextbox}{lifeMod:-2}{playSound:explosion}{p:1000}"
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}えっと・・・・{p:200}だからその・・・・。{nl}あ、{p:150}あれ？{p:200}間違えたかな？{p:200}{hideTextbox}{lifeMod:-2}{playSound:explosion}{p:1000}"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}なるほどくん、落ち着いて！"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}なるほどくん、{p:150}落ち着いて！"
             },
             {
                 "name": "マヨイ",
@@ -2268,7 +2268,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideEvidenceIcon}{courtView:witness}{courtSprite:witness[\"Nervous\"]}さ、さあ・・・・。"
+                "text": "{hideEvidenceIcon}{courtView:witness}{courtSprite:witness[\"Nervous\"]}さ、{p:150}さあ・・・・。"
             },
             {
                 "name": "ヤマノ",
@@ -2296,23 +2296,23 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}だとすれば、{courtSprite:defense[\"Objecting\"]}{courtSprite:defense[\"Pointing\"]}被害者が２回落とされたことと{nl}ツジツマが合うのです！"
+                "text": "{courtView:defense}だとすれば、{p:150}{courtSprite:defense[\"Objecting\"]}{courtSprite:defense[\"Pointing\"]}被害者が２回落とされたことと{nl}ツジツマが合うのです！"
             },
             {
                 "name": "ミツルギ",
-                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection_JP}{courtSprite:prosecution[\"Normal\"]}{courtPan:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}本当に大きな音があったのか？　それも{nl}被告人が言っていることに過ぎないだろう。"
+                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection_JP}{courtSprite:prosecution[\"Normal\"]}{courtPan:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}本当に大きな音があったのか？{p:200}　それも{nl}被告人が言っていることに過ぎないだろう。"
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}そ、その通りでございます！{nl}確かにワタシも大きな音は聞きました。"
+                "text": "{courtView:witness}そ、{p:150}その通りでございます！{nl}確かにワタシも大きな音は聞きました。"
             },
             {
                 "name": "ヤマノ",
-                "text": "でもそれは、午後１０時５分に被害者が{nl}落下したときの音だけでございます！"
+                "text": "でもそれは、{p:150}午後１０時５分に被害者が{nl}落下したときの音だけでございます！"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{stopBGM:false}{flash}そ・・・・{courtSprite:defense[\"Damage\"]}そんなハズは・・・・。"
+                "text": "{courtView:defense}{stopBGM:false}{flash}そ・・・・{p:200}{courtSprite:defense[\"Damage\"]}そんなハズは・・・・。"
             },
             {
                 "name": "ナルホド",
@@ -2324,15 +2324,15 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}弁護人、どうしましたか？{nl}尋問は以上ですか？"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}弁護人、{p:150}どうしましたか？{nl}尋問は以上ですか？"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}ちょ、ちょっと待ってください！"
+                "text": "{courtView:defense}ちょ、{p:150}ちょっと待ってください！"
             },
             {
                 "name": "マヨイ",
-                "text": "{startBGM:explanation}{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}ねえねえ、なるほどくん。そこはもう{nl}突っついてもナニも出てこない気がするな。"
+                "text": "{startBGM:explanation}{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}ねえねえ、{p:150}なるほどくん。そこはもう{nl}突っついてもナニも出てこない気がするな。"
             },
             {
                 "name": "マヨイ",
@@ -2359,19 +2359,19 @@
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}えっ？　あやしい匂いって？"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}えっ？{p:200}　あやしい匂いって？"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}・・・・撮影者・山野さんのあやしい整髪剤の{nl}匂いが、写真から漂ってくるような・・・・。"
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}・・・・{p:200}撮影者・山野さんのあやしい整髪剤の{nl}匂いが、{p:150}写真から漂ってくるような・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtView:cocounsel}・・・・な、なるほどくん。{nl}さすがにそれはないと思う。"
+                "text": "{courtView:cocounsel}・・・・{p:200}な、{p:150}なるほどくん。{nl}さすがにそれはないと思う。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtView:cocounsel}{playSound:fail}そうじゃなくて、もっと気になるコトない？{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtView:cocounsel}{playSound:fail}そうじゃなくて、{p:150}もっと気になるコトない？{p:200}{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "name": "ナルホド",
@@ -2384,15 +2384,15 @@
         "CE3_1_Option_Wrong_3": [
             {
                 "name": "ナルホド",
-                "text": "{showCharacter}{courtView:defense}{courtSprite:defense[\"Thinking\"]}この写真、指紋がたくさんついているね。"
+                "text": "{showCharacter}{courtView:defense}{courtSprite:defense[\"Thinking\"]}この写真、{p:150}指紋がたくさんついているね。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}うん、そうだけど・・・・。{nl}それがナニ？"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}うん、{p:150}そうだけど・・・・。{nl}それがナニ？"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{courtSprite:defense[\"Sweating\"]}ん？あれ？{nl}そういうコトじゃなくて？"
+                "text": "{courtView:defense}{courtSprite:defense[\"Sweating\"]}ん？{p:200}あれ？{nl}そういうコトじゃなくて？"
             },
             {
                 "name": "マヨイ",
@@ -2400,7 +2400,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}ナルホド{nl}指紋じゃないとなると・・・・何だろう・・・・。"
+                "text": "{courtView:defense}ナルホド{nl}指紋じゃないとなると・・・・{p:200}何だろう・・・・。"
             },
             {
                 "text": "{jumpIf:CE3_1_option_failures==1,CE3_1_Option_MiaHint}{setState:CE3_1_option_failures,1}{jump:CE3_1_Options}{sectionEnd}"
@@ -2409,19 +2409,19 @@
         "CE3_1_Option_Timer": [
             {
                 "name": "サイバンチョ",
-                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人、どうしました？{nl}時間が過ぎていますよ。"
+                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人、{p:150}どうしました？{nl}時間が過ぎていますよ。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}い、いえ・・・・{nl}写真を頭の中で拡大してまして・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}い、{p:150}いえ・・・・{nl}写真を頭の中で拡大してまして・・・・。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Confident\"]}{courtView:prosecution}フッ。時間稼ぎのつもりか。{nl}無意味な沈黙は罪だぞ、ナルホド。"
+                "text": "{courtSprite:prosecution[\"Confident\"]}{courtView:prosecution}フッ。時間稼ぎのつもりか。{nl}無意味な沈黙は罪だぞ、{p:150}ナルホド。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、脳内ズームじゃなくて{nl}ちゃんと答えてよ！{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}脳内ズームじゃなくて{nl}ちゃんと答えてよ！{p:200}{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE3_1_option_failures==1,CE3_1_Option_MiaHint}{setState:CE3_1_option_failures,1}{jump:CE3_1_Options}{sectionEnd}"
@@ -2459,7 +2459,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}{courtSprite:witness[\"Damage\"]}えっ？{skip:500}"
+                "text": "{courtView:witness}{courtSprite:witness[\"Damage\"]}えっ？{p:200}{skip:500}"
             },
             {
                 "name": "ミツルギ",
@@ -2489,11 +2489,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}あ・・・・それは、その・・・・{nl}{color:lightblue}（言われてみれば、確かに）"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}あ・・・・{p:200}それは、{p:150}その・・・・{nl}{color:lightblue}（言われてみれば、{p:150}確かに）"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん・・・・それだと{nl}写真そのものが説明できないよ！{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん・・・・{p:200}それだと{nl}写真そのものが説明できないよ！{p:200}{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE3_2_option_failures==1,CE3_2_Option_MiaHint}{setState:CE3_2_option_failures,1}{jump:CE3_2_Options}{sectionEnd}"
@@ -2502,23 +2502,23 @@
         "CE3_2_Option_Wrong_3": [
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}被告人は、被害者が好みじゃなかった！{nl}だから顔を写さなかったんです！"
+                "text": "{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}被告人は、{p:150}被害者が好みじゃなかった！{nl}だから顔を写さなかったんです！"
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}こ、好みですか！？{nl}それは法廷で必要な情報なのですかな？"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}こ、{p:150}好みですか！{p:200}？{nl}それは法廷で必要な情報なのですかな？"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Despair\"]}{courtView:defense}い、いえ！{nl}深い意味はまったくありません！"
+                "text": "{courtSprite:defense[\"Despair\"]}{courtView:defense}い、{p:150}いえ！{nl}深い意味はまったくありません！"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Headshake\"]}{courtView:prosecution}クッ・・・・いい加減にしてくれ。{nl}私の時間をムダにするつもりか？"
+                "text": "{courtSprite:prosecution[\"Headshake\"]}{courtView:prosecution}クッ・・・・{p:200}いい加減にしてくれ。{nl}私の時間をムダにするつもりか？"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、恋バナじゃなくて{nl}事件の理由を考えてよ！{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}恋バナじゃなくて{nl}事件の理由を考えてよ！{p:200}{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE3_2_option_failures==1,CE3_2_Option_MiaHint}{setState:CE3_2_option_failures,1}{jump:CE3_2_Options}{sectionEnd}"
@@ -2527,15 +2527,15 @@
         "CE3_2_Option_Timer": [
             {
                 "name": "サイバンチョ",
-                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人、回答がまだです。{nl}時間内にお願いします。"
+                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}弁護人、{p:150}回答がまだです。{nl}時間内にお願いします。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}す、すみません！{nl}あと一歩で言葉になるんですが・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}す、{p:150}すみません！{nl}あと一歩で言葉になるんですが・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、頭の中じゃなくて{nl}ちゃんと声に出して！"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}頭の中じゃなくて{nl}ちゃんと声に出して！"
             },
             {
                 "name": "サイバンチョ",
@@ -2569,11 +2569,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "しかし、眼鏡をかけた状態でないと{nl}せっかくの計画が台なしになる・・・・"
+                "text": "しかし、{p:150}眼鏡をかけた状態でないと{nl}せっかくの計画が台なしになる・・・・"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}だからわざと顔を{nl}写さなかったんじゃないですか！{startBGM:objection}"
+                "text": "{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}だからわざと顔を{nl}写さなかったんじゃないですか！{p:200}{startBGM:objection}"
             },
             {
                 "name": "ヤマノ",
@@ -2585,11 +2585,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}{courtSprite:witness[\"Nervous\"]}い、いえ・・・・。{nl}何でもございません。"
+                "text": "{courtView:witness}{courtSprite:witness[\"Nervous\"]}い、{p:150}いえ・・・・。{nl}何でもございません。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{flash}{courtSprite:defense[\"Pointing\"]}{playSound:bubble_sfx}・・・・どうなんですか？{nl}答えてください！"
+                "text": "{courtView:defense}{flash}{courtSprite:defense[\"Pointing\"]}{playSound:bubble_sfx}・・・・{p:200}どうなんですか？{nl}答えてください！"
             },
             {
                 "name": "ミツルギ",
@@ -2601,7 +2601,7 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtView:prosecution}新たな証拠として、被告人の眼鏡を提出する。"
+                "text": "{courtView:prosecution}新たな証拠として、{p:150}被告人の眼鏡を提出する。"
             },
             {
                 "name": "ナルホド",
@@ -2609,11 +2609,11 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Holding_Doc\"]}{showEvidenceIcon:left,maggey_glasses}新たな証拠として、被告人の眼鏡を提出する。"
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Holding_Doc\"]}{showEvidenceIcon:left,maggey_glasses}新たな証拠として、{p:150}被告人の眼鏡を提出する。"
             },
             {
                 "name": "マコ",
-                "text": "{hideEvidenceIcon}{courtView:witness}{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{playSound:shake}{shake:500}{blip:2}それ、確かにアタシの眼鏡ッス！{nl}どこにあったんスか！"
+                "text": "{hideEvidenceIcon}{courtView:witness}{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{playSound:shake}{shake:500}{blip:2}それ、{p:150}確かにアタシの眼鏡ッス！{nl}どこにあったんスか！"
             },
             {
                 "name": "ミツルギ",
@@ -2625,7 +2625,7 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}事件後、調べたら出てきたのだよ。{nl}つまり被告人は嘘をついている。"
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}事件後、{p:150}調べたら出てきたのだよ。{nl}つまり被告人は嘘をついている。"
             },
             {
                 "name": "ミツルギ",
@@ -2640,15 +2640,15 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{courtSprite:defense[\"Determined\"]}{blip:0,false}{color:lightblue}（こ、これは困ったぞ・・・・）"
+                "text": "{courtView:defense}{courtSprite:defense[\"Determined\"]}{blip:0,false}{color:lightblue}（こ、{p:150}これは困ったぞ・・・・）"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（眼鏡があったとなると、そもそもの前提が{nl}おかしくなる・・・・）"
+                "text": "{color:lightblue}（眼鏡があったとなると、{p:150}そもそもの前提が{nl}おかしくなる・・・・）"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}（もしかして・・・・これまでか・・・・）"
+                "text": "{color:lightblue}（もしかして・・・・{p:200}これまでか・・・・）"
             },
             {
                 "name": "マヨイ",
@@ -2664,7 +2664,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1,false}・・・・そうだよね。{nl}そうなんだよ！"
+                "text": "{blip:1,false}・・・・{p:200}そうだよね。{nl}そうなんだよ！"
             },
             {
                 "name": "ナルホド",
@@ -2672,11 +2672,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{stopBGM}{courtView:defense}{color:lightblue}（・・・・{p:300}でも、突破口はどこに・・・・）"
+                "text": "{stopBGM}{courtView:defense}{color:lightblue}（・・・・{p:300}でも、{p:150}突破口はどこに・・・・）"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}{flash}{playSound:cling}そうか！わかった！"
+                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}{flash}{playSound:cling}そうか！{p:200}わかった！"
             },
             {
                 "name": "ナルホド",
@@ -2684,11 +2684,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}あのとき、確かにダレかが眼鏡を{nl}持っていったのです！"
+                "text": "{courtView:defense}あのとき、{p:150}確かにダレかが眼鏡を{nl}持っていったのです！"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}弁護側は、その証拠を提出します！"
+                "text": "{courtView:defense}弁護側は、{p:150}その証拠を提出します！"
             },
             {
                 "text": "{jump:CE3_Present_Evidence_2}{sectionEnd}"
@@ -2711,11 +2711,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}えっと・・・・だからその・・・・。{nl}あ、あれ？　間違えたかな？{hideTextbox}{lifeMod:-2}{playSound:explosion}{p:1000}"
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}えっと・・・・{p:200}だからその・・・・。{nl}あ、{p:150}あれ？{p:200}　間違えたかな？{p:200}{hideTextbox}{lifeMod:-2}{playSound:explosion}{p:1000}"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}なるほどくん、落ち着いて！"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}なるほどくん、{p:150}落ち着いて！"
             },
             {
                 "name": "マヨイ",
@@ -2760,22 +2760,22 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Normal\"]}では、なぜ山野さんがこれを持っていたか{nl}という話になりますが・・・・それはきっと・・・・。"
+                "text": "{courtSprite:defense[\"Normal\"]}では、{p:150}なぜ山野さんがこれを持っていたか{nl}という話になりますが・・・・{p:200}それはきっと・・・・。"
             },
             {
                 "name": "ナルホド",
-                "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}事件直前、{bg:speedlines}{playSound:bubble_sfx}{courtSprite:defense[\"ZoomIn\"]}被告人がシャワーを浴びてる間に{nl}眼鏡を盗んだのが、山野さんだからです！"
+                "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}事件直前、{p:150}{bg:speedlines}{playSound:bubble_sfx}{courtSprite:defense[\"ZoomIn\"]}被告人がシャワーを浴びてる間に{nl}眼鏡を盗んだのが、{p:150}山野さんだからです！"
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideEvidenceIcon}{courtChar:witness,Sahwit}{courtView:witness}{courtSprite:witness[\"Damage\"]}ぐうううううううううツ！{startBGM:cornered}"
+                "text": "{hideEvidenceIcon}{courtChar:witness,Sahwit}{courtView:witness}{courtSprite:witness[\"Damage\"]}ぐうううううううううツ！{p:200}{startBGM:cornered}"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{setSkipEnabled:true}{skip:0}"
             },
             {
                 "name": "サイバンチョ",
-                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}山野さん、本当なのですか？"
+                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}山野さん、{p:150}本当なのですか？"
             },
             {
                 "name": "ヤマノ",
@@ -2791,7 +2791,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}{courtSprite:witness[\"Damage_Stand\"]}・・・・こっちがおとなしくしてりゃ・・・・{nl}調子に乗りやがって・・・・"
+                "text": "{courtView:witness}{courtSprite:witness[\"Damage_Stand\"]}・・・・{p:200}こっちがおとなしくしてりゃ・・・・{nl}調子に乗りやがって・・・・"
             },
             {
                 "name": "ナルホド",
@@ -2799,7 +2799,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}うるせぇんだよ！{nl}{courtSprite:witness[\"Throw\"]}細かいことをぐちぐちと！{skip:500}"
+                "text": "{courtView:witness}うるせぇんだよ！{nl}{courtSprite:witness[\"Throw\"]}細かいことをぐちぐちと！{p:200}{skip:500}"
             },
             {
                 "name": "ナルホド",
@@ -2807,7 +2807,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtView:judge}{flash}{playSound:cling}{courtSprite:judge[\"Surprised\"]}お、落ち着いてください証人！"
+                "text": "{courtView:judge}{flash}{playSound:cling}{courtSprite:judge[\"Surprised\"]}お、{p:150}落ち着いてください証人！"
             },
             {
                 "name": "ヤマノ",
@@ -2818,7 +2818,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{showTextbox}{courtView:witness}{shake:500}{playSound:shake}わかったわかった！それを殺害現場に{nl}落としたのは認めてやるよ！"
+                "text": "{showTextbox}{courtView:witness}{shake:500}{playSound:shake}わかったわかった！{p:200}それを殺害現場に{nl}落としたのは認めてやるよ！"
             },
             {
                 "name": "ナルホド",
@@ -2826,11 +2826,11 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}{shake:500}{playSound:shake}{blip:1}・・・・{p:300}でもな、オレは事件当時{nl}４階には行っていない！"
+                "text": "{courtView:witness}{shake:500}{playSound:shake}{blip:1}・・・・{p:300}でもな、{p:150}オレは事件当時{nl}４階には行っていない！"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}・・・・{p:300}で、でも４階に行かなければ{nl}これを手に入れるコトは・・・・。"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}・・・・{p:300}で、{p:150}でも４階に行かなければ{nl}これを手に入れるコトは・・・・。"
             },
             {
                 "name": "ヤマノ",
@@ -2838,19 +2838,19 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{flash}{playSound:question1}・・・・えっ？"
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{flash}{playSound:question1}・・・・{p:200}えっ？"
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtView:judge}{courtSprite:judge[\"Stern\"]}山野さん、詳しくお願いできますかな？"
+                "text": "{courtView:judge}{courtSprite:judge[\"Stern\"]}山野さん、{p:150}詳しくお願いできますかな？"
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}{shake:500}{playSound:shake}オレは事件当時、ずっと１階にいた。{nl}４階には行っていないし眼鏡も取っていない"
+                "text": "{courtView:witness}{shake:500}{playSound:shake}オレは事件当時、{p:150}ずっと１階にいた。{nl}４階には行っていないし眼鏡も取っていない"
             },
             {
                 "name": "ヤマノ",
-                "text": "{shake:500}{playSound:shake}その何とかチャームってやつを拾ったのは{nl}事件当日の朝、遊園地の玄関だ！"
+                "text": "{shake:500}{playSound:shake}その何とかチャームってやつを拾ったのは{nl}事件当日の朝、{p:150}遊園地の玄関だ！"
             },
             {
                 "name": "ヤマノ",
@@ -2858,15 +2858,15 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}（・・・・{p:300}いや、そんなハズはない。{nl}それはゼッタイにあり得ない！）"
+                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}（・・・・{p:300}いや、{p:150}そんなハズはない。{nl}それはゼッタイにあり得ない！）"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}本当ですか、{courtSprite:defense[\"Pointing\"]}{blip:1}山野さん。{nl}マチガイありませんね？"
+                "text": "{courtView:defense}本当ですか、{p:150}{courtSprite:defense[\"Pointing\"]}{blip:1}山野さん。{nl}マチガイありませんね？"
             },
             {
                 "name": "ヤマノ",
-                "text": "{courtView:witness}ああ、マチガイない。"
+                "text": "{courtView:witness}ああ、{p:150}マチガイない。"
             },
             {
                 "name": "ナルホド",
@@ -2878,7 +2878,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtPan:defense}裁判長、山野さんの発言には{nl}大きなムジュンがあります。{startBGM:explanation}"
+                "text": "{courtSprite:defense[\"Normal\"]}{courtPan:defense}裁判長、{p:150}山野さんの発言には{nl}大きなムジュンがあります。{startBGM:explanation}"
             },
             {
                 "name": "ナルホド",
@@ -2909,11 +2909,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{courtSprite:defense[\"Abashed\"]}た、確かに・・・・{nl}言われてみれば・・・・"
+                "text": "{courtView:defense}{courtSprite:defense[\"Abashed\"]}た、{p:150}確かに・・・・{nl}言われてみれば・・・・"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}裁判長、見ての通りだ。"
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}裁判長、{p:150}見ての通りだ。"
             },
             {
                 "name": "ミツルギ",
@@ -2921,15 +2921,15 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}ふむ・・・・。でもまあ、彼がオッチョコチョイなのはいつものコトですので・・・・。"
+                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}ふむ・・・・。でもまあ、{p:150}彼がオッチョコチョイなのはいつものコトですので・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}なるほどくん、オッチョコチョイって思われていたみたいだよ！"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}なるほどくん、{p:150}オッチョコチョイって思われていたみたいだよ！"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{playSound:fail}・・・・{p:300}いや、真宵ちゃん。{nl}伝言しなくても聞こえてるから・・・・。"
+                "text": "{courtView:defense}{playSound:fail}・・・・{p:300}いや、{p:150}真宵ちゃん。{nl}伝言しなくても聞こえてるから・・・・。"
             },
             {
                 "name": "サイバンチョ",
@@ -2950,7 +2950,7 @@
             },
             {
                 "name": "チヒロ",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}証人の嘘を暴くには、眼鏡チャームが{nl}２つそろっていた時間を示すのがベストよ。"
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}証人の嘘を暴くには、{p:150}眼鏡チャームが{nl}２つそろっていた時間を示すのがベストよ。"
             },
             {
                 "name": "チヒロ",
@@ -2967,7 +2967,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}眼鏡チャームが２つともついているのを{nl}確認した上で、更新日時を見てください。"
+                "text": "{courtView:defense}眼鏡チャームが２つともついているのを{nl}確認した上で、{p:150}更新日時を見てください。"
             },
             {
                 "name": "ナルホド",
@@ -2975,11 +2975,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}つまり、事件の日の朝に眼鏡チャームを{nl}どこかで拾うなんて不可能なんですよ！"
+                "text": "{courtView:defense}つまり、{p:150}事件の日の朝に眼鏡チャームを{nl}どこかで拾うなんて不可能なんですよ！"
             },
             {
                 "name": "ヤマノ",
-                "text": "{hideEvidenceIcon}{courtView:witness}{startBGM:cornered2}・・・・{flash}ぐ・・・・。"
+                "text": "{hideEvidenceIcon}{courtView:witness}{startBGM:cornered2}・・・・{p:200}{flash}ぐ・・・・。"
             },
             {
                 "name": "ナルホド",
@@ -3002,11 +3002,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{showTextbox}{courtView:defense}{courtSprite:defense[\"Normal\"]}事件当時、あなたはずっと１階にいたと{nl}言っていますが、それは嘘です。"
+                "text": "{showTextbox}{courtView:defense}{courtSprite:defense[\"Normal\"]}事件当時、{p:150}あなたはずっと１階にいたと{nl}言っていますが、{p:150}それは嘘です。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Thinking\"]}４階へと上がって、何らかの理由で、{nl}被害者と対面した上で突き飛ばして殺した。"
+                "text": "{courtSprite:defense[\"Thinking\"]}４階へと上がって、{p:150}何らかの理由で、{nl}被害者と対面した上で突き飛ばして殺した。"
             },
             {
                 "name": "ナルホド",
@@ -3014,7 +3014,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Normal\"]}あなたは１階に戻り、後頭部を強打して{nl}即死した被害者を連れて４階へ。"
+                "text": "{courtSprite:defense[\"Normal\"]}あなたは１階に戻り、{p:150}後頭部を強打して{nl}即死した被害者を連れて４階へ。"
             },
             {
                 "name": "ナルホド",
@@ -3022,11 +3022,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "そして控え室に忍び込み、シャワー中の{nl}被告人の眼鏡を盗んだ。"
+                "text": "そして控え室に忍び込み、{p:150}シャワー中の{nl}被告人の眼鏡を盗んだ。"
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Thinking\"]}そうすれば目の悪い被告人が、被害者に{nl}触れただけで落ちると読んだのでしょう。"
+                "text": "{courtSprite:defense[\"Thinking\"]}そうすれば目の悪い被告人が、{p:150}被害者に{nl}触れただけで落ちると読んだのでしょう。"
             },
             {
                 "name": "ナルホド",
@@ -3038,7 +3038,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}現場検証が始まると、あなたは眼鏡を{nl}控え室に戻しにいった。"
+                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}現場検証が始まると、{p:150}あなたは眼鏡を{nl}控え室に戻しにいった。"
             },
             {
                 "name": "ナルホド",
@@ -3049,11 +3049,11 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}異議はありますか、御剣検事。"
+                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}異議はありますか、{p:150}御剣検事。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}・・・・{p:300}いや、ない。{p:200}{nl}弁護人は真実をアキラカにしたようだ。"
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}・・・・{p:300}いや、{p:150}ない。{p:200}{nl}弁護人は真実をアキラカにしたようだ。"
             },
             {
                 "name": "ナルホド",
@@ -3069,7 +3069,7 @@
             },
             {
                 "name": "ヤマノ",
-                "text": "あんなに優しくして、ヒイキにして{nl}やったのに・・・・。"
+                "text": "あんなに優しくして、{p:150}ヒイキにして{nl}やったのに・・・・。"
             },
             {
                 "name": "ヤマノ",
@@ -3081,7 +3081,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{stopBGM}{courtView:judge}{courtSprite:judge[\"Normal\"]}被告、須々木マコに{nl}判決を言い渡します。"
+                "text": "{stopBGM}{courtView:judge}{courtSprite:judge[\"Normal\"]}被告、{p:150}須々木マコに{nl}判決を言い渡します。"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{playAnimation:NotGuilty_JP}{courtChar:witness,Maggey}{courtSprite:witness[\"Admiring\"]}{courtView:overview}{playAnimation:Confetti}{setSkipEnabled:true}{skip:0}"
@@ -3092,7 +3092,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtView:judge}では、本日はこれにて閉廷！"
+                "text": "{courtView:judge}では、{p:150}本日はこれにて閉廷！"
             },
             {
                 "text": "{playAnimation:Gavel}{loadScene:assets/scenes/FlyHigh/Courtroom1/end.json,Final_Victory}{sectionEnd}"
@@ -3112,11 +3112,11 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}{blip:1}た、確かに・・・・{nl}言われてみれば・・・・。"
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}{blip:1}た、{p:150}確かに・・・・{nl}言われてみれば・・・・。"
             },
             {
                 "name": "ミツルギ",
-                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}裁判長、見ての通りだ。"
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}裁判長、{p:150}見ての通りだ。"
             },
             {
                 "name": "ミツルギ",
@@ -3124,15 +3124,15 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "{hideTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}ふむ・・・・。でもまあ、彼がオッチョコチョイ{nl}なのはいつものコトですので・・・・。"
+                "text": "{hideTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}ふむ・・・・。でもまあ、{p:150}彼がオッチョコチョイ{nl}なのはいつものコトですので・・・・。"
             },
             {
                 "name": "マヨイ",
-                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、オッチョコチョイって{nl}思われていたみたいだよ！"
+                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}{courtView:cocounsel}{blip:2}なるほどくん、{p:150}オッチョコチョイって{nl}思われていたみたいだよ！"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:1,false}・・・・{p:300}いや、真宵ちゃん。{nl}伝言しなくても聞こえてるから・・・・。"
+                "text": "{blip:1,false}・・・・{p:300}いや、{p:150}真宵ちゃん。{nl}伝言しなくても聞こえてるから・・・・。"
             },
             {
                 "name": "サイバンチョ",
@@ -3161,11 +3161,11 @@
             },
             {
                 "name": "チヒロ",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}・・・・被告人はためらいもなく{nl}まっすぐに近づいて突き落とした？"
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}・・・・{p:200}被告人はためらいもなく{nl}まっすぐに近づいて突き落とした？"
             },
             {
                 "name": "チヒロ",
-                "text": "目の悪い彼女が、「アレ」なしで{nl}そんなことできるかしら？"
+                "text": "目の悪い彼女が、{p:150}「アレ」なしで{nl}そんなことできるかしら？"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE}{sectionEnd}"
@@ -3178,7 +3178,7 @@
             },
             {
                 "name": "チヒロ",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}なるほどくん、彼女の言葉にはもう少し{nl}隠されていることがある気がするわ。"
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}なるほどくん、{p:150}彼女の言葉にはもう少し{nl}隠されていることがある気がするわ。"
             },
             {
                 "name": "チヒロ",
@@ -3195,7 +3195,7 @@
             },
             {
                 "name": "チヒロ",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}なるほどくん、彼女の言葉にはもう少し{nl}隠されていることがある気がするわ。"
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}なるほどくん、{p:150}彼女の言葉にはもう少し{nl}隠されていることがある気がするわ。"
             },
             {
                 "name": "チヒロ",
@@ -3212,7 +3212,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "法廷は、これ以上の証拠の提示を認めません。"
+                "text": "法廷は、{p:150}これ以上の証拠の提示を認めません。"
             },
             {
                 "name": "サイバンチョ",
@@ -3220,7 +3220,7 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "被告人、須々木マコに{nl}この場で判決を言い渡します。"
+                "text": "被告人、{p:150}須々木マコに{nl}この場で判決を言い渡します。"
             },
             {
                 "name": "サイバンチョ",
@@ -3228,15 +3228,15 @@
             },
             {
                 "name": "サイバンチョ",
-                "text": "被告人はこれより、その身柄を{nl}直ちに預けるものとし、"
+                "text": "被告人はこれより、{p:150}その身柄を{nl}直ちに預けるものとし、"
             },
             {
                 "name": "サイバンチョ",
-                "text": "１ヶ月以内に、高等裁判所において{nl}通常裁判を受けることとします。"
+                "text": "１ヶ月以内に、{p:150}高等裁判所において{nl}通常裁判を受けることとします。"
             },
             {
                 "name": "サイバンチョ",
-                "text": "{courtSprite:judge[\"Normal\"]}は、本日はこれにて閉廷！"
+                "text": "{courtSprite:judge[\"Normal\"]}は、{p:150}本日はこれにて閉廷！"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{courtChar:witness,Maggey}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{setSkipEnabled:true}{skip:0}"

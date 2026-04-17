@@ -22,7 +22,7 @@
             "file": "assets/video/FlyHighIntro.mp4",
             "script": [
                 {
-                    "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}September 17, 1:17 PM{nl}Joypolis, Atrium Event Hall",
+                    "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}September 17,{p:150} 1:17 PM{nl}Joypolis,{p:150} Atrium Event Hall",
                     "timestamp": 2000,
                     "duration": 7000
                 },
@@ -33,7 +33,7 @@
                 },
                 {
                     "name": "Samurai",
-                    "text": "{fadeOutBg:0}{flash}{blip:1}Here we go, Evil Magistrate!{nl}We settle this today!",
+                    "text": "{fadeOutBg:0}{flash}{blip:1}Here we go,{p:150} Evil Magistrate!{nl}We settle this today!",
                     "timestamp": 22500
                 },
                 {
@@ -43,7 +43,7 @@
                     "duration": 1800
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}September 17, 9:01 PM{nl}Joypolis, Atrium Event Hall 4th Floor",
+                    "text": "{center}{color:lime}{blip:3}September 17,{p:150} 9:01 PM{nl}Joypolis,{p:150} Atrium Event Hall 4th Floor",
                     "timestamp": 36000,
                     "duration": 8000
                 },
@@ -54,12 +54,12 @@
                 },
                 {
                     "name": "Kurumi",
-                    "text": "I have to do much, much better.{nl}All I can do is practice.",
+                    "text": "I have to do much,{p:150} much better.{nl}All I can do is practice.",
                     "timestamp": 48000
                 },
                 {
                     "name": "Kurumi",
-                    "text": "Here we go, Evil Magistrate!{nl}We settle this today!",
+                    "text": "Here we go,{p:150} Evil Magistrate!{nl}We settle this today!",
                     "timestamp": 52500
                 },
                 {
@@ -69,13 +69,13 @@
                     "duration": 3000
                 },
                 {
-                    "text": "{center}{color:lime}{blip:3}September 17, 10:05 PM{nl}Joypolis, Atrium Event Hall",
+                    "text": "{center}{color:lime}{blip:3}September 17,{p:150} 10:05 PM{nl}Joypolis,{p:150} Atrium Event Hall",
                     "timestamp": 64500,
                     "duration": 8000
                 },
                 {
                     "name": "Sahwit",
-                    "text": "{blip:1}S-Someone! Help!",
+                    "text": "{blip:1}S-Someone!{p:200} Help!",
                     "timestamp": 91500,
                     "duration": 3000
                 }
@@ -124,7 +124,7 @@
                 "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
             },
             {
-                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}September 17, 10:34 PM{nl}Joypolis"
+                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}September 17,{p:150} 10:34 PM{nl}Joypolis"
             },
             {
                 "name": "Phoenix",
@@ -184,7 +184,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "She worked here at Joypolis as a suit actress for the Steel Samurai show, sir."
+                "text": "She worked here at Joypolis as a stunt performer for the Steel Samurai show,{p:150} sir."
             },
             {
                 "name": "Gumshoe",
@@ -200,7 +200,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}... Maggey Byrde,{p:300} who was working here part-time as a security guard,{p:200} sir..."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"ScratchingHead2\"]}{hideCharacter}{fadeInCharacter}{p:200}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{sprite:Gumshoe[\"Sad\"]}...{p:200} Maggey Byrde,{p:300} who was working here part-time as a security guard,{p:200} sir..."
             },
             {
                 "name": "Phoenix",
@@ -220,7 +220,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}The event hall manager for this amusement park,{nl}Frank Sahwit, sir."
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{sprite:Gumshoe[\"Normal\"]}{showTextbox}The event hall manager for this amusement park,{nl}Frank Sahwit,{p:150} sir."
             },
             {
                 "name": "Edgeworth",
@@ -232,11 +232,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{flash}{blip:1,false}{playSound:damage}What!?"
+                "text": "{flash}{blip:1,false}{playSound:damage}What!{p:200}?"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(No, I can't let him get to me.{nl}{p:300}No matter what evidence they have,{p:200} I can't lose.)"
+                "text": "{blip:0,false}{color:lightblue}(No,{p:150} I can't let him get to me.{nl}{p:300}No matter what evidence they have,{p:200} I can't lose.)"
             },
             {
                 "name": "Phoenix",

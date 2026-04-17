@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Floor4_Init",
     "actions": {
         "move": true,
@@ -48,19 +48,19 @@
         ],
         "Floor4_Start": [
             {
-                "text": "{bg:Floor4}{center}{color:lime}{blip:3}{showTextbox}17 de septiembre{nl}Joypolis, sala de eventos - 4.ª planta"
+                "text": "{bg:Floor4}{center}{color:lime}{blip:3}{showTextbox}17 de septiembre{nl}Joypolis,{p:150} sala de eventos - 4.ª planta"
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation,true}Maggey es una pobre chica, colega."
+                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation,true}Maggey es una pobre chica,{p:150} colega."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"LookingAway\"]}Ya sabe el dicho, a perro flaco, todo son pulgas..."
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}Ya sabe el dicho,{p:150} a perro flaco,{p:150} todo son pulgas..."
             },
             {
                 "name": "Gumshoe",
-                "text": "Y cuando Maggey sale por ahí, siempre acaba metida en líos, como si solo le pasaran desgracias..."
+                "text": "Y cuando Maggey sale por ahí,{p:150} siempre acaba metida en líos,{p:150} como si solo le pasaran desgracias..."
             },
             {
                 "name": "Gumshoe",
@@ -72,7 +72,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...{nl}Ah, sí.{nl}Hay algo que quería contarle, aquí entre nosotros."
+                "text": "{blip:1,true}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...{nl}Ah,{p:150} sí.{nl}Hay algo que quería contarle,{p:150} aquí entre nosotros."
             },
             {
                 "name": "Gumshoe",
@@ -84,7 +84,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}La víctima, la señorita Nakaki...{nl}Era especialista, ¿verdad?"
+                "text": "{blip:1,true}La víctima,{p:150} la señorita Nakaki...{nl}Era especialista,{p:150} ¿verdad?"
             },
             {
                 "name": "Gumshoe",
@@ -92,7 +92,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}(... ¡M-Me da exactamente igual!)"
+                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}(...{p:200} ¡M-Me da exactamente igual!)"
             },
             {
                 "name": "Phoenix",
@@ -104,15 +104,15 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "Es la máscara del Samurái de Acero que la víctima,{nl}la señorita Nakaki, llevaba en el momento del incidente."
+                "text": "Es la máscara del Samurái de Acero que la víctima,{nl}la señorita Nakaki,{p:150} llevaba en el momento del incidente."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}Lo entiendo, pero...{nl}¿a dónde quiere llegar?"
+                "text": "{blip:1,false}Lo entiendo,{p:150} pero...{nl}¿a dónde quiere llegar?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}La zona de la ceja está un poco abollada,{nl}pero aparte de eso, ni un solo rasguño."
+                "text": "{blip:1,true}La zona de la ceja está un poco abollada,{nl}pero aparte de eso,{p:150} ni un solo rasguño."
             },
             {
                 "name": "Phoenix",
@@ -127,15 +127,15 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{flash}{shake:500}¡El moño es la vida del Samurái de Acero, colega!"
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{flash}{shake:500}¡El moño es la vida del Samurái de Acero,{p:150} colega!"
             },
             {
                 "name": "Gumshoe",
-                "text": "Así que debe haber...{playSound:shake}{flash}{shake:500}{nl}¡incluso mientras caía, protegió el moño con su vida!"
+                "text": "Así que debe haber...{playSound:shake}{flash}{shake:500}{nl}¡incluso mientras caía,{p:150} protegió el moño con su vida!"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... No creo que sea eso.)"
+                "text": "{blip:0,false}{color:lightblue}{playSound:shake}{flash}{shake:500}(No...{p:200} No creo que sea eso.)"
             },
             {
                 "name": "Gumshoe",
@@ -143,7 +143,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "No, sin importar quién sea,{nl}¡es imposible que Maggey cometiera un asesinato!"
+                "text": "No,{p:150} sin importar quién sea,{nl}¡es imposible que Maggey cometiera un asesinato!"
             },
             {
                 "name": "Phoenix",
@@ -155,7 +155,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Una vez que tenga toda la información, iré al juzgado.{nl}¡Ahí será donde lo aclararé todo!){color:white}{setState:floor4_done,true}{jump:Floor4_Default}{sectionEnd}"
+                "text": "{color:lightblue}(Una vez que tenga toda la información,{p:150} iré al juzgado.{nl}¡Ahí será donde lo aclararé todo!){color:white}{setState:floor4_done,true}{jump:Floor4_Default}{sectionEnd}"
             }
         ],
         "Load_Courtroom": [

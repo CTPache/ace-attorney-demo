@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Final_Victory",
     "actions": {
         "move": false,
@@ -13,11 +13,11 @@
     "gameScript": {
         "Final_Victory": [
             {
-                "text": "{hideLifeBar}{fadeBg:Lobby,800}{hideTextbox}{p:700}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}18 de septiembre, 12:14{nl}Tribunal del Distrito - Sala de acusados n.º 2{color:white}"
+                "text": "{hideLifeBar}{fadeBg:Lobby,800}{hideTextbox}{p:700}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}18 de septiembre,{p:150} 12:14{nl}Tribunal del Distrito - Sala de acusados n.º 2{color:white}"
             },
             {
                 "name": "Maggey",
-                "text": "{startBGM:victory}{sprite:Maggey[\"Admiring\"]}{fadeInCharacter:600}{blip:2}Señor Wright...{nl}¡Muchísimas gracias, señor!"
+                "text": "{startBGM:victory}{sprite:Maggey[\"Admiring\"]}{fadeInCharacter:600}{blip:2}Señor Wright...{nl}¡Muchísimas gracias,{p:150} señor!"
             },
             {
                 "name": "Phoenix",
@@ -25,11 +25,11 @@
             },
             {
                 "name": "Maggey",
-                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}... Pero aun así, acabé dejando{nl}caer a la señorita Nakaki, señor."
+                "text": "{sprite:Maggey[\"Sad\"]}{blip:2}...{p:200} Pero aun así,{p:150} acabé dejando{nl}caer a la señorita Nakaki,{p:150} señor."
             },
             {
                 "name": "Maggey",
-                "text": "Esa es la verdad, ¿no, señor?"
+                "text": "Esa es la verdad,{p:150} ¿no,{p:150} señor?"
             },
             {
                 "name": "Phoenix",
@@ -37,39 +37,39 @@
             },
             {
                 "name": "Maya",
-                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}¡Nick, estuviste increíble!{nl}¡Me he emocionado muchísimo!"
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}¡Nick,{p:150} estuviste increíble!{nl}¡Me he emocionado muchísimo!"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}Gracias. Pero las cosas solo salieron bien{nl}gracias a ti, Maya."
+                "text": "{blip:1,false}Gracias. Pero las cosas solo salieron bien{nl}gracias a ti,{p:150} Maya."
             },
             {
                 "name": "Maya",
-                "text": "{sprite:Maya[\"Determined\"]}{blip:2}¡Ah, claro!{nl}¡Es casi la hora del espectáculo del Samurái de Acero!"
+                "text": "{sprite:Maya[\"Determined\"]}{blip:2}¡Ah,{p:150} claro!{nl}¡Es casi la hora del espectáculo del Samurái de Acero!"
             },
             {
                 "name": "Maggey",
-                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Sad\"]}{fadeInCharacter:600}... Un momento, ¿el espectáculo no se había cancelado, señor?{nl}Digo, como la señorita Nakaki..."
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Sad\"]}{fadeInCharacter:600}...{p:200} Un momento,{p:150} ¿el espectáculo no se había cancelado,{p:150} señor?{nl}Digo,{p:150} como la señorita Nakaki..."
             },
             {
                 "name": "Maya",
-                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}En realidad, parece que lo han organizado en el último minuto.{nl}¡Dicen que el inspector Gumshoe va a hacer del Samurái de Acero!"
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}En realidad,{p:150} parece que lo han organizado en el último minuto.{nl}¡Dicen que el inspector Gumshoe va a hacer del Samurái de Acero!"
             },
             {
                 "name": "Maya",
-                "text": "¡Para celebrar que te han absuelto de todos los cargos, Maggey!"
+                "text": "¡Para celebrar que te han absuelto de todos los cargos,{p:150} Maggey!"
             },
             {
                 "name": "Maggey",
-                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Normal\"]}{fadeInCharacter:600}{blip:2}¡¿Quéee?!{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{nl}¡Qué ganas de verlo, señor!"
+                "text": "{fadeOutCharacter:600}{sprite:Maggey[\"Normal\"]}{fadeInCharacter:600}{blip:2}¡¿Quéee?{p:200}!{sprite:Maggey[\"Saluting\"]}{sprite:Maggey[\"Normal\"]}{nl}¡Qué ganas de verlo,{p:150} señor!"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}El inspector Gumshoe... Me pregunto si estará bien...{nl}¿Siquiera cabe en ese traje?"
+                "text": "{blip:1,false}El inspector Gumshoe...{p:200} Me pregunto si estará bien...{nl}¿Siquiera cabe en ese traje?"
             },
             {
                 "name": "Maya",
-                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}¡Venga, vamos!"
+                "text": "{fadeOutCharacter:600}{sprite:Maya[\"Happy\"]}{fadeInCharacter:600}{blip:2}¡Venga,{p:150} vamos!"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{fadeBg:Ending,800}{p:4000}{fadeOutBg:1000}{stopBGM:true}{returnToTitle:\"¡Felicidades, has ganado! ¡Hasta la próxima!\"}{sectionEnd}"

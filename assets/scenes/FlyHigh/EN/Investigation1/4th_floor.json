@@ -1,4 +1,4 @@
-{
+﻿{
     "initialSection": "Floor4_Init",
     "actions": {
         "move": true,
@@ -48,23 +48,23 @@
         ],
         "Floor4_Start": [
             {
-                "text": "{bg:Floor4}{center}{color:lime}{blip:3}{showTextbox}September 17{nl}Joypolis, Event Hall 4th Floor"
+                "text": "{bg:Floor4}{center}{color:lime}{blip:3}{showTextbox}September 17{nl}Joypolis,{p:150} Event Hall 4th Floor"
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation,true}Maggey is a poor kid, pal."
+                "text": "{color:white}{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{p:500}{fadeInCharacter}{showTextbox}{blip:1}{sprite:Gumshoe[\"Sad\"]}{startBGM:investigation,true}Maggey is a poor kid,{p:150} pal."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"LookingAway\"]}They say if a dog walks, it gets hit by a stick..."
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}They say if a dog walks,{p:150} it gets hit by a stick..."
             },
             {
                 "name": "Gumshoe",
-                "text": "And when Maggey walks around, she gets swept up in trouble, like nothing but unfair things ever happen to her..."
+                "text": "And when Maggey walks around,{p:150} she gets swept up in trouble,{p:150} like nothing but unfair things ever happen to her..."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{shake:500}I'm sure this time is some kind of mistake, too!{nl}There's no way she could've killed anyone!"
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{shake:500}I'm sure this time is some kind of mistake,{p:150} too!{nl}There's no way she could've killed anyone!"
             },
             {
                 "name": "Phoenix",
@@ -72,7 +72,7 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...{nl}Oh, right.{nl}There's something I wanted to tell you, just between us."
+                "text": "{blip:1,true}{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{showTextbox}{flash}{playSound:cling}{sprite:Gumshoe[\"Normal\"]}{stopBGM:true}...{nl}Oh,{p:150} right.{nl}There's something I wanted to tell you,{p:150} just between us."
             },
             {
                 "name": "Gumshoe",
@@ -84,15 +84,15 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}The victim, Ms. Nakaki...{nl}She was a suit actress, right?"
+                "text": "{blip:1,true}The victim,{p:150} Ms. Nakaki...{nl}She was a stunt performer,{p:150} right?"
             },
             {
                 "name": "Gumshoe",
-                "text": "Truth is...{p:300} back in the day...{nl}{sprite:Gumshoe[\"Determined\"]}{playSound:shake}{flash}{shake:500}I also wanted to be a suit actor!{p:400}"
+                "text": "Truth is...{p:300} back in the day...{nl}{sprite:Gumshoe[\"Determined\"]}{playSound:shake}{flash}{shake:500}I also wanted to be a stunt performer!{p:400}"
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}(...I-I really don't care!)"
+                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}(...{p:200}I-I really don't care!)"
             },
             {
                 "name": "Phoenix",
@@ -104,15 +104,15 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "It's the Steel Samurai mask the victim,{nl}Ms. Nakaki, was wearing at the time of the incident."
+                "text": "It's the Steel Samurai mask the victim,{nl}Ms. Nakaki,{p:150} was wearing at the time of the incident."
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}I get that, but...{nl}what's your point?"
+                "text": "{blip:1,false}I get that,{p:150} but...{nl}what's your point?"
             },
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}The eyebrow area is dented a little,{nl}but other than that, not a single scratch."
+                "text": "{blip:1,true}The eyebrow area is dented a little,{nl}but other than that,{p:150} not a single scratch."
             },
             {
                 "name": "Phoenix",
@@ -123,19 +123,19 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}I can tell because I wanted to be a suit actor myself."
+                "text": "{color:white}{blip:1,true}{sprite:Gumshoe[\"Normal\"]}I can tell because I wanted to be a stunt performer myself."
             },
             {
                 "name": "Gumshoe",
-                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{flash}{shake:500}The topknot is the Steel Samurai's lifeline, pal!"
+                "text": "{sprite:Gumshoe[\"Angry\"]}{playSound:shake}{flash}{shake:500}The topknot is the Steel Samurai's lifeline,{p:150} pal!"
             },
             {
                 "name": "Gumshoe",
-                "text": "So she must've...{playSound:shake}{flash}{shake:500}{nl}even while falling, she protected the topknot with her life!"
+                "text": "So she must've...{playSound:shake}{flash}{shake:500}{nl}even while falling,{p:150} she protected the topknot with her life!"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}{playSound:shake}{flash}{shake:500}(No... I don't think that's right.)"
+                "text": "{blip:0,false}{color:lightblue}{playSound:shake}{flash}{shake:500}(No...{p:200} I don't think that's right.)"
             },
             {
                 "name": "Gumshoe",
@@ -143,11 +143,11 @@
             },
             {
                 "name": "Gumshoe",
-                "text": "No, no matter who it is,{nl}there's no way Maggey would ever commit murder!"
+                "text": "No,{p:150} no matter who it is,{nl}there's no way Maggey would ever commit murder!"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}On that, we agree. I swear,{nl}I'll prove her innocence."
+                "text": "{blip:1,false}On that,{p:150} we agree. I swear,{nl}I'll prove her innocence."
             },
             {
                 "name": "Phoenix",
@@ -155,7 +155,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Once I've got all the information, I'll head to court.{nl}That's where I'll make everything clear!){color:white}{setState:floor4_done,true}{jump:Floor4_Default}{sectionEnd}"
+                "text": "{color:lightblue}(Once I've got all the information,{p:150} I'll head to court.{nl}That's where I'll make everything clear!){color:white}{setState:floor4_done,true}{jump:Floor4_Default}{sectionEnd}"
             }
         ],
         "Load_Courtroom": [

@@ -1,9 +1,9 @@
 
 // Audio
 const blipPaths = {
-    1: 'assets/audio/se/blip_1.wav',
-    2: 'assets/audio/se/blip_2.wav',
-    3: 'assets/audio/se/blip_3.wav'
+    1: 'assets/audio/se/se003.wav',
+    2: 'assets/audio/se/se004.wav',
+    3: 'assets/audio/se/se01a.wav'
 };
 
 const activeSFX = new Set();

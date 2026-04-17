@@ -1,4 +1,4 @@
-{
+﻿{
     "actions": {
         "move": false,
         "examine": false,
@@ -357,19 +357,19 @@
             "failSequence": "CE_Fail",
             "statements": {
                 "0": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}El día del incidente, les dije a las dos que estuvieran en la 4.ª planta de la sala de eventos a las 22:00.",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}El día del incidente,{p:150} les dije a las dos que estuvieran en la 4.ª planta de la sala de eventos a las 22:00.",
                     "press": "Press_Y1_0"
                 },
                 "1": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Tras terminar mi trabajo, me senté en el escenario de la 1.ª planta y esperé a que llegara la hora.",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Tras terminar mi trabajo,{p:150} me senté en el escenario de la 1.ª planta y esperé a que llegara la hora.",
                     "press": "Press_Y1_1"
                 },
                 "2": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Cuando miré por casualidad hacia la 4.ª planta, vi a la víctima y a la acusada.",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Cuando miré por casualidad hacia la 4.ª planta,{p:150} vi a la víctima y a la acusada.",
                     "press": "Press_Y1_2"
                 },
                 "3": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Entonces, ¡la acusada se acercó a la víctima sin dudarlo y la empujó al vacío!",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Entonces,{p:150} ¡la acusada se acercó a la víctima sin dudarlo y la empujó al vacío!",
                     "press": "Press_Y1_3",
                     "present": {
                         "blog_post_charm_updated": "CE1_Victory"
@@ -400,7 +400,7 @@
                     "press": "Press_Y2_1"
                 },
                 "2": {
-                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{hideCharacter}{blip:1,true}{color:lime}{fadeBg:Byrde_Samurai2}{showTextbox}Miren, por favor.{nl}La acusada está empujando a la víctima mientras esta está sentada en la barandilla.",
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{hideCharacter}{blip:1,true}{color:lime}{fadeBg:Byrde_Samurai2}{showTextbox}Miren,{p:150} por favor.{nl}La acusada está empujando a la víctima mientras esta está sentada en la barandilla.",
                     "press": "Press_Y2_2"
                 },
                 "3": {
@@ -428,11 +428,11 @@
             "failSequence": "CE_Fail",
             "statements": {
                 "0": {
-                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Terminé mi trabajo sobre las 21:15,{nl}y después de eso, me quedé en el escenario de la 1.ª planta todo el tiempo.",
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Terminé mi trabajo sobre las 21:15,{nl}y después de eso,{p:150} me quedé en el escenario de la 1.ª planta todo el tiempo.",
                     "press": "Press_Y3_0"
                 },
                 "1": {
-                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Puede que sospechen de mí, pero{nl}están cometiendo un enorme error.",
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Puede que sospechen de mí,{p:150} pero{nl}están cometiendo un enorme error.",
                     "press": "Press_Y3_1"
                 },
                 "2": {
@@ -487,7 +487,7 @@
     "options": {
         "CE2_MaskChoice": {
             "name": "Phoenix",
-            "text": "(En otras palabras, ¡esto es lo que pasó!)",
+            "text": "(En otras palabras,{p:150} ¡esto es lo que pasó!)",
             "options": [
                 {
                     "text": "La víctima cayó sin llevar la máscara",
@@ -531,7 +531,7 @@
         },
         "CE3_1": {
             "name": "Phoenix",
-            "text": "{showLifeBar:2}{hideCharacter}{bg:Byrde_Samurai}{color:lightblue}(¿Qué podría ser...?{nl}Desde luego, hay algo que me llama la atención...)",
+            "text": "{showLifeBar:2}{hideCharacter}{bg:Byrde_Samurai}{color:lightblue}(¿Qué podría ser...{p:200}?{nl}Desde luego,{p:150} hay algo que me llama la atención...)",
             "options": [
                 {
                     "text": "No se le ve la cara a la acusada",
@@ -581,7 +581,7 @@
         "CE1_Hint": [
             {
                 "name": "Maya",
-                "text": "{hideLifeBar}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2,true}¡Espera, Nick!{nl}¡Esta es la parte importante! ¡Cálmate!"
+                "text": "{hideLifeBar}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2,true}¡Espera,{p:150} Nick!{nl}¡Esta es la parte importante!{p:200} ¡Cálmate!"
             },
             {
                 "name": "Phoenix",
@@ -589,7 +589,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Pero, ¿cómo debería desmontarla...?)"
+                "text": "{color:lightblue}(Pero,{p:150} ¿cómo debería desmontarla...{p:200}?)"
             },
             {
                 "name": "Edgeworth",
@@ -597,19 +597,19 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Confident2\"]}Así, el jefe y la socia del bufete{nl}podrán irse a pasar un buen rato al parque de atracciones."
+                "text": "{courtSprite:prosecution[\"Confident2\"]}Así,{p:150} el jefe y la socia del bufete{nl}podrán irse a pasar un buen rato al parque de atracciones."
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}El fiscal Edgeworth...{p:200} ¿Sigue guardando rencor{nl}por lo que dije antes...?"
+                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}El fiscal Edgeworth...{p:200} ¿Sigue guardando rencor{nl}por lo que dije antes...{p:200}?"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Shaking_Head\"]}{courtSprite:defense[\"Normal\"]}{blip:1}¡No, no me rindo!"
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Shaking_Head\"]}{courtSprite:defense[\"Normal\"]}{blip:1}¡No,{p:150} no me rindo!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(... Maggey dijo que extendió la mano{nl}sin saber qué había en la oscuridad.)"
+                "text": "{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(...{p:200} Maggey dijo que extendió la mano{nl}sin saber qué había en la oscuridad.)"
             },
             {
                 "name": "Phoenix",
@@ -629,7 +629,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{blip:1,true}Su Señoría.{nl}Échele un vistazo a esto, por favor."
+                "text": "{showTextbox}{blip:1,true}Su Señoría.{nl}Échele un vistazo a esto,{p:150} por favor."
             },
             {
                 "name": "Judge",
@@ -645,19 +645,19 @@
             },
             {
                 "name": "Judge",
-                "text": "{hideTextbox}{hideEvidenceIcon}{courtView:judge}{p:100}{courtSprite:judge[\"Stern\"]}{showTextbox}¿Hmm?{nl}¿Es esto cierto, acusada?"
+                "text": "{hideTextbox}{hideEvidenceIcon}{courtView:judge}{p:100}{courtSprite:judge[\"Stern\"]}{showTextbox}¿Hmm?{nl}¿Es esto cierto,{p:150} acusada?"
             },
             {
                 "name": "Maggey",
-                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}¡E-Es cierto, señor!{nl}¡Desaparecieron por completo mientras me estaba dando una ducha en la sala de espera, señor!"
+                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}¡E-Es cierto,{p:150} señor!{nl}¡Desaparecieron por completo mientras me estaba dando una ducha en la sala de espera,{p:150} señor!"
             },
             {
                 "name": "Maggey",
-                "text": "{playSound:shake}{shake:250}Siguen desaparecidas incluso a día de hoy.{nl}¡Las que llevo ahora puestas son las de repuesto, señor!"
+                "text": "{playSound:shake}{shake:250}Siguen desaparecidas incluso a día de hoy.{nl}¡Las que llevo ahora puestas son las de repuesto,{p:150} señor!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:1}Su visión es extremadamente pobre.{nl}Además, tiene astigmatismo."
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:1}Su visión es extremadamente pobre.{nl}Además,{p:150} tiene astigmatismo."
             },
             {
                 "name": "Phoenix",
@@ -708,7 +708,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "En otras palabras, en realidad llevaba las gafas puestas."
+                "text": "En otras palabras,{p:150} en realidad llevaba las gafas puestas."
             },
             {
                 "name": "Edgeworth",
@@ -720,7 +720,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}Mis gafas desaparecieron de verdad, señor.{nl}¡Caminaba a ciegas, de verdad, señor!"
+                "text": "{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}Mis gafas desaparecieron de verdad,{p:150} señor.{nl}¡Caminaba a ciegas,{p:150} de verdad,{p:150} señor!"
             },
             {
                 "name": "Edgeworth",
@@ -728,7 +728,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}¡Solo guardo mis repuestos en casa, señor!"
+                "text": "{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{shake:250}{blip:2}¡Solo guardo mis repuestos en casa,{p:150} señor!"
             },
             {
                 "name": "Edgeworth",
@@ -736,27 +736,27 @@
             },
             {
                 "name": "Maggey",
-                "text": "{courtSprite:witness[\"Sad\"]}{courtView:witness}{blip:2}S-Sí...{p:300}{p:200}{nl}Me las arreglé para caminar como pude sin las gafas, señor..."
+                "text": "{courtSprite:witness[\"Sad\"]}{courtView:witness}{blip:2}S-Sí...{p:300}{p:200}{nl}Me las arreglé para caminar como pude sin las gafas,{p:150} señor..."
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Por favor, continúe.{nl}Ya que hemos sacado el tema, escuchemos el resto."
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Por favor,{p:150} continúe.{nl}Ya que hemos sacado el tema,{p:150} escuchemos el resto."
             },
             {
                 "name": "Maggey",
-                "text": "{courtSprite:witness[\"Sad\"]}{courtView:witness}{blip:2}Caminaba a ciegas sin mis gafas, señor...{p:300}{nl}Y entonces me pareció ver una sombra borrosa..."
+                "text": "{courtSprite:witness[\"Sad\"]}{courtView:witness}{blip:2}Caminaba a ciegas sin mis gafas,{p:150} señor...{p:300}{nl}Y entonces me pareció ver una sombra borrosa..."
             },
             {
                 "name": "Maggey",
-                "text": "Llamé, pero no hubo respuesta,{nl}así que extendí la mano, señor."
+                "text": "Llamé,{p:150} pero no hubo respuesta,{nl}así que extendí la mano,{p:150} señor."
             },
             {
                 "name": "Maggey",
-                "text": "Y entonces escuché el sonido de algo cayendo abajo{nl}y el grito del señor Sahwit, señor..."
+                "text": "Y entonces escuché el sonido de algo cayendo abajo{nl}y el grito del señor Sahwit,{p:150} señor..."
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{blip:1}{startBGM:courtroom}Hmm...{p:300}{nl}En ese caso, creo que el asunto está zanjado."
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{blip:1}{startBGM:courtroom}Hmm...{p:300}{nl}En ese caso,{p:150} creo que el asunto está zanjado."
             },
             {
                 "name": "Phoenix",
@@ -772,15 +772,15 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:250}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}¡Por favor, espere, Su Señoría!"
+                "text": "{hideTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:250}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}¡Por favor,{p:150} espere,{p:150} Su Señoría!"
             },
             {
                 "name": "Phoenix",
-                "text": "L-La {p:200}acusada... ¡podría haber dejado caer otra cosa{nl}en lugar de a la víctima!"
+                "text": "L-La {p:200}acusada...{p:200} ¡podría haber dejado caer otra cosa{nl}en lugar de a la víctima!"
             },
             {
                 "name": "Edgeworth",
-                "text": "{flash}{playSound:question1}{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}Vaya.{nl}¿Como qué, por ejemplo?"
+                "text": "{flash}{playSound:question1}{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}Vaya.{nl}¿Como qué,{p:150} por ejemplo?"
             },
             {
                 "name": "Phoenix",
@@ -788,15 +788,15 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}Dejó caer otra cosa, y sin embargo, el cadáver{nl}cayó delante del testigo. No tiene sentido."
+                "text": "{courtView:prosecution}Dejó caer otra cosa,{p:150} y sin embargo,{p:150} el cadáver{nl}cayó delante del testigo. No tiene sentido."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Confident2\"]}Esto no es una atracción de feria, ¿sabe?{courtSprite:prosecution[\"Confident_Shrugging\"]}{courtSprite:prosecution[\"Confident2\"]}"
+                "text": "{courtSprite:prosecution[\"Confident2\"]}Esto no es una atracción de feria,{p:150} ¿sabe?{courtSprite:prosecution[\"Confident_Shrugging\"]}{courtSprite:prosecution[\"Confident2\"]}"
             },
             {
                 "name": "Judge",
-                "text": "{hideTextbox}{courtSprite:judge[\"Normal\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Normal\"]}{showTextbox}Desde luego, eso es cierto."
+                "text": "{hideTextbox}{courtSprite:judge[\"Normal\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Normal\"]}{showTextbox}Desde luego,{p:150} eso es cierto."
             },
             {
                 "name": "Edgeworth",
@@ -832,11 +832,11 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}¡Nick, esto pinta muy mal!"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}¡Nick,{p:150} esto pinta muy mal!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}Uuuugh.{p:200}{nl}Vamos a escuchar lo que tiene que decir, por ahora."
+                "text": "{courtView:defense}Uuuugh.{p:200}{nl}Vamos a escuchar lo que tiene que decir,{p:150} por ahora."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{jump:Second_Testimony_Start}{sectionEnd}"
@@ -858,7 +858,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}{flash}{playSound:question1}¡¿Qué?!"
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}{flash}{playSound:question1}¡¿Qué?{p:200}!"
             },
             {
                 "name": "Phoenix",
@@ -882,7 +882,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:1}Y más tarde, a las 22:05, cayó de bruces por segunda vez,{nl}esta vez llevando puesta la máscara."
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{courtSprite:defense[\"Thinking\"]}{blip:1}Y más tarde,{p:150} a las 22:05,{p:150} cayó de bruces por segunda vez,{nl}esta vez llevando puesta la máscara."
             },
             {
                 "name": "Phoenix",
@@ -890,7 +890,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Confident\"]}... Pensándolo así, ¡la causa de la muerte{nl}y la parte trasera intacta de la máscara encajan a la perfección!"
+                "text": "{courtSprite:defense[\"Confident\"]}...{p:200} Pensándolo así,{p:150} ¡la causa de la muerte{nl}y la parte trasera intacta de la máscara encajan a la perfección!"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
@@ -909,22 +909,22 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{bg:speedlines}{courtSprite:defense[\"ZoomIn\"]}{playSound:bubble_sfx}¡¿No es esta la cruda realidad del incidente?!"
+                "text": "{bg:speedlines}{courtSprite:defense[\"ZoomIn\"]}{playSound:bubble_sfx}¡¿No es esta la cruda realidad del incidente?{p:200}!"
             },
             {
                 "text": "{stopBGM:true}{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(...{p:300}¡Muy bien! ¡Siento que acabo de dar{nl}un paso de gigante hacia la verdad!)"
+                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(...{p:300}¡Muy bien!{p:200} ¡Siento que acabo de dar{nl}un paso de gigante hacia la verdad!)"
             },
             {
                 "name": "Maya",
-                "text": "{color:white}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}¡Así se hace, Nick!{nl}¡Vaya giro de los acontecimientos!"
+                "text": "{color:white}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}¡Así se hace,{p:150} Nick!{nl}¡Vaya giro de los acontecimientos!"
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}¡Eso no son más que conjeturas! ¡No puede demostrar{nl}que cayera antes de ponerse la máscara!"
+                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}¡Eso no son más que conjeturas!{p:200} ¡No puede demostrar{nl}que cayera antes de ponerse la máscara!"
             },
             {
                 "name": "Judge",
@@ -936,7 +936,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Nodding\"]}{courtSprite:defense[\"Normal\"]}{showTextbox}{startBGM:courtroom}{blip:1}Es un punto justo, Su Señoría."
+                "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Nodding\"]}{courtSprite:defense[\"Normal\"]}{showTextbox}{startBGM:courtroom}{blip:1}Es un punto justo,{p:150} Su Señoría."
             },
             {
                 "name": "Phoenix",
@@ -952,7 +952,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{courtSprite:witness[\"Nervous\"]}{courtPan:witness}{blip:1}{showTextbox}¿A-Aún seguimos?{nl}¿No es hora de dictar el veredicto...?"
+                "text": "{hideTextbox}{courtSprite:witness[\"Nervous\"]}{courtPan:witness}{blip:1}{showTextbox}¿A-Aún seguimos?{nl}¿No es hora de dictar el veredicto...{p:200}?"
             },
             {
                 "name": "Phoenix",
@@ -980,11 +980,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}Por favor, permítame interrogar al señor Sahwit sobre sus 50 minutos en blanco entre las 21:15 y el incidente."
+                "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}Por favor,{p:150} permítame interrogar al señor Sahwit sobre sus 50 minutos en blanco entre las 21:15 y el incidente."
             },
             {
                 "name": "Phoenix",
-                "text": "Si lo hacemos, deberíamos descubrir si{nl}el señor Sahwit es realmente inocente,{nl}y si mi teoría es correcta."
+                "text": "Si lo hacemos,{p:150} deberíamos descubrir si{nl}el señor Sahwit es realmente inocente,{nl}y si mi teoría es correcta."
             },
             {
                 "name": "Judge",
@@ -996,7 +996,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}H...{p:200}Hmph, adelante."
+                "text": "{courtSprite:witness[\"Nervous\"]}{courtView:witness}H...{p:200}Hmph,{p:150} adelante."
             },
             {
                 "name": "Sahwit",
@@ -1036,7 +1036,7 @@
         "CE2_Option2_Timer": [
             {
                 "name": "Judge",
-                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}¿Letrado?{nl}¿Qué le pasa, que se queda pasmado así?"
+                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}¿Letrado?{nl}¿Qué le pasa,{p:150} que se queda pasmado así?"
             },
             {
                 "name": "Phoenix",
@@ -1044,7 +1044,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Estamos en medio de un juicio.{nl}Por favor, responda adecuadamente dentro del tiempo límite.{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Estamos en medio de un juicio.{nl}Por favor,{p:150} responda adecuadamente dentro del tiempo límite.{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE2_option2_failures==1,CE2_Option2_MiaHint}{setState:CE2_option2_failures,1}{jump:CE2_Option2_Menu}{sectionEnd}"
@@ -1057,15 +1057,15 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}¡¿Qué?!{nl}¿Y por qué motivo?"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}¡¿Qué?{p:200}!{nl}¿Y por qué motivo?"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}Ummm...{p:200} Porque le gustaban mucho{nl}las alturas... ¿quizás?"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}Ummm...{p:200} Porque le gustaban mucho{nl}las alturas...{p:200} ¿quizás?"
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick... ¡Eso es ir{nl}un poco demasiado lejos!{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick...{p:200} ¡Eso es ir{nl}un poco demasiado lejos!{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE2_option2_failures==1,CE2_Option2_MiaHint}{setState:CE2_option2_failures,1}{jump:CE2_Option2_Menu}{sectionEnd}"
@@ -1078,15 +1078,15 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}¡¿T-Tres veces?!"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}¡¿T-Tres veces?{p:200}!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}¡Sí! La primera vez de bruces, la segunda vez sobre la nuca,{nl}y la tercera...{p:200} hum..."
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}¡Sí!{p:200} La primera vez de bruces,{p:150} la segunda vez sobre la nuca,{nl}y la tercera...{p:200} hum..."
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick... caer una tercera vez{nl}es rizar el rizo, ¿no crees?{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick...{p:200} caer una tercera vez{nl}es rizar el rizo,{p:150} ¿no crees?{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE2_option2_failures==1,CE2_Option2_MiaHint}{setState:CE2_option2_failures,1}{jump:CE2_Option2_Menu}{sectionEnd}"
@@ -1095,7 +1095,7 @@
         "CE2_Option_Correct": [
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}¡Tiraron a la víctima cuando no llevaba la máscara, y fue entonces cuando recibió el fuerte golpe en la nuca!"
+                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}¡Tiraron a la víctima cuando no llevaba la máscara,{p:150} y fue entonces cuando recibió el fuerte golpe en la nuca!"
             },
             {
                 "name": "Edgeworth",
@@ -1107,7 +1107,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{blip:0,false}{color:lightblue}(Pero entonces, ¿por qué se daría la vuelta{nl}y dejaría intacta la parte trasera de la máscara...?)"
+                "text": "{courtView:defense}{blip:0,false}{color:lightblue}(Pero entonces,{p:150} ¿por qué se daría la vuelta{nl}y dejaría intacta la parte trasera de la máscara...{p:200}?)"
             },
             {
                 "name": "Phoenix",
@@ -1115,15 +1115,15 @@
             },
             {
                 "name": "Judge",
-                "text": "{color:white}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado, ¿qué le ocurre?"
+                "text": "{color:white}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado,{p:150} ¿qué le ocurre?"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}E-Esto... bueno..."
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}E-Esto...{p:200} bueno..."
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}Nick, cuando estés en apuros, cálmate{nl}y organiza la información. ¡Esa es la clave!"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}Nick,{p:150} cuando estés en apuros,{p:150} cálmate{nl}y organiza la información. ¡Esa es la clave!"
             },
             {
                 "name": "Phoenix",
@@ -1131,19 +1131,19 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{flash}{playSound:cling}{color:white}{blip:1}¡Ah!{nl}¡Eso es, eso fue lo que pasó!"
+                "text": "{flash}{playSound:cling}{color:white}{blip:1}¡Ah!{nl}¡Eso es,{p:150} eso fue lo que pasó!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Alrededor de las 21:30, Maggey{nl}escuchó un ruido fuerte.)"
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Alrededor de las 21:30,{p:150} Maggey{nl}escuchó un ruido fuerte.)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(¿Por qué hubo un ruido tan fuerte...?{nl}¡Es una pista enorme!)"
+                "text": "{color:lightblue}(¿Por qué hubo un ruido tan fuerte...{p:200}?{nl}¡Es una pista enorme!)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Maya, gracias.{nl}Te invitaré a ramen en Joypolis todo un año.)"
+                "text": "{color:lightblue}(Maya,{p:150} gracias.{nl}Te invitaré a ramen en Joypolis todo un año.)"
             },
             {
                 "name": "Maya",
@@ -1193,7 +1193,7 @@
             },
             {
                 "name": "Mia",
-                "text": "En otras palabras, la víctima se encontraba en un estado en el que{nl}no llevaba la máscara puesta..."
+                "text": "En otras palabras,{p:150} la víctima se encontraba en un estado en el que{nl}no llevaba la máscara puesta..."
             },
             {
                 "text": "{fadeOutCharacter:600}{fadeOutBg:600}{courtView:defense}{fadeInCharacter:600}{fadeInBg:600}{jump:CE2_Option_Menu}{sectionEnd}"
@@ -1210,15 +1210,15 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}¡Nick, podemos ir todos juntos{nl}cuando acabe el juicio!"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}¡Nick,{p:150} podemos ir todos juntos{nl}cuando acabe el juicio!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}Ah, sí. Había perdido la concentración por un segundo..."
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}Ah,{p:150} sí. Había perdido la concentración por un segundo..."
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado. Estamos en medio de un juicio.{nl}Por favor, responda adecuadamente dentro del tiempo límite.{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado. Estamos en medio de un juicio.{nl}Por favor,{p:150} responda adecuadamente dentro del tiempo límite.{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jump:CE2_Option_Menu}{sectionEnd}"
@@ -1231,7 +1231,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}¡Nick, céntrate!{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}¡Nick,{p:150} céntrate!{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE2_option_failures==1,CE2_Option_MiaHint}{setState:CE2_option_failures,1}{jump:CE2_Option_Menu}{sectionEnd}"
@@ -1244,7 +1244,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}O sea, verá, la víctima llevaba una máscara enorme...{nl}Quiero decir, una enorme mascarada..."
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}O sea,{p:150} verá,{p:150} la víctima llevaba una máscara enorme...{nl}Quiero decir,{p:150} una enorme mascarada..."
             },
             {
                 "name": "Maya",
@@ -1286,11 +1286,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}Pero, como puede ver, el moño está completamente intacto."
+                "text": "{courtView:defense}Pero,{p:150} como puede ver,{p:150} el moño está completamente intacto."
             },
             {
                 "name": "Phoenix",
-                "text": "Además, ¡no hay ni un solo rasguño ni abolladura{nl}en la parte trasera de la máscara!"
+                "text": "Además,{p:150} ¡no hay ni un solo rasguño ni abolladura{nl}en la parte trasera de la máscara!"
             },
             {
                 "name": "Phoenix",
@@ -1309,7 +1309,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{blip:1}Entonces, ¿cómo cree la defensa{nl}que la víctima se golpeó la nuca?"
+                "text": "{blip:1}Entonces,{p:150} ¿cómo cree la defensa{nl}que la víctima se golpeó la nuca?"
             },
             {
                 "name": "Phoenix",
@@ -1333,15 +1333,15 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}¡Nick, podemos ir todos juntos{nl}cuando acabe el juicio!"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}¡Nick,{p:150} podemos ir todos juntos{nl}cuando acabe el juicio!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{blip:1}Ah, sí. Había perdido la concentración por un segundo..."
+                "text": "{courtView:defense}{blip:1}Ah,{p:150} sí. Había perdido la concentración por un segundo..."
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado. Estamos en medio de un juicio.{nl}Por favor, responda adecuadamente dentro del tiempo límite.{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado. Estamos en medio de un juicio.{nl}Por favor,{p:150} responda adecuadamente dentro del tiempo límite.{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{fadeOutBg:200}{fadeOutCharacter:200}{courtSprite:defense[\"Determined\"]}{courtView:defense}{fadeInCharacter:200}{fadeInBg:200}{jump:CE2_Present_mask}{sectionEnd}"
@@ -1359,7 +1359,7 @@
             },
             {
                 "name": "Mia",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{showTextbox}{blip:2,true}Lo que de verdad necesitas observar en esta foto{nl}no es lo que puedes ver, sino lo que no puedes."
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{showTextbox}{blip:2,true}Lo que de verdad necesitas observar en esta foto{nl}no es lo que puedes ver,{p:150} sino lo que no puedes."
             },
             {
                 "name": "Mia",
@@ -1372,7 +1372,7 @@
         "CE3_1_Option_Right": [
             {
                 "name": "Phoenix",
-                "text": "{showCharacter}{courtView:defense}{courtSprite:defense[\"Nod\"]}{courtSprite:defense[\"Normal\"]}{blip:1}Eso es... ¡Esta foto{nl}no muestra la cara de la acusada!"
+                "text": "{showCharacter}{courtView:defense}{courtSprite:defense[\"Nod\"]}{courtSprite:defense[\"Normal\"]}{blip:1}Eso es...{p:200} ¡Esta foto{nl}no muestra la cara de la acusada!"
             },
             {
                 "name": "Phoenix",
@@ -1401,7 +1401,7 @@
         "CE3_1_Option_Timer": [
             {
                 "name": "Judge",
-                "text": "{showTextbox}{showCharacter}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado, ¿qué ocurre?{nl}Se le ha acabado el tiempo."
+                "text": "{showTextbox}{showCharacter}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado,{p:150} ¿qué ocurre?{nl}Se le ha acabado el tiempo."
             },
             {
                 "name": "Phoenix",
@@ -1409,11 +1409,11 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Confident2\"]}{courtView:prosecution}Hmph. ¿Tratando de ganar tiempo?{nl}Un silencio sin sentido es pecado, Wright."
+                "text": "{courtSprite:prosecution[\"Confident2\"]}{courtView:prosecution}Hmph. ¿Tratando de ganar tiempo?{nl}Un silencio sin sentido es pecado,{p:150} Wright."
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick, ¡deja de hacer zoom mentalmente{nl}y da una respuesta en condiciones!{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick,{p:150} ¡deja de hacer zoom mentalmente{nl}y da una respuesta en condiciones!{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE3_1_option_failures==1,CE3_1_Option_MiaHint}{setState:CE3_1_option_failures,1}{jump:CE3_1_Options}{sectionEnd}"
@@ -1426,11 +1426,11 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}¿Eh? ¿Un olor sospechoso?"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}¿Eh?{p:200} ¿Un olor sospechoso?"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}Es como si el sospechoso olor de la gomina del fotógrafo, el señor Sahwit,{nl}emanara de la foto..."
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}Es como si el sospechoso olor de la gomina del fotógrafo,{p:150} el señor Sahwit,{nl}emanara de la foto..."
             },
             {
                 "name": "Maya",
@@ -1438,7 +1438,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{playSound:fail}No, ¿acaso no hay algo más preocupante?{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtView:cocounsel}{playSound:fail}No,{p:150} ¿acaso no hay algo más preocupante?{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "name": "Phoenix",
@@ -1455,11 +1455,11 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}Sí, las tiene, pero...{nl}¿Y qué?"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}Sí,{p:150} las tiene,{p:150} pero...{nl}¿Y qué?"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Sweating\"]}¿Hmm? ¿Un momento?{nl}¿No te referías a eso?"
+                "text": "{courtView:defense}{courtSprite:defense[\"Sweating\"]}¿Hmm?{p:200} ¿Un momento?{nl}¿No te referías a eso?"
             },
             {
                 "name": "Maya",
@@ -1467,7 +1467,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}Cierto.{nl}Si no son las huellas dactilares... Qué podría ser..."
+                "text": "{courtView:defense}Cierto.{nl}Si no son las huellas dactilares...{p:200} Qué podría ser..."
             },
             {
                 "text": "{jumpIf:CE3_1_option_failures==1,CE3_1_Option_MiaHint}{setState:CE3_1_option_failures,1}{jump:CE3_1_Options}{sectionEnd}"
@@ -1489,7 +1489,7 @@
             },
             {
                 "name": "Mia",
-                "text": "¿Qué le faltaba a la acusada en ese momento...?{nl}Piensa en lo que suele llevar."
+                "text": "¿Qué le faltaba a la acusada en ese momento...{p:200}?{nl}Piensa en lo que suele llevar."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:defense}{fadeInCharacter:600}{fadeInBg:600}{jump:CE3_2_Options}{sectionEnd}"
@@ -1502,11 +1502,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "Sin embargo, si no llevara puestas sus gafas,{nl}todo el plan se vendría abajo..."
+                "text": "Sin embargo,{p:150} si no llevara puestas sus gafas,{nl}todo el plan se vendría abajo..."
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}¡Por eso evitó deliberadamente{nl}mostrar su cara, ¿no es así?!{startBGM:objection}"
+                "text": "{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}¡Por eso evitó deliberadamente{nl}mostrar su cara,{p:150} ¿no es así?{p:200}!{startBGM:objection}"
             },
             {
                 "name": "Sahwit",
@@ -1522,7 +1522,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{flash}{courtSprite:defense[\"Pointing\"]}{playSound:bubble_sfx}... ¿Y bien?{nl}¡Responda a la pregunta!"
+                "text": "{courtView:defense}{flash}{courtSprite:defense[\"Pointing\"]}{playSound:bubble_sfx}...{p:200} ¿Y bien?{nl}¡Responda a la pregunta!"
             },
             {
                 "name": "Edgeworth",
@@ -1530,7 +1530,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideTextbox}{courtSprite:prosecution[\"Wagging_Finger\"]}{courtSprite:prosecution[\"Confident2\"]}{showTextbox}¡Sin embargo, eso es incorrecto!"
+                "text": "{hideTextbox}{courtSprite:prosecution[\"Wagging_Finger\"]}{courtSprite:prosecution[\"Confident2\"]}{showTextbox}¡Sin embargo,{p:150} eso es incorrecto!"
             },
             {
                 "name": "Edgeworth",
@@ -1546,19 +1546,19 @@
             },
             {
                 "name": "Maggey",
-                "text": "{hideEvidenceIcon}{courtView:witness}{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{playSound:shake}{shake:500}{blip:2}¡Esas son mis gafas, sin duda, señor!{nl}¡¿Dónde estaban?!"
+                "text": "{hideEvidenceIcon}{courtView:witness}{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{playSound:shake}{shake:500}{blip:2}¡Esas son mis gafas,{p:150} sin duda,{p:150} señor!{nl}¡¿Dónde estaban?{p:200}!"
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}{blip:1}¿Estas?{nl}Estaban justo ahí, en la sala de espera."
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}{blip:1}¿Estas?{nl}Estaban justo ahí,{p:150} en la sala de espera."
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{courtView:defense}{flash}{courtSprite:defense[\"Damage\"]}{courtSprite:defense[\"Sweating\"]}{showTextbox}¡¿Quééé?!"
+                "text": "{hideTextbox}{courtView:defense}{flash}{courtSprite:defense[\"Damage\"]}{courtSprite:defense[\"Sweating\"]}{showTextbox}¡¿Quééé?{p:200}!"
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}Las encontramos al registrar la habitación tras el incidente.{nl}En otras palabras, la acusada miente."
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}Las encontramos al registrar la habitación tras el incidente.{nl}En otras palabras,{p:150} la acusada miente."
             },
             {
                 "name": "Edgeworth",
@@ -1569,7 +1569,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{showTextbox}{courtView:witness}{courtSprite:witness[\"Determined\"]}{playSound:shake}{shake:500}{blip:2}¡No estoy mintiendo, señor!{nl}¡Habían desaparecido sin duda alguna, señor!"
+                "text": "{showTextbox}{courtView:witness}{courtSprite:witness[\"Determined\"]}{playSound:shake}{shake:500}{blip:2}¡No estoy mintiendo,{p:150} señor!{nl}¡Habían desaparecido sin duda alguna,{p:150} señor!"
             },
             {
                 "name": "Phoenix",
@@ -1577,11 +1577,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Si las gafas estaban allí, entonces toda mi premisa{nl}se viene abajo...)"
+                "text": "{color:lightblue}(Si las gafas estaban allí,{p:150} entonces toda mi premisa{nl}se viene abajo...)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Podría ser... ¿es este el fin...?)"
+                "text": "{color:lightblue}(Podría ser...{p:200} ¿es este el fin...{p:200}?)"
             },
             {
                 "name": "Maya",
@@ -1605,11 +1605,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{stopBGM}{courtView:defense}{color:lightblue}(...{p:300}Pero, ¿cuál es la manera de salir de esto...)"
+                "text": "{stopBGM}{courtView:defense}{color:lightblue}(...{p:300}Pero,{p:150} ¿cuál es la manera de salir de esto...)"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}{flash}{playSound:cling}¡Ya lo tengo! ¡Ya lo sé!"
+                "text": "{courtView:defense}{courtSprite:defense[\"Thinking\"]}{flash}{playSound:cling}¡Ya lo tengo!{p:200} ¡Ya lo sé!"
             },
             {
                 "name": "Phoenix",
@@ -1630,7 +1630,7 @@
         "CE3_2_Option_Timer": [
             {
                 "name": "Judge",
-                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado, todavía no tenemos respuesta.{nl}Por favor, responda dentro del tiempo límite."
+                "text": "{showTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{blip:1}Letrado,{p:150} todavía no tenemos respuesta.{nl}Por favor,{p:150} responda dentro del tiempo límite."
             },
             {
                 "name": "Phoenix",
@@ -1638,11 +1638,11 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick, no te lo guardes en la cabeza.{nl}¡Dilo en voz alta!"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick,{p:150} no te lo guardes en la cabeza.{nl}¡Dilo en voz alta!"
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}Incluso a un paso, el tiempo se ha acabado.{nl}Le impongo una sanción.{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:judge[\"Stern\"]}{courtView:judge}Incluso a un paso,{p:150} el tiempo se ha acabado.{nl}Le impongo una sanción.{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE3_2_option_failures==1,CE3_2_Option_MiaHint}{setState:CE3_2_option_failures,1}{jump:CE3_2_Options}{sectionEnd}"
@@ -1659,11 +1659,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}Ah... bueno, eso es...{nl}{color:lightblue}(Ahora que lo menciona, tiene toda la razón.)"
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}Ah...{p:200} bueno,{p:150} eso es...{nl}{color:lightblue}(Ahora que lo menciona,{p:150} tiene toda la razón.)"
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick... ¡Eso no explica{nl}la foto en absoluto!{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Exasperated_Bench\"]}{courtView:cocounsel}{blip:2}Nick...{p:200} ¡Eso no explica{nl}la foto en absoluto!{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE3_2_option_failures==1,CE3_2_Option_MiaHint}{setState:CE3_2_option_failures,1}{jump:CE3_2_Options}{sectionEnd}"
@@ -1676,7 +1676,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}¡¿N-No le caía bien?!{nl}¿Es esa información necesaria para este tribunal?"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}¡¿N-No le caía bien?{p:200}!{nl}¿Es esa información necesaria para este tribunal?"
             },
             {
                 "name": "Phoenix",
@@ -1684,11 +1684,11 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}Ngh... Basta de esto.{nl}¿Está intentando hacerme perder el tiempo?"
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}Ngh...{p:200} Basta de esto.{nl}¿Está intentando hacerme perder el tiempo?"
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick, ¡deja de sacar chismes{nl}y piensa en el motivo del incidente!{lifeMod:-2}{playSound:explosion}"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick,{p:150} ¡deja de sacar chismes{nl}y piensa en el motivo del incidente!{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "text": "{jumpIf:CE3_2_option_failures==1,CE3_2_Option_MiaHint}{setState:CE3_2_option_failures,1}{jump:CE3_2_Options}{sectionEnd}"
@@ -1701,11 +1701,11 @@
             },
             {
                 "name": "Mia",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}Para destapar la mentira del testigo, lo mejor es mostrar{nl}el momento en que AMBOS colgantes para gafas estaban puestos."
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}Para destapar la mentira del testigo,{p:150} lo mejor es mostrar{nl}el momento en que AMBOS colgantes para gafas estaban puestos."
             },
             {
                 "name": "Mia",
-                "text": "Tienes una prueba que muestra eso, ¿no?"
+                "text": "Tienes una prueba que muestra eso,{p:150} ¿no?"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:defense}{fadeInCharacter:600}{fadeInBg:600}{jump:Final_Present_Evidence}{sectionEnd}"
@@ -1718,15 +1718,15 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}Por favor, compruebe que ambos colgantes para gafas están puestos,{nl}y luego fíjese en la fecha y hora de la publicación."
+                "text": "{courtView:defense}Por favor,{p:150} compruebe que ambos colgantes para gafas están puestos,{nl}y luego fíjese en la fecha y hora de la publicación."
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}17 de septiembre, 21:27...{p:300}{nl}Que es justo antes del incidente."
+                "text": "{courtView:defense}17 de septiembre,{p:150} 21:27...{p:300}{nl}Que es justo antes del incidente."
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}En otras palabras, ¡es imposible recoger el colgante para gafas{nl}en algún lugar la mañana del incidente!"
+                "text": "{courtView:defense}En otras palabras,{p:150} ¡es imposible recoger el colgante para gafas{nl}en algún lugar la mañana del incidente!"
             },
             {
                 "name": "Sahwit",
@@ -1753,11 +1753,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{courtView:defense}{courtSprite:defense[\"Normal\"]}Ha declarado que estuvo en la 1.ª planta todo el tiempo{nl}durante el incidente, pero es mentira."
+                "text": "{showTextbox}{courtView:defense}{courtSprite:defense[\"Normal\"]}Ha declarado que estuvo en la 1.ª planta todo el tiempo{nl}durante el incidente,{p:150} pero es mentira."
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Thinking\"]}Subió a la 4.ª planta, se enfrentó a la víctima{nl}por algún motivo y la empujó hacia la muerte."
+                "text": "{courtSprite:defense[\"Thinking\"]}Subió a la 4.ª planta,{p:150} se enfrentó a la víctima{nl}por algún motivo y la empujó hacia la muerte."
             },
             {
                 "name": "Phoenix",
@@ -1781,7 +1781,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Normal\"]}Después de eso, esperó en el escenario de la 1.ª planta.{nl}El resto es como todo el mundo sabe."
+                "text": "{courtSprite:defense[\"Normal\"]}Después de eso,{p:150} esperó en el escenario de la 1.ª planta.{nl}El resto es como todo el mundo sabe."
             },
             {
                 "name": "Judge",
@@ -1793,14 +1793,14 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{bg:speedlines}{courtSprite:defense[\"ZoomIn\"]}{playSound:bubble_sfx}Pero por el camino, se le cayó{nl}uno de los colgantes para gafas."
+                "text": "{bg:speedlines}{courtSprite:defense[\"ZoomIn\"]}{playSound:bubble_sfx}Pero por el camino,{p:150} se le cayó{nl}uno de los colgantes para gafas."
             },
             {
                 "text": "{hideTextbox}{courtChar:witness,Sahwit}{courtSprite:witness[\"Cornered\"]}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{playAnimation:Gavel3}{skip:0}"
             },
             {
                 "name": "Judge",
-                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}¿Alguna objeción, señor Edgeworth?"
+                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}¿Alguna objeción,{p:150} señor Edgeworth?"
             },
             {
                 "name": "Edgeworth",
@@ -1832,18 +1832,18 @@
             },
             {
                 "name": "Judge",
-                "text": "{stopBGM}{courtView:judge}{courtSprite:judge[\"Normal\"]}Voy a dictar sentencia{nl}sobre la acusada, Maggey Byrde."
+                "text": "{stopBGM}{courtView:judge}{courtSprite:judge[\"Normal\"]}Voy a dictar sentencia{nl}sobre la acusada,{p:150} Maggey Byrde."
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{playAnimation:NotGuilty}{courtChar:witness,Maggey}{courtSprite:witness[\"Admiring\"]}{courtView:overview}{playAnimation:Confetti}{setSkipEnabled:true}{skip:0}"
             },
             {
                 "name": "Maggey",
-                "text": "{showTextbox}{courtView:witness}Lo hemos conseguido, señor..."
+                "text": "{showTextbox}{courtView:witness}Lo hemos conseguido,{p:150} señor..."
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}¡Entonces, se levanta la sesión!"
+                "text": "{courtView:judge}¡Entonces,{p:150} se levanta la sesión!"
             },
             {
                 "text": "{playAnimation:Gavel}{loadScene:assets/scenes/FlyHigh/ES/Courtroom1/end.json,Final_Victory}{sectionEnd}"
@@ -1860,11 +1860,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Abashed\"]}B-Bueno, ahora que lo menciona...{nl}no lo hace..."
+                "text": "{courtView:defense}{courtSprite:defense[\"Abashed\"]}B-Bueno,{p:150} ahora que lo menciona...{nl}no lo hace..."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}Su Señoría, la situación está clara."
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}Su Señoría,{p:150} la situación está clara."
             },
             {
                 "name": "Edgeworth",
@@ -1872,19 +1872,19 @@
             },
             {
                 "name": "Judge",
-                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Hmm... Bueno, que sea un despistado es el pan de cada día, así que..."
+                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Hmm...{p:200} Bueno,{p:150} que sea un despistado es el pan de cada día,{p:150} así que..."
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}¡Nick, se creen que eres un despistado!"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Thinking_Bench\"]}¡Nick,{p:150} se creen que eres un despistado!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{playSound:fail}No, Maya... Puedo oírlos{nl}sin que me lo retransmitas..."
+                "text": "{courtView:defense}{playSound:fail}No,{p:150} Maya...{p:200} Puedo oírlos{nl}sin que me lo retransmitas..."
             },
             {
                 "name": "Judge",
-                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Letrado. {p:150}El juicio ha llegado a un punto crítico.{nl}Por favor, presente las pruebas pertinentes.{lifeMod:-2}{playSound:explosion}"
+                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Letrado. {p:150}El juicio ha llegado a un punto crítico.{nl}Por favor,{p:150} presente las pruebas pertinentes.{lifeMod:-2}{playSound:explosion}"
             },
             {
                 "name": "Phoenix",
@@ -1897,7 +1897,7 @@
         "CE3_Hint": [
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}¿Podría repetir su testimonio?{nl}Con más detalle, si es posible."
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}¿Podría repetir su testimonio?{nl}Con más detalle,{p:150} si es posible."
             },
             {
                 "name": "Sahwit",
@@ -1905,7 +1905,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}¡Soltar declaraciones vagas{nl}no va a demostrar su inocencia, ¿sabe?!"
+                "text": "{hideTextbox}{courtView:defense}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}¡Soltar declaraciones vagas{nl}no va a demostrar su inocencia,{p:150} ¿sabe?{p:200}!"
             },
             {
                 "name": "Edgeworth",
@@ -1917,15 +1917,15 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}La situación se está poniendo difícil, así que tal vez esté escapando de la realidad fantaseando con jugar en el parque de atracciones."
+                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}La situación se está poniendo difícil,{p:150} así que tal vez esté escapando de la realidad fantaseando con jugar en el parque de atracciones."
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}(...{p:300}No, no es eso.{nl}Esa es una sonrisa de confianza.)"
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}(...{p:300}No,{p:150} no es eso.{nl}Esa es una sonrisa de confianza.)"
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightBlue}(¿Aún tiene un as en la manga...?)"
+                "text": "{color:lightBlue}(¿Aún tiene un as en la manga...{p:200}?)"
             },
             {
                 "text": "{color:lightBlue}(Tengo que mantener la calma{nl}y escuchar lo que tiene que decir...){returnToCE:0}{sectionEnd}"
@@ -1958,15 +1958,15 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}Este ruido... naturalmente,{nl}usted también lo oyó, ¿verdad?"
+                "text": "{courtView:defense}Este ruido...{p:200} naturalmente,{nl}usted también lo oyó,{p:150} ¿verdad?"
             },
             {
                 "name": "Sahwit",
-                "text": "{hideEvidenceIcon}{courtView:witness}{courtSprite:witness[\"Nervous\"]}B-Bueno, no lo sé..."
+                "text": "{hideEvidenceIcon}{courtView:witness}{courtSprite:witness[\"Nervous\"]}B-Bueno,{p:150} no lo sé..."
             },
             {
                 "name": "Sahwit",
-                "text": "Como he dicho antes,{nl}estaba sumido en mis pensamientos, así que..."
+                "text": "Como he dicho antes,{nl}estaba sumido en mis pensamientos,{p:150} así que..."
             },
             {
                 "name": "Phoenix",
@@ -1986,7 +1986,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}¿Le hago un dibujo? Ese ruido{nl}fue el sonido de la víctima cayendo la primera vez, ¿no es así?"
+                "text": "{courtView:defense}¿Le hago un dibujo?{p:200} Ese ruido{nl}fue el sonido de la víctima cayendo la primera vez,{p:150} ¿no es así?"
             },
             {
                 "name": "Phoenix",
@@ -1994,11 +1994,11 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection}{courtSprite:prosecution[\"Normal\"]}{courtPan:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}¿De verdad hubo un ruido fuerte? Eso también{nl}no es más que una afirmación de la acusada."
+                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection}{courtSprite:prosecution[\"Normal\"]}{courtPan:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}¿De verdad hubo un ruido fuerte?{p:200} Eso también{nl}no es más que una afirmación de la acusada."
             },
             {
                 "name": "Sahwit",
-                "text": "{courtView:witness}¡A-Así es, exacto!{nl}Yo también escuché un ruido fuerte."
+                "text": "{courtView:witness}¡A-Así es,{p:150} exacto!{nl}Yo también escuché un ruido fuerte."
             },
             {
                 "name": "Sahwit",
@@ -2018,7 +2018,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}Letrado, ¿qué ocurre?{nl}¿Ha terminado con el interrogatorio?"
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}Letrado,{p:150} ¿qué ocurre?{nl}¿Ha terminado con el interrogatorio?"
             },
             {
                 "name": "Phoenix",
@@ -2026,11 +2026,11 @@
             },
             {
                 "name": "Maya",
-                "text": "{startBGM:explanation}{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}Oye, Nick. No creo que hurgar en ese punto{nl}nos vaya a llevar a ninguna parte."
+                "text": "{startBGM:explanation}{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}Oye,{p:150} Nick. No creo que hurgar en ese punto{nl}nos vaya a llevar a ninguna parte."
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}{courtView:cocounsel}Más importante aún, esta secuencia de fotos...{p:200}{nl}¿Hay algo que te llame la atención?"
+                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}{courtView:cocounsel}Más importante aún,{p:150} esta secuencia de fotos...{p:200}{nl}¿Hay algo que te llame la atención?"
             },
             {
                 "name": "Phoenix",
@@ -2044,7 +2044,7 @@
         "CE3_Right_Evidence_2": [
             {
                 "name": "Phoenix",
-                "text": "{stopBGM:false}{hideLifeBar}{hideTextbox}{blip:1}{playSound:PhoenixTakeThat}{playAnimation:TakeThat}{showTextbox}{courtView:defense}{showEvidenceIcon:right,accessory}{courtSprite:defense[\"HoldingDocument\"]}Su Señoría.{nl}Mire esto, por favor."
+                "text": "{stopBGM:false}{hideLifeBar}{hideTextbox}{blip:1}{playSound:PhoenixTakeThat}{playAnimation:TakeThat}{showTextbox}{courtView:defense}{showEvidenceIcon:right,accessory}{courtSprite:defense[\"HoldingDocument\"]}Su Señoría.{nl}Mire esto,{p:150} por favor."
             },
             {
                 "name": "Judge",
@@ -2076,7 +2076,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}Justo antes del incidente, {bg:speedlines}{playSound:bubble_sfx}{courtSprite:defense[\"ZoomIn\"]}mientras la acusada se estaba duchando,{nl}¡quien le robó las gafas fue USTED, señor Sahwit!"
+                "text": "{hideTextbox}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}Justo antes del incidente, {bg:speedlines}{playSound:bubble_sfx}{courtSprite:defense[\"ZoomIn\"]}mientras la acusada se estaba duchando,{nl}¡quien le robó las gafas fue USTED,{p:150} señor Sahwit!"
             },
             {
                 "name": "Sahwit",
@@ -2087,7 +2087,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}Señor Sahwit, ¿es esto cierto?"
+                "text": "{showTextbox}{courtView:judge}{courtSprite:judge[\"Stern\"]}Señor Sahwit,{p:150} ¿es esto cierto?"
             },
             {
                 "name": "Sahwit",
@@ -2119,18 +2119,18 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{flash}{playSound:cling}{courtSprite:judge[\"Surprised\"]}¡P-Por favor, cálmese, testigo!"
+                "text": "{courtView:judge}{flash}{playSound:cling}{courtSprite:judge[\"Surprised\"]}¡P-Por favor,{p:150} cálmese,{p:150} testigo!"
             },
             {
                 "name": "Sahwit",
-                "text": "{courtView:witness}{shake:800}{playSound:shake}{courtSprite:witness[\"Cornered\"]}¡¿Cómo voy a estar calmado?!"
+                "text": "{courtView:witness}{shake:800}{playSound:shake}{courtSprite:witness[\"Cornered\"]}¡¿Cómo voy a estar calmado?{p:200}!"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
             },
             {
                 "name": "Sahwit",
-                "text": "{showTextbox}{courtView:witness}{shake:500}{playSound:shake}¡Vale, vale! ¡Admitiré que se me cayó{nl}en la escena del crimen!"
+                "text": "{showTextbox}{courtView:witness}{shake:500}{playSound:shake}¡Vale,{p:150} vale!{p:200} ¡Admitiré que se me cayó{nl}en la escena del crimen!"
             },
             {
                 "name": "Phoenix",
@@ -2150,11 +2150,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{flash}{playSound:question1}¿Eh...?"
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{flash}{playSound:question1}¿Eh...{p:200}?"
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Stern\"]}Señor Sahwit, ¿podría explicarlo con detalle?"
+                "text": "{courtView:judge}{courtSprite:judge[\"Stern\"]}Señor Sahwit,{p:150} ¿podría explicarlo con detalle?"
             },
             {
                 "name": "Sahwit",
@@ -2170,7 +2170,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(...{p:300}No, eso es imposible.{nl}¡Es totalmente imposible!)"
+                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(...{p:300}No,{p:150} eso es imposible.{nl}¡Es totalmente imposible!)"
             },
             {
                 "name": "Phoenix",
@@ -2178,19 +2178,19 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtView:witness}Sí, estoy seguro."
+                "text": "{courtView:witness}Sí,{p:150} estoy seguro."
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}¿Está realmente, de verdad seguro?"
+                "text": "{courtView:defense}¿Está realmente,{p:150} de verdad seguro?"
             },
             {
                 "name": "Sahwit",
-                "text": "{courtView:witness}{shake:500}{playSound:shake}¡Es usted un pesado!{nl}¡He dicho que estoy seguro, ¿no?!"
+                "text": "{courtView:witness}{shake:500}{playSound:shake}¡Es usted un pesado!{nl}¡He dicho que estoy seguro,{p:150} ¿no?{p:200}!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Normal\"]}{courtPan:defense}Su Señoría, hay una enorme contradicción{nl}en la declaración del señor Sahwit.{startBGM:explanation}"
+                "text": "{courtSprite:defense[\"Normal\"]}{courtPan:defense}Su Señoría,{p:150} hay una enorme contradicción{nl}en la declaración del señor Sahwit.{startBGM:explanation}"
             },
             {
                 "name": "Phoenix",
@@ -2198,7 +2198,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Normal\"]}Muy bien.{nl}Hágalo, por favor."
+                "text": "{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Normal\"]}Muy bien.{nl}Hágalo,{p:150} por favor."
             },
             {
                 "text": "{setState:FinalPresentEvidenceFailures,false}{jump:Final_Present_Evidence}{sectionEnd}"
@@ -2207,19 +2207,19 @@
         "CE3_Wrong_Evidence": [
             {
                 "name": "Phoenix",
-                "text": "{hideTextbox}{blip:1}{playSound:PhoenixTakeThat}{playAnimation:TakeThat}{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:600}Señor Sahwit.{nl}Por favor, explique esta prueba."
+                "text": "{hideTextbox}{blip:1}{playSound:PhoenixTakeThat}{playAnimation:TakeThat}{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:600}Señor Sahwit.{nl}Por favor,{p:150} explique esta prueba."
             },
             {
                 "name": "Sahwit",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{flash}{playSound:question1}¿Eh...?{nl}¿Qué hay que explicar de eso?"
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{flash}{playSound:question1}¿Eh...{p:200}?{nl}¿Qué hay que explicar de eso?"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}Ehm... bueno, verá...{nl}¿E-Eh? ¿Me he equivocado?{hideTextbox}{lifeMod:-2}{playSound:explosion}{p:1000}"
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}Ehm...{p:200} bueno,{p:150} verá...{nl}¿E-Eh?{p:200} ¿Me he equivocado?{hideTextbox}{lifeMod:-2}{playSound:explosion}{p:1000}"
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}¡Nick, cálmate!"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}¡Nick,{p:150} cálmate!"
             },
             {
                 "name": "Maya",
@@ -2240,11 +2240,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{courtSprite:defense[\"Abashed\"]}Ehm... bueno, verá..."
+                "text": "{courtView:defense}{courtSprite:defense[\"Abashed\"]}Ehm...{p:200} bueno,{p:150} verá..."
             },
             {
                 "name": "Maya",
-                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}¡Nick, cálmate!{lifeMod:-2}{playSound:explosion}{p:1000}"
+                "text": "{courtView:cocounsel}{courtSprite:cocounsel[\"Strict_Bench\"]}{showTextbox}{blip:2,true}¡Nick,{p:150} cálmate!{lifeMod:-2}{playSound:explosion}{p:1000}"
             },
             {
                 "name": "Maya",
@@ -2268,11 +2268,11 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}{blip:1}B-Bueno, ahora que lo menciona...{nl}no lo hace..."
+                "text": "{courtSprite:defense[\"Abashed\"]}{courtView:defense}{blip:1}B-Bueno,{p:150} ahora que lo menciona...{nl}no lo hace..."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}Su Señoría, la situación está clara."
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}Su Señoría,{p:150} la situación está clara."
             },
             {
                 "name": "Edgeworth",
@@ -2280,19 +2280,19 @@
             },
             {
                 "name": "Judge",
-                "text": "{hideTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Hmm... Bueno, que sea un despistado{nl}es el pan de cada día, así que..."
+                "text": "{hideTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Hmm...{p:200} Bueno,{p:150} que sea un despistado{nl}es el pan de cada día,{p:150} así que..."
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}{courtView:cocounsel}{blip:2}Nick, ¡se creen que eres{nl}un despistado!"
+                "text": "{courtSprite:cocounsel[\"Thinking_Bench\"]}{courtView:cocounsel}{blip:2}Nick,{p:150} ¡se creen que eres{nl}un despistado!"
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}No, Maya... Puedo oírlos{nl}sin que me lo retransmitas..."
+                "text": "{blip:1,false}No,{p:150} Maya...{p:200} Puedo oírlos{nl}sin que me lo retransmitas..."
             },
             {
                 "name": "Judge",
-                "text": "{hideTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Letrado. {p:150}El juicio ha llegado a un punto crítico.{nl}Por favor, presente las pruebas pertinentes."
+                "text": "{hideTextbox}{courtSprite:judge[\"Stern\"]}{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}{showTextbox}Letrado. {p:150}El juicio ha llegado a un punto crítico.{nl}Por favor,{p:150} presente las pruebas pertinentes."
             },
             {
                 "text": "{hideTextbox}{lifeMod:-2}{playSound:explosion}{p:500}{skip:0}"
@@ -2307,7 +2307,7 @@
         ],
         "Court_Opening": [
             {
-                "text": "{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}18 de septiembre, 10:00{nl}Tribunal del Distrito - Sala n.º 2{color:white}"
+                "text": "{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}18 de septiembre,{p:150} 10:00{nl}Tribunal del Distrito - Sala n.º 2{color:white}"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{p:500}{hideCharacter}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal_Bench\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{skip:0}"
@@ -2322,7 +2322,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}La fiscalía está{p:300}{textSpeed:150}... {p:500}{textSpeed:50}lista, como siempre."
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}La fiscalía está{p:300}{textSpeed:150}... {p:500}{textSpeed:50}lista,{p:150} como siempre."
             },
             {
                 "name": "Edgeworth",
@@ -2330,7 +2330,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Muy bien, {p:150}señor Edgeworth.{nl}Su alegato inicial, por favor."
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Muy bien, {p:150}señor Edgeworth.{nl}Su alegato inicial,{p:150} por favor."
             },
             {
                 "name": "Edgeworth",
@@ -2338,7 +2338,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{fadeOutCharacter}{fadeOutBg:300}{fadeBg:Crime_Scene,300}{startBGM:explanation}La víctima, Kurumi Nakaki, que trabajaba allí como especialista, fue encontrada muerta."
+                "text": "{fadeOutCharacter}{fadeOutBg:300}{fadeBg:Crime_Scene,300}{startBGM:explanation}La víctima,{p:150} Kurumi Nakaki,{p:150} que trabajaba allí como especialista,{p:150} fue encontrada muerta."
             },
             {
                 "name": "Edgeworth",
@@ -2346,7 +2346,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "Ante los propios ojos de la primera persona en descubrir el cuerpo,{nl}Frank Sahwit, la acusada empujó a la víctima desde la 4.ª planta."
+                "text": "Ante los propios ojos de la primera persona en descubrir el cuerpo,{nl}Frank Sahwit,{p:150} la acusada empujó a la víctima desde la 4.ª planta."
             },
             {
                 "name": "Edgeworth",
@@ -2354,7 +2354,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "Además, la acusada ha admitido{nl}haberla empujado."
+                "text": "Además,{p:150} la acusada ha admitido{nl}haberla empujado."
             },
             {
                 "name": "Phoenix",
@@ -2362,7 +2362,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "¡Simplemente piensa que, por cómo se desarrollaron los hechos,{nl}podría haberla empujado por accidente!"
+                "text": "¡Simplemente piensa que,{p:150} por cómo se desarrollaron los hechos,{nl}podría haberla empujado por accidente!"
             },
             {
                 "name": "Edgeworth",
@@ -2374,7 +2374,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}...{p:300}{courtSprite:judge[\"Normal\"]}Hmm.{nl}Señor Edgeworth, por favor, continúe."
+                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}...{p:300}{courtSprite:judge[\"Normal\"]}Hmm.{nl}Señor Edgeworth,{p:150} por favor,{p:150} continúe."
             },
             {
                 "name": "Edgeworth",
@@ -2401,34 +2401,34 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}Entendido.{nl}Señor Edgeworth, por favor, llame a su testigo al estrado."
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}Entendido.{nl}Señor Edgeworth,{p:150} por favor,{p:150} llame a su testigo al estrado."
             },
             {
                 "name": "Edgeworth",
                 "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}El encargado de la sala de eventos de Joypolis,{nl}Frank Sahwit.{courtChar:witness,Sahwit}"
             },
             {
-                "text": "{stopBGM:true}{hideTextbox}{fadeOutBg:600}{fadeOutCharacter}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{center}{color:red}{blip:0,false}--La situación en el momento del incidente--{playAnimation:Witness_Testimony}{color:white}"
+                "text": "{stopBGM:true}{hideTextbox}{fadeOutBg:600}{fadeOutCharacter}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{center}{color:red}{blip:0,false}--{p:150}La situación en el momento del incidente--{playAnimation:Witness_Testimony}{color:white}"
             },
             {
                 "name": "Sahwit",
-                "text": "{showTestimonyIndicator}{startBGM:interrogatory_moderato,false}{blip:1}El día del incidente, les dije a las dos que estuvieran en la 4.ª planta de la sala de eventos a las 22:00."
+                "text": "{showTestimonyIndicator}{startBGM:interrogatory_moderato,false}{blip:1}El día del incidente,{p:150} les dije a las dos que estuvieran en la 4.ª planta de la sala de eventos a las 22:00."
             },
             {
                 "name": "Sahwit",
-                "text": "Tras terminar mi trabajo, me senté en el escenario de la 1.ª planta y esperé a que llegara la hora."
+                "text": "Tras terminar mi trabajo,{p:150} me senté en el escenario de la 1.ª planta y esperé a que llegara la hora."
             },
             {
                 "name": "Sahwit",
-                "text": "Cuando miré por casualidad hacia la 4.ª planta, vi a la víctima y a la acusada."
+                "text": "Cuando miré por casualidad hacia la 4.ª planta,{p:150} vi a la víctima y a la acusada."
             },
             {
                 "name": "Sahwit",
-                "text": "Entonces, ¡la acusada se acercó a la víctima sin dudarlo y la empujó al vacío!"
+                "text": "Entonces,{p:150} ¡la acusada se acercó a la víctima sin dudarlo y la empujó al vacío!"
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideTestimonyIndicator}{fadeOutBg:800}{fadeOutFg:800}{fadeOutCharacter:800}{stopBGM:true}{courtPan:prosecution}{courtSprite:prosecution[\"Confident2\"]}{fadeInCharacter:1400}{fadeInBg:600}{fadeInFg:600}{blip:1}Su Señoría, ¿qué opina?{nl}¿No es evidente la culpabilidad de la acusada?"
+                "text": "{hideTestimonyIndicator}{fadeOutBg:800}{fadeOutFg:800}{fadeOutCharacter:800}{stopBGM:true}{courtPan:prosecution}{courtSprite:prosecution[\"Confident2\"]}{fadeInCharacter:1400}{fadeInBg:600}{fadeInFg:600}{blip:1}Su Señoría,{p:150} ¿qué opina?{nl}¿No es evidente la culpabilidad de la acusada?"
             },
             {
                 "name": "Phoenix",
@@ -2436,7 +2436,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}...{p:300}Espera, ¿no será que el señor Edgeworth le cogió el gusto a Joypolis durante su investigación?"
+                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}...{p:300}Espera,{p:150} ¿no será que el señor Edgeworth le cogió el gusto a Joypolis durante su investigación?"
             },
             {
                 "name": "Maya",
@@ -2456,7 +2456,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Ni hablar, no dejaré que termine rápido.{nl}¡Es imposible que Maggey cometiera un asesinato!)"
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Ni hablar,{p:150} no dejaré que termine rápido.{nl}¡Es imposible que Maggey cometiera un asesinato!)"
             },
             {
                 "text": "{fadeOutCharacter}{fadeOutBg:600}{hideTextbox}{jump:First_Testimony_Start}{sectionEnd}"
@@ -2470,16 +2470,16 @@
         ],
         "First_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{setState:currentTestimony,1}{setState:Mia_hint_condition,false}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{fadeInFg:600}{showTextbox}{blip:0,false}{center}{color:red}--La situación en el momento del incidente--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_1}{sectionEnd}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{setState:currentTestimony,1}{setState:Mia_hint_condition,false}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{fadeInFg:600}{showTextbox}{blip:0,false}{center}{color:red}--{p:150}La situación en el momento del incidente--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_1}{sectionEnd}"
             }
         ],
         "Intro_Holding": [
             {
-                "text": "{setGameOver:Trial_GameOver}{setSkipEnabled:true}{addEvidence:badge,false}{addEvidence:blog_post_charm_updated,false}{addEvidence:loud_sound_updated,false}{addEvidence:mask_photo,false}{addEvidence:accessory,false}{bg:Lobby}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}18 de septiembre, 9:24{nl}Tribunal del Distrito - Sala de acusados n.º 2{color:white}"
+                "text": "{setGameOver:Trial_GameOver}{setSkipEnabled:true}{addEvidence:badge,false}{addEvidence:blog_post_charm_updated,false}{addEvidence:loud_sound_updated,false}{addEvidence:mask_photo,false}{addEvidence:accessory,false}{bg:Lobby}{showTextbox}{hideCharacter}{center}{color:lime}{blip:3}18 de septiembre,{p:150} 9:24{nl}Tribunal del Distrito - Sala de acusados n.º 2{color:white}"
             },
             {
                 "name": "Maya",
-                "text": "{startBGM:lobby,false}{sprite:Maya[\"Normal\"]}{fadeInCharacter}{blip:2}Nick, ¿cómo pinta la cosa?{nl}¿No estás nervioso?"
+                "text": "{startBGM:lobby,false}{sprite:Maya[\"Normal\"]}{fadeInCharacter}{blip:2}Nick,{p:150} ¿cómo pinta la cosa?{nl}¿No estás nervioso?"
             },
             {
                 "name": "Phoenix",
@@ -2491,7 +2491,7 @@
             },
             {
                 "name": "Maggey",
-                "text": "{fadeOutCharacter}{sprite:Maggey[\"Sad\"]}{fadeInCharacter}{blip:2}Señor Wright...{p:200}{nl}Estoy muy nerviosa, señor..."
+                "text": "{fadeOutCharacter}{sprite:Maggey[\"Sad\"]}{fadeInCharacter}{blip:2}Señor Wright...{p:200}{nl}Estoy muy nerviosa,{p:150} señor..."
             },
             {
                 "name": "Phoenix",
@@ -2503,7 +2503,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:0,false}{color:lightblue}(Muy bien, el juicio está a punto de empezar.{nl}Será mejor que compruebe el {color:red}Acta del juicio{color:lightblue} una vez más.)"
+                "text": "{blip:0,false}{color:lightblue}(Muy bien,{p:150} el juicio está a punto de empezar.{nl}Será mejor que compruebe el {color:red}Acta del juicio{color:lightblue} una vez más.)"
             },
             {
                 "text": "{stopBGM:true}{fadeOutBg:600}{fadeOutCharacter:600}{jump:Court_Opening}{sectionEnd}"
@@ -2516,7 +2516,7 @@
             },
             {
                 "name": "Mia",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}¿La acusada se acercó a la víctima sin dudarlo{nl}y la empujó...?"
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}¿La acusada se acercó a la víctima sin dudarlo{nl}y la empujó...{p:200}?"
             },
             {
                 "name": "Mia",
@@ -2533,7 +2533,7 @@
             },
             {
                 "name": "Mia",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}Phoenix, me parece que hay algo más{nl}oculto en sus palabras."
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}Phoenix,{p:150} me parece que hay algo más{nl}oculto en sus palabras."
             },
             {
                 "name": "Mia",
@@ -2550,7 +2550,7 @@
             },
             {
                 "name": "Mia",
-                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}Phoenix, me parece que hay algo más{nl}oculto en sus palabras."
+                "text": "{hideTextbox}{fadeOutBg:400}{fadeOutCharacter:600}{courtSprite:cocounsel[\"Mia_Normal_Bench\"]}{courtView:cocounsel}{fadeInCharacter}{blip:2,true}{showTextbox}Phoenix,{p:150} me parece que hay algo más{nl}oculto en sus palabras."
             },
             {
                 "name": "Mia",
@@ -2579,11 +2579,11 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Las dos...{p:200} bueno... había tanta hostilidad entre ellas que podrían haber empezado a matarse mutuamente en cualquier momento."
+                "text": "Las dos...{p:200} bueno...{p:200} había tanta hostilidad entre ellas que podrían haber empezado a matarse mutuamente en cualquier momento."
             },
             {
                 "name": "Sahwit",
-                "text": "Sin embargo...{p:200}{nl}como ambas eran muy dedicadas a su trabajo, me suponía un gran dolor de cabeza como su encargado."
+                "text": "Sin embargo...{p:200}{nl}como ambas eran muy dedicadas a su trabajo,{p:150} me suponía un gran dolor de cabeza como su encargado."
             },
             {
                 "name": "Sahwit",
@@ -2591,7 +2591,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}Testigo, por favor, continúe con su testimonio."
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}Testigo,{p:150} por favor,{p:150} continúe con su testimonio."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtPan:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:1}{sectionEnd}"
@@ -2603,7 +2603,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}La reunión era en la 4.ª planta, ¿verdad?{nl}¿Por qué esperó en la 1.ª planta?"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}La reunión era en la 4.ª planta,{p:150} ¿verdad?{nl}¿Por qué esperó en la 1.ª planta?"
             },
             {
                 "name": "Sahwit",
@@ -2639,7 +2639,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Pero no se me ocurría ninguna buena idea...{p:200}{nl}y antes de darme cuenta, ya eran las 22:00."
+                "text": "Pero no se me ocurría ninguna buena idea...{p:200}{nl}y antes de darme cuenta,{p:150} ya eran las 22:00."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtPan:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:2}{sectionEnd}"
@@ -2659,7 +2659,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Sin embargo, no las identifiqué{nl}solamente por la vista."
+                "text": "Sin embargo,{p:150} no las identifiqué{nl}solamente por la vista."
             },
             {
                 "name": "Sahwit",
@@ -2667,7 +2667,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Cuando miré hacia arriba, había dos siluetas{nl}discutiendo cerca de la barandilla de la 4.ª planta..."
+                "text": "Cuando miré hacia arriba,{p:150} había dos siluetas{nl}discutiendo cerca de la barandilla de la 4.ª planta..."
             },
             {
                 "name": "Sahwit",
@@ -2675,7 +2675,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Pero para mi vergüenza, solo pude{nl}observar impotente desde la 1.ª planta...{p:300}"
+                "text": "Pero para mi vergüenza,{p:150} solo pude{nl}observar impotente desde la 1.ª planta...{p:300}"
             },
             {
                 "name": "Judge",
@@ -2699,7 +2699,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtView:witness}Que cómo, ¿dice...?"
+                "text": "{courtView:witness}Que cómo,{p:150} ¿dice...{p:200}?"
             },
             {
                 "name": "Sahwit",
@@ -2707,7 +2707,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Y la que cayó fue la víctima.{nl}Por lo tanto, la que la empujó debió de ser la acusada."
+                "text": "Y la que cayó fue la víctima.{nl}Por lo tanto,{p:150} la que la empujó debió de ser la acusada."
             },
             {
                 "name": "Phoenix",
@@ -2715,7 +2715,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}B-Bueno, ciertamente...{p:200}{nl}Supongo que es verdad..."
+                "text": "{courtSprite:defense[\"Sweating\"]}B-Bueno,{p:150} ciertamente...{p:200}{nl}Supongo que es verdad..."
             },
             {
                 "text": "{returnToCE:hints}{sectionEnd}"
@@ -2735,11 +2735,11 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Sacar un móvil y ponerlo en modo cámara{nl}no es precisamente una tarea difícil, ¿sabe?"
+                "text": "Sacar un móvil y ponerlo en modo cámara{nl}no es precisamente una tarea difícil,{p:150} ¿sabe?"
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Testigo, por favor, continúe con su testimonio."
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Testigo,{p:150} por favor,{p:150} continúe con su testimonio."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{returnToCE:1}{sectionEnd}"
@@ -2755,19 +2755,19 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}Bueno, déjeme pensar, en primer lugar..."
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}Bueno,{p:150} déjeme pensar,{p:150} en primer lugar..."
             },
             {
                 "name": "Sahwit",
-                "text": "Oí la voz de la acusada diciendo:{nl}'¡Le dije que dejara de practicar después de la hora de cierre, señor!'"
+                "text": "Oí la voz de la acusada diciendo:{nl}'¡Le dije que dejara de practicar después de la hora de cierre,{p:150} señor!{p:200}'"
             },
             {
                 "name": "Sahwit",
-                "text": "Entonces la víctima dijo: 'No le estoy causando ningún problema,{nl}¡así que deje de darme la tabarra!'"
+                "text": "Entonces la víctima dijo: 'No le estoy causando ningún problema,{nl}¡así que deje de darme la tabarra!{p:200}'"
             },
             {
                 "name": "Sahwit",
-                "text": "Luego la acusada gritó: '¡Si no me escucha,{nl}¡tendré que usar la fuerza, señor!'"
+                "text": "Luego la acusada gritó: '¡Si no me escucha,{nl}¡tendré que usar la fuerza,{p:150} señor!{p:200}'"
             },
             {
                 "name": "Judge",
@@ -2775,15 +2775,15 @@
             },
             {
                 "name": "Maggey",
-                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{blip:2}¡Eso es mentira, señor!{nl}¡Nunca dije ni una sola palabra de eso, señor!"
+                "text": "{courtChar:witness,Maggey}{courtSprite:witness[\"Determined\"]}{courtView:witness}{playSound:shake}{blip:2}¡Eso es mentira,{p:150} señor!{nl}¡Nunca dije ni una sola palabra de eso,{p:150} señor!"
             },
             {
                 "name": "Maggey",
-                "text": "{playSound:shake}O sea, no dije nada de nada;{nl}¡simplemente caminé hacia la barandilla, señor!"
+                "text": "{playSound:shake}O sea,{p:150} no dije nada de nada;{nl}¡simplemente caminé hacia la barandilla,{p:150} señor!"
             },
             {
                 "name": "Maggey",
-                "text": "{playSound:shake}Entonces me pareció ver a alguien allí,{nl}¡así que simplemente llamé a esa persona en voz baja, señor!"
+                "text": "{playSound:shake}Entonces me pareció ver a alguien allí,{nl}¡así que simplemente llamé a esa persona en voz baja,{p:150} señor!"
             },
             {
                 "name": "Sahwit",
@@ -2831,7 +2831,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{color:white}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Testigo, por favor, continúe con su testimonio."
+                "text": "{color:white}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Testigo,{p:150} por favor,{p:150} continúe con su testimonio."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{returnToCE:3}{sectionEnd}"
@@ -2851,7 +2851,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1}Ah, mis disculpas.{nl}Esto es un poco difícil de entender sin una explicación."
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}{blip:1}Ah,{p:150} mis disculpas.{nl}Esto es un poco difícil de entender sin una explicación."
             },
             {
                 "name": "Sahwit",
@@ -2859,7 +2859,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "Al momento siguiente, el impacto hizo que se diera la vuelta,{nl}y luego se golpeó la nuca con fuerza."
+                "text": "Al momento siguiente,{p:150} el impacto hizo que se diera la vuelta,{nl}y luego se golpeó la nuca con fuerza."
             },
             {
                 "name": "Phoenix",
@@ -2875,7 +2875,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Hmm...{p:300} Es una información crucial.{nl}Por favor, añádala a su testimonio."
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Hmm...{p:300} Es una información crucial.{nl}Por favor,{p:150} añádala a su testimonio."
             },
             {
                 "text": "{replaceCEStatement:Yamano_Testimony_2,3,4}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{returnToCE:4}{sectionEnd}"
@@ -2899,7 +2899,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(Si el testimonio es cierto, ¡entonces hay una contradicción enorme{nl}con ESA prueba!)"
+                "text": "{color:lightblue}(Si el testimonio es cierto,{p:150} ¡entonces hay una contradicción enorme{nl}con ESA prueba!)"
             },
             {
                 "name": "Phoenix",
@@ -2907,11 +2907,11 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Muy bien.{nl}Por favor, preséntela."
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Muy bien.{nl}Por favor,{p:150} preséntela."
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}¡Tú puedes, Nick!"
+                "text": "{courtSprite:cocounsel[\"Normal_Bench\"]}{courtView:cocounsel}{blip:2}¡Tú puedes,{p:150} Nick!"
             },
             {
                 "name": "Phoenix",
@@ -2943,15 +2943,15 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{shake:250}{playSound:shake}{courtView:defense}¿Es verdad, verdadera, verdad?"
+                "text": "{shake:250}{playSound:shake}{courtView:defense}¿Es verdad,{p:150} verdadera,{p:150} verdad?"
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}Ya basta, ustedes dos.{nl}Esto no lleva a ninguna parte."
+                "text": "{courtView:judge}{courtSprite:judge[\"Shake_Head\"]}{courtSprite:judge[\"Stern\"]}Ya basta,{p:150} ustedes dos.{nl}Esto no lleva a ninguna parte."
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}Testigo, por favor, continúe con su testimonio."
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Normal\"]}Testigo,{p:150} por favor,{p:150} continúe con su testimonio."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:1}{sectionEnd}"
@@ -2971,7 +2971,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}¿Qué 50 minutos en blanco...?"
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}¿Qué 50 minutos en blanco...{p:200}?"
             },
             {
                 "name": "Sahwit",
@@ -2991,7 +2991,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}Testigo, por favor, continúe con su testimonio."
+                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}Testigo,{p:150} por favor,{p:150} continúe con su testimonio."
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{returnToCE:2}{sectionEnd}"
@@ -3003,7 +3003,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{courtSprite:defense[\"Determined\"]}{courtPan:defense}{p:100}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}{blip:1,true}¿Tiene alguna prueba de que no subió allí?{nl}No la tiene, ¿verdad?"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{courtSprite:defense[\"Determined\"]}{courtPan:defense}{p:100}{courtSprite:defense[\"Slamming_Bench\"]}{courtSprite:defense[\"Determined\"]}{showTextbox}{blip:1,true}¿Tiene alguna prueba de que no subió allí?{nl}No la tiene,{p:150} ¿verdad?"
             },
             {
                 "name": "Sahwit",
@@ -3011,7 +3011,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtSprite:witness[\"Stand\"]}Si las mira, ¡es obvio{nl}que yo estaba en la 1.ª planta!"
+                "text": "{courtSprite:witness[\"Stand\"]}Si las mira,{p:150} ¡es obvio{nl}que yo estaba en la 1.ª planta!"
             },
             {
                 "name": "Phoenix",
@@ -3027,7 +3027,7 @@
             },
             {
                 "name": "Judge",
-                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}Hmm... Esa es una información crucial.{nl}Por favor, añádala a su testimonio."
+                "text": "{courtView:judge}{courtSprite:judge[\"Normal\"]}{blip:1}Hmm...{p:200} Esa es una información crucial.{nl}Por favor,{p:150} añádala a su testimonio."
             },
             {
                 "text": "{replaceCEStatement:Yamano_Testimony_3,3,4}{returnToCE:4}{sectionEnd}"
@@ -3039,7 +3039,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}¿Un ruido lo suficientemente fuerte como para que la acusada lo oyera mientras se duchaba,{nl}y solo se produjo una vez...?"
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}¿Un ruido lo suficientemente fuerte como para que la acusada lo oyera mientras se duchaba,{nl}y solo se produjo una vez...{p:200}?"
             },
             {
                 "name": "Sahwit",
@@ -3051,11 +3051,11 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}Letrado. ¡El volumen de un sonido depende de la situación! El segundo impacto podría haber sido ahogado por la ducha."
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}Letrado. ¡El volumen de un sonido depende de la situación!{p:200} El segundo impacto podría haber sido ahogado por la ducha."
             },
             {
                 "name": "Sahwit",
-                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}El fiscal dice la verdad.{nl}Además, si hubiera habido dos ruidos fuertes..."
+                "text": "{courtSprite:witness[\"Stand\"]}{courtView:witness}El fiscal dice la verdad.{nl}Además,{p:150} si hubiera habido dos ruidos fuertes..."
             },
             {
                 "name": "Sahwit",
@@ -3067,7 +3067,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick, ¡no dejes que te convenzan con sus palabras!"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick,{p:150} ¡no dejes que te convenzan con sus palabras!"
             },
             {
                 "text": "{returnToCE:hints}{sectionEnd}"
@@ -3087,7 +3087,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}¿En esa cabeza con el pelo{shake:300}{playSound:hit2}{courtSprite:defense[\"Pointing\"]}que se mueve de forma tan poco natural?!"
+                "text": "{courtView:defense}¿En esa cabeza con el pelo{shake:300}{playSound:hit2}{courtSprite:defense[\"Pointing\"]}que se mueve de forma tan poco natural?{p:200}!"
             },
             {
                 "name": "Sahwit",
@@ -3095,7 +3095,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "¡Me repetiré!{nl}Entre las 21:15 y el incidente, no hubo ni un solo extraño..."
+                "text": "¡Me repetiré!{nl}Entre las 21:15 y el incidente,{p:150} no hubo ni un solo extraño..."
             },
             {
                 "name": "Sahwit",
@@ -3107,19 +3107,19 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtView:witness}¿Eh...?"
+                "text": "{courtView:witness}¿Eh...{p:200}?"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}Su Señoría, la defensa desea presentar pruebas{nl}que señalan la contradicción en ese testimonio."
+                "text": "{courtView:defense}Su Señoría,{p:150} la defensa desea presentar pruebas{nl}que señalan la contradicción en ese testimonio."
             },
             {
                 "name": "Judge",
-                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Normal\"]}{showTextbox}Muy bien.{nl}Por favor, hágalo."
+                "text": "{hideTextbox}{courtView:judge}{courtSprite:judge[\"Nod\"]}{courtSprite:judge[\"Normal\"]}{showTextbox}Muy bien.{nl}Por favor,{p:150} hágalo."
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}Señor Sahwit.{nl}Por favor, explique esto."
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}Señor Sahwit.{nl}Por favor,{p:150} explique esto."
             },
             {
                 "text": "{jump:CE3_Present_Evidence}{sectionEnd}"
@@ -3127,7 +3127,7 @@
         ],
         "Second_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{stopBGM:false}{showTextbox}{center}{blip:1,false}{color:red}--Foto de la víctima al caer--{playAnimation:Witness_Testimony}{skip:100}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{stopBGM:false}{showTextbox}{center}{blip:1,false}{color:red}--{p:150}Foto de la víctima al caer--{playAnimation:Witness_Testimony}{skip:100}"
             },
             {
                 "name": "Sahwit",
@@ -3139,7 +3139,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{hideTextbox}{fadeBg:Byrde_Samurai2,400}{showTextbox}Miren, por favor.{nl}La acusada está empujando a la víctima mientras esta está sentada en la barandilla."
+                "text": "{hideTextbox}{fadeBg:Byrde_Samurai2,400}{showTextbox}Miren,{p:150} por favor.{nl}La acusada está empujando a la víctima mientras esta está sentada en la barandilla."
             },
             {
                 "name": "Sahwit",
@@ -3155,7 +3155,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick, no puedes perder los nervios.{nl}¡Tenemos que seguir adelante por el bien de Maggey!"
+                "text": "{courtSprite:cocounsel[\"Strict_Bench\"]}{courtView:cocounsel}{blip:2}Nick,{p:150} no puedes perder los nervios.{nl}¡Tenemos que seguir adelante por el bien de Maggey!"
             },
             {
                 "name": "Maya",
@@ -3163,27 +3163,27 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}...¡S-Sí, tienes razón!"
+                "text": "{blip:1,false}...{p:200}¡S-Sí,{p:150} tienes razón!"
             },
             {
-                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{setState:currentTestimony,2}{setState:Mia_hint_condition,false}{checkpoint:Second_Testimony_Start}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{showTextbox}{center}{color:red}--Foto de la víctima al caer--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_2}{sectionEnd}"
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{setState:currentTestimony,2}{setState:Mia_hint_condition,false}{checkpoint:Second_Testimony_Start}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{showTextbox}{center}{color:red}--{p:150}Foto de la víctima al caer--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_2}{sectionEnd}"
             }
         ],
         "Third_Testimony_Start": [
             {
-                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{stopBGM}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}--Los 50 minutos en blanco--{playAnimation:Witness_Testimony}{color:white}"
+                "text": "{courtChar:witness,Sahwit}{courtSprite:witness[\"Stand\"]}{stopBGM}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}--{p:150}Los 50 minutos en blanco--{playAnimation:Witness_Testimony}{color:white}"
             },
             {
                 "name": "Sahwit",
-                "text": "{showTestimonyIndicator}{startBGM:interrogatory_alegro}{blip:1}Terminé mi trabajo sobre las 21:15,{nl}y después de eso, me quedé en el escenario de la 1.ª planta todo el tiempo."
+                "text": "{showTestimonyIndicator}{startBGM:interrogatory_alegro}{blip:1}Terminé mi trabajo sobre las 21:15,{nl}y después de eso,{p:150} me quedé en el escenario de la 1.ª planta todo el tiempo."
             },
             {
                 "name": "Sahwit",
-                "text": "Terminé mi trabajo sobre las 21:15,{nl}y después de eso, me quedé en el escenario de la 1.ª planta todo el tiempo."
+                "text": "Terminé mi trabajo sobre las 21:15,{nl}y después de eso,{p:150} me quedé en el escenario de la 1.ª planta todo el tiempo."
             },
             {
                 "name": "Sahwit",
-                "text": "Puede que sospechen de mí, pero{nl}están cometiendo un enorme error."
+                "text": "Puede que sospechen de mí,{p:150} pero{nl}están cometiendo un enorme error."
             },
             {
                 "name": "Sahwit",
@@ -3195,10 +3195,10 @@
             },
             {
                 "name": "Maya",
-                "text": "{hideTestimonyIndicator}{stopBGM}{courtSprite:cocounsel[\"Strict_Bench\"]}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:cocounsel}{fadeInCharacter:600}{fadeInBg:600}{blip:2}Nick, ¿qué deberíamos hacer?{nl}Su testimonio es muy vago..."
+                "text": "{hideTestimonyIndicator}{stopBGM}{courtSprite:cocounsel[\"Strict_Bench\"]}{fadeOutCharacter:600}{fadeOutBg:600}{courtView:cocounsel}{fadeInCharacter:600}{fadeInBg:600}{blip:2}Nick,{p:150} ¿qué deberíamos hacer?{nl}Su testimonio es muy vago..."
             },
             {
-                "text": "{hideTextbox}{setState:currentTestimony,3}{setState:Mia_hint_condition,false}{checkpoint:Third_Testimony_Start}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}--Los 50 minutos en blanco--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_3}{sectionEnd}"
+                "text": "{hideTextbox}{setState:currentTestimony,3}{setState:Mia_hint_condition,false}{checkpoint:Third_Testimony_Start}{hideTextbox}{fadeOutCharacter:600}{fadeOutBg:600}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInCharacter:600}{fadeInBg:600}{showTextbox}{center}{color:red}{blip:0,false}--{p:150}Los 50 minutos en blanco--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_3}{sectionEnd}"
             }
         ],
         "Trial_GameOver": [
@@ -3216,7 +3216,7 @@
             },
             {
                 "name": "Judge",
-                "text": "Voy a dictar sentencia ahora mismo{nl}sobre la acusada, Maggey Byrde."
+                "text": "Voy a dictar sentencia ahora mismo{nl}sobre la acusada,{p:150} Maggey Byrde."
             },
             {
                 "name": "Judge",
