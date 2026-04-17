@@ -186,7 +186,7 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}...{p:200}Yes.{nl}That is all."
+                "text": "{blip:1,true}{color:white}{sprite:Sahwit[\"Stand\"]}Yes...{p:200}{nl}That is all."
             },
             {
                 "name": "Phoenix",

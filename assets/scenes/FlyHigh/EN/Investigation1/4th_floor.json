@@ -92,7 +92,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}(...{p:200}I-I really don't care!)"
+                "text": "{playSound:shake}{flash}{shake:200}{blip:0,false}{color:lightblue}(I-I really don't care...!)"
             },
             {
                 "name": "Phoenix",

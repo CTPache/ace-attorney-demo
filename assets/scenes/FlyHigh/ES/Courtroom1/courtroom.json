@@ -684,7 +684,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}...{p:300}Un momento."
+                "text": "{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}Un momento..."
             },
             {
                 "name": "Edgeworth",
@@ -1099,7 +1099,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideLifeBar}{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Confident_Shrugging\"]}{flash}{playSound:question1}{courtSprite:prosecution[\"Confident2\"]}{showTextbox}{blip:1}...{p:300}Hmph.{p:200}{nl}Estoy tan horrorizado que me he quedado sin palabras."
+                "text": "{hideLifeBar}{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Confident_Shrugging\"]}{flash}{playSound:question1}{courtSprite:prosecution[\"Confident2\"]}{showTextbox}{blip:1}Hmph...{p:200}{nl}Estoy tan horrorizado que me he quedado sin palabras."
             },
             {
                 "name": "Edgeworth",
@@ -1127,7 +1127,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(¿Organizar la información?{nl}...{p:200}A lo mejor debería revisar de nuevo las pruebas.)"
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(¿Organizar la información?{nl}A lo mejor debería revisar de nuevo las pruebas...)"
             },
             {
                 "name": "Phoenix",
@@ -1597,7 +1597,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}...{p:300}Tienes razón.{nl}¡Tienes toda la razón!"
+                "text": "{blip:1,false}Tienes razón...{p:300}{nl}¡Tienes toda la razón!"
             },
             {
                 "name": "Phoenix",
@@ -1605,7 +1605,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{stopBGM}{courtView:defense}{color:lightblue}(...{p:300}Pero,{p:150} ¿cuál es la manera de salir de esto...)"
+                "text": "{stopBGM}{courtView:defense}{color:lightblue}(Pero...{p:300} ¿cuál es la manera de salir de esto...)"
             },
             {
                 "name": "Phoenix",
@@ -1804,7 +1804,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}...{p:300}No es necesario.{p:200}{nl}Parece que la defensa ha sacado la verdad a la luz."
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}No es necesario.{p:200}{nl}Parece que la defensa ha sacado la verdad a la luz."
             },
             {
                 "name": "Phoenix",
@@ -1921,7 +1921,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}(...{p:300}No,{p:150} no es eso.{nl}Esa es una sonrisa de confianza.)"
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}(No,{p:150} no es eso...{p:300}{nl}Esa es una sonrisa de confianza.)"
             },
             {
                 "name": "Phoenix",
@@ -2142,7 +2142,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}...{p:300}P-Pero si no fue a la 4.ª planta,{nl}conseguir esto sería..."
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}P-Pero si no fue a la 4.ª planta...{p:300}{nl}Conseguir esto sería..."
             },
             {
                 "name": "Sahwit",
@@ -2170,7 +2170,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(...{p:300}No,{p:150} eso es imposible.{nl}¡Es totalmente imposible!)"
+                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(No,{p:150} eso es imposible...{p:300}{nl}¡Es totalmente imposible!)"
             },
             {
                 "name": "Phoenix",
@@ -2436,7 +2436,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}...{p:300}Espera,{p:150} ¿no será que el señor Edgeworth le cogió el gusto a Joypolis durante su investigación?"
+                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}Espera...{p:300} ¿no será que el señor Edgeworth le cogió el gusto a Joypolis durante su investigación?"
             },
             {
                 "name": "Maya",
@@ -3176,10 +3176,6 @@
             {
                 "name": "Sahwit",
                 "text": "{showTestimonyIndicator}{startBGM:interrogatory_alegro}{blip:1}Terminé mi trabajo sobre las 21:15,{nl}y después de eso,{p:150} me quedé en el escenario de la 1.ª planta todo el tiempo."
-            },
-            {
-                "name": "Sahwit",
-                "text": "Terminé mi trabajo sobre las 21:15,{nl}y después de eso,{p:150} me quedé en el escenario de la 1.ª planta todo el tiempo."
             },
             {
                 "name": "Sahwit",

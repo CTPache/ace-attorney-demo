@@ -609,7 +609,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(...{p:200}Maggey said she reached her hand out{nl}without knowing what was in the darkness.)"
+                "text": "{courtSprite:defense[\"Thinking\"]}{blip:0,false}{color:lightblue}(Maggey said she reached her hand out{nl}without knowing what was in the darkness...{p:200})"
             },
             {
                 "name": "Phoenix",
@@ -684,7 +684,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}...{p:300}Hold on."
+                "text": "{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Slamming_Bench\"]}{courtSprite:prosecution[\"Determined\"]}{showTextbox}{blip:1}Hold on...{p:200}"
             },
             {
                 "name": "Edgeworth",
@@ -890,7 +890,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Confident\"]}...{p:200}Thinking about it this way,{p:150} the cause of death{nl}and the undamaged back of the mask perfectly align!"
+                "text": "{courtSprite:defense[\"Confident\"]}Thinking about it this way,{p:150} the cause of death{nl}and the undamaged back of the mask perfectly align!"
             },
             {
                 "text": "{setSkipEnabled:false}{hideTextbox}{courtView:overview}{playSound:galleryReaction}{p:1200}{setSkipEnabled:true}{skip:0}"
@@ -916,7 +916,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(...{p:300}Alright!{p:200} I feel like I just took{nl}a massive step closer to the truth!)"
+                "text": "{showTextbox}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Alright!{p:200} I feel like I just took{nl}a massive step closer to the truth!)"
             },
             {
                 "name": "Maya",
@@ -1099,7 +1099,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{hideLifeBar}{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Confident_Shrugging\"]}{flash}{playSound:question1}{courtSprite:prosecution[\"Confident2\"]}{showTextbox}{blip:1}...{p:300}Hmph.{p:200}{nl}I am so appalled I have no words."
+                "text": "{hideLifeBar}{hideTextbox}{courtView:prosecution}{courtSprite:prosecution[\"Confident_Shrugging\"]}{flash}{playSound:question1}{courtSprite:prosecution[\"Confident2\"]}{showTextbox}{blip:1}Hmph...{p:300}{nl}I am so appalled I have no words."
             },
             {
                 "name": "Edgeworth",
@@ -1127,7 +1127,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Organize my information?{nl}...{p:200}Maybe I should review the evidence again.)"
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(Organize my information?{nl}}Maybe I should review the evidence again...)"
             },
             {
                 "name": "Phoenix",
@@ -1522,7 +1522,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtView:defense}{flash}{courtSprite:defense[\"Pointing\"]}{playSound:bubble_sfx}...{p:200}Well?{nl}Answer the question!"
+                "text": "{courtView:defense}{flash}{courtSprite:defense[\"Pointing\"]}{playSound:bubble_sfx}Well...?{p:200}{nl}Answer the question!"
             },
             {
                 "name": "Edgeworth",
@@ -1597,7 +1597,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}...{p:300}You're right.{nl}You're exactly right!"
+                "text": "{blip:1,false}You're right...{p:300}{nl}You're exactly right!"
             },
             {
                 "name": "Phoenix",
@@ -1605,7 +1605,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{stopBGM}{courtView:defense}{color:lightblue}(...{p:300}But,{p:150} where is the breakthrough...)"
+                "text": "{stopBGM}{courtView:defense}{color:lightblue}(But...{p:300}, where is the breakthrough...)"
             },
             {
                 "name": "Phoenix",
@@ -1804,7 +1804,7 @@
             },
             {
                 "name": "Edgeworth",
-                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}...{p:300}No need.{p:200}{nl}It seems the defense has brought the truth to light."
+                "text": "{courtView:prosecution}{courtSprite:prosecution[\"Thinking\"]}There is no need.{p:300}{nl}It seems the defense has brought the truth to light."
             },
             {
                 "name": "Phoenix",
@@ -1921,7 +1921,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}(...{p:300}No,{p:150} that's not it.{nl}That is a smile of confidence.)"
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightBlue}{flash}{playSound:question1}(No...{p:300} that's not it.{nl}That is a smile of confidence.)"
             },
             {
                 "name": "Phoenix",
@@ -2138,11 +2138,11 @@
             },
             {
                 "name": "Sahwit",
-                "text": "{courtView:witness}{shake:500}{playSound:shake}{blip:1}...{p:300}But let me tell you,{p:150} I never went to the 4th floor{nl}at the time of the incident!"
+                "text": "{courtView:witness}{shake:500}{playSound:shake}{blip:1}But let me tell you...{nl}I never went to the 4th floor at the time of the incident!"
             },
             {
                 "name": "Phoenix",
-                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}...{p:300}B-But if you didn't go to the 4th floor,{nl}getting your hands on this would be..."
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}B-But...{p:200} if you didn't go to the 4th floor,{nl}getting your hands on this would be..."
             },
             {
                 "name": "Sahwit",
@@ -2170,7 +2170,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(...{p:300}No,{p:150} that's impossible.{nl}There is absolutely no way!)"
+                "text": "{stopBGM}{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:0,false}{color:lightblue}(No...{p:150} that's impossible.{nl}There is absolutely no way!)"
             },
             {
                 "name": "Phoenix",
@@ -2436,7 +2436,7 @@
             },
             {
                 "name": "Maya",
-                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}...{p:300}Wait,{p:150} could it be that Mr. Edgeworth took a liking to Joypolis during his investigation?"
+                "text": "{courtSprite:cocounsel[\"Determined_Bench\"]}{courtView:cocounsel}{blip:2}Wait...{p:300} could it be that Mr. Edgeworth took a liking to Joypolis during his investigation?"
             },
             {
                 "name": "Maya",
@@ -3163,7 +3163,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{blip:1,false}...{p:200}Y-Yeah,{p:150} you're right!"
+                "text": "{blip:1,false}Y-Yeah,{p:150} you're right...!"
             },
             {
                 "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:600}{setState:currentTestimony,2}{setState:Mia_hint_condition,false}{checkpoint:Second_Testimony_Start}{courtSprite:witness[\"Stand\"]}{courtView:witness}{fadeInFg:600}{fadeInBg:600}{fadeInCharacter}{showTextbox}{center}{color:red}--{p:150}Photo of the Falling Victim--{playAnimation:CrossExamination}{startCE:Yamano_Testimony_2}{sectionEnd}"
@@ -3176,10 +3176,6 @@
             {
                 "name": "Sahwit",
                 "text": "{showTestimonyIndicator}{startBGM:interrogatory_alegro}{blip:1}I finished my work around 9:15 PM,{nl}and after that,{p:150} I stayed on the 1st-floor stage the entire time."
-            },
-            {
-                "name": "Sahwit",
-                "text": "You might suspect me,{p:150} but{nl}you are making a massive misunderstanding."
             },
             {
                 "name": "Sahwit",
