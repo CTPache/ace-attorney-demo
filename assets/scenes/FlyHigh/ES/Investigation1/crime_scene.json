@@ -300,7 +300,7 @@
         "Examine_Floor": [
             {
                 "name": "Gumshoe",
-                "text": "{blip:1,true}{color:white}{hideCharacter}{blip:1}Murió con el traje y la máscara del Samurái de Acero puestos..."
+                "text": "{blip:1,true}{color:white}{hideCharacter}{blip:1}Está muy limpio, ¿verdad?{nl}Lo han limpiado muy bien."
             },
             {
                 "name": "Gumshoe",
