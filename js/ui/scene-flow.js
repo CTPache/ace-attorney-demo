@@ -95,16 +95,20 @@ window.renderOptionsMenu = function(optionKey) {
     advanceBtn.classList.add('hidden');
 
     // Block interaction
-    isInputBlocked = true;
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
     clearOptionsTimer();
 
     topicMenu.innerHTML = ''; // Clear previous content
 
     const closeOptionsMenu = (targetLabel) => {
         clearOptionsTimer();
-        isInputBlocked = false;
 
         if (topicMenu) topicMenu.classList.add('hidden');
+        if (typeof window.syncMenuInputBlockState === 'function') {
+            window.syncMenuInputBlockState();
+        }
         if (typeof window.shelveLazyElement === 'function') {
             window.shelveLazyElement('topic-menu');
         }

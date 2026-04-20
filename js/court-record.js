@@ -134,6 +134,16 @@ function showEvidencePopupItem(item) {
     popupName.textContent = item.name;
     renderCourtRecordRichText(popupDesc, item.description);
     evidencePopup.classList.remove('hidden');
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
+
+    // Dismiss on click
+    evidencePopup.onclick = (e) => {
+        e.stopPropagation();
+        hideEvidencePopup();
+    };
 }
 
 function hideEvidencePopup() {
@@ -142,6 +152,10 @@ function hideEvidencePopup() {
     evidencePopup.classList.add('hidden');
     if (typeof window.shelveLazyElement === 'function') {
         window.shelveLazyElement('evidence-popup');
+    }
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
     }
 }
 
@@ -182,19 +196,39 @@ function syncCourtRecordModeUI(mode = (isPresentingMode ? 'present' : 'view')) {
 
 function closeCourtRecord() {
     isCourtRecordOpen = false;
+    isPresentingMode = false;
+
+    if (typeof window.hideEvidenceDetails === 'function') {
+        window.hideEvidenceDetails();
+    }
+
     if (evidenceContainer) evidenceContainer.classList.add('hidden');
     if (evidenceDetails) evidenceDetails.classList.add('hidden');
+
     if (typeof window.shelveLazyElement === 'function') {
         window.shelveLazyElement('evidence-container');
     }
     if (bottomTopBar) bottomTopBar.classList.remove('hidden');
 
-    if (!isScenePlaying) {
-        isPresentingMode = false;
-    }
-
     syncCourtRecordModeUI('view');
     syncCourtRecordDependentControls();
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
+
+    // Focus treatment: prioritize gameplay/advance buttons when closing the record
+    setTimeout(() => {
+        const priorityButtons = [
+            advanceBtn,
+            btnExamine,
+            btnTalk,
+            cePressButton,
+            document.getElementById('btn-examine')
+        ];
+        // If no gameplay buttons are suitable, explicitly blur to lose focused-outline look
+        if (document.activeElement) document.activeElement.blur();
+    }, 10);
 }
 
 function syncActiveRecordTabs() {
@@ -260,6 +294,8 @@ function bindCourtRecordEvents() {
     document.querySelectorAll('#cr-tabs .cr-tab').forEach((tab, index) => {
         if (tab.dataset.boundCourtRecord === 'true') return;
         tab.dataset.boundCourtRecord = 'true';
+        tab.tabIndex = 0; // Make focusable
+        tab.setAttribute('role', 'tab');
         tab.addEventListener('click', () => {
             setCurrentRecordTab((index === 0) ? 'evidence' : 'profiles');
         });
@@ -308,10 +344,36 @@ function bindCourtRecordEvents() {
         liveEvidenceDetails.dataset.boundCourtRecord = 'true';
         liveEvidenceDetails.addEventListener('click', (e) => {
             if (shouldKeepEvidenceDetailsOpen(e.target)) return;
-            liveEvidenceDetails.classList.add('hidden');
+            window.hideEvidenceDetails();
         });
     }
 }
+
+window.hideEvidenceDetails = function () {
+    const liveEvidenceDetails = document.getElementById('evidence-details') || evidenceDetails;
+    if (liveEvidenceDetails) {
+        liveEvidenceDetails.classList.add('hidden');
+    }
+
+    // Restore background elements
+    const liveGrid = document.getElementById('evidence-grid') || evidenceGrid;
+    const liveName = document.getElementById('evidence-name-display') || evidenceNameDisplay;
+    if (liveGrid) liveGrid.classList.remove('hidden');
+    if (liveName) liveName.classList.remove('hidden');
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
+
+    const crTabsEl = document.getElementById('cr-tabs') || crTabs;
+    if (crTabsEl && crTabsEl.classList) crTabsEl.classList.remove('hidden');
+
+    // Return focus to the grid
+    if (liveGrid) {
+        const firstSlot = liveGrid.querySelector('.evidence-slot[tabindex="0"]');
+        if (firstSlot) firstSlot.focus();
+    }
+};
 
 function getCourtRecordSnapshot() {
     return {
@@ -359,6 +421,10 @@ function openCourtRecord(mode = 'view') {
     renderEvidence();
 
     syncCourtRecordDependentControls();
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
 }
 
 window.openCourtRecord = openCourtRecord;
@@ -370,10 +436,10 @@ window.restoreCourtRecordSnapshot = restoreCourtRecordSnapshot;
 document.addEventListener('evidenceAdded', (e) => {
     const key = e.detail.key;
     const item = evidenceDB[key];
-    
+
     if (item) {
         showEvidencePopupItem(item);
-        
+
         // Refresh grid if open
         if (isCourtRecordOpen && currentRecordTab === 'evidence') {
             renderEvidence();
@@ -385,10 +451,10 @@ document.addEventListener('evidenceAdded', (e) => {
 document.addEventListener('profileAdded', (e) => {
     const key = e.detail.key;
     const item = profilesDB[key];
-    
+
     if (item) {
         showEvidencePopupItem(item);
-        
+
         // Refresh grid if open
         if (isCourtRecordOpen && currentRecordTab === 'profiles') {
             renderEvidence();
@@ -408,28 +474,36 @@ document.addEventListener('dialogueAdvanced', () => {
 function renderEvidence() {
     evidenceGrid.innerHTML = '';
     evidenceNameDisplay.textContent = ''; // Clear name display
-    
+
     const { currentInventory, currentDB } = getCurrentRecordData();
 
     // Create 8 slots (2x4)
     for (let i = 0; i < 8; i++) {
         const slot = document.createElement('div');
         slot.className = 'evidence-slot';
-        
+
         if (i < currentInventory.length) {
             const key = currentInventory[i];
             const item = currentDB[key];
-            
+
             if (item) {
                 const img = document.createElement('img');
                 img.src = item.image;
                 img.alt = item.name;
-                
+
                 slot.appendChild(img);
                 slot.dataset.key = key;
+                slot.tabIndex = 0; // Make focusable
+                slot.setAttribute('role', 'button');
+                slot.setAttribute('aria-label', item.name);
+
+                // Add focus listener to trigger hover effect
+                slot.addEventListener('focus', () => {
+                    if (evidenceNameDisplay) evidenceNameDisplay.textContent = item.name;
+                });
             }
         }
-        
+
         evidenceGrid.appendChild(slot);
     }
 }
@@ -439,7 +513,13 @@ function showEvidenceDetails(item, key) {
     renderCourtRecordRichText(evidenceDescription, item.description);
     evidenceIconLarge.src = item.image;
     renderCourtRecordRichText(evidenceDataBox, item.data || "");
-    
+
+    // Hide background elements to prevent ghosting/focus leaks
+    if (evidenceGrid) evidenceGrid.classList.add('hidden');
+    if (evidenceNameDisplay) evidenceNameDisplay.classList.add('hidden');
+    const crTabsEl = document.getElementById('cr-tabs') || crTabs;
+    if (crTabsEl && crTabsEl.classList) crTabsEl.classList.add('hidden');
+
     // Navigation Logic
     const currentInventory = (currentRecordTab === 'evidence') ? evidenceInventory : profilesInventory;
     const currentDB = (currentRecordTab === 'evidence') ? evidenceDB : profilesDB;
@@ -482,22 +562,20 @@ function showEvidenceDetails(item, key) {
 
     // Only show Present button if in presenting mode
     // (Either via investigation menu or CE mode)
-    const canPresentInCE = (window.CrossExamination && window.CrossExamination.isCEMode);
+    const canPresentInCE = (window.CrossExamination && window.CrossExamination.isCEMode && window.CrossExamination.isLoopActive);
     const hasForcedPresentCommand = (typeof window.hasPendingPresentCommand === 'function')
         && window.hasPendingPresentCommand();
-    
+
     if (isPresentingMode || canPresentInCE) {
         presentBtn.classList.remove('hidden');
-        
+
         // Update Present Handler
         presentBtn.onclick = (e) => {
             e.stopPropagation(); // Prevent closing details
-            
-            // Close Court Record
-            isCourtRecordOpen = false;
-            evidenceContainer.classList.add('hidden');
-            evidenceDetails.classList.add('hidden');
-            
+
+            // Centralized Close
+            closeCourtRecord();
+
             if (hasForcedPresentCommand && window.handlePresentEvidence) {
                 window.handlePresentEvidence(key);
             } else if (canPresentInCE) {
@@ -513,4 +591,24 @@ function showEvidenceDetails(item, key) {
     }
 
     evidenceDetails.classList.remove('hidden');
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
+
+    // Focus a navigation button instead of the background slot to prevent focus leaks
+    const livePrev = document.getElementById('evidence-prev-btn') || btnPrevEvidence;
+    const liveNext = document.getElementById('evidence-next-btn') || btnNextEvidence;
+    const liveBack = document.getElementById('btn-evidence-back') || btnEvidenceBack;
+    const livePresent = document.getElementById('evidence-present-btn') || presentBtn;
+
+    if (livePresent && !livePresent.disabled) {
+        livePresent.focus();
+    } else if (liveBack && !liveBack.disabled) {
+        liveBack.focus();
+    } else if (liveNext && !liveNext.disabled) {
+        liveNext.focus();
+    } else if (livePrev) {
+        livePrev.focus();
+    }
 }

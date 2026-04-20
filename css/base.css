@@ -113,3 +113,23 @@ body {
         border-bottom: 2px solid #555;
     }
 }
+
+/* Global Keyboard Focus Styles */
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 0.4cqh solid #ffd700 !important;
+    outline-offset: 0.2cqh;
+    box-shadow: 0 0 1.5cqh #ffd700, 0 0 0.5cqh #fff !important;
+    z-index: 100;
+}
+
+/* Ensure images and other specific elements look good when focused */
+.evidence-slot:focus-visible,
+.gallery-grid-item:focus-visible,
+.topic-button:focus-visible,
+button:focus-visible {
+    transition: box-shadow 0.2s ease, outline-color 0.2s ease;
+}

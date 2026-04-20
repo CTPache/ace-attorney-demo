@@ -95,6 +95,9 @@ window.initCaseSelect = async function() {
     }
 
     renderCaseList();
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
 };
 
 window.hideCaseSelect = function() {
@@ -105,6 +108,10 @@ window.hideCaseSelect = function() {
 
     if (typeof window.unmountLazyElements === 'function') {
         window.unmountLazyElements(['case-select-top', 'case-select-bottom']);
+    }
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
     }
 };
 
@@ -166,6 +173,11 @@ function renderCaseList() {
     container.appendChild(selectBtn);
 
     updateCarouselView();
+
+    // Focus select button
+    setTimeout(() => {
+        selectBtn.focus();
+    }, 10);
 }
 
 function updateCarouselView() {
@@ -210,6 +222,12 @@ function renderChapterList(caseKey) {
 
         container.appendChild(btn);
     }
+
+    // Focus first button with slight delay
+    setTimeout(() => {
+        const firstBtn = container.querySelector('.cs-item-btn');
+        if (firstBtn) firstBtn.focus();
+    }, 50);
 }
 
 async function loadSelectedChapter(caseKey, chapterKey) {
@@ -264,6 +282,33 @@ async function loadSelectedChapter(caseKey, chapterKey) {
     // Start scene
     await window.loadGameData(chapterInfo.scene);
 }
+
+// State Management
+window.CaseSelectState = {
+    get currentCaseIndex() { return currentCaseIndex; },
+    set currentCaseIndex(v) { currentCaseIndex = v; },
+    get caseKeys() { return caseKeys; }
+};
+
+window.CaseSelect = {
+    nextCase: () => {
+        if (caseKeys.length === 0) return;
+        currentCaseIndex = (currentCaseIndex + 1) % caseKeys.length;
+        updateCarouselView();
+    },
+    prevCase: () => {
+        if (caseKeys.length === 0) return;
+        currentCaseIndex = (currentCaseIndex - 1 + caseKeys.length) % caseKeys.length;
+        updateCarouselView();
+    },
+    selectCurrentCase: () => {
+        const caseListView = document.getElementById('case-list-view');
+        if (caseKeys.length > 0 && caseListView && !caseListView.classList.contains('hidden')) {
+            selectedCaseKey = caseKeys[currentCaseIndex];
+            renderChapterList(selectedCaseKey);
+        }
+    }
+};
 
 // Events are bound when the lazy-mounted case select DOM is created.
 

@@ -42,6 +42,7 @@ let cursorBox;
 let btnTopicBack;
 
 let courtRecordBtn;
+let cePressButton;
 let configBtn;
 let advanceBtn;
 let evidenceGrid;
@@ -130,6 +131,7 @@ function refreshDOMGlobals() {
     btnTopicBack = document.getElementById('btn-topic-back');
 
     courtRecordBtn = document.getElementById('court-record-btn');
+    cePressButton = document.getElementById('ce-press-btn');
     configBtn = document.getElementById('config-btn');
     advanceBtn = document.getElementById('advance-btn');
     evidenceGrid = document.getElementById('evidence-grid');
@@ -178,3 +180,64 @@ function refreshDOMGlobals() {
 
 refreshDOMGlobals();
 window.refreshDOMGlobals = refreshDOMGlobals;
+
+// Centralized Key Bindings Configuration
+window.KEY_BINDINGS = {
+    // Core Navigation
+    UP: ['ArrowUp'],
+    DOWN: ['ArrowDown'],
+    LEFT: ['ArrowLeft'],
+    RIGHT: ['ArrowRight'],
+
+    // Selection & Flow Control
+    CONFIRM: ['Enter'],
+    CANCEL: ['Escape', 'Backspace'],
+    ACTION: [' '], // Space
+
+    // Shortcuts
+    COURT_RECORD: ['e', 'E'],
+    CONFIG: ['g', 'G'],
+    AUTOPLAY: ['a', 'A'],
+    PRESENT: ['Enter'],
+    PRESS: ['q', 'Q'],
+    SCREEN_MODE: ['m', 'M'],
+    SWITCH_SCREEN: ['s', 'S']
+};
+
+/**
+ * Global Gamepad Mappings (Standard Button Indices)
+ * 0: Bottom (A/Cross), 1: Right (B/Circle), 2: Left (X/Square), 3: Top (Y/Triangle)
+ * 4: L1, 5: R1, 6: L2, 7: R2, 8: Select/Share, 9: Start/Options
+ * 12: DPad Up, 13: DPad Down, 14: DPad Left, 15: DPad Right
+ */
+window.GAMEPAD_BINDINGS = {
+    UP: [12],
+    DOWN: [13],
+    LEFT: [14],
+    RIGHT: [15],
+
+    CONFIRM: [0], // A / Cross
+    CANCEL: [1],  // B / Circle
+    ACTION: [0],  // A / Cross
+
+    COURT_RECORD: [5], // L1 / LB
+    CONFIG: [9],       // Options / Start
+    AUTOPLAY: [8, 8],  // Share / Back
+    PRESENT: [3],      // Y / Triangle
+    PRESS: [4],        // X / Square
+    SWITCH_SCREEN: [7],
+
+    AXIS_THRESHOLD: 0.5,
+    STICK_REPEAT_DELAY: 250 // ms for menu scrolling
+};
+
+/**
+ * Utility to check if a KeyboardEvent matches a named binding.
+ * @param {KeyboardEvent} e 
+ * @param {string} binding 
+ * @returns {boolean}
+ */
+window.isKey = function (e, binding) {
+    if (!window.KEY_BINDINGS[binding]) return false;
+    return window.KEY_BINDINGS[binding].includes(e.key);
+};

@@ -147,6 +147,10 @@ window.initTitleScreen = function() {
             }
         };
     }
+    
+    if (typeof window.refreshTopBarButtonDisabledState === 'function') {
+        window.refreshTopBarButtonDisabledState();
+    }
 };
 
 window.hideTitleScreen = function() {

@@ -97,15 +97,20 @@ function persistCurrentConfigMenuSettings() {
 function updateAutoplayIndicator() {
     if (!autoplayIndicator) return;
 
-    if (typeof isScenePlaying !== 'undefined') {
-        autoplayIndicator.classList.toggle('hidden', !isScenePlaying);
-    }
+    const isMenuOpen = typeof window.isBlockingMenuOpen === 'function' && window.isBlockingMenuOpen();
+    const shouldShow = !!(typeof isScenePlaying !== 'undefined' && isScenePlaying && !isMenuOpen);
 
-    autoplayIndicator.classList.toggle('active', isAutoPlayEnabled);
-    autoplayIndicator.setAttribute('aria-pressed', isAutoPlayEnabled ? 'true' : 'false');
-    autoplayIndicator.title = isAutoPlayEnabled
-        ? window.t('ui.autoplayOn', 'Auto Play On (A)')
-        : window.t('ui.autoplayOff', 'Auto Play Off (A)');
+    autoplayIndicator.classList.toggle('hidden', !shouldShow);
+    autoplayIndicator.disabled = !shouldShow;
+    autoplayIndicator.setAttribute('aria-hidden', (!shouldShow).toString());
+
+    if (shouldShow) {
+        autoplayIndicator.classList.toggle('active', isAutoPlayEnabled);
+        autoplayIndicator.setAttribute('aria-pressed', isAutoPlayEnabled ? 'true' : 'false');
+        autoplayIndicator.title = isAutoPlayEnabled
+            ? window.t('ui.autoplayOn', 'Auto Play On (A)')
+            : window.t('ui.autoplayOff', 'Auto Play Off (A)');
+    }
 }
 
 function setAutoplayEnabled(nextEnabled) {
@@ -129,6 +134,9 @@ function setAutoplayEnabled(nextEnabled) {
 }
 
 function toggleAutoplay() {
+    if (autoplayIndicator && (autoplayIndicator.classList.contains('hidden') || autoplayIndicator.disabled)) {
+        return;
+    }
     setAutoplayEnabled(!isAutoPlayEnabled);
 }
 
@@ -253,12 +261,13 @@ function refreshTopBarButtonDisabledState() {
     const liveHistoryMenu = document.getElementById('history-menu') || historyMenu;
     const isConfigVisible = liveConfigMenu && !liveConfigMenu.classList.contains('hidden');
     const isHistoryVisible = liveHistoryMenu && !liveHistoryMenu.classList.contains('hidden');
+    const isTitleVisible = typeof window.isTitleScreenVisible === 'function' && window.isTitleScreenVisible();
     const isTextBusy = !!(
         (typeof isTyping !== 'undefined' && isTyping)
         || (typeof isWaitingForAnimation !== 'undefined' && isWaitingForAnimation)
         || (typeof isWaitingForAutoSkip !== 'undefined' && isWaitingForAutoSkip)
     );
-    const shouldDisable = !!(isConfigVisible || isHistoryVisible || isTextBusy);
+    const shouldDisable = !!(isConfigVisible || isHistoryVisible || isTextBusy || isTitleVisible);
 
     if (courtRecordBtn) courtRecordBtn.disabled = shouldDisable;
     if (configBtn) configBtn.disabled = shouldDisable;
@@ -279,14 +288,12 @@ function closeConfigMenu() {
     isInputBlocked = false;
     refreshTopBarButtonDisabledState();
 
-    if (wasTitleContext && typeof window.hideActionMenus === 'function') {
-        window.hideActionMenus();
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
     }
 
-    if (isAutoPlayEnabled && !isTyping && isScenePlaying) {
-        if (typeof window.scheduleAutoPlayAdvance === 'function') {
-            window.scheduleAutoPlayAdvance();
-        }
+    if (wasTitleContext && typeof window.hideActionMenus === 'function') {
+        window.hideActionMenus();
     }
 }
 
@@ -329,11 +336,7 @@ function openHistoryMenu(fromConfig = false) {
     const liveHistoryMenu = document.getElementById('history-menu') || historyMenu;
     const liveConfigMenu = document.getElementById('config-menu') || configMenu;
     if (!liveHistoryMenu) return;
-
-    if (typeof window.clearAutoPlayTimer === 'function') {
-        window.clearAutoPlayTimer();
-    }
-
+    
     returnToConfigAfterHistory = fromConfig;
 
     if (fromConfig && liveConfigMenu) {
@@ -342,7 +345,11 @@ function openHistoryMenu(fromConfig = false) {
 
     renderHistoryEntries();
     liveHistoryMenu.classList.remove('hidden');
-    isInputBlocked = true;
+    
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
+    
     refreshTopBarButtonDisabledState();
 }
 
@@ -366,14 +373,11 @@ function closeHistoryMenu(restoreConfig = true) {
 
     returnToConfigAfterHistory = false;
 
-    isInputBlocked = false;
-    refreshTopBarButtonDisabledState();
-
-    if (isAutoPlayEnabled && !isTyping && isScenePlaying) {
-        if (typeof window.scheduleAutoPlayAdvance === 'function') {
-            window.scheduleAutoPlayAdvance();
-        }
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
     }
+
+    refreshTopBarButtonDisabledState();
 }
 
 function syncConfigMenuControls() {
@@ -421,10 +425,6 @@ function openConfigMenu(fromTitle = null) {
     const liveConfigMenu = document.getElementById('config-menu') || configMenu;
     if (!liveConfigMenu) return;
 
-    if (typeof window.clearAutoPlayTimer === 'function') {
-        window.clearAutoPlayTimer();
-    }
-
     const shouldUseTitleMode = typeof fromTitle === 'boolean' ? fromTitle : isTitleScreenVisible();
     setConfigMenuContext(shouldUseTitleMode);
 
@@ -434,7 +434,11 @@ function openConfigMenu(fromTitle = null) {
 
     syncConfigMenuControls();
     liveConfigMenu.classList.remove('hidden');
-    isInputBlocked = true;
+
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
+    }
+
     refreshTopBarButtonDisabledState();
 }
 

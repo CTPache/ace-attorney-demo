@@ -3,7 +3,7 @@
 console.log("UI Advance Controls Loaded");
 
 function startFastForward(e) {
-    if (e.type === 'touchstart') e.preventDefault(); // Prevent ghost clicks
+    if (e && e.type === 'touchstart') e.preventDefault(); // Prevent ghost clicks
 
     if (!isTextSkipEnabled) {
         advanceDialogue(false);

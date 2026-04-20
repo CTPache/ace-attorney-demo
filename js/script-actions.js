@@ -154,7 +154,7 @@ function executeScriptAction(segment) {
         case 'setGameOver':
             // gameOverLabel is likely global (in engine.js? check globals.js)
             if (typeof gameOverLabel !== 'undefined') gameOverLabel = segment.label;
-            else window.gameOverLabel = segment.label; 
+            else window.gameOverLabel = segment.label;
             return true;
         case 'checkpoint':
             lastCheckpointSection = segment.sectionName;
@@ -240,7 +240,7 @@ function executeScriptAction(segment) {
                 window.returnToTitle(segment.message || null);
             }
             return 'STOP';
-        
+
         default:
             return false;
     }
@@ -321,7 +321,7 @@ function handleFlowControl(segment) {
             // If the script has a jump, we block it.
             jumpToSection(gameOverLabel);
         }
-        return true; 
+        return true;
     }
 
     if (segment.type === 'jump') {
@@ -340,7 +340,7 @@ function handleFlowControl(segment) {
     } else if (segment.type === 'option') {
         // Stop typing is handled by the caller (renderer) usually
         // But we need to signal it.
-        
+
         if (window.renderOptionsMenu) {
             window.renderOptionsMenu(segment.optionKey);
         }
@@ -374,14 +374,14 @@ function triggerShake(ms) {
             }
         }, duration);
     } else if (typeof gameContainer !== 'undefined') {
-         activeShakeCount++;
-         gameContainer.classList.add('shake');
-         setTimeout(() => {
-             activeShakeCount = Math.max(0, activeShakeCount - 1);
-             if (activeShakeCount === 0) {
-                 gameContainer.classList.remove('shake');
-             }
-         }, duration);
+        activeShakeCount++;
+        gameContainer.classList.add('shake');
+        setTimeout(() => {
+            activeShakeCount = Math.max(0, activeShakeCount - 1);
+            if (activeShakeCount === 0) {
+                gameContainer.classList.remove('shake');
+            }
+        }, duration);
     } else {
         // Fallback if gameContainer is not found
         const gc = gameContainer;

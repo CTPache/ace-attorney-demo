@@ -4,7 +4,11 @@ console.log("Menu Close Stack Loaded");
 
 window.closeInnermostMenu = function() {
     if (evidenceDetails && !evidenceDetails.classList.contains('hidden')) {
-        evidenceDetails.classList.add('hidden');
+        if (typeof window.hideEvidenceDetails === 'function') {
+            window.hideEvidenceDetails();
+        } else {
+            evidenceDetails.classList.add('hidden');
+        }
         return true;
     }
 
@@ -49,6 +53,16 @@ window.closeInnermostMenu = function() {
 
     if (historyMenu && !historyMenu.classList.contains('hidden')) {
         closeHistoryMenu();
+        return true;
+    }
+
+    const evidencePopup = document.getElementById('evidence-popup');
+    if (evidencePopup && !evidencePopup.classList.contains('hidden')) {
+        if (typeof window.hideEvidencePopup === 'function') {
+            window.hideEvidencePopup();
+        } else {
+            evidencePopup.classList.add('hidden');
+        }
         return true;
     }
 

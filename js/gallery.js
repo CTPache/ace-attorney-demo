@@ -43,7 +43,17 @@ window.initGallery = async function () {
     if (galleryMenu) {
         galleryMenu.classList.remove('hidden');
         window.hideTitleScreen();
+
+        // Make tabs focusable
+        galleryMenu.querySelectorAll('.gallery-tab').forEach(tab => {
+            tab.tabIndex = 0;
+            tab.setAttribute('role', 'tab');
+        });
+
         showGalleryTab("Artwork"); // Default tab
+        if (typeof window.syncMenuInputBlockState === 'function') {
+            window.syncMenuInputBlockState();
+        }
     }
 };
 
@@ -56,6 +66,9 @@ window.hideGallery = function () {
     closeGalleryViewer();
     if (typeof window.hideActionMenus === 'function') {
         window.hideActionMenus();
+    }
+    if (typeof window.syncMenuInputBlockState === 'function') {
+        window.syncMenuInputBlockState();
     }
     if (typeof window.unmountLazyElements === 'function') {
         window.unmountLazyElements(['gallery-menu', 'gallery-viewer']);
@@ -96,6 +109,10 @@ function showGalleryTab(category) {
 
         itemDiv.appendChild(img);
 
+        itemDiv.tabIndex = 0;
+        itemDiv.setAttribute('role', 'button');
+        itemDiv.setAttribute('aria-label', filename);
+
         itemDiv.onclick = () => {
             openGalleryViewer(path, index);
         };
@@ -112,6 +129,10 @@ function openGalleryViewer(imagePath, index = 0) {
         currentGalleryIndex = index;
         galleryViewer.classList.remove('hidden');
         resetGalleryNavTimer();
+
+        // Focus navigation
+        const nextBtn = document.getElementById('gallery-viewer-next');
+        if (nextBtn) nextBtn.focus();
     }
 }
 
@@ -148,27 +169,37 @@ window.nextGalleryImage = function (e) {
     openGalleryViewer(currentGalleryImages[currentGalleryIndex], currentGalleryIndex);
 };
 
-function handleGalleryKeydown(e) {
+window.triggerGalleryAction = function(action) {
     const galleryViewer = document.getElementById('gallery-viewer');
     if (!galleryViewer || galleryViewer.classList.contains('hidden')) {
-        return;
+        return false;
     }
 
-    if (e.key === 'ArrowLeft') {
+    if (action === 'LEFT') {
         window.prevGalleryImage();
-        e.preventDefault();
-    } else if (e.key === 'ArrowRight') {
+        resetGalleryNavTimer();
+        return true;
+    } else if (action === 'RIGHT') {
         window.nextGalleryImage();
-        e.preventDefault();
-    } else if (e.key === 'Escape') {
-        closeGalleryViewer();
-        e.preventDefault();
+        resetGalleryNavTimer();
+        return true;
+    } else if (action === 'CANCEL') {
+        if (typeof window.closeGalleryViewer === 'function') {
+            window.closeGalleryViewer();
+            return true;
+        }
     }
 
     resetGalleryNavTimer();
-}
+    return false;
+};
 
-document.addEventListener('keydown', handleGalleryKeydown);
+window.handleGalleryKeydown = function(e) {
+    // This function is still called for keyboard events, 
+    // but the mapping starts in key-events.js now.
+    // However, if called directly, we just return false to avoid double execution.
+    return false;
+};
 
 let galleryNavTimer = null;
 
@@ -210,5 +241,5 @@ if (gameContainer) {
     });
 }
 
-// Ensure the menu can be closed by Escape key if we wanted, 
+// Ensure the menu can be closed by Escape key if we wanted,
 // but sticking to Return to Title button is fine for now, handled via title-screen/main stack logic.

@@ -44,7 +44,10 @@ function hideActionMenus() {
     if (typeof window.clearOptionsTimer === 'function') {
         window.clearOptionsTimer();
     }
-    if (bottomTopBar) bottomTopBar.classList.remove('hidden');
+    if (bottomTopBar) {
+        const isTitleVisible = typeof window.isTitleScreenVisible === 'function' && window.isTitleScreenVisible();
+        bottomTopBar.classList.toggle('hidden', isTitleVisible);
+    }
     if (gameContainer) gameContainer.classList.remove('investigating');
 
     isExamining = false;
@@ -76,26 +79,46 @@ function isMenuLikeElementVisible(element) {
 }
 
 function isBlockingMenuOpen() {
-    const caseSelectBottom = document.getElementById('case-select-bottom');
-    const galleryMenu = document.getElementById('gallery-menu');
+    const menus = [
+        'config-menu', 'history-menu', 'investigation-menu', 
+        'move-menu', 'topic-menu', 'investigation-panel', 
+        'evidence-container', 'evidence-details', 
+        'case-select-bottom', 'gallery-menu', 'evidence-popup'
+    ];
 
-    return [
-        configMenu,
-        historyMenu,
-        investigationMenu,
-        moveMenu,
-        topicMenu,
-        investigationPanel,
-        evidenceContainer,
-        evidenceDetails,
-        caseSelectBottom,
-        galleryMenu
-    ].some(isMenuLikeElementVisible);
+    return menus.some(id => {
+        const el = document.getElementById(id);
+        return el && !el.classList.contains('hidden') && 
+               window.getComputedStyle(el).display !== 'none' && 
+               window.getComputedStyle(el).visibility !== 'hidden';
+    });
 }
 
 function syncMenuInputBlockState() {
     const shouldBlock = isBlockingMenuOpen();
+    const wasBlocked = isInputBlocked;
     isInputBlocked = shouldBlock;
+    
+    // Manage Autoplay Timers based on menu state transitions
+    if (shouldBlock && !wasBlocked) {
+        // Menu just opened
+        if (typeof window.clearAutoPlayTimer === 'function') {
+            window.clearAutoPlayTimer();
+        }
+    } else if (!shouldBlock && wasBlocked) {
+        // All menus just closed
+        if (typeof window.scheduleAutoPlayAdvance === 'function' && 
+            typeof isAutoPlayEnabled !== 'undefined' && isAutoPlayEnabled &&
+            typeof isScenePlaying !== 'undefined' && isScenePlaying) {
+            window.scheduleAutoPlayAdvance();
+        }
+    }
+
+    // Refresh the visibility of controls that depend on the input block state
+    if (typeof window.updateAutoplayIndicator === 'function') {
+        window.updateAutoplayIndicator();
+    }
+    
     return shouldBlock;
 }
 

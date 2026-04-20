@@ -408,6 +408,60 @@ function checkHover(clientX, clientY) {
     }
 }
 
+// Keyboard Movement
+function moveInvestigationCursor(direction) {
+    if (!isExamining || !investigationPanel) return;
+
+    const step = 10; // Pixels to move
+    const rect = investigationPanel.getBoundingClientRect();
+    
+    // Get current position from cursorBox style
+    let x = parseFloat(cursorBox.style.left) || (rect.width / 2);
+    let y = parseFloat(cursorBox.style.top) || (rect.height / 2);
+
+    switch (direction) {
+        case 'UP': y -= step; break;
+        case 'DOWN': y += step; break;
+        case 'LEFT': x -= step; break;
+        case 'RIGHT': x += step; break;
+    }
+
+    // Clamp to bounds
+    x = Math.max(0, Math.min(rect.width, x));
+    y = Math.max(0, Math.min(rect.height, y));
+
+    // Convert back to client coordinates for the existing update functions
+    const clientX = x + rect.left;
+    const clientY = y + rect.top;
+
+    handleInvestigationPointerMove(clientX, clientY, true);
+}
+
+function selectInvestigationCursor() {
+    if (!isExamining || !investigationPanel) return;
+
+    const rect = investigationPanel.getBoundingClientRect();
+    const x = parseFloat(cursorBox.style.left) || (rect.width / 2);
+    const y = parseFloat(cursorBox.style.top) || (rect.height / 2);
+
+    const clientX = x + rect.left;
+    const clientY = y + rect.top;
+
+    // Simulate click at coordinates
+    cursorBox.style.display = 'none';
+    const element = document.elementFromPoint(clientX, clientY);
+    cursorBox.style.display = 'flex';
+
+    if (element && element.classList.contains('investigation-polygon')) {
+        element.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    } else {
+        // Fallback to default investigation click
+        investigationPanel.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    }
+}
+
 // Bind lazy-mounted investigation UI immediately when available.
 bindInvestigationUIEvents();
 window.bindInvestigationUIEvents = bindInvestigationUIEvents;
+window.moveInvestigationCursor = moveInvestigationCursor;
+window.selectInvestigationCursor = selectInvestigationCursor;

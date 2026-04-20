@@ -18,6 +18,12 @@ function bindTopicEvents() {
             }
             topicMenu.classList.remove('hidden');
             renderTopics();
+            
+            // Focus first button
+            setTimeout(() => {
+                const firstBtn = topicMenu.querySelector('.topic-button, .back-btn');
+                if (firstBtn) firstBtn.focus();
+            }, 10);
         });
     }
 
