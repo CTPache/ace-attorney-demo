@@ -1,4 +1,3 @@
-
 /* Case Select Styles */
 .menu-overlay {
     position: absolute;
@@ -48,29 +47,14 @@
     background-color: #222;
 }
 
-#case-list-view, #chapter-list-view {
+#case-list-view,
+#chapter-list-view {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     padding: 2cqh;
     box-sizing: border-box;
-}
-
-.cs-back-btn {
-    align-self: flex-start;
-    padding: 1cqh 3cqh;
-    font-size: 4cqh;
-    background: #662222;
-    color: white;
-    border: 2px solid #ff5555;
-    border-radius: 1cqh;
-    cursor: pointer;
-    margin-bottom: 2cqh;
-}
-
-.cs-back-btn:hover {
-    background: #883333;
 }
 
 .cs-scroll-container {
@@ -81,30 +65,6 @@
     flex: 1;
 }
 
-.cs-item-btn {
-    width: 100%;
-    padding: 3cqh;
-    font-size: 5cqh;
-    background: rgba(51, 51, 51, 0.9);
-    color: white;
-    border: 2px solid #555;
-    border-radius: 1cqh;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: left;
-}
-
-.cs-item-btn:hover {
-    background: #444;
-    border-color: #888;
-}
-
-.cs-item-btn.selected {
-    background: #1a4a1a;
-    border-color: #2a8a2a;
-}
-
-
 /* Carousel Additions */
 .cs-carousel-nav {
     display: flex;
@@ -112,7 +72,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-top: auto;
     margin-bottom: 2cqh;
     background: rgba(51, 51, 51, 0.9);
     border: 2px solid #555;
@@ -146,21 +105,11 @@
     padding: 0 2cqh;
 }
 
-.cs-carousel-select {
-    margin-top: auto;
-    background: rgba(26, 74, 26, 0.95);
-    border-color: #2a8a2a;
-    text-align: center;
-    margin-bottom: 0;
-}
-.cs-carousel-select:hover {
-    background: #2a6a2a;
-}
-
 #case-select-cover {
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
 }
+
 #case-select-cover:hover {
     transform: scale(1.02);
     filter: brightness(1.1);

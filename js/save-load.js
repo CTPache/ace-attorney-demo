@@ -6,7 +6,7 @@ window.saveGame = function(slot = 1) {
         const message = (typeof window.t === 'function') 
             ? window.t('ui.saveError', 'Cannot save from this menu!') 
             : 'Cannot save right now!';
-        alert(message);
+        showAlert(message);
         return;
     }
 
@@ -44,7 +44,7 @@ window.saveGame = function(slot = 1) {
     const message = (typeof window.t === 'function') 
         ? window.t('ui.saveSuccess', 'Game Saved!') 
         : 'Game Saved!';
-    alert(message);
+    showAlert(message);
 };
 
 window.loadGame = async function(slot = 1) {
@@ -53,7 +53,7 @@ window.loadGame = async function(slot = 1) {
         const message = (typeof window.t === 'function') 
             ? window.t('ui.noSaveData', 'No save data found in slot.') 
             : 'No save data found.';
-        alert(message);
+        showAlert(message);
         return;
     }
 
@@ -68,13 +68,13 @@ window.loadGame = async function(slot = 1) {
 
         if (missingCoreFns.length > 0) {
             console.error('Cannot load save: missing required functions:', missingCoreFns);
-            alert('Cannot load save right now. Missing runtime hooks: ' + missingCoreFns.join(', '));
+            showAlert('Cannot load save right now. Missing runtime hooks: ' + missingCoreFns.join(', '));
             return;
         }
         
         if (!saveData.currentSceneRequestPath || saveData.currentSceneRequestPath === "") {
             console.warn("Save file missing valid scene path.");
-            alert("This save file appears to be empty or corrupted.");
+            showAlert("This save file appears to be empty or corrupted.");
             return;
         }
 
@@ -129,12 +129,12 @@ window.loadGame = async function(slot = 1) {
 
         if (!resumed) {
             console.error("Save state line not found in loaded script.");
-            alert("Warning: Could not resolve saved script line.");
+            showAlert("Warning: Could not resolve saved script line.");
         }
 
     } catch (e) {
         console.error("Failed to load save:", e);
-        alert("Failed to load save data. It might be corrupted or outdated.");
+        showAlert("Failed to load save data. It might be corrupted or outdated.");
     } finally {
         if (didApplyLoadMask && typeof window.setLoadTransitionMaskVisible === 'function') {
             window.setLoadTransitionMaskVisible(false);

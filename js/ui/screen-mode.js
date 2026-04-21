@@ -70,10 +70,6 @@ function toggleScreenMode() {
     scheduleBackgroundPositionReapply();
 }
 
-function switchScreen() {
-    return;
-}
-
 function enforceOrientationScreenMode() {
     // If layout is taller than it is wide, it's portrait (2 screens)
     // If layout is wider than tall, it's landscape (single screen)

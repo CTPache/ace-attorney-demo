@@ -508,7 +508,7 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
         const message = (typeof window.t === 'function')
             ? window.t('ui.loadGameDataFailed', 'Failed to load game data: {path}', { path: requestedPath })
             : `Failed to load game data: ${requestedPath}`;
-        alert(message);
+        showAlert(message);
     }
 };
 

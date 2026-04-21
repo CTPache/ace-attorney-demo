@@ -13,11 +13,13 @@ function bindReturnToTitleEvents() {
         const confirmMsg = typeof window.t === 'function'
             ? window.t('ui.returnToTitleConfirm', 'Return to title screen? All unsaved progress will be lost.')
             : 'Return to title screen? All unsaved progress will be lost.';
-        if (!confirm(confirmMsg)) return;
-        closeConfigMenu();
-        if (typeof window.returnToTitle === 'function') {
-            window.returnToTitle();
-        }
+        
+        showConfirm(confirmMsg, () => {
+            closeConfigMenu();
+            if (typeof window.returnToTitle === 'function') {
+                window.returnToTitle();
+            }
+        });
     });
 }
 
@@ -25,7 +27,7 @@ bindReturnToTitleEvents();
 window.bindReturnToTitleEvents = bindReturnToTitleEvents;
 
 window.returnToTitle = function(message) {
-    if (message) alert(message);
+    if (message) showAlert(message);
     // 1. Stop all timers (auto-play, typing, fast-forward)
     if (typeof window.clearAutoPlayTimer === 'function') window.clearAutoPlayTimer();
     if (typeof typingInterval !== 'undefined' && typingInterval) { clearTimeout(typingInterval); typingInterval = null; }

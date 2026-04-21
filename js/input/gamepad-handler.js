@@ -25,12 +25,16 @@
         if (!window.GAMEPAD_BINDINGS || !window.triggerGameAction) return;
 
         // 1. Process Buttons
+        // We track which actions are 'down' to avoid double-triggering for the same physical button
+        const activePhysicalButtons = new Set();
+        
         for (const [action, indices] of Object.entries(window.GAMEPAD_BINDINGS)) {
             if (Array.isArray(indices)) {
                 let isDown = false;
                 for (const index of indices) {
                     if (gp.buttons[index] && gp.buttons[index].pressed) {
                         isDown = true;
+                        activePhysicalButtons.add(index);
                         break;
                     }
                 }

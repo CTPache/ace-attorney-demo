@@ -3,7 +3,17 @@
  * Connects the UI buttons to the CrossExamination logic.
  */
 
-window.CE_UI = (function() {
+function openCourtRecordForPresenting() {
+    if (!window.CrossExamination.isCEMode) return;
+
+    // Use the existing court record logic if available
+    if (window.openCourtRecord) {
+        window.openCourtRecord('present'); // We might need to add 'present' mode to court-record.js
+    }
+}
+
+
+window.CE_UI = (function () {
     function init() {
         // Top screen buttons (HD)
         const pressBtn = document.getElementById('ce-press-btn');
@@ -19,7 +29,7 @@ window.CE_UI = (function() {
             presentBtn.dataset.ceUiBound = 'true';
             presentBtn.addEventListener('click', () => openCourtRecordForPresenting());
         }
-        
+
         if (prevArrow && prevArrow.dataset.ceUiBound !== 'true') {
             prevArrow.dataset.ceUiBound = 'true';
             prevArrow.addEventListener('click', () => window.CrossExamination.prev());
@@ -27,15 +37,6 @@ window.CE_UI = (function() {
         if (nextArrow && nextArrow.dataset.ceUiBound !== 'true') {
             nextArrow.dataset.ceUiBound = 'true';
             nextArrow.addEventListener('click', () => window.CrossExamination.next());
-        }
-    }
-
-    function openCourtRecordForPresenting() {
-        if (!window.CrossExamination.isCEMode) return;
-        
-        // Use the existing court record logic if available
-        if (window.openCourtRecord) {
-            window.openCourtRecord('present'); // We might need to add 'present' mode to court-record.js
         }
     }
 

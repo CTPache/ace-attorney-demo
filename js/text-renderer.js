@@ -365,7 +365,7 @@ function finishFadeBatchInstant() {
         if (segment.type === 'fadeIn' || segment.type === 'fadeOut') {
             const isFadeIn = segment.type === 'fadeIn';
             let handledCourt = false;
-            
+
             if (typeof window.fadeCurrentCourtSpriteContainer === 'function') {
                 handledCourt = window.fadeCurrentCourtSpriteContainer(0, isFadeIn);
             }
@@ -538,7 +538,7 @@ function processNextChar() {
         setSpriteState('default');
         isWaitingForAnimation = true;
         syncTopBarTextRenderingState();
-        
+
         if (window.AnimationManager) {
             window.AnimationManager.play(segment.name).then(() => {
                 if (isWaitingForAnimation) {
@@ -549,8 +549,8 @@ function processNextChar() {
                 }
             });
         } else {
-             segmentIndex++;
-             processNextChar();
+            segmentIndex++;
+            processNextChar();
         }
     } else if (segment.type === 'playVideo') {
         if (window.playTopVideoSequence) {
@@ -646,6 +646,7 @@ function showEndGameOverlay() {
     overlay.appendChild(restartBtn);
 
     document.body.appendChild(overlay);
+    restartBtn.focus();
 }
 
 function finishTyping() {

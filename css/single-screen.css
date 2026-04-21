@@ -324,7 +324,7 @@
     left: auto !important;
 }
 
-.single-screen-mode :is(#carousel-case-label, .cs-carousel-select) {
+.single-screen-mode :is(#carousel-case-label, #cs-carousel-select) {
     display: none !important;
 }
 

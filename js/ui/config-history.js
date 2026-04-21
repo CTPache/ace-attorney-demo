@@ -326,6 +326,8 @@ function renderHistoryEntries() {
 
         wrapper.appendChild(nameEl);
         wrapper.appendChild(textEl);
+        wrapper.tabIndex = 0;
+        wrapper.addEventListener('focus', () => wrapper.scrollIntoView({ block: 'nearest' }));
         liveHistoryList.appendChild(wrapper);
     });
 }

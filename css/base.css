@@ -61,6 +61,8 @@ body {
     min-height: 100vh;
     justify-content: center;
     gap: 2vh;
+    container-type: size;
+    position: relative;
 }
 
 .hidden {

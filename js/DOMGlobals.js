@@ -190,9 +190,8 @@ window.KEY_BINDINGS = {
     RIGHT: ['ArrowRight'],
 
     // Selection & Flow Control
-    CONFIRM: ['Enter'],
+    CONFIRM: ['Enter', ' '], // Enter and Space for confirm
     CANCEL: ['Escape', 'Backspace'],
-    ACTION: [' '], // Space
 
     // Shortcuts
     COURT_RECORD: ['e', 'E'],
@@ -200,8 +199,7 @@ window.KEY_BINDINGS = {
     AUTOPLAY: ['a', 'A'],
     PRESENT: ['Enter'],
     PRESS: ['q', 'Q'],
-    SCREEN_MODE: ['m', 'M'],
-    SWITCH_SCREEN: ['s', 'S']
+    SCREEN_MODE: ['m', 'M']
 };
 
 /**
@@ -218,14 +216,13 @@ window.GAMEPAD_BINDINGS = {
 
     CONFIRM: [0], // A / Cross
     CANCEL: [1],  // B / Circle
-    ACTION: [0],  // A / Cross
 
-    COURT_RECORD: [5], // L1 / LB
+    COURT_RECORD: [5], // R1 / RB
     CONFIG: [9],       // Options / Start
     AUTOPLAY: [8, 8],  // Share / Back
     PRESENT: [3],      // Y / Triangle
-    PRESS: [4],        // X / Square
-    SWITCH_SCREEN: [7],
+    PRESS: [4],        // L1 / LB
+    SCREEN_MODE: [11], // R3
 
     AXIS_THRESHOLD: 0.5,
     STICK_REPEAT_DELAY: 250 // ms for menu scrolling

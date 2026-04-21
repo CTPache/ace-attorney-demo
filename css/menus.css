@@ -169,3 +169,82 @@
     text-align: center;
     margin-top: 2cqh;
 }
+
+/* Modal System Styles */
+#modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+#modal-container {
+    background: linear-gradient(180deg, #1f1f1f 0%, #121212 100%);
+    border: 0.5cqh solid #d4af37;
+    border-radius: 1cqh;
+    padding: 4cqh;
+    width: 65cqw;
+    max-width: 500px;
+    box-shadow: 0 1.5cqh 4cqh rgba(0, 0, 0, 0.8), 0 0 2cqh rgba(212, 175, 55, 0.15);
+    color: #eee;
+    text-align: center;
+    position: relative;
+    transform: translateY(-2cqh);
+}
+
+#modal-title {
+    margin-top: 0;
+    color: #ffd700;
+    font-size: 4cqh;
+    border-bottom: 0.2cqh solid #444;
+    padding-bottom: 2cqh;
+    margin-bottom: 3cqh;
+    text-transform: uppercase;
+    letter-spacing: 0.2cqh;
+    font-family: 'FOT-SeuratPro-B', sans-serif;
+}
+
+#modal-body {
+    font-size: 3cqh;
+    line-height: 1.4;
+    margin-bottom: 4cqh;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
+}
+
+#modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-btn {
+    background: #2a2a2a;
+    color: white;
+    border: 0.3cqh solid #555;
+    padding: 1.2cqh 4cqh;
+    font-size: 2.8cqh;
+    font-family: 'FOT-SeuratPro-M', sans-serif;
+    cursor: pointer;
+    border-radius: 0.5cqh;
+    transition: all 0.2s;
+    min-width: 15cqh;
+}
+
+.modal-btn:hover, .modal-btn:focus {
+    background: #d4af37;
+    color: #1a1a1a;
+    border-color: #fff;
+    outline: none;
+    transform: scale(1.08);
+}
+
+.modal-btn.hidden {
+    display: none;
+}

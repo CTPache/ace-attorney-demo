@@ -56,7 +56,7 @@ function bindCaseSelectEvents() {
     }
 }
 
-window.initCaseSelect = async function() {
+window.initCaseSelect = async function () {
     ensureCaseSelectDOM();
 
     // Hide title screen
@@ -71,7 +71,7 @@ window.initCaseSelect = async function() {
     // Reset views
     document.getElementById('case-list-view').classList.remove('hidden');
     document.getElementById('chapter-list-view').classList.add('hidden');
-    
+
     // Clear top screen defaults
     document.getElementById('case-select-title').textContent = window.t ? window.t('ui.caseSelect', 'Case Select') : 'Case Select';
     document.getElementById('case-select-cover').src = '';
@@ -98,9 +98,8 @@ window.initCaseSelect = async function() {
     if (typeof window.syncMenuInputBlockState === 'function') {
         window.syncMenuInputBlockState();
     }
-};
-
-window.hideCaseSelect = function() {
+}
+window.hideCaseSelect = function () {
     const csTop = document.getElementById('case-select-top');
     const csBottom = document.getElementById('case-select-bottom');
     if (csTop) csTop.classList.add('hidden');
@@ -121,10 +120,10 @@ let caseKeys = [];
 function renderCaseList() {
     const container = document.getElementById("cases-container");
     container.innerHTML = "";
-    
+
     caseKeys = Object.keys(casesData);
-    if(caseKeys.length === 0) return;
-    
+    if (caseKeys.length === 0) return;
+
     if (selectedCaseKey) {
         let idx = caseKeys.indexOf(selectedCaseKey);
         if (idx !== -1) currentCaseIndex = idx;
@@ -134,7 +133,7 @@ function renderCaseList() {
 
     const navDiv = document.createElement("div");
     navDiv.className = "cs-carousel-nav";
-    
+
     const prevBtn = document.createElement("button");
     prevBtn.className = "cs-arrow-btn";
     prevBtn.textContent = "◀";
@@ -163,7 +162,8 @@ function renderCaseList() {
     container.appendChild(navDiv);
 
     const selectBtn = document.createElement("button");
-    selectBtn.className = "cs-item-btn cs-carousel-select";
+    selectBtn.className = "topic-button";
+    selectBtn.id = "cs-carousel-select";
     selectBtn.textContent = window.t ? window.t("ui.selectCase", "Select Case") : "Select Case";
     selectBtn.onclick = (e) => {
         e.stopPropagation();
@@ -184,13 +184,13 @@ function updateCarouselView() {
     if (caseKeys.length === 0) return;
     const key = caseKeys[currentCaseIndex];
     const caseInfo = casesData[key];
-    
+
     const labelEl = document.getElementById("carousel-case-label");
     if (labelEl) labelEl.textContent = caseInfo.name;
-    
+
     const titleEl = document.getElementById("case-select-title");
     if (titleEl) titleEl.textContent = caseInfo.name;
-    
+
     const coverEl = document.getElementById("case-select-cover");
     if (coverEl) {
         if (caseInfo.cover) {
@@ -213,7 +213,7 @@ function renderChapterList(caseKey) {
 
     for (const [chapterKey, chapterInfo] of Object.entries(caseInfo.Chapters)) {
         const btn = document.createElement('button');
-        btn.className = 'cs-item-btn';
+        btn.className = 'topic-button';
         btn.textContent = chapterInfo.name || chapterKey;
         btn.onclick = (e) => {
             e.stopPropagation();
@@ -225,7 +225,7 @@ function renderChapterList(caseKey) {
 
     // Focus first button with slight delay
     setTimeout(() => {
-        const firstBtn = container.querySelector('.cs-item-btn');
+        const firstBtn = container.querySelector('.topic-button');
         if (firstBtn) firstBtn.focus();
     }, 50);
 }
@@ -235,7 +235,7 @@ async function loadSelectedChapter(caseKey, chapterKey) {
     const chapterInfo = caseInfo.Chapters[chapterKey];
 
     if (!chapterInfo || !chapterInfo.scene) {
-        alert('Invalid chapter configuration.');
+        showAlert('Invalid chapter configuration.');
         return;
     }
 
@@ -245,7 +245,7 @@ async function loadSelectedChapter(caseKey, chapterKey) {
     // Prepare court record and state overrides if needed
     // The engine globals.js holds evidenceInventory, profilesInventory
     // We should probably just initialize them here before loadGameData.
-    
+
     if (chapterInfo.courtRecord) {
         // Clear global inventory safely by mutating the existing variables directly 
         // since they are defined with 'let' in globals.js and shared in the same execution context.
@@ -255,7 +255,7 @@ async function loadSelectedChapter(caseKey, chapterKey) {
         if (typeof profilesInventory !== 'undefined') {
             profilesInventory.length = 0;
         }
-        
+
         // Let's also reset gamestate
         if (typeof gameState !== 'undefined') {
             for (let k in gameState) delete gameState[k];
@@ -271,7 +271,7 @@ async function loadSelectedChapter(caseKey, chapterKey) {
                 gameState['evidence_' + key] = true;
             });
         }
-        
+
         if (typeof profilesDB !== 'undefined' && chapterInfo.courtRecord.profiles) {
             for (const key in profilesDB) delete profilesDB[key];
             Object.assign(profilesDB, chapterInfo.courtRecord.profiles);

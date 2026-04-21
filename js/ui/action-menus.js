@@ -80,7 +80,7 @@ function isMenuLikeElementVisible(element) {
 
 function isBlockingMenuOpen() {
     const menus = [
-        'config-menu', 'history-menu', 'investigation-menu', 
+        'modal-overlay', 'config-menu', 'history-menu', 'investigation-menu', 
         'move-menu', 'topic-menu', 'investigation-panel', 
         'evidence-container', 'evidence-details', 
         'case-select-bottom', 'gallery-menu', 'evidence-popup'
@@ -88,9 +88,14 @@ function isBlockingMenuOpen() {
 
     return menus.some(id => {
         const el = document.getElementById(id);
-        return el && !el.classList.contains('hidden') && 
-               window.getComputedStyle(el).display !== 'none' && 
-               window.getComputedStyle(el).visibility !== 'hidden';
+        if (!el) return false;
+        
+        // Prioritize the .hidden class which is updated synchronously
+        if (el.classList.contains('hidden')) return false;
+
+        // Fallback to computed style for elements that might be hidden by parent or other means
+        const style = window.getComputedStyle(el);
+        return style.display !== 'none' && style.visibility !== 'hidden';
     });
 }
 
@@ -119,6 +124,11 @@ function syncMenuInputBlockState() {
         window.updateAutoplayIndicator();
     }
     
+    // Ensure menu buttons (like Return to Title) are correctly bound after potential re-renders
+    if (typeof window.bindReturnToTitleEvents === 'function') {
+        window.bindReturnToTitleEvents();
+    }
+    
     return shouldBlock;
 }
 
@@ -138,6 +148,9 @@ function shouldBlockDialogueAdvance(target) {
     if (target.closest('#bottom-top-bar, #config-btn, #court-record-btn, #autoplay-indicator, #skip-video-btn, #ce-controls, #ce-arrow-container')) {
         return true;
     }
+
+    const modalOverlay = document.getElementById('modal-overlay');
+    if (modalOverlay && !modalOverlay.classList.contains('hidden')) return true;
 
     return false;
 }
