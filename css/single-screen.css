@@ -123,6 +123,14 @@
     padding-bottom: 14cqh;
 }
 
+.single-screen-mode #evidence-details::before {
+    display: none;
+}
+
+.single-screen-mode #evidence-details {
+    padding-top: 0;
+}
+
 .single-screen-mode #evidence-container {
     border-width: 0.7cqh;
 }

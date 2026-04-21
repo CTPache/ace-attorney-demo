@@ -24,8 +24,8 @@
             wrapper.innerHTML = MODAL_HTML;
             const overlay = wrapper.firstElementChild;
             
-            // Append to game-container if available, otherwise fallback to main-wrapper or body
-            const parent = document.getElementById('game-container') || document.getElementById('main-wrapper') || document.body;
+            // Append to bottom-screen if available, otherwise fallback to main-wrapper or body
+            const parent = document.getElementById('bottom-screen') || document.getElementById('main-wrapper') || document.body;
             parent.appendChild(overlay);
             
             // Re-bind localization if available
