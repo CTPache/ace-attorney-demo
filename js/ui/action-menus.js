@@ -83,7 +83,7 @@ function isBlockingMenuOpen() {
         'modal-overlay', 'config-menu', 'history-menu', 'investigation-menu', 
         'move-menu', 'topic-menu', 'investigation-panel', 
         'evidence-container', 'evidence-details', 
-        'case-select-bottom', 'gallery-menu', 'evidence-popup'
+        'case-select-bottom', 'gallery-menu'
     ];
 
     return menus.some(id => {

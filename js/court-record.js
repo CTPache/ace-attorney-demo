@@ -138,15 +138,9 @@ function showEvidencePopupItem(item) {
     if (typeof window.syncMenuInputBlockState === 'function') {
         window.syncMenuInputBlockState();
     }
-
-    // Dismiss on click
-    evidencePopup.onclick = (e) => {
-        e.stopPropagation();
-        hideEvidencePopup();
-    };
 }
 
-function hideEvidencePopup() {
+window.hideEvidencePopup = function hideEvidencePopup() {
     const evidencePopup = document.getElementById('evidence-popup');
     if (!evidencePopup) return;
     evidencePopup.classList.add('hidden');
