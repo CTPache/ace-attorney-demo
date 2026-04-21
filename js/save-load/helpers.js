@@ -463,18 +463,20 @@ window.restoreVisualStateForLoad = function(saveData = {}) {
         ? saveData.uiState
         : {};
 
-    if (currentBackgroundKey) {
-        changeBackground(currentBackgroundKey);
+    const bgKey = saveData.currentBackgroundKey || currentBackgroundKey;
+    if (bgKey) {
+        changeBackground(bgKey);
     }
 
+    const fgKey = saveData.currentForegroundKey || currentForegroundKey;
     const usesInlineForeground = !!(
-        currentBackgroundKey
-        && currentForegroundKey
-        && currentForegroundKey === `${currentBackgroundKey}_fg`
+        bgKey
+        && fgKey
+        && fgKey === `${bgKey}_fg`
     );
 
-    if (currentForegroundKey && !usesInlineForeground) {
-        changeForeground(currentForegroundKey);
+    if (fgKey && !usesInlineForeground) {
+        changeForeground(fgKey);
     }
 
     const charEl = document.getElementById('character');
