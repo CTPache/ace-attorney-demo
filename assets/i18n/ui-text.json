@@ -50,7 +50,9 @@
     "ui.fullscreen": "Full screen",
     "ui.artwork": "Artwork",
     "ui.cg": "Illustrations",
-    "ui.backgrounds": "Backgrounds"
+    "ui.backgrounds": "Backgrounds",
+    "ui.cancel": "Cancel",
+    "ui.ok": "OK"
   },
   "ES": {
     "ui.auto": "Autoplay",
@@ -103,7 +105,10 @@
     "ui.fullscreen": "Pantalla completa",
     "ui.artwork": "Arte",
     "ui.cg": "Ilustraciones",
-    "ui.backgrounds": "Fondos"
+    "ui.backgrounds": "Fondos",
+    "ui.cancel": "Cancelar",
+    "ui.ok": "Aceptar"
+
   },
   "JP": {
     "ui.auto": "オート",
@@ -156,7 +161,9 @@
     "ui.fullscreen": "フルスクリーン",
     "ui.artwork": "アートワーク",
     "ui.cg": "イラスト",
-    "ui.backgrounds": "背景"
+    "ui.backgrounds": "背景",
+    "ui.cancel": "キャンセル",
+    "ui.ok": "ＯＫ"
   },
   "scene": {
     "EN": {

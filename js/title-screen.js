@@ -46,7 +46,7 @@ function fitTitleButtons() {
     }
 }
 
-window.rearrangeTitleButtons = function() {
+window.rearrangeTitleButtons = function () {
     const titleTop = document.getElementById('title-screen-top');
     const titleBottom = document.getElementById('title-screen-bottom');
     const titleButtons = document.getElementById('title-buttons');
@@ -71,7 +71,7 @@ window.rearrangeTitleButtons = function() {
     }
 };
 
-window.initTitleScreen = function() {
+window.initTitleScreen = function () {
     const titleTop = document.getElementById('title-screen-top');
     const titleBottom = document.getElementById('title-screen-bottom');
     const logo = document.getElementById('title-logo');
@@ -112,9 +112,27 @@ window.initTitleScreen = function() {
         }
     }
 
+    // --- Title Screen BGM Logic ---
+
+    // fallback: create a global audio element if not present
+    if (!window._titleBGM) {
+        window._titleBGM = new Audio('assets/audio/bgm/titlescreen.mp3');
+        window._titleBGM.loop = true;
+    }
+    window._titleBGM.currentTime = 0;
+    window._titleBGM.play();
+
+
+    // Helper to stop title BGM
+    function stopTitleBGM() {
+        window._titleBGM.pause();
+        window._titleBGM.currentTime = 0;
+    }
+
     if (btnCaseSelect) {
         btnCaseSelect.onclick = () => {
             console.log("Case Select clicked");
+            stopTitleBGM();
             if (typeof window.initCaseSelect === 'function') {
                 window.initCaseSelect();
             }
@@ -124,6 +142,7 @@ window.initTitleScreen = function() {
     if (btnGallery) {
         btnGallery.onclick = () => {
             console.log("Gallery clicked");
+            stopTitleBGM();
             if (typeof window.initGallery === 'function') {
                 window.initGallery();
             }
@@ -133,6 +152,7 @@ window.initTitleScreen = function() {
     if (btnTitleLoad) {
         btnTitleLoad.onclick = async () => {
             console.log("Load clicked from title screen");
+            stopTitleBGM();
             if (typeof window.loadGame === 'function') {
                 await window.loadGame(1);
             }
@@ -147,13 +167,13 @@ window.initTitleScreen = function() {
             }
         };
     }
-    
+
     if (typeof window.refreshTopBarButtonDisabledState === 'function') {
         window.refreshTopBarButtonDisabledState();
     }
 };
 
-window.hideTitleScreen = function() {
+window.hideTitleScreen = function () {
     const titleTop = document.getElementById('title-screen-top');
     const titleBottom = document.getElementById('title-screen-bottom');
     const titleButtons = document.getElementById('title-buttons');
