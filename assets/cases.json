@@ -11,19 +11,28 @@
                 },
                 "trial1": {
                     "name": "Trial",
-                    "scene": "assets/scenes/FlyHigh/Courtroom1/courtroom.json"                    
+                    "scene": "assets/scenes/FlyHigh/Courtroom1/courtroom.json"
+                }
+            }
+        },
+        "LockedRoom": {
+            "name": "Turnabout Locked Room",
+            "cover": "assets/img/case_covers/Locked_Room_Cover.png",
+            "entry": "",
+            "Chapters": {
+                "investigation1": {
+                    "name": "Investigation",
+                    "scene": "assets/scenes/LockedRoom/Investigation1/intro.json"
+                },
+                "trial1": {
+                    "name": "Trial",
+                    "scene": "assets/scenes/LockedRoom/Trial1/courtroom.json"
                 }
             }
         },
         "Don": {
             "name": "Turnabout Don",
             "cover": "assets/img/case_covers/Don_Cover.png",
-            "entry": "",
-            "Chapters": {}
-        },
-        "LockedRoom": {
-            "name": "Turnabout Locked Room",
-            "cover": "assets/img/case_covers/Locked_Room_Cover.png",
             "entry": "",
             "Chapters": {}
         }

@@ -9,7 +9,7 @@
     "gameScript": {
         "Redirect": [
             {
-                "text": "{hideTextbox}{playAnimation:NotGuilty}{skip:1000}"
+                "text": "{hideTextbox}{playAnimation:Objection}{skip:1000}"
             },
             {
                 "text": "{loadScene:assets/scenes/tests/anim_test.json,Redirect}{sectionEnd}"

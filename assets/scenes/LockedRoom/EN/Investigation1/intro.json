@@ -1,0 +1,193 @@
+{
+    "initialSection": "Intro_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "music": {
+        "investigation": "assets/audio/bgm/bgm025.m4a"
+    },
+    "investigations": {
+        "JoyPolis": {
+            "default": "Intro_Examine_Default"
+        }
+    },
+    "videos": {
+        "intro": {
+            "file": "assets/video/LockedRoomIntro.mp4",
+            "script": [
+                {
+                    "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}October 10, 2:47 AM{nl}Joypolis",
+                    "timestamp": 2000,
+                    "duration": 4000
+                },
+                {
+                    "text": "{center}{color:lime}{blip:3}October 11, 8:01 AM{nl}Joypolis, Manager's office",
+                    "timestamp": 19500,
+                    "duration": 4000
+                }
+            ]
+        }
+    },
+    "move": [
+        {
+            "label": "Manager's Office",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/LockedRoom/EN/Investigation1/office.json"
+        }
+    ],
+    "gameScript": {
+        "Intro_Start": [
+            {
+                "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
+            },
+            {
+                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}October 17, 8:41 PM{nl}Joypolis"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{startBGM:investigation,false}{blip:0,false}{color:lightblue}(My name is Phoenix Wright.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I am a defense attorney at the Wright & Co. Law Offices.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I received a request from the murder suspect, Mr. Will Powers,{nl}{p:300}a suspect in a murder case...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(And came here,{p:300} to Joypolis.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(In order to clear Mr. Powers' suspicion, I must not overlook even the slightest detail.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I'll write down all the [Information] I care about into the [Court Record].)"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}Detective Gumshoe. Please explain the summary of the incident."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}(He is Miles Edgeworth. A prosecutor at the District Prosecutor's Office.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{showTextbox}{blip:1,true}{color:white}The victim is Mr. Rando Daiba. He's the manager of Joypolis, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The victim was put to sleep with sleeping pills, and stabbed in the neck from behind with a knife, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The cause of death is blood loss, and the estimated time of death is between 7 PM and 8 PM."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The first discoverer is the suspect, Will Powers. He is a member of the Joypolis theater troupe."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "The suspect and the victim were apparently often fighting over payment, weren't they?"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "This time too, they got into a fight over that matter... After killing him, he reported it himself, is that it?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "W-wait a minute. He is denying the crime."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Detective Gumshoe. How did it lead to his arrest?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "When the suspect visited the manager's office, the door was apparently locked, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "When he entered the room with a spare key, the victim was apparently dead inside."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "But, there was an eyewitness who overturned that testimony..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The victim's manager, Ms. Ini Miney."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "According to her testimony, before the incident, the suspect entered the manager's office together with the victim,"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "After that, it seems he left the manager's office alone."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Following her testimony, we brought Mr. Powers in for questioning."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Then, we found a small soy sauce dispenser in his changing room locker."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The exact same sleeping pills that put the victim to sleep were detected."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "When the body was discovered, the window of the manager's office was locked from the inside."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "If it is exactly as the suspect testified, the scene would have been a locked room."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "However, suicide is impossible. The cause of death is a stab wound to the back of the neck."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "If there is a culprit other than the suspect... It means the culprit accomplished a locked-room murder."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "In this situation... What do you plan to do, Wright?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "Plan or no plan, I won't know until I try."
+            },
+            {
+                "name": "Phoenix",
+                "text": "I will definitely prove Mr. Powers' innocence!"
+            },
+            {
+                "text": "{setState:intro_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:ナルホドMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Intro_Init": [
+            {
+                "text": "{addEvidence:badge,false}{setState:scenePrefix,Intro}{jumpIf:intro_done,Intro_Default,Intro_Start}{skip:0}"
+            }
+        ],
+        "Intro_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:ナルホドMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

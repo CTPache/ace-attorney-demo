@@ -198,7 +198,7 @@
         }
     },
     "backgrounds": {
-        "JoyPolis": "assets/img/backgrounds/Fly High/FlyHigh_JoyPolis.png",
+        "JoyPolis": "assets/img/backgrounds/Common/JoyPolis.png",
         "Office": "assets/img/backgrounds/Fly High/FlyHigh_Office.png",
         "DetentionCenter": "assets/img/backgrounds/Common/Detention_Center.png",
         "Floor4": "assets/img/backgrounds/Fly High/FlyHigh_4thFloor.png",

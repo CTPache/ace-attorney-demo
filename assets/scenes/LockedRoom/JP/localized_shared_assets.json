@@ -1,0 +1,27 @@
+{
+    "backgrounds": {
+        "phoenixMove": "assets/img/CG/Phoenix_Move_JP.png",
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png",
+        "GameOver": "assets/img/CG/GameOver_JP.webp"
+    },
+    "profiles": {
+    },
+    "evidence": {
+        "badge": {
+            "name": "弁護士バッジ",
+            "data": "これがないと、誰もぼくを弁護士と　認めてくれない。",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "autopsy_report": {
+            "name": "解剖記録",
+            "data": "",
+            "image": "assets/img/evidence/Archive.png"
+        }
+    },
+    "sounds": {
+        "PhoenixObjection": "assets/audio/se/jp/se027.ogg",
+        "PhoenixHoldIt": "assets/audio/se/jp/se01d.ogg",
+        "PhoenixTakeThat": "assets/audio/se/jp/se00d.ogg",
+        "EdgeworthObjection": "assets/audio/se/jp/se00e.ogg"
+    }
+}

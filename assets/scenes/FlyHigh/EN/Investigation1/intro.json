@@ -140,7 +140,7 @@
             },
             {
                 "name": "Phoenix",
-                "text": "{color:lightblue}(And came here to Joypolis.)"
+                "text": "{color:lightblue}(And came here,{p:300} to Joypolis.)"
             },
             {
                 "name": "Phoenix",
