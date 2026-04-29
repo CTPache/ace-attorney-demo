@@ -1,0 +1,264 @@
+{
+    "initialSection": "Crime_Scene_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "music": {},
+    "move": [
+        {
+            "label": "休憩室",
+            "target": "Cafeteria_Init",
+            "preview": "Cafeteria",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/cafeteria.json"
+        },
+        {
+            "label": "エントランス",
+            "target": "Lobby_Init",
+            "preview": "Lobby",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/lobby.json"
+        },
+        {
+            "label": "留置所",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/detention_center.json"
+        }
+    ],
+    "gameScript": {
+        "Crime_Scene_Start": [
+            {
+                "text": "{showTextbox}{center}{color:lime}{blip:3}October 11, Time Unknown,{nl}Joypolis, Manager's Office"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "This is the manager's office where the murder took place, pal.{nl}They say this floor is usually pretty deserted."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(A locked-room murder in a deserted area, huh...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Like Edgeworth said,{nl}this is going to be a tough situation.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(I should investigate thoroughly.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "No fingerprints were detected on the murder weapon,{nl}the knife."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The killer either wore gloves when they stabbed him,{nl}or wiped the fingerprints off afterwards."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Any other wounds or bruises besides the neck?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "There's a lump on the back of his head, pal.{nl}If you take off his bandana, you can see the swelling."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Huh...? There's some yellow paint stuck to the bandana."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "You're right.{nl}There's a diamond-shaped mark left on it, too."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Yellow paint and a diamond shape...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(There's no doubt he was struck on the head while wearing the bandana.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Does that mean he resisted before being killed...?)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(No... the victim was put to sleep with sleeping pills.{nl}He shouldn't have been able to resist...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Then what in the world... does this mean...?)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(............)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(It's no good... Thinking about it isn't getting me anywhere.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "There's a half-eaten fried food bento box and the manager's office master key left on the table."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "And there was only one spare for the master key,{nl}which the suspect had on him, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Apparently, the victim usually left the cleaning of the manager's office to the suspect."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(So the only two people who could unlock the manager's office were the victim and the suspect, huh.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "And this is the half-eaten fried food bento, and..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Huh...? There's both soy sauce and Worcestershire sauce on this half-eaten fried food."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "That's *sauce*-picious, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Pfft..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "What is it?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "I just made a pun on 'suspicious' and 'sauce'!{nl}A joke was just born by accident."
+            },
+            {
+                "name": "Phoenix",
+                "text": "No, this isn't the time to be joking around..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Y-You're right, pal.{nl}Pfft..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "O-Oh, no...{nl}Excuse me."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Sleeping pills were detected in the soy sauce on the bento, pal."
+            },
+            {
+                "name": "Phoenix",
+                "text": "So the victim ate the bento and fell asleep right away..."
+            },
+            {
+                "text": "\"Half-Eaten Bento\" added to the Court Record."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "This bento only comes with Worcestershire sauce."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "We already confirmed with the bento company that it doesn't come with soy sauce, pal."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Which means the culprit prepared the soy sauce in advance...)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "I really like how these fine yellow diamonds are carved all over this thing."
+            },
+            {
+                "name": "Phoenix",
+                "text": "It's what they call decorative carving."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Huh...? What's this?{nl}There are two scratches on the top of the doors."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Yep.{nl}Those were already there when we arrived, pal."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(There's some kind of plastic fragment embedded in one of the scratches.)"
+            },
+            {
+                "text": "\"Wooden Cabinet\" added to the Court Record."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Have you checked inside the cabinet?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Not yet, pal.{nl}We can't get this dial-type padlock open."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(So it's the type of padlock where you line up a 4-digit number to open it, huh.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Should I try entering a number?)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(I feel like there's more I need to look into.{nl}I'll investigate a bit more and try entering it later.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(It's a tall, narrow locker.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "This locker in the manager's office was totally empty."
+            },
+            {
+                "name": "Phoenix",
+                "text": "If they were standing up,{nl}it's about the right size to fit one adult."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Really, pal?{nl}I don't think I'd fit."
+            },
+            {
+                "name": "Phoenix",
+                "text": "W-Well...{nl}I certainly don't think you would fit, Detective Gumshoe..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Alright, I guess that's about it for here.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Once all the info is gathered, let's head to court.{nl}I'll reveal everything there!)"
+            },
+            {
+                "text": "{setState:Crime_Scene_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Crime_Scene_Init": [
+            {
+                "text": "{setState:scenePrefix,Crime_Scene}{jumpIf:Crime_Scene_done,Crime_Scene_Default,Crime_Scene_Start}{skip:0}"
+            }
+        ],
+        "Crime_Scene_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

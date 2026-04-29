@@ -1,0 +1,376 @@
+{
+    "initialSection": "Detention_Center_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "music": {},
+    "move": [
+        {
+            "label": "休憩室",
+            "target": "Cafeteria_Init",
+            "preview": "Cafeteria",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/cafeteria.json"
+        },
+        {
+            "label": "エントランス",
+            "target": "Lobby_Init",
+            "preview": "Lobby",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/lobby.json"
+        },
+        {
+            "label": "留置所",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/detention_center.json"
+        }
+    ],
+    "gameScript": {
+        "Detention_Center_Start": [
+            {
+                "text": "{bg:DetentionCenter}{showTextbox}{center}{color:lime}{blip:3}October 11, Time Unknown{nl}Detention Center"
+            },
+            {
+                "name": "Powers",
+                "text": "Ah, Mr. Wright.{nl}Thank you so much for coming."
+            },
+            {
+                "name": "Powers",
+                "text": "I was just washing off my bloody zombie makeup while waiting for you."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Bloody zombie makeup?"
+            },
+            {
+                "name": "Powers",
+                "text": "I was supposed to do a zombie show starting at 9:00 PM today."
+            },
+            {
+                "name": "Powers",
+                "text": "So, a few actors including myself were wearing special zombie makeup."
+            },
+            {
+                "name": "Phoenix",
+                "text": "I see...{nl}So you were wearing zombie makeup at the time of the incident?"
+            },
+            {
+                "name": "Powers",
+                "text": "Yes. The makeup was done by around 6:00 PM..."
+            },
+            {
+                "name": "Powers",
+                "text": "So when the incident happened, I was dressed as a zombie."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(This sounds like an important testimony.{nl}I should take notes.)"
+            },
+            {
+                "text": "\"Zombie's Special Makeup\" added to the Court Record."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(What else should I ask...)"
+            },
+            {
+                "name": "Powers",
+                "text": "Mr. Daiba is a senior action star whom I truly respect from the bottom of my heart."
+            },
+            {
+                "name": "Powers",
+                "text": "We hit it off, shared common hobbies,{nl}and he treated me very well."
+            },
+            {
+                "name": "Phoenix",
+                "text": "What kind of hobbies?"
+            },
+            {
+                "name": "Powers",
+                "text": "We were totally into the popular \"Jammin' Ninja\"{nl}figures."
+            },
+            {
+                "name": "Powers",
+                "text": "Mr. Daiba was a hardcore fan, it was amazing.{nl}Compared to him, I'm just a casual."
+            },
+            {
+                "name": "Powers",
+                "text": "I mean, he has a super rare giant figure."
+            },
+            {
+                "name": "Powers",
+                "text": "That was Mr. Daiba's pride and joy,{nl}kept locked away in a cabinet."
+            },
+            {
+                "name": "Powers",
+                "text": "But Mr. Daiba was a great guy,{nl}so he'd show it to anyone who asked."
+            },
+            {
+                "name": "Powers",
+                "text": "The only thing that excites me as much as that is the gold-plated Jammin' Ninja."
+            },
+            {
+                "name": "Powers",
+                "text": "That's a figure that only the person who draws the last ticket at the store can get..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Mr. Powers...{nl}Mr. Powers. I understand all about the figures."
+            },
+            {
+                "name": "Phoenix",
+                "text": "But right now..."
+            },
+            {
+                "name": "Powers",
+                "text": "Huh...?{nl}Ah, right!{nl}I'm such a geek, I just couldn't help myself..."
+            },
+            {
+                "name": "Powers",
+                "text": "I thought it might help solve the case, but...{nl}I'm so sorry!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(What else should I ask...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "Please tell me what happened at the time of the incident, in order."
+            },
+            {
+                "name": "Powers",
+                "text": "Understood."
+            },
+            {
+                "name": "Powers",
+                "text": "Around 6:00 PM, I received the lunchboxes for the troupe members from the caterer..."
+            },
+            {
+                "name": "Powers",
+                "text": "I went to the manager's office first,{nl}and gave one to Mr. Daiba."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Was there anyone else in the manager's office at the time?"
+            },
+            {
+                "name": "Powers",
+                "text": "No. It was just Mr. Daiba."
+            },
+            {
+                "name": "Phoenix",
+                "text": "About the lunchboxes,{nl}does the manager get a special one or something?"
+            },
+            {
+                "name": "Powers",
+                "text": "Mr. Daiba isn't like that.{nl}He always said he was fine with the same lunchbox as us."
+            },
+            {
+                "name": "Powers",
+                "text": "After that, I headed to the stage,{nl}and ate my lunchbox there with the troupe members."
+            },
+            {
+                "name": "Powers",
+                "text": "Around 7:15 PM, I started collecting everyone's empty lunchboxes like usual."
+            },
+            {
+                "name": "Powers",
+                "text": "I went to the manager's office last,{nl}but there was no answer when I knocked..."
+            },
+            {
+                "name": "Powers",
+                "text": "The door was locked, so I went in using the spare key,{nl}but no one was inside."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(So there was no one in the manager's office at 7:15 PM?)"
+            },
+            {
+                "name": "Powers",
+                "text": "There was one half-eaten fried food lunchbox left on the table."
+            },
+            {
+                "name": "Powers",
+                "text": "I figured he still intended to eat it...{nl}so I left it there, exited the room, and locked the door."
+            },
+            {
+                "name": "Phoenix",
+                "text": "What did you do after that?"
+            },
+            {
+                "name": "Powers",
+                "text": "I left the collected lunchboxes in front of the manager's office,{nl}and went out for a bit by myself."
+            },
+            {
+                "name": "Phoenix",
+                "text": "You went out?"
+            },
+            {
+                "name": "Powers",
+                "text": "To a candy store.{nl}It's right near Joypolis."
+            },
+            {
+                "name": "Powers",
+                "text": "Probably about a 10-minute walk."
+            },
+            {
+                "name": "Powers",
+                "text": "The higher-ups told anyone wearing special makeup not to leave Joypolis, but..."
+            },
+            {
+                "name": "Powers",
+                "text": "Actually, I sneaked out alone to go have some fun."
+            },
+            {
+                "name": "Powers",
+                "text": "And then, I returned to the Joypolis manager's office around 8:00 PM."
+            },
+            {
+                "name": "Powers",
+                "text": "I was supposed to have a meeting with Mr. Daiba about my salary."
+            },
+            {
+                "name": "Powers",
+                "text": "But there was no answer when I knocked,{nl}and the door was still locked..."
+            },
+            {
+                "name": "Powers",
+                "text": "I had a bad feeling, so I went inside with the spare key,{nl}and found Mr. Daiba's mangled body..."
+            },
+            {
+                "name": "Powers",
+                "text": "He had a knife sticking out of his neck...{nl}I knew at a glance that he was dead."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(In other words, the time of the crime was between 7:15 PM and 8:00 PM...)"
+            },
+            {
+                "name": "Powers",
+                "text": "Thinking I had to report it,{nl}I hurried out of the manager's office to find a phone."
+            },
+            {
+                "name": "Powers",
+                "text": "Because there's no phone in the manager's office,{nl}and I didn't have my cell phone."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Did you lock the door when you left the manager's office?"
+            },
+            {
+                "name": "Powers",
+                "text": "I don't know...{nl}I can't remember that far."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Hmm..."
+            },
+            {
+                "name": "Powers",
+                "text": "What's wrong, Mr. Wright?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "I was thinking...{nl}if only we could prove that you were at the candy store..."
+            },
+            {
+                "name": "Powers",
+                "text": "That I was at the candy store..."
+            },
+            {
+                "name": "Powers",
+                "text": "Let's see..."
+            },
+            {
+                "name": "Powers",
+                "text": "Hmm...{nl}Oh, how about the gold-plated Jammin' Ninja figure!"
+            },
+            {
+                "name": "Powers",
+                "text": "Actually, when I went to the candy store today,{nl}I drew a ticket and got that figure."
+            },
+            {
+                "name": "Powers",
+                "text": "I suppose that was around 7:40 PM..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "That's the figure you mentioned...{nl}The one that only the person who draws the last ticket can get..."
+            },
+            {
+                "name": "Powers",
+                "text": "That's right!{nl}I got it from winning the \"Last First Price\"!"
+            },
+            {
+                "name": "Powers",
+                "text": "No...{nl}Something like this wouldn't serve as proof, would it..."
+            },
+            {
+                "name": "Powers",
+                "text": "I mean, the Last First Price can pop up at any store in the country..."
+            },
+            {
+                "name": "Powers",
+                "text": "I'm so sorry..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(No...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(If it's about the person who drew the last ticket,{nl}the candy store owner should remember them.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(This is good information. I should take notes.)"
+            },
+            {
+                "text": "\"Last First Price\" added to the Court Record."
+            },
+            {
+                "name": "Powers",
+                "text": "Mr. Wright...{nl}I'm a man with no redeeming qualities other than action."
+            },
+            {
+                "name": "Powers",
+                "text": "But I absolutely did not kill him.{nl}And I have no memory of the soy sauce packet in my locker."
+            },
+            {
+                "name": "Powers",
+                "text": "Someone is framing me.{nl}Please, I'm begging you to help me..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "I understand.{nl}I will do my absolute best to prove your innocence."
+            },
+            {
+                "name": "Powers",
+                "text": "Thank you!{nl}I can't thank you enough!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Alright. I guess that's about it here.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Once all the info is gathered, let's head to court.{nl}I'll reveal everything there!)"
+            },
+            {
+                "text": "{setState:Detention_Center_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Detention_Center_Init": [
+            {
+                "text": "{setState:scenePrefix,Detention_Center}{jumpIf:Detention_Center_done,Detention_Center_Default,Detention_Center_Start}{skip:0}"
+            }
+        ],
+        "Detention_Center_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

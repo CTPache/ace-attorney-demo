@@ -1,0 +1,282 @@
+{
+    "initialSection": "Cafeteria_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "music": {},
+    "move": [
+        {
+            "label": "Manager's Office",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/LockedRoom/EN/Investigation1/crime_scene.json"
+        },
+        {
+            "label": "Entrance",
+            "target": "Lobby_Init",
+            "preview": "Lobby",
+            "json": "assets/scenes/LockedRoom/EN/Investigation1/lobby.json"
+        },
+        {
+            "label": "Detention Center",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/LockedRoom/EN/Investigation1/detention_center.json"
+        }
+    ],
+    "gameScript": {
+        "Cafeteria_Start": [
+            {
+                "text": "{showTextbox}{center}{color:lime}{blip:3}October 11, Time Unknown{nl}Inside Joypolis, Break Room"
+            },
+            {
+                "name": "Phoenix",
+                "text": "Ms. Miney, I'm Phoenix Wright, attorney at law.{nl}Please tell me what you know."
+            },
+            {
+                "name": "Ini",
+                "text": "Like, huh?{nl}What does Pharmacist White want with me...?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "N-No, you've got it wrong! I'm an attorney, Phoenix Wright."
+            },
+            {
+                "name": "Phoenix",
+                "text": "You were a witness to the murder, right?{nl}I'd like to ask you about that..."
+            },
+            {
+                "name": "Ini",
+                "text": "I totally was. Like, I saw the whole thing.{nl}I'll tell you whatever you want to know."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Alright, what should I ask her...)"
+            },
+            {
+                "name": "Ini",
+                "text": "Well, like, I was Mr. Daiba's{nl}manager."
+            },
+            {
+                "name": "Phoenix",
+                "text": "How did that come about?"
+            },
+            {
+                "name": "Ini",
+                "text": "Well, you know how I'm, like,{nl}studying parapsychology?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "N-No... I didn't know that.{nl}Really?"
+            },
+            {
+                "name": "Ini",
+                "text": "And so, the, like, absolute god of parapsychology{nl}totally spoke to me."
+            },
+            {
+                "name": "Ini",
+                "text": "\"You must work under Rando Daiba,\" he said.{nl}So, I, like, contacted Mr. Daiba right away."
+            },
+            {
+                "name": "Ini",
+                "text": "And, like, by total coincidence, the manager position{nl}was open."
+            },
+            {
+                "name": "Ini",
+                "text": "It was, like, exactly as the god said...{nl}I was just so moved..."
+            },
+            {
+                "name": "Ini",
+                "text": "I was, like, bawling my eyes out, and I bowed to Mr. Daiba{nl}and said, \"Please hire meee!\""
+            },
+            {
+                "name": "Phoenix",
+                "text": "I-I didn't know you could get a job like that..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Alright, what should I ask her...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "Before the incident happened, did you notice{nl}anything unusual about Mr. Daiba?"
+            },
+            {
+                "name": "Ini",
+                "text": "Well, we had dinner together today, but...{nl}Nothing was, like, really unusual..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Dinner? You two ate lunchboxes together?"
+            },
+            {
+                "name": "Ini",
+                "text": "Yeees. I brought my own lunchbox{nl}and went to the manager's office."
+            },
+            {
+                "name": "Phoenix",
+                "text": "To the manager's office?"
+            },
+            {
+                "name": "Ini",
+                "text": "When I went in, Mr. Daiba was, like, alone...{nl}And he had already started eating."
+            },
+            {
+                "name": "Ini",
+                "text": "So I sat down too, opened my lunchbox,{nl}and we ate together."
+            },
+            {
+                "name": "Ini",
+                "text": "And, like, Mr. Daiba's lunchbox{nl}had both Worcestershire sauce and soy sauce packets in it."
+            },
+            {
+                "name": "Ini",
+                "text": "He looked, like, so happy pouring soy sauce{nl}on his fried food as he ate."
+            },
+            {
+                "name": "Ini",
+                "text": "We both finished eating, and around 7:10 PM,{nl}we left the manager's office together and parted ways."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Where did the victim go after leaving?"
+            },
+            {
+                "name": "Ini",
+                "text": "I dunno... But I heard from the detective{nl}that Mr. Daiba took some sleeping pills, right?"
+            },
+            {
+                "name": "Ini",
+                "text": "If so, he must have, like, fallen asleep{nl}somewhere in Joypolis."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Alright, what should I ask her...)"
+            },
+            {
+                "name": "Ini",
+                "text": "Let's see... I think it was,{nl}like, around 7:40 PM."
+            },
+            {
+                "name": "Ini",
+                "text": "I saw Mr. Powers carrying Mr. Daiba{nl}into the manager's office."
+            },
+            {
+                "name": "Ini",
+                "text": "After that, around 8:00 PM, Mr. Powers left{nl}the manager's office all by himself."
+            },
+            {
+                "name": "Ini",
+                "text": "Mr. Powers seemed, like, totally shaken up...{nl}He hurriedly locked the door and left."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(I wonder if that's really true...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(If I believe Will,{nl}then Ini's testimony is wrong.)"
+            },
+            {
+                "name": "Ini",
+                "text": "I had things to do too, so{nl}I, like, left the area."
+            },
+            {
+                "name": "Ini",
+                "text": "Ah...{nl}Thinking back on it now,{nl}that was when Mr. Daiba was murdered, wasn't it..."
+            },
+            {
+                "name": "Ini",
+                "text": "I'm just... so ashamed of myself...{nl}Because if I had just rushed into the manager's office..."
+            },
+            {
+                "name": "Ini",
+                "text": "I might have been able to, like,{nl}save Mr. Daiba's life..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Alright, what should I ask her...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "That's a Jammin' Ninja shuriken, isn't it?{nl}Are you a fan?"
+            },
+            {
+                "name": "Ini",
+                "text": "Oh, you mean this hat?{nl}Mr. Daiba actually gave it to me."
+            },
+            {
+                "name": "Ini",
+                "text": "It's not really that I, like, like the Jammin' Ninja,{nl}I don't know anything about it at all, but..."
+            },
+            {
+                "name": "Ini",
+                "text": "But since I got it from him, I totally treasure it."
+            },
+            {
+                "name": "Ini",
+                "text": "Oh...{nl}Speaking of the Jammin' Ninja,{nl}have you seen the mystery poster yet?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "The mystery poster...?"
+            },
+            {
+                "name": "Ini",
+                "text": "It's posted up in Joypolis, but{nl}it's, like, such a total mystery every time I see it."
+            },
+            {
+                "name": "Ini",
+                "text": "It's a puzzle where you figure out four numbers{nl}when you reach the goal, but..."
+            },
+            {
+                "name": "Ini",
+                "text": "Mr. Daiba was the one who put it up, but{nl}I wonder what those numbers are for..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(A poster the victim put up, huh.{nl}I wonder where it is in Joypolis?)"
+            },
+            {
+                "name": "Ini",
+                "text": "I've, like, never met anyone{nl}I respect as much as Mr. Daiba..."
+            },
+            {
+                "name": "Ini",
+                "text": "Mr. Powers killed him... Mr. Powers ruined my divine guidance,{nl}and I, like, totally can't forgive him."
+            },
+            {
+                "name": "Ini",
+                "text": "Please, like, totally crush him for me.{nl}Mr. Play-Wright, the total ladies' man."
+            },
+            {
+                "name": "Phoenix",
+                "text": "N-No, you've got it wrong.{nl}I'm an attorney, Phoenix Wright."
+            },
+            {
+                "name": "Ini",
+                "text": "Like, huh? Judge Yamada?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(N-Never mind...)"
+            },
+            {
+                "text": "{setState:Cafeteria_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Cafeteria_Init": [
+            {
+                "text": "{setState:scenePrefix,Cafeteria}{jumpIf:Cafeteria_done,Cafeteria_Default,Cafeteria_Start}{skip:0}"
+            }
+        ],
+        "Cafeteria_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

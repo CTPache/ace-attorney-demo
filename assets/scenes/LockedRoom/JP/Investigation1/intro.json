@@ -9,11 +9,6 @@
     "music": {
         "investigation": "assets/audio/bgm/bgm025.m4a"
     },
-    "investigations": {
-        "JoyPolis": {
-            "default": "Intro_Examine_Default"
-        }
-    },
     "videos": {
         "intro": {
             "file": "assets/video/LockedRoomIntro.mp4",
@@ -36,20 +31,38 @@
             "label": "支配人室",
             "target": "Office_Init",
             "preview": "Office",
-            "json": "assets/scenes/LockedRoom/JP/Investigation1/office.json"
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/crime_scene.json"
+        },
+        {
+            "label": "休憩室",
+            "target": "Cafeteria_Init",
+            "preview": "Cafeteria",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/cafeteria.json"
+        },
+        {
+            "label": "エントランス",
+            "target": "Lobby_Init",
+            "preview": "Lobby",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/lobby.json"
+        },
+        {
+            "label": "留置所",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/detention_center.json"
         }
     ],
     "gameScript": {
         "Intro_Start": [
             {
-                "text": "{setState:scenePrefix,Intro}{playVideo:intro}"
+                "text": "{playVideo:intro}"
             },
             {
                 "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}１０月１１日　午後８時４１分{nl}ジョイポリス"
             },
             {
                 "name": "ナルホド",
-                "text": "{startBGM:investigation,false}{blip:0,false}{color:lightblue}(ぼくの名前は、成歩堂龍一。)"
+                "text": "{startBGM:investigation,false}{blip:0,false}{color:lightblue}(ぼくの名前は、成歩堂龍一{nl}《なるほどうりゅういち》)"
             },
             {
                 "name": "ナルホド",
@@ -57,7 +70,7 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}(殺人事件の容疑者・荷星三郎さんから依頼を受け)"
+                "text": "{color:lightblue}(殺人事件の容疑者・荷星三郎《にほし{nl}さぶろう》さんから依頼を受け)"
             },
             {
                 "name": "ナルホド",
@@ -65,35 +78,51 @@
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}(荷星さんの容疑を晴らすためには どんな些細なことも見逃してはならない)"
+                "text": "{color:lightblue}(荷星さんの容疑を晴らすためには{nl}どんな些細なことも見逃してはならない)"
             },
             {
                 "name": "ナルホド",
-                "text": "{color:lightblue}(気になった【情報】はすべて【法廷記録】に書き込んでおこう)"
+                "text": "{color:lightblue}(気になった【情報】はすべて{nl}【法廷記録】に書き込んでおこう)"
             },
             {
                 "name": "ミツルギ",
-                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}イトノコギリ刑事。事件の概要を説明してくれたまえ。"
+                "text": "{hideTextbox}{fadeOutCharacter:300}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}イトノコギリ刑事。{nl}事件の概要を説明してくれたまえ。"
             },
             {
                 "name": "ナルホド",
-                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}(彼は御剣怜侍。地方検事局の検事だ)"
+                "text": "{blip:0,false}{color:lightblue}{fadeOutBg}(彼は御剣怜侍《みつるぎれいじ》。{nl}地方検事局の検事だ)"
             },
             {
                 "name": "イトノコ",
-                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{showTextbox}{blip:1,true}{color:white}被害者は台場乱堂さん。ジョイポリスの支配人ッス。"
+                "text": "{hideTextbox}{fadeInBg}{fadeOutCharacter:300}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{p:200}{showTextbox}{blip:1,true}はいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(彼は糸鋸 圭介《いとのこぎりけいすけ》。{nl}所轄署の刑事だ)"
             },
             {
                 "name": "イトノコ",
-                "text": "被害者は睡眠薬で眠らされた状態で、背後からナイフで首を刺されていたッス。"
+                "text": "被害者は台場乱堂《だいばらんどう》さん。{nl}ジョイポリスの支配人ッス。"
             },
             {
                 "name": "イトノコ",
-                "text": "死因は失血死で、死亡推定時刻は午後７時から８時の間。"
+                "text": "殺害現場は支配人室。"
             },
             {
                 "name": "イトノコ",
-                "text": "第一発見者は容疑者である荷星三郎。ジョイポリス劇団の劇団員ッス。"
+                "text": "被害者は睡眠薬で眠らされた状態で、{nl}背後からナイフで首を刺されていたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "死因は失血死で、死亡推定時刻は{nl}午後７時から８時の間。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "死体発見時刻は午後8時ッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "第1発見者は容疑者である荷星 三郎。{nl}ジョイポリス劇団の劇団員ッス。"
             },
             {
                 "name": "ミツルギ",
@@ -101,82 +130,102 @@
             },
             {
                 "name": "ミツルギ",
-                "text": "今回もその件でケンカになり……殺害後、自ら通報したというワケか。"
+                "text": "今回もその件でケンカになり・・・・{nl}殺害後、自ら通報したというワケか。"
             },
             {
                 "name": "ナルホド",
-                "text": "ちょ、ちょっと待った。彼は犯行を否認しているんだ。"
+                "text": "ちょ、ちょっと待った。{nl}彼は犯行を否認しているんだ。"
             },
             {
                 "name": "ナルホド",
-                "text": "イトノコ刑事。どういう経緯で逮捕に至ったんですか？"
+                "text": "イトノコ刑事。{nl}どういう経緯で逮捕に至ったんですか？"
             },
             {
                 "name": "イトノコ",
-                "text": "容疑者が支配人室を訪ねると、ドアには鍵がかかっていたそうッス。"
+                "text": "容疑者が支配人室を訪ねると、{nl}ドアには鍵がかかっていたそうッス。"
             },
             {
                 "name": "イトノコ",
-                "text": "合鍵で部屋に入ったら、被害者が中で亡くなっていたらしいッス。"
+                "text": "合鍵で部屋に入ったら、{nl}被害者が中で亡くなっていたらしいッス。"
             },
             {
                 "name": "イトノコ",
-                "text": "でも、そんな証言をひっくり返す目撃者がいたッス。"
-            },
-            {
-                "name": "イトノコ",
-                "text": "被害者のマネージャー、葉中のどかさんッス。"
-            },
-            {
-                "name": "イトノコ",
-                "text": "彼女の証言によれば、容疑者は事件前に被害者と一緒に支配人室に入り、"
-            },
-            {
-                "name": "イトノコ",
-                "text": "その後、１人で支配人室から出ていったらしいッス。"
-            },
-            {
-                "name": "イトノコ",
-                "text": "彼女の証言を受けて荷星さんを事情聴取したッス。"
-            },
-            {
-                "name": "イトノコ",
-                "text": "すると彼の更衣室のロッカーから小さな醤油差しが見つかったッス。"
-            },
-            {
-                "name": "イトノコ",
-                "text": "被害者を眠らせた睡眠薬と全く同じものが検出されたッス。"
-            },
-            {
-                "name": "ミツルギ",
-                "text": "遺体発見時、支配人室の窓は内側から鍵がかかっていた。"
-            },
-            {
-                "name": "ミツルギ",
-                "text": "容疑者の証言通りだとすれば、現場は密室だったコトになる。"
-            },
-            {
-                "name": "ミツルギ",
-                "text": "しかし、自殺はあり得ない。死因は首の後ろの刺し傷だからな。"
-            },
-            {
-                "name": "ミツルギ",
-                "text": "もし容疑者以外に犯人がいるとしたら……。犯人は密室殺人を成り立たせたコトになる。"
-            },
-            {
-                "name": "ミツルギ",
-                "text": "この状況……どうするつもりだ、成歩堂？"
+                "text": "でも、そんな証言をひっくり返す{nl}目撃者がいたッス。"
             },
             {
                 "name": "ナルホド",
-                "text": "どうするもこうするもやってみなければわからないさ。"
+                "text": "目整者?"
+            },
+            {
+                "name": "イトノコ",
+                "text": "被害者のマネージャー、{nl}葉中のどか《はなかのどか》さんッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "彼女の証言によれば、容疑者は事件前に{nl}被害者と一緒に支配人室に入り、"
+            },
+            {
+                "name": "イトノコ",
+                "text": "その後、１人で支配人室から{nl}出ていったらしいッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "彼女の証言を受けて{nl}荷星さんを事情聴取したッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "すると彼の更衣室のロッカーから{nl}小さな醤油さしが見つかったッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "・・・・まさか。その醤油さしから・・・・ 。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "被害者を眠らせた睡眠薬と{nl}全く同じものが検出されたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "それで逮捕に至ったッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "ラーん ・・・・。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "遺体発見時、支配人室の窓は{nl}内側から鍵がかかっていた。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "容疑者の証言通りだとすれば、{nl}現場は密室だったコトになる。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "しかし、自殺はあり得ない。{nl}死因は首の後ろの刺し傷だからな。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "もし容疑者以外に犯人がいるとしたら・・・・。{nl}犯人は密室殺人を成り立たせたコトになる。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "密室殺人・・・・。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "この状況・・・・。{nl}どうするつもりだ、成歩堂？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "どうするもこうするも{nl}やってみなければわからないさ。"
             },
             {
                 "name": "ナルホド",
                 "text": "ぼくは荷星さんの無実を絶対に証明してみせる！"
             },
             {
-                "text": "{setState:intro_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:ナルホドMove}{playSound:jingle}{sectionEnd}{skip:0}"
+                "text": "{setState:intro_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
             }
         ],
         "Intro_Init": [
@@ -186,7 +235,7 @@
         ],
         "Intro_Default": [
             {
-                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:ナルホドMove}{playSound:jingle}{sectionEnd}{skip:0}"
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
             }
         ]
     }

@@ -1,0 +1,236 @@
+{
+    "initialSection": "Lobby_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "music": {
+        "investigation": "assets/audio/bgm/bgm025.m4a"
+    },
+    "move": [
+        {
+            "label": "Manager's Office",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/LockedRoom/EN/Investigation1/crime_scene.json"
+        },
+        {
+            "label": "Break Room",
+            "target": "Cafeteria_Init",
+            "preview": "Break Room",
+            "json": "assets/scenes/LockedRoom/EN/Investigation1/cafeteria.json"
+        },
+        {
+            "label": "Detention Center",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/LockedRoom/EN/Investigation1/detention_center.json"
+        }
+    ],
+    "gameScript": {
+        "Lobby_Start": [
+            {
+                "text": "{setState:scenePrefix,Lobby}{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}October 11, Time Unknown{nl}Inside Joypolis, Entrance"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Hmm...{nl}Hmmmmmmmmmmm..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "Detective Gumshoe.{nl}What's wrong?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "I was thinking about the numbers{nl}on the padlock at the crime scene, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Just what could those numbers{nl}possibly mean...?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "I was scrutinizing the victim's notebook{nl}to solve that mystery, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "And I just found one thing{nl}that might be it, pal..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Oh, right. I wanted to consult{nl}with you about that too, pal, but..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "There's something else important I need to talk about.{nl}Which one should I tell you first, pal?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "The padlock mystery, and something important...{nl}Let's see..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Regarding the 4-digit number on the padlock,{nl}I think this memo in the notebook is highly suspicious, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Alright, I'll read the memo, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "\"If I make it the answer from the poster,{nl}I won't forget the 4-digit number.\""
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Seems the victim was quite forgetful, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Since the padlock requires a 4-digit input,{nl}I'm absolutely sure this memo is related, pal."
+            },
+            {
+                "name": "Phoenix",
+                "text": "The answer from the poster, huh..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "The padlock mystery, and something important...{nl}Let's see..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "In a way, this is even more{nl}important than the padlock, pal."
+            },
+            {
+                "name": "Phoenix",
+                "text": "What is it?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Actually...{nl}I got my hands on something really good today, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "This is it, pal.{nl}The 4th prize from the Ninja Nanja lottery!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "I won it in a lottery at a candy store{nl}just a short walk from here, pal!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "You don't know that candy store,{nl}do you, pal?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "It's an old-fashioned candy store run by{nl}a grandma who seems pretty forgetful..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "What does that{nl}have to do with the case?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "It has nothing to do with the case, pal.{nl}I mean it's personally important to me."
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Wh-What the...)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "But really, I didn't want the 4th prize.{nl}I wanted the grand prize, the \"Last One Award\", pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The Last One Award is a prize where{nl}the person who draws the last ticket in the store..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "unconditionally gets a gold-plated{nl}Ninja Nanja figure, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Aw, man...{nl}Just talking about it is bringing up all my frustration, pal..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Why didn't I make sure I had enough funds in my wallet back then...?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Is this story... going to continue...?)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Actually...{nl}After I drew the 4th prize, the candy store grandma told me something, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "She said the next ticket was the last one,{nl}so I should just draw the rest of them."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Hearing those words, I shivered, pal.{nl}Because the next one being the last one meant..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "If I drew that ticket, win or lose,{nl}I'd get the Last One Award!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "In other words, I'd get my hands on{nl}the gold-plated Ninja Nanja!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The moment I realized that, I couldn't sit still.{nl}I eagerly took out my wallet, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "But...{nl}I didn't have any money left in my wallet..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "So, after going to a convenience store ATM and coming back,{nl}the last ticket had already been drawn..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The grandma told me gently, pal.{nl}She said, \"That's a shame.\""
+            },
+            {
+                "name": "Gumshoe",
+                "text": "I guess that was around 8 PM...{nl}I wept like a baby right there in the candy store, pal."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Today is the anniversary of my defeat for the \"Last One Award\", pal!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Alright, looks like the story's over.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(I guess that's about it.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(Once all the info is gathered, let's head to court.{nl}I'll reveal everything there!)"
+            },
+            {
+                "text": "{setState:lobby_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Lobby_Init": [
+            {
+                "text": "{addEvidence:badge,false}{setState:scenePrefix,Lobby}{jumpIf:lobby_done,Lobby_Default,Lobby_Start}{skip:0}"
+            }
+        ],
+        "Lobby_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

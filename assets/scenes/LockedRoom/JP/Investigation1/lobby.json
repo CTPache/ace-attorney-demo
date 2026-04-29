@@ -1,0 +1,236 @@
+{
+    "initialSection": "Lobby_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "music": {
+        "investigation": "assets/audio/bgm/bgm025.m4a"
+    },
+    "move": [
+        {
+            "label": "支配人室",
+            "target": "Office_Init",
+            "preview": "Office",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/crime_scene.json"
+        },
+        {
+            "label": "休憩室",
+            "target": "Cafeteria_Init",
+            "preview": "Cafeteria",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/cafeteria.json"
+        },
+        {
+            "label": "留置所",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/LockedRoom/JP/Investigation1/detention_center.json"
+        }
+    ],
+    "gameScript": {
+        "Lobby_Start": [
+            {
+                "text": "{bg:JoyPolis}{showTextbox}{center}{color:lime}{blip:3}１０月１１日　桌時刻{nl}ジョイポリス館肉　エントランス"
+            },
+            {
+                "name": "イトノコ",
+                "text": "うーむ・・・・{nl}うむむむむむむむむむむ・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "イトノコ刑事。{nl}どうしたんですか?"
+            },
+            {
+                "name": "イトノコ",
+                "text": "事件現場の南京錠の数字のコトを{nl}考えていたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "あの数字はいったいナニを{nl}意味しているのか・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "そのナゾを追って{nl}被害者の手帳を精査していたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "で、もしかしたらこれかな・・・・{nl}というのが1つ見つかったところッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "あ、そうそう。アンタにはそのコトも{nl}ご相談したいッスけど、"
+            },
+            {
+                "name": "イトノコ",
+                "text": "それ以外にも大事なハナシがあるッス。{nl}どっちから話せばイイッスかね?"
+            },
+            {
+                "name": "ナルホド",
+                "text": "数字のナゾと大事なハナシ・・・・。{nl}そうですね・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "南京錠の4桁の数字に関しては、{nl}手帳に書かれたこのメモがクサイと思うッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "じや、メモを読むッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "・・・・\"ポスターの答えにしておけば{nl}4桁の数字も忘れることはない\""
+            },
+            {
+                "name": "イトノコ",
+                "text": "被害者は忘れっぽかったみたいッスね。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "南京錠に入力するのは4桁ッスから{nl}絶対にこのメモが関係してると思うッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "・・・・ポスターの答えか。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "数字のナゾと大事なハナシ・・・・。{nl}そうですね・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "これはある意味、南京錠よりも{nl}大事なハナシッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "何ですか?"
+            },
+            {
+                "name": "イトノコ",
+                "text": "・・・・ジツは今日、{nl}いいものを手に入れたッスよ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "これッス。{nl}忍者ナンジャのクジの4等賞ッス!"
+            },
+            {
+                "name": "イトノコ",
+                "text": "ここからちょっと歩いたところにある{nl}駄菓子屋のクジで当てたッス!"
+            },
+            {
+                "name": "イトノコ",
+                "text": "アンタはその駄菓子屋、{nl}知らないッスか?"
+            },
+            {
+                "name": "イトノコ",
+                "text": "ちょっと物忘れが激しそうなおばあちゃんが{nl}やっている、昔ながらの駄菓子屋で・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "それが{nl}事件とどういう関係が?"
+            },
+            {
+                "name": "イトノコ",
+                "text": "事件とは関係ないッス。{nl}個人的に大事なハナシってコトッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(な、なんだよ・・・・)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "でも自分、本当は4等賞じゃなくて{nl}特賞の「最後の1個賞」がほしかったッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "最後の1個賞というのは、{nl}その店の最後のクジを引いたヒトが"
+            },
+            {
+                "name": "イトノコ",
+                "text": "無条件でゴールドメッキの忍者ナンジャの{nl}フィギュアがもらえるという賞ッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "・・・・ああ、こうして話しているだけで{nl}悔しさがこみ上げてくるッス・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "・・・・･どうして自分はあのとき財布に{nl}十分な軍資金を入れておかなかったのか・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(このハナシ・・・・まだ統くのかな・・・・)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "・・・・ジツは自分が4等賞を引いたあと、{nl}駄菓子屋のおばあちゃんに言われたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "クジは次で最後だから、ついでに{nl}みんな引いとくれよって。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "そのコトバに、自分は身震いしたッス。{nl}だって次が最後というコトはすなわち・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "そのクジを引けば、当たり外れに関係なく{nl}最後の1個 をもらえるというコト!"
+            },
+            {
+                "name": "イトノコ",
+                "text": "つまり、ゴールドメッキの忍者ナンジャが{nl}手に入るというコト!"
+            },
+            {
+                "name": "イトノコ",
+                "text": "そう思ったらいてもたってもいられなくなり、{nl}自分は勇んで財布を取り出したッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "でも・・・・{nl}財布にはもうお金がなかったッス・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "で、コンビニのATMに行って戻ってくると、{nl}最後のクジは引かれてしまっていて・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "おばあちゃんは、自分に優しく言ったッス。{nl}残念だったね、と。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "あれは午後8時ごろだったッスかね・・・・{nl}自分は駄菓子屋で男泣きしたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "今日は「最後の1個賞」敗戦記念日ッス!"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(よし、ハナシは終わったようだ)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(こんなところかな)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(情報が揃ったら法廷に向かおう。{nl}そこですべてをアキラカにするんだ!)"
+            },
+            {
+                "text": "{setState:lobby_done,true}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ],
+        "Lobby_Init": [
+            {
+                "text": "{setState:scenePrefix,Lobby}{jumpIf:lobby_done,Lobby_Default,Lobby_Start}{skip:0}"
+            }
+        ],
+        "Lobby_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}
