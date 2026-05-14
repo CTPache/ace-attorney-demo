@@ -1,0 +1,497 @@
+{
+    "initialSection": "Archive_Room_Init",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": true,
+        "present": false
+    },
+    "Topics": {
+        "Archive_Blood": {
+            "text": "血糊について",
+            "label": "Talk_Archive_Blood_Init"
+        },
+        "Archive_Script": {
+            "text": "台本について",
+            "label": "Talk_Archive_Script_Init"
+        },
+        "Archive_Curse": {
+            "text": "独雲さんの呪い",
+            "label": "Talk_Archive_Curse_Init"
+        },
+        "Archive_Vase": {
+            "text": "光るツボについて",
+            "label": "Talk_Archive_Vase_Init"
+        }
+    },
+    "gameScript": {
+        "Archive_Room_Init": [
+            {
+                "text": "{jumpIf:archive_room_done,Archive_Room_Default,Archive_Room_Start}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_Start": [
+            {
+                "text": "{bg:Don_Backroom}{startBGM:investigation}{skip:0}{sectionEnd}"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}ア、アンタッスか・・・・。{nl}ふう・・・・ビックリしたッス・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}どうしたんですか？{nl}そんなオーバーに驚いて。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}イヤ、事件について調べていたら{nl}いろいろと気になるコトが出てきて・・・・"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（・・・・ん？）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}もしよろしければ詳しく話してもらえませんか？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}いいッスよ。{nl}何から話せばイイッスかね？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（そうだな・・・・ナニを聞こうか・・・・）{color:white}{topicUnlock:Archive_Blood}{topicUnlock:Archive_Script}{topicUnlock:Archive_Curse}{topicUnlock:Archive_Vase}{setState:archive_intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Blood_Init": [
+            {
+                "text": "{jumpIf:talked_archive_blood,Talk_Archive_Blood_Repeat,Talk_Archive_Blood_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Blood_Intro": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}そこに段ボールがあるッスね。{nl}中には血糊が入っているッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "でもこの舞台では、{nl}血糊を使う予定はなかったらしいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}それが・・・・被害者とどういう関係が？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}{blip:1}そ、そッスね。{nl}すまねッス、調子に乗ったッス！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}カンタンに言ってしまうと、{nl}被害者は赤色がニガテだったらしいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}赤色がニガテ・・・・ですか？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}稽古中に鼻血を出したコトがあって、{nl}そのときは大変なパニックになったそうッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "なんでもその場に座り込んで、{nl}マッタク動けなくなったらしいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}・・・・そこまでくると{nl}ニガテというか恐怖症ですね。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Determined\"]}{blip:1}被害者は赤色がニガテ。{nl}だから舞台でも血糊は使わない予定だった！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（だから、どうしてクイズ番組みたいになってるんだ）{p:300}{flash}{playSound:cling}{color:white}{addEvidence:FakeBlood}{showEvidenceIcon:right,FakeBlood}{p:1500}{hideEvidenceIcon}{setState:talked_archive_blood,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Blood_Repeat": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}被害者は赤色がニガテ。{nl}だから血糊も使わなかったッスよ。{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Script_Init": [
+            {
+                "text": "{jumpIf:talked_archive_script,Talk_Archive_Script_Repeat,Talk_Archive_Script_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Script_Intro": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}今回の舞台の台本なら{nl}自分もサッと読んでみたッスケド・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Angry\"]}ハチャメチャもいいとこッス！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}出演する役者は脇役も含めて{nl}全部で１０人ぐらいいたらしいッスけど、"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Determined\"]}有刺鉄線の金網の中に入れるのは{nl}ダブル主演の２人だけ！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "大物女優が光るツボで殴られ、{nl}いろいろあった末に笑顔でキャットファイト！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}企画を立てたのは独雲さんらしいッスケド、{nl}テンサイの発想はよくわからないッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}テンサイと変人は紙一重って言うッスけど、{nl}独雲さんはきっと・・・・"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}イトノコ刑事！{nl}うしろに独雲さんがいますよ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}またまた。{nl}もうだまされないッスよ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ウソですよ、ウソ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}{blip:1}・・・・・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Angry\"]}・・・・アンタ。{nl}逮捕するッスよ？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（そうだな・・・・ナニを聞こうか・・・・）{color:white}{setState:talked_archive_script,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Script_Repeat": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}あんな台本、よく実現しようとするッスよ。{nl}テンサイか変人か・・・・ッス。{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Curse_Init": [
+            {
+                "text": "{jumpIf:talked_archive_curse,Talk_Archive_Curse_Repeat,Talk_Archive_Curse_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Curse_Intro": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Determined\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}自分は知ってしまったッス！{nl}独雲さんが呪われた存在ってコトを！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}えっ？どういうコトですか？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}最近、彼はジョイポリスの役員になったんス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}それからというものジョイポリスで{nl}殺人事件が連続して起こってるッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}そう言えば・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}・・・・まずはマヨイが疑われた{nl}トノサマン落下殺人事件。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "・・・・忍者ナンジャがカギとなった、{nl}ジョイポリス支配人の密室殺人事件。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "そして今回の一件・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Determined\"]}これは独雲さんがよからぬものを{nl}呼び込んでいるに違いないッス！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}よからぬモノって？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}おそらく悪霊の類だと思われるッス。{nl}これはもう、おはらいが必要なレベルッス！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（・・・・悪霊はともかくとして{nl}ジョイポリスで事件が多いのは確かだな）{color:white}{setState:talked_archive_curse,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Curse_Repeat": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}悪霊が原因でないとしたら、{nl}他に理由があるはずッス。{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Vase_Init": [
+            {
+                "text": "{jumpIf:talked_archive_vase,Talk_Archive_Vase_Repeat,Talk_Archive_Vase_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Vase_Intro": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}自分、あのツボが欲しくてしょうがないッス・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}あのツボ？なんのコトですか？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}見てないッスか？{nl}アルファベットが書かれたツボッスよ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "ツボに５文字のアルファベットが{nl}記されていたじゃないッスか！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"ScratchingHead2\"]}{blip:1}自分、ソニックが大好きなんスよ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "見るッス。この、自分の前髪。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "色こそ違えど、ソニックの後ろ髪と{nl}似てないッスか？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（・・・・確かにそうだけど・・・・{nl}すごくどうでもいいコトだな）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}あのツボ、この舞台のパンフレットにも{nl}載ってるッスよ！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ホントだ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}舞台で使う小道具の中で、{nl}夜光塗料が塗られているのはツボだけッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（まれかさんはこの小道具のツボで{nl}被害者を殴ったと主張しているわけか）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（・・・・ん、待てよ？）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（というコトは、さっきリングで見つけた{nl}光るカケラはもしかして・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（・・・・あれは、まれかさんの主張を裏付ける{nl}決定的な証拠なのかもしれないな！）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（メモしておこう！）{p:300}{flash}{playSound:cling}{color:white}{addEvidence:GlowingFragment}{showEvidenceIcon:right,GlowingFragment}{p:1500}{hideEvidenceIcon}{setState:talked_archive_vase,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Vase_Repeat": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}あのツボのカケラが、まれかさんの言葉を{nl}裏付ける証拠ッスよ。{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Check": [
+            {
+                "text": "{jumpIf:talked_archive_blood&talked_archive_script&talked_archive_curse&talked_archive_vase,Archive_Room_Complete,Archive_Room_TalkLoop}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_TalkLoop": [
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（そうだな・・・・ナニを聞こうか・・・・）{color:white}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_Complete": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}そういえば、アンタ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "事件が起きる直前、役者やスタッフ全員で{nl}リングの側でミーティングしたらしいッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "で、そのときに停電が起きたらしいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（事件が起きる直前に全員でミーティング・・・・{nl}その最中に停電が・・・・）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}{blip:1}このご時世に停電なんて。{nl}きっと独雲さんが予算をケチったんスよ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}独雲さんと言えばテレビによく出る有名人。{nl}１９５センチ１５０キロの巨体で元格闘家。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "でもインテリでアタマもよくて・・・・{nl}筋肉がデカければ脳ミソもデカい。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "さらに、すごいのがオトコの魅力たっぷりの眼力ッス！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "水着ゼッタイＮＧの女優たちも、{nl}独雲さんの野性的な瞳に見つめられたら"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Determined\"]}みんな、独雲さんの目の前で{nl}水着に着替えてしまうそうッス！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（なんだそれは・・・・どんな特技なんだ）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}芸能界のドンどころじゃない。{nl}まさに芸能界のドンドンドンドン！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}でも、そんなすごいオトコなのに、{nl}そんな小さな予算をケチったんスよ！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}なんだか、笑えてこないッスか？ップププ！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}わわっ！イトノコ刑事！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "・・・・うしろに独雲さんがいますよ。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}またまた。{nl}もうだまされないッスよ。"
+            },
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"FixGlasses\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}ギロリ！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}ひいいーーーーーーーーーーーーーーッス！"
+            },
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}私が格闘技を引退したのは事務所を継ぐため。{nl}決して力が衰えたからではない。"
+            },
+            {
+                "name": "ドン",
+                "text": "私の力が現役時代と変わらないコトを{nl}その体で味わってもらってもいいのだが？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}い、いや！{nl}自分は独雲さんとジョイポリスを{nl}心配していたというか・・・・。"
+            },
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}心配？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}こんなに殺人事件ばかり起きてたら{nl}ジョイポリスのイメージも悪くなるッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}なんかもうどっちかというと{nl}犯罪アミューズメントパークって感じッス！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ちょ、イトノコ刑事・・・・。"
+            },
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"FixGlasses\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}ギロリ！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}ひいいーーーーーーーーーーーーーーッス！"
+            },
+            {
+                "name": "イトノコ",
+                "text": "よけいな一言だったーーーーーーーーーーッス！"
+            },
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}私がジョイポリスの経営者になれば{nl}悪い評判などすぐに一掃してやろう。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ジョイポリスの経営者？"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}ヤッカイな役員がいなくなったからな。{nl}私が経営権を握るコトになるのは決定的だ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（・・・・ヤッカイな役員？{nl}被害者のコトを言っているのか）"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}それでは失礼する。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}あー、ビックリしたッス・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "冷や汗やら脂汗やら出まくって、{nl}少しスリムになった気がするッス・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（さて、こんなところかな）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（情報が揃ったら法廷に向かおう。{nl}そこですべてをアキラカにするんだ！）{color:white}{setState:archive_room_done,true}{setAction:talk,false}{playSound:jingle}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{skip:0}{sectionEnd}"
+            }
+        ]
+    }
+}

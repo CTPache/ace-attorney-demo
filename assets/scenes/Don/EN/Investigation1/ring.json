@@ -1,0 +1,482 @@
+{
+    "initialSection": "Ring_Init",
+    "actions": {
+        "move": false,
+        "examine": true,
+        "talk": true,
+        "present": false
+    },
+    "investigations": {
+        "Ring": {
+            "default": "Examine_Default",
+            "points": [
+                {
+                    "bounds": [
+                        35,
+                        45,
+                        65,
+                        45,
+                        65,
+                        80,
+                        35,
+                        80
+                    ],
+                    "label": "Examine_Victim"
+                },
+                {
+                    "bounds": [
+                        38,
+                        0,
+                        62,
+                        0,
+                        62,
+                        38,
+                        38,
+                        38
+                    ],
+                    "label": "Examine_Wire"
+                },
+                {
+                    "bounds": [
+                        0,
+                        55,
+                        32,
+                        55,
+                        32,
+                        95,
+                        0,
+                        95
+                    ],
+                    "label": "Examine_Debris"
+                },
+                {
+                    "bounds": [
+                        63,
+                        55,
+                        90,
+                        55,
+                        90,
+                        80,
+                        63,
+                        80
+                    ],
+                    "label": "Examine_Belt"
+                },
+                {
+                    "bounds": [
+                        0,
+                        5,
+                        100,
+                        5,
+                        100,
+                        32,
+                        0,
+                        32
+                    ],
+                    "label": "Examine_Fence"
+                }
+            ]
+        }
+    },
+    "talk": [
+        {
+            "label": "Gumshoe",
+            "target": "Talk_Ring_Gumshoe_Init"
+        }
+    ],
+    "gameScript": {
+        "Ring_Init": [
+            {
+                "text": "{jumpIf:Ring_Intro_done,Ring_Default,Ring_Intro}{sectionEnd}"
+            }
+        ],
+        "Ring_Default": [
+            {
+                "text": "{jumpIf:ring_done,Ring_Finish}{bg:Don_Cage}{startBGM:investigation}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Ring_Intro": [
+            {
+                "text": "{fadeBg:Don_Cage}{center}{color:lime}{blip:3}{showTextbox}November 21st, 8:32 PM{nl}Joyopolis{color:white}{p:1000}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{flash}{playSound:damage2}{startBGM:investigation}{blip:0,false}{color:lightblue}(W-What is this...?)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Determined\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}This is the murder scene."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(They said it was a martial arts festival, but...)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}When the ambulance arrived,{nl}all the doors to the scene were locked."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "During rehearsals, they set the exits to auto-lock{nl}to keep outsiders from entering."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "That's what they had it set to."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(That means the scene was practically a locked room...)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}From outside, only the rehearsal participants' keys{nl}can open the doors..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}So, you'll need to put on this belt{nl}and enter the cage."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(A belt?)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}{blip:1}I wanted to conduct an investigation,{nl}but it wasn't possible."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}It's quite a large set."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The cage weighs nearly 30 kilos per panel."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "So to enter the cage,{nl}we have to connect a wire to this belt..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "and the only way to get in is to be hoisted up."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(So during the investigation,{nl}everyone enters and exits with this belt and wire?)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}{blip:1}That's right. There were only{nl}the victim's and suspect's belts..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}So we've been using the suspect's."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Only one person can enter or exit at a time,{nl}so it's been a tedious investigation."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}Connect the wire hanging from the ceiling to the belt,{nl}then press the button."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Then it moves up, down, and sideways{nl}like a crane game."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Once you reach the other side, send the belt back{nl}with just the belt hoisted, please."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}U-Understood..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "After that, I'll use it to enter the cage."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright. Let's give it a try.){setState:Ring_Intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Examine_Default": [
+            {
+                "name": "Phoenix",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(There's nothing particularly of interest here.){sectionEnd}"
+            }
+        ],
+        "Examine_Victim": [
+            {
+                "name": "Phoenix",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(They're collapsed in the center of the ring. Wearing a purple spiky costume.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"LookingAway\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}The victim has only one wound on the back of their head,{nl}and blood from it has stained their costume."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}The suspected murder weapon is{nl}this glass vase."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Based on the vase's shape, the killer likely{nl}gripped it by the neck and struck."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Unfortunately,{nl}we couldn't detect any fingerprints."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Why is the neck of the vase{nl}completely shattered like that...?)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(I understand the part that struck the head would break,{nl}but...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(And this glass is quite thick.{nl}It's strange for something so sturdy to shatter like this.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}Now that you mention it,{nl}that is strange."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(...){color:white}{addEvidence:Vase}{showEvidenceIcon:right,Vase}{p:1500}{hideEvidenceIcon}{setState:ring_victim_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Wire": [
+            {
+                "name": "Phoenix",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(A wire hanging from the ceiling... It's a special type.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}It's a special electrical wire."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}When you connect this hook to the belt,{nl}the power to the ceiling wire system activates."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "In other words, if you don't connect the belt,{nl}the ceiling wire system won't move."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(So to enter and exit the cage,{nl}the belt is absolutely necessary.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}This wire can lift up to{nl}140 kilos."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}At the time of the incident,{nl}the wire was outside the cage."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Did the killer escape while hoisting{nl}the victim?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(...){setState:ring_wire_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Debris": [
+            {
+                "name": "Phoenix",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(Trash and scrap scattered across the ring...{nl}It's designed to resemble a post-apocalyptic fighting arena.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Angry\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}That's right!{nl}It hurts to touch."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}It's designed to look like a post-apocalyptic martial arts arena."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "It's also 5 meters tall,{nl}so climbing by hand is impossible."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}That's why entering and exiting the cage{nl}requires hooking the wire to the belt."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(...Hmm? What's that?{nl}Something hidden in the debris...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(The glass is heavy with paint applied...{nl}Hmm? On the inside there are what look like{nl}traces of red blood...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(There's also some kind of drawing on the outside...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(What piece of debris is this from...?){color:white}{addEvidence:GlassShard}{showEvidenceIcon:right,GlassShard}{p:1500}{hideEvidenceIcon}{setState:ring_debris_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Belt": [
+            {
+                "name": "Phoenix",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(A spiky belt on the floor... Something's written on the back.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}The name 'Yumi' is written on the back.{nl}It's the victim's belt."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(May I hold it for a moment?)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}Of course."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(See, marbled paint got on my hand.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "(It doesn't seem dry yet...{nl}Was Mareka's belt covered in it too?)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}No. It wasn't covered."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Which means...)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}There's something even stranger."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Why was the victim's belt{nl}removed?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(You're right...{nl}It might be connected to the incident. Let me make note of it.){p:300}{flash}{playSound:cling}{color:white}{addEvidence:Belt}{showEvidenceIcon:right,Belt}{p:1500}{hideEvidenceIcon}{setState:ring_belt_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Fence": [
+            {
+                "name": "Phoenix",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(The cage... Climbing over this would be impossible.{nl}Your hands would be torn to shreds.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}Yeah. Touching it causes injury.{nl}The spikes are sharp."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "This cage and the wire system{nl}were the president Don's idea."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(The cage openings are about 10 centimeters...{nl}Difficult to even get a hand through.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(It's truly an idea from a special effects show.){color:white}{addEvidence:Fence}{showEvidenceIcon:right,Fence}{p:1500}{hideEvidenceIcon}{setState:ring_fence_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Ring_Examined": [
+            {
+                "text": "{jumpIf:ring_victim_done&ring_wire_done&ring_debris_done&ring_belt_done&ring_fence_done,Ring_AllDone}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Ring_AllDone": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}By the way..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}We found out there was one more person{nl}at the scene during the incident."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Really? Who?)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}The stage director,{nl}Takuya Usaki."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}The security guard was in a nearby waiting room.{nl}But they say they didn't see anything."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "That's fortunate."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{hideTextbox}{hideCharacter}{flash}{bg:Don_Cage}{showTextbox}{blip:0,false}{color:lightblue}(...Hmm? What's that? Something shining in the debris...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{hideTextbox}{showEvidenceIcon:right,Badge}{playSound:realize}{p:1500}{showTextbox}(...I think I saw something similar to this somewhere in Joyopolis...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{hideEvidenceIcon}{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}(Once I have all the evidence, I'll head to the courtroom. I'll reveal everything there!)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(...Mareka isn't the culprit. I'll prove it.){jump:Demo_Ending}{sectionEnd}"
+            }
+        ],
+        "Demo_Ending": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{flash}{p:500}{fadeOutBg}{p:1000}{bg:GameOver}{fadeInBg:1000}{p:1000}{showTextbox}{center}The investigation at this terminal is now complete.{nl}Please hand over to the next person.{sectionEnd}"
+            }
+        ],
+        "Ring_Finish": [
+            {
+                "text": "{setAction:examine,false}{setAction:talk,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{playSound:jingle}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Talk_Ring_Gumshoe_Init": [
+            {
+                "text": "{jumpIf:talked_gumshoe_ring,Talk_Ring_Gumshoe_Repeat,Talk_Ring_Gumshoe_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Ring_Gumshoe_Intro": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}At the time of the incident, the victim and suspect{nl}each had their own belt."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}Which means{nl}no one else could have entered the cage..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}So the only one who could have{nl}committed the murder is the suspect."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(It's a difficult situation...{nl}But Mareka isn't the culprit. I'll prove it.){setState:talked_gumshoe_ring,true}{sectionEnd}"
+            }
+        ],
+        "Talk_Ring_Gumshoe_Repeat": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}I don't have anything else...{nl}I don't know right now.{sectionEnd}"
+            }
+        ]
+    }
+}

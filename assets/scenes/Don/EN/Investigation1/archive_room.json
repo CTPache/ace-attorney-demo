@@ -1,0 +1,497 @@
+{
+    "initialSection": "Archive_Room_Init",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": true,
+        "present": false
+    },
+    "Topics": {
+        "Archive_Blood": {
+            "text": "About the fake blood",
+            "label": "Talk_Archive_Blood_Init"
+        },
+        "Archive_Script": {
+            "text": "About the script",
+            "label": "Talk_Archive_Script_Init"
+        },
+        "Archive_Curse": {
+            "text": "Don's curse",
+            "label": "Talk_Archive_Curse_Init"
+        },
+        "Archive_Vase": {
+            "text": "About the glowing vase",
+            "label": "Talk_Archive_Vase_Init"
+        }
+    },
+    "gameScript": {
+        "Archive_Room_Init": [
+            {
+                "text": "{jumpIf:archive_room_done,Archive_Room_Default,Archive_Room_Start}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_Start": [
+            {
+                "text": "{bg:Don_Backroom}{startBGM:investigation}{skip:0}{sectionEnd}"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Oh, it's you...{nl}Phew... You scared me..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}What's the matter?{nl}You seem awfully startled."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}Well, I was investigating the incident{nl}and several things caught my attention..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Hmm?)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}If you don't mind, could you tell me about it in more detail?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}Sure. Where should I start?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Let me think... What should I ask about...){color:white}{topicUnlock:Archive_Blood}{topicUnlock:Archive_Script}{topicUnlock:Archive_Curse}{topicUnlock:Archive_Vase}{setState:archive_intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Blood_Init": [
+            {
+                "text": "{jumpIf:talked_archive_blood,Talk_Archive_Blood_Repeat,Talk_Archive_Blood_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Blood_Intro": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}See that cardboard box over there?{nl}It contains fake blood."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "But apparently, they weren't planning to use{nl}fake blood in this play."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}And how does that relate to the victim?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}{blip:1}W-well, you see...{nl}Sorry, I got ahead of myself!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}To put it simply, the victim was{nl}apparently afraid of the color red."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Afraid of red...?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}During rehearsal, she had a nosebleed once,{nl}and apparently it caused quite a panic."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "From what I heard, she just sat down on the spot{nl}and couldn't move at all."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}...That sounds less like a dislike{nl}and more like a phobia."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}{blip:1}The victim was afraid of the color red.{nl}So they weren't planning to use fake blood in the play!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(So, why is this like a quiz show...){p:300}{flash}{playSound:cling}{color:white}{addEvidence:FakeBlood}{showEvidenceIcon:right,FakeBlood}{p:1500}{hideEvidenceIcon}{setState:talked_archive_blood,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Blood_Repeat": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}The victim was afraid of red.{nl}So they didn't use fake blood in the play. Simple as that.{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Script_Init": [
+            {
+                "text": "{jumpIf:talked_archive_script,Talk_Archive_Script_Repeat,Talk_Archive_Script_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Script_Intro": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}I read the script for this play pretty quickly{nl}and..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Angry\"]}It's completely ridiculous!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}There were about 10 actors in total,{nl}including supporting roles,"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}but only the two leading actors{nl}are supposed to go inside the barbed wire cage!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "A big-name actress gets hit by a glowing vase,{nl}and after all that, they end up in a cat fight with smiles on their faces!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}Apparently Don came up with the idea,{nl}but genius's way of thinking is hard to understand."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}They say there's a fine line between genius and madness,{nl}and Don is probably..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Detective Gumshoe!{nl}Don is right behind you."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}Yeah, right.{nl}I won't fall for that again."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Just kidding."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}{blip:1}.........."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Angry\"]}...You.{nl}I'm gonna arrest you."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Let me think... What should I ask about...){color:white}{setState:talked_archive_script,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Script_Repeat": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Honestly, who would try to pull off a script like that?{nl}Genius or madman...{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Curse_Init": [
+            {
+                "text": "{jumpIf:talked_archive_curse,Talk_Archive_Curse_Repeat,Talk_Archive_Curse_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Curse_Intro": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Determined\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}I found out something!{nl}Don is cursed!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Huh? What do you mean?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}He recently became a board member at Joypolis."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}Ever since then, murder cases have been{nl}happening consecutively at Joypolis."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Now that you mention it..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}There was the Tonosaman Fall murder case{nl}where Maya was initially suspected."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Then there was the Locked Room Murder case{nl}involving Ninja Nanja that was key to solving it."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "And now this incident..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}Don must be drawing in something sinister!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Something sinister?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}Probably evil spirits or something like that.{nl}This is at the point where we need an exorcism!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(...Well, spirits aside,{nl}it's true that there are a lot of incidents at Joypolis){color:white}{setState:talked_archive_curse,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Curse_Repeat": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}If it's not evil spirits that are causing this,{nl}then there must be another reason.{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Vase_Init": [
+            {
+                "text": "{jumpIf:talked_archive_vase,Talk_Archive_Vase_Repeat,Talk_Archive_Vase_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Vase_Intro": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}I just can't stop thinking about that vase..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}That vase? What vase?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}Haven't you seen it?{nl}The vase with letters written on it."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "There are 5 letters of the alphabet{nl}written on that vase!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"ScratchingHead2\"]}{blip:1}I'm a huge Sonic fan, you know."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Look at my bangs."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The color's different, but doesn't my back hair{nl}kind of look like Sonic's?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(...Well, it does, but that's{nl}completely irrelevant)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}That vase is even in the play's program!{nl}I've seen it there!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Really?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{blip:1}Among all the props used in the play,{nl}only the vase was painted with luminescent paint."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(So Mareka claims that she hit the victim{nl}with this glowing vase prop)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(...Wait a minute?)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Could that glowing fragment we found{nl}in the ring be...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(...the decisive evidence that{nl}corroborates Mareka's claim!)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I should make a note of this!){p:300}{flash}{playSound:cling}{color:white}{addEvidence:GlowingFragment}{showEvidenceIcon:right,GlowingFragment}{p:1500}{hideEvidenceIcon}{setState:talked_archive_vase,true}{jump:Talk_Archive_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Vase_Repeat": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}That fragment from the vase is proof that{nl}corroborates what Mareka said.{sectionEnd}"
+            }
+        ],
+        "Talk_Archive_Check": [
+            {
+                "text": "{jumpIf:talked_archive_blood&talked_archive_script&talked_archive_curse&talked_archive_vase,Archive_Room_Complete,Archive_Room_TalkLoop}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_TalkLoop": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Let me think... What should I ask about...){color:white}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_Complete": [
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}By the way, you know that."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Just before the incident happened, all the actors{nl}and staff had a meeting by the ring."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "And apparently, the power went out during that meeting."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(A meeting with everyone just before the incident...{nl}and a power outage in the middle of it...)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}{blip:1}A power outage in this day and age?{nl}Don must have cut corners on the budget."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}Don is famous on TV, right?{nl}195 centimeters tall, 150 kilos, a former fighter."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "But he's also intellectual and smart...{nl}With big muscles comes a big brain."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "And what's impressive is his charismatic gaze!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Even actresses who absolutely refuse to wear swimsuits{nl}in public would be mesmerized by his wild eyes,"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Determined\"]}and they'd change into swimsuits{nl}right in front of him!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(What kind of ability is that...)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}He's not just the king of entertainment.{nl}He's the Don of entertainment!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}But for all his greatness,{nl}he cut corners on such a small budget!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}Kind of funny, isn't it? Hehehehe!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Whoa! Detective Gumshoe!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "...Don is right behind you."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}Ha ha, very funny.{nl}I won't fall for that trick again."
+            },
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"FixGlasses\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Glare!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Ahhhhhhhhhhhhhhhhhhh!"
+            },
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}I retired from fighting to take over the business.{nl}It doesn't mean my strength has faded."
+            },
+            {
+                "name": "Don",
+                "text": "I could always let you experience firsthand{nl}that my power hasn't changed since my active days."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}N-no, please!{nl}I was just worried about you{nl}and Joypolis..."
+            },
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Worried?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}With all these murder cases happening,{nl}Joypolis's reputation would suffer."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Normal\"]}Pretty soon it'll be more like{nl}a Criminal Amusement Park!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}W-wait, Detective Gumshoe..."
+            },
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"FixGlasses\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Glare!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Ahhhhhhhhhhhhhhhhhhh!"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "That was a thoughtless remark!"
+            },
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Once I take control of Joypolis,{nl}I'll wipe away all these bad rumors in no time."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Take control of Joypolis?"
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}A troublesome board member is gone.{nl}It's now assured that I'll take control of the business."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(...A troublesome board member?{nl}Is he talking about the victim?)"
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}Well then, I'll be taking my leave."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Wow, I nearly had a heart attack..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Between cold sweat and hot sweat pouring out,{nl}I think I've lost some weight..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Well, I think I've heard enough here.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Once I have all the evidence,{nl}I'll head to court and make everything clear!){color:white}{setState:archive_room_done,true}{setAction:talk,false}{playSound:jingle}{sectionEnd}"
+            }
+        ],
+        "Archive_Room_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{skip:0}{sectionEnd}"
+            }
+        ]
+    }
+}

@@ -1,0 +1,382 @@
+{
+    "initialSection": "Detention_Center_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": true,
+        "present": false
+    },
+    "Topics": {
+        "Detention_Incident": {
+            "text": "事件の流れ",
+            "label": "Talk_Detention_Incident_Init"
+        },
+        "Detention_Don": {
+            "text": "独雲との関係",
+            "label": "Talk_Detention_Don_Init"
+        },
+        "Detention_Yumi": {
+            "text": "由美との関係",
+            "label": "Talk_Detention_Yumi_Init"
+        },
+        "Detention_Outfit": {
+            "text": "服装について",
+            "label": "Talk_Detention_Outfit_Init"
+        }
+    },
+    "move": [
+        {
+            "label": "リング",
+            "target": "Ring_Init",
+            "preview": "Don_Cage",
+            "json": "assets/scenes/Don/JP/Investigation1/ring.json"
+        }
+    ],
+    "gameScript": {
+        "Detention_Center_Init": [
+            {
+                "text": "{jumpIf:detention_center_done,Detention_Center_Default,Detention_Center_Start}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Default": [
+            {
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{startBGM:detentionCenter}{topicUnlock:Detention_Incident}{topicUnlock:Detention_Don}{topicUnlock:Detention_Yumi}{topicUnlock:Detention_Outfit}{showTextbox}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Start": [
+            {
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}{showTextbox}１１月２１日　某時刻{nl}留置所{color:white}{p:800}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}まれかさん！"
+            },
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Sweating\"]}{hideCharacter}{fadeInCharacter:400}{startBGM:detentionCenter,true}{showTextbox}{blip:2}リューイチくん！{nl}もう、待ってたよー！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}大変なコトになりましたね・・・・"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Normal\"]}{blip:2}ホントだよー！{nl}どうなってんの、これ？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}リューイチくんは、ユーサクくんのコト覚えてる？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ええ、もちろん。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（弱々しくて・・・・まれかさんとは正反対のヒトだったな）"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Normal\"]}{blip:2}そのユーサクくんがさっきまで面会にきてくれてたんだケドね・・・・。"
+            },
+            {
+                "name": "マレカ",
+                "text": "めちゃくちゃ動揺していて・・・・{nl}帰宅途中でイシキを失って入院しちゃったらしくて・・・・"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ええっ！大丈夫なんですか？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Sweating\"]}{blip:2}うん、たいしたコトないって聞いたケド・・・・。はあ・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（優作くん、かわいそうに・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}・・・・っていうか、まれかさん。いつの間に女優になっていたんですか？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}ああ。まあ、いろいろあってね。{nl}そんなコトより、リューイチくん。助けてよ！"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}確かにアタシはスリルが大好きで、{nl}バイクでぶっ飛ばすコトもやめられないし、浪費癖も直っていない。"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"SmilingWide\"]}ていうか、アタシが殺しをするならもっと堂々とやるって！"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}殺しておいて事故に見せるようなヒキヨーなマネはゼッタイにしない！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ですよね。それはわかっています。{nl}ムジツを証明するため、全力で行きます。さっそくハナシを聞かせてください！"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}わかった。何でも聞いて！"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、どんなコトを聞こうか・・・・）{color:white}{setAction:talk,true}{topicUnlock:Detention_Incident}{topicUnlock:Detention_Don}{topicUnlock:Detention_Yumi}{topicUnlock:Detention_Outfit}{setState:detention_intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Incident_Init": [
+            {
+                "text": "{jumpIf:talked_detention_incident,Talk_Detention_Incident_Repeat,Talk_Detention_Incident_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Incident_Intro": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{showEvidenceIcon:left,Yumi}{blip:2}アタシが由美さんをツボで殴るという{nl}クライマックス部分を稽古していたの。"
+            },
+            {
+                "name": "マレカ",
+                "text": "でも本物じゃなくて、小道具のツボだよ。{nl}夜光塗料が塗られていて、真っ暗でも見えるやつ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Sweating\"]}台本通りに振り上げたら、由美さんはいつも通り左腕でガードした。{nl}なのに今日はなぜか頭から血が出たんだ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "アタシは救急車を呼ぶために、{nl}ベルトにワイヤーを繋いで金網から出た。"
+            },
+            {
+                "name": "マレカ",
+                "text": "会場の電気をつけて、ロッカー室で電話して、{nl}玄関で救急車を待って・・・・戻ったら彼女は亡くなっていた。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{hideEvidenceIcon}{blip:0,true}{color:white}はい。わかっています。{nl}他に何か気になったコトはありませんか。"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}{blip:2}でも、彼女の死体は金網の側にあったんだ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "あれは衣装でもあるから{nl}外すコトなんてあり得ないんだけどね。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}{blip:0,false}（証言の流れは把握できた。{p:150}矛盾点を探そう）{color:white}{setState:talked_detention_incident,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Incident_Repeat": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}アタシは救急車を呼びに行っただけ。{nl}それだけは本当だよ。{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Don_Init": [
+            {
+                "text": "{jumpIf:talked_detention_don,Talk_Detention_Don_Repeat,Talk_Detention_Don_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Don_Intro": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Smiling\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}独雲さんはウソをついている。"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"SmilingWide\"]}彼はアタシが由美さんのアタマを殴ったって言ったケド、{nl}アタシが殴ったのは腕なんだよ！"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}・・・・アタシ、ジツはムカシから役者になりたいっていうユメがあってね。{nl}小さな劇団に所属していたんだ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "そのころから独雲さんは強くてアタマがよくて、自信満々の野心家で・・・・"
+            },
+            {
+                "name": "マレカ",
+                "text": "そんな彼がアタシにアタマを下げて言ったんだ。{nl}『いずれ芸能プロを継ぐ。いっしょに天下を取ろう』って。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}それで・・・・？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}{blip:2}うん。各ギョーカイのすごいヒトたちを魅了し、{nl}彼らをみんなシモベみたいにしていったんだ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "「ＤＯＮ－ＩＳＭ」はドンドン業務を拡大して・・・・{nl}いろんな娯楽施設を買収していったの。"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}彼は「あとほしいのはジョイポリスだけ！」とか言ってたっけ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "でも、同じジョイポリスの役員の由美さんは、{nl}独雲さんが経営者になるコトに反対みたいで・・・・"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（ふーん。そんなコトがあったのか）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（被害者と独雲さんの対立・・・。{nl}事件の動機線として重要だ）{color:white}{setState:talked_detention_don,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Don_Repeat": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}独雲さんには感謝してる。{nl}だからこそ今の証言が信じられないんだ。{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Yumi_Init": [
+            {
+                "text": "{jumpIf:talked_detention_yumi,Talk_Detention_Yumi_Repeat,Talk_Detention_Yumi_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Yumi_Intro": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Sweating\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}知っての通り、由美さんは芸能界きっての大物女優だった。"
+            },
+            {
+                "name": "マレカ",
+                "text": "アタシとは比べものにならないくらい{nl}すごいヒトだった。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}と、言いますと？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}彼女はデマを流してヒトを陥れるのが{nl}大好きなヒトだったんだ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "アタシも最近、ありもしないデマを流されて困ってて・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ありもしないデマとは？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{blip:2}もう、人間関係のコト、ユーサクくんのコト、{nl}お金のコト・・・・あらゆるコトだよ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}でもその結果、火に油を注いじゃってね。{nl}彼女はアタシのデマを雑誌社に売り始めてさ"
+            },
+            {
+                "name": "マレカ",
+                "text": "・・・・だからアタシ、ジツは芸能界引退の危機にさらされていた{nl}トコロだったんだよ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "・・・・でも、アタシより彼女に苦しめられていたのは、{nl}舞台監督の宇在さんってヒトかな。"
+            },
+            {
+                "name": "マレカ",
+                "text": "彼女は「気持ち悪いオトコを見ていると{nl}吐き気を催す」とか言って、{nl}宇在さんにすごく厳しく当たっていたんだ。"
+            },
+            {
+                "name": "マレカ",
+                "text": "宇在さんはその屈辱に耐えられず、{nl}彼女を恨んでいるとか言ってたっけ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（被害者には他にも恨みを持つ人物がいる。{nl}容疑者以外の可能性が見えてきた）{color:white}{setState:talked_detention_yumi,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Yumi_Repeat": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}由美さんはすごい人だったよ。{nl}でも、みんなが彼女を好きだったわけじゃない。{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Outfit_Init": [
+            {
+                "text": "{jumpIf:talked_detention_outfit,Talk_Detention_Outfit_Repeat,Talk_Detention_Outfit_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Outfit_Intro": [
+            {
+                "name": "ナルホド",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1,false}その服装でリハーサルしていたんですか？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{blip:2}ううん。リハーサルは舞台衣装だよ。{nl}これはさっき、ユーサクくんが持ってきてくれたから着替えたの。"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}っていうか、由美さんの前ではゼッタイにこんな格好できないから。{nl}毎日、すごく気を遣ったよ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}・・・・どういうコトですか？"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Thinking\"]}{blip:2}由美さんは赤い色が嫌いらしくてね。{nl}最初の顔合わせのときから、赤が入っていない服を指示されてたんだ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（被害者は赤色を嫌っていた・・・・。{nl}衣装や小道具の色にも意味があるかもしれない）{color:white}{setState:talked_detention_outfit,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Outfit_Repeat": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}赤い服を避けるの、毎日気を遣ってたよ。{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Check": [
+            {
+                "text": "{jumpIf:talked_detention_incident&talked_detention_don&talked_detention_yumi&talked_detention_outfit,Detention_Center_Complete,Detention_Center_TalkLoop}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_TalkLoop": [
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}{blip:0,false}(よし、どんなコトを聞こうか・・・・){color:white}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Complete": [
+            {
+                "name": "マレカ",
+                "text": "{hideTextbox}{sprite:Desi[\"Sweating\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}繰り返すけど、アタシはやってないからね。{nl}明日の裁判、よろしく頼んだよ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}はい。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "ゼッタイに無罪を勝ち取りましょう。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}心配しているユーサクくんのためにも、{nl}吉報を持って帰ります。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（情報が揃ったら法廷に向かおう。{nl}そこで、すべてをアキラカにするんだ！）{color:white}{setState:detention_center_done,true}{setAction:talk,false}{playSound:jingle}{jump:Demo_Ending}{sectionEnd}"
+            }
+        ],
+        "Demo_Ending": [
+            {
+                "text": "{hideTextbox}{sprite:Desi[\"SmilingWide\"]}{p:1000}{fadeOutBg:1000}{p:1000}{hideCharacter}{bg:GameOver}{fadeInBg:1000}{p:1000}{showTextbox}{center}この端末での捜査は終了しました。{nl}次の方にお譲りください。{sectionEnd}"
+            }
+        ]
+    }
+}

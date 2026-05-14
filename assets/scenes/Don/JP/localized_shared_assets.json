@@ -1,0 +1,74 @@
+{
+    "backgrounds": {
+        "phoenixMove": "assets/img/CG/Phoenix_Move_JP.png",
+        "mayaMove": "assets/img/CG/Maya_Move_JP.png",
+        "GameOver": "assets/img/CG/GameOver_JP.webp"
+    },
+    "profiles": {
+        "Don": {
+            "name": "独雲 興行院",
+            "data": "芸能事務所「ＤＯＮ－ＩＳＭ」社長",
+            "image": "assets/img/profiles/Don.png"
+        },
+        "Yumi": {
+            "name": "手間柏 由美",
+            "data": "被害者／大物女優",
+            "image": "assets/img/profiles/Yumi.png"
+        },
+        "Desi": {
+            "name": "",
+            "data": "",
+            "image": "assets/img/profiles/Desi.png"
+        }
+    },
+    "evidence": {
+        "badge": {
+            "name": "弁護士バッジ",
+            "data": "これがないと、誰もぼくを弁護士と　認めてくれない。",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "Vase": {
+            "name": "ツボ",
+            "data": "割れたツボ。{nl}凶器と思われる。{nl}分厚いガラス製で頑丈そうだが{nl}粉々になっている。",
+            "image": "assets/img/evidence/Broken_glass.png"
+        },
+        "Belt": {
+            "name": "ベルト",
+            "data": "遺体が着けていたベルト。{nl}裏に『由美』と書かれている。{nl}なぜか、青と赤が混ざった{nl}絵の具がついている。",
+            "image": "assets/img/evidence/Belt.png"
+        },
+        "Fence": {
+            "name": "金網",
+            "data": "金網の柱は高さ５メートル。{nl}表面のトゲで手は登れないらしい。",
+            "image": "assets/img/evidence/Fence.png"
+        },
+        "GlassShard": {
+            "name": "ガラスの破片",
+            "data": "廃材の陰に隠れていたガラスの破片。{nl}薄いガラスに塗料が塗られている。{nl}内側に赤い血の痕のようなものが。{nl}表には何かの絵も描かれている。",
+            "image": "assets/img/evidence/Bloody_glass.png"
+        },
+        "MissingCostume": {
+            "name": "足りない衣装",
+            "data": "衣装掛けにかかっているハズの{nl}被害者の衣装が１着足りない。",
+            "image": "assets/img/evidence/Costumes.png"
+        },
+        "FakeBlood": {
+            "name": "血糊",
+            "data": "種別：証拠品",
+            "description": "使う予定のなかった血糊の{nl}小道具。被害者の由美は{nl}赤色がニガテ。",
+            "image": "assets/img/evidence/Paint_box.png"
+        },
+        "GlowingFragment": {
+            "name": "光るカケラ",
+            "data": "種別：証拠品",
+            "description": "夜光塗料が塗られた薄い{nl}ガラス片。裏には赤い{nl}絵の具のようなものがついている。",
+            "image": "assets/img/evidence/Bloody_glass.png"
+        }
+    },
+    "sounds": {
+        "PhoenixObjection": "assets/audio/se/jp/se027.ogg",
+        "PhoenixHoldIt": "assets/audio/se/jp/se01d.ogg",
+        "PhoenixTakeThat": "assets/audio/se/jp/se00d.ogg",
+        "EdgeworthObjection": "assets/audio/se/jp/se00e.ogg"
+    }
+}

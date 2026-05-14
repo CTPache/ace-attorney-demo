@@ -1,0 +1,192 @@
+{
+    "initialSection": "Intro_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "backgrounds": {
+        "Yumi_back": "assets/img/CG/Don/Yumi_Dead.png"
+    },
+    "move": [
+        {
+            "label": "留置所",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/Don/JP/Investigation1/detention_center.json"
+        },
+        {
+            "label": "リング",
+            "target": "Ring_Init",
+            "preview": "Don_Cage",
+            "json": "assets/scenes/Don/JP/Investigation1/ring.json"
+        }
+    ],
+    "videos": {
+        "intro": {
+            "file": "assets/video/DonIntro.mp4",
+            "script": []
+        }
+    },
+    "gameScript": {
+        "Intro_Init": [
+            {
+                "text": "{jumpIf:intro_done,Intro_Already_Done,Intro_Start}{sectionEnd}"
+            }
+        ],
+        "Intro_Already_Done": [
+            {
+                "text": "{bg:JoyPolis}{startBGM:investigation}{setAction:move,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Intro_Start": [
+            {
+                "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}１１月２１日　午後７時５１分{nl}ジョイポリス　コロシアム{p:6000}{hideTextbox}{playVideo:intro}{skip:0}{sectionEnd}"
+            },
+            {
+                "text": "{setSkipEnabled:true}{fadeBg:JoyPolis}{center}{color:lime}{blip:3}{showTextbox}１１月２１日　午後８時３２分{nl}ジョイポリス{color:white}{p:1500}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（ぼくの名前は、成歩堂　龍一{nl}《なるほどうりゅういち》）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（成歩堂法律事務所の弁護士だ）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（殺人事件の容疑者・天杉　希華{nl}《あますぎまれか》さんから依頼を受け・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（ここ、ジョイポリスにやってきた）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（まれかさんの容疑を晴らすためには{nl}どんなささいなことも見逃してはならない！）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（気になった{color:red}【情報】{color:lightblue}はすべて{nl}{color:red}【法廷記録】{color:lightblue}に書き込んでおこう）"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{startBGM:investigation}{hideTextbox}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{color:white}{blip:1}ではイトノコギリ刑事。{nl}事件の概要を。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{fadeOutBg:500}{color:lightblue}{blip:0,false}（彼は御剣 怜侍《みつるぎれいじ》。{nl}地方検事局の検事だ）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{fadeInBg:500}{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:1}はいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{fadeOutBg:500}{color:lightblue}{blip:0,false}（彼は糸鋸 圭介《いとのこぎりけいすけ》。{nl}所轄署の刑事だ）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{fadeInBg:500}{sprite:Gumshoe[\"Thinking\"]}{blip:1}{showEvidenceIcon:left,Yumi}被害者は言わずと知れた、あの大物女優{nl}手間柏　由美《でまがしゆみ》さん。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideEvidenceIcon}ジョイポリスのスペシャルイベント「世紀末{nl}チャンプ」の主演をする予定だったッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1,false}{flash}{playSound:question1}世紀末チャンプ？"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:500}{p:500}{bg:Don_Cage}{fadeInBg:500}{showTextbox}世紀末チャンプは、金網の中で行われる{nl}近未来格闘技がテーマの演劇ッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{showEvidenceIcon:left,Desi}そのリハーサル中に殺人事件が起きたッス。{nl}容疑者は同じく主演の天杉　希華。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideEvidenceIcon}殺害現場は、世紀末チャンプの{nl}舞台である金網の中。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{fadeBg:Yumi_back}被害者はツボで後頭部を強打され、{nl}そのまま動かなくなったらしいッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "死因は脳挫傷。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "指紋は出てないッスケド、凶器は{nl}側に転がっていた割れたツボと思われるッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "死亡推定時刻は午後７時２０分から、{nl}救急隊が駆けつけた８時１２分の間。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "救急隊が彼女の死亡を確認したッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}第１発見者は「ＤＯＮ－ＩＳＭ」という芸能事務所の社長・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{showEvidenceIcon:left,Don}独雲具行院《どんこうぎょういん》さん。{nl}今回の舞台の製作総指揮でもあるッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1,false}{color:white}独雲さんって・・・・{flash}{playSound:question1}あの独雲さん？{nl}芸能界のドンと呼ばれてる。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideEvidenceIcon}{sprite:Gumshoe[\"Normal\"]}{blip:1}そッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "彼は容疑者が被害者のアタマをツボで殴る瞬間を{nl}見ていたらしいッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "舞台の構造的に殺害現場に入れたのは{nl}容疑者だけだったため逮捕に至ったッス。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{hideTextbox}{hideCharacter}{bg:JoyPolis}{sprite:Edgeworth[\"Normal\"]}{fadeInCharacter:300}{showTextbox}{blip:1}というワケだ。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{sprite:Edgeworth[\"Angry\"]}成歩堂。{nl}お前にとっては苦しい裁判になるだろう。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1,false}{color:white}イヤ、まれかさんは{nl}殺人なんかするヒトじゃない。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "いくら苦しくても、ぼくはゼッタイに{nl}彼女のムジツを証明してみせる！"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{sprite:Edgeworth[\"Normal\"]}{blip:1}そうか、では法廷で。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、ぼくもさっそく調査を始めよう）"
+            },
+            {
+                "text": "{setState:intro_done,true}{jump:Intro_Done}{sectionEnd}"
+            }
+        ],
+        "Intro_Done": [
+            {
+                "text": "{setState:intro_done,true}{hideTextbox}{stopBGM:true}{fadeOutCharacter:1500}{fadeOutBg:1500}{p:1500}{fadeBg:phoenixMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

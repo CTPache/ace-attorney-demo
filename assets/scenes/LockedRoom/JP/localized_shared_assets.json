@@ -4,8 +4,7 @@
         "mayaMove": "assets/img/CG/Maya_Move_JP.png",
         "GameOver": "assets/img/CG/GameOver_JP.webp"
     },
-    "profiles": {
-    },
+    "profiles": {},
     "evidence": {
         "badge": {
             "name": "弁護士バッジ",

@@ -1,0 +1,72 @@
+{
+    "backgrounds": {
+        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png",
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
+        "GameOver": "assets/img/CG/GameOver_EN.webp"
+    },
+    "profiles": {
+        "Don": {
+            "name": "Don",
+            "data": "Entertainment mogul, CEO of DON-ISM Agency",
+            "description": "Former pro wrestler turned entertainment magnate. 6'4\", 330 lbs. Produces high-impact theatrical events. Executive producer of \"Doomsday Deathmatch.\"",
+            "image": "assets/img/profiles/Don.png"
+        },
+        "Yumi": {
+            "name": "Yumi",
+            "data": "Victim / Renowned actress",
+            "description": "A-list actress and JoyPolis executive. Known for her sharp business acumen and sharp tongue. Had a severe phobia of the color red.",
+            "image": "assets/img/profiles/Yumi.png"
+        }
+    },
+    "evidence": {
+        "badge": {
+            "name": "Attorney's Badge",
+            "data": "My most precious possession. Can't practice law without it.",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "Vase": {
+            "name": "Vase",
+            "data": "Type: Evidence",
+            "description": "A shattered glass vase. Believed to be the murder weapon. Made of thick glass, yet utterly destroyed.",
+            "image": "assets/img/evidence/Broken_glass.png"
+        },
+        "Belt": {
+            "name": "Belt",
+            "data": "Type: Evidence",
+            "description": "The victim's harness. \"Yumi\" is written on the back. For some reason, blue and red paint stains are on it.",
+            "image": "assets/img/evidence/Belt.png"
+        },
+        "Fence": {
+            "name": "Chain-Link Fence",
+            "data": "Type: Evidence",
+            "description": "The fence post is 16 feet high. The sharp spikes make climbing impossible.",
+            "image": "assets/img/evidence/Fence.png"
+        },
+        "GlassShard": {
+            "name": "Glass Fragment",
+            "data": "Type: Evidence",
+            "description": "A shard of glass hidden behind debris. Thin glass with paint coating. Inside shows what looks like red blood residue. Has a drawing on the outside.",
+            "image": "assets/img/evidence/Bloody_glass.png"
+        },
+        "MissingCostume": {
+            "name": "Missing Costume",
+            "data": "Type: Evidence",
+            "description": "One of the victim's stage costumes is unaccounted for. Should be hanging on the rack, but it's gone.",
+            "image": "assets/img/evidence/Costumes.png"
+        },
+        "FakeBlood": {
+            "name": "Stage Blood",
+            "data": "Type: Evidence",
+            "description": "Fake blood prop not scheduled for use in the show. The victim had a severe phobia of the color red.",
+            "image": "assets/img/evidence/Paint_box.png"
+        },
+        "GlowingFragment": {
+            "name": "Glowing Fragment",
+            "data": "Type: Evidence",
+            "description": "Thin glass fragment coated with luminescent paint. Red residue that looks like paint is on the back.",
+            "image": "assets/img/evidence/Bloody_glass.png"
+        }
+    },
+    "sounds": {
+    }
+}

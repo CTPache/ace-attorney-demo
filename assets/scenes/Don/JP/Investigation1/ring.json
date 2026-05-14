@@ -1,0 +1,482 @@
+{
+    "initialSection": "Ring_Init",
+    "actions": {
+        "move": false,
+        "examine": true,
+        "talk": true,
+        "present": false
+    },
+    "investigations": {
+        "Ring": {
+            "default": "Examine_Default",
+            "points": [
+                {
+                    "bounds": [
+                        35,
+                        45,
+                        65,
+                        45,
+                        65,
+                        80,
+                        35,
+                        80
+                    ],
+                    "label": "Examine_Victim"
+                },
+                {
+                    "bounds": [
+                        38,
+                        0,
+                        62,
+                        0,
+                        62,
+                        38,
+                        38,
+                        38
+                    ],
+                    "label": "Examine_Wire"
+                },
+                {
+                    "bounds": [
+                        0,
+                        55,
+                        32,
+                        55,
+                        32,
+                        95,
+                        0,
+                        95
+                    ],
+                    "label": "Examine_Debris"
+                },
+                {
+                    "bounds": [
+                        63,
+                        55,
+                        90,
+                        55,
+                        90,
+                        80,
+                        63,
+                        80
+                    ],
+                    "label": "Examine_Belt"
+                },
+                {
+                    "bounds": [
+                        0,
+                        5,
+                        100,
+                        5,
+                        100,
+                        32,
+                        0,
+                        32
+                    ],
+                    "label": "Examine_Fence"
+                }
+            ]
+        }
+    },
+    "talk": [
+        {
+            "label": "イトノコ",
+            "target": "Talk_Ring_Gumshoe_Init"
+        }
+    ],
+    "gameScript": {
+        "Ring_Init": [
+            {
+                "text": "{jumpIf:Ring_Intro_done,Ring_Default,Ring_Intro}{sectionEnd}"
+            }
+        ],
+        "Ring_Default": [
+            {
+                "text": "{jumpIf:ring_done,Ring_Finish}{bg:Don_Cage}{startBGM:investigation}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Ring_Intro": [
+            {
+                "text": "{fadeBg:Don_Cage}{center}{color:lime}{blip:3}{showTextbox}１１月２１日　午後８時３２分{nl}ジョイポリス{color:white}{p:1000}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{flash}{playSound:damage2}{startBGM:investigation}{blip:0,false}{color:lightblue}（な、なんだコレ・・・・）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Determined\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}ここが殺害現場ッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（格闘技のお祭り、と言っていたけど・・・・）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}救急隊員が駆けつけたとき、{nl}現場の扉は全て施錠されていたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "リハーサル時は部外者が入ってこないように{nl}出入口をオートロックにするそうッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "そんな状態だったらしいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（というコトは、ほぼ密室に近い状態だったというコトか・・・）"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}{sprite:Gumshoe[\"Normal\"]}外からはリハーサル参加者の{nl}鍵がないと開けられない・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}さ、アンタもこのベルトを巻いて、{nl}金網の中に入るッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(えっ？　ベルトですか？)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}{blip:1}現場検証したかったッスけど{nl}ムリだったッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}かなり大きなセットですからね。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "金網は１枚３０キロ近くあるらしいッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "だから、金網の中に入るには{nl}このベルトにワイヤーを接続して・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "上に釣り上げられるしか手段がないッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(じゃあ、捜査中も{nl}みんなこのベルトとワイヤーで出入りを？)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}{blip:1}そッス。ベルトは被害者のものと{nl}容疑者のものしかなかったので・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"ScratchingHead\"]}仕方なく容疑者のものを使ってるッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "１人ずつしか出入りできないので、{nl}骨の折れる捜査だったッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}天井から垂れているワイヤーを接続してから{nl}ベルトのボタンを押すッス."
+            },
+            {
+                "name": "イトノコ",
+                "text": "するとクレーンゲームみたいに{nl}上下と横に動くッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "向こう側に着いたら、ベルトだけ釣った状態で{nl}こっちにまわしてほしいッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}わ、わかりました・・・・。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "後は自分が、それで中に入るッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（・・・・わかった。やってみよう。）{setState:Ring_Intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Examine_Default": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(特に気になるところはないな。){sectionEnd}"
+            }
+        ],
+        "Examine_Victim": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(リングの中央に倒れている。紫のトゲ付きコスチュームを着ている。)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"LookingAway\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}被害者の傷は後頭部の１ヶ所のみッスが、{nl}そこから出た血が衣装についているッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}で、これが凶器と思われる{nl}ガラス製のツボッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "ツボの形状からして、ハンニンは口の部分を{nl}握って殴ったと思われるッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "ザンネンながら{nl}指紋は検出できていないッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(これ・・・・どうして口の部分が{nl}粉々になっているんでしょう・・・・)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(アタマに当たった部分が割れるのは{nl}わかりますケド・・・・)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(しかも、このガラス、かなり分厚いですよ。{nl}こんな頑丈そうなのに粉々になるなんて。)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}確かに・・・・{nl}言われてみれば不思議ッスね。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(・・・・){color:white}{addEvidence:Vase}{showEvidenceIcon:right,Vase}{p:1500}{hideEvidenceIcon}{setState:ring_victim_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Wire": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(天井から垂れているワイヤー・・・・特殊なタイプだ。)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}電気を流すタイプの{nl}特殊なワイヤーッスね。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}このフックをベルトに接続すると、天井の{nl}ワイヤー装置の電源が入る仕組みッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "つまり、ベルトに接続しなければ{nl}天井のワイヤー装置は動かないってコトッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(金網を出入りするには{nl}必ずベルトが必要になるというわけだ)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}このワイヤーは最大で{nl}１４０キロのモノまで持ち上げられるッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}事件が起きたときには{nl}ワイヤーは金網の外に出ていたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "まさか犯人が被害者を{nl}吊り上げながら脱出したからか・・・・？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(・・・・){setState:ring_wire_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Debris": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(リングに散らかるゴミや廃材・・・・{nl}世紀末の格闘技場をイメージして作られたものらしい。)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Angry\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}そッス！{nl}触ると痛いッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}世紀末の格闘技をイメージして作られたものらしいッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "高さも５メートルあるし{nl}手で登るのは不可能ッスね。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}だから金網への出入りには{nl}ワイヤーのフックをベルトに引っかけるッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(・・・・ん？　アレは何だ？{nl}廃材のセットの陰にあるものが・・・・)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(ガラスは重くて、塗料が塗られている){nl}(・・・・ん？　内側に赤い血の痕のような{nl}ものがついているな・・・・)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(表にはナニかの絵も描かれている・・・・)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(これは何の破片なんだろう？){color:white}{addEvidence:GlassShard}{showEvidenceIcon:right,GlassShard}{p:1500}{hideEvidenceIcon}{setState:ring_debris_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Belt": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(床にトゲ付きのベルトが・・・・裏に何か書いてある。)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}裏に『由美』と名前が書かれているッス。{nl}被害者のベルトッスね。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(ちょっと持たせてもらってイイですか？)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}もちろんッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(ほら、手にマーブルの絵の具がつきました。)"
+            },
+            {
+                "name": "ナルホド",
+                "text": "(まだ乾いていないみたいですが・・・・{nl}まれかさんのベルトにもついていたんですか？)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"ScratchingHead\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}イヤ。ついていなかったッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(ということは・・・・)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}この絵の具よりも変なことがあるッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "なんで被害者は{nl}ベルトを外していたんスかねえ？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(確かにそうですね・・・・{nl}事件に関係あるかもしれないな。メモしておこう。){p:300}{flash}{playSound:cling}{color:white}{addEvidence:Belt}{showEvidenceIcon:right,Belt}{p:1500}{hideEvidenceIcon}{setState:ring_belt_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Examine_Fence": [
+            {
+                "name": "ナルホド",
+                "text": "{color:white}{hideCharacter}{blip:0,false}{color:lightblue}(金網・・・・この金網を登って越えるのは不可能ですよね。{nl}手が穴だらけになるッス。)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}ああ。触るとケガするッス。{nl}トゲが尖ってるッスから。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "この金網もワイヤーを使っての入場も{nl}社長の独雲さんの{nl}アイデアだそうッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（金網の目は１０センチぐらい・・・・{nl}手を入れるのも難しい感じだ）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（特撮番組ならではのアイデアなんでしょうね。）{color:white}{addEvidence:Fence}{showEvidenceIcon:right,Fence}{p:1500}{hideEvidenceIcon}{setState:ring_fence_done,true}{jump:Ring_Examined}{sectionEnd}"
+            }
+        ],
+        "Ring_Examined": [
+            {
+                "text": "{jumpIf:ring_victim_done&ring_wire_done&ring_debris_done&ring_belt_done&ring_fence_done,Ring_AllDone}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Ring_AllDone": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}ちなみに・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Normal\"]}{blip:1}あと事件当時、もう１人{nl}現場にいたコトがわかったッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(ホントですか？ダレですか？)"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{blip:1}舞台監督の{nl}宇佐木（うさぎ）たくや　さんッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}警備員は近くの控室にいたらしいッス。{nl}でも、ナニも見ていないとのコトッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "それはよかったッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{hideTextbox}{hideCharacter}{flash}{bg:Don_Cage}{showTextbox}{blip:0,false}{color:lightblue}（・・・・ん？　あれは何だ？廃材のセットの中に光るものが・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{hideTextbox}{showEvidenceIcon:right,Badge}{playSound:realize}{p:1500}{showTextbox}（・・・・確か、似たようなものをジョイポリスの中で見たような気が・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{hideEvidenceIcon}{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}（証拠が揃ったら法廷に向かおう。そこで全てを明らかにするんだ！）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（・・・・まれかさんは犯人じゃない。それを証明してみせる。）{jump:Demo_Ending}{sectionEnd}"
+            }
+        ],
+        "Demo_Ending": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{flash}{p:500}{fadeOutBg}{p:1000}{bg:GameOver}{fadeInBg:1000}{p:1000}{showTextbox}{center}この端末での捜査は終了しました。{nl}次の方にお譲りください。{sectionEnd}"
+            }
+        ],
+        "Ring_Finish": [
+            {
+                "text": "{setAction:examine,false}{setAction:talk,false}{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{playSound:jingle}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Talk_Ring_Gumshoe_Init": [
+            {
+                "text": "{jumpIf:talked_gumshoe_ring,Talk_Ring_Gumshoe_Repeat,Talk_Ring_Gumshoe_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Ring_Gumshoe_Intro": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}事件当時は被害者と容疑者が{nl}それぞれベルトを装着していたッス。"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"LookingAway\"]}というコトは{nl}他に金網に入れる人はいないわけで・・・・"
+            },
+            {
+                "name": "イトノコ",
+                "text": "{sprite:Gumshoe[\"Determined\"]}殺害が可能だったのは{nl}容疑者しか考えられないッス。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(たしかに厳しい状況だな・・・・{nl}でも、まどかさんは犯人じゃない。証明してみせる。){setState:talked_gumshoe_ring,true}{sectionEnd}"
+            }
+        ],
+        "Talk_Ring_Gumshoe_Repeat": [
+            {
+                "name": "イトノコ",
+                "text": "{hideTextbox}{sprite:Gumshoe[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{color:white}{blip:1}今はこれ以上は・・・・{nl}ちょっとわからないッス。{sectionEnd}"
+            }
+        ]
+    }
+}

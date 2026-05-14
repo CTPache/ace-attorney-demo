@@ -1,0 +1,192 @@
+{
+    "initialSection": "Intro_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "backgrounds": {
+        "Yumi_back": "assets/img/CG/Don/Yumi_Dead.png"
+    },
+    "move": [
+        {
+            "label": "Detention Center",
+            "target": "Detention_Center_Init",
+            "preview": "DetentionCenter",
+            "json": "assets/scenes/Don/EN/Investigation1/detention_center.json"
+        },
+        {
+            "label": "Ring",
+            "target": "Ring_Init",
+            "preview": "Don_Cage",
+            "json": "assets/scenes/Don/EN/Investigation1/ring.json"
+        }
+    ],
+    "videos": {
+        "intro": {
+            "file": "assets/video/DonIntro.mp4",
+            "script": []
+        }
+    },
+    "gameScript": {
+        "Intro_Init": [
+            {
+                "text": "{jumpIf:intro_done,Intro_Already_Done,Intro_Start}{sectionEnd}"
+            }
+        ],
+        "Intro_Already_Done": [
+            {
+                "text": "{bg:JoyPolis}{startBGM:investigation}{setAction:move,true}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Intro_Start": [
+            {
+                "text": "{fadeOutBg:100}{center}{color:lime}{blip:3}November 21st 7:51 PM{nl}Joyapolis Colosseum{p:6000}{hideTextbox}{playVideo:intro}{skip:0}{sectionEnd}"
+            },
+            {
+                "text": "{setSkipEnabled:true}{fadeBg:JoyPolis}{center}{color:lime}{blip:3}{showTextbox}November 21st 8:32 PM{nl}Joyapolis{color:white}{p:1500}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(My name is Phoenix Wright.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I'm a defense attorney at Wright Anything Agency.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I was hired by Mareka, the suspect in a murder case...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(And I've come to Joyapolis.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(To prove Mareka's innocence, I cannot overlook even the smallest detail!)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I should write down all the {color:red}【information】{color:lightblue} I find{nl}in the {color:red}【Court Record】{color:lightblue}.)"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{startBGM:investigation}{hideTextbox}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{color:white}{blip:1}Detective Gumshoe, please.{nl}Give me an overview of the case."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{fadeOutBg:500}{color:lightblue}{blip:0,false}(That's Miles Edgeworth.{nl}A prosecutor at the District Prosecutor's Office.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeInBg:500}{hideTextbox}{fadeOutCharacter:300}{sprite:Gumshoe[\"Sad\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:1}Yes sir!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{fadeOutBg:500}{color:lightblue}{blip:0,false}(That's Detective Gumshoe.{nl}A detective with the Metropolitan Police.)"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeInBg:500}{sprite:Gumshoe[\"Thinking\"]}{blip:1}{showEvidenceIcon:left,Yumi}The victim was the renowned actress{nl}Yumi."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideEvidenceIcon}She was scheduled to star in the special event{nl}\"21st Century Champion\" at Joyapolis."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}{flash}{playSound:question1}21st Century Champion?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideTextbox}{fadeOutCharacter}{fadeOutBg:500}{p:500}{bg:Don_Cage}{fadeInBg:500}{showTextbox}\"21st Century Champion\" is a theatrical performance{nl}themed around futuristic fighting held in a cage."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{showEvidenceIcon:left,Desi}A murder occurred during rehearsal.{nl}The suspect is co-star Mareka."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideEvidenceIcon}The murder took place inside the cage,{nl}the stage for \"21st Century Champion\"."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{fadeBg:Yumi_back}The victim was struck on the back of the head with an urn{nl}and never moved again."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The cause of death was blunt force trauma to the brain."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "No fingerprints were found, but we believe the murder weapon{nl}is the broken urn found nearby."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The estimated time of death is between 7:20 PM and 8:12 PM,{nl}when the ambulance arrived."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "The paramedics confirmed her death."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{sprite:Gumshoe[\"Thinking\"]}The first person to discover the body was a talent agency president..."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{showEvidenceIcon:left,Don}Don.{nl}He was also the executive producer of this show."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}{color:white}Don...{flash}{playSound:question1}The Don?{nl}The legendary kingpin of show business?"
+            },
+            {
+                "name": "Gumshoe",
+                "text": "{hideEvidenceIcon}{sprite:Gumshoe[\"Normal\"]}{blip:1}That's right."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "He claims he witnessed the suspect strike the victim's head with the urn."
+            },
+            {
+                "name": "Gumshoe",
+                "text": "Due to the stage's structure, only the suspect could have entered{nl}the murder scene, so she was arrested."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{hideTextbox}{hideCharacter}{bg:JoyPolis}{sprite:Edgeworth[\"Normal\"]}{fadeInCharacter:300}{showTextbox}{blip:1}And that's the situation."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{sprite:Edgeworth[\"Angry\"]}Wright.{nl}This trial will be difficult for you."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1,false}{color:white}No way. Mareka{nl}would never commit murder."
+            },
+            {
+                "name": "Phoenix",
+                "text": "No matter how tough it gets, I will absolutely{nl}prove her innocence!"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{sprite:Edgeworth[\"Normal\"]}{blip:1}Then I'll see you in court."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, let me start my investigation right away.)"
+            },
+            {
+                "text": "{setState:intro_done,true}{jump:Intro_Done}{sectionEnd}"
+            }
+        ],
+        "Intro_Done": [
+            {
+                "text": "{setState:intro_done,true}{hideTextbox}{stopBGM:true}{fadeOutCharacter:1500}{fadeOutBg:1500}{p:1500}{fadeBg:phoenixMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "backgrounds": {
+        "phoenixMove": "assets/img/CG/Phoenix_Move_EN.png",
+        "mayaMove": "assets/img/CG/Maya_Move_EN.png",
+        "GameOver": "assets/img/CG/GameOver_EN.webp"
+    },
+    "profiles": {},
+    "evidence": {
+        "badge": {
+            "name": "Attorney's Badge",
+            "data": "Type: Evidence\nOne of my possessions.",
+            "description": "Without this no one would believe I'm a lawyer.",
+            "image": "assets/img/evidence/badge.png"
+        },
+        "autopsy_report": {
+            "name": "Autopsy Report",
+            "data": "Type: Evidence",
+            "description": "",
+            "image": "assets/img/evidence/Archive.png"
+        }
+    },
+    "sounds": {
+        "PhoenixObjection": "assets/audio/se/se027.m4a",
+        "PhoenixHoldIt": "assets/audio/se/se01d.m4a",
+        "PhoenixTakeThat": "assets/audio/se/se00d.m4a",
+        "EdgeworthObjection": "assets/audio/se/se00e.m4a"
+    }
+}

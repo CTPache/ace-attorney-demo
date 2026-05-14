@@ -5,7 +5,9 @@
     background-color: #000;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    container-type: size;
+    container-type: size; 
+    display: flex;
+    justify-content: center
 }
 
 #background {
@@ -29,7 +31,7 @@
 
 #character {
     z-index: var(--z-layer-character);
-    width: 100%;
+    width: auto;
     height: 100%;
     object-fit: contain;
     object-position: bottom;

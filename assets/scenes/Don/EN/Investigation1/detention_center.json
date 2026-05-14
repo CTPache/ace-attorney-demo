@@ -1,0 +1,382 @@
+{
+    "initialSection": "Detention_Center_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": true,
+        "present": false
+    },
+    "Topics": {
+        "Detention_Incident": {
+            "text": "Incident Flow",
+            "label": "Talk_Detention_Incident_Init"
+        },
+        "Detention_Don": {
+            "text": "Relationship with Don",
+            "label": "Talk_Detention_Don_Init"
+        },
+        "Detention_Yumi": {
+            "text": "Relationship with Yumi",
+            "label": "Talk_Detention_Yumi_Init"
+        },
+        "Detention_Outfit": {
+            "text": "About Outfit",
+            "label": "Talk_Detention_Outfit_Init"
+        }
+    },
+    "move": [
+        {
+            "label": "Ring",
+            "target": "Ring_Init",
+            "preview": "Don_Cage",
+            "json": "assets/scenes/Don/EN/Investigation1/ring.json"
+        }
+    ],
+    "gameScript": {
+        "Detention_Center_Init": [
+            {
+                "text": "{jumpIf:detention_center_done,Detention_Center_Default,Detention_Center_Start}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Default": [
+            {
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{startBGM:detentionCenter}{topicUnlock:Detention_Incident}{topicUnlock:Detention_Don}{topicUnlock:Detention_Yumi}{topicUnlock:Detention_Outfit}{showTextbox}{skip:0}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Start": [
+            {
+                "text": "{bg:DetentionCenter}{fg:Detention_Bars}{center}{color:lime}{blip:3}{showTextbox}November 21st - Some time{nl}Detention Center{color:white}{p:800}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Mareka!"
+            },
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Sweating\"]}{hideCharacter}{fadeInCharacter:400}{startBGM:detentionCenter,true}{showTextbox}{blip:2}Phoenix!{nl}I've been waiting for you!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}This is quite a situation..."
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Normal\"]}{blip:2}I know, right?{nl}What's going on with all this?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}Do you remember Yusaku?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Yes, of course."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(He was so timid... completely opposite of Mareka)"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Normal\"]}{blip:2}Well, Yusaku came to visit just a while ago...{nl}but he was so upset..."
+            },
+            {
+                "name": "Mareka",
+                "text": "He lost consciousness on his way home and ended up in the hospital..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}What?! Is he okay?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Sweating\"]}{blip:2}Yeah, it wasn't anything serious they said... but still..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Poor Yusaku...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Wait a minute, Mareka. When did you become an actress?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}Oh, well... it's a long story.{nl}But Phoenix, help me out here!"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}I know I love the thrill of things,{nl}I still can't stop speeding on my bike, and my spending habits haven't improved."
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"SmilingWide\"]}But if I was going to kill someone, I'd do it out in the open!"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}I'd never do something cowardly like making it look like an accident!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}I know that. That's why I'm{nl}going to prove your innocence with all my might. Tell me everything!"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}Okay. Ask me anything!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, what should I ask about...){color:white}{setAction:talk,true}{topicUnlock:Detention_Incident}{topicUnlock:Detention_Don}{topicUnlock:Detention_Yumi}{topicUnlock:Detention_Outfit}{setState:detention_intro_done,true}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Incident_Init": [
+            {
+                "text": "{jumpIf:talked_detention_incident,Talk_Detention_Incident_Repeat,Talk_Detention_Incident_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Incident_Intro": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{showEvidenceIcon:left,Yumi}{blip:2}I was rehearsing the scene where I{nl}hit Yumi with a vase."
+            },
+            {
+                "name": "Mareka",
+                "text": "But it wasn't a real vase, it was a prop.{nl}It had glow-in-the-dark paint on it so you could see it even in the dark."
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Sweating\"]}I raised it just like the script said, and Yumi{nl}guarded with her left arm like always. But today,{nl}blood came pouring from her head."
+            },
+            {
+                "name": "Mareka",
+                "text": "I called for an ambulance by hooking my harness{nl}to a wire and climbing out of the cage."
+            },
+            {
+                "name": "Mareka",
+                "text": "I turned on the lights in the venue, called from the locker room,{nl}waited for the ambulance at the entrance... and when I came back, she was dead."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{hideEvidenceIcon}{blip:0,true}{color:white}Yes, I understand.{nl}Is there anything else that seemed odd?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}{blip:2}But the thing is, her body was found{nl}right next to the cage."
+            },
+            {
+                "name": "Mareka",
+                "text": "Since the cage is part of the costume,{nl}she would never take it off."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0,false}(I've got the gist of her testimony.{nl}Time to look for contradictions){color:white}{setState:talked_detention_incident,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Incident_Repeat": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}I'm telling you, I just called the ambulance.{nl}That's the truth.{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Don_Init": [
+            {
+                "text": "{jumpIf:talked_detention_don,Talk_Detention_Don_Repeat,Talk_Detention_Don_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Don_Intro": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Smiling\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}Don is lying."
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"SmilingWide\"]}He said I hit Yumi on the head,{nl}but I hit her on the arm!"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}Actually, I've had a dream about becoming an actress{nl}since I was young. I was in a small theater group."
+            },
+            {
+                "name": "Mareka",
+                "text": "Don was strong back then, smart, confident, ambitious..."
+            },
+            {
+                "name": "Mareka",
+                "text": "And he came to me and said, 'I'll inherit the talent agency.{nl}Let's take over the world together.'"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}And then...?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}{blip:2}Yeah. He charmed all the big shots in the industry{nl}and made them all like his servants."
+            },
+            {
+                "name": "Mareka",
+                "text": "DON-ISM kept expanding its operations{nl}and bought up all kinds of entertainment facilities."
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}He used to say 'The only thing I want now is Joypolis!'."
+            },
+            {
+                "name": "Mareka",
+                "text": "But Yumi, who was an executive at Joypolis,{nl}seemed opposed to Don becoming the owner..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(So there was that kind of conflict)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Conflict between the victim and Don...{nl}This is important for establishing motive){color:white}{setState:talked_detention_don,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Don_Repeat": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}I'm grateful to Don.{nl}That's why I can't believe his testimony.{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Yumi_Init": [
+            {
+                "text": "{jumpIf:talked_detention_yumi,Talk_Detention_Yumi_Repeat,Talk_Detention_Yumi_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Yumi_Intro": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Sweating\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}As you know, Yumi was one of the biggest{nl}actresses in the entertainment industry."
+            },
+            {
+                "name": "Mareka",
+                "text": "She was incomparably greater{nl}than me."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}What do you mean?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}She loved spreading rumors and ruining people.{nl}That was her specialty."
+            },
+            {
+                "name": "Mareka",
+                "text": "Even I've been troubled by false rumors about me recently..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}False rumors about what?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{blip:2}About my relationships, about Yusaku,{nl}about money... everything, really."
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}And things just got worse from there.{nl}She started selling the rumors to magazines."
+            },
+            {
+                "name": "Mareka",
+                "text": "I was facing the crisis of having to retire{nl}from the entertainment industry."
+            },
+            {
+                "name": "Mareka",
+                "text": "But actually, the person Yumi hurt the most{nl}was probably the stage manager, Usaki."
+            },
+            {
+                "name": "Mareka",
+                "text": "She'd say things like 'When I see that disgusting man,{nl}I feel like I'm going to throw up,'{nl}and she was really harsh to him."
+            },
+            {
+                "name": "Mareka",
+                "text": "He said he couldn't bear the humiliation{nl}and that he resented her."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(The victim had other people who resented her.{nl}There could be other suspects besides the accused){color:white}{setState:talked_detention_yumi,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Yumi_Repeat": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}Yumi was an amazing person.{nl}But not everyone liked her.{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Outfit_Init": [
+            {
+                "text": "{jumpIf:talked_detention_outfit,Talk_Detention_Outfit_Repeat,Talk_Detention_Outfit_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Outfit_Intro": [
+            {
+                "name": "Phoenix",
+                "text": "{hideTextbox}{sprite:Desi[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1,false}You were in that outfit during rehearsal?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{blip:2}No. During rehearsal I wore the stage costume.{nl}Yusaku brought me this one, so I changed into it."
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Smiling\"]}{blip:2}I could never wear something like this around Yumi.{nl}I had to be very careful about what I wore every day."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}What do you mean?"
+            },
+            {
+                "name": "Mareka",
+                "text": "{sprite:Desi[\"Thinking\"]}{blip:2}Yumi hated the color red.{nl}From our first meeting, she instructed me not to wear anything with red in it."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(The victim disliked the color red...{nl}The colors of clothing and props might be significant){color:white}{setState:talked_detention_outfit,true}{jump:Talk_Detention_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Outfit_Repeat": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Thinking\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}I had to be careful not to wear red every day.{sectionEnd}"
+            }
+        ],
+        "Talk_Detention_Check": [
+            {
+                "text": "{jumpIf:talked_detention_incident&talked_detention_don&talked_detention_yumi&talked_detention_outfit,Detention_Center_Complete,Detention_Center_TalkLoop}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_TalkLoop": [
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}{blip:0,false}(Alright, what should I ask about...){color:white}{sectionEnd}"
+            }
+        ],
+        "Detention_Center_Complete": [
+            {
+                "name": "Mareka",
+                "text": "{hideTextbox}{sprite:Desi[\"Sweating\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:2}I'm telling you again, I didn't do it.{nl}I'm counting on you for tomorrow's trial."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Yes."
+            },
+            {
+                "name": "Phoenix",
+                "text": "We'll secure a not guilty verdict no matter what."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}For Yusaku's sake too,{nl}I'll bring you good news."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Once we have all the information, we'll head to court.{nl}That's where we'll make everything clear!){color:white}{setState:detention_center_done,true}{setAction:talk,false}{playSound:jingle}{jump:Demo_Ending}{sectionEnd}"
+            }
+        ],
+        "Demo_Ending": [
+            {
+                "text": "{hideTextbox}{sprite:Desi[\"SmilingWide\"]}{p:1000}{fadeOutBg:1000}{p:1000}{hideCharacter}{bg:GameOver}{fadeInBg:1000}{p:1000}{showTextbox}{center}Investigation on this device has concluded.{nl}Please hand over to the next person.{sectionEnd}"
+            }
+        ]
+    }
+}

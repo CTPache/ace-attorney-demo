@@ -1,0 +1,436 @@
+{
+    "initialSection": "Dressing_Room_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": true,
+        "present": false
+    },
+    "Topics": {
+        "Don_Yumi": {
+            "text": "About Yumi",
+            "label": "Talk_Don_Yumi_Init"
+        },
+        "Don_Incident": {
+            "text": "The Situation at the Time of the Incident",
+            "label": "Talk_Don_Incident_Init"
+        },
+        "Don_Mareka": {
+            "text": "Relationship with Mareka",
+            "label": "Talk_Don_Mareka_Init"
+        },
+        "Don_Costume": {
+            "text": "About the Costume",
+            "label": "Talk_Don_Costume_Init"
+        }
+    },
+    "move": [
+        {
+            "label": "Ring",
+            "target": "Ring_Init",
+            "preview": "Don_Cage",
+            "json": "assets/scenes/Don/EN/Investigation1/ring.json"
+        }
+    ],
+    "gameScript": {
+        "Dressing_Room_Init": [
+            {
+                "text": "{jumpIf:dressing_room_done,Dressing_Room_Default,Dressing_Room_Start}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_Start": [
+            {
+                "text": "{bg:DressingRoom}{startBGM:investigation}{topicUnlock:Don_Yumi}{topicUnlock:Don_Incident}{topicUnlock:Don_Mareka}{topicUnlock:Don_Costume}{skip:0}{sectionEnd}"
+            },
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:1}(Hmm...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(On television, he's always so arrogant... but...){color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(He's exactly the same in person as he is on TV.){color:white}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}I'm Phoenix Wright, attorney at law. Is Mr. Don available?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Wow... he's really big...){color:white}"
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}Ah, welcome! So you're Phoenix Wright. I've heard the rumors."
+            },
+            {
+                "name": "Don",
+                "text": "They say you believe your clients are innocent, and no matter how cornered you become, you manage to turn things around."
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Smiling\"]}Quite the capable attorney, I'd say."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(In person, he has even more presence than on TV...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(I didn't realize I had such a good reputation. All this hard work has paid off...){color:white}"
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Smiling\"]}{blip:1}It's only natural. It's understandable that Edgeworth holds you in high regard."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Entertainment industry and the legal world... I wouldn't think they'd overlap, but he seems well-informed.){color:white}"
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Normal\"]}{blip:1}So you're the defense attorney this time, and Edgeworth is the prosecutor."
+            },
+            {
+                "name": "Don",
+                "text": "Well then, not a bad lineup at all."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}You know Edgeworth as well?"
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}I'm the don of the entertainment industry."
+            },
+            {
+                "name": "Don",
+                "text": "The police and legal world are no exception."
+            },
+            {
+                "name": "Don",
+                "text": "I'm a busy man. If you're here to listen to my account, then let's begin."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, what should I ask about...){color:white}{topicUnlock:Don_Yumi}{topicUnlock:Don_Incident}{topicUnlock:Don_Mareka}{topicUnlock:Don_Costume}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Yumi_Init": [
+            {
+                "text": "{jumpIf:talked_don_yumi,Talk_Don_Yumi_Repeat,Talk_Don_Yumi_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Yumi_Intro": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Yumi was one of Japan's top actresses, blessed with wealth, status, and honor."
+            },
+            {
+                "name": "Don",
+                "text": "She also served as a board member of this amusement park alongside me."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}A board member? That's impressive."
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}However, Yumi's terrible personality was equally top-tier."
+            },
+            {
+                "name": "Don",
+                "text": "Her hobby was spreading rumors, and she enjoyed watching others fall from heaven to hell."
+            },
+            {
+                "name": "Don",
+                "text": "Recently, she'd been spreading all sorts of rumors about Mareka, who was rising in popularity."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Is that so..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, what should I ask about...){color:white}{setState:talked_don_yumi,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Yumi_Repeat": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Yumi's bad reputation was endless. She had accumulated quite a bit of karma.{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Incident_Init": [
+            {
+                "text": "{jumpIf:talked_don_incident,Talk_Don_Incident_Repeat,Talk_Don_Incident_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Incident_Intro": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}At the time of the incident, I was watching Mareka and Yumi's rehearsal from beside the ring."
+            },
+            {
+                "name": "Don",
+                "text": "Neither of them seemed to notice I was there."
+            },
+            {
+                "name": "Don",
+                "text": "Those present around the ring at the time were..."
+            },
+            {
+                "name": "Don",
+                "text": "Just the three of us."
+            },
+            {
+                "name": "Don",
+                "text": "It was around 7:51 when it happened, right after the rehearsal began."
+            },
+            {
+                "name": "Don",
+                "text": "Mareka struck Yumi on the head with a vase and then left the cage using a wire."
+            },
+            {
+                "name": "Don",
+                "text": "According to the script, the vase should have broken with a light sound."
+            },
+            {
+                "name": "Don",
+                "text": "When Yumi saw this, she would realize that Mareka was her long-lost sister,"
+            },
+            {
+                "name": "Don",
+                "text": "and then they would begin an emotional fight scene with tears of joy."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(What exactly are you saying...?){color:white}"
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"PeekGlasses\"]}The vase that Mareka swung made a dull thud and took Yumi's life."
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Normal\"]}When I peered through the cage, Yumi lay motionless."
+            },
+            {
+                "name": "Don",
+                "text": "A broken vase lay beside her."
+            },
+            {
+                "name": "Don",
+                "text": "Mareka must have prepared a real vase beforehand and intended to kill her during the rehearsal."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Wait a moment. That contradicts Mareka's testimony..."
+            },
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"FixGlasses\"]}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}{blip:1}Glare!"
+            },
+            {
+                "name": "Don",
+                "text": "Are you saying you don't believe my account?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}N-No, that's not what I mean..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "I understand. Please, continue with your account."
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Normal\"]}{blip:1}I left the venue to call the police. Then I reunited with Mareka and the ambulance crew."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Mareka called the ambulance?"
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}Yes. I suppose it was a cover-up attempt."
+            },
+            {
+                "name": "Don",
+                "text": "I questioned her right there. Why did she do this...?"
+            },
+            {
+                "name": "Don",
+                "text": "Then she told such an obvious lie—that she'd hit her with a prop vase."
+            },
+            {
+                "name": "Don",
+                "text": "A real vase and a prop vase have different weights. She couldn't possibly have confused them."
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"PeekGlasses\"]}In other words, it was intentional murder."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, what should I ask about...){color:white}{setState:talked_don_incident,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Incident_Repeat": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}Mareka intentionally prepared a real vase. That much is certain.{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Mareka_Init": [
+            {
+                "text": "{jumpIf:talked_don_mareka,Talk_Don_Mareka_Repeat,Talk_Don_Mareka_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Mareka_Intro": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}I first met Mareka at a small theater on the weekend. It was her stage debut."
+            },
+            {
+                "name": "Don",
+                "text": "Watching her performance, I knew immediately. This woman would conquer the world."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}You can tell something like that?"
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Smiling\"]}{blip:1}Of course. I am the don of the entertainment industry."
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Normal\"]}I saw her talent and scouted her myself, and yet..."
+            },
+            {
+                "name": "Don",
+                "text": "Mareka threw it all away. Such a foolish woman."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, what should I ask about...){color:white}{setState:talked_don_mareka,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Mareka_Repeat": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}I've lost all faith in Mareka. That's all there is to it.{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Costume_Init": [
+            {
+                "text": "{jumpIf:talked_don_costume,Talk_Don_Costume_Repeat,Talk_Don_Costume_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Costume_Intro": [
+            {
+                "name": "Phoenix",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:0,true}{color:white}There are multiple copies of that costume. Are those from the stage production?"
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}Costumes get torn and stained. So we have several identical copies."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(If one was being worn during the performance... then what happened to the other one...?)}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(That's strange. I should make a note of this.){p:300}{flash}{playSound:cling}{color:white}{addEvidence:MissingCostume}{showEvidenceIcon:right,MissingCostume}{p:1500}{hideEvidenceIcon}{setState:talked_don_costume,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Costume_Repeat": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}If you want to know about costumes, ask the stage manager.{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Check": [
+            {
+                "text": "{jumpIf:talked_don_yumi&talked_don_incident&talked_don_mareka&talked_don_costume,Dressing_Room_Complete,Dressing_Room_TalkLoop}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_TalkLoop": [
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, what should I ask about...){color:white}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_Complete": [
+            {
+                "name": "Don",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}I think that's enough. I'm a busy man."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Thank you very much."
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Smiling\"]}{blip:1}Phoenix, I'm counting on you. Make tomorrow's trial a good one."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(But Don testified that Mareka committed murder...)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(So why does he expect me, Mareka's defense attorney, to do well?)"
+            },
+            {
+                "name": "Don",
+                "text": "{sprite:Don[\"Normal\"]}{blip:1}Oh yes. And watch out for the paint."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}Paint...?"
+            },
+            {
+                "name": "Don",
+                "text": "{blip:1}A stagehand named Usaki is making a sign somewhere,"
+            },
+            {
+                "name": "Don",
+                "text": "and he's been putting an unusual amount of effort into it."
+            },
+            {
+                "name": "Don",
+                "text": "He bought special acrylic paint and has been trying to create an original marbled color for the past few days."
+            },
+            {
+                "name": "Don",
+                "text": "That special paint takes a long time to dry. Don't touch it if you find it."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,true}{color:white}I understand. I'll be careful. Thank you."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(I think I've gathered all the information I needed.)"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{color:lightblue}(Once I have all the pieces together, I'll head to the courtroom and reveal the truth!)"
+            },
+            {
+                "text": "{setState:dressing_room_done,true}{setAction:talk,false}{jump:Dressing_Room_Default}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

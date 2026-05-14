@@ -1,0 +1,1137 @@
+{
+    "initialSection": "Intro_Init",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "options": {
+        "Uzai_Word_Choice": {
+            "name": "ナルホド",
+            "text": "（パニックを起こした被害者に、証人がかけたコトバは････）{nl}ぼくのコタエを示そう",
+            "options": [
+                {
+                    "text": "こっちにおいで",
+                    "label": "Uzai_Word_Choice_Correct"
+                },
+                {
+                    "text": "そのまま寝ていて",
+                    "label": "Uzai_Word_Choice_Wrong"
+                },
+                {
+                    "text": "救急車を呼んでくる",
+                    "label": "Uzai_Word_Choice_Wrong"
+                }
+            ],
+            "time": [
+                "12",
+                "Uzai_Word_Choice_Wrong"
+            ]
+        },
+        "Don_Entry_Choice": {
+            "name": "ナルホド",
+            "text": "（独雲さんがリングに入った方法････それは････）{nl}ぼくのコタエを示そう",
+            "options": [
+                {
+                    "text": "下から金網を持ち上げて入った",
+                    "label": "Don_Entry_Choice_Correct"
+                },
+                {
+                    "text": "ワイヤーで持ち上げられて入った",
+                    "label": "Don_Entry_Choice_Wrong"
+                },
+                {
+                    "text": "最初から中に隠れていた",
+                    "label": "Don_Entry_Choice_Wrong"
+                }
+            ],
+            "time": [
+                "12",
+                "Don_Entry_Choice_Wrong"
+            ]
+        }
+    },
+    "courtroom": {
+        "views": {
+            "overview": {
+                "background": "CourtOverview"
+            },
+            "stands": {
+                "background": "CourtStands",
+                "positions": {
+                    "defense": "defense",
+                    "witness": "witness",
+                    "prosecution": "prosecution"
+                }
+            },
+            "cocounsel": {
+                "background": "CourtCoCounsel"
+            },
+            "judge": {
+                "background": "CourtJudge"
+            }
+        },
+        "slots": {
+            "defense": {
+                "character": "Phoenix"
+            },
+            "prosecution": {
+                "character": "Edgeworth"
+            },
+            "witness": {
+                "character": "Don"
+            },
+            "judge": {
+                "character": "Judge"
+            },
+            "cocounsel": {
+                "character": "Maya"
+            },
+            "gallery": {
+                "character": "Gallery"
+            }
+        }
+    },
+    "characters": {
+        "Phoenix": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking_talking.gif"
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing_talking.gif"
+            },
+            "Sweating": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined_talking.gif"
+            },
+            "HoldingDocument": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document_talking.gif"
+            },
+            "Objecting": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Objecting.gif",
+                "time": 600
+            },
+            "SlamDesk": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Slamming_bench.gif",
+                "time": 600
+            }
+        },
+        "Edgeworth": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_2.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_talking_2.gif"
+            },
+            "Confident2": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident_talking.gif"
+            },
+            "Holding_Doc": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document_talking.gif"
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking_talking.gif"
+            },
+            "Dismayed": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined_talking.gif"
+            },
+            "Slamming_Bench": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Slamming_desk.gif",
+                "time": 600
+            },
+            "Wagging_finger": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Wagging_his_finger.gif",
+                "time": 2000
+            }
+        },
+        "Judge": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Judge/Judge-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Normal-2-HD.webp"
+            },
+            "Stern": {
+                "default": "assets/img/characters/Common/Judge/Judge-Stern-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Stern-2-HD.webp"
+            },
+            "Surprised": {
+                "default": "assets/img/characters/Common/Judge/Judge-Surprised-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Surprised-2-HD.webp"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Judge/Judge-Thinking-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Thinking-2-HD.webp"
+            },
+            "Nod": {
+                "default": "assets/img/characters/Common/Judge/Judge-Nod-HD.webp",
+                "time": 600
+            }
+        },
+        "Maya": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Normal-2-HD.webp"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-2-HD.webp"
+            },
+            "Worried": {
+                "default": "assets/img/characters/Common/Maya/Maya-Worried-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Worried-2-HD.webp"
+            },
+            "Happy": {
+                "default": "assets/img/characters/Common/Maya/Maya-Happy-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Happy-2-HD.webp"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Maya/Maya-Determined-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Determined-2-HD.webp"
+            }
+        },
+        "Gallery": {
+            "Normal": {
+                "default": "assets/img/sprites/Courtroom_gallery_speak.webp",
+                "talking": "assets/img/sprites/Courtroom_gallery_speak.webp"
+            }
+        },
+        "Desi": {
+            "Smiling": {
+                "default": "assets/img/characters/Don/Desi/Desir_e-Smiling-1-HD.webp",
+                "talking": "assets/img/characters/Don/Desi/Desir_e-Smiling-2-HD.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "CourtOverview": "assets/img/backgrounds/Common/Courtroom_overview.webp",
+        "CourtStands": {
+            "background": "assets/img/backgrounds/Common/Courtroom_full.webp",
+            "foreground": "assets/img/backgrounds/Common/Courtroom_full_foreground.webp",
+            "positions": {
+                "default": "witness",
+                "defense": [
+                    0,
+                    0
+                ],
+                "witness": [
+                    -200,
+                    0
+                ],
+                "prosecution": [
+                    -400,
+                    0
+                ]
+            }
+        },
+        "CourtCoCounsel": "assets/img/backgrounds/Common/Courtroom_defense_bench.png",
+        "CourtJudge": "assets/img/backgrounds/Common/Courtroom_judge.webp",
+        "Lobby": "assets/img/backgrounds/Common/Courtroom_lobby.png",
+        "Yumi_back": "assets/img/CG/Don/Yumi_Dead.png"
+    },
+    "music": {
+        "lobby": [
+            "assets/audio/bgm/bgm008.m4a",
+            "assets/audio/bgm/bgm008lp.m4a"
+        ],
+        "courtroom": [
+            "assets/audio/bgm/bgm013.m4a",
+            "assets/audio/bgm/bgm013lp.m4a"
+        ],
+        "interrogatory_moderato": [
+            "assets/audio/bgm/bgm010.m4a",
+            "assets/audio/bgm/bgm010lp.m4a"
+        ],
+        "interrogatory_alegro": "assets/audio/bgm/bgm011.m4a",
+        "objection": [
+            "assets/audio/bgm/bgm004.m4a",
+            "assets/audio/bgm/bgm004lp.m4a"
+        ],
+        "tension": [
+            "assets/audio/bgm/bgm018.m4a",
+            "assets/audio/bgm/bgm018lp.m4a"
+        ]
+    },
+    "crossExaminations": {
+        "Don_Testimony_1": {
+            "witnessName": "ドン",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}まれかは小道具のツボで殴ったと言ってるが、{nl}そもそもリングにそんなものはなかった。",
+                    "press": "Press_Don_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}舞台の隅々まで見ていた。{nl}私の視力は3.0だ。",
+                    "press": "Press_Don_1"
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}私の視力は3.0だ。見えないものはない。",
+                    "press": "Press_Don_2"
+                },
+                "3": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}事件当時、私はリングの側で{nl}まれかと由美のリハーサルを見ていた。",
+                    "press": "Press_Don_3"
+                },
+                "4": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}由美は倒れて動かなくなった。{nl}その足元を私が見落とすはずがない。",
+                    "press": "Press_Don_4",
+                    "present": {
+                        "GlowingFragment": "Don_Evidence_Reveal"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_moderato,true}{jump:Don_Hint_1}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "hints"
+            ]
+        },
+        "Don_Testimony_2": {
+            "witnessName": "ドン",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}事件当時、私は現場の近くで事務作業をしていた。",
+                    "press": "Press_Don_2_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}その時間、リングの中には誰もいない。{nl}私にはそう見えた。",
+                    "press": "Press_Don_2_1"
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}光るカケラだの血糊だの、{nl}そんな細かいものは見逃していない。",
+                    "press": "Press_Don_2_2"
+                },
+                "3": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}舞台監督の宇在という男も、{nl}ただ調光室にいただけだ。",
+                    "press": "Press_Don_2_3",
+                    "present": {
+                        "MissingCostume": "Uzai_Entrance"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_alegro,true}{jump:Don_Hint_2}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "hints"
+            ]
+        },
+        "Uzai_Testimony_1": {
+            "witnessName": "ウザイ",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}昨日は現場の調光室から事件の一部始終を見ていたよ。",
+                    "press": "Press_Uzai_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}リングに近づいてみると、彼女はピクリとも動いていなかった。",
+                    "press": "Press_Uzai_1"
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}ダレもいなかったよ。被害者とボクだけだった。",
+                    "press": "Press_Uzai_2"
+                },
+                "3": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}外からでも亡くなっていたのは分かったから{nl}金網の中には入らなかったんだ。",
+                    "press": "Press_Uzai_3",
+                    "present": {
+                        "Belt": "Uzai_Belt_Contradiction"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_moderato,true}{jump:Uzai_Hint_1}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "hints"
+            ]
+        },
+        "Don_Final_Testimony": {
+            "witnessName": "ドン",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}この国は娯楽が牛耳っている。それは裁判も同じ。",
+                    "press": "Press_Don_Final_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}断言しよう。私がやったという証拠はどこにもない!",
+                    "press": "Press_Don_Final_1",
+                    "present": {
+                        "Vase": "Don_Cornered"
+                    }
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}私は150キロだ。ワイヤーの重量制限は140キロ。{nl}つまりリングに入るのは不可能なのだ!",
+                    "press": "Press_Don_Final_2",
+                    "present": {
+                        "Fence": "Don_Entry_Choice_Start"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_alegro,true}{jump:Don_Final_Hint}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "hints"
+            ]
+        }
+    },
+    "gameScript": {
+        "Intro_Init": [
+            {
+                "text": "{jumpIf:trial_intro_done,Courtroom_Opening,Intro_Start}{sectionEnd}"
+            }
+        ],
+        "Intro_Start": [
+            {
+                "text": "{bg:Lobby}{showTextbox}{center}{color:lime}{blip:3}11月22日{nl}地方裁判所 午前10時 第1法廷{color:white}{p:1200}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1}そして、まれかさんは被害者が腕から出血するのを見たらしいんだケド････"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}(さあ、裁判が始まるぞ。もう1度確認しておいたほうがいいな)"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{fadeInCharacter}{sprite:Maya[\"Normal\"]}{blip:2}なるほどくん、{p:150}今日は長くなりそうだね。"
+            },
+            {
+                "text": "{setState:trial_intro_done,true}{fadeOutBg:400}{jump:Courtroom_Opening}{sectionEnd}"
+            }
+        ],
+        "Courtroom_Opening": [
+            {
+                "text": "{setSkipEnabled:true}{hideTextbox}{p:500}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playAnimation:Gavel}{skip:0}{sectionEnd}"
+            },
+            {
+                "name": "サイバンチョ",
+                "text": "{showTextbox}{setSkipEnabled:true}{startBGM:courtroom,true}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}これより天杉 希華の法廷を開廷します。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}検察側、準備完了しております。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:1}弁護側、準備完了しております。"
+            },
+            {
+                "name": "サイバンチョ",
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}それでは御剣検事、冒頭弁論をお願いします。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Holding_Doc\"]}{courtView:prosecution}{blip:1}被告人・天杉 希華は事件当時、ツボで被害者を殴ったと認めている。{nl}死亡推定時刻は午後7時20分から8時12分の間。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "何しろ被告人はすでにジハクしているのだからな。"
+            },
+            {
+                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection_JP}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:300}{showTextbox}{blip:1}ツボはツボでも、被告人は小道具のツボで殴ったと言っている！"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}そもそも小道具と本物のツボを間違えるワケがない。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "つまり、全て被告人の作り話なのだ。"
+            },
+            {
+                "text": "{setState:court_intro_done,true}{jump:First_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "First_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,1}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{showTextbox}{blip:0,false}{center}{color:red}～独雲の証言～{playAnimation:CrossExamination}{startCE:Don_Testimony_1}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Don_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}その証言、ほんとうですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}私を疑うのか？{nl}私がいたと言えば、私はいたのだ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}なら、リングに小道具のツボは本当に無かったんですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}当然だ。{nl}証拠はどこにもない。"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Don_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}舞台の隅々まで見ていた、と言いましたね。"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}私は世界のドンだ。{nl}見えないものはない。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}視力3.0なら、暗い場所でも見えたと？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Smiling\"]}{courtView:witness}当然だ。"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}どうしてそんなに自信満々なんですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"FixGlasses\"]}{courtView:witness}私の視力は3.0だ。{nl}それが理由だ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}3.0って、本当にそんなに見えるんですか……"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Press_Don_3": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}現場が暗くなっていた時間のことは？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}私はリングの側で{nl}まれかと由美のリハーサルを見ていた。"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}だから、隅々までハッキリ見えたのだ。"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:4}{sectionEnd}"
+            }
+        ],
+        "Press_Don_4": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtPan:defense}{blip:1,true}本当に見落としたんですか？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{showEvidenceIcon:right,GlowingFragment}{blip:1}この証拠品を見てください！"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:500}{fadeOutBg:500}{jump:Don_Evidence_Reveal}{sectionEnd}"
+            }
+        ],
+        "Don_Evidence_Reveal": [
+            {
+                "text": "{bg:Don_Cage}{startBGM:objection}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}写真の隅に、割れた小道具のツボの破片がしっかりと写っています！"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}ぐおおおおおおおっ！"
+            },
+            {
+                "name": "サイバンチョ",
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}確かに、写真にはツボの破片が写っていますな。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}どうやら証人は、足元がお留守だったようだな。"
+            },
+            {
+                "text": "{setState:don_ce1_done,true}{jump:Second_Opening}{sectionEnd}"
+            }
+        ],
+        "Don_Hint_1": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（リングの破片は、まだ別の意味を持っているはずだ）"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Second_Opening": [
+            {
+                "text": "{bg:CourtOverview}{showTextbox}{center}{color:lime}{blip:3}11月22日{nl}地方裁判所 午前10時 第1法廷{color:white}{p:1000}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（まだ終わりじゃない。{nl}ここからが本番だ）"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Confident2\"]}{courtView:prosecution}{blip:1}仮にツボが復元できたとしても、{nl}被告人が使ったツボとは断言できない。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}イヤ、断言できるんだよ。"
+            },
+            {
+                "name": "サイバンチョ",
+                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}むむ？ それでどう、キチンと説明すると？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}独雲さん、あなたはさっき証言しましたね。{nl}舞台の隅々まで見ていたと。"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}その通りだ、成歩堂。ジツは私は現場を見ていなかった。"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Smiling\"]}{courtView:witness}ウソをついたコトを告白しよう。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}えええっ!"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Slamming_Bench\"]}{courtView:prosecution}{blip:1}待て。被告人の殺害を目撃した人物はもう1人いる。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "事件当時、調光室にいた舞台監督、宇在拓也だ。"
+            },
+            {
+                "text": "{setState:trial_second_open,true}{jump:Second_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Second_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,2}{courtView:witness}{checkpoint:Second_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{showTextbox}{blip:0,false}{center}{color:red}～後半の証言～{playAnimation:CrossExamination}{startCE:Don_Testimony_2}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}事務作業をしていた、というのは？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}現場の近くだ。{nl}見ていなかったとは言っていない。"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}本当に、誰もリングの中に入れなかったんですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}私は見ていない。{nl}それで十分だろう。"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}光るカケラと血糊を見逃していない、と？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"FixGlasses\"]}{courtView:witness}当然だ。{nl}見えないものはない。"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_3": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}調光室から見ていた、ということですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}そうだ。{nl}私はそこにいた。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}……その時点で、{p:150}本当に全体が見えていたと？"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:4}{sectionEnd}"
+            }
+        ],
+        "Don_Hint_2": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(宇在さんか独雲さんのどちらかがハンニンということになるぞ)"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Uzai_Entrance": [
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtChar:witness,Uzai}{courtSprite:witness[\"Normal\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{blip:1}証人。あなたこそはホントに殺害するトコロを目撃したのでしょうな?"
+            },
+            {
+                "name": "ウザイ",
+                "text": "{courtSprite:witness[\"Angry\"]}{courtView:witness}{blip:1}もお、シッケイだなぁ! ホントに決まっているだろぅ!"
+            },
+            {
+                "text": "{jump:Uzai_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Uzai_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Uzai}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,3}{courtView:witness}{checkpoint:Uzai_Testimony_Start}{showTextbox}{blip:0,false}{center}{color:red}～宇在の証言～{playAnimation:CrossExamination}{startCE:Uzai_Testimony_1}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:1}調光室からなら、リング全体が見えたんですね?"
+            },
+            {
+                "name": "ウザイ",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}見えたよ。だから一部始終を見ていたんだ。"
+            },
+            {
+                "text": "{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}そのとき現場に他のヒトは?"
+            },
+            {
+                "name": "ウザイ",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}ダレもいなかったよ。被害者とボクだけだった。"
+            },
+            {
+                "text": "{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:1}救助もナニもせず、断定して合掌したんですか?"
+            },
+            {
+                "name": "ウザイ",
+                "text": "{courtSprite:witness[\"Sweating\"]}{courtView:witness}そ、そおだけど?"
+            },
+            {
+                "text": "{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_3": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}宇在さん、あなた本当に金網の中に入らなかったんですか?"
+            },
+            {
+                "name": "ウザイ",
+                "text": "{courtSprite:witness[\"Angry\"]}{courtView:witness}ナニを言い出すんだよぅ。ボクは金網の外から見ていただけっ!"
+            },
+            {
+                "text": "{returnToCE:4}{sectionEnd}"
+            }
+        ],
+        "Uzai_Hint_1": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}（宇在さんの服のペンキと、被害者ベルトの付着物が一致する）"
+            },
+            {
+                "text": "{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Uzai_Belt_Contradiction": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{startBGM:objection,true}{blip:1}宇在さん、あなたは全身マーブル模様のペンキまみれですね。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "被害者の側に落ちていたこのベルトにも同じ色のペンキがついている!"
+            },
+            {
+                "name": "ウザイ",
+                "text": "{courtSprite:witness[\"Sweating\"]}{courtView:witness}{blip:1}えっ? そ、そんなの知らないなぁ!"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"SlamDesk\"]}{courtView:defense}{blip:1}調べれば同じペンキであるコトはわかるんですから!"
+            },
+            {
+                "text": "{option:Uzai_Word_Choice}{sectionEnd}"
+            }
+        ],
+        "Uzai_Word_Choice_Correct": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}あなたは被害者に『こっちにおいで』と言い、{nl}ベルトを受け取って中へ入ったんだ。"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}由美はベルトを金網の目から通して渡したのだろうな。"
+            },
+            {
+                "name": "ウザイ",
+                "text": "{courtChar:witness,Uzai}{courtSprite:witness[\"Sweating\"]}{courtView:witness}{blip:1}うお、うおおお････。"
+            },
+            {
+                "name": "ウザイ",
+                "text": "････こういう風に証言しろって頼まれただけだし。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Dismayed\"]}{courtView:prosecution}{blip:1}････なんだと?"
+            },
+            {
+                "text": "{jump:Don_Recalled}{sectionEnd}"
+            }
+        ],
+        "Uzai_Word_Choice_Wrong": [
+            {
+                "name": "サイバンチョ",
+                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}････マッタク動けないヒトに対して、金網の外に出てこいと言ったのですか?"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{courtSprite:cocounsel[\"Worried\"]}{courtView:cocounsel}{blip:2}だって････そんなコトバからどうやって宇在さんが金網の中に入る展開になるの?"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}････だ、だよね。考え直したほうがよさそうだ。"
+            },
+            {
+                "text": "{jump:Uzai_Belt_Contradiction}{sectionEnd}"
+            }
+        ],
+        "Don_Recalled": [
+            {
+                "name": "サイバンチョ",
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}独雲さん。もう一度、証言台へ。"
+            },
+            {
+                "name": "ドン",
+                "text": "私をこのような目に遭わせたコトを後悔させてやる。無様な生き恥を曝すがイイ。"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{courtSprite:cocounsel[\"Worried\"]}{courtView:cocounsel}{blip:2}なんかバカにされてる感じ････"
+            },
+            {
+                "text": "{jump:Don_Final_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Don_Final_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,4}{courtView:witness}{checkpoint:Don_Final_Testimony_Start}{showTextbox}{blip:0,false}{center}{color:red}～真犯人の証言～{playAnimation:CrossExamination}{startCE:Don_Final_Testimony}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Don_Final_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}そんなコトはない! ぼくはあなたなんかにひれ伏さない!"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Laughing\"]}{courtView:witness}{blip:1}いいや、ひれ伏すことになる。"
+            },
+            {
+                "text": "{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Don_Final_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}証拠はあります!"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}ない。ゼッタイにない。断言してもイイ!"
+            },
+            {
+                "text": "{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Don_Final_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}ワイヤーの重量制限が140キロ････"
+            },
+            {
+                "name": "ドン",
+                "text": "つまり、私はリングの中には入れない!"
+            },
+            {
+                "text": "{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Don_Final_Hint": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(よし、この証言にぶつけてやるんだ････独雲さんの犯行を示す証拠品を!)"
+            },
+            {
+                "text": "{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Don_Cornered": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{startBGM:objection,true}{blip:1}口の部分が粉々になっているツボ。これこそアキラカな証拠です!"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}凶器のツボにはダレの指紋もついていなかった。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "あなたは宇在さんに証言を強要できても、ツボを握らせるコトはできなかった。"
+            },
+            {
+                "text": "{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Don_Entry_Choice_Start": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}裁判長! 独雲さんがリングに入った方法がわかりました!"
+            },
+            {
+                "text": "{option:Don_Entry_Choice}{sectionEnd}"
+            }
+        ],
+        "Don_Entry_Choice_Correct": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}下から金網を持ち上げて入ったんです。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "有刺鉄線が1ヶ所、微かですが上に曲がっている。{nl}そこにベルトを引っかけた証拠です!"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}{blip:1}ぐうううううううううっ!"
+            },
+            {
+                "text": "{jump:Don_Defeat}{sectionEnd}"
+            }
+        ],
+        "Don_Entry_Choice_Wrong": [
+            {
+                "name": "マレカ",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}アタシのベルトで金網の中に入って、舞台監督としてセットとか作ってたし。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}････そ、そうですよね。そこまで太ってはいないですよね。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}スミマセン、裁判長。もう一度、考えさせてください。"
+            },
+            {
+                "text": "{jump:Don_Entry_Choice_Start}{sectionEnd}"
+            }
+        ],
+        "Don_Defeat": [
+            {
+                "name": "ナルホド",
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}まれかさんは救急隊を迎えに行った。{nl}それが、あなたの計画だったんだ!"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}{blip:1}なんたる失策……… 一片の曇りなき、完璧な計画だったのに････"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{courtSprite:prosecution[\"Determined\"]}{courtView:prosecution}{blip:1}シンジツを追究する信念と、被告人を最後まで信じる強い気持ち。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "それが、ぼくたちにあってあなたにないものだ!"
+            },
+            {
+                "name": "ドン",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}{blip:1}私は終わらん! こんなトコロでは終わってたまるか!"
+            },
+            {
+                "text": "{jump:Verdict_Sequence}{sectionEnd}"
+            }
+        ],
+        "Verdict_Sequence": [
+            {
+                "name": "サイバンチョ",
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}ふむ、極めて不快な裁判でしたが、最後は気持ちよく決まりましたな。"
+            },
+            {
+                "text": "{setSkipEnabled:false}{hideTextbox}{playAnimation:NotGuilty_JP}{courtView:overview}{playAnimation:Confetti}{setSkipEnabled:true}{skip:0}"
+            },
+            {
+                "name": "サイバンチョ",
+                "text": "{showTextbox}{courtSprite:judge[\"Nod\"]}{courtView:judge}{blip:1}では、これにて閉廷!"
+            },
+            {
+                "text": "{stopBGM:true}{fadeOutCharacter:900}{fadeOutBg:900}{jump:Lobby_Epilogue}{sectionEnd}"
+            }
+        ],
+        "Lobby_Epilogue": [
+            {
+                "text": "{bg:Lobby}{fadeInBg:600}{showTextbox}{startBGM:lobby,true}{center}{color:lime}{blip:3}11月22日{nl}地方裁判所 被告人控え室{color:white}{p:800}"
+            },
+            {
+                "name": "マレカ",
+                "text": "{sprite:Desi[\"Smiling\"]}{fadeInCharacter}{blip:2}ジツはさ、独雲さんが言っていた最後のコトバが気になって･･"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{sprite:Phoenix[\"Confident\"]}{blip:1}でもそれは逆にオイシイというか････{nl}いわゆる炎上商法っていうヤツですよ。"
+            },
+            {
+                "name": "ミツルギ",
+                "text": "{hideTextbox}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:1}ああ、証人がみんなウソをついていたコトか。"
+            },
+            {
+                "name": "マヨイ",
+                "text": "{hideTextbox}{sprite:Maya[\"Happy\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:2}だってさっき、あのシーンのコト、日記に書いちゃったし。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:1}ジョイポリスは二度と事件の起きない楽しい場所になったんだから･･。"
+            },
+            {
+                "text": "{blip:0,false}{color:lightblue}(こうしてぼくらは、独雲の法廷を終えた。){sectionEnd}"
+            }
+        ],
+        "Trial_Fail": [
+            {
+                "name": "サイバンチョ",
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}弁護人、もっと落ち着いてください。"
+            },
+            {
+                "text": "{jump:Don_Final_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Trial_Placeholder_End": [
+            {
+                "text": "{jump:Lobby_Epilogue}{sectionEnd}"
+            }
+        ]
+    }
+}

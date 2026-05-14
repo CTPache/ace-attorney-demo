@@ -1,0 +1,436 @@
+{
+    "initialSection": "Dressing_Room_Init",
+    "actions": {
+        "move": true,
+        "examine": false,
+        "talk": true,
+        "present": false
+    },
+    "Topics": {
+        "Don_Yumi": {
+            "text": "由美について",
+            "label": "Talk_Don_Yumi_Init"
+        },
+        "Don_Incident": {
+            "text": "事件当時の状況",
+            "label": "Talk_Don_Incident_Init"
+        },
+        "Don_Mareka": {
+            "text": "まれかとの関係",
+            "label": "Talk_Don_Mareka_Init"
+        },
+        "Don_Costume": {
+            "text": "衣装について",
+            "label": "Talk_Don_Costume_Init"
+        }
+    },
+    "move": [
+        {
+            "label": "リング",
+            "target": "Ring_Init",
+            "preview": "Don_Cage",
+            "json": "assets/scenes/Don/JP/Investigation1/ring.json"
+        }
+    ],
+    "gameScript": {
+        "Dressing_Room_Init": [
+            {
+                "text": "{jumpIf:dressing_room_done,Dressing_Room_Default,Dressing_Room_Start}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_Start": [
+            {
+                "text": "{bg:DressingRoom}{startBGM:investigation}{topicUnlock:Don_Yumi}{topicUnlock:Don_Incident}{topicUnlock:Don_Mareka}{topicUnlock:Don_Costume}{skip:0}{sectionEnd}"
+            },
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:1}（うむ・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（テレビの中じゃ、いつもいばり散らしているけれど・・・・）{color:white}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（テレビの中と、まったく同じカンジだな。）{color:white}"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}弁護士の成歩堂ですが、こちらに独雲さんはいらっしゃいますか？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（うおお・・・・　で、デカいなあ・・・・）{color:white}"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}おお、よくきたな。{nl}・・・・成歩堂　龍一だな。噂は聞いている。"
+            },
+            {
+                "name": "ドン",
+                "text": "依頼人のムジツを信じ抜き、どんなに追い込まれても逆転する。"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Smiling\"]}かなりウデキキの弁護士らしいではないか。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（テレビで見るより　十分・・・・貫禄がある・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（ぼく、そんなに評判よかったのか。地道にがんばってきてよかった・・・・）"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Smiling\"]}{blip:1}当然だ。御剣のヤツに一目置かれているというのも頷ける。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（芸能界と法曹界・・・・接点はなさそうだけど、よく知っているな。）{color:white}"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Normal\"]}{blip:1}今回の弁護人はお前で、担当検事は御剣か。"
+            },
+            {
+                "name": "ドン",
+                "text": "うむ、悪くない布陣だ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}御剣のコトもご存じなんですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}私は芸能界のドンだからな。"
+            },
+            {
+                "name": "ドン",
+                "text": "警察や法曹界とて例外ではない。"
+            },
+            {
+                "name": "ドン",
+                "text": "私は忙しいのだ。ハナシを聞きにきたのなら始めたまえ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、どんなコトを聞こうか・・・・）{color:white}{topicUnlock:Don_Yumi}{topicUnlock:Don_Incident}{topicUnlock:Don_Mareka}{topicUnlock:Don_Costume}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Yumi_Init": [
+            {
+                "text": "{jumpIf:talked_don_yumi,Talk_Don_Yumi_Repeat,Talk_Don_Yumi_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Yumi_Intro": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}由美は日本でもトップの女優で、金も地位も名誉も持っていた。"
+            },
+            {
+                "name": "ドン",
+                "text": "私とともにこのジョイポリスの役員を務めていたしな。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ジョイポリスの役員ですか。それはスゴイですね。"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}ただ、由美は性格の悪さも日本トップ級でな。"
+            },
+            {
+                "name": "ドン",
+                "text": "由美の趣味はデマを流すコトで、他人を天国から地獄へ転落させることだった。"
+            },
+            {
+                "name": "ドン",
+                "text": "最近、人気で上り調子のまれかのデマも流しまくっていたようだ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}・・・・そうなんですか。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、どんなコトを聞こうか・・・・）{color:white}{setState:talked_don_yumi,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Yumi_Repeat": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}由美の悪評はキリがない。あれは業が深かったな。{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Incident_Init": [
+            {
+                "text": "{jumpIf:talked_don_incident,Talk_Don_Incident_Repeat,Talk_Don_Incident_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Incident_Intro": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}事件当時、私はリングの側でまれかと由美のリハーサルを見ていた。"
+            },
+            {
+                "name": "ドン",
+                "text": "まれかと由美は私のことには気付いてなかったみたいだがな。"
+            },
+            {
+                "name": "ドン",
+                "text": "そのときリングの周囲にいたのは・・・・"
+            },
+            {
+                "name": "ドン",
+                "text": "私たち３人だけだな。"
+            },
+            {
+                "name": "ドン",
+                "text": "あれは７時５１分ごろだったか、リハーサルを始めてすぐのコトだ。"
+            },
+            {
+                "name": "ドン",
+                "text": "まれかが由美のアタマをツボで殴り倒し、ワイヤーを使って金網から出ていったのだ。"
+            },
+            {
+                "name": "ドン",
+                "text": "というのも、台本通りならばツボは軽やかな音を立てて割れ、"
+            },
+            {
+                "name": "ドン",
+                "text": "そして、それを見た由美はまれかが生き別れた妹であると悟り、"
+            },
+            {
+                "name": "ドン",
+                "text": "涙ながらに最後の殴り合いを始めるという感動的なシーンになるハズだったのだ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（・・・・どういうことですか？）{color:white}"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"PeekGlasses\"]}まれかが振り下ろしたツボは「ゴン」と鈍い音を立てて、由美の命を奪った。"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Normal\"]}私が金網ごしに覗き込むと由美は倒れて動かなくなっていた。"
+            },
+            {
+                "name": "ドン",
+                "text": "由美の側には割れたツボが転がっていた。"
+            },
+            {
+                "name": "ドン",
+                "text": "まれかは事前に本物のツボを用意し、殺すつもりでリハーサルに臨んだのだろう。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ちょっと待ってください。それではまれかさんの供述とズレが・・・・。"
+            },
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"FixGlasses\"]}{hideCharacter}{flash}{fadeInCharacter}{showTextbox}{blip:1}ギロリ！"
+            },
+            {
+                "name": "ドン",
+                "text": "私のハナシを信じないというのか？"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}い、いや、そういうコトでは・・・・。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "・・・・わかりました。{nl}では、話を続けてください。"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Normal\"]}{blip:1}私は警察を呼ぶために会場を出た。そして、救急隊を連れたまれかと合流した。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}まれかさんが救急隊を連れてきたのですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}そうだ。まあ、事故に見せかけるための工作だろうな。"
+            },
+            {
+                "name": "ドン",
+                "text": "私はその場で彼女を問い詰めた。なぜこんなコトをしたのかと・・・・。"
+            },
+            {
+                "name": "ドン",
+                "text": "すると小道具のツボで殴ったなどとあまりに見え透いたウソをついたのだ。"
+            },
+            {
+                "name": "ドン",
+                "text": "本物のツボと小道具のツボでは重さが違う。間違えるなどあり得ない。"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"PeekGlasses\"]}つまり、意図的な殺人だったというコトだ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、どんなコトを聞こうか・・・・）{color:white}{setState:talked_don_incident,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Incident_Repeat": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}まれかは意図的に本物のツボを用意した。それだけは確かだ。{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Mareka_Init": [
+            {
+                "text": "{jumpIf:talked_don_mareka,Talk_Don_Mareka_Repeat,Talk_Don_Mareka_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Mareka_Intro": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}まれかと出会ったのは週末の小劇場だ。あれは彼女の初舞台だったな。"
+            },
+            {
+                "name": "ドン",
+                "text": "彼女の演技を見て、すぐにピンときた。このオンナはきっと天下を取ると。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}そういうのはわかるものなんですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Smiling\"]}{blip:1}当然だ。私は芸能界のドンだからな。"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Normal\"]}せっかくこの私が才能を見出し、スカウトしてやったというのに・・・・"
+            },
+            {
+                "name": "ドン",
+                "text": "まれかは全てをフイに振ってしまった。ホントにバカなオンナだ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、どんなコトを聞こうか・・・・）{color:white}{setState:talked_don_mareka,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Mareka_Repeat": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}まれかには失望した。以上だ。{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Costume_Init": [
+            {
+                "text": "{jumpIf:talked_don_costume,Talk_Don_Costume_Repeat,Talk_Don_Costume_Intro}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Costume_Intro": [
+            {
+                "name": "ナルホド",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:0,true}{color:white}衣装が何着もあるのですね。あの舞台の衣装ですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}衣装は破れたり汚れたりするからな。同じものがいくつもあるのだ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（１着、着ていたとすると・・・・残りの１着はどこへいったんだろう・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（なんか気になるな。メモしておこう）{p:300}{flash}{playSound:cling}{color:white}{addEvidence:MissingCostume}{showEvidenceIcon:right,MissingCostume}{p:1500}{hideEvidenceIcon}{setState:talked_don_costume,true}{jump:Talk_Don_Check}{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Costume_Repeat": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}衣装のコトなら舞台監督に聞け。{sectionEnd}"
+            }
+        ],
+        "Talk_Don_Check": [
+            {
+                "text": "{jumpIf:talked_don_yumi&talked_don_incident&talked_don_mareka&talked_don_costume,Dressing_Room_Complete,Dressing_Room_TalkLoop}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_TalkLoop": [
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、どんなコトを聞こうか・・・・）{color:white}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_Complete": [
+            {
+                "name": "ドン",
+                "text": "{hideTextbox}{sprite:Don[\"Normal\"]}{hideCharacter}{fadeInCharacter}{showTextbox}{blip:1}もうジュウブンだろう。私も暇ではないからな。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ありがとうございました。"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Smiling\"]}{blip:1}成歩堂、お前には期待している。明日はいい裁判にしてくれ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（独雲さんはまれかさんが殺人を犯したと証言しているのに・・・・）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（・・・・まれかさんの弁護人のぼくに期待するってどういうコトだ？）"
+            },
+            {
+                "name": "ドン",
+                "text": "{sprite:Don[\"Normal\"]}{blip:1}そうだ。あと、ペンキには気をつけたほうがいい。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}ペンキ・・・・ですか？"
+            },
+            {
+                "name": "ドン",
+                "text": "{blip:1}舞台監督の宇在というオトコが、どこかで看板を制作しているのだが、"
+            },
+            {
+                "name": "ドン",
+                "text": "異常なほどに気合いを入れていてな。"
+            },
+            {
+                "name": "ドン",
+                "text": "特製の水性ペンキを購入して、数日前からオリジナルのマーブル色を作ろうとしている。"
+            },
+            {
+                "name": "ドン",
+                "text": "あの特製ペンキはなかなか乾かない。見つけても触ったりするなよ。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,true}{color:white}わかりました、気をつけます。ありがとうございます。"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{blip:0,false}{color:lightblue}（よし、聞きたいコトはみんな聞けたかな）"
+            },
+            {
+                "name": "ナルホド",
+                "text": "{color:lightblue}（情報が揃ったら法廷に向かおう。そこですべてをアキラカにするんだ！）"
+            },
+            {
+                "text": "{setState:dressing_room_done,true}{setAction:talk,false}{jump:Dressing_Room_Default}{sectionEnd}"
+            }
+        ],
+        "Dressing_Room_Default": [
+            {
+                "text": "{hideTextbox}{stopBGM:true}{p:500}{hideCharacter}{fadeOutFg}{fadeBg:mayaMove}{playSound:jingle}{sectionEnd}{skip:0}"
+            }
+        ]
+    }
+}

@@ -6,3 +6,5 @@ node_modules/
 AnimTest/*
 *.xcf
 .github/
+.video-understand/*
+.venv/*
