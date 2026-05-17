@@ -27,7 +27,6 @@
    scene's CourtStands.positions data (see #courtroom-sprites-dynamic). */
 .court-sprite {
     position: absolute;
-    width: 100cqw;
     height: 100%;
     object-fit: contain;
     object-position: bottom;

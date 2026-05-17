@@ -18,7 +18,7 @@
         "LockedRoom": {
             "name": "Turnabout Locked Room",
             "cover": "assets/img/case_covers/Locked_Room_Cover.png",
-            "entry": "",
+            "entry": "investigation1",
             "Chapters": {
                 "investigation1": {
                     "name": "Investigation",
@@ -33,8 +33,17 @@
         "Don": {
             "name": "Turnabout Don",
             "cover": "assets/img/case_covers/Don_Cover.png",
-            "entry": "",
-            "Chapters": {}
+            "entry": "investigation1",
+            "Chapters": {
+                "investigation1": {
+                    "name": "Investigation",
+                    "scene": "assets/scenes/Don/Investigation1/intro.json"
+                },
+                "trial1": {
+                    "name": "Trial",
+                    "scene": "assets/scenes/Don/Trial1/trial.json"
+                }
+            }
         }
     }
 }

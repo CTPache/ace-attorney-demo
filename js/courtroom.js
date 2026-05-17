@@ -149,12 +149,30 @@ console.log("Courtroom Module Loaded");
             if (!posName) return;
 
             const pos = positions[posName];
-            if (!Array.isArray(pos) || typeof pos[0] !== 'number') return;
+            if (!pos) return;
 
-            // Background X offset is negative when panning right.
-            // Sprite left = -x so it sits at the correct viewport column.
-            const leftCqw = -pos[0];
-            css += `#sprite-${slot} { left: ${leftCqw}cqw; }\n`;
+            if (Array.isArray(pos) && typeof pos[0] === 'number') {
+                // Background X offset is negative when panning right.
+                // Sprite left = -x so it sits at the correct viewport column.
+                const leftCqw = -pos[0];
+                css += `#sprite-${slot} { left: ${leftCqw}cqw; }\n`;
+            } else if (typeof pos === 'object') {
+                // Character-specific offsets mapping: { "Phoenix": [0,0], "Maya": [-50,0] }
+                Object.keys(pos).forEach(charName => {
+                    const charPos = pos[charName];
+                    if (Array.isArray(charPos) && typeof charPos[0] === 'number') {
+                        const leftCqw = -charPos[0];
+                        css += `#sprite-${slot}[data-character="${charName}"] { left: ${leftCqw}cqw; }\n`;
+                    }
+                });
+                
+                // Add fallback to first entry
+                const firstKey = Object.keys(pos).find(k => Array.isArray(pos[k]) && typeof pos[k][0] === 'number');
+                if (firstKey) {
+                    const fallbackLeft = -pos[firstKey][0];
+                    css += `#sprite-${slot}:not([data-character]) { left: ${fallbackLeft}cqw; }\n`;
+                }
+            }
         });
 
         if (!css) return;
@@ -197,10 +215,16 @@ console.log("Courtroom Module Loaded");
         slotState = {};
         const slots = data.slots || {};
         ALL_SLOTS.forEach(slot => {
+            const initialChar = (slots[slot] && slots[slot].character) || null;
             slotState[slot] = {
-                character: (slots[slot] && slots[slot].character) || null,
+                character: initialChar,
                 emotion: null
             };
+            if (standElements[slot] && initialChar) {
+                standElements[slot].dataset.character = initialChar;
+            } else if (standElements[slot]) {
+                delete standElements[slot].dataset.character;
+            }
         });
 
         // Install sprite delegation hooks
@@ -345,8 +369,9 @@ console.log("Courtroom Module Loaded");
         const posName = (standsConfig && standsConfig.positions && standsConfig.positions[standName])
             ? standsConfig.positions[standName]
             : standName;
+        const charName = slotState[standName] ? slotState[standName].character : null;
         if (window.moveBackgroundByName && currentBackgroundKey) {
-            window.moveBackgroundByName(currentBackgroundKey, posName, 0);
+            window.moveBackgroundByName(currentBackgroundKey, posName, 0, charName);
         }
 
         // Sync sprite container position
@@ -517,8 +542,9 @@ console.log("Courtroom Module Loaded");
         const posName = (standsConfig && standsConfig.positions && standsConfig.positions[stand])
             ? standsConfig.positions[stand]
             : stand;
+        const charName = slotState[stand] ? slotState[stand].character : null;
         if (window.moveBackgroundByName && currentBackgroundKey) {
-            window.moveBackgroundByName(currentBackgroundKey, posName, dur);
+            window.moveBackgroundByName(currentBackgroundKey, posName, dur, charName);
         }
 
         // Sync sprite container
@@ -641,6 +667,23 @@ console.log("Courtroom Module Loaded");
 
         slotState[slot].character = characterName;
         slotState[slot].emotion = null; // Reset emotion when character changes
+
+        // Set data-character attribute for character-specific stand CSS positioning
+        if (standElements[slot]) {
+            standElements[slot].dataset.character = characterName;
+        }
+
+        // Output character might require a new background coordinate
+        if (slot === currentView && currentView === activeSlot) {
+            const standsConfig = courtroomDB.views && courtroomDB.views.stands;
+            const posName = (standsConfig && standsConfig.positions && standsConfig.positions[slot])
+                ? standsConfig.positions[slot]
+                : slot;
+            if (window.moveBackgroundByName && currentBackgroundKey) {
+                window.moveBackgroundByName(currentBackgroundKey, posName, 0, characterName);
+                syncSpritesToBackground(0);
+            }
+        }
     }
 
     function applySpriteToElement(slotName, element, options = {}) {

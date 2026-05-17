@@ -217,11 +217,22 @@ function moveBackgroundToPosition(x, y, duration = 400) {
     applyCurrentBackgroundPosition(duration);
 }
 
-function moveBackgroundByName(bgName, positionName, duration = 400) {
+function moveBackgroundByName(bgName, positionName, duration = 400, charName = null) {
     const bgData = backgrounds[bgName];
     if (!bgData || typeof bgData !== 'object' || !bgData.positions) return;
 
-    const position = bgData.positions[positionName];
+    let position = bgData.positions[positionName];
+    
+    // Support character-specific positions dictionary
+    if (position && !Array.isArray(position) && typeof position === 'object') {
+        if (charName && position[charName]) {
+            position = position[charName];
+        } else {
+            const firstKey = Object.keys(position).find(k => Array.isArray(position[k]));
+            if (firstKey) position = position[firstKey];
+        }
+    }
+
     if (position && Array.isArray(position)) {
         moveBackgroundToPosition(position[0], position[1], duration);
     }

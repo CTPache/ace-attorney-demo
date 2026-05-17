@@ -1,0 +1,1137 @@
+{
+    "initialSection": "Intro_Init",
+    "actions": {
+        "move": false,
+        "examine": false,
+        "talk": false,
+        "present": false
+    },
+    "options": {
+        "Uzai_Word_Choice": {
+            "name": "Phoenix",
+            "text": "(What words did the witness say to the panic-stricken victim?)",
+            "options": [
+                {
+                    "text": "Come over here!",
+                    "label": "Uzai_Word_Choice_Correct"
+                },
+                {
+                    "text": "Just stay down.",
+                    "label": "Uzai_Word_Choice_Wrong"
+                },
+                {
+                    "text": "I'll call an ambulance.",
+                    "label": "Uzai_Word_Choice_Wrong"
+                }
+            ],
+            "time": [
+                "12",
+                "Uzai_Word_Choice_Wrong"
+            ]
+        },
+        "Don_Entry_Choice": {
+            "name": "Phoenix",
+            "text": "(The method Don used to enter the ring... That was...)",
+            "options": [
+                {
+                    "text": "He lifted the mesh from below.",
+                    "label": "Don_Entry_Choice_Correct"
+                },
+                {
+                    "text": "He was lifted up by wires.",
+                    "label": "Don_Entry_Choice_Wrong"
+                },
+                {
+                    "text": "He was hidden inside all along.",
+                    "label": "Don_Entry_Choice_Wrong"
+                }
+            ],
+            "time": [
+                "12",
+                "Don_Entry_Choice_Wrong"
+            ]
+        }
+    },
+    "courtroom": {
+        "views": {
+            "overview": {
+                "background": "CourtOverview"
+            },
+            "stands": {
+                "background": "CourtStands",
+                "positions": {
+                    "defense": "defense",
+                    "witness": "witness",
+                    "prosecution": "prosecution"
+                }
+            },
+            "cocounsel": {
+                "background": "CourtCoCounsel"
+            },
+            "judge": {
+                "background": "CourtJudge"
+            }
+        },
+        "slots": {
+            "defense": {
+                "character": "Phoenix"
+            },
+            "prosecution": {
+                "character": "Edgeworth"
+            },
+            "witness": {
+                "character": "Don"
+            },
+            "judge": {
+                "character": "Judge"
+            },
+            "cocounsel": {
+                "character": "Maya"
+            },
+            "gallery": {
+                "character": "Gallery"
+            }
+        }
+    },
+    "characters": {
+        "Phoenix": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking_talking.gif"
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing_talking.gif"
+            },
+            "Sweating": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating_talking.gif"
+            },
+            "Confident": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined_talking.gif"
+            },
+            "HoldingDocument": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document_talking.gif"
+            },
+            "Objecting": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Objecting.gif",
+                "time": 600
+            },
+            "SlamDesk": {
+                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Slamming_bench.gif",
+                "time": 600
+            }
+        },
+        "Edgeworth": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_2.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_talking_2.gif"
+            },
+            "Confident2": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident_talking.gif"
+            },
+            "Holding_Doc": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document_talking.gif"
+            },
+            "Pointing": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing_talking.gif"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking_talking.gif"
+            },
+            "Dismayed": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed_talking.gif"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined.gif",
+                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined_talking.gif"
+            },
+            "Slamming_Bench": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Slamming_desk.gif",
+                "time": 600
+            },
+            "Wagging_finger": {
+                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Wagging_his_finger.gif",
+                "time": 2000
+            }
+        },
+        "Judge": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Judge/Judge-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Normal-2-HD.webp"
+            },
+            "Stern": {
+                "default": "assets/img/characters/Common/Judge/Judge-Stern-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Stern-2-HD.webp"
+            },
+            "Surprised": {
+                "default": "assets/img/characters/Common/Judge/Judge-Surprised-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Surprised-2-HD.webp"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Judge/Judge-Thinking-1-HD.webp",
+                "talking": "assets/img/characters/Common/Judge/Judge-Thinking-2-HD.webp"
+            },
+            "Nod": {
+                "default": "assets/img/characters/Common/Judge/Judge-Nod-HD.webp",
+                "time": 600
+            }
+        },
+        "Maya": {
+            "Normal": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Normal-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Normal-2-HD.webp"
+            },
+            "Thinking": {
+                "default": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-2-HD.webp"
+            },
+            "Worried": {
+                "default": "assets/img/characters/Common/Maya/Maya-Worried-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Worried-2-HD.webp"
+            },
+            "Happy": {
+                "default": "assets/img/characters/Common/Maya/Maya-Happy-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Happy-2-HD.webp"
+            },
+            "Determined": {
+                "default": "assets/img/characters/Common/Maya/Maya-Determined-1-HD.webp",
+                "talking": "assets/img/characters/Common/Maya/Maya-Determined-2-HD.webp"
+            }
+        },
+        "Gallery": {
+            "Normal": {
+                "default": "assets/img/sprites/Courtroom_gallery_speak.webp",
+                "talking": "assets/img/sprites/Courtroom_gallery_speak.webp"
+            }
+        },
+        "Desi": {
+            "Smiling": {
+                "default": "assets/img/characters/Don/Desi/Desir_e-Smiling-1-HD.webp",
+                "talking": "assets/img/characters/Don/Desi/Desir_e-Smiling-2-HD.webp"
+            }
+        }
+    },
+    "backgrounds": {
+        "CourtOverview": "assets/img/backgrounds/Common/Courtroom_overview.webp",
+        "CourtStands": {
+            "background": "assets/img/backgrounds/Common/Courtroom_full.webp",
+            "foreground": "assets/img/backgrounds/Common/Courtroom_full_foreground.webp",
+            "positions": {
+                "default": "witness",
+                "defense": [
+                    0,
+                    0
+                ],
+                "witness": [
+                    -200,
+                    0
+                ],
+                "prosecution": [
+                    -400,
+                    0
+                ]
+            }
+        },
+        "CourtCoCounsel": "assets/img/backgrounds/Common/Courtroom_defense_bench.png",
+        "CourtJudge": "assets/img/backgrounds/Common/Courtroom_judge.webp",
+        "Lobby": "assets/img/backgrounds/Common/Courtroom_lobby.png",
+        "Yumi_back": "assets/img/CG/Don/Yumi_Dead.png"
+    },
+    "music": {
+        "lobby": [
+            "assets/audio/bgm/bgm008.m4a",
+            "assets/audio/bgm/bgm008lp.m4a"
+        ],
+        "courtroom": [
+            "assets/audio/bgm/bgm013.m4a",
+            "assets/audio/bgm/bgm013lp.m4a"
+        ],
+        "interrogatory_moderato": [
+            "assets/audio/bgm/bgm010.m4a",
+            "assets/audio/bgm/bgm010lp.m4a"
+        ],
+        "interrogatory_alegro": "assets/audio/bgm/bgm011.m4a",
+        "objection": [
+            "assets/audio/bgm/bgm004.m4a",
+            "assets/audio/bgm/bgm004lp.m4a"
+        ],
+        "tension": [
+            "assets/audio/bgm/bgm018.m4a",
+            "assets/audio/bgm/bgm018lp.m4a"
+        ]
+    },
+    "crossExaminations": {
+        "Don_Testimony_1": {
+            "witnessName": "Don",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Desi says the defendant hit the victim with a prop vase,{nl}but there was never any such thing in the ring.",
+                    "press": "Press_Don_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}I saw every corner of that stage.{nl}My vision is 20/10.",
+                    "press": "Press_Don_1"
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}My vision is 20/10. There's nothing I can't see.",
+                    "press": "Press_Don_2"
+                },
+                "3": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}At the time of the crime, I was by the ring watching{nl}Desi and Yumi's rehearsal.",
+                    "press": "Press_Don_3"
+                },
+                "4": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Yumi collapsed and didn't move.{nl}There's no way I missed anything at her feet.",
+                    "press": "Press_Don_4",
+                    "present": {
+                        "GlowingFragment": "Don_Evidence_Reveal"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_moderato,true}{jump:Don_Hint_1}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "hints"
+            ]
+        },
+        "Don_Testimony_2": {
+            "witnessName": "Don",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}At the time of the crime, I was doing paperwork near the scene.",
+                    "press": "Press_Don_2_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}During that time, nobody was inside the ring.{nl}That's what it looked like to me.",
+                    "press": "Press_Don_2_1"
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Glowing fragments, bloodstains, and such...{nl}I didn't miss something so trivial.",
+                    "press": "Press_Don_2_2"
+                },
+                "3": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}The stage director, Sal, was just{nl}sitting in the lighting booth.",
+                    "press": "Press_Don_2_3",
+                    "present": {
+                        "MissingCostume": "Uzai_Entrance"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_alegro,true}{jump:Don_Hint_2}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "hints"
+            ]
+        },
+        "Uzai_Testimony_1": {
+            "witnessName": "Sal",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Yeah, yesterday I watched the whole thing from the lighting booth.",
+                    "press": "Press_Uzai_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}When I got closer to the ring, she wasn't moving at all.",
+                    "press": "Press_Uzai_1"
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}There was nobody else. Just the victim and me.",
+                    "press": "Press_Uzai_2"
+                },
+                "3": {
+                    "text": "{startBGM:interrogatory_moderato,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Since I could tell from outside that she was dead,{nl}I didn't go inside the fence.",
+                    "press": "Press_Uzai_3",
+                    "present": {
+                        "Belt": "Uzai_Belt_Contradiction"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_moderato,true}{jump:Uzai_Hint_1}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "hints"
+            ]
+        },
+        "Don_Final_Testimony": {
+            "witnessName": "Don",
+            "failSequence": "Trial_Fail",
+            "statements": {
+                "0": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}Entertainment controls this country. And trials are no different.",
+                    "press": "Press_Don_Final_0"
+                },
+                "1": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}I declare it! There is no evidence that I did this!",
+                    "press": "Press_Don_Final_1",
+                    "present": {
+                        "Vase": "Don_Cornered"
+                    }
+                },
+                "2": {
+                    "text": "{startBGM:interrogatory_alegro,true}{showLifeBar}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1,true}{color:lime}{showTextbox}I weigh 330 pounds. The wire limit is 308 pounds.{nl}Therefore, it's impossible for me to enter the ring!",
+                    "press": "Press_Don_Final_2",
+                    "present": {
+                        "Fence": "Don_Entry_Choice_Start"
+                    }
+                },
+                "hints": {
+                    "text": "{startBGM:interrogatory_alegro,true}{jump:Don_Final_Hint}"
+                }
+            },
+            "initialStatements": [
+                "0",
+                "1",
+                "2",
+                "hints"
+            ]
+        }
+    },
+    "gameScript": {
+        "Intro_Init": [
+            {
+                "text": "{jumpIf:trial_intro_done,Courtroom_Opening,Intro_Start}{sectionEnd}"
+            }
+        ],
+        "Intro_Start": [
+            {
+                "text": "{bg:Lobby}{showTextbox}{center}{color:lime}{blip:3}November 22nd{nl}District Courthouse 10:00 AM Courtroom No. 1{color:white}{p:1200}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}And apparently Desi saw the victim bleeding from her arm..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(Alright, the trial's about to start. I should double-check the facts.)"
+            },
+            {
+                "name": "Maya",
+                "text": "{fadeInCharacter}{sprite:Maya[\"Normal\"]}{blip:2}Phoenix, {p:150}looks like this is gonna be a long one."
+            },
+            {
+                "text": "{setState:trial_intro_done,true}{fadeOutBg:400}{jump:Courtroom_Opening}{sectionEnd}"
+            }
+        ],
+        "Courtroom_Opening": [
+            {
+                "text": "{setSkipEnabled:true}{hideTextbox}{p:500}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playAnimation:Gavel}{skip:0}{sectionEnd}"
+            },
+            {
+                "name": "Judge",
+                "text": "{showTextbox}{setSkipEnabled:true}{startBGM:courtroom,true}{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Court is now in session for the case of Tiara Tenryo."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Normal\"]}{courtView:prosecution}{blip:1}The prosecution is ready, Your Honor."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Normal\"]}{courtView:defense}{blip:1}The defense is ready, Your Honor."
+            },
+            {
+                "name": "Judge",
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Very well. Prosecutor Edgeworth, please present your opening statement."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Holding_Doc\"]}{courtView:prosecution}{blip:1}The defendant, Tiara Tenryo, admits to striking the victim with a vase.{nl}Time of death is estimated between 7:20 PM and 8:12 PM."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "The defendant has already confessed, Your Honor."
+            },
+            {
+                "text": "{hideTextbox}{playSound:EdgeworthObjection}{playAnimation:Objection_JP}{courtSprite:defense[\"Determined\"]}{courtView:defense}{p:300}{showTextbox}{blip:1}Objection! The defendant said it was a prop vase she used to strike the victim!"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}It's preposterous. No one would confuse a prop with a real vase."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "The defendant's story is clearly fabricated."
+            },
+            {
+                "text": "{setState:court_intro_done,true}{jump:First_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "First_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,1}{courtView:witness}{checkpoint:First_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{showTextbox}{blip:0,false}{center}{color:red}~Don's Testimony~{playAnimation:CrossExamination}{startCE:Don_Testimony_1}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Don_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}Are you sure about that testimony?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}You doubt me?{nl}If I say I was there, then I was there!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}Then was there really no prop vase in the ring?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}Of course not.{nl}There's no evidence of it anywhere."
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Don_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}You said you saw every corner of the stage, didn't you?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}I am Don. I'm the world's greatest!{nl}There's nothing I can't see."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}With 20/10 vision, you could see in the dark?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Smiling\"]}{courtView:witness}Obviously."
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}Why are you so confident?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"FixGlasses\"]}{courtView:witness}Because my vision is 20/10.{nl}That's all the reason I need."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}20/10... Is vision really that good...?"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Press_Don_3": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}What about when the stage was dark?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}I was by the ring watching{nl}Desi and Yumi's rehearsal."
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}So I saw every detail clearly."
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:4}{sectionEnd}"
+            }
+        ],
+        "Press_Don_4": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtPan:defense}{blip:1,true}You missed something, didn't you?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{showEvidenceIcon:right,GlowingFragment}{blip:1}Look at this evidence!"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:500}{fadeOutBg:500}{jump:Don_Evidence_Reveal}{sectionEnd}"
+            }
+        ],
+        "Don_Evidence_Reveal": [
+            {
+                "text": "{bg:Don_Cage}{startBGM:objection}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}In the corner of the photo, there's a clear piece of the broken prop vase!"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}Noooooo!"
+            },
+            {
+                "name": "Judge",
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}Indeed, the photo clearly shows vase fragments."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Thinking\"]}{courtView:prosecution}It appears the witness was not watching his feet."
+            },
+            {
+                "text": "{setState:don_ce1_done,true}{jump:Second_Opening}{sectionEnd}"
+            }
+        ],
+        "Don_Hint_1": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(The ring fragments must have another meaning...)"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Second_Opening": [
+            {
+                "text": "{bg:CourtOverview}{showTextbox}{center}{color:lime}{blip:3}November 22nd{nl}District Courthouse 10:00 AM Courtroom No. 1{color:white}{p:1000}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:0,false}{color:lightblue}(It's not over yet.{nl}This is where it gets real.)"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Confident2\"]}{courtView:prosecution}{blip:1}Even if the vase could be restored,{nl}that doesn't prove the defendant used it."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}No, I can prove it."
+            },
+            {
+                "name": "Judge",
+                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}Hmm? How would you explain that?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}Don, you testified earlier, didn't you?{nl}That you saw every corner of the stage?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}That's right, Wright. Actually, I didn't see the scene at all."
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Smiling\"]}{courtView:witness}I should confess... I lied."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}What?!"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Slamming_Bench\"]}{courtView:prosecution}{blip:1}Wait. There is another witness to the murder."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "The stage director who was in the lighting booth at the time: Sal Manella."
+            },
+            {
+                "text": "{setState:trial_second_open,true}{jump:Second_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Second_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,2}{courtView:witness}{checkpoint:Second_Testimony_Start}{fadeInCharacter}{fadeInBg:600}{showTextbox}{blip:0,false}{center}{color:red}~Continued Testimony~{playAnimation:CrossExamination}{startCE:Don_Testimony_2}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}You were doing paperwork nearby?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}Near the scene.{nl}I never said I wasn't watching."
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}Are you saying no one could have gotten into the ring?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}I didn't see anyone.{nl}That should be enough."
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}You didn't miss the glowing fragments or the blood?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"FixGlasses\"]}{courtView:witness}Of course not.{nl}There's nothing I can't see."
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Press_Don_2_3": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{blip:0,false}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtPan:defense}{blip:1,true}You saw from the lighting booth?"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}That's right.{nl}I was there."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}... At that point, {p:150}you could really see everything?"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtPan:witness}{fadeInCharacter:400}{fadeInBg:400}{returnToCE:4}{sectionEnd}"
+            }
+        ],
+        "Don_Hint_2": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(So either Sal or Don is the real criminal...)"
+            },
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Uzai_Entrance": [
+            {
+                "text": "{hideTextbox}{fadeOutCharacter:400}{fadeOutBg:400}{courtChar:witness,Uzai}{courtSprite:witness[\"Normal\"]}{courtView:witness}{fadeInCharacter:500}{fadeInBg:500}{showTextbox}{blip:1}Witness. So you're the one who witnessed the actual murder?"
+            },
+            {
+                "name": "Sal",
+                "text": "{courtSprite:witness[\"Angry\"]}{courtView:witness}{blip:1}Hey now, that's an insult! Of course I did!"
+            },
+            {
+                "text": "{jump:Uzai_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Uzai_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Uzai}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,3}{courtView:witness}{checkpoint:Uzai_Testimony_Start}{showTextbox}{blip:0,false}{center}{color:red}~Sal's Testimony~{playAnimation:CrossExamination}{startCE:Uzai_Testimony_1}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:1}From the lighting booth, you could see the entire ring?"
+            },
+            {
+                "name": "Sal",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}Yeah, I could see it. That's why I saw the whole thing."
+            },
+            {
+                "text": "{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}Was there anyone else at the scene?"
+            },
+            {
+                "name": "Sal",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}Nope. Just the victim and me."
+            },
+            {
+                "text": "{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:1}You didn't try to help or anything, just assumed she was dead?"
+            },
+            {
+                "name": "Sal",
+                "text": "{courtSprite:witness[\"Sweating\"]}{courtView:witness}W-Well, yeah...?"
+            },
+            {
+                "text": "{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Press_Uzai_3": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}Sal, are you sure you never went inside the fence?"
+            },
+            {
+                "name": "Sal",
+                "text": "{courtSprite:witness[\"Angry\"]}{courtView:witness}What're you trying to say?! I watched from outside the fence!"
+            },
+            {
+                "text": "{returnToCE:4}{sectionEnd}"
+            }
+        ],
+        "Uzai_Hint_1": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(The paint on Sal's clothes matches the paint on the victim's belt...)"
+            },
+            {
+                "text": "{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Uzai_Belt_Contradiction": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{startBGM:objection,true}{blip:1}Sal, you're covered in paint spatter all over your clothes!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "The same color paint is also on the belt found near the victim!"
+            },
+            {
+                "name": "Sal",
+                "text": "{courtSprite:witness[\"Sweating\"]}{courtView:witness}{blip:1}Huh? N-No way, I don't know anything about that!"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"SlamDesk\"]}{courtView:defense}{blip:1}A test will prove the paint is identical!"
+            },
+            {
+                "text": "{option:Uzai_Word_Choice}{sectionEnd}"
+            }
+        ],
+        "Uzai_Word_Choice_Correct": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}You told the victim \"Come over here!\" and{nl}took the belt and went inside."
+            },
+            {
+                "name": "Don",
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}Yumi must have passed the belt through the fence mesh to you."
+            },
+            {
+                "name": "Sal",
+                "text": "{courtChar:witness,Uzai}{courtSprite:witness[\"Sweating\"]}{courtView:witness}{blip:1}Ugh... noooo..."
+            },
+            {
+                "name": "Sal",
+                "text": "... I was just asked to testify that way."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Dismayed\"]}{courtView:prosecution}{blip:1}... What?!"
+            },
+            {
+                "text": "{jump:Don_Recalled}{sectionEnd}"
+            }
+        ],
+        "Uzai_Word_Choice_Wrong": [
+            {
+                "name": "Judge",
+                "text": "{courtSprite:judge[\"Thinking\"]}{courtView:judge}{blip:1}... You told someone who couldn't move to come outside?"
+            },
+            {
+                "name": "Maya",
+                "text": "{courtSprite:cocounsel[\"Worried\"]}{courtView:cocounsel}{blip:2}But... how would words like that lead to Sal going inside?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}... Right. I should reconsider."
+            },
+            {
+                "text": "{jump:Uzai_Belt_Contradiction}{sectionEnd}"
+            }
+        ],
+        "Don_Recalled": [
+            {
+                "name": "Judge",
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}Don. Please return to the witness stand."
+            },
+            {
+                "name": "Don",
+                "text": "I'll make you regret putting me in this position. You'll have to listen to my shame."
+            },
+            {
+                "name": "Maya",
+                "text": "{courtSprite:cocounsel[\"Worried\"]}{courtView:cocounsel}{blip:2}I feel like we're being made fun of..."
+            },
+            {
+                "text": "{jump:Don_Final_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Don_Final_Testimony_Start": [
+            {
+                "text": "{courtChar:witness,Don}{courtSprite:witness[\"Normal\"]}{setState:currentTestimony,4}{courtView:witness}{checkpoint:Don_Final_Testimony_Start}{showTextbox}{blip:0,false}{center}{color:red}~The True Criminal's Testimony~{playAnimation:CrossExamination}{startCE:Don_Final_Testimony}{color:white}{sectionEnd}"
+            }
+        ],
+        "Press_Don_Final_0": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}That's not true! I won't bow to you!"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Laughing\"]}{courtView:witness}{blip:1}Oh yes you will."
+            },
+            {
+                "text": "{returnToCE:1}{sectionEnd}"
+            }
+        ],
+        "Press_Don_Final_1": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}I have evidence!"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}There isn't any. Absolutely none! I'll guarantee it!"
+            },
+            {
+                "text": "{returnToCE:2}{sectionEnd}"
+            }
+        ],
+        "Press_Don_Final_2": [
+            {
+                "text": "{hideLifeBar}{hideTextbox}{skip:0}"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{playSound:PhoenixHoldIt}{playAnimation:HoldIt_JP}{showTextbox}{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}The wire weight limit is 308 pounds..."
+            },
+            {
+                "name": "Don",
+                "text": "Which means I could never get inside the ring!"
+            },
+            {
+                "text": "{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Don_Final_Hint": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Thinking\"]}{courtView:defense}{blip:0,false}{color:lightblue}(That's it... I'll smash this testimony with evidence of Don's crime!)"
+            },
+            {
+                "text": "{returnToCE}{sectionEnd}"
+            }
+        ],
+        "Don_Cornered": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{startBGM:objection,true}{blip:1}A vase with the rim completely shattered. Clear evidence!"
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Pointing\"]}{courtView:prosecution}{blip:1}There were no fingerprints on the murder weapon."
+            },
+            {
+                "name": "Phoenix",
+                "text": "You couldn't force Sal to touch the vase!"
+            },
+            {
+                "text": "{returnToCE:3}{sectionEnd}"
+            }
+        ],
+        "Don_Entry_Choice_Start": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}Your Honor! I've figured out how Don got inside the ring!"
+            },
+            {
+                "text": "{option:Don_Entry_Choice}{sectionEnd}"
+            }
+        ],
+        "Don_Entry_Choice_Correct": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Pointing\"]}{courtView:defense}{blip:1}He lifted the mesh from below to get inside."
+            },
+            {
+                "name": "Phoenix",
+                "text": "There's one spot where the barbed wire is slightly bent upward.{nl}That's proof he hooked the belt there!"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}{blip:1}Nooooooooooo!"
+            },
+            {
+                "text": "{jump:Don_Defeat}{sectionEnd}"
+            }
+        ],
+        "Don_Entry_Choice_Wrong": [
+            {
+                "name": "Desi",
+                "text": "{courtSprite:witness[\"Normal\"]}{courtView:witness}{blip:1}I used my own belt to get inside the fence and set stuff up as a stage director."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}... Right. He's not that big, is he?"
+            },
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Sweating\"]}{courtView:defense}{blip:1}Your Honor, I need to reconsider my answer."
+            },
+            {
+                "text": "{jump:Don_Entry_Choice_Start}{sectionEnd}"
+            }
+        ],
+        "Don_Defeat": [
+            {
+                "name": "Phoenix",
+                "text": "{courtSprite:defense[\"Determined\"]}{courtView:defense}{blip:1}Desi went to get the ambulance.{nl}That was your plan all along!"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}{blip:1}What a blunder... It was a flawless plan..."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{courtSprite:prosecution[\"Determined\"]}{courtView:prosecution}{blip:1}The conviction to pursue the truth, and the strength of belief in your client..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "That's what we have that you don't!"
+            },
+            {
+                "name": "Don",
+                "text": "{courtSprite:witness[\"Breakdown\"]}{courtView:witness}{blip:1}I will not accept this! I will not end like this!"
+            },
+            {
+                "text": "{jump:Verdict_Sequence}{sectionEnd}"
+            }
+        ],
+        "Verdict_Sequence": [
+            {
+                "name": "Judge",
+                "text": "{courtSprite:judge[\"Normal\"]}{courtView:judge}{blip:1}Hmm, a most unpleasant trial, but at least the conclusion was satisfying."
+            },
+            {
+                "text": "{setSkipEnabled:false}{hideTextbox}{playAnimation:NotGuilty_JP}{courtView:overview}{playAnimation:Confetti}{setSkipEnabled:true}{skip:0}"
+            },
+            {
+                "name": "Judge",
+                "text": "{showTextbox}{courtSprite:judge[\"Nod\"]}{courtView:judge}{blip:1}Court is adjourned!"
+            },
+            {
+                "text": "{stopBGM:true}{fadeOutCharacter:900}{fadeOutBg:900}{jump:Lobby_Epilogue}{sectionEnd}"
+            }
+        ],
+        "Lobby_Epilogue": [
+            {
+                "text": "{bg:Lobby}{fadeInBg:600}{showTextbox}{startBGM:lobby,true}{center}{color:lime}{blip:3}November 22nd{nl}District Courthouse - Defendant's Waiting Room{color:white}{p:800}"
+            },
+            {
+                "name": "Desi",
+                "text": "{sprite:Desi[\"Smiling\"]}{fadeInCharacter}{blip:2}Hey, I can't stop thinking about{nl}that last thing Don said..."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{sprite:Phoenix[\"Confident\"]}{blip:1}Well in a weird way, that's actually perfect publicity.{nl}You know, like a viral marketing stunt or something."
+            },
+            {
+                "name": "Edgeworth",
+                "text": "{hideTextbox}{sprite:Edgeworth[\"Normal\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:1}Ah, you mean that all the witnesses were lying?"
+            },
+            {
+                "name": "Maya",
+                "text": "{hideTextbox}{sprite:Maya[\"Happy\"]}{hideCharacter}{fadeInCharacter:300}{showTextbox}{blip:2}Plus, I already wrote about this whole thing in my diary."
+            },
+            {
+                "name": "Phoenix",
+                "text": "{blip:1}And with that incident behind us, Joyopo's back to being a fun place..."
+            },
+            {
+                "text": "{blip:0,false}{color:lightblue}(And so we closed the case. The trial of Don Dupree was finally over.){sectionEnd}"
+            }
+        ],
+        "Trial_Fail": [
+            {
+                "name": "Judge",
+                "text": "{courtSprite:judge[\"Surprised\"]}{courtView:judge}{blip:1}Defense attorney, please compose yourself."
+            },
+            {
+                "text": "{jump:Don_Final_Testimony_Start}{sectionEnd}"
+            }
+        ],
+        "Trial_Placeholder_End": [
+            {
+                "text": "{jump:Lobby_Epilogue}{sectionEnd}"
+            }
+        ]
+    }
+}

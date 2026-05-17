@@ -9,7 +9,7 @@
     "options": {
         "Uzai_Word_Choice": {
             "name": "ナルホド",
-            "text": "（パニックを起こした被害者に、証人がかけたコトバは････）{nl}ぼくのコタエを示そう",
+            "text": "（パニックを起こした被害者に、証人がかけたコトバは････）",
             "options": [
                 {
                     "text": "こっちにおいで",
@@ -31,7 +31,7 @@
         },
         "Don_Entry_Choice": {
             "name": "ナルホド",
-            "text": "（独雲さんがリングに入った方法････それは････）{nl}ぼくのコタエを示そう",
+            "text": "（独雲さんがリングに入った方法････それは････）",
             "options": [
                 {
                     "text": "下から金網を持ち上げて入った",
@@ -94,130 +94,16 @@
         }
     },
     "characters": {
-        "Phoenix": {
-            "Normal": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal.gif",
-                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Normal_talking.gif"
-            },
-            "Thinking": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking.gif",
-                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Thinking_talking.gif"
-            },
-            "Pointing": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing.gif",
-                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Pointing_talking.gif"
-            },
-            "Sweating": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating.gif",
-                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Sweating_talking.gif"
-            },
-            "Confident": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident.gif",
-                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Confident_talking.gif"
-            },
-            "Determined": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined.gif",
-                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Determined_talking.gif"
-            },
-            "HoldingDocument": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document.gif",
-                "talking": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Holding_document_talking.gif"
-            },
-            "Objecting": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Objecting.gif",
-                "time": 600
-            },
-            "SlamDesk": {
-                "default": "assets/img/characters/Common/Phoenix/Phoenix_Wright_HD_-_Slamming_bench.gif",
-                "time": 600
-            }
-        },
         "Edgeworth": {
             "Normal": {
                 "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_2.gif",
                 "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Normal_talking_2.gif"
-            },
-            "Confident2": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Confident_talking.gif"
-            },
-            "Holding_Doc": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Holding_document_talking.gif"
-            },
-            "Pointing": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Pointing_talking.gif"
-            },
-            "Thinking": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Thinking_talking.gif"
-            },
-            "Dismayed": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Dismayed_talking.gif"
-            },
-            "Determined": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined.gif",
-                "talking": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Determined_talking.gif"
-            },
-            "Slamming_Bench": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Slamming_desk.gif",
-                "time": 600
-            },
-            "Wagging_finger": {
-                "default": "assets/img/characters/Common/Edgeworth/prosecutor/Miles_Edgeworth_HD_-_Wagging_his_finger.gif",
-                "time": 2000
-            }
-        },
-        "Judge": {
-            "Normal": {
-                "default": "assets/img/characters/Common/Judge/Judge-Normal-1-HD.webp",
-                "talking": "assets/img/characters/Common/Judge/Judge-Normal-2-HD.webp"
-            },
-            "Stern": {
-                "default": "assets/img/characters/Common/Judge/Judge-Stern-1-HD.webp",
-                "talking": "assets/img/characters/Common/Judge/Judge-Stern-2-HD.webp"
-            },
-            "Surprised": {
-                "default": "assets/img/characters/Common/Judge/Judge-Surprised-1-HD.webp",
-                "talking": "assets/img/characters/Common/Judge/Judge-Surprised-2-HD.webp"
-            },
-            "Thinking": {
-                "default": "assets/img/characters/Common/Judge/Judge-Thinking-1-HD.webp",
-                "talking": "assets/img/characters/Common/Judge/Judge-Thinking-2-HD.webp"
-            },
-            "Nod": {
-                "default": "assets/img/characters/Common/Judge/Judge-Nod-HD.webp",
-                "time": 600
             }
         },
         "Maya": {
             "Normal": {
                 "default": "assets/img/characters/Common/Maya/Maya-Bench-Normal-1-HD.webp",
                 "talking": "assets/img/characters/Common/Maya/Maya-Bench-Normal-2-HD.webp"
-            },
-            "Thinking": {
-                "default": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-1-HD.webp",
-                "talking": "assets/img/characters/Common/Maya/Maya-Bench-Thinking-2-HD.webp"
-            },
-            "Worried": {
-                "default": "assets/img/characters/Common/Maya/Maya-Worried-1-HD.webp",
-                "talking": "assets/img/characters/Common/Maya/Maya-Worried-2-HD.webp"
-            },
-            "Happy": {
-                "default": "assets/img/characters/Common/Maya/Maya-Happy-1-HD.webp",
-                "talking": "assets/img/characters/Common/Maya/Maya-Happy-2-HD.webp"
-            },
-            "Determined": {
-                "default": "assets/img/characters/Common/Maya/Maya-Determined-1-HD.webp",
-                "talking": "assets/img/characters/Common/Maya/Maya-Determined-2-HD.webp"
-            }
-        },
-        "Gallery": {
-            "Normal": {
-                "default": "assets/img/sprites/Courtroom_gallery_speak.webp",
-                "talking": "assets/img/sprites/Courtroom_gallery_speak.webp"
             }
         },
         "Desi": {
@@ -238,10 +124,16 @@
                     0,
                     0
                 ],
-                "witness": [
-                    -200,
-                    0
-                ],
+                "witness": {
+                    "Don": [
+                        -194.5,
+                        0
+                    ],
+                    "Uzai": [
+                        -200,
+                        0
+                    ]
+                },
                 "prosecution": [
                     -400,
                     0
@@ -275,6 +167,19 @@
             "assets/audio/bgm/bgm018.m4a",
             "assets/audio/bgm/bgm018lp.m4a"
         ]
+    },
+    "sounds": {
+        "PhoenixObjection": "assets/audio/se/objection_jp.m4a",
+        "PhoenixHoldIt": "assets/audio/se/holdit_jp.m4a",
+        "PhoenixTakeThat": "assets/audio/se/takethat_jp.m4a",
+        "EdgeworthObjection": "assets/audio/se/objection_edgeworth_jp.m4a",
+        "EdgeworthHoldIt": "assets/audio/se/holdit_edgeworth_jp.m4a",
+        "EdgeworthTakeThat": "assets/audio/se/takethat_edgeworth_jp.m4a",
+        "flash": "assets/audio/se/se028.m4a",
+        "throw": "assets/audio/se/se038.m4a",
+        "slap": "assets/audio/se/se011.m4a",
+        "deskSlam": "assets/audio/se/se012.m4a",
+        "whack": "assets/audio/se/se021.m4a"
     },
     "crossExaminations": {
         "Don_Testimony_1": {
@@ -449,7 +354,7 @@
         ],
         "Courtroom_Opening": [
             {
-                "text": "{setSkipEnabled:true}{hideTextbox}{p:500}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playAnimation:Gavel}{skip:0}{sectionEnd}"
+                "text": "{setSkipEnabled:false}{hideTextbox}{p:500}{hideCharacter}{courtSprite:witness[\"Normal\"]}{courtSprite:prosecution[\"Normal\"]}{courtSprite:defense[\"Normal\"]}{courtSprite:judge[\"Normal\"]}{courtSprite:cocounsel[\"Normal\"]}{courtSprite:gallery[\"Normal\"]}{courtView:overview}{fadeInBg:500}{fadeInCharacter:500}{playSound:galleryReaction}{p:1200}{playAnimation:Gavel}{skip:0}"
             },
             {
                 "name": "サイバンチョ",
