@@ -7,10 +7,14 @@ let isTitleConfigMode = false;
 const SETTINGS_STORAGE_KEY = 'ace_attorney_settings';
 
 function getAvailableSettingsLanguages() {
-    const languageSelect = document.getElementById('config-language-select') || configLanguageSelect;
-    return (languageSelect && languageSelect.options)
-        ? Array.from(languageSelect.options).map((option) => String(option.value || '').toUpperCase()).filter(Boolean)
-        : ['EN', 'ES', 'JP'];
+    if (typeof window.getAvailableLanguageCodes === 'function') {
+        const codes = window.getAvailableLanguageCodes();
+        if (Array.isArray(codes) && codes.length > 0) {
+            return codes;
+        }
+    }
+
+    return ['EN', 'ES', 'JP'];
 }
 
 function normalizePersistedSettings(rawSettings = {}) {

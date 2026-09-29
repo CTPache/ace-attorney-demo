@@ -1,13 +1,89 @@
 console.log("Localization Loaded");
 
 const UI_TEXT_PATH = 'assets/i18n/ui-text.json';
+const FALLBACK_LANGUAGE_CODES = ['EN', 'ES', 'JP'];
+const RESERVED_UI_TEXT_KEYS = ['scene', 'languageNames'];
 let uiTextDB = {};
 let sceneUITextDB = {};
+let uiLanguageNamesDB = {};
 let currentSceneTranslationKey = '';
 
 function normalizeLanguageCode(languageCode) {
     return String(languageCode || 'EN').toUpperCase();
 }
+
+window.getAvailableLanguageCodes = function() {
+    const codes = Object.keys(uiTextDB)
+        .filter((key) => !RESERVED_UI_TEXT_KEYS.includes(key))
+        .map((key) => String(key).toUpperCase())
+        .filter(Boolean);
+
+    return codes.length > 0 ? codes : [...FALLBACK_LANGUAGE_CODES];
+};
+
+window.getLanguageDisplayName = function(languageCode) {
+    const normalized = normalizeLanguageCode(languageCode);
+    const configured = uiLanguageNamesDB[normalized] || uiLanguageNamesDB[languageCode];
+
+    if (typeof configured === 'string' && configured.trim()) {
+        return configured.trim();
+    }
+
+    const tag = normalized.toLowerCase();
+    try {
+        const localized = new Intl.DisplayNames([tag], { type: 'language' }).of(tag);
+        if (localized && localized.toLowerCase() !== tag) {
+            return localized.charAt(0).toUpperCase() + localized.slice(1);
+        }
+    } catch (error) {
+        // Intl unavailable or the code is not a valid language tag; fall back to the raw code.
+    }
+
+    return normalized;
+};
+
+function collectLanguageSelects() {
+    const selects = Array.from(document.querySelectorAll('#config-language-select'));
+    const template = document.getElementById('config-menu-template');
+
+    if (template && template.content) {
+        selects.push(...Array.from(template.content.querySelectorAll('#config-language-select')));
+    }
+
+    return selects;
+}
+
+window.syncLanguageOptions = function() {
+    const desired = window.getAvailableLanguageCodes().map((code) => ({
+        code,
+        label: window.getLanguageDisplayName(code)
+    }));
+
+    collectLanguageSelects().forEach((select) => {
+        const current = Array.from(select.options).map((option) => ({
+            code: String(option.value || '').toUpperCase(),
+            label: option.textContent
+        }));
+        const isUpToDate = current.length === desired.length
+            && desired.every((entry, index) => entry.code === current[index].code && entry.label === current[index].label);
+
+        if (isUpToDate) return;
+
+        const previousValue = String(select.value || '').toUpperCase();
+        select.textContent = '';
+
+        desired.forEach((entry) => {
+            const option = document.createElement('option');
+            option.value = entry.code;
+            option.textContent = entry.label;
+            select.appendChild(option);
+        });
+
+        if (desired.some((entry) => entry.code === previousValue)) {
+            select.value = previousValue;
+        }
+    });
+};
 
 function getLanguagePack(languageCode) {
     const normalized = normalizeLanguageCode(languageCode);
@@ -84,6 +160,10 @@ window.getCurrentSceneTranslationKey = function() {
 };
 
 window.applyUIText = function() {
+    if (typeof window.syncLanguageOptions === 'function') {
+        window.syncLanguageOptions();
+    }
+
     const i18nNodes = document.querySelectorAll('[data-i18n]');
     i18nNodes.forEach((node) => {
         const key = node.getAttribute('data-i18n');
@@ -119,16 +199,23 @@ window.loadUIText = async function() {
         const loadedScene = (loaded && typeof loaded.scene === 'object' && loaded.scene)
             ? loaded.scene
             : {};
+        const loadedNames = (loaded && typeof loaded.languageNames === 'object' && loaded.languageNames)
+            ? loaded.languageNames
+            : {};
 
         const loadedRoot = { ...(loaded || {}) };
-        delete loadedRoot.scene;
+        RESERVED_UI_TEXT_KEYS.forEach((reservedKey) => {
+            delete loadedRoot[reservedKey];
+        });
 
         uiTextDB = loadedRoot;
         sceneUITextDB = loadedScene;
+        uiLanguageNamesDB = loadedNames;
     } catch (error) {
         console.warn('Failed to load UI text translations:', error);
         uiTextDB = uiTextDB.EN ? { EN: uiTextDB.EN } : {};
         sceneUITextDB = sceneUITextDB.EN ? { EN: sceneUITextDB.EN } : {};
+        uiLanguageNamesDB = {};
     }
 
     window.applyUIText();

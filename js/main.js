@@ -1,11 +1,15 @@
 
 
-const DEFAULT_SCENE_LANGUAGES = ['EN', 'ES', 'JP'];
-const sceneLanguageSelectSource = document.getElementById('config-language-select')
-    || document.querySelector('#config-menu-template #config-language-select');
-const SCENE_LANGUAGES = sceneLanguageSelectSource && sceneLanguageSelectSource.options
-    ? Array.from(sceneLanguageSelectSource.options).map((opt) => String(opt.value || '').toUpperCase()).filter(Boolean)
-    : DEFAULT_SCENE_LANGUAGES;
+function getSceneLanguages() {
+    if (typeof window.getAvailableLanguageCodes === 'function') {
+        const codes = window.getAvailableLanguageCodes();
+        if (Array.isArray(codes) && codes.length > 0) {
+            return codes;
+        }
+    }
+
+    return ['EN', 'ES', 'JP'];
+}
 
 function normalizeScenePath(path) {
     return String(path || '').replace(/\\/g, '/');
@@ -39,10 +43,10 @@ function getScenePathParts(scenePath) {
         baseSegments = segments;
         
         // Check if second segment is a language code and remove it
-        if (SCENE_LANGUAGES.includes(segments[1].toUpperCase())) {
+        if (getSceneLanguages().includes(segments[1].toUpperCase())) {
             baseSegments = [segments[0], ...segments.slice(2)];
         }
-    } else if (SCENE_LANGUAGES.includes(segments[0].toUpperCase())) {
+    } else if (getSceneLanguages().includes(segments[0].toUpperCase())) {
         // Single segment that is a language - keep it (legacy compatibility)
         baseSegments = segments;
     }
@@ -81,7 +85,7 @@ function buildScenePathForLanguage(scenePath, languageCode) {
     // Check first segment or second segment (in case of FlyHigh/EN/scene.json)
     let langIndex = -1;
     for (let i = 0; i < Math.min(2, segments.length); i++) {
-        if (SCENE_LANGUAGES.includes(segments[i].toUpperCase())) {
+        if (getSceneLanguages().includes(segments[i].toUpperCase())) {
             langIndex = i;
             break;
         }
@@ -299,7 +303,7 @@ function getLanguageFromUrl() {
     try {
         const urlParams = new URLSearchParams(window.location.search || '');
         const requestedLanguage = String(urlParams.get('lang') || '').toUpperCase();
-        return SCENE_LANGUAGES.includes(requestedLanguage) ? requestedLanguage : null;
+        return getSceneLanguages().includes(requestedLanguage) ? requestedLanguage : null;
     } catch (error) {
         console.warn('Unable to parse URL language parameter:', error);
         return null;
@@ -513,15 +517,21 @@ window.loadGameData = async function(jsonPath, startSection = null, isLoadingSav
 };
 
 window.setGameLanguage = async function(languageCode, options = {}) {
+    if (typeof window.loadUIText === 'function') {
+        await window.loadUIText();
+    }
+
     const nextLanguage = String(languageCode || 'EN').toUpperCase();
-    if (!SCENE_LANGUAGES.includes(nextLanguage)) return;
+    if (!getSceneLanguages().includes(nextLanguage)) return;
 
     const { reloadScene = true } = options || {};
     const hasChanged = currentLanguage !== nextLanguage;
     currentLanguage = nextLanguage;
 
-    if (typeof window.loadUIText === 'function') {
-        await window.loadUIText();
+    // Re-applied so the UI re-renders in the new language, since loadUIText() above
+    // ran applyUIText() before currentLanguage was updated.
+    if (typeof window.applyUIText === 'function') {
+        window.applyUIText();
     }
 
     const titleScreenVisible = !!document.getElementById('title-screen-top')
@@ -558,11 +568,6 @@ window.getGameCase = function() {
     return currentCase;
 };
 
-const languageFromUrl = getLanguageFromUrl();
-if (languageFromUrl) {
-    currentLanguage = languageFromUrl;
-}
-
 const caseFromUrl = getCaseFromUrl();
 if (caseFromUrl) {
     currentCase = caseFromUrl;
@@ -571,6 +576,22 @@ if (caseFromUrl) {
 async function initializeGame() {
     if (typeof window.loadUIText === 'function') {
         await window.loadUIText();
+    }
+
+    // Re-applied after loadUIText because config-history.js normalizes the persisted
+    // language against the available list, which is only complete once the text DB loads.
+    if (typeof window.applyPersistedSettings === 'function') {
+        window.applyPersistedSettings();
+    }
+
+    // Applied after loadUIText so the language list from ui-text.json is available for validation.
+    const languageFromUrl = getLanguageFromUrl();
+    if (languageFromUrl) {
+        currentLanguage = languageFromUrl;
+    }
+
+    if (typeof window.applyUIText === 'function') {
+        window.applyUIText();
     }
 
     const sceneKeyFromUrl = getInitialSceneKeyFromUrl();
