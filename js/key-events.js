@@ -25,6 +25,14 @@ window.triggerGameAction = function (action, type = 'down') {
         return false;
     }
 
+    // Key auto-repeat must never re-trigger CONFIRM activations. Continuous
+    // advancing is handled by the fast-forward interval started on the initial
+    // press, so repeat events would only re-fire focused buttons / spatial
+    // enters (looping choices and investigation hotspots when Enter is held).
+    if (action === 'CONFIRM' && type === 'repeat') {
+        return true;
+    }
+
         // Case Select Carousel: handle LEFT/RIGHT/CONFIRM/CANCEL only when case list is visible and chapter list is hidden
         const caseListView = document.getElementById('case-list-view');
         const chapterListView = document.getElementById('chapter-list-view');

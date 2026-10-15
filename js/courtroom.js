@@ -293,17 +293,32 @@ console.log("Courtroom Module Loaded");
 
     // ── View Switching ──────────────────────────────────────────
 
+    // Resolves the opacity a view switch should inherit from the current layer.
+    // A layer that is fully transparent because it was explicitly hidden (e.g.
+    // {hideCharacter}) must not leak that opacity into the next view: otherwise
+    // {courtView:...} after {hideCharacter} keeps the incoming view invisible
+    // until a fadeInCharacter or a scene reload. Layers that are mid-fade keep
+    // their in-progress opacity so crossfades (fadeOut -> courtView -> fadeIn)
+    // stay hidden until the fade-in runs.
+    function resolveVisibleLayerOpacity(el) {
+        if (!el) return '1';
+        const currentOpacity = getComputedStyle(el).opacity || '1';
+        if (currentOpacity !== '0') return currentOpacity;
+        if (activeCourtFadeElement === el) return currentOpacity;
+        return '1';
+    }
+
     function getCurrentCourtLayerOpacity() {
         if (currentView === 'overview' && courtroomOverviewSprites) {
-            return getComputedStyle(courtroomOverviewSprites).opacity || '1';
+            return resolveVisibleLayerOpacity(courtroomOverviewSprites);
         }
 
         if (STAND_SLOTS.includes(currentView) && courtroomSprites) {
-            return getComputedStyle(courtroomSprites).opacity || '1';
+            return resolveVisibleLayerOpacity(courtroomSprites);
         }
 
         if (character) {
-            return getComputedStyle(character).opacity || '1';
+            return resolveVisibleLayerOpacity(character);
         }
 
         return '1';

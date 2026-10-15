@@ -183,6 +183,10 @@
     justify-content: center;
     align-items: center;
     z-index: 10000;
+    /* The modal is injected into #bottom-screen, which sets pointer-events: none
+       in single-screen mode. Re-enable pointer events so the OK/Cancel buttons
+       are clickable (otherwise the modal traps input forever). */
+    pointer-events: auto;
 }
 
 #modal-container {
